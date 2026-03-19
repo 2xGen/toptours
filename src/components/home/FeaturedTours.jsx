@@ -51,7 +51,7 @@ const FeaturedTours = ({ onOpenModal }) => {
                 variant="outline"
                 className="border-2 border-white bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 font-bold px-8 py-6 text-lg"
               >
-                <Link href="/tours">
+                <Link href="/destinations">
                   Browse All Tours
                 </Link>
               </Button>

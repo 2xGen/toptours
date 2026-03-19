@@ -12,7 +12,15 @@ import { Card, CardContent } from '@/components/ui/card';
  * Simple traveler count (no age bands)
  * Group pricing shows fixed price
  */
-export default function PriceCalculator({ tour, viatorBookingUrl, pricing, pricingPerAgeBand = null, travelers: externalTravelers, setTravelers: externalSetTravelers }) {
+export default function PriceCalculator({
+  tour,
+  viatorBookingUrl,
+  pricing,
+  pricingPerAgeBand = null,
+  travelers: externalTravelers,
+  setTravelers: externalSetTravelers,
+  ctaLabel = 'Check Availability & Book on Viator',
+}) {
   const pricingInfo = tour?.pricingInfo;
   const pricingType = pricingInfo?.type || 'PER_PERSON';
   
@@ -148,16 +156,16 @@ export default function PriceCalculator({ tour, viatorBookingUrl, pricing, prici
         {/* CTA Button */}
         <Button
           asChild
-          className="w-full bg-[#00AA6C] hover:bg-[#008855] text-white font-semibold py-6 text-base"
+          className="w-full bg-[#00AA6C] hover:bg-[#008855] text-white font-semibold py-5 text-sm sm:text-base leading-snug whitespace-normal h-auto min-h-[3rem]"
         >
           <a
             href={viatorBookingUrl}
             target="_blank"
             rel="sponsored noopener noreferrer"
-            className="flex items-center justify-center gap-2"
+            className="flex items-center justify-center gap-2 px-2 text-center"
           >
-            Check Availability
-            <ExternalLink className="w-4 h-4" />
+            {ctaLabel}
+            <ExternalLink className="w-4 h-4 shrink-0" />
           </a>
         </Button>
       </CardContent>

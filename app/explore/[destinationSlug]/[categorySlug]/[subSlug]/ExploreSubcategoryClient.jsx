@@ -132,7 +132,7 @@ export default function ExploreSubcategoryClient({
                       <div className="mt-auto pt-4 flex flex-wrap items-center justify-between gap-3">
                         <p className="text-gray-500 text-sm">{priceDisplay}</p>
                         <span className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-white bg-primary shadow-sm hover:opacity-90 transition-opacity">
-                          View &amp; Book
+                          Check live price &amp; availability
                           <ArrowRight className="w-4 h-4" />
                         </span>
                       </div>

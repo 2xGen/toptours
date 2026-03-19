@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, lazy, Suspense } from 'react';
+import React, { useState, useEffect, useMemo, lazy, Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -9,29 +9,145 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { 
   MapPin, Clock, Calendar, Star, ArrowRight,
-  BookOpen, UtensilsCrossed, X, Compass, Car, Baby, Building2
+  BookOpen, UtensilsCrossed, X, Compass, Car, Baby, Building2, Sparkles
 } from 'lucide-react';
 import Link from 'next/link';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
 import DestinationStickyNav from '@/components/DestinationStickyNav';
+import PrefetchOnHoverLink from '@/components/PrefetchOnHoverLink';
+import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
+import { groupGuidesIntoSections, pickToursForGuide } from '@/lib/guidePageGrouping';
 
 const DISCOVER_CARS_URL = 'https://www.discovercars.com/?a_aid=toptours&a_cid=65100b9c';
+
+function normalizeGuideSlug(slug) {
+  if (!slug) return '';
+  return String(slug)
+    .toLowerCase()
+    .trim()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+function GuideFeaturedToursRow({ guide, poolTours }) {
+  const picked = useMemo(
+    () => (Array.isArray(poolTours) && poolTours.length > 0 ? pickToursForGuide(guide, poolTours, 3) : []),
+    [guide, poolTours]
+  );
+  if (picked.length === 0) return null;
+
+  return (
+    <div className="mt-4 pt-4 border-t border-gray-100">
+      <p className="text-[11px] font-bold text-gray-500 uppercase tracking-wide mb-2 flex items-center gap-1.5">
+        <Sparkles className="w-3.5 h-3.5 text-amber-500" aria-hidden />
+        Popular tours in this category
+      </p>
+      <ul className="space-y-2">
+        {picked.map((tour) => {
+          const pid = getTourProductId(tour);
+          const title = tour.title || tour.productTitle || 'Tour';
+          if (!pid) return null;
+          const thumb =
+            tour.images?.[0]?.variants?.[3]?.url ||
+            tour.images?.[0]?.variants?.[0]?.url ||
+            tour.tour_image_url ||
+            tour.thumbnailHiResURL ||
+            tour.thumbnailURL ||
+            null;
+          const fromPrice = tour.pricing?.summary?.fromPrice ?? tour.price;
+          const priceNum = fromPrice != null && fromPrice !== '' ? Number(fromPrice) : NaN;
+          const priceLabel = !Number.isNaN(priceNum) && priceNum > 0 ? `From $${priceNum.toFixed(0)}` : null;
+          return (
+            <li key={pid}>
+              <PrefetchOnHoverLink
+                href={getTourUrl(pid, title)}
+                className="flex gap-3 items-center rounded-lg p-2 -mx-2 hover:bg-blue-50/80 transition-colors group/t"
+              >
+                {thumb ? (
+                  <div className="relative w-12 h-12 rounded-md overflow-hidden shrink-0 bg-gray-100">
+                    <img src={thumb} alt="" className="w-full h-full object-cover" loading="lazy" />
+                  </div>
+                ) : (
+                  <div className="w-12 h-12 rounded-md bg-blue-100 shrink-0 flex items-center justify-center">
+                    <MapPin className="w-5 h-5 text-blue-600" aria-hidden />
+                  </div>
+                )}
+                <div className="min-w-0 flex-1">
+                  <span className="text-sm font-medium text-gray-900 group-hover/t:text-blue-700 line-clamp-2 leading-snug">
+                    {title}
+                  </span>
+                  {priceLabel && (
+                    <span className="text-xs text-emerald-700 font-semibold mt-0.5 block">{priceLabel}</span>
+                  )}
+                </div>
+                <ArrowRight className="w-4 h-4 text-gray-400 group-hover/t:text-blue-600 shrink-0" aria-hidden />
+              </PrefetchOnHoverLink>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+}
 
 const SmartTourFinder = dynamic(
   () => import('@/components/home/SmartTourFinder'),
   { ssr: false, loading: () => <div className="flex justify-center py-12"><span className="text-gray-500">Loading…</span></div> }
 );
 
-export default function GuidesListingClient({ destinationId, destination, guides = [], relatedTravelGuides = [], hasBabyEquipmentRentals = false, relatedDestinations = [], countryDestinations = [], destinationFeatures = { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false } }) {
+export default function GuidesListingClient({ destinationId, destination, guides = [], viatorDestinationId = null, relatedTravelGuides = [], hasBabyEquipmentRentals = false, relatedDestinations = [], countryDestinations = [], destinationFeatures = { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false } }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showMoreCountryDestinations, setShowMoreCountryDestinations] = useState(12);
+  const [poolTours, setPoolTours] = useState([]);
+  const [toursLoading, setToursLoading] = useState(false);
+  const [tourMatchesEnabled, setTourMatchesEnabled] = useState(false);
 
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
 
   const destinationName = destination.fullName || destination.name;
   const hasImage = destination?.imageUrl?.trim?.();
+
+  const guideSections = useMemo(() => groupGuidesIntoSections(guides), [guides]);
+
+  useEffect(() => {
+    if (!tourMatchesEnabled || !viatorDestinationId) return undefined;
+    let cancelled = false;
+    (async () => {
+      setToursLoading(true);
+      try {
+        const res = await fetch('/api/internal/viator-search', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            searchTerm: '',
+            page: 1,
+            viatorDestinationId: String(viatorDestinationId),
+            includeDestination: true,
+          }),
+        });
+        const data = await res.json();
+        const products = Array.isArray(data.products?.results)
+          ? data.products.results
+          : Array.isArray(data.products)
+            ? data.products
+            : [];
+        if (!cancelled) setPoolTours(products);
+      } catch {
+        if (!cancelled) setPoolTours([]);
+      } finally {
+        if (!cancelled) setToursLoading(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [tourMatchesEnabled, viatorDestinationId]);
 
   // Determine icon based on category name
   const getGuideIcon = (categoryName) => {
@@ -224,77 +340,132 @@ export default function GuidesListingClient({ destinationId, destination, guides
               </p>
             </motion.div>
 
-            {/* All Travel Guides Grid */}
+            {/* Category guides — grouped by theme + optional tour picks */}
             {guides && guides.length > 0 && (
-              <motion.div 
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                className="mb-16"
-              >
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-blue-500 text-white shadow-lg shadow-blue-500/20">
-                    <BookOpen className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h2 className="text-xl sm:text-2xl md:text-3xl font-poppins font-bold text-gray-900">
-                      Category Guides
-                    </h2>
-                    <p className="text-gray-500 text-sm sm:text-base">
-                      {guides.length} guide{guides.length !== 1 ? 's' : ''} · tours, activities & local tips
-                    </p>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                  {guides.map((guide, index) => {
-                    const categoryName = guide.category_name || guide.title || '';
-                    const categorySlug = guide.category_slug || '';
-                    const guideUrl = `/destinations/${destinationId}/guides/${categorySlug}`;
-                    const Icon = getGuideIcon(categoryName);
-                    const iconColor = getIconColor(categoryName);
-                    const introduction = guide.introduction || guide.subtitle || `Discover the best ${categoryName.toLowerCase()} experiences in ${destinationName}.`;
-                    
-                    return (
-                      <motion.div
-                        key={categorySlug || index}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.4, delay: Math.min(index * 0.06, 0.3) }}
-                        viewport={{ once: true }}
-                      >
-                        <Link href={guideUrl} className="group block h-full">
-                          <Card className="h-full overflow-hidden border border-gray-200/80 bg-white rounded-2xl shadow-sm hover:shadow-xl hover:border-blue-200/60 transition-all duration-300 hover:-translate-y-0.5">
-                            <CardContent className="p-5 sm:p-6">
-                              <div className="flex items-center gap-3 mb-4">
-                                <div className={`w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0 border border-blue-100 ${iconColor}`}>
-                                  <Icon className="w-6 h-6" />
-                                </div>
-                                <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-600 transition-colors">
-                                  {guide.title || categoryName}
-                                </h3>
-                              </div>
-                              {guide.subtitle && (
-                                <p className="text-sm text-gray-600 font-medium mb-2 line-clamp-1">
-                                  {guide.subtitle}
-                                </p>
-                              )}
-                              <p className="text-gray-600 leading-relaxed text-sm sm:text-base line-clamp-4 mb-4">
-                                {introduction.length > 220 ? introduction.slice(0, 220).trim() + '…' : introduction}
-                              </p>
-                              <span className="inline-flex items-center gap-1.5 text-blue-600 font-semibold text-sm group-hover:gap-2.5 transition-all">
-                                Read guide
-                                <ArrowRight className="w-4 h-4 shrink-0" />
-                              </span>
-                            </CardContent>
-                          </Card>
+              <div id="guides-list" className="scroll-mt-24">
+                <motion.div
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ once: true }}
+                  className="mb-16"
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+                    <div className="flex items-center gap-3">
+                      <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-blue-500 text-white shadow-lg shadow-blue-500/20">
+                        <BookOpen className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-poppins font-bold text-gray-900">
+                          Category guides
+                        </h2>
+                        <p className="text-gray-500 text-sm sm:text-base">
+                          {guides.length} guide{guides.length !== 1 ? 's' : ''} · grouped by topic · optional tour matches
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <Button asChild size="sm" className="sunset-gradient text-white font-semibold">
+                        <Link href={`/destinations/${destinationId}/tours`}>
+                          Book tours
+                          <ArrowRight className="w-4 h-4 ml-1.5" />
                         </Link>
-                      </motion.div>
-                    );
-                  })}
-                </div>
-              </motion.div>
+                      </Button>
+                      {viatorDestinationId && !tourMatchesEnabled && (
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={() => setTourMatchesEnabled(true)}
+                          className="border-slate-300 text-slate-700 hover:bg-slate-50"
+                        >
+                          Show tour matches
+                        </Button>
+                      )}
+                      {viatorDestinationId && toursLoading && (
+                        <span className="text-xs text-gray-400">Loading tour matches…</span>
+                      )}
+                    </div>
+                  </div>
+
+                  {guideSections.map((section) => (
+                    <section
+                      key={section.id}
+                      className="mb-14 last:mb-0"
+                      aria-labelledby={`guide-section-${section.id}`}
+                    >
+                      <div className="mb-6">
+                        <h3
+                          id={`guide-section-${section.id}`}
+                          className="text-lg sm:text-xl font-poppins font-bold text-gray-900"
+                        >
+                          {section.label}
+                        </h3>
+                        <p className="text-sm text-gray-500 mt-1">
+                          {section.guides.length} guide{section.guides.length !== 1 ? 's' : ''}
+                        </p>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                        {section.guides.map((guide, index) => {
+                          const categoryName = guide.category_name || guide.title || '';
+                          const categorySlug = normalizeGuideSlug(guide.category_slug || '');
+                          const guideUrl = `/destinations/${destinationId}/guides/${categorySlug}`;
+                          const Icon = getGuideIcon(categoryName);
+                          const iconColor = getIconColor(categoryName);
+                          const introduction =
+                            guide.introduction ||
+                            guide.subtitle ||
+                            `Discover the best ${categoryName.toLowerCase()} experiences in ${destinationName}.`;
+
+                          return (
+                            <motion.div
+                              key={categorySlug || `${section.id}-${index}`}
+                              initial={{ opacity: 0, y: 20 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.4, delay: Math.min(index * 0.05, 0.25) }}
+                              viewport={{ once: true }}
+                            >
+                              <Card className="h-full overflow-hidden border border-gray-200/80 bg-white rounded-2xl shadow-sm hover:shadow-xl hover:border-blue-200/60 transition-all duration-300 hover:-translate-y-0.5 flex flex-col">
+                                <CardContent className="p-5 sm:p-6 flex flex-col flex-1">
+                                  <Link href={guideUrl} className="group block flex-1">
+                                    <div className="flex items-center gap-3 mb-4">
+                                      <div
+                                        className={`w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0 border border-blue-100 ${iconColor}`}
+                                      >
+                                        <Icon className="w-6 h-6" />
+                                      </div>
+                                      <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-600 transition-colors">
+                                        {guide.title || categoryName}
+                                      </h3>
+                                    </div>
+                                    {guide.subtitle && (
+                                      <p className="text-sm text-gray-600 font-medium mb-2 line-clamp-1">
+                                        {guide.subtitle}
+                                      </p>
+                                    )}
+                                    <p className="text-gray-600 leading-relaxed text-sm sm:text-base line-clamp-4 mb-4">
+                                      {introduction.length > 220
+                                        ? `${introduction.slice(0, 220).trim()}…`
+                                        : introduction}
+                                    </p>
+                                    <span className="inline-flex items-center gap-1.5 text-blue-600 font-semibold text-sm group-hover:gap-2.5 transition-all">
+                                      Read guide
+                                      <ArrowRight className="w-4 h-4 shrink-0" />
+                                    </span>
+                                  </Link>
+                                  {tourMatchesEnabled && viatorDestinationId && poolTours.length > 0 && (
+                                    <GuideFeaturedToursRow guide={guide} poolTours={poolTours} />
+                                  )}
+                                </CardContent>
+                              </Card>
+                            </motion.div>
+                          );
+                        })}
+                      </div>
+                    </section>
+                  ))}
+                </motion.div>
+              </div>
             )}
 
             {/* Destination travel guides (packing lists, itineraries, vs guides, etc.) */}

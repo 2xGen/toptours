@@ -1,5 +1,10 @@
+import { absoluteUrl } from '@/lib/siteUrl';
+
 // Build-time static: served from CDN, no serverless function on request (near-zero compute).
 export const dynamic = 'force-static';
+
+const pageUrl = absoluteUrl('/terms');
+const defaultOg = absoluteUrl('/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg');
 
 export const metadata = {
   title: 'Terms of Service | TopTours.ai',
@@ -8,11 +13,11 @@ export const metadata = {
   openGraph: {
     title: 'Terms of Service | TopTours.ai',
     description: 'Read TopTours.ai Terms of Service. Learn about our policies, user responsibilities, and booking terms.',
-    url: 'https://toptours.ai/terms',
+    url: pageUrl,
     siteName: 'TopTours.ai',
     images: [
       {
-        url: 'https://toptours.ai/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg',
+        url: defaultOg,
         width: 1200,
         height: 630,
         alt: 'TopTours.ai Terms of Service',
@@ -25,10 +30,10 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Terms of Service | TopTours.ai',
     description: 'Read TopTours.ai Terms of Service and user agreement.',
-    images: ['https://toptours.ai/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg'],
+    images: [defaultOg],
   },
   alternates: {
-    canonical: 'https://toptours.ai/terms',
+    canonical: pageUrl,
   },
   robots: {
     index: true,

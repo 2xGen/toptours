@@ -31,7 +31,7 @@ export default function ExploreToursListingClient({ tours = [], destinationSlug,
           <Link
             key={`${tour.categorySlug}-${tour.productId}`}
             href={href}
-            className="group flex flex-col rounded-2xl border-2 border-gray-100 bg-white p-6 text-left transition-all duration-300 hover:border-primary/40 hover:shadow-xl hover:-translate-y-1 min-h-0"
+            className="group flex flex-col rounded-2xl border-2 border-gray-100 bg-white p-6 text-left shadow-sm transition-all duration-300 hover:border-primary/40 hover:shadow-xl hover:-translate-y-1 min-h-0"
           >
             <div className="aspect-[16/10] w-full overflow-hidden rounded-xl bg-primary/5">
               {imageUrl ? (
@@ -70,8 +70,8 @@ export default function ExploreToursListingClient({ tours = [], destinationSlug,
             </div>
             <div className="mt-auto pt-4 flex flex-wrap items-center justify-between gap-3">
               <p className="text-gray-500 text-sm">{priceDisplay}</p>
-              <span className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-white bg-primary group-hover:opacity-90 transition-opacity shadow-sm">
-                View &amp; Book
+              <span className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-white sunset-gradient group-hover:opacity-90 transition-opacity shadow-sm">
+                Check live price &amp; availability
                 <ArrowRight className="w-4 h-4" />
               </span>
             </div>

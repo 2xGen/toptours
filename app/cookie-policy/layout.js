@@ -1,5 +1,10 @@
+import { absoluteUrl } from '@/lib/siteUrl';
+
 // Build-time static: served from CDN, no serverless function on request (near-zero compute).
 export const dynamic = 'force-static';
+
+const pageUrl = absoluteUrl('/cookie-policy');
+const defaultOg = absoluteUrl('/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg');
 
 export const metadata = {
   title: 'Cookie Policy | TopTours.ai',
@@ -8,11 +13,11 @@ export const metadata = {
   openGraph: {
     title: 'Cookie Policy | TopTours.ai',
     description: 'Learn how TopTours.ai uses cookies to improve your experience and how you can manage your preferences.',
-    url: 'https://toptours.ai/cookie-policy',
+    url: pageUrl,
     siteName: 'TopTours.ai',
     images: [
       {
-        url: 'https://toptours.ai/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg',
+        url: defaultOg,
         width: 1200,
         height: 630,
         alt: 'TopTours.ai Cookie Policy',
@@ -25,10 +30,10 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Cookie Policy | TopTours.ai',
     description: 'Learn about TopTours.ai cookie usage and how to manage your preferences.',
-    images: ['https://toptours.ai/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg'],
+    images: [defaultOg],
   },
   alternates: {
-    canonical: 'https://toptours.ai/cookie-policy',
+    canonical: pageUrl,
   },
   robots: {
     index: true,

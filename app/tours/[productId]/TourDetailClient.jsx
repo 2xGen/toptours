@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef, lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { useRouter, useSearchParams } from 'next/navigation';
-import confetti from 'canvas-confetti';
 import { 
   Star, 
   Clock, 
@@ -31,6 +30,7 @@ import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
 import DestinationStickyNav from '@/components/DestinationStickyNav';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getTourUrl, getTourProductId, generateTourSlug } from '@/utils/tourHelpers';
 import { destinations } from '@/data/destinationsData';
 import { viatorRefToSlug } from '@/data/viatorDestinationMap';
@@ -45,7 +45,6 @@ import SimilarToursListWrapper from './SimilarToursListWrapper';
 const ShareModal = lazy(() => import('@/components/sharing/ShareModal'));
 const PromoteTourOperatorBanner = lazy(() => import('@/components/tour/PromoteTourOperatorBanner').then(m => ({ default: m.PromoteTourOperatorBanner })));
 const ReviewSnippets = lazy(() => import('@/components/tours/ReviewSnippets'));
-const PriceCalculator = lazy(() => import('@/components/tours/PriceCalculator'));
 import { 
   calculateTourProfile, 
   getUserPreferenceScores, 
@@ -54,6 +53,77 @@ import {
 } from '@/lib/tourMatching';
 import { calculateEnhancedMatchScore } from '@/lib/tourMatchingEnhanced';
 import { resolveUserPreferences } from '@/lib/preferenceResolution';
+
+/** Aligned with explore tour pages — primary outbound CTA copy */
+const TOURS_PRIMARY_CTA_LABEL = 'Check Availability & Book on Viator';
+
+/** Compact Viator CTA strip between content sections (affiliate outbound). */
+function ViatorBetweenSectionsCta({ viatorUrl, headline, subline }) {
+  if (!viatorUrl) return null;
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-32px' }}
+      transition={{ duration: 0.35 }}
+      className="rounded-xl border border-[#00AA6C]/30 bg-gradient-to-br from-[#f2fbf7] to-white px-4 py-4 shadow-[0_8px_24px_rgba(0,170,108,0.08)] sm:px-5"
+    >
+      <a
+        href={viatorUrl}
+        target="_blank"
+        rel="sponsored noopener noreferrer"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#00AA6C] px-4 py-3 text-center text-sm font-semibold leading-snug text-white transition-colors hover:bg-[#008855]"
+      >
+        <span className="min-w-0">
+          {headline || 'Check live availability & book on Viator'}
+        </span>
+        <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
+      </a>
+      {subline ? (
+        <p className="mt-2.5 text-center text-xs leading-snug text-gray-600">{subline}</p>
+      ) : null}
+    </motion.div>
+  );
+}
+
+/** Final conversion block after FAQs — checklist + primary Viator CTA */
+function ViatorDecisionBlock({ viatorUrl }) {
+  if (!viatorUrl) return null;
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-32px' }}
+      transition={{ duration: 0.4 }}
+      className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm sm:p-6"
+    >
+      <p className="text-base font-semibold text-gray-900">Ready to book?</p>
+      <ul className="mt-3 space-y-2 text-sm text-gray-700">
+        <li className="flex gap-2">
+          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green-600" aria-hidden />
+          <span>See live times &amp; pricing on Viator</span>
+        </li>
+        <li className="flex gap-2">
+          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green-600" aria-hidden />
+          <span>Instant confirmation when you complete checkout</span>
+        </li>
+        <li className="flex gap-2">
+          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green-600" aria-hidden />
+          <span>Cancellation rules shown before you pay</span>
+        </li>
+      </ul>
+      <a
+        href={viatorUrl}
+        target="_blank"
+        rel="sponsored noopener noreferrer"
+        className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#00AA6C] px-4 py-3 text-center text-sm font-semibold leading-snug text-white transition-colors hover:bg-[#008855]"
+      >
+        <span className="min-w-0">{TOURS_PRIMARY_CTA_LABEL}</span>
+        <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
+      </a>
+    </motion.div>
+  );
+}
 
 // Sticky Price Bar Component - Smart: Shows match score if available, otherwise shows rating/reviews
 function StickyPriceBar({ tour, pricing, viatorUrl, matchScore, matchScoresEnabled = false, travelers: externalTravelers = undefined, setTravelers: externalSetTravelers = undefined }) {
@@ -318,7 +388,7 @@ function StickyPriceBar({ tour, pricing, viatorUrl, matchScore, matchScoresEnabl
             <Button
               asChild
               size="lg"
-              className="bg-[#00AA6C] hover:bg-[#008855] text-white font-semibold px-4 md:px-10 py-2.5 md:py-3 whitespace-nowrap text-sm md:text-lg flex-shrink-0 md:min-w-[280px]"
+              className="bg-[#00AA6C] hover:bg-[#008855] text-white font-semibold px-3 md:px-6 py-2.5 md:py-3 text-center text-xs md:text-sm leading-snug flex-shrink-0 md:min-w-[200px] max-w-[100vw] whitespace-normal"
             >
               <a
                 href={viatorUrl}
@@ -326,8 +396,8 @@ function StickyPriceBar({ tour, pricing, viatorUrl, matchScore, matchScoresEnabl
                 rel="sponsored noopener noreferrer"
                 className="flex items-center justify-center gap-2 w-full"
               >
-                Check Availability
-                <ExternalLink className="w-4 h-4" />
+                {TOURS_PRIMARY_CTA_LABEL}
+                <ExternalLink className="w-4 h-4 shrink-0" />
               </a>
             </Button>
           </div>
@@ -337,7 +407,7 @@ function StickyPriceBar({ tour, pricing, viatorUrl, matchScore, matchScoresEnabl
   );
 }
 
-export default function TourDetailClient({ tour, similarTours = [], productId, pricing = null, enrichment = null, initialPromotionScore = null, destinationData = null, restaurantCount = 0, restaurants = [], operatorPremiumData = null, operatorTours = [], categoryGuides = [], destinationFeatures = { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false }, faqs = [], reviews = null, recommendedTours: initialRecommendedTours = [], primaryTagName = null }) {
+export default function TourDetailClient({ tour, similarTours = [], productId, pricing = null, enrichment = null, initialPromotionScore = null, destinationData = null, operatorPremiumData = null, operatorTours = [], categoryGuides = [], destinationFeatures = { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false }, faqs = [], reviews = null, recommendedTours: initialRecommendedTours = [], primaryTagName = null }) {
   // Note: recommendedTours prop kept for backward compatibility but not used (removed to reduce API calls)
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -384,8 +454,9 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
   const [reviewsData, setReviewsData] = useState(reviews);
   const [reviewsLoading, setReviewsLoading] = useState(false);
   // Similar tours loaded on demand (saves 1 Viator API call per tour page view)
-  const [similarToursData, setSimilarToursData] = useState(similarTours?.length ? similarTours : null);
-  const [similarToursLoading, setSimilarToursLoading] = useState(false);
+  /** Only when parent passes a list (e.g. future SSR); otherwise we link to Viator’s destination browse. */
+  const curatedSimilarTours =
+    Array.isArray(similarTours) && similarTours.length > 0 ? similarTours : null;
   const [userPreferences, setUserPreferences] = useState(null);
   const [tourProfile, setTourProfile] = useState(null);
   const [matchScore, setMatchScore] = useState(null);
@@ -839,6 +910,43 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     return effectiveDestinationData?.slug || effectiveDestinationData?.destinationId || null;
   }, [effectiveDestinationData, destinationSlugFromClientLookup, unmatchedDestinationSlug, destinationNameFromClientLookup, unmatchedDestinationName]);
 
+  /** Main-content section → destination tag guide (same URL as the small category link above the title). */
+  const tagGuideSectionCta = useMemo(() => {
+    if (!primaryTagName) return null;
+    const destSlug =
+      destination?.id ||
+      subtleDestinationSlug ||
+      unmatchedDestinationSlug ||
+      effectiveDestinationData?.slug ||
+      effectiveDestinationData?.destinationId;
+    const tagSlug = getTagSlugFromName(primaryTagName);
+    if (!destSlug || !tagSlug) return null;
+    const destName =
+      destination?.fullName ||
+      destination?.name ||
+      effectiveDestinationData?.destinationName ||
+      unmatchedDestinationName ||
+      subtleDestinationName ||
+      null;
+    return {
+      href: `/destinations/${destSlug}/guides/${tagSlug}`,
+      tagLabel: primaryTagName,
+      destName,
+    };
+  }, [
+    primaryTagName,
+    destination?.id,
+    destination?.fullName,
+    destination?.name,
+    subtleDestinationSlug,
+    unmatchedDestinationSlug,
+    effectiveDestinationData?.slug,
+    effectiveDestinationData?.destinationId,
+    effectiveDestinationData?.destinationName,
+    unmatchedDestinationName,
+    subtleDestinationName,
+  ]);
+
   // Debug logging removed for production - enable in development if needed
 
   // OPTIMIZED: Fetch user and preferences for matching (only if needed)
@@ -1277,9 +1385,10 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
 
   // Extract data from Viator API response - use a reasonably sized hero image
   const getHighQualityImage = () => {
-    if (!tour.images || !tour.images[0] || !tour.images[0].variants) return '';
-    const variants = tour.images[0].variants;
-    return selectBestImageVariant(variants, 800);
+    if (!tour.images?.length) return '';
+    const cover = tour.images.find((i) => i.isCover) || tour.images[0];
+    if (!cover?.variants?.length) return typeof cover?.url === 'string' ? cover.url : '';
+    return selectBestImageVariant(cover.variants, 800);
   };
   
   const tourImage = getHighQualityImage();
@@ -1310,7 +1419,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
   }, [tour]);
   
   // Get additional images for gallery (exclude the first one which is used as hero)
-  const additionalImages = allImages.slice(1, 7); // Show up to 6 additional images in gallery
+  const additionalImages = allImages.slice(1, 4); // Lighter gallery: up to 3 extra (explore-style; rest via lightbox)
   
   // Lightbox functions
   const openLightbox = useCallback((index) => {
@@ -1508,6 +1617,20 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
   };
   
   const price = getPrice();
+  const heroTravelerCount = (() => {
+    if (typeof sharedTravelers === 'number') return Math.max(1, sharedTravelers);
+    if (sharedTravelers && typeof sharedTravelers === 'object') {
+      const adultCount = Number(sharedTravelers.ADULT);
+      if (Number.isFinite(adultCount) && adultCount > 0) return adultCount;
+      const total = Object.values(sharedTravelers)
+        .map((val) => Number(val))
+        .filter((val) => Number.isFinite(val) && val > 0)
+        .reduce((sum, val) => sum + val, 0);
+      return total > 0 ? total : 1;
+    }
+    return 1;
+  })();
+  const heroEstimatedTotal = price > 0 ? price * heroTravelerCount : null;
   
   // Extract duration - check multiple possible locations
   // Based on actual API: itinerary.duration.fixedDurationInMinutes
@@ -2049,216 +2172,30 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     return `${hours}h ${mins}m`;
   };
 
+  const hasInstantConfirmation = flags.some((flag) =>
+    typeof flag === 'string' && flag.toLowerCase().includes('instant')
+  );
+  const cancellationSummary = (() => {
+    const desc = tour?.cancellationPolicy?.description;
+    if (typeof desc === 'string' && /free cancellation/i.test(desc)) {
+      return 'Free cancellation available (see full policy before checkout).';
+    }
+    if (typeof desc === 'string' && desc.trim()) {
+      return 'Cancellation terms are shown clearly before you pay.';
+    }
+    return 'Cancellation terms are shown on the booking page before payment.';
+  })();
+
   const { user: bookmarksUser, isBookmarked, toggle } = useBookmarks();
 
   return (
-    <div className="min-h-screen pt-16" style={{ overflowX: 'hidden' }} suppressHydrationWarning>
+    <div className="min-h-screen bg-[#f8f9fa] pt-16 pb-36" style={{ overflowX: 'hidden' }} suppressHydrationWarning>
       <NavigationNext />
-      
-      {/* Hero Section - Matching Destination Page Style */}
-      <section className="relative pt-8 pb-12 sm:pt-10 sm:pb-16 md:pt-12 md:pb-20 overflow-hidden ocean-gradient">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="flex items-center mb-4">
-                <MapPin className="w-5 h-5 text-blue-200 mr-2" />
-                {(() => {
-                  const destLabel = destination?.category
-                    || destination?.fullName
-                    || destination?.name
-                    || effectiveDestinationData?.destinationName
-                    || unmatchedDestinationName
-                    || '';
-                  const destSlug = destination?.id
-                    || subtleDestinationSlug
-                    || unmatchedDestinationSlug
-                    || effectiveDestinationData?.slug
-                    || effectiveDestinationData?.destinationId;
-                  const tagSlug = primaryTagName ? getTagSlugFromName(primaryTagName) : '';
-                  const tagGuideUrl = primaryTagName && destSlug && tagSlug
-                    ? `/destinations/${destSlug}/guides/${tagSlug}`
-                    : null;
-                  const label = primaryTagName && destLabel
-                    ? `${primaryTagName} · ${destLabel}`
-                    : primaryTagName
-                      ? primaryTagName
-                      : (() => {
-                          const viatorCategory = tour.categories?.[0]?.categoryName
-                            || tour.categories?.[0]?.name
-                            || tour.subcategories?.[0]?.categoryName
-                            || tour.subcategories?.[0]?.name
-                            || tour.classifications?.[0]?.name
-                            || '';
-                          if (viatorCategory && destLabel) return `${viatorCategory} · ${destLabel}`;
-                          if (viatorCategory) return viatorCategory;
-                          if (destLabel) return destLabel;
-                          return 'Tour';
-                        })();
-                  if (tagGuideUrl) {
-                    return (
-                      <Link
-                        href={tagGuideUrl}
-                        className="text-white font-medium hover:text-white/90 hover:underline transition-colors"
-                      >
-                        {label}
-                      </Link>
-                    );
-                  }
-                  return <span className="text-white font-medium">{label}</span>;
-                })()}
-              </div>
-              <div className="flex items-start gap-3 mb-4 md:mb-6">
-                <h1 className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold text-white flex-1">
-                  {(() => {
-                    const destName = destination?.fullName || destination?.name || effectiveDestinationData?.destinationName || unmatchedDestinationName;
-                    return destName ? `${tour.title} in ${destName}` : tour.title;
-                  })()}
-                </h1>
-                <button
-                  onClick={() => setShowShareModal(true)}
-                  className="flex-shrink-0 p-2 rounded-full bg-white/20 hover:bg-white/30 text-white transition-colors mt-2"
-                  aria-label="Share this tour"
-                  title="Share this tour"
-                >
-                  <Share2 className="w-5 h-5 sm:w-6 sm:h-6" />
-                </button>
-              </div>
 
-              <div className="flex flex-wrap items-center gap-3 mb-6">
-                {rating > 0 && (
-                  <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white">
-                    <Star className="w-5 h-5 text-yellow-400 fill-current" />
-                    <span className="font-semibold">{rating.toFixed(1)}</span>
-                    <span className="text-white/80">({reviewCount.toLocaleString('en-US')} reviews)</span>
-                  </div>
-                )}
-                
-                {duration && (
-                  <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white">
-                    <Clock className="w-5 h-5" />
-                    <span>{formatDuration(duration)}</span>
-                  </div>
-                )}
-                
-                {price > 0 && (
-                  <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-xl font-bold text-white">
-                    From ${price.toLocaleString('en-US')}
-                  </div>
-                )}
-
-                <button
-                  type="button"
-                  onClick={async () => {
-                    const res = await toggle(productId);
-                    if (res?.error === 'not_signed_in') {
-                      toast({
-                        title: 'Sign in required',
-                        description: 'Create a free account to save tours to your favorites.',
-                      });
-                      return;
-                    }
-                    toast({
-                      title: isBookmarked?.(productId) ? 'Removed from favorites' : 'Saved to favorites',
-                      description: 'You can view your favorites in your profile.',
-                    });
-                  }}
-                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm border transition-colors ${
-                    isBookmarked?.(productId)
-                      ? 'bg-yellow-50 border-yellow-200 text-yellow-700 hover:bg-yellow-100'
-                      : 'bg-white/20 border-white/30 text-white hover:bg-white/30'
-                  }`}
-                >
-                  <Bookmark className={`w-4 h-4 ${isBookmarked?.(productId) ? 'text-yellow-600' : 'text-white'}`} />
-                  <span>{isBookmarked?.(productId) ? 'Saved' : 'Save'}</span>
-                </button>
-              </div>
-
-              {flags.length > 0 && (
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {flags.map((flag, index) => {
-                    return (
-                      <Badge key={index} variant="outline" className="bg-white/20 text-white border-white/30 text-sm">
-                        {flag.replace(/_/g, ' ')}
-                      </Badge>
-                    );
-                  })}
-                </div>
-              )}
-
-
-              <div className="flex flex-wrap gap-4 items-center">
-                <Button
-                  asChild
-                  size="lg"
-                  className="bg-white text-purple-600 hover:bg-gray-100 font-semibold px-8 py-6 text-lg"
-                >
-                  <a
-                    href={viatorUrl}
-                    target="_blank"
-                    rel="sponsored noopener noreferrer"
-                  >
-                    View Reviews & Availability
-                    <ExternalLink className="w-5 h-5 ml-2" />
-                  </a>
-                </Button>
-                <div className="relative group">
-                  <Info className="w-4 h-4 text-gray-400 cursor-help" />
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
-                    Opens Viator, our trusted affiliate partner
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
-                  </div>
-                </div>
-              </div>
-
-              {supplierName && (
-                <div className="inline-flex items-center mt-4 px-4 py-2 rounded-full bg-white/15 backdrop-blur-sm border border-white/25">
-                  <span className="text-white/90 text-sm font-medium">Operated by </span>
-                  <span className="text-white font-semibold text-sm">{supplierName}</span>
-                </div>
-              )}
-            </motion.div>
-            
-            {tourImage && (
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="relative cursor-pointer group"
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  openLightbox(0);
-                }}
-              >
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                  <img
-                    src={tourImage}
-                    alt={tour.title}
-                    className="w-full h-64 sm:h-80 object-cover transition-transform duration-300 group-hover:scale-105"
-                    fetchPriority="high"
-                    loading="eager"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent group-hover:from-black/50 transition-colors"></div>
-                  {allImages.length > 1 && (
-                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-medium text-gray-800">
-                      {allImages.length} photos
-                    </div>
-                  )}
-                </div>
-              </motion.div>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* Breadcrumb */}
-      <section className="bg-white border-b">
+      {/* Breadcrumb — above hero (explore-style flow) */}
+      <section className="bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
-          <nav className="flex items-center space-x-2 text-xs sm:text-sm">
+          <nav className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs sm:text-sm" aria-label="Breadcrumb">
             <Link href="/" className="text-gray-500 hover:text-gray-700">Home</Link>
             <span className="text-gray-400">/</span>
             <Link href="/destinations" className="text-gray-500 hover:text-gray-700">Destinations</Link>
@@ -2299,8 +2236,271 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
               </>
             )}
             <span className="text-gray-400">/</span>
-            <span className="text-gray-900 font-medium line-clamp-1">{tour.title}</span>
+            <span className="text-gray-900 font-medium line-clamp-1 max-w-[min(100%,12rem)] sm:max-w-md">{tour.title}</span>
           </nav>
+        </div>
+      </section>
+
+      {/* Hero — explore-style: single cover image, light card, fast CTA */}
+      <section className="bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-10">
+          <div className="grid lg:grid-cols-5 gap-8 lg:gap-10 items-start rounded-3xl border border-gray-200/90 bg-gradient-to-br from-white via-[#f9fafb] to-[#f3f6fb] p-6 sm:p-7 lg:p-9 shadow-[0_18px_42px_rgba(15,23,42,0.08)]">
+            <div className="lg:col-span-2">
+              <div className="relative rounded-2xl overflow-hidden bg-gray-100 aspect-[4/3] lg:min-h-[260px] shadow-[0_10px_28px_rgba(15,23,42,0.12)]">
+                {tourImage ? (
+                  <Image
+                    src={tourImage}
+                    alt=""
+                    width={600}
+                    height={400}
+                    className="h-full w-full object-cover"
+                    priority
+                    unoptimized
+                  />
+                ) : (
+                  <div className="h-full w-full flex items-center justify-center text-gray-400 min-h-[200px]">
+                    <MapPin className="w-16 h-16 opacity-50" aria-hidden />
+                  </div>
+                )}
+                {allImages.length > 1 && (
+                  <button
+                    type="button"
+                    onClick={() => openLightbox(0)}
+                    className="absolute top-3 right-3 rounded-full bg-white/90 px-3 py-1 text-sm font-medium text-gray-800 shadow-sm hover:bg-white"
+                  >
+                    {allImages.length} photos
+                  </button>
+                )}
+              </div>
+              {allImages.length > 1 && (
+                <button
+                  type="button"
+                  onClick={() => openLightbox(0)}
+                  className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-800 shadow-sm transition-colors hover:bg-gray-50"
+                >
+                  View all {allImages.length} photos
+                </button>
+              )}
+            </div>
+            <div className="lg:col-span-3 min-w-0">
+              <div className="flex items-start gap-2 mb-2 text-xs font-medium text-primary uppercase tracking-wider">
+                <MapPin className="w-3.5 h-3.5 shrink-0 mt-0.5" aria-hidden />
+                <span className="min-w-0">
+                  {(() => {
+                    const destLabel = destination?.category
+                      || destination?.fullName
+                      || destination?.name
+                      || effectiveDestinationData?.destinationName
+                      || unmatchedDestinationName
+                      || '';
+                    const destSlug = destination?.id
+                      || subtleDestinationSlug
+                      || unmatchedDestinationSlug
+                      || effectiveDestinationData?.slug
+                      || effectiveDestinationData?.destinationId;
+                    const tagSlug = primaryTagName ? getTagSlugFromName(primaryTagName) : '';
+                    const tagGuideUrl = primaryTagName && destSlug && tagSlug
+                      ? `/destinations/${destSlug}/guides/${tagSlug}`
+                      : null;
+                    const label = primaryTagName && destLabel
+                      ? `${primaryTagName} · ${destLabel}`
+                      : primaryTagName
+                        ? primaryTagName
+                        : (() => {
+                            const viatorCategory = tour.categories?.[0]?.categoryName
+                              || tour.categories?.[0]?.name
+                              || tour.subcategories?.[0]?.categoryName
+                              || tour.subcategories?.[0]?.name
+                              || tour.classifications?.[0]?.name
+                              || '';
+                            if (viatorCategory && destLabel) return `${viatorCategory} · ${destLabel}`;
+                            if (viatorCategory) return viatorCategory;
+                            if (destLabel) return destLabel;
+                            return 'Tour';
+                          })();
+                    if (tagGuideUrl) {
+                      return (
+                        <Link href={tagGuideUrl} className="hover:underline text-primary">
+                          {label}
+                        </Link>
+                      );
+                    }
+                    return <span>{label}</span>;
+                  })()}
+                </span>
+              </div>
+              <div className="flex items-start gap-2 sm:gap-3">
+                <h1 className="font-poppins font-bold text-2xl sm:text-3xl text-gray-900 tracking-tight leading-tight flex-1 min-w-0">
+                  {(() => {
+                    const destName = destination?.fullName || destination?.name || effectiveDestinationData?.destinationName || unmatchedDestinationName;
+                    return destName ? `${tour.title} in ${destName}` : tour.title;
+                  })()}
+                </h1>
+                <div className="flex items-center gap-1 shrink-0 pt-1">
+                  <button
+                    type="button"
+                    onClick={() => setShowShareModal(true)}
+                    className="p-2 rounded-full border border-gray-200 bg-white text-gray-600 hover:bg-gray-50"
+                    aria-label="Share this tour"
+                    title="Share this tour"
+                  >
+                    <Share2 className="w-4 h-4 sm:w-5 sm:h-5" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={async () => {
+                      const res = await toggle(productId);
+                      if (res?.error === 'not_signed_in') {
+                        toast({
+                          title: 'Sign in required',
+                          description: 'Create a free account to save tours to your favorites.',
+                        });
+                        return;
+                      }
+                      toast({
+                        title: isBookmarked?.(productId) ? 'Removed from favorites' : 'Saved to favorites',
+                        description: 'You can view your favorites in your profile.',
+                      });
+                    }}
+                    className={`p-2 rounded-full border transition-colors ${
+                      isBookmarked?.(productId)
+                        ? 'border-amber-200 bg-amber-50 text-amber-700'
+                        : 'border-gray-200 bg-white text-gray-600 hover:bg-gray-50'
+                    }`}
+                    aria-label={isBookmarked?.(productId) ? 'Remove from favorites' : 'Save tour'}
+                  >
+                    <Bookmark className={`w-4 h-4 sm:w-5 sm:h-5 ${isBookmarked?.(productId) ? 'fill-current' : ''}`} />
+                  </button>
+                </div>
+              </div>
+              <p className="mt-1.5 text-gray-500 text-sm">Operated by {supplierName || 'Tour operator'}</p>
+              {duration && (
+                <p className="mt-1 flex items-center gap-1.5 text-sm text-gray-600">
+                  <Clock className="w-4 h-4 shrink-0" aria-hidden />
+                  {formatDuration(duration)}
+                </p>
+              )}
+              {rating > 0 && reviewCount > 0 && (
+                <div className="mt-4 flex items-center gap-2 text-sm">
+                  <span className="inline-flex items-center gap-1 font-semibold text-gray-900">
+                    <Star className="w-4 h-4 text-amber-500 fill-amber-500 shrink-0" />
+                    {rating.toFixed(1)}
+                  </span>
+                  <span className="text-gray-500">{reviewCount.toLocaleString('en-US')} reviews</span>
+                </div>
+              )}
+              {flags.length > 0 && (
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {flags.map((flag, index) => (
+                    <Badge key={index} variant="outline" className="text-gray-700 border-gray-200 bg-white/80 text-xs">
+                      {flag.replace(/_/g, ' ')}
+                    </Badge>
+                  ))}
+                </div>
+              )}
+              <div className="mt-6 rounded-2xl border border-gray-200/90 bg-white p-5 shadow-[0_10px_28px_rgba(15,23,42,0.08)] ring-1 ring-black/5">
+                <p className="text-sm font-semibold text-gray-900">Book with confidence</p>
+                <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                  <ul className="space-y-1.5 text-xs text-gray-700 sm:flex-1">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
+                      <span>Get live availability and the latest price in real time.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
+                      <span>
+                        {hasInstantConfirmation
+                          ? 'Instant confirmation is available on eligible timeslots.'
+                          : 'Quick, clear checkout with confirmation details upfront.'}
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
+                      <span>
+                        {typeof tour?.cancellationPolicy?.description === 'string' &&
+                        /free cancellation/i.test(tour.cancellationPolicy.description)
+                          ? 'Free cancellation is available on eligible bookings.'
+                          : 'Flexible booking options are shown before you confirm.'}
+                      </span>
+                    </li>
+                  </ul>
+
+                  <div className="sm:ml-4 sm:min-w-[120px]">
+                    <p className="text-[11px] font-semibold uppercase tracking-wide text-gray-500">Travelers</p>
+                    <div className="mt-1 inline-flex items-center rounded-lg border border-gray-200 bg-white shadow-sm">
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setSharedTravelers((prev) => {
+                            if (typeof prev === 'number') return Math.max(1, prev - 1);
+                            if (prev && typeof prev === 'object') {
+                              const currentAdults = Number(prev.ADULT) || 1;
+                              return { ...prev, ADULT: Math.max(1, currentAdults - 1) };
+                            }
+                            return 1;
+                          })
+                        }
+                        className="h-8 w-8 text-base font-semibold text-gray-700 hover:bg-gray-50"
+                        aria-label="Decrease travelers"
+                      >
+                        -
+                      </button>
+                      <span className="w-8 text-center text-sm font-semibold text-gray-900">{heroTravelerCount}</span>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setSharedTravelers((prev) => {
+                            if (typeof prev === 'number') return Math.min(20, prev + 1);
+                            if (prev && typeof prev === 'object') {
+                              const currentAdults = Number(prev.ADULT) || 1;
+                              return { ...prev, ADULT: Math.min(20, currentAdults + 1) };
+                            }
+                            return 1;
+                          })
+                        }
+                        className="h-8 w-8 text-base font-semibold text-gray-700 hover:bg-gray-50"
+                        aria-label="Increase travelers"
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-4 flex flex-col gap-3">
+                  <div className="space-y-1">
+                    <span className="text-xl font-semibold text-gray-900 block">
+                      {heroEstimatedTotal !== null
+                        ? `From $${heroEstimatedTotal.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 })} for ${heroTravelerCount} traveler${heroTravelerCount > 1 ? 's' : ''}`
+                        : price > 0
+                          ? `From $${price.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`
+                          : 'See pricing on partner site'}
+                    </span>
+                    <p className="text-xs text-gray-600">Prices vary by date — check yours instantly</p>
+                  </div>
+                  <a
+                    href={viatorUrl}
+                    target="_blank"
+                    rel="sponsored noopener noreferrer"
+                    className="inline-flex max-w-full items-center justify-center gap-2 rounded-xl bg-[#00AA6C] px-4 py-3 text-center text-sm font-semibold leading-snug text-white transition-colors hover:bg-[#008855] sm:px-5 sm:text-base"
+                  >
+                    <span className="min-w-0">{TOURS_PRIMARY_CTA_LABEL}</span>
+                    <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
+                  </a>
+                </div>
+                <p className="mt-2 text-[11px] leading-snug text-gray-600" role="note">
+                  Partner: <span className="font-medium">Viator</span>. &quot;{TOURS_PRIMARY_CTA_LABEL}&quot; opens in a new tab.{' '}
+                  <Link
+                    href="/disclosure"
+                    className="font-medium text-primary underline decoration-primary/40 underline-offset-2 hover:decoration-primary"
+                  >
+                    Affiliate disclosure
+                  </Link>
+                  .
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -2319,12 +2519,10 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
         );
       })()}
 
-      {/* Main Content */}
-      <section className="py-12 sm:py-16 bg-white" style={{ overflowX: 'hidden' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row gap-8 lg:items-start lg:relative">
-            {/* Main Content Column - 2/3 width */}
-            <article className="flex-1 lg:flex-[2] space-y-8 w-full min-w-0">
+      {/* Main Content — single column + max-w-4xl like /explore tour pages (no right sidebar) */}
+      <section className="py-12 sm:py-16 bg-[#f8f9fa]" style={{ overflowX: 'hidden' }}>
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+            <article className="w-full min-w-0 space-y-8">
               {/* Description */}
               {description ? (
                 <motion.section
@@ -2341,18 +2539,65 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                 </motion.section>
               ) : null}
 
-              {/* Price Calculator - Below About This Tour (Mobile only) */}
-              <div className="lg:hidden">
-                <Suspense fallback={<div className="min-h-[200px] flex items-center justify-center"><div className="spinner"></div></div>}>
-                  <PriceCalculator 
-                    tour={tour} 
-                    viatorBookingUrl={viatorUrl} 
-                    pricing={pricing}
-                    travelers={sharedTravelers}
-                    setTravelers={setSharedTravelers}
-                  />
-                </Suspense>
-              </div>
+              {/* What's Included */}
+              {inclusions.length > 0 && (
+                <motion.section
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="bg-white rounded-lg shadow-sm p-6 md:p-8"
+                >
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">What's Included</h2>
+                  <div className="space-y-3">
+                    {inclusions.map((item, index) => {
+                      // Handle both string and object formats
+                      const itemText = typeof item === 'string' ? item : item.text || item.name || '';
+                      if (!itemText) return null;
+                      
+                      return (
+                        <div key={index} className="flex items-start gap-3 p-3 bg-green-50 rounded-lg">
+                          <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                          <span className="text-gray-700">{itemText}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </motion.section>
+              )}
+              {inclusions.length > 0 && (
+                <ViatorBetweenSectionsCta
+                  viatorUrl={viatorUrl}
+                  headline="Verify inclusions & book on Viator"
+                />
+              )}
+
+              {/* What's Not Included */}
+              {exclusions.length > 0 && (
+                <motion.section
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                  className="bg-white rounded-lg shadow-sm p-6 md:p-8"
+                >
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">What's Not Included</h2>
+                  <div className="space-y-3">
+                    {exclusions.map((item, index) => {
+                      // Handle both string and object formats
+                      const itemText = typeof item === 'string' ? item : item.text || item.name || '';
+                      if (!itemText) return null;
+                      
+                      return (
+                        <div key={index} className="flex items-start gap-3 p-3 bg-red-50 rounded-lg">
+                          <X className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                          <span className="text-gray-700">{itemText}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </motion.section>
+              )}
 
               {/* Image Gallery */}
               {additionalImages.length > 0 && (
@@ -2402,6 +2647,13 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   </div>
                 </motion.section>
               )}
+              {additionalImages.length > 0 && (
+                <ViatorBetweenSectionsCta
+                  viatorUrl={viatorUrl}
+                  headline="Pick your dates on Viator — check live availability"
+                  subline="Popular time slots can fill up fast."
+                />
+              )}
 
               {!description && (
                 // Debug: Show raw JSON structure if description is missing
@@ -2449,23 +2701,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                 </motion.section>
               )}
 
-              {/* Price Calculator - In Middle of Content (Desktop & Mobile) */}
-              <motion.section
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.12 }}
-              >
-                <Suspense fallback={<div className="min-h-[200px] flex items-center justify-center"><div className="spinner"></div></div>}>
-                  <PriceCalculator 
-                    tour={tour} 
-                    viatorBookingUrl={viatorUrl} 
-                    pricing={pricing}
-                    travelers={sharedTravelers}
-                    setTravelers={setSharedTravelers}
-                  />
-                </Suspense>
-              </motion.section>
+              {/* Destination spotlight moved lower in content flow */}
 
               {/* Insider Tips */}
               {insiderTips && (
@@ -2483,7 +2719,6 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   <p className="text-gray-700 text-lg leading-relaxed">{insiderTips}</p>
                 </motion.section>
               )}
-
 
               {/* TopTours Insights - always show AI content and characteristics; only the match % badge is hidden when "Show score" is off */}
               <motion.section
@@ -2765,8 +3000,8 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                             target="_blank"
                             rel="sponsored noopener noreferrer"
                           >
-                            View Reviews &amp; Availability
-                            <ExternalLink className="w-4 h-4 ml-1 inline-block" />
+                            {TOURS_PRIMARY_CTA_LABEL}
+                            <ExternalLink className="w-4 h-4 ml-1 inline-block shrink-0" />
                           </a>
                         </Button>
                       )}
@@ -2815,61 +3050,6 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   </div>
               )}
               </motion.section>
-
-
-              {/* What's Included */}
-              {inclusions.length > 0 && (
-                <motion.section
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="bg-white rounded-lg shadow-sm p-6 md:p-8"
-                >
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">What's Included</h2>
-                  <div className="space-y-3">
-                    {inclusions.map((item, index) => {
-                      // Handle both string and object formats
-                      const itemText = typeof item === 'string' ? item : item.text || item.name || '';
-                      if (!itemText) return null;
-                      
-                      return (
-                        <div key={index} className="flex items-start gap-3 p-3 bg-green-50 rounded-lg">
-                          <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                          <span className="text-gray-700">{itemText}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </motion.section>
-              )}
-
-              {/* What's Not Included */}
-              {exclusions.length > 0 && (
-                <motion.section
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                  className="bg-white rounded-lg shadow-sm p-6 md:p-8"
-                >
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">What's Not Included</h2>
-                  <div className="space-y-3">
-                    {exclusions.map((item, index) => {
-                      // Handle both string and object formats
-                      const itemText = typeof item === 'string' ? item : item.text || item.name || '';
-                      if (!itemText) return null;
-                      
-                      return (
-                        <div key={index} className="flex items-start gap-3 p-3 bg-red-50 rounded-lg">
-                          <X className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-                          <span className="text-gray-700">{itemText}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </motion.section>
-              )}
 
               {/* Additional Information */}
               {tour.additionalInfo && Array.isArray(tour.additionalInfo) && tour.additionalInfo.length > 0 && (
@@ -3117,6 +3297,11 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                 )}
               </motion.section>
 
+              <ViatorBetweenSectionsCta
+                viatorUrl={viatorUrl}
+                headline="Compare reviews & final price on Viator"
+              />
+
               {/* Frequently Asked Questions */}
               {faqs && faqs.length > 0 && (
                 <motion.section
@@ -3152,6 +3337,48 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                 </motion.section>
               )}
 
+              <ViatorDecisionBlock viatorUrl={viatorUrl} />
+
+              {/* Tag / category guide — separated from destination block; after FAQs so tour + booking flow stays first */}
+              {tagGuideSectionCta && (
+                <motion.section
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="rounded-xl border border-primary/20 bg-[#f0f6ff] p-6 shadow-sm md:p-8"
+                  aria-labelledby="tour-tag-guide-cta-heading"
+                >
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="min-w-0">
+                      <h2
+                        id="tour-tag-guide-cta-heading"
+                        className="text-lg font-bold text-gray-900 md:text-xl"
+                      >
+                        {tagGuideSectionCta.destName
+                          ? `${tagGuideSectionCta.tagLabel} in ${tagGuideSectionCta.destName}`
+                          : tagGuideSectionCta.tagLabel}
+                      </h2>
+                      <p className="mt-1 text-sm text-gray-600">
+                        Curated picks and more tours in this category for this destination.
+                      </p>
+                    </div>
+                    <Link
+                      href={tagGuideSectionCta.href}
+                      className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl border border-primary/40 bg-white px-4 py-3 text-sm font-semibold text-primary shadow-sm transition-colors hover:border-primary/60 hover:bg-primary/5"
+                    >
+                      <BookOpen className="h-4 w-4 shrink-0" aria-hidden />
+                      <span className="text-center leading-snug">
+                        {tagGuideSectionCta.destName
+                          ? `View all ${tagGuideSectionCta.tagLabel} in ${tagGuideSectionCta.destName}`
+                          : `View ${tagGuideSectionCta.tagLabel} in this destination`}
+                      </span>
+                      <ArrowRight className="h-4 w-4 shrink-0 opacity-70" aria-hidden />
+                    </Link>
+                  </div>
+                </motion.section>
+              )}
+
           {/* (moved) View all tours button now sits under the similar tours grid */}
 
               {/* Book CTA after Ratings */}
@@ -3183,8 +3410,8 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                         target="_blank"
                         rel="sponsored noopener noreferrer"
                       >
-                        View Reviews & Availability
-                        <ExternalLink className="w-5 h-5 ml-2" />
+                        {TOURS_PRIMARY_CTA_LABEL}
+                        <ExternalLink className="w-5 h-5 ml-2 shrink-0" />
                       </a>
                     </Button>
                     <div className="absolute top-2 right-2 group">
@@ -3201,192 +3428,6 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                 </div>
               </motion.section>
             </article>
-
-            {/* Sidebar - 1/3 width, sticky on desktop - follows page scroll */}
-            <aside className="w-full lg:w-auto lg:flex-1 lg:max-w-sm lg:min-w-[320px] lg:sticky lg:top-24 lg:self-start lg:z-10 lg:h-fit">
-              <div className="space-y-6">
-                {/* Price Calculator - Replaces Booking Card */}
-                <Suspense fallback={<div className="min-h-[400px] flex items-center justify-center"><div className="spinner"></div></div>}>
-                  <PriceCalculator 
-                    tour={tour} 
-                    viatorBookingUrl={viatorUrl} 
-                    pricing={pricing}
-                    travelers={sharedTravelers}
-                    setTravelers={setSharedTravelers}
-                  />
-                </Suspense>
-
-                {/* Other Tours from This Operator */}
-                {operatorPremiumData && operatorTours && operatorTours.length > 0 && (
-                  <Card className="bg-white border-2 border-amber-200 shadow-xl">
-                    <CardContent className="p-6">
-                      <div className="flex items-center gap-2 mb-4">
-                        <Crown className="w-5 h-5 text-amber-500" />
-                        <h3 className="text-lg font-bold text-gray-900">
-                          Other Tours from {operatorPremiumData.operator_name}
-                        </h3>
-                      </div>
-                      <p className="text-sm text-gray-600 mb-4">
-                        Explore more premium experiences from this operator
-                      </p>
-                      <div className="space-y-3">
-                        {operatorTours.slice(0, 5).map((operatorTour, idx) => (
-                          <Link
-                            key={operatorTour.productId || idx}
-                            href={operatorTour.url || `/tours/${operatorTour.productId}`}
-                            prefetch={false}
-                            className="block group"
-                          >
-                            <div className="flex gap-3 p-3 rounded-lg border border-gray-200 hover:border-amber-300 hover:bg-amber-50 transition-all duration-200">
-                              {operatorTour.imageUrl && (
-                                <div className="relative w-16 h-16 flex-shrink-0 rounded overflow-hidden">
-                                      <img
-                                        src={operatorTour.imageUrl}
-                                        alt={operatorTour.title || 'Tour'}
-                                        className="w-full h-full object-cover"
-                                        loading="lazy"
-                                        onError={(e) => {
-                                          e.target.src = "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=200&q=80";
-                                        }}
-                                      />
-                                      <div className="absolute top-1 right-1">
-                                        <Crown className="w-3 h-3 text-amber-500" />
-                                      </div>
-                                    </div>
-                              )}
-                              <div className="flex-1 min-w-0">
-                                <h4 className="text-sm font-semibold text-gray-900 group-hover:text-amber-700 line-clamp-2 mb-1">
-                                  {operatorTour.title || 'Tour'}
-                                </h4>
-                                {operatorTour.rating > 0 && (
-                                  <div className="flex items-center gap-1 text-xs text-gray-600">
-                                    <Star className="w-3 h-3 text-amber-500 fill-amber-500" />
-                                    <span>{operatorTour.rating.toFixed(1)}</span>
-                                    {operatorTour.reviewCount > 0 && (
-                                      <span className="text-gray-500">
-                                        ({operatorTour.reviewCount.toLocaleString()})
-                                      </span>
-                                    )}
-                                  </div>
-                                )}
-                              </div>
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
-                      {operatorPremiumData.aggregatedStats && (
-                        <div className="mt-4 pt-4 border-t border-gray-200">
-                          <div className="flex items-center justify-between text-sm">
-                            <span className="text-gray-600">Total Reviews</span>
-                            <span className="font-semibold text-gray-900">
-                              {operatorPremiumData.aggregatedStats.total_reviews?.toLocaleString() || 0}
-                            </span>
-                          </div>
-                          <div className="flex items-center justify-between text-sm mt-1">
-                            <span className="text-gray-600">Average Rating</span>
-                            <div className="flex items-center gap-1">
-                              <Star className="w-3 h-3 text-amber-500 fill-amber-500" />
-                              <span className="font-semibold text-gray-900">
-                                {operatorPremiumData.aggregatedStats.average_rating?.toFixed(1) || 'N/A'}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                    </CardContent>
-                  </Card>
-                )}
-
-                {/* Destination Link */}
-                {destination && (
-                  <Card className="bg-white border-0 shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
-                    <div className="relative h-48 overflow-hidden">
-                      <img 
-                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" 
-                        alt={destination.fullName || destination.name}
-                        src={destination.imageUrl}
-                        loading="lazy"
-                        onError={(e) => {
-                          e.target.src = "https://images.unsplash.com/photo-1595872018818-97555653a011";
-                        }}
-                      />
-                      {destination.category && (
-                        <Badge className="absolute top-4 left-4 adventure-gradient text-white">
-                          {destination.category}
-                        </Badge>
-                      )}
-                      {destination.country && (
-                        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1">
-                          <span className="text-sm font-medium text-gray-800">{destination.country}</span>
-                        </div>
-                      )}
-                    </div>
-                    <CardContent className="p-6 flex flex-col">
-                      <div className="flex items-center text-gray-600 mb-2">
-                        <MapPin className="h-4 w-4 mr-1" />
-                        <span className="font-semibold">{destination.fullName || destination.name}</span>
-                      </div>
-                      <p className="text-gray-700 mb-4 flex-grow">
-                        {destination.briefDescription || `Discover more tours and activities in ${destination.fullName || destination.name}`}
-                      </p>
-                      <Button
-                        asChild
-                        variant="outline"
-                        className="w-full border-purple-300 text-purple-700 hover:bg-purple-50 bg-transparent transition-all duration-200 h-12 text-base font-semibold"
-                      >
-                        <Link href={`/destinations/${destination.id}`}>
-                          Explore {destination.name}
-                          <ArrowRight className="ml-2 h-5 w-5" />
-                        </Link>
-                      </Button>
-                    </CardContent>
-                  </Card>
-                )}
-
-                {/* Generic Explore All Destinations Card (for unmatched destinations) */}
-                {!destination && (
-                  <Card className="bg-white border-0 shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
-                    <div className="relative h-32 overflow-hidden">
-                      <img 
-                        className="w-full h-full object-cover" 
-                        alt={unmatchedDestinationName || "Explore destinations"}
-                        src="https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/toptours%20destinations.png"
-                        loading="lazy"
-                        onError={(e) => {
-                          e.target.src = "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&q=80";
-                        }}
-                      />
-                    </div>
-                    <CardContent className="p-6 flex flex-col">
-                      <div className="flex items-center text-gray-600 mb-2">
-                        <MapPin className="h-4 w-4 mr-1" />
-                        <span className="font-semibold">
-                          {unmatchedDestinationName || 'Explore Destinations'}
-                        </span>
-                      </div>
-                      <p className="text-gray-700 mb-4 flex-grow">
-                        {unmatchedDestinationName 
-                          ? `Discover more tours and activities in ${unmatchedDestinationName}`
-                          : 'Discover incredible tours and activities in 3300+ destinations around the world'}
-                      </p>
-                      <Button
-                        asChild
-                        variant="outline"
-                        className="w-full border-purple-300 text-purple-700 hover:bg-purple-50 bg-transparent transition-all duration-200 h-12 text-base font-semibold"
-                      >
-                        <Link href={subtleDestinationSlug || unmatchedDestinationSlug ? `/destinations/${subtleDestinationSlug || unmatchedDestinationSlug}` : "/destinations"}>
-                          {unmatchedDestinationName 
-                            ? `Explore ${unmatchedDestinationName}`
-                            : 'Explore All Destinations'}
-                          <ArrowRight className="ml-2 h-5 w-5" />
-                        </Link>
-                      </Button>
-                    </CardContent>
-                  </Card>
-                )}
-              </div>
-            </aside>
-          </div>
 
           {/* Other Tours from Premium Operator Section */}
           {operatorPremiumData && operatorTours && operatorTours.length > 0 && (
@@ -3510,43 +3551,202 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
             </motion.section>
           )}
 
-          {/* Similar Tours Section - load on demand to save Viator API calls */}
+          {/* Similar / more tours: prefer server-passed list; otherwise same Viator product URL shows destination browse + “You selected” (no internal API). */}
           <div className="mt-16 w-full">
-            {similarToursData && similarToursData.length > 0 ? (
+            {(() => {
+              const primaryTourDestination =
+                tour?.destinations?.find((dest) => dest?.primary) || tour?.destinations?.[0];
+              const fallbackDestinationName =
+                destination?.fullName ||
+                destination?.name ||
+                effectiveDestinationData?.destinationName ||
+                primaryTourDestination?.destinationName ||
+                primaryTourDestination?.name ||
+                null;
+              const destGuideSlug =
+                destination?.id ||
+                subtleDestinationSlug ||
+                unmatchedDestinationSlug ||
+                effectiveDestinationData?.slug ||
+                effectiveDestinationData?.destinationId ||
+                (fallbackDestinationName ? generateSlugFromName(fallbackDestinationName) : null);
+              if (!destGuideSlug) return null;
+              return (
+                <p className="mb-6 text-sm leading-relaxed text-gray-700">
+                  <Link
+                    href={`/destinations/${destGuideSlug}`}
+                    className="font-semibold text-primary underline-offset-2 hover:underline"
+                  >
+                    Read the full destination guide before you book
+                  </Link>{' '}
+                  — tips, timing, and how to plan your trip.
+                </p>
+              );
+            })()}
+            {curatedSimilarTours && curatedSimilarTours.length > 0 ? (
               <SimilarToursListWrapper 
-                similarTours={similarToursData}
+                similarTours={curatedSimilarTours}
                 tour={tour}
                 destinationData={destinationData}
               />
-            ) : (
-              <div className="rounded-xl p-6 md:p-8 border border-amber-100 bg-gradient-to-br from-amber-50/80 to-orange-50/50 shadow-sm">
-                <h2 className="text-2xl font-bold text-amber-900 mb-2">Similar Tours</h2>
-                <p className="text-amber-800/90 mb-4">
-                  Discover more experiences like this one in the same destination.
+            ) : viatorUrl ? (
+              <div className="rounded-xl border border-[#00AA6C]/30 bg-gradient-to-br from-[#f2fbf7] to-white p-6 shadow-[0_8px_24px_rgba(0,170,108,0.08)] md:p-8">
+                <h2 className="mb-2 text-2xl font-bold text-gray-900">More tours</h2>
+                <p className="mb-4 text-sm leading-relaxed text-gray-700">
+                  {derivedDestinationName ? (
+                    <>
+                      Open Viator with this tour under <span className="font-medium">You selected</span>, plus
+                      hundreds of other experiences in {derivedDestinationName} — same link as availability &
+                      booking.
+                    </>
+                  ) : (
+                    <>
+                      Open Viator with this tour under <span className="font-medium">You selected</span>, plus
+                      more top-rated activities nearby — same link as availability & booking.
+                    </>
+                  )}
                 </p>
-                <Button
-                  variant="outline"
-                  className="border-amber-300 text-amber-700 bg-white/80 hover:bg-amber-50 hover:border-amber-400"
-                  disabled={similarToursLoading}
-                  onClick={async () => {
-                    setSimilarToursLoading(true);
-                    try {
-                      const res = await fetch(`/api/internal/similar-tours/${productId}`);
-                      const data = await res.json();
-                      if (data?.similarTours?.length > 0) {
-                        setSimilarToursData(data.similarTours);
-                      }
-                    } catch (err) {
-                      setSimilarToursData([]);
-                    } finally {
-                      setSimilarToursLoading(false);
-                    }
-                  }}
+                <a
+                  href={viatorUrl}
+                  target="_blank"
+                  rel="sponsored noopener noreferrer"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#00AA6C] px-4 py-3 text-center text-sm font-semibold leading-snug text-white transition-colors hover:bg-[#008855]"
                 >
-                  {similarToursLoading ? 'Loading similar tours…' : 'Load similar tours'}
-                </Button>
+                  <span>View similar tours on Viator</span>
+                  <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
+                </a>
               </div>
-            )}
+            ) : null}
+          </div>
+
+          {/* Destination spotlight at the very bottom of tour flow */}
+          {destination ? (
+            <motion.section
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="mt-12 overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm"
+              aria-labelledby="tour-destination-spotlight-heading"
+            >
+              <div className="flex flex-col md:flex-row md:min-h-[260px]">
+                <div className="relative min-h-[220px] shrink-0 md:w-[42%] md:min-h-0">
+                  <img
+                    className="absolute inset-0 h-full w-full object-cover"
+                    alt={destination.fullName || destination.name || 'Destination'}
+                    src={destination.imageUrl}
+                    loading="lazy"
+                    onError={(e) => {
+                      e.target.src = 'https://images.unsplash.com/photo-1595872018818-97555653a011';
+                    }}
+                  />
+                  {destination.category && (
+                    <Badge className="absolute left-4 top-4 adventure-gradient text-white">
+                      {destination.category}
+                    </Badge>
+                  )}
+                  {destination.country && (
+                    <div className="absolute right-4 top-4 rounded-lg bg-white/90 px-3 py-1 backdrop-blur-sm">
+                      <span className="text-sm font-medium text-gray-800">{destination.country}</span>
+                    </div>
+                  )}
+                </div>
+                <div className="flex flex-1 flex-col justify-center p-6 md:p-8">
+                  <h2
+                    id="tour-destination-spotlight-heading"
+                    className="text-2xl font-bold tracking-tight text-gray-900"
+                  >
+                    {destination.fullName || destination.name}
+                  </h2>
+                  <div className="mt-2 flex items-center text-gray-600">
+                    <MapPin className="mr-1 h-4 w-4 shrink-0" aria-hidden />
+                    <span className="text-sm font-medium">Destination guide</span>
+                  </div>
+                  <p className="mt-4 leading-relaxed text-gray-700">
+                    {destination.briefDescription ||
+                      `Discover more tours and activities in ${destination.fullName || destination.name}.`}
+                  </p>
+                  <div className="mt-6">
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="h-12 border-purple-300 bg-transparent text-base font-semibold text-purple-700 transition-all hover:bg-purple-50"
+                    >
+                      <Link href={`/destinations/${destination.id}`}>
+                        Explore {destination.name}
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </motion.section>
+          ) : (
+            <motion.section
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="mt-12 overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm"
+              aria-labelledby="tour-destination-fallback-heading"
+            >
+              <div className="flex flex-col md:flex-row md:min-h-[220px]">
+                <div className="relative min-h-[180px] shrink-0 md:w-[38%] md:min-h-0">
+                  <img
+                    className="absolute inset-0 h-full w-full object-cover"
+                    alt={
+                      unmatchedDestinationName ? `${unmatchedDestinationName} destination` : 'Travel destinations'
+                    }
+                    src="https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/toptours%20destinations.png"
+                    loading="lazy"
+                    onError={(e) => {
+                      e.target.src = 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&q=80';
+                    }}
+                  />
+                </div>
+                <div className="flex flex-1 flex-col justify-center p-6 md:p-8">
+                  <h2
+                    id="tour-destination-fallback-heading"
+                    className="text-2xl font-bold tracking-tight text-gray-900"
+                  >
+                    {unmatchedDestinationName || 'Explore destinations'}
+                  </h2>
+                  <p className="mt-4 leading-relaxed text-gray-700">
+                    {unmatchedDestinationName
+                      ? `Discover more tours and activities in ${unmatchedDestinationName}.`
+                      : 'Discover incredible tours and activities in 3300+ destinations around the world.'}
+                  </p>
+                  <div className="mt-6">
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="h-12 border-purple-300 bg-transparent text-base font-semibold text-purple-700 transition-all hover:bg-purple-50"
+                    >
+                      <Link
+                        href={
+                          subtleDestinationSlug || unmatchedDestinationSlug
+                            ? `/destinations/${subtleDestinationSlug || unmatchedDestinationSlug}`
+                            : '/destinations'
+                        }
+                      >
+                        {unmatchedDestinationName ? `Explore ${unmatchedDestinationName}` : 'Explore All Destinations'}
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </motion.section>
+          )}
+          <div className="mt-6">
+            <ViatorBetweenSectionsCta
+              viatorUrl={viatorUrl}
+              headline={
+                derivedDestinationName
+                  ? `See more tours in ${derivedDestinationName} on Viator`
+                  : 'See more tours in this destination on Viator'
+              }
+            />
           </div>
         </div>
       </section>
@@ -3736,8 +3936,8 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                     rel="sponsored noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    View Reviews & Availability
-                    <ExternalLink className="w-4 h-4 ml-2" />
+                    {TOURS_PRIMARY_CTA_LABEL}
+                    <ExternalLink className="w-4 h-4 ml-2 shrink-0" />
                   </a>
                 </Button>
                 <div className="absolute -top-1 -right-1 group">

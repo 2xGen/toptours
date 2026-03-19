@@ -1,3 +1,8 @@
+import { absoluteUrl } from '@/lib/siteUrl';
+
+const contactUrl = absoluteUrl('/contact');
+const defaultOg = absoluteUrl('/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg');
+
 export const metadata = {
   title: 'Contact Us | TopTours.ai',
   description: 'Get in touch with TopTours.ai through your preferred platform. Connect with us on Facebook, Instagram, TikTok, or via email.',
@@ -5,11 +10,11 @@ export const metadata = {
   openGraph: {
     title: 'Contact Us | TopTours.ai',
     description: 'Get in touch with TopTours.ai through your preferred platform. We\'re here to help!',
-    url: 'https://toptours.ai/contact',
+    url: contactUrl,
     siteName: 'TopTours.ai',
     images: [
       {
-        url: 'https://toptours.ai/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg',
+        url: defaultOg,
         width: 1200,
         height: 630,
         alt: 'Contact TopTours.ai',
@@ -22,10 +27,10 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Contact Us | TopTours.ai',
     description: 'Get in touch with TopTours.ai through your preferred platform.',
-    images: ['https://toptours.ai/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg'],
+    images: [defaultOg],
   },
   alternates: {
-    canonical: 'https://toptours.ai/contact',
+    canonical: contactUrl,
   },
   robots: {
     index: true,

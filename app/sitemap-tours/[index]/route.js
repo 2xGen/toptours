@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getToursForSitemapPage, getTourSitemapCount } from '@/lib/tourSitemap';
 import { generateTourSlug } from '@/utils/tourHelpers';
+import { getSiteOrigin } from '@/lib/siteUrl';
 
 /**
  * Individual tour sitemap (paginated)
@@ -20,7 +21,7 @@ export async function GET(request, { params }) {
       return new NextResponse('Invalid sitemap index', { status: 400 });
     }
     
-    const baseUrl = 'https://toptours.ai';
+    const baseUrl = getSiteOrigin();
     const currentDate = new Date().toISOString().split('T')[0];
     
     // Verify this page exists
@@ -56,7 +57,7 @@ export async function GET(request, { params }) {
     <loc>${url}</loc>
     <lastmod>${tour.last_visited_at ? new Date(tour.last_visited_at).toISOString().split('T')[0] : currentDate}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.45</priority>
   </url>`;
     });
 

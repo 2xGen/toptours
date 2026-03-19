@@ -1,21 +1,23 @@
 import PartnerGuidesClient from './PartnerGuidesClient';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
+import { absoluteUrl } from '@/lib/siteUrl';
 
 // Revalidate every 7 days - directory page
 export const revalidate = 604800;
 
 export async function generateMetadata() {
+  const pageUrl = absoluteUrl('/partner-guides');
   return {
     title: 'Partner Travel Guides Directory | TopTours.ai',
     description: 'Discover curated travel guides, blogs, and helpful resources for destinations worldwide. Find expert guides, travel blogs, and comprehensive travel information.',
     keywords: 'travel guides, destination guides, travel resources, partner guides, travel websites',
     alternates: {
-      canonical: 'https://toptours.ai/partner-guides',
+      canonical: pageUrl,
     },
     openGraph: {
       title: 'Partner Travel Guides Directory | TopTours.ai',
       description: 'Discover curated travel guide resources and partner websites for destinations worldwide.',
-      url: 'https://toptours.ai/partner-guides',
+      url: pageUrl,
       siteName: 'TopTours.ai',
       type: 'website',
     },

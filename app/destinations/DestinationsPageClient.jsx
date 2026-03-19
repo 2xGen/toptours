@@ -15,7 +15,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 // Helper to generate slug (same as used elsewhere)
 function generateSlug(name) {
@@ -60,6 +60,7 @@ export default function DestinationsPageClient({
   totalAvailableDestinations = 0 
 }) {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -114,6 +115,12 @@ export default function DestinationsPageClient({
 
     return index;
   }, [viatorDestinationsClassified]);
+
+  // Deep-link / SEO: ?q= or ?search= pre-fills the destination search (matches WebSite SearchAction in layout)
+  const queryFromUrl = (searchParams.get('q') || searchParams.get('search') || '').trim();
+  useEffect(() => {
+    if (queryFromUrl) setSearchTerm(queryFromUrl);
+  }, [queryFromUrl]);
 
   // Scroll to top when page changes
   useEffect(() => {
@@ -478,8 +485,8 @@ export default function DestinationsPageClient({
       <div className="min-h-screen flex flex-col bg-gray-50">
         <NavigationNext onOpenModal={handleOpenModal} />
         <main className="flex-grow">
-          {/* Hero Section */}
-          <section className="pt-24 pb-16 ocean-gradient">
+          {/* Search-first header */}
+          <section className="pt-20 pb-7 ocean-gradient">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -487,16 +494,16 @@ export default function DestinationsPageClient({
                 transition={{ duration: 0.6 }}
                 className="text-center"
               >
-                <h1 className="text-4xl md:text-6xl font-poppins font-bold text-white mb-6">
-                  Popular Destinations
+                <h1 className="text-2xl md:text-4xl font-poppins font-bold text-white mb-2">
+                  Find your destination
                 </h1>
-                <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">
-                  Discover incredible tours and activities in the world's most captivating destinations.
+                <p className="text-sm md:text-base text-white/90 max-w-2xl mx-auto mb-4">
+                  Search by destination, country, or region and jump straight to tours
                 </p>
                 
                 <div className="max-w-2xl mx-auto">
-                  <div className="glass-effect rounded-2xl p-4">
-                    <div className="flex gap-4">
+                  <div className="glass-effect rounded-2xl p-3">
+                    <div className="flex gap-3">
                       <div className="flex-1 relative">
                         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
                         <Input
@@ -506,9 +513,6 @@ export default function DestinationsPageClient({
                           className="pl-10 h-12 bg-white/90 border-0 text-gray-800 placeholder:text-gray-500"
                         />
                       </div>
-                      <Button className="h-12 px-6 sunset-gradient text-white font-semibold">
-                        Search
-                      </Button>
                     </div>
                   </div>
                 </div>
@@ -518,52 +522,47 @@ export default function DestinationsPageClient({
 
           <section className="bg-white border-b">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
-              <nav className="flex items-center space-x-2 text-xs sm:text-sm text-gray-500">
-                <Link href="/" className="hover:text-gray-700">Home</Link>
-                <span className="text-gray-400">/</span>
-                <span className="text-gray-900 font-medium">Destinations</span>
-              </nav>
-            </div>
-          </section>
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <nav className="flex items-center space-x-2 text-xs sm:text-sm text-gray-500">
+                  <Link href="/" className="hover:text-gray-700">Home</Link>
+                  <span className="text-gray-400">/</span>
+                  <span className="text-gray-900 font-medium">Destinations</span>
+                </nav>
 
-          <section className="py-8 bg-white border-b">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex flex-wrap justify-center gap-4">
-                {categories.map((category) => (
-                  <Button
-                    key={category}
-                    variant={selectedCategory === category ? "default" : "outline"}
-                    onClick={() => handleCategoryChange(category)}
-                    className={selectedCategory === category ? 'sunset-gradient text-white' : ''}
+                <div className="w-full sm:w-[260px]">
+                  <label htmlFor="destinations-region-filter" className="sr-only">Filter by region</label>
+                  <select
+                    id="destinations-region-filter"
+                    value={selectedCategory}
+                    onChange={(e) => handleCategoryChange(e.target.value)}
+                    className="h-10 w-full rounded-lg border border-gray-200 bg-white px-3 text-sm font-medium text-gray-700 shadow-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
                   >
-                    {category}
-                  </Button>
-                ))}
+                    {categories.map((category) => (
+                      <option key={category} value={category}>
+                        {category === 'All' ? 'All regions' : category}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
             </div>
           </section>
 
           {/* Featured Destinations Section */}
           {paginatedFeaturedDestinations.length > 0 && (
-            <section className="py-20 bg-gray-50">
+            <section className="py-12 bg-gray-50">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="mb-8">
                   <h2 className="text-3xl font-bold text-gray-900 mb-2">
-                    Featured Destinations
+                    Search results
                   </h2>
                   <p className="text-lg text-gray-600">
-                    Showing {featuredStartIndex + 1}-{Math.min(featuredEndIndex, featuredDestinations.length)} of {featuredDestinations.length} featured destinations
+                    Showing {featuredStartIndex + 1}-{Math.min(featuredEndIndex, featuredDestinations.length)} of {(totalAvailableDestinations || featuredDestinations.length).toLocaleString('en-US')} destinations
                     {searchTerm.trim() && (
                       <span> matching "{searchTerm}"</span>
                     )}
                     {selectedCategory !== 'All' && (
                       <span> in {selectedCategory}</span>
-                    )}
-                    {otherDestinations.length > 0 && (
-                      <span> and {otherDestinations.length} other destinations</span>
-                    )}
-                    {!searchTerm.trim() && selectedCategory === 'All' && totalAvailableDestinations > featuredDestinations.length + otherDestinations.length && (
-                      <span> ({totalAvailableDestinations} destinations in total)</span>
                     )}
                   </p>
                 </div>
@@ -609,7 +608,7 @@ export default function DestinationsPageClient({
                           {destination.briefDescription}
                         </p>
                         
-                        <div className="mt-auto pt-4 space-y-3">
+                        <div className="mt-auto pt-4">
                           <Button
                             asChild
                             className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
@@ -617,17 +616,6 @@ export default function DestinationsPageClient({
                           >
                             <Link href={`/destinations/${destination.id}`} prefetch={true}>
                               Explore {truncateDestinationName(destination.name)}
-                              <ArrowRight className="ml-2 h-5 w-5" />
-                            </Link>
-                          </Button>
-                          <Button
-                            asChild
-                            variant="secondary"
-                            className="w-full bg-white text-purple-700 border border-purple-200 hover:bg-purple-50 hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            <Link href={`/destinations/${destination.id}/tours`} prefetch={true}>
-                              View Top Tours in {truncateDestinationName(destination.name)}
                               <ArrowRight className="ml-2 h-5 w-5" />
                             </Link>
                           </Button>
@@ -689,23 +677,13 @@ export default function DestinationsPageClient({
                           {destination.briefDescription}
                         </p>
                         
-                        <div className="mt-auto pt-4 space-y-3">
+                        <div className="mt-auto pt-4">
                           <Button
                             asChild
                             className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
                           >
                             <Link href={`/destinations/${destination.id}`} prefetch={true}>
                               Explore {truncateDestinationName(destination.name)}
-                              <ArrowRight className="ml-2 h-5 w-5" />
-                            </Link>
-                          </Button>
-                          <Button
-                            asChild
-                            variant="secondary"
-                            className="w-full bg-white text-purple-700 border border-purple-200 hover:bg-purple-50 hover:scale-105 transition-transform duration-200 h-12 text-base font-semibold"
-                          >
-                            <Link href={`/destinations/${destination.id}/tours`} prefetch={true}>
-                              View Top Tours in {truncateDestinationName(destination.name)}
                               <ArrowRight className="ml-2 h-5 w-5" />
                             </Link>
                           </Button>

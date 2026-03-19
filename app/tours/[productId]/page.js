@@ -7,9 +7,6 @@ import { loadTourData, loadDestinationData } from './TourDataLoader';
 import { getTourEnrichmentCached, generateTourEnrichment, cleanText } from '@/lib/tourEnrichment';
 import { buildEnhancedMetaDescription, buildEnhancedTitle } from '@/lib/metaDescription';
 import { getCachedTour, cacheTour, useSupabaseCache, getCachedSimilarTours, cacheSimilarTours, generateSimilarToursCacheKey, extractCountryFromDestinationName } from '@/lib/viatorCache';
-import { getRestaurantCountsByDestination, getRestaurantsForDestination as getRestaurantsForDestinationFromDB, formatRestaurantForFrontend } from '@/lib/restaurants';
-import { getRestaurantsForDestination as getRestaurantsForDestinationFromStatic } from '../../destinations/[id]/restaurants/restaurantsData';
-import { destinations } from '@/data/destinationsData';
 import { getDestinationNameById } from '@/lib/destinationIdLookup';
 import { getViatorDestinationById } from '@/lib/supabaseCache';
 import { getTourOperatorPremiumSubscription, getOperatorPremiumTourIds, getOperatorAggregatedStats } from '@/lib/tourOperatorPremiumServer';
@@ -80,7 +77,7 @@ const getCachedTourExtras = unstable_cache(
 
     const destData = destinationDataResult.status === 'fulfilled' 
       ? destinationDataResult.value 
-      : { destinationData: null, restaurantCount: 0, restaurants: [], categoryGuides: [] };
+      : { destinationData: null, categoryGuides: [] };
 
     return { tourData, destData };
   },
@@ -298,7 +295,8 @@ export default async function TourDetailPage({ params }) {
 
     // Use Next.js level caching for extras (pricing, reviews, etc.)
     const { tourData, destData } = await getCachedTourExtras(productId, tour);
-    const { destinationData, restaurantCount, restaurants, categoryGuides } = destData;
+    let destinationData = destData.destinationData;
+    const categoryGuides = destData.categoryGuides;
 
     // Generate FAQs for SEO
     let faqs = [];
@@ -389,7 +387,7 @@ export default async function TourDetailPage({ params }) {
       }
     }
 
-    // Similar tours no longer fetched here - loaded on demand via client "Load similar tours" to save Viator API
+    // Similar tours: optional SSR list; otherwise tour page links to Viator product URL (destination browse + “You selected”) — no similar-tours API on click.
     const similarTours = [];
 
     // Fetch destination features (lightweight checks for sticky nav)
@@ -403,8 +401,7 @@ export default async function TourDetailPage({ params }) {
       }
     }
 
-    // NOTE: Destination data, restaurants, and categoryGuides are already loaded via loadDestinationData() above
-    // The variables are already set from the parallel data loading above
+    // NOTE: Destination data and categoryGuides are already loaded via loadDestinationData() above
     // OPTIMIZED: Removed duplicate lookup code - only run emergency fallback if destinationData is null
     
     // EMERGENCY FALLBACK: Only run if loadDestinationData() failed to provide destinationData
@@ -484,70 +481,7 @@ export default async function TourDetailPage({ params }) {
       }
     }
 
-    // NOTE: categoryGuides, restaurants, and restaurantCount are already loaded via loadDestinationData() above
-    // OLD CODE REMOVED - these variables are already set from loadDestinationData()
-    // This was blocking page render - removed ~60 lines of duplicate code
-    try {
-      // Try to match destination from our destinationsData
-      let matchedDestinationId = null;
-      
-      if (destinationData?.slug) {
-        // Try to find matching destination by slug
-        const matchedDest = destinations.find(d => d.id === destinationData.slug);
-        if (matchedDest) {
-          matchedDestinationId = matchedDest.id;
-        }
-      }
-      
-      // Also try to match by destination name or other fields
-      if (!matchedDestinationId && tour?.destinations && tour.destinations.length > 0) {
-        const primaryDestination = tour.destinations.find((dest) => dest?.primary) || tour.destinations[0];
-        const destinationName = primaryDestination?.destinationName || primaryDestination?.name || '';
-        
-        if (destinationName) {
-          const matchedDest = destinations.find(d => {
-            const comparable = [
-              d.id,
-              d.name,
-              d.fullName,
-            ]
-              .filter(Boolean)
-              .map((value) => value.toLowerCase());
-            return comparable.some(val => destinationName.toLowerCase().includes(val) || val.includes(destinationName.toLowerCase()));
-          });
-          if (matchedDest) {
-            matchedDestinationId = matchedDest.id;
-          }
-        }
-      }
-
-      if (matchedDestinationId) {
-        // Try to fetch restaurants directly (don't rely on count which might have ID format issues)
-        let fetchedRestaurants = await getRestaurantsForDestinationFromDB(matchedDestinationId);
-        if (fetchedRestaurants.length > 0) {
-          restaurants = fetchedRestaurants.map(r => formatRestaurantForFrontend(r)).slice(0, 8);
-          restaurantCount = fetchedRestaurants.length;
-        } else {
-          // Fallback to static data
-          restaurants = getRestaurantsForDestinationFromStatic(matchedDestinationId).slice(0, 8);
-          if (restaurants.length > 0) {
-            restaurantCount = restaurants.length;
-          } else {
-            // Last resort: check restaurant counts
-            const restaurantCounts = await getRestaurantCountsByDestination();
-            restaurantCount = restaurantCounts[matchedDestinationId] || 0;
-          }
-        }
-      }
-    } catch (error) {
-      // Non-critical - restaurant count is optional
-      // Only log in development to reduce I/O during crawls
-      if (process.env.NODE_ENV === 'development') {
-        console.warn('Could not fetch restaurant data (non-critical):', error.message || error);
-      }
-      restaurantCount = 0;
-      restaurants = [];
-    }
+    // Tour detail does not list restaurants — skip Supabase/static restaurant fetches (saves DB + latency per page).
 
     // Generate breadcrumb schema for SEO
     const breadcrumbSchema = {
@@ -747,8 +681,6 @@ export default async function TourDetailPage({ params }) {
           enrichment={tourEnrichment} 
           initialPromotionScore={promotionScore} 
           destinationData={destinationData} 
-          restaurantCount={restaurantCount}
-          restaurants={restaurants}
           operatorPremiumData={operatorPremiumData}
           operatorTours={operatorTours}
           categoryGuides={categoryGuides}

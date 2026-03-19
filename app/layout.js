@@ -4,6 +4,7 @@ import { Suspense, lazy } from 'react'
 import { Toaster } from '@/components/ui/toaster'
 import PageViewTracker from '@/components/PageViewTracker'
 import ClientHeadScripts from './ClientHeadScripts'
+import { absoluteUrl, getSiteOrigin } from '@/lib/siteUrl'
 
 // OPTIMIZED: Lazy load non-critical components for better initial page load
 const CookieConsentManager = lazy(() => import('@/components/CookieConsentManager'));
@@ -17,6 +18,8 @@ const inter = Inter({
   preload: true, // Preload critical font files
   variable: '--font-inter', // CSS variable for use in Tailwind
 })
+
+const googleSiteVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 
 export const metadata = {
   title: {
@@ -35,20 +38,20 @@ export const metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://toptours.ai'),
+  metadataBase: new URL(getSiteOrigin()),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: 'Tours & Excursions That Match Your Style | AI-Powered Best Match',
     description: 'Get personalized tour and excursion recommendations that match your travel style, budget, and group preferences with AI-powered Best Match. See 0-100% match scores on every listing.',
-    url: 'https://toptours.ai',
+    url: getSiteOrigin(),
     siteName: 'TopTours.ai™',
     locale: 'en_US',
     type: 'website',
     images: [
       {
-        url: 'https://toptours.ai/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg',
+        url: absoluteUrl('/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg'),
         width: 1200,
         height: 630,
         alt: 'Discover Top Tours & Excursions with TopTours.ai™',
@@ -59,7 +62,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Tours & Excursions That Match Your Style | AI-Powered Best Match',
     description: 'Get personalized tour and excursion recommendations that match your travel style, budget, and group preferences with AI-powered Best Match. See 0-100% match scores on every listing.',
-    images: ['https://toptours.ai/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg'],
+    images: [absoluteUrl('/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg')],
   },
   robots: {
     index: true,
@@ -111,10 +114,10 @@ export default function RootLayout({ children }) {
               "@type": "Organization",
               "name": "TopTours.ai",
               "alternateName": "TopTours",
-              "url": "https://toptours.ai",
+              "url": getSiteOrigin(),
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://toptours.ai/logo.png",
+                "url": absoluteUrl('/logo.png'),
                 "width": 512,
                 "height": 512
               },
@@ -134,14 +137,7 @@ export default function RootLayout({ children }) {
                 "https://www.instagram.com/toptours.ai/?hl=en",
                 "https://www.tiktok.com/@toptours.ai",
                 "https://www.youtube.com/@toptoursai"
-              ],
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": {
-                  "@type": "EntryPoint",
-                  "urlTemplate": "https://toptours.ai/tours"
-                }
-              }
+              ]
             })
           }}
         />
@@ -154,13 +150,15 @@ export default function RootLayout({ children }) {
               "@context": "https://schema.org",
               "@type": "WebSite",
               "name": "TopTours.ai",
-              "url": "https://toptours.ai",
+              "url": getSiteOrigin(),
+              "description": "Discover tours, activities, and travel guides by destination with AI-powered recommendations.",
               "potentialAction": {
                 "@type": "SearchAction",
                 "target": {
                   "@type": "EntryPoint",
-                  "urlTemplate": "https://toptours.ai/tours"
-                }
+                  "urlTemplate": `${getSiteOrigin()}/destinations?q={search_term_string}`
+                },
+                "query-input": "required name=search_term_string"
               }
             })
           }}

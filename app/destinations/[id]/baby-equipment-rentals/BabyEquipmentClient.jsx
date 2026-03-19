@@ -117,7 +117,7 @@ const UNIVERSAL_PRODUCT_CATEGORIES = [
   },
 ];
 
-export default function BabyEquipmentClient({ destination, destinationFeatures = { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false }, pageData = null }) {
+export default function BabyEquipmentClient({ destination, categoryGuides = [], destinationFeatures = { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false }, pageData = null }) {
   const [showStickyButton, setShowStickyButton] = useState(false);
   
   useEffect(() => {

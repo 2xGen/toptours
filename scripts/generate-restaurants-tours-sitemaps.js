@@ -45,7 +45,7 @@ async function generateToursSitemap() {
     <loc>${page.url}</loc>
     <lastmod>${page.lastModified}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.78</priority>
+    <priority>0.88</priority>
   </url>
 `;
   });

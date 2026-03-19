@@ -9,6 +9,7 @@ import { redirect } from 'next/navigation';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import DestinationDetailClient from './DestinationDetailClient';
 import { fetchDestinationData } from './DestinationDataLoader';
+import { absoluteUrl, getSiteOrigin } from '@/lib/siteUrl';
 
 // Helper to generate slug
 function generateSlug(name) {
@@ -39,7 +40,7 @@ export async function generateMetadata({ params }) {
       const heroDescription = fullContent?.heroDescription || seoContent?.heroDescription || seoContent?.briefDescription || '';
       const seoTitle = fullContent?.seo?.title || seoContent?.seo?.title || `${destinationName} Tours & Activities`;
       // Use destination image if available, otherwise fall back to default OG image
-      const defaultOgImage = 'https://toptours.ai/OG%20Images/TopTours%20Destinations.jpg';
+      const defaultOgImage = absoluteUrl('/OG%20Images/TopTours%20Destinations.jpg');
       const ogImage = fullContent?.imageUrl || seoContent?.imageUrl || seoContent?.ogImage || defaultOgImage;
       
       // OG title: shareable in FB/WhatsApp/groups. SEO title: search-first, not mirrored.
@@ -73,7 +74,7 @@ export async function generateMetadata({ params }) {
           images: [ogImage],
         },
         alternates: {
-          canonical: `https://toptours.ai/destinations/${id}`,
+          canonical: absoluteUrl(`/destinations/${id}`),
         },
         robots: {
           index: true,
@@ -116,7 +117,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: ogTitle,
       description: destination.seo?.description || destination.heroDescription,
-      url: `https://toptours.ai/destinations/${destination.id}`,
+      url: absoluteUrl(`/destinations/${destination.id}`),
       images: [
         {
           url: ogImage,
@@ -136,7 +137,7 @@ export async function generateMetadata({ params }) {
       images: [ogImage],
     },
     alternates: {
-      canonical: `https://toptours.ai/destinations/${destination.id}`,
+      canonical: absoluteUrl(`/destinations/${destination.id}`),
     },
     robots: {
       index: true,
@@ -378,6 +379,9 @@ export default async function DestinationDetailPage({ params }) {
     hasBabyEquipmentRentals
   } = await fetchDestinationData(destination, destinationIdForScores);
 
+  const destHubUrl = absoluteUrl(`/destinations/${destination.id}`);
+  const logoUrl = absoluteUrl('/logo.png');
+
   return (
     <>
       {/* OPTIMIZED: Enhanced TouristDestination Schema for better SEO */}
@@ -391,7 +395,7 @@ export default async function DestinationDetailPage({ params }) {
             "alternateName": destination.name !== destination.fullName ? destination.name : undefined,
             "description": destination.seo?.description || destination.heroDescription || destination.briefDescription || `Discover the best tours and activities in ${destination.fullName || destination.name}`,
             "image": destination.imageUrl,
-            "url": `https://toptours.ai/destinations/${destination.id}`,
+            "url": destHubUrl,
             "touristType": ["Leisure travelers", "Adventure seekers", "Culture enthusiasts", "Family travelers"],
             "containsPlace": {
               "@type": "Place",
@@ -433,7 +437,7 @@ export default async function DestinationDetailPage({ params }) {
               "name": "TopTours.ai",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://toptours.ai/logo.png"
+                "url": logoUrl
               }
             }
           })
@@ -495,7 +499,7 @@ export default async function DestinationDetailPage({ params }) {
                           "name": tour.title,
                           "description": `${tour.title} in ${destination.fullName}`,
                           "image": tour.image || destination.imageUrl,
-                          "url": `https://toptours.ai/tours/${tour.productId}/${tour.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`
+                          "url": absoluteUrl(`/tours/${tour.productId}/${tour.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`)
                         }
                       });
                     }

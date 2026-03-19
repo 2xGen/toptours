@@ -90,7 +90,7 @@ export async function loadDestinationData(tour, productId) {
     }
 
     if (!destinationId) {
-      return { destinationData: null, restaurantCount: 0, restaurants: [], categoryGuides: [] };
+      return { destinationData: null, categoryGuides: [] };
     }
 
     // Tour detail page does not show restaurants - no fetch (saves Supabase/static read)
@@ -143,12 +143,10 @@ export async function loadDestinationData(tour, productId) {
 
     return {
       destinationData,
-      restaurantCount: 0,
-      restaurants: [],
       categoryGuides
     };
   } catch (error) {
     // Silently return defaults - destination data is optional
-    return { destinationData: null, restaurantCount: 0, restaurants: [], categoryGuides: [] };
+    return { destinationData: null, categoryGuides: [] };
   }
 }

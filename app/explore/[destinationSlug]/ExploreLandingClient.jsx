@@ -1,5 +1,6 @@
 'use client';
 
+import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -10,45 +11,23 @@ import {
   CheckCircle2,
   Lightbulb,
   HelpCircle,
-  TreePine,
-  UtensilsCrossed,
-  Landmark,
-  Ship,
-  Footprints,
-  Moon,
-  Bus,
-  Baby,
-  Helicopter,
-  Waves,
-  Building2,
-  Palette,
-  Ticket,
 } from 'lucide-react';
 import { getTourUrl } from '@/utils/tourHelpers';
+import ExploreToursListingClient from './tours/ExploreToursListingClient';
 
 const SITE_URL = 'https://toptours.ai';
 
-// Category slug → Lucide icon for consistent, recognizable cards
-const CATEGORY_ICONS = {
-  'central-park-tours': TreePine,
-  'broadway-shows': Ticket,
-  'food-tours': UtensilsCrossed,
-  'museum-tours': Landmark,
-  'statue-of-liberty-harbor': Ship,
-  'walking-neighborhoods': Footprints,
-  'night-skyline': Moon,
-  'day-trips': Bus,
-  'family-kids': Baby,
-  'helicopter-views': Helicopter,
-  'cruises-water': Waves,
-  'brooklyn-tours': Building2,
-};
-function getCategoryIcon(cat) {
-  const Icon = CATEGORY_ICONS[cat?.slug] || Palette;
-  return Icon;
+function stripDestinationName(text, destinationName) {
+  if (!text || typeof text !== 'string' || !destinationName) return text;
+  const escaped = destinationName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  // Common dataset pattern: "X in Curaçao" / "X in Curaçao." — remove destination repetition.
+  return text
+    .replace(new RegExp(`\\s+in\\s+${escaped}(?:\\.)?`, 'gi'), '')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
 }
 
-export default function ExploreLandingClient({ destination, destinationSlug, topPicks = [], categories = [] }) {
+export default function ExploreLandingClient({ destination, destinationSlug, topPicks = [], categories = [], tours = [] }) {
   const heroTitle = destination.hero_title || `Best Tours in ${destination.name}`;
   const heroSubtitle = destination.hero_subtitle || '';
   const heroCta = destination.hero_cta_text || 'Find tours';
@@ -58,6 +37,21 @@ export default function ExploreLandingClient({ destination, destinationSlug, top
   const whatToExpectBullets = Array.isArray(destination.what_to_expect_bullets) ? destination.what_to_expect_bullets : [];
   const tipsBullets = Array.isArray(destination.tips_bullets) ? destination.tips_bullets : [];
   const faqs = Array.isArray(destination.faq_json) ? destination.faq_json : [];
+  const destinationName = destination?.name;
+
+  // Landing page preview grid: 3 columns x 3 rows
+  const TOURS_PER_PAGE = 9;
+  const [selectedCategory, setSelectedCategory] = useState('');
+
+  const filteredTours = useMemo(() => {
+    if (!selectedCategory) return tours;
+    return tours.filter((t) => t.categorySlug === selectedCategory);
+  }, [tours, selectedCategory]);
+
+  const toursToShow = filteredTours.slice(0, TOURS_PER_PAGE);
+  const totalTours = filteredTours.length;
+  const shownFrom = totalTours === 0 ? 0 : 1;
+  const shownTo = Math.min(totalTours, TOURS_PER_PAGE);
 
   return (
     <>
@@ -123,7 +117,7 @@ export default function ExploreLandingClient({ destination, destinationSlug, top
               )}
               <div className="mt-8">
                 <a
-                  href="#top-picks"
+                  href="#tour-results"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-white sunset-gradient hover:opacity-95 transition-opacity shadow-lg min-w-[200px]"
                 >
                   {heroCta}
@@ -138,7 +132,7 @@ export default function ExploreLandingClient({ destination, destinationSlug, top
                   Quick navigation
                 </h3>
                 <p className="text-sm text-gray-600 mb-4">
-                  Top 6 categories in {destination.name}
+                  Top 6 categories
                 </p>
                 <ul className="space-y-2">
                   {categories.slice(0, 6).map((cat) => (
@@ -148,7 +142,7 @@ export default function ExploreLandingClient({ destination, destinationSlug, top
                         className="flex items-center gap-2 text-gray-700 hover:text-primary font-medium text-sm py-1.5 hover:bg-gray-100 rounded-lg px-2 -mx-2 transition-colors"
                       >
                         <ArrowRight className="w-3.5 h-3.5 text-primary/70 shrink-0" />
-                        {cat.title}
+                        {stripDestinationName(cat.title, destinationName)}
                       </Link>
                     </li>
                   ))}
@@ -166,90 +160,60 @@ export default function ExploreLandingClient({ destination, destinationSlug, top
         </div>
       </section>
 
-      {/* Top Picks — tinted section + strong cards */}
-      <section
-        id="top-picks"
-        className="py-16 lg:py-20 bg-gradient-to-b from-primary/5 via-white to-primary/[0.03]"
-        aria-labelledby="top-picks-heading"
-      >
+      {/* Category filter + results (embedded like /explore/[destinationSlug]/tours) */}
+      <section id="tour-results" className="border-b border-gray-200 bg-white py-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
-            <div className="rounded-2xl bg-white/80 backdrop-blur-sm border border-primary/10 shadow-sm px-5 py-4 inline-block">
-              <p className="text-xs font-semibold text-primary uppercase tracking-widest">Popular now</p>
-              <h2 id="top-picks-heading" className="mt-1 font-poppins font-bold text-2xl sm:text-3xl text-gray-900">
-                Top picks in {destination.name}
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div className="min-w-0">
+              <h2 className="font-poppins font-bold text-2xl sm:text-3xl text-gray-900 tracking-tight">
+                Tours &amp; Activities in {destination.name}
               </h2>
-              <p className="mt-2 text-gray-600 text-sm">
-                Compare options and book with free cancellation on most tours.
+              <p className="mt-2 text-sm text-gray-600">
+                Browse and book tours and activities in {destination.name}. Compare options and prices in one place.
               </p>
             </div>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {topPicks.slice(0, 6).map((pick) => {
-              const title = pick.title_override ?? pick.title ?? `Tour ${pick.product_id}`;
-              const href =
-                pick.tour_slug && pick.category_slug
-                  ? `/explore/${destinationSlug}/${pick.category_slug}/${pick.tour_slug}`
-                  : getTourUrl(pick.product_id, title);
-              const imageUrl = pick.image_url_override ?? pick.image_url ?? (pick.imageUrl ?? null);
-              const priceDisplay =
-                pick.from_price_override ?? pick.from_price ?? 'From price on request';
 
-              return (
-                <Link
-                  key={`${pick.category_slug ?? ''}-${pick.product_id}`}
-                  href={href}
-                  className="group flex flex-col bg-white rounded-2xl shadow-md border-2 border-gray-100 overflow-hidden text-left transition-all duration-300 hover:shadow-xl hover:border-primary/40 hover:-translate-y-1 min-h-0"
-                >
-                  <div className="aspect-[16/10] w-full overflow-hidden bg-gray-100">
-                    {imageUrl ? (
-                      <Image
-                        src={imageUrl}
-                        alt=""
-                        width={400}
-                        height={250}
-                        className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    ) : (
-                      <div className="h-full w-full flex items-center justify-center bg-primary/5 text-primary/50">
-                        <MapPin className="w-12 h-12" />
-                      </div>
-                    )}
-                  </div>
-                  <div className="flex-1 flex flex-col p-5 border-t border-gray-100">
-                    {pick.category_title && (
-                      <p className="text-xs font-medium text-primary uppercase tracking-wider mb-1">
-                        {pick.category_title}
-                      </p>
-                    )}
-                    <h3 className="font-semibold text-lg text-gray-900 group-hover:text-primary transition-colors line-clamp-2">
-                      {title}
-                    </h3>
-                    <div className="mt-auto pt-4 flex flex-wrap items-center justify-between gap-3">
-                      <p className="text-gray-500 text-sm">{priceDisplay}</p>
-                      <span className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-white bg-primary shadow-sm hover:opacity-90 transition-opacity">
-                        View &amp; Book
-                        <ArrowRight className="w-4 h-4" />
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
+            <div className="min-w-[220px]">
+              <label htmlFor="explore-destination-category-filter" className="block text-sm font-semibold text-gray-700 mb-2">
+                Category
+              </label>
+              <select
+                id="explore-destination-category-filter"
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="w-full appearance-none rounded-xl border-2 border-gray-200 bg-white py-3 pl-4 pr-10 text-sm font-semibold text-gray-800 shadow-sm transition-colors hover:border-primary/50 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 cursor-pointer"
+              >
+                <option value="">All categories</option>
+                {categories.map((cat) => (
+                  <option key={cat.slug} value={cat.slug}>
+                    {stripDestinationName(cat.title, destinationName)}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
-          <div className="mt-12 flex justify-center">
-            <Link
-              href={`/explore/${destinationSlug}/tours`}
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold text-white bg-primary shadow-lg hover:opacity-90 transition-opacity"
-            >
-              View all tours in {destination.name}
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+
+          <p className="mt-6 text-gray-500 text-sm">
+            {totalTours === 0 ? (
+              'No tours found.'
+            ) : (
+              <>
+                Showing {shownFrom}–{shownTo} of {totalTours} tours.
+              </>
+            )}
+          </p>
+
+          <div className="mt-6">
+            <ExploreToursListingClient
+              tours={toursToShow}
+              destinationSlug={destinationSlug}
+              destinationName={destination.name}
+            />
           </div>
         </div>
       </section>
 
-      {/* Categories — card grid with icons */}
+      {/* Categories — clean card grid (no icons) */}
       <section
         id="categories"
         className="py-16 lg:py-20 bg-white"
@@ -264,7 +228,7 @@ export default function ExploreLandingClient({ destination, destinationSlug, top
               id="categories-heading"
               className="mt-4 font-poppins font-bold text-2xl sm:text-3xl lg:text-4xl text-gray-900"
             >
-              Popular categories in {destination.name}
+              Popular categories
             </h2>
             <p className="mt-3 text-gray-600 max-w-xl mx-auto">
               Find the right type of experience for you.
@@ -272,23 +236,19 @@ export default function ExploreLandingClient({ destination, destinationSlug, top
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {categories.map((cat) => {
-              const Icon = getCategoryIcon(cat);
               return (
                 <Link
                   key={cat.slug}
                   href={`/explore/${destinationSlug}/${cat.slug}`}
-                  className="group flex items-start gap-4 bg-white rounded-2xl border-2 border-gray-100 p-5 text-left transition-all duration-300 hover:shadow-lg hover:border-primary/30 hover:-translate-y-0.5 shadow-sm"
+                  className="group flex items-start bg-white rounded-2xl border-2 border-gray-100 p-5 text-left transition-all duration-300 hover:shadow-lg hover:border-primary/30 hover:-translate-y-0.5 shadow-sm"
                 >
-                  <span className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
-                    <Icon className="w-6 h-6" />
-                  </span>
-                  <div className="min-w-0 flex-1">
+                  <div className="min-w-0 flex-1 pr-2">
                     <span className="font-semibold text-gray-800 group-hover:text-primary block">
-                      {cat.title}
+                      {stripDestinationName(cat.title, destinationName)}
                     </span>
                     {cat.description && (
                       <span className="text-sm text-gray-500 mt-0.5 line-clamp-2 block">
-                        {cat.description}
+                        {stripDestinationName(cat.description, destinationName)}
                       </span>
                     )}
                   </div>

@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -14,6 +15,29 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { getTourUrl, getViatorAffiliateTourUrl } from '@/utils/tourHelpers';
+
+/** Primary CTA — signals full product page + dates on partner site (A/B vs shorter “Check availability”). */
+const VIATOR_CTA_LABEL = 'Check Availability & Book on Viator';
+
+function ExploreBetweenSectionsCta({ bookUrl, headline, subline }) {
+  if (!bookUrl) return null;
+  return (
+    <div className="rounded-xl border border-[#00AA6C]/30 bg-gradient-to-br from-[#f2fbf7] to-white px-4 py-4 shadow-[0_8px_24px_rgba(0,170,108,0.08)] sm:px-5">
+      <a
+        href={bookUrl}
+        target="_blank"
+        rel="sponsored noopener noreferrer"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#00AA6C] px-4 py-3 text-center text-sm font-semibold leading-snug text-white transition-colors hover:bg-[#008855]"
+      >
+        <span className="min-w-0">{headline}</span>
+        <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
+      </a>
+      {subline ? (
+        <p className="mt-2.5 text-center text-xs leading-snug text-gray-600">{subline}</p>
+      ) : null}
+    </div>
+  );
+}
 
 /**
  * Aru365-style single tour page for explore: hero, intro, what's included, itinerary, similar tours, FAQ, CTA.
@@ -31,6 +55,17 @@ export default function ExploreTourDetailClient({
   relatedTours = [],
   tourSeo = null,
 }) {
+  const [travelers, setTravelers] = useState(1);
+  /** First FAQ open by default; React <details> does not support defaultOpen in this stack — use controlled open. */
+  const [openFaqIndices, setOpenFaqIndices] = useState(() => new Set([0]));
+
+  useEffect(() => {
+    setOpenFaqIndices(new Set([0]));
+  }, [productId]);
+
+  const formatCurrency = (value) =>
+    new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
+
   const displayTitle = tour?.title || 'Tour';
   const operator = tour?.supplier?.name || tour?.supplierName || 'Tour operator';
   const rating = tour?.reviews?.combinedAverageRating ?? tour?.reviews?.averageRating ?? tourSummary?.rating ?? tourSeo?.rating ?? 0;
@@ -45,7 +80,7 @@ export default function ExploreTourDetailClient({
       pricing.priceFrom ?? pricing.fromPrice ?? pricing.recommendedRetailPrice ?? pricing.minPrice;
     if (typeof fromPrice === 'number') {
       numericPrice = fromPrice;
-      priceDisplay = `From $${Math.round(fromPrice)}`;
+      priceDisplay = `From ${formatCurrency(fromPrice)}`;
     } else if (typeof pricing.summary === 'string' && pricing.summary.trim()) {
       priceDisplay = pricing.summary.trim();
     }
@@ -58,6 +93,32 @@ export default function ExploreTourDetailClient({
   if (priceDisplay === 'Price from (see options)' && tourSeo?.fromPrice && typeof tourSeo.fromPrice === 'string') {
     priceDisplay = tourSeo.fromPrice.trim();
   }
+
+  // Fallback numeric parsing from string prices like "From $87.50"
+  if (numericPrice === null && typeof priceDisplay === 'string') {
+    const match = priceDisplay.replace(/,/g, '').match(/(\d+(?:\.\d{1,2})?)/);
+    if (match) {
+      const parsed = Number.parseFloat(match[1]);
+      if (Number.isFinite(parsed)) numericPrice = parsed;
+    }
+  }
+
+  const estimatedTotal = useMemo(
+    () => (typeof numericPrice === 'number' ? numericPrice * travelers : null),
+    [numericPrice, travelers]
+  );
+
+  const bookingPriceLabel = typeof numericPrice === 'number' ? `From ${formatCurrency(numericPrice)}` : priceDisplay;
+  const hasInstantConfirmation = Array.isArray(tour?.flags)
+    ? tour.flags.some((flag) => typeof flag === 'string' && flag.toLowerCase().includes('instant'))
+    : false;
+  const hasFreeCancellation = typeof tour?.cancellationPolicy?.description === 'string'
+    ? /free cancellation/i.test(tour.cancellationPolicy.description)
+    : false;
+  const heroFromPriceLabel =
+    typeof estimatedTotal === 'number'
+      ? `From ${formatCurrency(estimatedTotal)} for ${travelers} traveler${travelers > 1 ? 's' : ''}`
+      : bookingPriceLabel;
 
   const bookUrl =
     getViatorAffiliateTourUrl({ productUrl: tour?.productUrl, destinationSlug, productCode: productId })
@@ -153,18 +214,54 @@ export default function ExploreTourDetailClient({
   const toursInDestinationHref = `/explore/${destinationSlug}/tours`;
 
   return (
-    <article className="min-h-screen bg-[#f8f9fa]">
-      {/* Sticky book button */}
-      <div className="fixed bottom-6 right-6 z-40">
-        <a
-          href={bookUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl font-semibold text-white bg-primary hover:opacity-95 transition-opacity shadow-lg hover:shadow-xl"
-        >
-          View options &amp; book
-          <ExternalLink className="w-4 h-4" />
-        </a>
+    <article className="min-h-screen bg-[#f8f9fa] pb-36">
+      {/* Sticky booking bar (mobile + desktop) */}
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-gray-200 bg-white/95 backdrop-blur">
+        <div className="mx-auto flex max-w-5xl flex-col gap-2 px-4 py-3 md:flex-row md:flex-wrap md:items-center md:gap-3 md:px-6">
+          <div className="flex flex-wrap items-center gap-3 md:flex-1 md:min-w-0">
+            <div className="min-w-0 flex-1">
+              {hasRating && (
+                <p className="text-xs font-semibold text-gray-700">
+                  {Number(rating).toFixed(1)}★ {reviewCount.toLocaleString('en-US')}
+                </p>
+              )}
+              <p className="text-sm font-semibold text-gray-900">{bookingPriceLabel} <span className="font-normal text-gray-500">per person</span></p>
+              {estimatedTotal !== null && (
+                <p className="text-xs text-gray-600">Est. Total: {formatCurrency(estimatedTotal)}</p>
+              )}
+            </div>
+            <div className="inline-flex items-center rounded-lg border border-gray-200 bg-white">
+              <button
+                type="button"
+                onClick={() => setTravelers((prev) => Math.max(1, prev - 1))}
+                className="h-9 w-9 text-base font-semibold text-gray-700"
+                aria-label="Decrease travelers"
+              >
+                -
+              </button>
+              <span className="w-9 text-center text-sm font-semibold text-gray-900">{travelers}</span>
+              <button
+                type="button"
+                onClick={() => setTravelers((prev) => Math.min(20, prev + 1))}
+                className="h-9 w-9 text-base font-semibold text-gray-700"
+                aria-label="Increase travelers"
+              >
+                +
+              </button>
+            </div>
+          </div>
+          <div className="flex w-full md:w-auto md:min-w-[200px]">
+            <a
+              href={bookUrl}
+              target="_blank"
+              rel="sponsored noopener noreferrer"
+              className="inline-flex w-full max-w-full items-center justify-center gap-2 rounded-lg bg-[#00AA6C] px-3 py-2.5 text-center text-xs font-semibold leading-snug text-white hover:bg-[#008855] sm:text-sm sm:px-4"
+            >
+              <span className="min-w-0">{VIATOR_CTA_LABEL}</span>
+              <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
+            </a>
+          </div>
+        </div>
       </div>
 
       {/* Single clean nav: breadcrumb + destination links */}
@@ -205,8 +302,8 @@ export default function ExploreTourDetailClient({
       {/* Hero */}
       <section className="bg-white border-b border-gray-100">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-10">
-          <div className="grid lg:grid-cols-5 gap-8 lg:gap-10 items-start">
-            <div className="lg:col-span-2 rounded-xl overflow-hidden bg-gray-100 aspect-[4/3] lg:aspect-[4/3] lg:min-h-[260px] shadow-sm">
+          <div className="grid lg:grid-cols-5 gap-8 lg:gap-10 items-start rounded-3xl border border-gray-200/90 bg-gradient-to-br from-white via-[#f9fafb] to-[#f3f6fb] p-6 sm:p-7 lg:p-9 shadow-[0_18px_42px_rgba(15,23,42,0.08)]">
+            <div className="lg:col-span-2 rounded-2xl overflow-hidden bg-gray-100 aspect-[4/3] lg:aspect-[4/3] lg:min-h-[260px] shadow-[0_10px_28px_rgba(15,23,42,0.12)]">
               {imageUrl ? (
                 <Image
                   src={imageUrl}
@@ -238,21 +335,95 @@ export default function ExploreTourDetailClient({
                   <span className="text-gray-500">{reviewCount.toLocaleString('en-US')} reviews</span>
                 </div>
               )}
-              <div className="mt-6 flex flex-wrap items-center gap-4">
-                <span className="text-xl font-semibold text-gray-900">{priceDisplay}</span>
-                <a
-                  href={bookUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-white bg-primary hover:opacity-95 transition-opacity"
-                >
-                  Check availability
-                  <ArrowRight className="w-4 h-4" />
-                </a>
+              <div className="mt-6 rounded-2xl border border-gray-200/90 bg-white p-5 shadow-[0_10px_28px_rgba(15,23,42,0.08)] ring-1 ring-black/5">
+                <p className="text-sm font-semibold text-gray-900">Book with confidence</p>
+                <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                  <ul className="space-y-1.5 text-xs text-gray-700 sm:flex-1">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
+                      <span>Get live availability and the latest price in real time.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
+                      <span>
+                        {hasInstantConfirmation
+                          ? 'Instant confirmation is available on eligible timeslots.'
+                          : 'Quick, clear checkout with confirmation details upfront.'}
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
+                      <span>
+                        {hasFreeCancellation
+                          ? 'Free cancellation is available on eligible bookings.'
+                          : 'Flexible booking options are shown before you confirm.'}
+                      </span>
+                    </li>
+                  </ul>
+
+                  <div className="sm:ml-4 sm:min-w-[120px]">
+                    <p className="text-[11px] font-semibold uppercase tracking-wide text-gray-500">Travelers</p>
+                    <div className="mt-1 inline-flex items-center rounded-lg border border-gray-200 bg-white shadow-sm">
+                      <button
+                        type="button"
+                        onClick={() => setTravelers((prev) => Math.max(1, prev - 1))}
+                        className="h-8 w-8 text-base font-semibold text-gray-700 hover:bg-gray-50"
+                        aria-label="Decrease travelers"
+                      >
+                        -
+                      </button>
+                      <span className="w-8 text-center text-sm font-semibold text-gray-900">{travelers}</span>
+                      <button
+                        type="button"
+                        onClick={() => setTravelers((prev) => Math.min(20, prev + 1))}
+                        className="h-8 w-8 text-base font-semibold text-gray-700 hover:bg-gray-50"
+                        aria-label="Increase travelers"
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-4 flex flex-col gap-3">
+                  <div className="space-y-1">
+                    <span className="text-xl font-semibold text-gray-900 block">{heroFromPriceLabel}</span>
+                    <p className="text-xs text-gray-600">Prices vary by date — check yours instantly</p>
+                  </div>
+                  <a
+                    href={bookUrl}
+                    target="_blank"
+                    rel="sponsored noopener noreferrer"
+                    className="inline-flex max-w-full items-center justify-center gap-2 rounded-xl bg-[#00AA6C] px-4 py-3 text-center text-sm font-semibold leading-snug text-white transition-colors hover:bg-[#008855] sm:px-5 sm:text-base"
+                  >
+                    <span className="min-w-0">{VIATOR_CTA_LABEL}</span>
+                    <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
+                  </a>
+                </div>
+                <p className="mt-2 text-[11px] leading-snug text-gray-600" role="note">
+                  Partner: <span className="font-medium">Viator</span>. &quot;{VIATOR_CTA_LABEL}&quot; opens in a new tab.{' '}
+                  <Link
+                    href="/disclosure"
+                    className="font-medium text-primary underline decoration-primary/40 underline-offset-2 hover:decoration-primary"
+                  >
+                    Affiliate disclosure
+                  </Link>
+                  .
+                </p>
               </div>
-              <p className="mt-3 text-xs text-gray-400">Free cancellation on most experiences · Powered by Viator</p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Contextual Viator CTA */}
+      <section className="py-4 lg:py-6">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <ExploreBetweenSectionsCta
+            bookUrl={bookUrl}
+            headline="Pick your dates on Viator — check live availability"
+            subline="Popular time slots can fill up fast."
+          />
         </div>
       </section>
 
@@ -260,7 +431,7 @@ export default function ExploreTourDetailClient({
       {tourSeo?.whyWeRecommend && (
         <section className="py-6 lg:py-8">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-            <div className="rounded-xl bg-white border border-gray-100 p-6 lg:p-8">
+            <div className="rounded-xl bg-amber-50/60 border border-amber-100 p-6 lg:p-8">
               <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Why we recommend this tour</h2>
               <p className="text-gray-800 leading-relaxed">{tourSeo.whyWeRecommend}</p>
             </div>
@@ -272,7 +443,7 @@ export default function ExploreTourDetailClient({
       {description && (
         <section className="py-6 lg:py-8">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-            <div className="rounded-xl bg-white border border-gray-100 p-6 lg:p-8">
+            <div className="rounded-xl bg-slate-50 border border-slate-200 p-6 lg:p-8">
               <h2 className="font-poppins font-bold text-lg text-gray-900 mb-4">About this tour</h2>
               <p className="text-gray-600 leading-relaxed whitespace-pre-line">{description}</p>
             </div>
@@ -280,11 +451,73 @@ export default function ExploreTourDetailClient({
         </section>
       )}
 
+      {/* Mid-page booking CTA */}
+      <section className="py-6 lg:py-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <div className="rounded-2xl border-2 border-[#00AA6C]/30 bg-[#f2fbf7] p-4 sm:p-5 shadow-[0_10px_30px_rgba(0,170,108,0.12)] ring-1 ring-[#00AA6C]/10">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <p className="text-xl font-bold text-gray-900 leading-tight">{bookingPriceLabel}</p>
+                <p className="text-xs text-gray-500">per person</p>
+                {hasRating && (
+                  <p className="mt-1 text-xs font-semibold text-gray-700">
+                    {Number(rating).toFixed(1)}★ · {reviewCount.toLocaleString('en-US')}
+                  </p>
+                )}
+              </div>
+              <div className="min-w-[170px]">
+                <p className="text-[11px] font-semibold uppercase tracking-wide text-gray-500">Travelers</p>
+                <p className="text-xs text-gray-600">Number of travelers</p>
+                <div className="mt-1.5 inline-flex items-center rounded-lg border border-gray-200 bg-white shadow-sm">
+                  <button
+                    type="button"
+                    onClick={() => setTravelers((prev) => Math.max(1, prev - 1))}
+                    className="h-9 w-9 text-base font-semibold text-gray-700 hover:bg-gray-50"
+                    aria-label="Decrease travelers"
+                  >
+                    -
+                  </button>
+                  <span className="w-9 text-center text-sm font-semibold text-gray-900">{travelers}</span>
+                  <button
+                    type="button"
+                    onClick={() => setTravelers((prev) => Math.min(20, prev + 1))}
+                    className="h-9 w-9 text-base font-semibold text-gray-700 hover:bg-gray-50"
+                    aria-label="Increase travelers"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-3 flex flex-col gap-3 rounded-xl bg-white px-3 py-3 ring-1 ring-[#00AA6C]/15 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+              <div>
+                <p className="text-sm font-semibold text-gray-900 leading-tight">
+                  Estimated Total: {estimatedTotal !== null ? formatCurrency(estimatedTotal) : 'See price on Viator'}
+                </p>
+                <p className="text-[11px] text-gray-500">Final price may vary. Check availability for exact pricing.</p>
+              </div>
+              <div className="flex sm:items-end">
+                <a
+                  href={bookUrl}
+                  target="_blank"
+                  rel="sponsored noopener noreferrer"
+                  className="inline-flex w-full max-w-full items-center justify-center gap-2 rounded-lg bg-[#00AA6C] px-3 py-2.5 text-center text-xs font-semibold leading-snug text-white transition-colors hover:bg-[#008855] sm:w-auto sm:text-sm sm:px-4"
+                >
+                  <span className="min-w-0">{VIATOR_CTA_LABEL}</span>
+                  <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Highlights */}
       {Array.isArray(tourSeo?.highlights) && tourSeo.highlights.length > 0 && (
         <section className="py-6 lg:py-8">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-            <div className="rounded-xl bg-white border border-gray-100 p-6 lg:p-8">
+            <div className="rounded-xl bg-violet-50/50 border border-violet-100 p-6 lg:p-8">
               <h2 className="font-poppins font-bold text-lg text-gray-900 mb-4 flex items-center gap-2">
                 <Sparkles className="w-5 h-5 text-primary shrink-0" />
                 Highlights
@@ -306,7 +539,7 @@ export default function ExploreTourDetailClient({
       {Array.isArray(tourSeo?.whoIsThisFor) && tourSeo.whoIsThisFor.length > 0 && (
         <section className="py-6 lg:py-8">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-            <div className="rounded-xl bg-white border border-gray-100 p-6 lg:p-8">
+            <div className="rounded-xl bg-sky-50/60 border border-sky-100 p-6 lg:p-8">
             <h2 className="font-poppins font-bold text-lg text-gray-900 mb-4 flex items-center gap-2">
               <Users className="w-5 h-5 text-primary shrink-0" />
               Who is this tour for?
@@ -328,7 +561,7 @@ export default function ExploreTourDetailClient({
       {Array.isArray(tourSeo?.insiderTips) && tourSeo.insiderTips.length > 0 && (
         <section className="py-6 lg:py-8">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-            <div className="rounded-xl bg-white border border-gray-100 p-6 lg:p-8">
+            <div className="rounded-xl bg-teal-50/60 border border-teal-100 p-6 lg:p-8">
             <h2 className="font-poppins font-bold text-lg text-gray-900 mb-4 flex items-center gap-2">
               <Lightbulb className="w-5 h-5 text-primary shrink-0" />
               Insider tips
@@ -350,7 +583,7 @@ export default function ExploreTourDetailClient({
       {inclusions.length > 0 && (
         <section className="py-6 lg:py-8">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-            <div className="rounded-xl bg-white border border-gray-100 p-6 lg:p-8">
+            <div className="rounded-xl bg-emerald-50/60 border border-emerald-100 p-6 lg:p-8">
             <h2 className="font-poppins font-bold text-lg text-gray-900 mb-4 flex items-center gap-2">
               <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
               What&apos;s included
@@ -368,11 +601,23 @@ export default function ExploreTourDetailClient({
         </section>
       )}
 
+      {/* Verify inclusions CTA */}
+      {inclusions.length > 0 && (
+        <section className="py-4 lg:py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+            <ExploreBetweenSectionsCta
+              bookUrl={bookUrl}
+              headline="Verify inclusions & book on Viator"
+            />
+          </div>
+        </section>
+      )}
+
       {/* What's not included */}
       {exclusions.length > 0 && (
         <section className="py-6 lg:py-8">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-            <div className="rounded-xl bg-white border border-gray-100 p-6 lg:p-8">
+            <div className="rounded-xl bg-rose-50/50 border border-rose-100 p-6 lg:p-8">
             <h2 className="font-poppins font-bold text-lg text-gray-900 mb-4">
               What&apos;s not included
             </h2>
@@ -393,7 +638,7 @@ export default function ExploreTourDetailClient({
       {itinerarySteps.length > 0 && (
         <section className="py-6 lg:py-8">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-            <div className="rounded-xl bg-white border border-gray-100 p-6 lg:p-8">
+            <div className="rounded-xl bg-indigo-50/40 border border-indigo-100 p-6 lg:p-8">
             <h2 className="font-poppins font-bold text-lg text-gray-900 mb-4">Itinerary</h2>
             <ol className="space-y-6">
               {itinerarySteps.map((step, i) => (
@@ -413,11 +658,46 @@ export default function ExploreTourDetailClient({
         </section>
       )}
 
+      {/* Destination-focused availability CTA */}
+      {destinationName ? (
+        <section className="py-4 lg:py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+            <ExploreBetweenSectionsCta
+              bookUrl={bookUrl}
+              headline={`${destinationName}: check live availability on Viator`}
+            />
+          </div>
+        </section>
+      ) : null}
+
+      {/* More tours on partner page (no internal similar-tours API call) */}
+      <section className="py-6 lg:py-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <div className="rounded-xl border border-[#00AA6C]/30 bg-gradient-to-br from-[#f2fbf7] to-white p-6 shadow-[0_8px_24px_rgba(0,170,108,0.08)]">
+            <h2 className="mb-2 text-2xl font-bold text-gray-900">More tours</h2>
+            <p className="mb-4 text-sm leading-relaxed text-gray-700">
+              Open Viator with this tour under <span className="font-medium">You selected</span>, plus hundreds of
+              other experiences in {destinationName} - same link as availability &amp; booking.
+            </p>
+            <a
+              href={bookUrl}
+              target="_blank"
+              rel="sponsored noopener noreferrer"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#00AA6C] px-4 py-3 text-center text-sm font-semibold leading-snug text-white transition-colors hover:bg-[#008855]"
+            >
+              <span>View similar tours on Viator</span>
+              <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Similar tours */}
       {relatedTours.length > 0 && (
         <section className="py-6 lg:py-8">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
             <h2 className="font-poppins font-bold text-lg text-gray-900 mb-1">Similar tours</h2>
+            <p className="text-gray-500 text-sm mb-1">Handpicked from the same category in {destinationName} — easy alternatives if you want to compare.</p>
             <p className="text-gray-500 text-sm mb-4">More {categoryTitle.toLowerCase()} in {destinationName}.</p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {relatedTours.slice(0, 6).map((t) => {
@@ -483,11 +763,40 @@ export default function ExploreTourDetailClient({
         </section>
       )}
 
+      {/* Compare reviews / final price CTA */}
+      <section className="py-4 lg:py-6">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <ExploreBetweenSectionsCta
+            bookUrl={bookUrl}
+            headline="Compare reviews & final price on Viator"
+          />
+        </div>
+      </section>
+
+      {/* Post–similar-tours CTA (captures scrollers who browsed alternatives) */}
+      <section className="py-6 lg:py-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <div className="rounded-2xl border-2 border-[#00AA6C]/25 bg-[#f2fbf7] p-5 sm:p-6 text-center shadow-sm">
+            <h2 className="font-poppins font-bold text-lg text-gray-900">Still interested in this experience?</h2>
+            <p className="mt-1 text-sm text-gray-600">Lock in dates and see live availability on Viator.</p>
+            <a
+              href={bookUrl}
+              target="_blank"
+              rel="sponsored noopener noreferrer"
+              className="mt-4 inline-flex max-w-full items-center justify-center gap-2 rounded-xl bg-[#00AA6C] px-4 py-3 text-center text-xs font-semibold leading-snug text-white transition-colors hover:bg-[#008855] sm:px-6 sm:text-sm"
+            >
+              <span className="min-w-0">{VIATOR_CTA_LABEL}</span>
+              <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ */}
       {faqs.length > 0 && (
         <section className="py-6 lg:py-8">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-            <div className="rounded-xl bg-white border border-gray-100 p-6 lg:p-8">
+            <div className="rounded-xl bg-gray-50 border border-gray-200 p-6 lg:p-8">
             <h2 id="faq-heading" className="font-poppins font-bold text-lg text-gray-900 mb-4 flex items-center gap-2">
               <HelpCircle className="w-5 h-5 text-primary shrink-0" />
               Frequently asked questions
@@ -496,6 +805,16 @@ export default function ExploreTourDetailClient({
               {faqs.map((faq, i) => (
                 <details
                   key={i}
+                  open={openFaqIndices.has(i)}
+                  onToggle={(e) => {
+                    const isOpen = e.currentTarget.open;
+                    setOpenFaqIndices((prev) => {
+                      const next = new Set(prev);
+                      if (isOpen) next.add(i);
+                      else next.delete(i);
+                      return next;
+                    });
+                  }}
                   className="group rounded-lg border border-gray-200 overflow-hidden hover:border-gray-300 transition-colors"
                 >
                   <summary className="px-5 py-4 font-semibold text-gray-900 cursor-pointer list-none flex justify-between items-center gap-4 select-none outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-inset rounded-xl">
@@ -521,19 +840,26 @@ export default function ExploreTourDetailClient({
           <a
             href={bookUrl}
             target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white bg-primary hover:opacity-95 transition-opacity"
+            rel="sponsored noopener noreferrer"
+            className="inline-flex max-w-full items-center justify-center gap-2 rounded-xl bg-[#00AA6C] px-4 py-3.5 text-center text-xs font-semibold leading-snug text-white transition-colors hover:bg-[#008855] sm:px-6 sm:text-sm"
           >
-            View options &amp; book
-            <ExternalLink className="w-4 h-4" />
+            <span className="min-w-0">{VIATOR_CTA_LABEL}</span>
+            <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
           </a>
-          <p className="mt-6 text-sm text-gray-500">
-            <Link href={categoryHref} className="text-gray-600 hover:text-primary font-medium">← {categoryTitle}</Link>
-            {' · '}
-            <Link href={destinationHref} className="text-gray-600 hover:text-primary font-medium">{destinationName}</Link>
-            {' · '}
-            <Link href={toursInDestinationHref} className="text-gray-600 hover:text-primary font-medium">All tours</Link>
-          </p>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm text-gray-500">
+            <span className="font-medium text-gray-500">Explore:</span>
+            <Link href={categoryHref} className="font-medium text-gray-700 hover:text-primary transition-colors">
+              {categoryTitle}
+            </Link>
+            <span aria-hidden className="text-gray-300">|</span>
+            <Link href={destinationHref} className="font-medium text-gray-700 hover:text-primary transition-colors">
+              {destinationName}
+            </Link>
+            <span aria-hidden className="text-gray-300">|</span>
+            <Link href={toursInDestinationHref} className="font-medium text-gray-700 hover:text-primary transition-colors">
+              All tours
+            </Link>
+          </div>
         </div>
       </section>
     </article>

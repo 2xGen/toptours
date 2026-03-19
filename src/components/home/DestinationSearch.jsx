@@ -116,14 +116,11 @@ const DestinationSearch = () => {
   const hasValidDestination = filteredDestinations.length > 0;
   const showSuggestions = isInputFocused && filteredDestinations.length > 0;
 
-  const handleDestinationSelect = (destination, tab = null) => {
+  const handleDestinationSelect = (destination) => {
     if (destination.isViator) {
       router.push(`/destinations?search=${encodeURIComponent(destination.fullName)}`);
     } else {
-      const path = tab === 'tours' 
-        ? `/destinations/${destination.id}/tours`
-        : `/destinations/${destination.id}`;
-      router.push(path);
+      router.push(`/destinations/${destination.id}`);
     }
     setQuery('');
     setIsInputFocused(false);
@@ -211,7 +208,7 @@ const DestinationSearch = () => {
                           event.preventDefault();
                           handleDestinationSelect(destination);
                         }}
-                        className="flex items-center gap-3 text-left flex-1"
+                        className="flex items-center gap-3 text-left w-full"
                       >
                         <div className="rounded-full bg-purple-50 text-purple-600 w-9 h-9 flex items-center justify-center">
                           <MapPin className="h-4 w-4" />
@@ -225,17 +222,6 @@ const DestinationSearch = () => {
                           )}
                         </div>
                       </button>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onMouseDown={(event) => {
-                          event.preventDefault();
-                          handleDestinationSelect(destination, 'tours');
-                        }}
-                        className="text-purple-600 hover:text-purple-800"
-                      >
-                        View tours
-                      </Button>
                     </div>
                   ))}
                 </div>

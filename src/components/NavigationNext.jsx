@@ -12,24 +12,23 @@ import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 const navItems = [
   { name: 'Home', path: '/' },
   {
-    name: 'Explore',
-    path: '/explore/new-york-city',
+    name: 'Our Picks',
+    path: '/explore/aruba',
     children: [
-      { name: 'New York City', path: '/explore/new-york-city' },
       { name: 'Aruba', path: '/explore/aruba' },
+      { name: 'Curaçao', path: '/explore/curacao' },
+      { name: 'New York City', path: '/explore/new-york-city' },
       { name: 'Prague', path: '/explore/prague' },
       { name: 'Tokyo', path: '/explore/tokyo' },
-      { name: 'Curaçao', path: '/explore/curacao' },
     ],
   },
   { name: 'Destinations', path: '/destinations' },
-  { name: 'Tours', path: '/tours' },
 ];
 
 const NavigationNext = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [exploreOpen, setExploreOpen] = useState(false);
-  const [exploreHover, setExploreHover] = useState(false);
+  const [picksOpen, setPicksOpen] = useState(false);
+  const [picksHover, setPicksHover] = useState(false);
   const [user, setUser] = useState(null);
   const [displayName, setDisplayName] = useState('');
   const [authLoading, setAuthLoading] = useState(true);
@@ -104,7 +103,7 @@ const NavigationNext = () => {
   // Close menu when pathname changes (navigation occurred)
   useEffect(() => {
     setIsOpen(false);
-    setExploreOpen(false);
+    setPicksOpen(false);
   }, [pathname]);
 
   // Close menu when clicking outside
@@ -140,27 +139,27 @@ const NavigationNext = () => {
               const isActive = item.path === '/'
                 ? pathname === '/'
                 : pathname.startsWith(item.path);
-              const isExploreActive = hasDropdown && item.children.some((c) => pathname.startsWith(c.path));
+              const isPicksActive = hasDropdown && item.children.some((c) => pathname.startsWith(c.path));
 
               if (hasDropdown) {
                 return (
                   <div
                     key={item.name}
                     className="relative"
-                    onMouseEnter={() => setExploreHover(true)}
-                    onMouseLeave={() => setExploreHover(false)}
+                    onMouseEnter={() => setPicksHover(true)}
+                    onMouseLeave={() => setPicksHover(false)}
                   >
                     <Link
                       href={item.path}
                       prefetch={true}
                       className={`flex items-center gap-0.5 text-white hover:text-blue-200 transition-colors ${
-                        isExploreActive ? 'font-semibold text-blue-100' : ''
+                        isPicksActive ? 'font-semibold text-blue-100' : ''
                       }`}
                     >
                       {item.name}
-                      <ChevronDown className={`h-4 w-4 transition-transform ${exploreHover ? 'rotate-180' : ''}`} />
+                      <ChevronDown className={`h-4 w-4 transition-transform ${picksHover ? 'rotate-180' : ''}`} />
                     </Link>
-                    {exploreHover && (
+                    {picksHover && (
                       <div className="absolute top-full left-0 pt-1">
                         <div className="bg-slate-900/95 backdrop-blur-lg rounded-lg shadow-xl border border-white/10 min-w-[180px] py-1">
                           {item.children.map((child) => (
@@ -248,23 +247,23 @@ const NavigationNext = () => {
               const isActive = item.path === '/'
                 ? pathname === '/'
                 : pathname.startsWith(item.path);
-              const isExploreExpanded = hasDropdown && exploreOpen;
-              const isExploreActive = hasDropdown && item.children.some((c) => pathname.startsWith(c.path));
+              const isPicksExpanded = hasDropdown && picksOpen;
+              const isPicksActive = hasDropdown && item.children.some((c) => pathname.startsWith(c.path));
 
               if (hasDropdown) {
                 return (
                   <div key={item.name} className="py-1">
                     <button
                       type="button"
-                      onClick={() => setExploreOpen(!exploreOpen)}
+                      onClick={() => setPicksOpen(!picksOpen)}
                       className={`flex items-center justify-between w-full py-2 text-left text-white hover:text-yellow-300 transition-colors duration-200 ${
-                        isExploreActive ? 'text-yellow-300 font-semibold' : ''
+                        isPicksActive ? 'text-yellow-300 font-semibold' : ''
                       }`}
                     >
                       {item.name}
-                      <ChevronDown className={`h-4 w-4 transition-transform ${isExploreExpanded ? 'rotate-180' : ''}`} />
+                      <ChevronDown className={`h-4 w-4 transition-transform ${isPicksExpanded ? 'rotate-180' : ''}`} />
                     </button>
-                    {isExploreExpanded && (
+                    {isPicksExpanded && (
                       <div className="pl-3 pb-1">
                         {item.children.map((child) => (
                           <Link
@@ -274,7 +273,7 @@ const NavigationNext = () => {
                             className={`block py-2 text-white/90 hover:text-yellow-300 transition-colors ${
                               pathname.startsWith(child.path) ? 'text-yellow-300 font-semibold' : ''
                             }`}
-                            onClick={() => { setIsOpen(false); setExploreOpen(false); }}
+                            onClick={() => { setIsOpen(false); setPicksOpen(false); }}
                           >
                             {child.name}
                           </Link>

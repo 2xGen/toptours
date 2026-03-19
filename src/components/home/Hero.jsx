@@ -144,14 +144,11 @@ const Hero = ({ onOpenOnboardingModal }) => {
   const hasValidDestination = filteredDestinations.length > 0;
   const showSuggestions = isInputFocused && filteredDestinations.length > 0;
 
-  const handleDestinationSelect = (destination, tab = null) => {
+  const handleDestinationSelect = (destination) => {
     if (destination.isViator) {
       router.push(`/destinations?search=${encodeURIComponent(destination.fullName)}`);
     } else {
-      const path = tab === 'tours' 
-        ? `/destinations/${destination.id}/tours`
-        : `/destinations/${destination.id}`;
-      router.push(path);
+      router.push(`/destinations/${destination.id}`);
     }
     setQuery('');
     setIsInputFocused(false);
@@ -251,7 +248,7 @@ const Hero = ({ onOpenOnboardingModal }) => {
                             event.preventDefault();
                             handleDestinationSelect(destination);
                           }}
-                          className="flex items-center gap-3 text-left flex-1"
+                          className="flex items-center gap-3 text-left w-full"
                         >
                           <div className="rounded-full bg-purple-100 text-purple-600 w-10 h-10 flex items-center justify-center">
                             <MapPin className="h-5 w-5" />
@@ -265,17 +262,6 @@ const Hero = ({ onOpenOnboardingModal }) => {
                             )}
                           </div>
                         </button>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onMouseDown={(event) => {
-                            event.preventDefault();
-                            handleDestinationSelect(destination, 'tours');
-                          }}
-                          className="text-purple-600 hover:text-purple-800"
-                        >
-                          Tours
-                        </Button>
                       </div>
                     ))}
                   </div>

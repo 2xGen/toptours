@@ -269,9 +269,8 @@ export async function generateMetadata({ params }) {
       };
     }
     
-    // Same as page: tag-based placeholder guides (e.g. spring-break, dsa-non-compliant)
-    // Prefer cached tag guide content first (tag traits lookup may be incomplete for some slugs).
-    // Only fall back to placeholder generation when cache is missing.
+    // Same as page: tag-based guides — real cache vs placeholder ("Generate with AI" shell).
+    // SEO: noindex placeholders until tag_guide_content has generated unique body copy (otherwise thin / doorway-style).
     let isPlaceholderInMetadata = false;
     if (!guideData && destination && categorySlug !== 'airport-transfers') {
       const normalizedDestId = normalizeSlug(destinationId);
@@ -301,7 +300,7 @@ export async function generateMetadata({ params }) {
       }
     }
     
-    // Only noindex when page would 404 (no content to show), or when placeholder (page 404s for SEO)
+    // noindex: true 404s, and tag placeholders with no AI-generated content yet (users still see the page; Google should wait).
     if (!destination || !guideData || isPlaceholderInMetadata) {
       return {
         title: 'Guide Not Found',

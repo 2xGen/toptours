@@ -1,12 +1,11 @@
 import MatchYourStyleClient from './MatchYourStyleClient';
-
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://toptours.ai';
+import { absoluteUrl } from '@/lib/siteUrl';
 
 export async function generateMetadata() {
-  const canonical = `${baseUrl}/match-your-style`;
+  const canonical = absoluteUrl('/match-your-style');
   const title = 'Get Tour Recommendations - AI or Personal Match | TopTours.ai';
   const description = 'Get personalized tour recommendations: instant AI match or free personal picks within 24 hours from our experts across 300k+ tours in 3,500 destinations.';
-  const ogImage = 'https://toptours.ai/OG%20Images/TopTours%20Destinations.jpg';
+  const ogImage = absoluteUrl('/OG%20Images/TopTours%20Destinations.jpg');
   const ogTitle = 'Get Tour Recommendations – Free AI or Expert Picks in 24h | TopTours.ai';
 
   return {
@@ -14,7 +13,7 @@ export async function generateMetadata() {
     description,
     keywords: 'tour recommendations, personalized tours, AI tour match, personal travel concierge, free tour picks, hand-picked tours, travel recommendations, TopTours',
     alternates: {
-      canonical: '/match-your-style',
+      canonical,
     },
     openGraph: {
       title: ogTitle,

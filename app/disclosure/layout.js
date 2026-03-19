@@ -1,5 +1,10 @@
+import { absoluteUrl } from '@/lib/siteUrl';
+
 // Build-time static: served from CDN, no serverless function on request (near-zero compute).
 export const dynamic = 'force-static';
+
+const pageUrl = absoluteUrl('/disclosure');
+const defaultOg = absoluteUrl('/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg');
 
 export const metadata = {
   title: 'Affiliate Disclosure | TopTours.ai',
@@ -8,11 +13,11 @@ export const metadata = {
   openGraph: {
     title: 'Affiliate Disclosure | TopTours.ai',
     description: 'Learn how TopTours.ai operates and how we\'re compensated through affiliate partnerships. Full transparency about our business model.',
-    url: 'https://toptours.ai/disclosure',
+    url: pageUrl,
     siteName: 'TopTours.ai',
     images: [
       {
-        url: 'https://toptours.ai/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg',
+        url: defaultOg,
         width: 1200,
         height: 630,
         alt: 'TopTours.ai Affiliate Disclosure',
@@ -25,10 +30,10 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Affiliate Disclosure | TopTours.ai',
     description: 'Full transparency about how TopTours.ai operates and affiliate partnerships.',
-    images: ['https://toptours.ai/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg'],
+    images: [defaultOg],
   },
   alternates: {
-    canonical: 'https://toptours.ai/disclosure',
+    canonical: pageUrl,
   },
   robots: {
     index: true,

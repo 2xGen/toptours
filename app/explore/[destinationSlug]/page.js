@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getV3LandingData, getV3ViatorProductSummaries } from '@/lib/v3LandingData';
+import { getV3LandingAllToursForDestination, getV3LandingData, getV3ViatorProductSummaries } from '@/lib/v3LandingData';
 import { fetchProductsBulk } from '@/lib/viatorBulk';
 import ExploreLandingClient from './ExploreLandingClient';
 import NavigationNext from '@/components/NavigationNext';
@@ -39,6 +39,9 @@ export async function generateMetadata({ params }) {
 export default async function ExploreDestinationPage({ params }) {
   const { destinationSlug } = await params;
   let { destination, topPicks, categories } = await getV3LandingData(destinationSlug);
+  const toursData = await getV3LandingAllToursForDestination(destinationSlug);
+  const tours = toursData?.tours ?? [];
+  const categoriesForFilter = toursData?.categories?.length ? toursData.categories : categories;
 
   if (!destination) notFound();
 
@@ -92,7 +95,8 @@ export default async function ExploreDestinationPage({ params }) {
           destination={destination}
           destinationSlug={destinationSlug}
           topPicks={topPicks}
-          categories={categories}
+          categories={categoriesForFilter}
+          tours={tours}
         />
       </main>
       <FooterNext />

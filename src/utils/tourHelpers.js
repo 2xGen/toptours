@@ -11,6 +11,13 @@ const VIATOR_AFFILIATE = {
   api_version: '2.0',
 };
 
+/** Same partner IDs as API links, but for plain marketing URLs (destination / things-to-do pages). */
+const VIATOR_LINK_AFFILIATE = {
+  mcid: '42383',
+  pid: 'P00276441',
+  medium: 'link',
+};
+
 /**
  * Normalize Viator host so links work reliably (avoid shop.live.rc.viator.com).
  * @param {string} url
@@ -49,6 +56,83 @@ export function withViatorAffiliateParams(url) {
     const params = new URLSearchParams(VIATOR_AFFILIATE).toString();
     return `${trimmed}${joiner}${params}`;
   }
+}
+
+/**
+ * Append affiliate params for standard link placements (destination hub, outbound marketing).
+ * Uses medium=link and does not add api_version (matches typical Viator partner links).
+ * @param {string} url
+ * @returns {string}
+ */
+export function withViatorAffiliateLinkParams(url) {
+  if (!url || typeof url !== 'string') return '';
+  const trimmed = normalizeViatorHost(url);
+  if (!trimmed) return '';
+  if (!trimmed.includes('viator.com')) return '';
+  try {
+    const u = new URL(trimmed);
+    for (const [k, v] of Object.entries(VIATOR_LINK_AFFILIATE)) {
+      if (!u.searchParams.has(k)) u.searchParams.set(k, v);
+    }
+    return u.toString();
+  } catch {
+    const joiner = trimmed.includes('?') ? '&' : '?';
+    const params = new URLSearchParams(VIATOR_LINK_AFFILIATE).toString();
+    return `${trimmed}${joiner}${params}`;
+  }
+}
+
+/**
+ * Viator "things to do" URL path segment from a display name (e.g. "Agra" → "Agra", "New York" → "New-York").
+ * Strips diacritics so "Curaçao" → "Curacao"-style segments match Viator where applicable.
+ * @param {string} name
+ * @returns {string}
+ */
+export function viatorDestinationPathSegmentFromName(name) {
+  if (!name || typeof name !== 'string') return '';
+  const ascii = name
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[.'’]/g, '')
+    .trim();
+  if (!ascii) return '';
+  return ascii
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+    .join('-');
+}
+
+/**
+ * Extract numeric Viator destination ID for /d{ID}-ttd URLs (handles "4547", "d4547", "828", "d828").
+ * @param {string|number} raw
+ * @returns {string} numeric id or empty string
+ */
+export function normalizeViatorDestinationNumericId(raw) {
+  if (raw == null || raw === '') return '';
+  const s = String(raw).trim();
+  const m = s.match(/^d?(\d+)$/i);
+  return m ? m[1] : '';
+}
+
+/**
+ * Build tracked Viator destination "things to do" URL: https://www.viator.com/{City}/d{ID}-ttd
+ * @param {object} destination
+ * @param {string|number} [destination.destinationId]
+ * @param {string|number} [destination.viatorDestinationId]
+ * @param {string} [destination.fullName]
+ * @param {string} [destination.name]
+ * @returns {string} full URL with pid/mcid/medium=link, or '' if we cannot build safely
+ */
+export function getViatorDestinationHubUrl(destination) {
+  if (!destination || typeof destination !== 'object') return '';
+  const idRaw = destination.destinationId ?? destination.viatorDestinationId;
+  const numeric = normalizeViatorDestinationNumericId(idRaw);
+  if (!numeric) return '';
+  const segment = viatorDestinationPathSegmentFromName(destination.fullName || destination.name || '');
+  if (!segment) return '';
+  const base = `https://www.viator.com/${segment}/d${numeric}-ttd`;
+  return withViatorAffiliateLinkParams(base);
 }
 
 /**

@@ -9,6 +9,8 @@ import { getBabyEquipmentRentalsByDestination } from '@/lib/babyEquipmentRentals
 import { getDestinationFeatures } from '@/lib/destinationFeatures';
 import { getViatorDestinationBySlug } from '@/lib/supabaseCache';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
+import { slugToViatorId as slugToViatorIdMap } from '@/data/viatorDestinationMap';
+import { dedupeCategoryGuides } from '@/lib/guidePageGrouping';
 import GuidesListingClient from './GuidesListingClient';
 
 function generateSlug(name) {
@@ -274,6 +276,26 @@ export default async function GuidesListingPage({ params }) {
     countryDestinations = all.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
   }
 
+  const guidesForClient = dedupeCategoryGuides(allGuides);
+
+  /** Viator destination id for loading tours on the guides page (category highlights). */
+  let viatorDestinationId = null;
+  try {
+    const curated = getDestinationById(destinationId);
+    if (curated?.destinationId) {
+      viatorDestinationId = String(curated.destinationId);
+    } else if (slugToViatorIdMap[destinationId]) {
+      viatorDestinationId = String(slugToViatorIdMap[destinationId]);
+    } else if (destination?.destinationId) {
+      viatorDestinationId = String(destination.destinationId);
+    } else {
+      const dbDest = await getViatorDestinationBySlug(destinationId);
+      if (dbDest?.id) viatorDestinationId = String(dbDest.id);
+    }
+  } catch {
+    viatorDestinationId = null;
+  }
+
   const resolvedImageUrl = resolveDestinationImageUrl(destinationId, destination);
   const destinationName = destination.fullName || destination.name;
   const pageUrl = `https://toptours.ai/destinations/${destinationId}/guides`;
@@ -317,8 +339,8 @@ export default async function GuidesListingPage({ params }) {
       '@id': guidesListId,
       name: `Travel Guides for ${destinationName}`,
       description: `Complete collection of travel guides for ${destinationName}. Tours, activities, restaurants, and local tips.`,
-      numberOfItems: allGuides.length,
-      itemListElement: allGuides.map((guide, index) => {
+      numberOfItems: guidesForClient.length,
+      itemListElement: guidesForClient.map((guide, index) => {
         const articleUrl = `https://toptours.ai/destinations/${destinationId}/guides/${guide.category_slug}`;
         const img = guide.hero_image || resolvedImageUrl;
         return {
@@ -399,7 +421,8 @@ export default async function GuidesListingPage({ params }) {
           heroDescription: destination.heroDescription || null,
           seo: destination.seo || null,
         }}
-        guides={allGuides}
+        guides={guidesForClient}
+        viatorDestinationId={viatorDestinationId}
         relatedTravelGuides={relatedTravelGuides}
         hasBabyEquipmentRentals={hasBabyEquipmentRentals}
         destinationFeatures={features}

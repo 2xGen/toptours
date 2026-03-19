@@ -1,22 +1,21 @@
 import MatchYourStyleClient from '../MatchYourStyleClient';
-
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://toptours.ai';
+import { absoluteUrl } from '@/lib/siteUrl';
 
 export const dynamic = 'force-dynamic';
 
 export async function generateMetadata() {
-  const canonical = `${baseUrl}/match-your-style/ai-match`;
+  const canonical = absoluteUrl('/match-your-style/ai-match');
   const title = 'AI Match - Instant Tour Recommendations | TopTours.ai';
   const ogTitle = 'AI Match – Instant Tour & Restaurant Picks | TopTours.ai';
   const description = 'Get personalized tour and restaurant recommendations right now. Enter your destination and preferences—we’ll show you the best matches with 0–100% scores. Free.';
-  const ogImage = 'https://toptours.ai/OG%20Images/TopTours%20Destinations.jpg';
+  const ogImage = absoluteUrl('/OG%20Images/TopTours%20Destinations.jpg');
 
   return {
     title,
     description,
     keywords: 'AI tour match, instant tour recommendations, personalized tours, tour match score, travel preferences, TopTours AI',
     alternates: {
-      canonical: '/match-your-style/ai-match',
+      canonical,
     },
     openGraph: {
       title: ogTitle,

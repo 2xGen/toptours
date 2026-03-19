@@ -5,7 +5,7 @@ import FooterNext from '@/components/FooterNext';
 import { useToast } from '@/components/ui/use-toast';
 import { motion } from 'framer-motion';
 import { 
-  Star, ExternalLink, Loader2, Brain, MapPin, Calendar, Clock, Car, Search, BookOpen, ArrowRight, X, UtensilsCrossed, DollarSign, ChevronLeft, ChevronRight, ChevronDown, Info, Share2, Heart, Crown, Building2, Sparkles, TrendingUp, Baby, Plane, Waves
+  Star, ExternalLink, Loader2, Brain, MapPin, Calendar, Clock, Car, Search, BookOpen, ArrowRight, X, UtensilsCrossed, DollarSign, ChevronLeft, ChevronRight, ChevronDown, Info, Share2, Heart, Crown, Building2, Sparkles, Baby, Plane, Waves, ShieldCheck
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { Input } from '@/components/ui/input';
@@ -17,7 +17,7 @@ import PrefetchOnHoverLink from '@/components/PrefetchOnHoverLink';
 import { getRelatedDestinations, getDestinationsByIds, getDestinationsByCountry } from '../../../src/data/destinationsData.js';
 import { getGuidesByCategory, getGuidesByIds, getGuidesByCountry } from '../../../src/data/travelGuidesData.js';
 // Tours and destination data are passed as props from the server component
-import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
+import { getTourUrl, getTourProductId, getViatorDestinationHubUrl } from '@/utils/tourHelpers';
 import { groupToursByCategory } from '@/lib/tourCategorization';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
@@ -33,6 +33,7 @@ import {
 import { calculateEnhancedMatchScore } from '@/lib/tourMatchingEnhanced';
 import { resolveUserPreferences } from '@/lib/preferenceResolution';
 import { useBookmarks } from '@/hooks/useBookmarks';
+import { dedupeCategoryGuides, groupGuidesIntoSections } from '@/lib/guidePageGrouping';
 // OPTIMIZED: Lazy load modals - only load when opened
 const ShareModal = lazy(() => import('@/components/sharing/ShareModal'));
 const SmartTourFinder = lazy(() => import('@/components/home/SmartTourFinder'));
@@ -261,6 +262,88 @@ export default function DestinationDetailClient({ destination, promotionScores =
     return [];
   }, [safePromotedTours, tours.all]);
 
+  // Above-the-fold top picks (dedupe longer grids below when source is the same)
+  const topPicksUsedPromoted = promotedToursToDisplay.length > 0;
+  const topPicksTours = useMemo(() => {
+    if (promotedToursToDisplay.length > 0) return promotedToursToDisplay.slice(0, 3);
+    if (safeTrendingTours.length > 0) return safeTrendingTours.slice(0, 3);
+    if (tours.all?.length > 0) return tours.all.slice(0, 3);
+    return [];
+  }, [promotedToursToDisplay, safeTrendingTours, tours.all]);
+
+  const promotedToursForSection = useMemo(() => {
+    if (!promotedToursToDisplay.length) return [];
+    if (topPicksUsedPromoted) return promotedToursToDisplay.slice(3);
+    return promotedToursToDisplay;
+  }, [promotedToursToDisplay, topPicksUsedPromoted]);
+
+  /** Dedupe main hub grid vs above-the-fold top picks (same product IDs). */
+  const topPickProductIdSet = useMemo(() => {
+    const s = new Set();
+    for (const t of topPicksTours) {
+      const id = getTourProductId(t) || t.product_id || t.productId || t.productCode;
+      if (id) s.add(String(id));
+    }
+    return s;
+  }, [topPicksTours]);
+
+  const toursForHubBookSection = useMemo(() => {
+    if (!tours.all?.length) return [];
+    const out = [];
+    for (const tour of tours.all) {
+      const tourId = getTourProductId(tour);
+      const idStr = tourId ? String(tourId) : '';
+      if (idStr && topPickProductIdSet.has(idStr)) continue;
+      out.push(tour);
+      if (out.length >= 12) break;
+    }
+    return out;
+  }, [tours.all, topPickProductIdSet]);
+
+  /** Viator “things to do” for this destination (tracked partner link). */
+  const viatorDestinationHubUrl = useMemo(
+    () => getViatorDestinationHubUrl(safeDestination),
+    [
+      safeDestination.destinationId,
+      safeDestination.viatorDestinationId,
+      safeDestination.fullName,
+      safeDestination.name,
+    ]
+  );
+
+  /** Diverse guide topic chips for hub (one per section first, then fill). */
+  const topGuideTopicCards = useMemo(() => {
+    const deduped = dedupeCategoryGuides(categoryGuidesProp || []);
+    if (deduped.length === 0) return [];
+    const sections = groupGuidesIntoSections(deduped);
+    const out = [];
+    const seen = new Set();
+    let round = 0;
+    while (out.length < 8 && round < 40) {
+      let addedThisRound = false;
+      for (const sec of sections) {
+        const g = sec.guides[round];
+        if (!g) continue;
+        const slug = g.category_slug || '';
+        if (!slug || seen.has(slug)) continue;
+        seen.add(slug);
+        out.push(g);
+        addedThisRound = true;
+        if (out.length >= 8) break;
+      }
+      if (!addedThisRound) break;
+      round += 1;
+    }
+    for (const g of deduped) {
+      if (out.length >= 8) break;
+      const slug = g.category_slug || '';
+      if (!slug || seen.has(slug)) continue;
+      seen.add(slug);
+      out.push(g);
+    }
+    return out;
+  }, [categoryGuidesProp]);
+
   // Popular Pages: always show 6 cards. Main cards (Tours, Travel Guides, Car Rentals, Airport Transfers, Baby Equipment); fill remaining with category-guide substitutes.
   const popularPageCards = useMemo(() => {
     const destName = safeDestination.fullName || safeDestination.name;
@@ -276,7 +359,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
       title: 'Tours & Activities',
       description: `Discover ${totalToursCount ? `${totalToursCount.toLocaleString()}+` : '1,900+'} top-rated tours and activities in ${destName}. From cultural experiences to adventure tours, find the perfect activity for your trip.`,
       badge: totalToursCount ? `${totalToursCount.toLocaleString()}+ tours` : null,
-      ctaText: 'Explore Tours',
+      ctaText: 'Browse tours & prices',
       ctaColorClass: 'text-blue-600',
     });
 
@@ -848,8 +931,8 @@ export default function DestinationDetailClient({ destination, promotionScores =
           return reviewsB - reviewsA;
         });
         
-        // Store as a flat array, take top 12
-        setTours({ all: sortedTours.slice(0, 12) });
+        // Hub: fetch extra so "More tours" grid stays full after excluding top picks (no duplicate cards)
+        setTours({ all: sortedTours.slice(0, 24) });
       } else {
         setTours({ all: [] });
         setTotalToursCount(0);
@@ -938,7 +1021,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
     <>
       <NavigationNext onOpenModal={handleOpenModal} />
       
-      <div className="min-h-screen pt-16 overflow-x-hidden" suppressHydrationWarning>
+      <div className="min-h-screen pt-16 pb-24 sm:pb-0 overflow-x-hidden" suppressHydrationWarning>
         {/* Hero Section */}
         <section className="relative pt-4 pb-12 sm:pt-6 sm:pb-16 md:pt-8 md:pb-20 overflow-hidden ocean-gradient">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -973,8 +1056,14 @@ export default function DestinationDetailClient({ destination, promotionScores =
                       <Share2 className="w-5 h-5 sm:w-6 sm:h-6" />
                     </Button>
                   </div>
-                  <p className="text-lg sm:text-xl text-white/90 mb-6 md:mb-8">
+                  <p className="text-lg sm:text-xl text-white/90 mb-4 md:mb-5">
                     {safeDestination.heroDescription}
+                  </p>
+                  <p className="text-sm sm:text-base text-white/85 mb-6 md:mb-8 flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <span className="inline-flex items-center gap-1.5">
+                      <ShieldCheck className="w-4 h-4 text-emerald-300 shrink-0" aria-hidden />
+                      Compare many operators in one place &amp; book in minutes
+                    </span>
                   </p>
                   
                   {/* Quick Stats Bar - Hub Style */}
@@ -1005,26 +1094,39 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   <div className="flex flex-wrap gap-3 mb-6">
                     <Button
                       asChild
-                      className="sunset-gradient text-white font-semibold px-6 py-3 hover:scale-105 transition-transform duration-200"
+                      className="sunset-gradient text-white font-semibold px-6 py-3 hover:scale-105 transition-transform duration-200 shadow-lg"
                     >
                       <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/tours`}>
-                        Explore Tours
+                        Browse tours &amp; prices
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </PrefetchOnHoverLink>
                     </Button>
-                    {categoryGuidesProp.length > 0 && (
+                    {viatorDestinationHubUrl ? (
                       <Button
                         asChild
                         variant="outline"
                         className="bg-white/10 text-white border-white/30 hover:bg-white/20 font-semibold px-6 py-3"
                       >
-                        <Link href={`/destinations/${safeDestination.id}/guides`}>
-                          Read Guides
-                          <BookOpen className="w-4 h-4 ml-2" />
-                        </Link>
+                        <a
+                          href={viatorDestinationHubUrl}
+                          target="_blank"
+                          rel="sponsored noopener noreferrer"
+                          className="inline-flex items-center gap-2"
+                        >
+                          Explore full catalog on Viator
+                          <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
+                        </a>
                       </Button>
-                    )}
+                    ) : null}
                   </div>
+                  {viatorDestinationHubUrl ? (
+                    <p className="mt-2 text-xs text-white/70">
+                      Partner: Viator — opens in a new tab.{' '}
+                      <Link href="/disclosure" className="underline decoration-white/40 hover:decoration-white">
+                        Affiliate disclosure
+                      </Link>
+                    </p>
+                  ) : null}
                 </motion.div>
                 
                 <motion.div
@@ -1033,14 +1135,25 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   transition={{ duration: 0.8, delay: 0.2 }}
                   className="relative"
                 >
-                  <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                  <PrefetchOnHoverLink
+                    href={`/destinations/${safeDestination.id}/tours`}
+                    className="block relative rounded-2xl overflow-hidden shadow-2xl ring-2 ring-white/20 hover:ring-white/40 transition-all group"
+                    aria-label={`Browse tours in ${safeDestination.fullName || safeDestination.name} — compare prices`}
+                  >
                     <img
                       src={safeDestination.imageUrl}
                       alt={safeDestination.fullName}
-                      className="w-full h-64 sm:h-80 object-cover"
+                      className="w-full h-64 sm:h-80 object-cover group-hover:scale-[1.02] transition-transform duration-300"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                  </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-2">
+                      <span className="text-white text-sm font-semibold drop-shadow-md">Compare tours on TopTours</span>
+                      <span className="inline-flex items-center text-white text-sm font-medium bg-white/20 backdrop-blur-sm rounded-full px-3 py-1 border border-white/30">
+                        Browse list
+                        <ArrowRight className="w-4 h-4 ml-1" />
+                      </span>
+                    </div>
+                  </PrefetchOnHoverLink>
                 </motion.div>
               </div>
             ) : (
@@ -1074,8 +1187,14 @@ export default function DestinationDetailClient({ destination, promotionScores =
                     <Share2 className="w-5 h-5 sm:w-6 sm:h-6" />
                   </Button>
                 </div>
-                <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+                <p className="text-lg sm:text-xl text-white/90 mb-4 max-w-3xl mx-auto">
                   {safeDestination.heroDescription}
+                </p>
+                <p className="text-sm sm:text-base text-white/85 mb-8 max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center">
+                  <span className="inline-flex items-center gap-1.5">
+                    <ShieldCheck className="w-4 h-4 text-emerald-300 shrink-0" aria-hidden />
+                    Compare many operators in one place &amp; book in minutes
+                  </span>
                 </p>
                 
                 {/* Quick Stats Bar - Hub Style */}
@@ -1106,26 +1225,39 @@ export default function DestinationDetailClient({ destination, promotionScores =
                 <div className="flex flex-wrap justify-center gap-3">
                   <Button
                     asChild
-                    className="sunset-gradient text-white font-semibold px-6 py-3 hover:scale-105 transition-transform duration-200"
+                    className="sunset-gradient text-white font-semibold px-6 py-3 hover:scale-105 transition-transform duration-200 shadow-lg"
                   >
                     <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/tours`}>
-                      Explore Tours
+                      Browse tours &amp; prices
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </PrefetchOnHoverLink>
                   </Button>
-                  {categoryGuidesProp.length > 0 && (
+                  {viatorDestinationHubUrl ? (
                     <Button
                       asChild
                       variant="outline"
                       className="bg-white/10 text-white border-white/30 hover:bg-white/20 font-semibold px-6 py-3"
                     >
-                      <Link href={`/destinations/${safeDestination.id}/guides`}>
-                        Read Guides
-                        <BookOpen className="w-4 h-4 ml-2" />
-                      </Link>
+                      <a
+                        href={viatorDestinationHubUrl}
+                        target="_blank"
+                        rel="sponsored noopener noreferrer"
+                        className="inline-flex items-center gap-2"
+                      >
+                        Explore full catalog on Viator
+                        <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
+                      </a>
                     </Button>
-                  )}
+                  ) : null}
                 </div>
+                {viatorDestinationHubUrl ? (
+                  <p className="mt-2 text-xs text-white/70 max-w-xl mx-auto">
+                    Partner: Viator — opens in a new tab.{' '}
+                    <Link href="/disclosure" className="underline decoration-white/40 hover:decoration-white">
+                      Affiliate disclosure
+                    </Link>
+                  </p>
+                ) : null}
               </motion.div>
             )}
           </div>
@@ -1146,11 +1278,11 @@ export default function DestinationDetailClient({ destination, promotionScores =
 
         {/* Sticky Navigation Hub - Quick Access */}
         <section className="sticky top-16 z-40 bg-white border-b shadow-sm">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <nav className="flex items-center gap-6 py-4 overflow-x-auto hide-scrollbar">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 py-3 sm:py-2">
+            <nav className="flex items-center gap-5 sm:gap-6 py-1 overflow-x-auto hide-scrollbar min-w-0 flex-1">
               <Link 
                 href={`/destinations/${safeDestination.id}/tours`}
-                className="flex items-center gap-2 whitespace-nowrap font-semibold text-gray-900 hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 pb-1"
+                className="flex items-center gap-2 whitespace-nowrap font-semibold text-blue-700 hover:text-blue-800 transition-colors border-b-2 border-blue-600 pb-1 shrink-0"
               >
                 <span>Tours</span>
                 <Badge variant="secondary" className="bg-blue-100 text-blue-700">
@@ -1198,11 +1330,131 @@ export default function DestinationDetailClient({ destination, promotionScores =
                 </Link>
               )}
             </nav>
+            <div className="flex items-center gap-2 shrink-0 sm:pl-2">
+              <Button
+                asChild
+                size="sm"
+                className="w-full sm:w-auto sunset-gradient text-white font-semibold shadow-md hover:scale-[1.02] transition-transform"
+              >
+                <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/tours`} className="inline-flex items-center justify-center gap-1.5">
+                  Browse tours
+                  <ArrowRight className="w-4 h-4 shrink-0" />
+                </PrefetchOnHoverLink>
+              </Button>
+            </div>
             </div>
           </section>
 
+        {/* Above-the-fold: top picks to book */}
+        {topPicksTours.length > 0 && (
+          <section id="top-picks" className="py-10 sm:py-12 bg-white border-b scroll-mt-24">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
+                <div>
+                  <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 font-poppins">
+                    Popular tours to start with
+                  </h2>
+                  <p className="text-gray-600 mt-1 text-sm sm:text-base max-w-xl">
+                    Highly rated picks in {safeDestination.fullName || safeDestination.name}. Open a tour for live price and availability.
+                  </p>
+                </div>
+                <Button asChild variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50 shrink-0 self-start sm:self-auto">
+                  <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/tours`}>
+                    Full list &amp; filters
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </PrefetchOnHoverLink>
+                </Button>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {topPicksTours.map((tour, index) => {
+                  const productId = getTourProductId(tour) || tour.product_id || tour.productId || tour.productCode;
+                  if (!productId) return null;
+                  const matchScore =
+                    matchScores[productId] ||
+                    matchScores[tour.productId] ||
+                    matchScores[tour.productCode] ||
+                    matchScores[tour.product_id] ||
+                    null;
+                  return (
+                    <motion.div
+                      key={productId || index}
+                      initial={{ opacity: 0, y: 16 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.35, delay: index * 0.06 }}
+                      viewport={{ once: true }}
+                    >
+                      <TourCard
+                        tour={tour}
+                        destination={safeDestination}
+                        matchScore={matchScore}
+                        user={user}
+                        userPreferences={userPreferences}
+                        onOpenPreferences={() => setShowPreferencesModal(true)}
+                        isFeatured={!topPicksUsedPromoted}
+                        premiumOperatorTourIds={[]}
+                        isPromoted={topPicksUsedPromoted}
+                        priority={index < 3}
+                        descriptionLineClampClass="line-clamp-2"
+                      />
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Compact guide topics — links to full guides index + categories */}
+        {topGuideTopicCards.length > 0 && (
+          <section
+            id="guide-topics"
+            className="py-6 bg-slate-50/90 border-y border-slate-200/80 scroll-mt-24"
+            aria-label="Popular travel guide topics"
+          >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-3">
+                <div>
+                  <h2 className="text-sm font-bold text-slate-700 uppercase tracking-wide">
+                    Popular guide topics
+                  </h2>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    Optional reading after you pick a tour
+                  </p>
+                </div>
+                <Link
+                  href={`/destinations/${safeDestination.id}/guides`}
+                  className="text-sm font-semibold text-blue-700 hover:text-blue-800 inline-flex items-center gap-1 shrink-0"
+                >
+                  All {categoryGuidesProp.length} guides
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+              <div className="flex gap-2 overflow-x-auto hide-scrollbar pb-1 -mx-1 px-1">
+                {topGuideTopicCards.map((guide) => {
+                  const slug = normalizeSlug(guide.category_slug || '');
+                  const href = slug
+                    ? `/destinations/${safeDestination.id}/guides/${slug}`
+                    : `/destinations/${safeDestination.id}/guides`;
+                  const label = guide.title || guide.category_name || 'Guide';
+                  return (
+                    <Link
+                      key={guide.category_slug || label}
+                      href={href}
+                      prefetch
+                      className="shrink-0 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-800 shadow-sm hover:border-indigo-300 hover:bg-indigo-50/90 hover:text-indigo-900 transition-colors max-w-[240px]"
+                    >
+                      <BookOpen className="w-4 h-4 text-indigo-600 shrink-0" aria-hidden />
+                      <span className="truncate">{label}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* Promoted Listings Section - Moved Higher for Hub Style */}
-        {(safePromotedTours && safePromotedTours.length > 0) && (
+        {(safePromotedTours && safePromotedTours.length > 0) && promotedToursForSection.length > 0 && (
           <section className="py-12 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center gap-2 mb-6">
@@ -1217,12 +1469,12 @@ export default function DestinationDetailClient({ destination, promotionScores =
               </p>
 
               {/* Promoted Tours */}
-              {promotedToursToDisplay.length > 0 && (
+              {promotedToursForSection.length > 0 && (
 
                 <div className="mb-8">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-4">Promoted Tours</h3>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-4">More promoted tours</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {promotedToursToDisplay.map((tour, index) => {
+                    {promotedToursForSection.map((tour, index) => {
                       const productId = getTourProductId(tour) || tour.product_id || tour.productId || tour.productCode;
                       if (!productId) return null;
                       
@@ -1264,149 +1516,190 @@ export default function DestinationDetailClient({ destination, promotionScores =
           </section>
         )}
 
-        {/* Featured Tours Section - Moved Higher for Hub Style */}
-        {(safeTrendingTours && safeTrendingTours.length > 0) && (
-          <section className="py-12 bg-gradient-to-br from-blue-50 to-purple-50">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex items-center justify-between mb-8">
-                <div>
-                  <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">Featured Tours</h2>
-                  <p className="text-gray-600">Top-rated experiences in {safeDestination.fullName || safeDestination.name}</p>
-                </div>
-                {totalToursCount !== null && totalToursCount > 0 && (
-                  <Button asChild variant="outline" className="hidden sm:flex">
-                    <Link href={`/destinations/${safeDestination.id}/tours`}>
-                      View All {totalToursCount.toLocaleString()}+ Tours
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Link>
-                  </Button>
-                )}
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {safeTrendingTours.slice(0, 6).map((tour, index) => {
-                  const productId = getTourProductId(tour) || tour.product_id || tour.productId || tour.productCode;
-                  if (!productId) return null;
-                  
-                  const matchScore = matchScores[productId] || 
-                                    matchScores[tour.productId] || 
-                                    matchScores[tour.productCode] || 
-                                    matchScores[tour.product_id] ||
-                                    null;
-                  
-                  return (
-                    <motion.div
-                      key={productId || index}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                    >
-                      <TourCard
-                        tour={tour}
-                        destination={safeDestination}
-                        matchScore={matchScore}
-                        user={user}
-                        userPreferences={userPreferences}
-                        onOpenPreferences={() => setShowPreferencesModal(true)}
-                        isFeatured={true}
-                        premiumOperatorTourIds={[]}
-                        isPromoted={false}
-                        priority={index < 3}
-                      />
-                    </motion.div>
-                  );
-                })}
-              </div>
-              
-              {totalToursCount !== null && totalToursCount > 0 && (
-                <div className="text-center mt-8">
-                  <Button asChild size="lg" className="sunset-gradient text-white">
-                    <Link href={`/destinations/${safeDestination.id}/tours`}>
-                      {totalToursCount !== null && totalToursCount > 0 
-                        ? `View All ${totalToursCount.toLocaleString()} Tours & Activities in ${safeDestination.fullName}`
-                        : `View All Tours & Activities in ${safeDestination.fullName || safeDestination.name}`
-                      }
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Link>
-                  </Button>
-                </div>
-              )}
-            </div>
-          </section>
-        )}
 
-        {/* Popular Pages Section - Quick Browser for Navigation Items */}
-        <section className="py-12 bg-gradient-to-br from-indigo-50 to-blue-50">
+        {/* Popular Tours & Activities */}
+        <section id="tours" className="py-12 sm:py-16 bg-gray-50 overflow-hidden scroll-mt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="mb-8"
+              className="text-center mb-8 sm:mb-12"
             >
-              <div className="mb-6">
-                <h2 className="text-3xl sm:text-4xl font-poppins font-bold text-gray-900 mb-2">
-                  Popular Pages for {safeDestination.fullName || safeDestination.name}
-                </h2>
-                <p className="text-gray-600">
-                  Quick access to all the essential resources for planning your {safeDestination.fullName || safeDestination.name} trip.
-                </p>
-              </div>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {popularPageCards.map((card, index) => {
-                  const Icon = card.icon;
-                  const isExternal = card.href.startsWith('#');
-                  return (
-                    <Link
-                      key={`${card.type}-${index}`}
-                      href={card.href}
-                      prefetch={!isExternal}
-                    >
-                      <Card className="h-full border bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
-                        <CardContent className="p-6 flex flex-col h-full">
-                          <div className="flex items-start gap-4 mb-4">
-                            <div className={`w-12 h-12 bg-gradient-to-br ${card.iconGradient} rounded-lg flex items-center justify-center flex-shrink-0`}>
-                              <Icon className="w-6 h-6 text-white" />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <h3 className="text-lg font-bold text-gray-900 mb-2">
-                                {card.title}
-                              </h3>
-                              <p className="text-sm text-gray-600 line-clamp-3">
-                                {card.description}
-                              </p>
-                              {card.badge && (
-                                <Badge
-                                  variant="secondary"
-                                  className={`mt-2 w-fit ${
-                                    card.type === 'tours' ? 'bg-blue-100 text-blue-700' :
-                                    card.type === 'travel-guides' ? 'bg-indigo-100 text-indigo-700' :
-                                    card.type === 'guide' ? 'bg-amber-100 text-amber-700' : 'bg-gray-100 text-gray-700'
-                                  }`}
-                                >
-                                  {card.badge}
-                                </Badge>
-                              )}
-                            </div>
-                          </div>
-                          <div className={`flex items-center ${card.ctaColorClass} text-sm font-medium mt-auto group`}>
-                            {card.ctaText}
-                            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </Link>
-                  );
-                })}
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4 sm:mb-6">
+                More tours in {safeDestination.fullName || safeDestination.name}
+              </h2>
+              <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto mb-4">
+                Tap a tour to see details, price, and availability — then book when you&apos;re ready.
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-3 text-sm text-gray-600">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-white border border-gray-200 px-3 py-1.5 shadow-sm">
+                  <Star className="w-4 h-4 text-amber-500 fill-amber-500" aria-hidden />
+                  Top-rated experiences
+                </span>
+                {totalToursCount != null && totalToursCount > 0 && (
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-white border border-gray-200 px-3 py-1.5 shadow-sm">
+                    <MapPin className="w-4 h-4 text-blue-600" aria-hidden />
+                    {totalToursCount.toLocaleString()}+ bookable tours
+                  </span>
+                )}
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-white border border-gray-200 px-3 py-1.5 shadow-sm">
+                  <ShieldCheck className="w-4 h-4 text-emerald-600" aria-hidden />
+                  Compare many operators in one place
+                </span>
               </div>
             </motion.div>
+
+            {loading.all ? (
+              <div className="text-center py-12">
+                <Loader2 className="w-8 h-8 animate-spin mx-auto text-blue-600 mb-4" />
+                <p className="text-gray-600">Loading tours...</p>
+              </div>
+            ) : tours.all && tours.all.length > 0 ? (
+              <>
+                {/* Match to Your Style - Toggle (off by default to save cost for crawlers) + Button */}
+                <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-medium text-gray-600 whitespace-nowrap">Show scores</span>
+                    <button
+                      role="switch"
+                      aria-checked={matchScoresEnabled}
+                      onClick={() => {
+                        const next = !matchScoresEnabled;
+                        setMatchScoresEnabled(next);
+                        try {
+                          localStorage.setItem('topTours_matchScoresEnabled', next ? '1' : '0');
+                        } catch {}
+                        if (!next) setMatchScores({});
+                      }}
+                      className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 ${matchScoresEnabled ? 'bg-purple-600' : 'bg-gray-200'}`}
+                    >
+                      <span
+                        className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition ${matchScoresEnabled ? 'translate-x-5' : 'translate-x-1'}`}
+                        style={{ top: '2px' }}
+                      />
+                    </button>
+                    <span className="text-xs text-gray-500">{matchScoresEnabled ? 'On' : 'Off'}</span>
+                  </div>
+                  <Button
+                    onClick={() => setShowPreferencesModal(true)}
+                    variant="outline"
+                    size="lg"
+                    className="border-purple-300 text-purple-700 hover:bg-purple-50 hover:border-purple-400 px-6"
+                  >
+                    <Sparkles className="w-5 h-5 mr-2" />
+                    Match to Your Style
+                    <Badge variant="secondary" className="ml-2 bg-purple-100 text-purple-700 text-xs">
+                      AI driven
+                    </Badge>
+                  </Button>
+                </div>
+
+                {/* Tour grid: excludes tours already shown in Popular picks (no duplicate cards) */}
+                {toursForHubBookSection.length > 0 ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {toursForHubBookSection.map((tour, index) => {
+                      const tourId = getTourProductId(tour);
+                      if (!tourId) return null;
+
+                      return (
+                        <TourCard
+                          key={`${tourId}-${index}`}
+                          tour={tour}
+                          destination={safeDestination}
+                          matchScore={matchScores[tourId]}
+                          user={user}
+                          userPreferences={userPreferences}
+                          onOpenPreferences={() => setShowPreferencesModal(true)}
+                          isFeatured={false}
+                          premiumOperatorTourIds={[]}
+                          descriptionLineClampClass="line-clamp-2"
+                        />
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <div className="rounded-xl border border-gray-200 bg-white p-8 text-center text-gray-600">
+                    <p className="mb-4">
+                      Browse the full catalog for every tour, filters, and live availability in {safeDestination.fullName || safeDestination.name}.
+                    </p>
+                    <Button asChild className="sunset-gradient text-white font-semibold">
+                      <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/tours`}>
+                        Open full tour list
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </PrefetchOnHoverLink>
+                    </Button>
+                  </div>
+                )}
+
+                {/* View All Button */}
+                <div className="text-center mt-8">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200 px-8 py-6 shadow-lg"
+                  >
+                    <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/tours`}>
+                      {totalToursCount !== null && totalToursCount > 0 
+                        ? `Browse all ${totalToursCount.toLocaleString()} tours & filters`
+                        : `Browse all tours & filters`
+                      }
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </PrefetchOnHoverLink>
+                  </Button>
+                  <p className="text-sm text-gray-500 mt-2">
+                    Filters for category, price, duration, and more on the full tours page
+                  </p>
+                  {viatorDestinationHubUrl ? (
+                    <p className="text-sm text-gray-600 mt-3">
+                      Prefer browsing Viator directly?{' '}
+                      <a
+                        href={viatorDestinationHubUrl}
+                        target="_blank"
+                        rel="sponsored noopener noreferrer"
+                        className="inline-flex items-center gap-1 font-semibold text-[#00AA6C] hover:text-[#008855] underline decoration-[#00AA6C]/35 underline-offset-2"
+                      >
+                        Explore full catalog on Viator
+                        <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
+                      </a>
+                    </p>
+                  ) : null}
+                </div>
+              </>
+            ) : (
+              <div className="text-center py-12 bg-white rounded-lg">
+                <p className="text-gray-500 mb-2">Tours are loading or no tours found at the moment.</p>
+                <p className="text-sm text-gray-400 mb-6">Open the full list to see live availability and prices.</p>
+                <Button
+                  asChild
+                  size="lg"
+                  className="sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200"
+                >
+                  <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/tours`}>
+                    Browse all tours
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </PrefetchOnHoverLink>
+                </Button>
+                {viatorDestinationHubUrl ? (
+                  <p className="mt-6">
+                    <a
+                      href={viatorDestinationHubUrl}
+                      target="_blank"
+                      rel="sponsored noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#00AA6C] hover:text-[#008855] underline"
+                    >
+                      Explore full catalog on Viator
+                      <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
+                    </a>
+                  </p>
+                ) : null}
+              </div>
+            )}
           </div>
         </section>
 
-
+        {/* Destination guide accordions — after main tour grid (tours first for conversion; content stays in HTML for SEO) */}
         {/* Why Visit Section - Collapsible Accordion */}
         {safeDestination.whyVisit && safeDestination.whyVisit.length > 0 && (
           <section className="py-6 bg-gray-50 overflow-hidden">
@@ -1774,127 +2067,73 @@ export default function DestinationDetailClient({ destination, promotionScores =
           </section>
         )}
 
-        {/* Popular Tours & Activities */}
-        <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
+        {/* Popular Pages — after main tour funnel so booking stays primary */}
+        <section className="py-12 bg-gradient-to-br from-indigo-50 to-blue-50 border-t border-indigo-100/80">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-center mb-8 sm:mb-12"
+              className="mb-8"
             >
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-gray-800 mb-4 sm:mb-6">
-                Popular {safeDestination.fullName} Tours & Activities
-              </h2>
-              <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
-                Discover the best tours and activities in {safeDestination.fullName} with our AI-powered recommendations
-              </p>
-            </motion.div>
-
-            {loading.all ? (
-              <div className="text-center py-12">
-                <Loader2 className="w-8 h-8 animate-spin mx-auto text-blue-600 mb-4" />
-                <p className="text-gray-600">Loading tours...</p>
+              <div className="mb-6">
+                <h2 className="text-3xl sm:text-4xl font-poppins font-bold text-gray-900 mb-2">
+                  More for your {safeDestination.fullName || safeDestination.name} trip
+                </h2>
+                <p className="text-gray-600">
+                  Guides, cars, transfers, and other resources — after you&apos;ve picked a tour.
+                </p>
               </div>
-            ) : tours.all && tours.all.length > 0 ? (
-              <>
-                {/* Match to Your Style - Toggle (off by default to save cost for crawlers) + Button */}
-                <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-medium text-gray-600 whitespace-nowrap">Show scores</span>
-                    <button
-                      role="switch"
-                      aria-checked={matchScoresEnabled}
-                      onClick={() => {
-                        const next = !matchScoresEnabled;
-                        setMatchScoresEnabled(next);
-                        try {
-                          localStorage.setItem('topTours_matchScoresEnabled', next ? '1' : '0');
-                        } catch {}
-                        if (!next) setMatchScores({});
-                      }}
-                      className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 ${matchScoresEnabled ? 'bg-purple-600' : 'bg-gray-200'}`}
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {popularPageCards.map((card, index) => {
+                  const Icon = card.icon;
+                  const isExternal = card.href.startsWith('#');
+                  return (
+                    <Link
+                      key={`${card.type}-${index}`}
+                      href={card.href}
+                      prefetch={!isExternal}
                     >
-                      <span
-                        className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition ${matchScoresEnabled ? 'translate-x-5' : 'translate-x-1'}`}
-                        style={{ top: '2px' }}
-                      />
-                    </button>
-                    <span className="text-xs text-gray-500">{matchScoresEnabled ? 'On' : 'Off'}</span>
-                  </div>
-                  <Button
-                    onClick={() => setShowPreferencesModal(true)}
-                    variant="outline"
-                    size="lg"
-                    className="border-purple-300 text-purple-700 hover:bg-purple-50 hover:border-purple-400 px-6"
-                  >
-                    <Sparkles className="w-5 h-5 mr-2" />
-                    Match to Your Style
-                    <Badge variant="secondary" className="ml-2 bg-purple-100 text-purple-700 text-xs">
-                      AI driven
-                    </Badge>
-                  </Button>
-                </div>
-
-                {/* Tour Grid - Using TourCard component */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {tours.all.slice(0, 12).map((tour, index) => {
-                    const tourId = getTourProductId(tour);
-                    if (!tourId) return null;
-                    
-                    return (
-                      <TourCard
-                        key={`${tourId}-${index}`}
-                        tour={tour}
-                        destination={safeDestination}
-                        matchScore={matchScores[tourId]}
-                        user={user}
-                        userPreferences={userPreferences}
-                        onOpenPreferences={() => setShowPreferencesModal(true)}
-                        isFeatured={false}
-                        premiumOperatorTourIds={[]}
-                      />
-                    );
-                  })}
-                </div>
-
-                {/* View All Button */}
-                <div className="text-center mt-8">
-                  <Button
-                    asChild
-                    size="lg"
-                    className="sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200 px-8 py-6"
-                  >
-                    <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/tours`}>
-                      {totalToursCount !== null && totalToursCount > 0 
-                        ? `View All ${totalToursCount} Tours & Activities in ${safeDestination.fullName}`
-                        : `View All Tours & Activities in ${safeDestination.fullName}`
-                      }
-                      <ArrowRight className="w-5 h-5 ml-2" />
-                    </PrefetchOnHoverLink>
-                  </Button>
-                  <p className="text-sm text-gray-500 mt-2">
-                    Browse all available tours, filter by category, price, and more
-                  </p>
-                </div>
-              </>
-            ) : (
-              <div className="text-center py-12 bg-white rounded-lg">
-                <p className="text-gray-500 mb-2">Tours are loading or no tours found at the moment.</p>
-                <p className="text-sm text-gray-400 mb-6">Try browsing all tours to see what's available.</p>
-                <Button
-                  asChild
-                  size="lg"
-                  className="sunset-gradient text-white font-semibold hover:scale-105 transition-transform duration-200"
-                >
-                  <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/tours`}>
-                    Browse All Tours & Activities
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </PrefetchOnHoverLink>
-                </Button>
+                      <Card className="h-full border bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+                        <CardContent className="p-6 flex flex-col h-full">
+                          <div className="flex items-start gap-4 mb-4">
+                            <div className={`w-12 h-12 bg-gradient-to-br ${card.iconGradient} rounded-lg flex items-center justify-center flex-shrink-0`}>
+                              <Icon className="w-6 h-6 text-white" />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h3 className="text-lg font-bold text-gray-900 mb-2">
+                                {card.title}
+                              </h3>
+                              <p className="text-sm text-gray-600 line-clamp-3">
+                                {card.description}
+                              </p>
+                              {card.badge && (
+                                <Badge
+                                  variant="secondary"
+                                  className={`mt-2 w-fit ${
+                                    card.type === 'tours' ? 'bg-blue-100 text-blue-700' :
+                                    card.type === 'travel-guides' ? 'bg-indigo-100 text-indigo-700' :
+                                    card.type === 'guide' ? 'bg-amber-100 text-amber-700' : 'bg-gray-100 text-gray-700'
+                                  }`}
+                                >
+                                  {card.badge}
+                                </Badge>
+                              )}
+                            </div>
+                          </div>
+                          <div className={`flex items-center ${card.ctaColorClass} text-sm font-medium mt-auto group`}>
+                            {card.ctaText}
+                            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  );
+                })}
               </div>
-            )}
+            </motion.div>
           </div>
         </section>
 
@@ -2395,18 +2634,18 @@ export default function DestinationDetailClient({ destination, promotionScores =
 
         {/* Combined Internal Linking Section */}
         {(categoryGuides.length > 0 || relatedDestinations.length > 0) && (
-          <section className="py-14 px-4 bg-gradient-to-b from-[#764ba2] to-[#5a3d82]">
+          <section className="py-14 px-4 bg-slate-50 border-t border-slate-200/80">
             <div className="max-w-4xl mx-auto">
               {/* Related Destinations */}
               {relatedDestinations.length > 0 && (
                 <div className="mb-14">
                   <div className="flex items-center gap-2 mb-4">
-                    <MapPin className="w-5 h-5 text-white/90" aria-hidden />
-                    <h3 className="text-lg font-semibold text-white tracking-tight">
+                    <MapPin className="w-5 h-5 text-blue-700" aria-hidden />
+                    <h3 className="text-lg font-semibold text-slate-900 tracking-tight">
                       Explore more in {safeDestination.category}
                     </h3>
                   </div>
-                  <p className="text-white/75 text-sm mb-5 max-w-xl">
+                  <p className="text-slate-600 text-sm mb-5 max-w-xl">
                     Top tours and activities in other popular {safeDestination.category} destinations.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -2414,7 +2653,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                       <Link
                         key={`${dest.id}-${index}`}
                         href={`/destinations/${dest.id}`}
-                        className="inline-flex items-center rounded-full bg-white/15 hover:bg-white/25 text-white text-sm font-medium px-4 py-2.5 border border-white/20 transition-all duration-200 hover:border-white/40 hover:shadow-md"
+                        className="inline-flex items-center rounded-full bg-white hover:bg-blue-50 text-slate-800 text-sm font-medium px-4 py-2.5 border border-slate-200 transition-all duration-200 hover:border-blue-300 hover:shadow-sm"
                       >
                         {dest.name}
                       </Link>
@@ -2423,7 +2662,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   {relatedDestinations.length > MAX_OTHER_DESTINATIONS_ON_LANDING && (
                     <Link
                       href="/destinations"
-                      className="inline-flex items-center gap-1.5 mt-5 text-white/95 hover:text-white font-medium text-sm rounded-full bg-white/10 hover:bg-white/20 px-4 py-2.5 border border-white/25 transition-colors"
+                      className="inline-flex items-center gap-1.5 mt-5 text-blue-700 hover:text-blue-800 font-medium text-sm rounded-full bg-white hover:bg-blue-50 px-4 py-2.5 border border-slate-200 hover:border-blue-300 transition-colors"
                     >
                       View all destinations
                       <ArrowRight className="w-4 h-4" />
@@ -2436,12 +2675,12 @@ export default function DestinationDetailClient({ destination, promotionScores =
               {categoryGuides.length > 0 && (
                 <div>
                   <div className="flex items-center gap-2 mb-4">
-                    <BookOpen className="w-5 h-5 text-white/90" aria-hidden />
-                    <h3 className="text-lg font-semibold text-white tracking-tight">
+                    <BookOpen className="w-5 h-5 text-indigo-700" aria-hidden />
+                    <h3 className="text-lg font-semibold text-slate-900 tracking-tight">
                       {safeDestination.fullName || safeDestination.name} guides
                     </h3>
                   </div>
-                  <p className="text-white/75 text-sm mb-5 max-w-xl">
+                  <p className="text-slate-600 text-sm mb-5 max-w-xl">
                     Planning tips, tour categories, and things to do in {safeDestination.fullName || safeDestination.name}.
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -2454,15 +2693,15 @@ export default function DestinationDetailClient({ destination, promotionScores =
                         <Link
                           key={categorySlug || `guide-${index}`}
                           href={guideUrl}
-                          className="group flex items-center gap-3 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/35 px-4 py-3.5 transition-all duration-200"
+                          className="group flex items-center gap-3 rounded-xl bg-white hover:bg-indigo-50 border border-slate-200 hover:border-indigo-300 px-4 py-3.5 transition-all duration-200"
                         >
-                          <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-white/15 flex items-center justify-center">
-                            <BookOpen className="w-4 h-4 text-white/90" />
+                          <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-indigo-100 flex items-center justify-center">
+                            <BookOpen className="w-4 h-4 text-indigo-700" />
                           </div>
-                          <span className="text-white font-medium text-sm line-clamp-2 group-hover:text-blue-200 transition-colors">
+                          <span className="text-slate-800 font-medium text-sm line-clamp-2 group-hover:text-indigo-700 transition-colors">
                             {title}
                           </span>
-                          <ArrowRight className="w-4 h-4 flex-shrink-0 text-white/60 group-hover:text-white group-hover:translate-x-0.5 transition-all ml-auto" />
+                          <ArrowRight className="w-4 h-4 flex-shrink-0 text-slate-400 group-hover:text-indigo-700 group-hover:translate-x-0.5 transition-all ml-auto" />
                         </Link>
                       );
                     })}
@@ -2470,7 +2709,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   {categoryGuides.length > MAX_POPULAR_GUIDES_ON_LANDING && (
                     <Link
                       href={`/destinations/${safeDestination.id}/guides`}
-                      className="inline-flex items-center gap-1.5 mt-5 text-white/95 hover:text-white font-medium text-sm rounded-full bg-white/10 hover:bg-white/20 px-4 py-2.5 border border-white/25 transition-colors"
+                      className="inline-flex items-center gap-1.5 mt-5 text-indigo-700 hover:text-indigo-800 font-medium text-sm rounded-full bg-white hover:bg-indigo-50 px-4 py-2.5 border border-slate-200 hover:border-indigo-300 transition-colors"
                     >
                       View all {categoryGuides.length} guides
                       <ArrowRight className="w-4 h-4" />
@@ -2483,24 +2722,25 @@ export default function DestinationDetailClient({ destination, promotionScores =
         )}
       </div>
 
-      {/* Sticky Floating Button */}
+      {/* Sticky booking CTA: full-width bar on mobile, floating on larger screens */}
       {showStickyButton && (
-        <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-40 transition-opacity duration-300">
-          <div className="flex flex-col items-end gap-2">
+        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-gray-200 bg-white/95 backdrop-blur-md px-3 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-8px_30px_rgba(0,0,0,0.08)] sm:inset-x-auto sm:bottom-6 sm:right-6 sm:left-auto sm:border-0 sm:bg-transparent sm:p-0 sm:pb-0 sm:shadow-none sm:backdrop-blur-none transition-opacity duration-300">
+          <div className="mx-auto flex max-w-7xl items-center gap-2 sm:mx-0 sm:max-w-none sm:flex-col sm:items-end">
             <button
+              type="button"
               onClick={() => setShowStickyButton(false)}
-              className="w-10 h-10 bg-white hover:bg-gray-100 rounded-full flex items-center justify-center shadow-xl border-2 border-gray-300 transition-all duration-200 hover:scale-110"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-gray-200 bg-white text-gray-900 shadow-md transition-all hover:scale-105 hover:bg-gray-50 sm:order-first sm:mb-2"
               aria-label="Close"
             >
-              <X className="w-6 h-6 text-gray-900 stroke-2" />
+              <X className="h-5 w-5 stroke-2" />
             </button>
-            <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/tours`}>
-              <Button 
+            <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/tours`} className="min-w-0 flex-1 sm:flex-initial">
+              <Button
                 size="lg"
-                className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 px-4 py-4 md:px-6 md:py-6 rounded-full font-semibold text-sm md:text-base"
+                className="w-full sunset-gradient text-white shadow-lg transition-transform duration-200 hover:scale-[1.02] rounded-xl px-4 py-6 font-semibold text-sm sm:w-auto sm:rounded-full sm:px-6 sm:py-6 sm:text-base"
               >
-                <span>See {destinationName} Tours & Prices</span>
-                <ArrowRight className="ml-2 w-5 h-5" />
+                <span className="truncate">{`Browse ${destinationName} tours`}</span>
+                <ArrowRight className="ml-2 h-5 w-5 shrink-0" />
               </Button>
             </PrefetchOnHoverLink>
           </div>

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getTourSitemapCount } from '@/lib/tourSitemap';
+import { getSiteOrigin } from '@/lib/siteUrl';
 
 /**
  * Sitemap INDEX for tours
@@ -13,19 +14,19 @@ const URLS_PER_SITEMAP = 10000; // Reduced from 45k to prevent Vercel timeout
 
 export async function GET() {
   try {
-    const baseUrl = 'https://toptours.ai';
+    const baseUrl = getSiteOrigin();
     const totalTours = await getTourSitemapCount();
     const numSitemaps = Math.ceil(totalTours / URLS_PER_SITEMAP);
-    
+    const lastmod = new Date().toISOString().split('T')[0];
+
     // Generate sitemap index XML
     let sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Tour Sitemap Index -->
   <!-- Total Tours: ${totalTours.toLocaleString()} -->
   <!-- Sitemaps: ${numSitemaps} (${URLS_PER_SITEMAP.toLocaleString()} URLs each) -->
+  <!-- lastmod: ${lastmod} (generation date) -->
 `;
-
-    const lastmod = '2026-02-11'; // Sitemap last modified date for search engines
     for (let i = 0; i < numSitemaps; i++) {
       sitemapIndex += `
   <sitemap>

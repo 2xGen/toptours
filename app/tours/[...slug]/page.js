@@ -71,7 +71,7 @@ const getCachedTourExtras = unstable_cache(
 
     const destData = destinationDataResult.status === 'fulfilled' 
       ? destinationDataResult.value 
-      : { destinationData: null, restaurantCount: 0, restaurants: [], categoryGuides: [] };
+      : { destinationData: null, categoryGuides: [] };
 
     return { tourData, destData };
   },
@@ -284,7 +284,7 @@ export default async function TourDetailPage({ params }) {
 
     // Use Next.js level caching for extras (pricing, reviews, etc.)
     const { tourData, destData } = await getCachedTourExtras(productId, tour);
-    const { destinationData, restaurantCount, restaurants, categoryGuides } = destData;
+    const { destinationData, categoryGuides } = destData;
 
     // Generate FAQs (quick, doesn't make API calls)
     let faqs = [];
@@ -450,8 +450,6 @@ export default async function TourDetailPage({ params }) {
           enrichment={tourEnrichment}
           initialPromotionScore={promotionScore}
           destinationData={destinationData}
-          restaurantCount={restaurantCount}
-          restaurants={restaurants}
           operatorPremiumData={operatorPremiumData}
           operatorTours={operatorTours}
           categoryGuides={categoryGuides}

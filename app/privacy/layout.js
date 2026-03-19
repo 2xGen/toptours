@@ -1,3 +1,8 @@
+import { absoluteUrl } from '@/lib/siteUrl';
+
+const pageUrl = absoluteUrl('/privacy');
+const defaultOg = absoluteUrl('/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg');
+
 export const metadata = {
   title: 'Privacy Policy | TopTours.ai',
   description: 'Read TopTours.ai Privacy Policy. Learn how we collect, use, and protect your personal information when you use our travel planning platform.',
@@ -5,11 +10,11 @@ export const metadata = {
   openGraph: {
     title: 'Privacy Policy | TopTours.ai',
     description: 'Learn how TopTours.ai collects, uses, and protects your personal information. Your privacy matters to us.',
-    url: 'https://toptours.ai/privacy',
+    url: pageUrl,
     siteName: 'TopTours.ai',
     images: [
       {
-        url: 'https://toptours.ai/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg',
+        url: defaultOg,
         width: 1200,
         height: 630,
         alt: 'TopTours.ai Privacy Policy',
@@ -22,10 +27,10 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Privacy Policy | TopTours.ai',
     description: 'Learn how TopTours.ai protects your privacy and personal information.',
-    images: ['https://toptours.ai/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg'],
+    images: [defaultOg],
   },
   alternates: {
-    canonical: 'https://toptours.ai/privacy',
+    canonical: pageUrl,
   },
   robots: {
     index: true,

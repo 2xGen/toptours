@@ -50,7 +50,9 @@ function TourCard({
   userPreferences = null, 
   onOpenPreferences = null, 
   isPromoted = false,
-  priority = false // OPTIMIZED: Allow priority loading for above-fold images
+  priority = false, // OPTIMIZED: Allow priority loading for above-fold images
+  ctaLabel = 'Check live price & availability',
+  descriptionLineClampClass = 'line-clamp-2',
 }) {
   const router = useRouter();
   const { toast } = useToast();
@@ -263,7 +265,7 @@ function TourCard({
             </button>
           </div>
           
-          <p className="text-sm text-gray-600 mb-3 line-clamp-2 flex-grow">
+          <p className={`text-sm text-gray-600 mb-3 flex-grow ${descriptionLineClampClass}`}>
             {description}
           </p>
           
@@ -298,7 +300,7 @@ function TourCard({
             className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-auto"
           >
             <PrefetchOnHoverLink href={tourUrl}>
-              View Details
+              {ctaLabel}
               <ArrowRight className="w-4 h-4 ml-2" />
             </PrefetchOnHoverLink>
           </Button>
@@ -334,6 +336,8 @@ export default memo(TourCard, (prevProps, nextProps) => {
     prevProps.isPromoted === nextProps.isPromoted &&
     prevProps.matchScore?.score === nextProps.matchScore?.score &&
     prevProps.user?.id === nextProps.user?.id &&
+    prevProps.ctaLabel === nextProps.ctaLabel &&
+    prevProps.descriptionLineClampClass === nextProps.descriptionLineClampClass &&
     JSON.stringify(prevProps.premiumOperatorTourIds) === JSON.stringify(nextProps.premiumOperatorTourIds)
   );
 });

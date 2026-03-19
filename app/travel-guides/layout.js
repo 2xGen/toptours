@@ -1,20 +1,23 @@
+import { absoluteUrl } from '@/lib/siteUrl';
+
 export async function generateMetadata() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://toptours.ai';
-  
+  const pageUrl = absoluteUrl('/travel-guides');
+  const ogImage = absoluteUrl('/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg');
+
   return {
     title: 'Travel Guides & Destination Tips | TopTours.ai',
     description: 'Discover smart travel insights, destination guides, and AI-powered tips to help you plan your perfect trip — from hidden gems to must-do tours around the world.',
     alternates: {
-      canonical: `${baseUrl}/travel-guides`,
+      canonical: pageUrl,
     },
     openGraph: {
       title: 'Travel Guides & Destination Tips | TopTours.ai',
       description: 'Discover smart travel insights, destination guides, and AI-powered tips to help you plan your perfect trip.',
-      url: `${baseUrl}/travel-guides`,
+      url: pageUrl,
       siteName: 'TopTours.ai',
       images: [
         {
-          url: 'https://toptours.ai/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg',
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: 'Travel Guides & Destination Tips',
@@ -27,7 +30,7 @@ export async function generateMetadata() {
       card: 'summary_large_image',
       title: 'Travel Guides & Destination Tips | TopTours.ai',
       description: 'Discover smart travel insights, destination guides, and AI-powered tips to help you plan your perfect trip.',
-      images: ['https://toptours.ai/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg'],
+      images: [ogImage],
     },
     robots: {
       index: true,

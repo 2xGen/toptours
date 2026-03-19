@@ -1,5 +1,12 @@
-// OPTIMIZED: Enhanced robots.txt for better SEO crawling
+import { getSiteOrigin } from '@/lib/siteUrl';
+
+/**
+ * Legal URLs (/terms, /cookie-policy, /disclosure) are disallowed for userAgent * to cut
+ * abusive/scraper crawl volume; Googlebot has a separate rule without those paths so GSC
+ * can still index them when you want transparency in Google. Humans always reach them via footer links.
+ */
 export default function robots() {
+  const origin = getSiteOrigin();
   return {
     rules: [
       {
@@ -30,10 +37,7 @@ export default function robots() {
       },
     ],
     // Main sitemap + tour sitemap index (also submitted in GSC; here for crawler discovery)
-    sitemap: [
-      'https://toptours.ai/sitemap.xml',
-      'https://toptours.ai/sitemap-tours',
-    ],
+    sitemap: [`${origin}/sitemap.xml`, `${origin}/sitemap-tours`],
   };
 }
 

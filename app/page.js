@@ -1,14 +1,12 @@
 import HomePageClient from './HomePageClient';
+import { absoluteUrl, getSiteOrigin } from '@/lib/siteUrl';
 
 // Revalidate homepage every hour
 export const revalidate = 604800; // 7 days - match other pages, reduce ISR writes
 
-// Canonical origin for SEO: always HTTPS so GSC indexes one URL (avoids "Page with redirect" for http)
-const canonicalOrigin = 'https://toptours.ai';
-
 export async function generateMetadata() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || canonicalOrigin;
-  const canonicalUrl = baseUrl.replace(/^http:\/\//i, 'https://').replace(/\/$/, '') || canonicalOrigin;
+  const canonicalUrl = getSiteOrigin();
+  const ogImage = absoluteUrl('/og-homepage.jpg');
 
   return {
     title: 'TopTours.ai - AI-Powered Tour & Excursion Discovery | 300,000+ Tours Worldwide',
@@ -23,7 +21,7 @@ export async function generateMetadata() {
       url: canonicalUrl,
       siteName: 'TopTours.ai',
       images: [{
-        url: `${canonicalUrl}/og-homepage.jpg`,
+        url: ogImage,
         width: 1200,
         height: 630,
         alt: 'TopTours.ai - AI-Powered Travel Planning Platform',
@@ -35,7 +33,7 @@ export async function generateMetadata() {
       card: 'summary_large_image',
       title: 'TopTours.ai - Tours & Excursions That Match Your Style',
       description: 'AI-powered Best Match for personalized travel recommendations. 300,000+ tours across 3,300+ destinations.',
-      images: [`${canonicalUrl}/og-homepage.jpg`],
+      images: [ogImage],
     },
     robots: {
       index: true,
@@ -52,49 +50,6 @@ export async function generateMetadata() {
 }
 
 export default async function HomePage() {
-  const baseUrl = 'https://toptours.ai';
-  
-  // Organization Schema
-  const organizationSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'TopTours.ai',
-    url: baseUrl,
-    logo: `${baseUrl}/logo.png`,
-    description: 'AI-powered tour and excursion discovery platform with personalized recommendations across 300,000+ tours worldwide.',
-    sameAs: [
-      'https://twitter.com/toptoursai',
-      'https://facebook.com/toptoursai'
-    ]
-  };
-
-  // WebSite Schema with SearchAction
-  const websiteSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'TopTours.ai',
-    url: baseUrl,
-    description: 'Tours & Excursions That Match Your Style',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${baseUrl}/tours`
-      }
-    }
-  };
-
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-      />
-      <HomePageClient />
-    </>
-  );
+  // Organization + WebSite JSON-LD live in root layout (single source; avoids duplicate schemas on home)
+  return <HomePageClient />;
 }

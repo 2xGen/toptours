@@ -135,20 +135,20 @@ const DestinationLinksFooter = () => {
         </div>
       </section>
 
-      {/* Explore Top Tours Section */}
+      {/* Popular destinations — hub pages (tours from each destination page) */}
       <section className="py-12 bg-gray-50 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center gap-2 mb-6">
             <Ticket className="w-5 h-5 text-purple-600" />
             <h3 className="text-xl font-bold text-gray-900">
-              Explore Top Tours in
+              Explore popular destinations
             </h3>
           </div>
           <div className="flex flex-wrap gap-3 justify-center">
             {tourDestinations.map((destination) => (
               <Link
                 key={destination.id}
-                href={`/destinations/${destination.id}/tours`}
+                href={`/destinations/${destination.id}`}
                 className="text-sm text-gray-600 hover:text-purple-600 hover:underline transition-colors"
               >
                 {destination.displayName || destination.fullName || destination.name}
@@ -158,7 +158,7 @@ const DestinationLinksFooter = () => {
               href="/destinations"
               className="text-sm font-semibold text-purple-600 hover:text-purple-700 flex items-center gap-1"
             >
-              View All Destinations with Tours
+              View all destinations
               <ArrowRight className="w-3 h-3" />
             </Link>
           </div>

@@ -14,6 +14,7 @@ import { hasDestinationPage, getDestinationFullContent } from '@/data/destinatio
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { getDestinationFeatures } from '@/lib/destinationFeatures';
 import { headers } from 'next/headers';
+import { absoluteUrl } from '@/lib/siteUrl';
 
 // Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
 export const revalidate = 604800; // 7 days - increased to reduce ISR writes during Google reindexing
@@ -28,8 +29,21 @@ async function getGuideCountForMetadata(destinationId) {
   }
 }
 
-export async function generateMetadata({ params }) {
+/** Faceted / filtered tour listing URLs (?search=, ?page=, etc.) should not be indexed — canonical is the clean listing. */
+function toursListingHasNonEmptyQuery(searchParams) {
+  if (!searchParams || typeof searchParams !== 'object') return false;
+  return Object.entries(searchParams).some(([, val]) => {
+    if (val == null || val === '') return false;
+    if (Array.isArray(val)) return val.some((v) => v != null && String(v).trim() !== '');
+    return String(val).trim() !== '';
+  });
+}
+
+export async function generateMetadata({ params, searchParams }) {
   const { id } = await params;
+  const sp = searchParams != null ? await searchParams : {};
+  const isFacetedUrl = toursListingHasNonEmptyQuery(sp);
+  const toursCanonical = absoluteUrl(`/destinations/${id}/tours`);
   const viatorDestinationsClassifiedData = (await import('@/data/viatorDestinationsClassified.json')).default;
   let destination = getDestinationById(id);
   let seoContent = null;
@@ -358,7 +372,7 @@ export async function generateMetadata({ params }) {
   }
   
   // Use destination image if available, otherwise fall back to default OG image
-  const defaultOgImage = 'https://toptours.ai/OG%20Images/Browse%20Tours%20by%20Best%20Match.jpg';
+  const defaultOgImage = absoluteUrl('/OG%20Images/Browse%20Tours%20by%20Best%20Match.jpg');
   const ogImage = destination.imageUrl || fullContent?.imageUrl || defaultOgImage;
   
   return {
@@ -368,7 +382,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: ogTitle, // OG title: human, clickable, shareable (separate from SEO)
       description: description.length > 200 ? description.substring(0, 197) + '...' : description,
-      url: `https://toptours.ai/destinations/${id}/tours`,
+      url: toursCanonical,
       images: [
         {
           url: ogImage,
@@ -388,19 +402,31 @@ export async function generateMetadata({ params }) {
       images: [ogImage],
     },
     alternates: {
-      canonical: `https://toptours.ai/destinations/${id}/tours`,
+      canonical: toursCanonical,
     },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
-    },
+    robots: isFacetedUrl
+      ? {
+          index: false,
+          follow: true,
+          googleBot: {
+            index: false,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+          },
+        }
+      : {
+          index: true,
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+          },
+        },
   };
 }
 

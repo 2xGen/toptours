@@ -1,3 +1,8 @@
+import { absoluteUrl, getSiteOrigin } from '@/lib/siteUrl';
+
+const destinationsCanonical = absoluteUrl('/destinations');
+const destinationsOgImage = absoluteUrl('/OG%20Images/discover%20tours%20guides%20and%20restaurants%20in%20over%203500%20destinations.jpg');
+
 export const metadata = {
   title: 'Discover Top Travel Destinations Worldwide – Find Tours & Activities',
   description: 'Explore 175+ amazing travel destinations across the globe with AI-powered tour recommendations. From Caribbean beaches to European cities, find your perfect adventure with expert guides and curated activities.',
@@ -5,11 +10,11 @@ export const metadata = {
   openGraph: {
     title: 'Discover Top Travel Destinations Worldwide – Find Tours & Activities',
     description: 'Explore 175+ amazing travel destinations across the globe with AI-powered tour recommendations. From Caribbean beaches to European cities, find your perfect adventure.',
-    url: 'https://toptours.ai/destinations',
+    url: destinationsCanonical,
     siteName: 'TopTours.ai',
     images: [
       {
-        url: 'https://toptours.ai/OG%20Images/discover%20tours%20guides%20and%20restaurants%20in%20over%203500%20destinations.jpg',
+        url: destinationsOgImage,
         width: 1200,
         height: 630,
         alt: 'Discover tours, guides and excursions in over 3,500 destinations',
@@ -22,10 +27,10 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Discover Top Travel Destinations Worldwide – Find Tours & Activities',
     description: 'Explore 175+ amazing travel destinations with AI-powered tour recommendations. Find your perfect adventure today!',
-    images: ['https://toptours.ai/OG%20Images/discover%20tours%20guides%20and%20restaurants%20in%20over%203500%20destinations.jpg'],
+    images: [destinationsOgImage],
   },
   alternates: {
-    canonical: 'https://toptours.ai/destinations',
+    canonical: destinationsCanonical,
   },
   robots: {
     index: true,
@@ -52,7 +57,7 @@ export default function DestinationsLayout({ children }) {
             "@type": "ItemList",
             "name": "Travel Destinations",
             "description": "Explore amazing travel destinations worldwide with AI-powered recommendations",
-            "url": "https://toptours.ai/destinations",
+            "url": destinationsCanonical,
             "numberOfItems": 175,
             "itemListElement": [
               {
@@ -61,7 +66,7 @@ export default function DestinationsLayout({ children }) {
                 "item": {
                   "@type": "TouristDestination",
                   "name": "Aruba",
-                  "url": "https://toptours.ai/destinations/aruba",
+                  "url": absoluteUrl('/destinations/aruba'),
                   "description": "White-sand beaches, turquoise waters, and endless adventure"
                 }
               },
@@ -71,7 +76,7 @@ export default function DestinationsLayout({ children }) {
                 "item": {
                   "@type": "TouristDestination",
                   "name": "Paris",
-                  "url": "https://toptours.ai/destinations/paris",
+                  "url": absoluteUrl('/destinations/paris'),
                   "description": "The City of Light - romance, culture, and world-class attractions"
                 }
               },
@@ -81,7 +86,7 @@ export default function DestinationsLayout({ children }) {
                 "item": {
                   "@type": "TouristDestination",
                   "name": "Rome",
-                  "url": "https://toptours.ai/destinations/rome",
+                  "url": absoluteUrl('/destinations/rome'),
                   "description": "Ancient history meets modern Italian culture"
                 }
               }
@@ -98,8 +103,8 @@ export default function DestinationsLayout({ children }) {
             "@context": "https://schema.org",
             "@type": "Organization",
             "name": "TopTours.ai",
-            "url": "https://toptours.ai",
-            "logo": "https://toptours.ai/logo.png",
+            "url": getSiteOrigin(),
+            "logo": absoluteUrl('/logo.png'),
             "description": "AI-powered travel planning and tour recommendations",
             "sameAs": [
               "https://www.facebook.com/profile.php?id=61573639234569",

@@ -92,7 +92,7 @@ export default function SimilarToursList({ similarTours, tour, destinationData }
                   className="w-full mt-auto border-purple-300 text-purple-700 hover:bg-purple-50"
                 >
                   <PrefetchOnHoverLink href={similarTourUrl}>
-                    View Details
+                    Check live price & availability
                   </PrefetchOnHoverLink>
                 </Button>
               </CardContent>

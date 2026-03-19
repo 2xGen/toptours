@@ -85,8 +85,8 @@ const SmartTourFinder = ({ isOpen, onClose }) => {
       searchQuery += ` ${userInterests.trim()}`;
     }
 
-    // Navigate to tours hub (results page disabled)
-    router.push('/tours');
+    // Navigate to destination hub (tours root redirects there)
+    router.push('/destinations');
     
     setIsLoading(false);
     handleClose();
