@@ -16,8 +16,8 @@ import {
 } from 'lucide-react';
 import { getTourUrl, getViatorAffiliateTourUrl } from '@/utils/tourHelpers';
 
-/** Primary CTA — signals full product page + dates on partner site (A/B vs shorter “Check availability”). */
-const VIATOR_CTA_LABEL = 'Check Availability & Book on Viator';
+/** Primary CTA — full product page + dates on partner site; partner named once in disclosure. */
+const BOOKING_CTA_LABEL = 'Check availability & book';
 
 function ExploreBetweenSectionsCta({ bookUrl, headline, subline }) {
   if (!bookUrl) return null;
@@ -257,7 +257,7 @@ export default function ExploreTourDetailClient({
               rel="sponsored noopener noreferrer"
               className="inline-flex w-full max-w-full items-center justify-center gap-2 rounded-lg bg-[#00AA6C] px-3 py-2.5 text-center text-xs font-semibold leading-snug text-white hover:bg-[#008855] sm:text-sm sm:px-4"
             >
-              <span className="min-w-0">{VIATOR_CTA_LABEL}</span>
+              <span className="min-w-0">{BOOKING_CTA_LABEL}</span>
               <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
             </a>
           </div>
@@ -396,12 +396,12 @@ export default function ExploreTourDetailClient({
                     rel="sponsored noopener noreferrer"
                     className="inline-flex max-w-full items-center justify-center gap-2 rounded-xl bg-[#00AA6C] px-4 py-3 text-center text-sm font-semibold leading-snug text-white transition-colors hover:bg-[#008855] sm:px-5 sm:text-base"
                   >
-                    <span className="min-w-0">{VIATOR_CTA_LABEL}</span>
+                    <span className="min-w-0">{BOOKING_CTA_LABEL}</span>
                     <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
                   </a>
                 </div>
                 <p className="mt-2 text-[11px] leading-snug text-gray-600" role="note">
-                  Partner: <span className="font-medium">Viator</span>. &quot;{VIATOR_CTA_LABEL}&quot; opens in a new tab.{' '}
+                  Partner: <span className="font-medium">Viator</span>. Booking opens in a new tab.{' '}
                   <Link
                     href="/disclosure"
                     className="font-medium text-primary underline decoration-primary/40 underline-offset-2 hover:decoration-primary"
@@ -416,12 +416,12 @@ export default function ExploreTourDetailClient({
         </div>
       </section>
 
-      {/* Contextual Viator CTA */}
+      {/* Contextual booking CTA */}
       <section className="py-4 lg:py-6">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           <ExploreBetweenSectionsCta
             bookUrl={bookUrl}
-            headline="Pick your dates on Viator — check live availability"
+            headline="Pick your dates — check live availability"
             subline="Popular time slots can fill up fast."
           />
         </div>
@@ -493,7 +493,7 @@ export default function ExploreTourDetailClient({
             <div className="mt-3 flex flex-col gap-3 rounded-xl bg-white px-3 py-3 ring-1 ring-[#00AA6C]/15 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
               <div>
                 <p className="text-sm font-semibold text-gray-900 leading-tight">
-                  Estimated Total: {estimatedTotal !== null ? formatCurrency(estimatedTotal) : 'See price on Viator'}
+                  Estimated Total: {estimatedTotal !== null ? formatCurrency(estimatedTotal) : 'See pricing on partner site'}
                 </p>
                 <p className="text-[11px] text-gray-500">Final price may vary. Check availability for exact pricing.</p>
               </div>
@@ -504,7 +504,7 @@ export default function ExploreTourDetailClient({
                   rel="sponsored noopener noreferrer"
                   className="inline-flex w-full max-w-full items-center justify-center gap-2 rounded-lg bg-[#00AA6C] px-3 py-2.5 text-center text-xs font-semibold leading-snug text-white transition-colors hover:bg-[#008855] sm:w-auto sm:text-sm sm:px-4"
                 >
-                  <span className="min-w-0">{VIATOR_CTA_LABEL}</span>
+                  <span className="min-w-0">{BOOKING_CTA_LABEL}</span>
                   <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
                 </a>
               </div>
@@ -607,7 +607,7 @@ export default function ExploreTourDetailClient({
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
             <ExploreBetweenSectionsCta
               bookUrl={bookUrl}
-              headline="Verify inclusions & book on Viator"
+              headline="Verify inclusions & book"
             />
           </div>
         </section>
@@ -664,7 +664,11 @@ export default function ExploreTourDetailClient({
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
             <ExploreBetweenSectionsCta
               bookUrl={bookUrl}
-              headline={`${destinationName}: check live availability on Viator`}
+              headline={
+                destinationName
+                  ? `See more tours in ${destinationName}`
+                  : 'See more tours in this destination'
+              }
             />
           </div>
         </section>
@@ -676,8 +680,8 @@ export default function ExploreTourDetailClient({
           <div className="rounded-xl border border-[#00AA6C]/30 bg-gradient-to-br from-[#f2fbf7] to-white p-6 shadow-[0_8px_24px_rgba(0,170,108,0.08)]">
             <h2 className="mb-2 text-2xl font-bold text-gray-900">More tours</h2>
             <p className="mb-4 text-sm leading-relaxed text-gray-700">
-              Open Viator with this tour under <span className="font-medium">You selected</span>, plus hundreds of
-              other experiences in {destinationName} - same link as availability &amp; booking.
+              Same secure booking link — this tour stays under <span className="font-medium">You selected</span>, plus
+              hundreds of other experiences in {destinationName} (same link as availability &amp; booking).
             </p>
             <a
               href={bookUrl}
@@ -685,7 +689,7 @@ export default function ExploreTourDetailClient({
               rel="sponsored noopener noreferrer"
               className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#00AA6C] px-4 py-3 text-center text-sm font-semibold leading-snug text-white transition-colors hover:bg-[#008855]"
             >
-              <span>View similar tours on Viator</span>
+              <span>View similar tours &amp; prices</span>
               <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
             </a>
           </div>
@@ -768,7 +772,7 @@ export default function ExploreTourDetailClient({
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           <ExploreBetweenSectionsCta
             bookUrl={bookUrl}
-            headline="Compare reviews & final price on Viator"
+            headline="Compare reviews & final price"
           />
         </div>
       </section>
@@ -778,14 +782,14 @@ export default function ExploreTourDetailClient({
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           <div className="rounded-2xl border-2 border-[#00AA6C]/25 bg-[#f2fbf7] p-5 sm:p-6 text-center shadow-sm">
             <h2 className="font-poppins font-bold text-lg text-gray-900">Still interested in this experience?</h2>
-            <p className="mt-1 text-sm text-gray-600">Lock in dates and see live availability on Viator.</p>
+            <p className="mt-1 text-sm text-gray-600">Lock in dates and check live availability before you book.</p>
             <a
               href={bookUrl}
               target="_blank"
               rel="sponsored noopener noreferrer"
               className="mt-4 inline-flex max-w-full items-center justify-center gap-2 rounded-xl bg-[#00AA6C] px-4 py-3 text-center text-xs font-semibold leading-snug text-white transition-colors hover:bg-[#008855] sm:px-6 sm:text-sm"
             >
-              <span className="min-w-0">{VIATOR_CTA_LABEL}</span>
+              <span className="min-w-0">{BOOKING_CTA_LABEL}</span>
               <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
             </a>
           </div>
@@ -843,7 +847,7 @@ export default function ExploreTourDetailClient({
             rel="sponsored noopener noreferrer"
             className="inline-flex max-w-full items-center justify-center gap-2 rounded-xl bg-[#00AA6C] px-4 py-3.5 text-center text-xs font-semibold leading-snug text-white transition-colors hover:bg-[#008855] sm:px-6 sm:text-sm"
           >
-            <span className="min-w-0">{VIATOR_CTA_LABEL}</span>
+            <span className="min-w-0">{BOOKING_CTA_LABEL}</span>
             <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
           </a>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm text-gray-500">

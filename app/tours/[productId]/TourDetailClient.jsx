@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useMemo, useCallback, useRef, lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
+import { getFromPriceFromProductTour, reconcileProductPriceWithSchedule } from '@/lib/viatorPricing';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { 
   Star, 
@@ -54,10 +55,10 @@ import {
 import { calculateEnhancedMatchScore } from '@/lib/tourMatchingEnhanced';
 import { resolveUserPreferences } from '@/lib/preferenceResolution';
 
-/** Aligned with explore tour pages — primary outbound CTA copy */
-const TOURS_PRIMARY_CTA_LABEL = 'Check Availability & Book on Viator';
+/** Primary outbound booking CTA (partner link; disclosure below hero / tooltips) */
+const TOURS_PRIMARY_CTA_LABEL = 'Check availability & book';
 
-/** Compact Viator CTA strip between content sections (affiliate outbound). */
+/** Compact booking CTA strip between content sections (affiliate outbound). */
 function ViatorBetweenSectionsCta({ viatorUrl, headline, subline }) {
   if (!viatorUrl) return null;
   return (
@@ -75,7 +76,7 @@ function ViatorBetweenSectionsCta({ viatorUrl, headline, subline }) {
         className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#00AA6C] px-4 py-3 text-center text-sm font-semibold leading-snug text-white transition-colors hover:bg-[#008855]"
       >
         <span className="min-w-0">
-          {headline || 'Check live availability & book on Viator'}
+          {headline || 'Check live availability & book'}
         </span>
         <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
       </a>
@@ -86,7 +87,7 @@ function ViatorBetweenSectionsCta({ viatorUrl, headline, subline }) {
   );
 }
 
-/** Final conversion block after FAQs — checklist + primary Viator CTA */
+/** Final conversion block after FAQs — checklist + primary booking CTA */
 function ViatorDecisionBlock({ viatorUrl }) {
   if (!viatorUrl) return null;
   return (
@@ -101,7 +102,7 @@ function ViatorDecisionBlock({ viatorUrl }) {
       <ul className="mt-3 space-y-2 text-sm text-gray-700">
         <li className="flex gap-2">
           <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green-600" aria-hidden />
-          <span>See live times &amp; pricing on Viator</span>
+          <span>See live times &amp; pricing before you pay</span>
         </li>
         <li className="flex gap-2">
           <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green-600" aria-hidden />
@@ -147,13 +148,15 @@ function StickyPriceBar({ tour, pricing, viatorUrl, matchScore, matchScoresEnabl
     return (endAge - startAge) <= 50 && endAge <= 100;
   });
 
-  // Get base price - use pricing prop from server (from search API)
-  const fromPrice = pricing || 
-                    tour?.pricing?.summary?.fromPrice || 
-                    tour?.pricingInfo?.fromPrice || 
-                    tour?.pricing?.fromPrice || 
-                    tour?.price || 
-                    0;
+  // Reconcile product vs server schedules — cached product may only have bad summary.fromPrice
+  const fromPrice =
+    reconcileProductPriceWithSchedule(getFromPriceFromProductTour(tour), pricing, tour) ||
+    pricing ||
+    tour?.pricing?.summary?.fromPrice ||
+    tour?.pricingInfo?.fromPrice ||
+    tour?.pricing?.fromPrice ||
+    tour?.price ||
+    0;
 
   // Get rating and review data for Option 3 (Value-focused)
   const rating = tour?.reviews?.combinedAverageRating || tour?.reviews?.averageRating || 0;
@@ -231,7 +234,7 @@ function StickyPriceBar({ tour, pricing, viatorUrl, matchScore, matchScoresEnabl
       className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-2xl"
     >
       <div className="container mx-auto px-4 py-3 max-w-6xl">
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center gap-4 w-full md:justify-between">
           {/* Left: Rating + Match Score + Price (hidden on mobile, show on tablet+) */}
           <div className="hidden md:flex items-center gap-6 flex-shrink-0">
             {/* Rating/Reviews (show if available) */}
@@ -304,76 +307,10 @@ function StickyPriceBar({ tour, pricing, viatorUrl, matchScore, matchScoresEnabl
             )}
           </div>
 
-          {/* Mobile: Show dynamic price (estimated total) when travelers > 0, or base price if group pricing */}
-          <div className="md:hidden flex items-center gap-3 flex-shrink-0">
-            {isGroupPricing ? (
-              // Group pricing: show fixed price
-              <div className="flex-shrink-0">
-                <div className="text-base font-bold text-gray-900 whitespace-nowrap">
-                  From ${fromPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-                </div>
-                <div className="text-xs text-gray-600">group</div>
-              </div>
-            ) : (
-              // Per person pricing: show dynamic estimated total if travelers > 0, otherwise base price
-              <>
-                {totalTravelers > 0 && estimatedTotal > 0 ? (
-                  <div className="flex-shrink-0">
-                    <div className="text-base font-bold text-gray-900 whitespace-nowrap">
-                      ${estimatedTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-                    </div>
-                    <div className="text-xs text-gray-600">
-                      {totalTravelers} {totalTravelers === 1 ? 'person' : 'people'}
-                    </div>
-                  </div>
-                ) : (
-                  <div className="flex-shrink-0">
-                    <div className="text-base font-bold text-gray-900 whitespace-nowrap">
-                      From ${fromPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-                    </div>
-                    <div className="text-xs text-gray-600">per person</div>
-                  </div>
-                )}
-                
-                {/* Travelers Selector - Mobile only, compact */}
-                {validAgeBands.length > 0 && (
-                  <div className="flex items-center gap-1.5 flex-shrink-0">
-                    {(() => {
-                      const adultBand = validAgeBands.find(b => b.ageBand === 'ADULT') || validAgeBands[0];
-                      if (!adultBand) return null;
-                      
-                      const count = travelers && typeof travelers === 'object' ? (travelers[adultBand.ageBand] || 0) : 0;
-                      const min = adultBand.minTravelersPerBooking || 0;
-                      const max = adultBand.maxTravelersPerBooking || 9;
-
-                      return (
-                        <div className="flex items-center gap-1 px-1.5 py-0.5 border border-gray-200 rounded bg-gray-50">
-                          <button
-                            onClick={() => updateTravelers(adultBand.ageBand, -1)}
-                            disabled={count <= min}
-                            className="w-5 h-5 rounded border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-semibold text-xs leading-none"
-                          >
-                            −
-                          </button>
-                          <span className="w-5 text-center font-semibold text-gray-900 text-xs">{count}</span>
-                          <button
-                            onClick={() => updateTravelers(adultBand.ageBand, 1)}
-                            disabled={count >= max}
-                            className="w-5 h-5 rounded border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-semibold text-xs leading-none"
-                          >
-                            +
-                          </button>
-                        </div>
-                      );
-                    })()}
-                  </div>
-                )}
-              </>
-            )}
-          </div>
+          {/* Mobile: price + travelers hidden — sticky bar is CTA-only (price stays in hero / desktop bar) */}
 
           {/* Right: Estimated Total & CTA */}
-          <div className="flex items-center gap-6 flex-shrink-0">
+          <div className="flex min-w-0 flex-1 items-center gap-6 md:flex-none md:flex-shrink-0 md:w-auto md:justify-end">
             {/* Estimated Total */}
             {!isGroupPricing && totalTravelers > 0 && estimatedTotal > 0 && (
               <div className="text-right hidden lg:block flex-shrink-0">
@@ -384,11 +321,11 @@ function StickyPriceBar({ tour, pricing, viatorUrl, matchScore, matchScoresEnabl
               </div>
             )}
 
-            {/* CTA Button - Smaller on mobile to fit travelers selector, full width on desktop */}
+            {/* CTA — full width on mobile (no price in sticky); compact min-width on md+ */}
             <Button
               asChild
               size="lg"
-              className="bg-[#00AA6C] hover:bg-[#008855] text-white font-semibold px-3 md:px-6 py-2.5 md:py-3 text-center text-xs md:text-sm leading-snug flex-shrink-0 md:min-w-[200px] max-w-[100vw] whitespace-normal"
+              className="bg-[#00AA6C] hover:bg-[#008855] text-white font-semibold px-4 md:px-6 py-2.5 md:py-3 text-center text-sm md:text-sm leading-snug w-full md:w-auto md:min-w-[200px] max-w-[100vw] whitespace-normal"
             >
               <a
                 href={viatorUrl}
@@ -1046,17 +983,16 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
           return null;
         };
         
-        // Try to find and normalize the price
-        // Also check the pricing prop passed from server
+        // Prefer product from-price for matching (schedules `pricing` prop can be wrong on some products)
         let normalizedPrice = null;
-        if (pricing && typeof pricing === 'number' && pricing > 0) {
-          normalizedPrice = pricing;
-        } else if (tour.pricing?.summary?.fromPrice !== undefined && tour.pricing.summary.fromPrice !== null) {
+        if (tour.pricing?.summary?.fromPrice !== undefined && tour.pricing.summary.fromPrice !== null) {
           normalizedPrice = getNumericPrice(tour.pricing.summary.fromPrice);
         } else if (tour.pricing?.fromPrice !== undefined && tour.pricing.fromPrice !== null) {
           normalizedPrice = getNumericPrice(tour.pricing.fromPrice);
         } else if (tour.price !== undefined && tour.price !== null) {
           normalizedPrice = getNumericPrice(tour.price);
+        } else if (pricing && typeof pricing === 'number' && pricing > 0) {
+          normalizedPrice = pricing;
         }
         
         // Set normalized price in the expected location
@@ -1570,44 +1506,31 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     return { ratingBreakdown: processed, ratingBreakdownTotal: totalForPercent };
   }, [tour, reviewCount]);
   
-  // Extract price from multiple possible locations
-  // Get price - prioritize pricing prop from server (from search API)
+  // Reconcile cached product price with schedules (`pricing` prop). Do not return summary.fromPrice alone
+  // when it disagrees with schedules — Supabase cache often strips pricingInfo for this product shape.
   const getPrice = () => {
-    // First try the pricing prop passed from server (from search API)
+    const fromProduct = getFromPriceFromProductTour(tour);
+    const schedule = pricing && pricing > 0 ? pricing : null;
+    const reconciled = reconcileProductPriceWithSchedule(fromProduct, schedule, tour);
+    if (reconciled && reconciled > 0) {
+      return reconciled;
+    }
     if (pricing && pricing > 0) {
       return pricing;
-    }
-    // Try pricing.summary.fromPrice (search API format)
-    if (tour.pricing?.summary?.fromPrice) {
-      return tour.pricing.summary.fromPrice;
-    }
-    // Try pricing.fromPrice
-    if (tour.pricing?.fromPrice) {
-      return tour.pricing.fromPrice;
-    }
-    // Try pricingInfo.fromPrice
-    if (tour.pricingInfo?.fromPrice) {
-      return tour.pricingInfo.fromPrice;
     }
     // Try pricing.amount
     if (tour.pricing?.amount) {
       return tour.pricing.amount;
     }
     // Try price object
-    if (tour.price?.fromPrice) {
-      return tour.price.fromPrice;
-    }
     if (tour.price?.amount) {
       return tour.price.amount;
-    }
-    if (typeof tour.price === 'number') {
-      return tour.price;
     }
     // Try bookingInfo
     if (tour.bookingInfo?.price) {
       return tour.bookingInfo.price;
     }
-    // Try pricingMatrix (if available)
+    // Last resort: age-band matrix (can be a low per-person slice — avoid when summary exists)
     if (tour.pricingMatrix && Array.isArray(tour.pricingMatrix) && tour.pricingMatrix.length > 0) {
       const adultPrice = tour.pricingMatrix.find(p => p.ageBand === 'ADULT')?.price;
       if (adultPrice) return adultPrice;
@@ -1862,7 +1785,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
               ...tour.pricing,
               summary: {
                 ...tour.pricing?.summary,
-                fromPrice: tour.pricing?.summary?.fromPrice || pricing?.fromPrice || pricing?.summary?.fromPrice,
+                fromPrice: getFromPriceFromProductTour(tour) || (typeof pricing === 'number' ? pricing : null) || tour.pricing?.summary?.fromPrice || pricing?.fromPrice || pricing?.summary?.fromPrice,
                 fromPriceBeforeDiscount: tour.pricing?.summary?.fromPriceBeforeDiscount || pricing?.fromPriceBeforeDiscount || pricing?.summary?.fromPriceBeforeDiscount,
               }
             }
@@ -1993,7 +1916,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
           ...tour.pricing,
           summary: {
             ...tour.pricing?.summary,
-            fromPrice: tour.pricing?.summary?.fromPrice || pricing?.fromPrice || pricing?.summary?.fromPrice,
+            fromPrice: getFromPriceFromProductTour(tour) || (typeof pricing === 'number' ? pricing : null) || tour.pricing?.summary?.fromPrice || pricing?.fromPrice || pricing?.summary?.fromPrice,
             fromPriceBeforeDiscount: tour.pricing?.summary?.fromPriceBeforeDiscount || pricing?.fromPriceBeforeDiscount || pricing?.summary?.fromPriceBeforeDiscount,
           }
         }
@@ -2189,7 +2112,9 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
   const { user: bookmarksUser, isBookmarked, toggle } = useBookmarks();
 
   return (
-    <div className="min-h-screen bg-[#f8f9fa] pt-16 pb-36" style={{ overflowX: 'hidden' }} suppressHydrationWarning>
+    <div className="min-h-screen bg-[#f8f9fa] pt-16" style={{ overflowX: 'hidden' }} suppressHydrationWarning>
+      {/* Bottom padding only *above* footer so the sticky CTA doesn’t cover last content; no padding below footer */}
+      <div className="pb-24 md:pb-28">
       <NavigationNext />
 
       {/* Breadcrumb — above hero (explore-style flow) */}
@@ -2489,7 +2414,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   </a>
                 </div>
                 <p className="mt-2 text-[11px] leading-snug text-gray-600" role="note">
-                  Partner: <span className="font-medium">Viator</span>. &quot;{TOURS_PRIMARY_CTA_LABEL}&quot; opens in a new tab.{' '}
+                  Partner: <span className="font-medium">Viator</span>. Booking opens in a new tab.{' '}
                   <Link
                     href="/disclosure"
                     className="font-medium text-primary underline decoration-primary/40 underline-offset-2 hover:decoration-primary"
@@ -2568,7 +2493,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
               {inclusions.length > 0 && (
                 <ViatorBetweenSectionsCta
                   viatorUrl={viatorUrl}
-                  headline="Verify inclusions & book on Viator"
+                  headline="Verify inclusions & book"
                 />
               )}
 
@@ -2650,7 +2575,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
               {additionalImages.length > 0 && (
                 <ViatorBetweenSectionsCta
                   viatorUrl={viatorUrl}
-                  headline="Pick your dates on Viator — check live availability"
+                  headline="Pick your dates — check live availability"
                   subline="Popular time slots can fill up fast."
                 />
               )}
@@ -2986,9 +2911,9 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                       </p>
                     </div>
 
-                    {/* CTA Row: Viator + Match to Your Style */}
+                    {/* CTA Row: booking + Match to Your Style */}
                     <div className="pt-2 flex flex-wrap items-center justify-between gap-3">
-                      {/* Left: Viator CTA (same label as primary hero button) */}
+                      {/* Left: primary booking CTA (same label as hero) */}
                       {viatorUrl && (
                         <Button
                           asChild
@@ -3153,8 +3078,8 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                       </h2>
                       <p className="text-gray-600 mt-2">
                         {operatorPremiumData 
-                          ? 'Premium TopTours Partner. Official supplier for this experience. Bookings are handled directly through Viator with verified partners.'
-                          : 'Official supplier for this experience. Bookings are handled directly through Viator with verified partners.'}
+                          ? 'Premium TopTours Partner. Official supplier for this experience. Bookings are completed through our partner with verified operators.'
+                          : 'Official supplier for this experience. Bookings are completed through our partner with verified operators.'}
                       </p>
                       {operatorPremiumData && operatorPremiumData.aggregatedStats && (
                         <div className="mt-3 flex items-center gap-4 text-sm">
@@ -3173,7 +3098,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                     <div className={`flex items-center gap-3 rounded-2xl px-4 py-3 ${operatorPremiumData ? 'bg-amber-50 border border-amber-200 text-amber-700' : 'bg-purple-50 border border-purple-100 text-purple-700'}`}>
                       <Shield className={`w-6 h-6 ${operatorPremiumData ? 'text-amber-600' : 'text-purple-600'}`} />
                       <div className="text-sm">
-                        <p className="font-semibold">{operatorPremiumData ? 'Premium TopTours Partner' : 'Viator Certified'}</p>
+                        <p className="font-semibold">{operatorPremiumData ? 'Premium TopTours Partner' : 'Verified partner'}</p>
                         <p className={`text-xs ${operatorPremiumData ? 'text-amber-600/80' : 'text-purple-600/80'}`}>
                           {operatorPremiumData ? 'Verified premium operator' : 'Trusted local operator'}
                         </p>
@@ -3299,7 +3224,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
 
               <ViatorBetweenSectionsCta
                 viatorUrl={viatorUrl}
-                headline="Compare reviews & final price on Viator"
+                headline="Compare reviews & final price"
               />
 
               {/* Frequently Asked Questions */}
@@ -3396,7 +3321,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                       Book {tour.title || 'this tour'}
                     </h3>
                     <p className="text-white/90 text-base leading-relaxed">
-                      Secure your spot instantly through Viator and receive flexible cancellation options plus verified customer support.
+                      Secure your spot with flexible cancellation options and verified customer support on our booking partner.
                     </p>
                   </div>
                   <div className="flex-shrink-0 relative">
@@ -3417,7 +3342,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                     <div className="absolute top-2 right-2 group">
                       <Info className="w-3.5 h-3.5 text-purple-700/70 cursor-help bg-white/80 rounded-full p-0.5" />
                       <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
-                        Opens Viator, our trusted affiliate partner
+                        Opens booking partner (affiliate) in a new tab
                         <div className="absolute top-full right-4 border-4 border-transparent border-t-gray-900"></div>
                       </div>
                     </div>
@@ -3595,14 +3520,13 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                 <p className="mb-4 text-sm leading-relaxed text-gray-700">
                   {derivedDestinationName ? (
                     <>
-                      Open Viator with this tour under <span className="font-medium">You selected</span>, plus
-                      hundreds of other experiences in {derivedDestinationName} — same link as availability &
-                      booking.
+                      Same secure booking link — this tour stays under <span className="font-medium">You selected</span>, plus
+                      hundreds of other experiences in {derivedDestinationName}.
                     </>
                   ) : (
                     <>
-                      Open Viator with this tour under <span className="font-medium">You selected</span>, plus
-                      more top-rated activities nearby — same link as availability & booking.
+                      Same secure booking link — this tour stays under <span className="font-medium">You selected</span>, plus
+                      more top-rated activities nearby.
                     </>
                   )}
                 </p>
@@ -3612,7 +3536,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   rel="sponsored noopener noreferrer"
                   className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#00AA6C] px-4 py-3 text-center text-sm font-semibold leading-snug text-white transition-colors hover:bg-[#008855]"
                 >
-                  <span>View similar tours on Viator</span>
+                  <span>View similar tours &amp; prices</span>
                   <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
                 </a>
               </div>
@@ -3743,8 +3667,8 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
               viatorUrl={viatorUrl}
               headline={
                 derivedDestinationName
-                  ? `See more tours in ${derivedDestinationName} on Viator`
-                  : 'See more tours in this destination on Viator'
+                  ? `See more tours in ${derivedDestinationName}`
+                  : 'See more tours in this destination'
               }
             />
           </div>
@@ -3943,7 +3867,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                 <div className="absolute -top-1 -right-1 group">
                   <Info className="w-3.5 h-3.5 text-white/70 cursor-help bg-orange-500 rounded-full p-0.5" />
                   <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
-                    Opens Viator, our trusted affiliate partner
+                    Opens booking partner (affiliate) in a new tab
                     <div className="absolute top-full right-4 border-4 border-transparent border-t-gray-900"></div>
                   </div>
                 </div>
@@ -4402,6 +4326,8 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
           </div>
         </div>
       )}
+
+      </div>
 
       <FooterNext />
       

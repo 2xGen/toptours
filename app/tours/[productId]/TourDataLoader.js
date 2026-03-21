@@ -6,7 +6,7 @@
 
 import { getTourEnrichmentCached, generateTourEnrichment } from '@/lib/tourEnrichment';
 import { getTourOperatorPremiumSubscription, getOperatorPremiumTourIds, getOperatorAggregatedStats } from '@/lib/tourOperatorPremiumServer';
-import { getFromPrice } from '@/lib/viatorPricing';
+import { getFromPrice, getFromPriceFromProductTour, reconcileProductPriceWithSchedule } from '@/lib/viatorPricing';
 import { getDestinationNameById } from '@/lib/destinationIdLookup';
 import { getViatorDestinationById } from '@/lib/supabaseCache';
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
@@ -30,8 +30,10 @@ export async function loadTourData(productId, tour) {
     getPrimaryTagNameForTour(tour).catch(() => null)
   ]);
 
-  // Extract results
-  const pricing = pricingResult.status === 'fulfilled' ? pricingResult.value : null;
+  // Merge product + schedules: cached tours may only have misleading `pricing.summary.fromPrice`
+  const schedulePrice = pricingResult.status === 'fulfilled' ? pricingResult.value : null;
+  const productFromPrice = getFromPriceFromProductTour(tour);
+  const pricing = reconcileProductPriceWithSchedule(productFromPrice, schedulePrice, tour);
   const promotionScore = {
     product_id: productId,
     total_score: 0,

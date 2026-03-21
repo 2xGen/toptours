@@ -15,7 +15,7 @@ import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { getDestinationFeatures } from '@/lib/destinationFeatures';
 import { generateTourFAQs, generateFAQSchema } from '@/lib/faqGeneration';
 import { getCachedReviews } from '@/lib/viatorReviews';
-import { getPricingPerAgeBand } from '@/lib/viatorPricing';
+import { getFromPriceFromProductTour, reconcileProductPriceWithSchedule } from '@/lib/viatorPricing';
 
 // Revalidate every 7 days - page-level cache (not API JSON cache, so Viator compliant)
 // Increased from 24h to 7 days to reduce ISR writes during Google reindexing
@@ -530,13 +530,9 @@ export default async function TourDetailPage({ params }) {
 
     // Build Product schema - only include if at least offers OR aggregateRating is available
     // CRITICAL: Check BOTH pricing prop AND tour object for pricing (Viator API has multiple locations)
+    const pricingFromProduct = getFromPriceFromProductTour(tour);
     const pricingFromProp = pricing && typeof pricing === 'number' && pricing > 0 ? pricing : null;
-    const pricingFromTour = tour.pricing?.summary?.fromPrice || 
-                           tour.pricing?.fromPrice || 
-                           tour.pricingInfo?.fromPrice || 
-                           tour.price?.fromPrice ||
-                           (typeof tour.price === 'number' && tour.price > 0 ? tour.price : null);
-    const finalPricing = pricingFromProp || pricingFromTour;
+    const finalPricing = reconcileProductPriceWithSchedule(pricingFromProduct, pricingFromProp, tour);
     const hasOffers = finalPricing && finalPricing > 0;
     
     // Check reviews - Viator API always includes reviews object, but values might be 0

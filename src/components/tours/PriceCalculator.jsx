@@ -19,7 +19,7 @@ export default function PriceCalculator({
   pricingPerAgeBand = null,
   travelers: externalTravelers,
   setTravelers: externalSetTravelers,
-  ctaLabel = 'Check Availability & Book on Viator',
+  ctaLabel = 'Check availability & book',
 }) {
   const pricingInfo = tour?.pricingInfo;
   const pricingType = pricingInfo?.type || 'PER_PERSON';
