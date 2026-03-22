@@ -1,5 +1,9 @@
 import { createSupabaseServiceRoleClient } from '@/lib/supabaseClient';
 import { getTagGuidesForDestination } from '@/lib/tagGuideContent';
+import {
+  getArushaKiliclimbListingMeta,
+  ARUSHA_KILICLIMB_GUIDE_SLUG,
+} from '../../app/destinations/[id]/guides/partnerGuides/arushaKiliclimbTanzania.js';
 
 // Simple in-memory cache to avoid repeated DB calls during builds / SSR.
 // Keyed by normalized destination slug.
@@ -42,6 +46,18 @@ export async function getAllCategoryGuidesForDestination(destinationId) {
     const inFlightPromise = (async () => {
     // Check database for guides (all guides are now in the database)
     if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
+      if (normalizedDestinationId === 'arusha') {
+        const meta = getArushaKiliclimbListingMeta();
+        return [
+          {
+            category_slug: meta.category_slug,
+            category_name: meta.category_name,
+            title: meta.title,
+            subtitle: meta.subtitle,
+            hero_image: meta.hero_image,
+          },
+        ];
+      }
       return [];
     }
 
@@ -63,7 +79,24 @@ export async function getAllCategoryGuidesForDestination(destinationId) {
 
       const categoryGuides = Array.isArray(data) ? data : [];
       const tagGuides = await getTagGuidesForDestination(normalizedDestinationId).catch(() => []);
-      const combined = [...categoryGuides, ...tagGuides];
+      let combined = [...categoryGuides, ...tagGuides];
+
+      if (normalizedDestinationId === 'arusha') {
+        const meta = getArushaKiliclimbListingMeta();
+        const exists = combined.some(
+          (g) => String(g.category_slug || '').toLowerCase() === ARUSHA_KILICLIMB_GUIDE_SLUG
+        );
+        if (!exists) {
+          combined.push({
+            category_slug: meta.category_slug,
+            category_name: meta.category_name,
+            title: meta.title,
+            subtitle: meta.subtitle,
+            hero_image: meta.hero_image,
+          });
+        }
+      }
+
       return combined.sort((a, b) => (a.category_name || a.title || '').localeCompare(b.category_name || b.title || ''));
     } catch (dbError) {
       // Database error - return empty array

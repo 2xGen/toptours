@@ -5,7 +5,8 @@
  */
 
 import { getTourEnrichmentCached, generateTourEnrichment } from '@/lib/tourEnrichment';
-import { getTourOperatorPremiumSubscription, getOperatorPremiumTourIds, getOperatorAggregatedStats } from '@/lib/tourOperatorPremiumServer';
+import { getTourOperatorPremiumSubscription, getOperatorPremiumTourIds } from '@/lib/tourOperatorPremiumServer';
+import { resolveOperatorAggregatedStatsForDisplay } from '@/lib/operatorAggregatedStatsViator';
 import { getFromPrice, getFromPriceFromProductTour, reconcileProductPriceWithSchedule } from '@/lib/viatorPricing';
 import { getDestinationNameById } from '@/lib/destinationIdLookup';
 import { getViatorDestinationById } from '@/lib/supabaseCache';
@@ -55,7 +56,7 @@ export async function loadTourData(productId, tour) {
   if (operatorPremiumData) {
     try {
       operatorTours = await getOperatorPremiumTourIds(productId);
-      const stats = await getOperatorAggregatedStats(operatorPremiumData.id);
+      const stats = await resolveOperatorAggregatedStatsForDisplay(operatorPremiumData, productId, tour);
       if (stats) {
         operatorPremiumData.aggregatedStats = stats;
       }
@@ -78,6 +79,70 @@ export async function loadTourData(productId, tour) {
 }
 
 /**
+ * Viator multi-destination products sometimes have the wrong `primary` flag (e.g. a Americas
+ * city while the tour title is clearly Tanzania/Kilimanjaro). Pick a destination that matches
+ * the tour copy when the flagged primary looks inconsistent.
+ */
+function pickPrimaryDestinationForTour(tour) {
+  const list = tour?.destinations;
+  if (!Array.isArray(list) || list.length === 0) return null;
+
+  const title = (tour.title || '').toLowerCase();
+  const africaSafariHints = [
+    'tanzania',
+    'kilimanjaro',
+    'serengeti',
+    'ngorongoro',
+    'manyara',
+    'tarangire',
+    'arusha',
+    'moshi',
+    'zanzibar',
+    'camping safari',
+    'private camping safari',
+    'africa',
+  ];
+  const titleSuggestsEastAfrica = africaSafariHints.some((k) => title.includes(k));
+
+  const nameOf = (d) => ((d?.destinationName || d?.name || '') + '').toLowerCase().trim();
+  const explicit = list.find((d) => d.primary) || null;
+
+  if (explicit && titleSuggestsEastAfrica) {
+    const exName = nameOf(explicit);
+    const americasMismatch = ['lima', 'peru', 'cusco', 'cartagena', 'bogota', 'mexico city', 'cancun', 'punta cana'].some(
+      (a) => exName.includes(a)
+    );
+    if (americasMismatch) {
+      const better =
+        list.find((d) => {
+          const n = nameOf(d);
+          if (!n) return false;
+          if (africaSafariHints.some((k) => n.includes(k))) return true;
+          return title.includes(n);
+        }) || null;
+      if (better) return better;
+    }
+  }
+
+  if (explicit) return explicit;
+
+  for (const d of list) {
+    const n = nameOf(d);
+    if (n && title.includes(n)) return d;
+  }
+
+  if (titleSuggestsEastAfrica) {
+    const tz = list.find((d) => {
+      const n = nameOf(d);
+      return ['moshi', 'arusha', 'kilimanjaro', 'zanzibar', 'dar es salaam'].some((k) => n.includes(k));
+    });
+    if (tz) return tz;
+  }
+
+  return list[0];
+}
+
+/**
  * Load destination and related data
  */
 export async function loadDestinationData(tour, productId) {
@@ -86,7 +151,7 @@ export async function loadDestinationData(tour, productId) {
     let destinationNameFromTour = null;
     
     if (tour?.destinations && tour.destinations.length > 0) {
-      const primary = tour.destinations.find(d => d.primary) || tour.destinations[0];
+      const primary = pickPrimaryDestinationForTour(tour) || tour.destinations[0];
       destinationId = primary?.ref || primary?.destinationId || primary?.id;
       destinationNameFromTour = primary?.destinationName || primary?.name;
     }
@@ -94,6 +159,8 @@ export async function loadDestinationData(tour, productId) {
     if (!destinationId) {
       return { destinationData: null, categoryGuides: [] };
     }
+
+    const destinationIdNormalized = String(destinationId).replace(/^d/i, '');
 
     // Tour detail page does not show restaurants - no fetch (saves Supabase/static read)
     const [
@@ -119,26 +186,32 @@ export async function loadDestinationData(tour, productId) {
         const viatorDestination = await getViatorDestinationById(destinationId);
         if (viatorDestination) {
           destinationData = {
-            id: destinationId,
+            id: destinationIdNormalized,
+            destinationId: destinationIdNormalized,
             name: destinationName,
-            slug: viatorDestination.slug || destinationId,
-            destinationName: destinationName
+            slug: viatorDestination.slug || destinationIdNormalized,
+            destinationName: destinationName,
+            source: 'loadDestinationData',
           };
         } else {
           destinationData = {
-            id: destinationId,
+            id: destinationIdNormalized,
+            destinationId: destinationIdNormalized,
             name: destinationName,
-            slug: destinationId,
-            destinationName: destinationName
+            slug: destinationIdNormalized,
+            destinationName: destinationName,
+            source: 'loadDestinationData',
           };
         }
       } catch (error) {
         // Silently continue - will use fallback
         destinationData = {
-          id: destinationId,
+          id: destinationIdNormalized,
+          destinationId: destinationIdNormalized,
           name: destinationName,
-          slug: destinationId,
-          destinationName: destinationName
+          slug: destinationIdNormalized,
+          destinationName: destinationName,
+          source: 'loadDestinationData',
         };
       }
     }

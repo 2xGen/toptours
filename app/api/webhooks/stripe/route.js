@@ -1746,15 +1746,16 @@ async function handleTourOperatorPremiumCheckout(session, supabase) {
       
       if (operatorTours && operatorTours.length > 0) {
         const totalReviews = operatorTours.reduce((sum, tour) => sum + (tour.review_count || 0), 0);
-        const avgRating = operatorTours.reduce((sum, tour) => sum + (tour.rating || 0), 0) / operatorTours.length;
-        
-        // Cap reviews at 10 tours worth
-        const cappedReviews = Math.min(totalReviews, Math.ceil(totalReviews / selectedTourIds.length) * 10);
-        
+        const weightedSum = operatorTours.reduce(
+          (sum, tour) => sum + (tour.rating || 0) * (tour.review_count || 0),
+          0
+        );
+        const avgRating = totalReviews > 0 ? weightedSum / totalReviews : 0;
+
         await supabase
           .from('tour_operator_subscriptions')
           .update({
-            total_reviews: cappedReviews,
+            total_reviews: totalReviews,
             average_rating: Math.round(avgRating * 100) / 100,
             total_tours_count: selectedTourIds.length,
           })

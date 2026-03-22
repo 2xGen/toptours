@@ -18,6 +18,7 @@ import DestinationStickyNav from '@/components/DestinationStickyNav';
 import PrefetchOnHoverLink from '@/components/PrefetchOnHoverLink';
 import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
 import { groupGuidesIntoSections, pickToursForGuide } from '@/lib/guidePageGrouping';
+import ArushaKiliclimbFeaturedStrip from './partnerGuides/ArushaKiliclimbFeaturedStrip';
 
 const DISCOVER_CARS_URL = 'https://www.discovercars.com/?a_aid=toptours&a_cid=65100b9c';
 
@@ -300,6 +301,8 @@ export default function GuidesListingClient({ destinationId, destination, guides
             )}
           </div>
         </section>
+
+        <ArushaKiliclimbFeaturedStrip destinationId={destinationId} />
 
         {/* Breadcrumb */}
         <section className="bg-white border-b border-gray-100">

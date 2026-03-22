@@ -34,6 +34,7 @@ import { calculateEnhancedMatchScore } from '@/lib/tourMatchingEnhanced';
 import { resolveUserPreferences } from '@/lib/preferenceResolution';
 import { useBookmarks } from '@/hooks/useBookmarks';
 import { dedupeCategoryGuides, groupGuidesIntoSections } from '@/lib/guidePageGrouping';
+import ArushaKiliclimbFeaturedStrip from './guides/partnerGuides/ArushaKiliclimbFeaturedStrip';
 // OPTIMIZED: Lazy load modals - only load when opened
 const ShareModal = lazy(() => import('@/components/sharing/ShareModal'));
 const SmartTourFinder = lazy(() => import('@/components/home/SmartTourFinder'));
@@ -1995,6 +1996,8 @@ export default function DestinationDetailClient({ destination, promotionScores =
             </div>
           </section>
         )}
+
+        <ArushaKiliclimbFeaturedStrip destinationId={safeDestination.id} />
 
         {/* Popular Tour Categories - Collapsible Accordion */}
         {categoryGuidesProp && categoryGuidesProp.length > 0 && (

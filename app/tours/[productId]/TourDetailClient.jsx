@@ -2,7 +2,11 @@
 
 import React, { useState, useEffect, useMemo, useCallback, useRef, lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
-import { getFromPriceFromProductTour, reconcileProductPriceWithSchedule } from '@/lib/viatorPricing';
+import {
+  getFromPriceFromProductTour,
+  reconcileProductPriceWithSchedule,
+  normalizeProductPriceToUsd,
+} from '@/lib/viatorPricing';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { 
   Star, 
@@ -127,7 +131,16 @@ function ViatorDecisionBlock({ viatorUrl }) {
 }
 
 // Sticky Price Bar Component - Smart: Shows match score if available, otherwise shows rating/reviews
-function StickyPriceBar({ tour, pricing, viatorUrl, matchScore, matchScoresEnabled = false, travelers: externalTravelers = undefined, setTravelers: externalSetTravelers = undefined }) {
+function StickyPriceBar({
+  tour,
+  pricing,
+  viatorUrl,
+  matchScore,
+  matchScoresEnabled = false,
+  travelers: externalTravelers = undefined,
+  setTravelers: externalSetTravelers = undefined,
+  operatorPremiumData = null,
+}) {
   const pricingInfo = tour?.pricingInfo;
   const ageBands = pricingInfo?.ageBands || [];
   const pricingType = pricingInfo?.type || 'PER_PERSON';
@@ -148,14 +161,10 @@ function StickyPriceBar({ tour, pricing, viatorUrl, matchScore, matchScoresEnabl
     return (endAge - startAge) <= 50 && endAge <= 100;
   });
 
-  // Reconcile product vs server schedules — cached product may only have bad summary.fromPrice
+  // Reconcile product vs server schedules (both normalized toward USD — see viatorPricing.js)
   const fromPrice =
     reconcileProductPriceWithSchedule(getFromPriceFromProductTour(tour), pricing, tour) ||
-    pricing ||
-    tour?.pricing?.summary?.fromPrice ||
-    tour?.pricingInfo?.fromPrice ||
-    tour?.pricing?.fromPrice ||
-    tour?.price ||
+    (typeof pricing === 'number' && pricing > 0 ? pricing : null) ||
     0;
 
   // Get rating and review data for Option 3 (Value-focused)
@@ -255,6 +264,16 @@ function StickyPriceBar({ tour, pricing, viatorUrl, matchScore, matchScoresEnabl
                 <span className="text-xs font-semibold text-purple-700">
                   {Math.round(matchPercentage)}% Match
                 </span>
+              </div>
+            )}
+
+            {operatorPremiumData && (
+              <div
+                className="flex items-center gap-1 px-2 py-1 bg-amber-50 border border-amber-200 rounded-lg"
+                title="Premium TopTours partner — verified multi-tour operator"
+              >
+                <Crown className="w-3.5 h-3.5 text-amber-600 shrink-0" aria-hidden />
+                <span className="text-xs font-semibold text-amber-900">Premium partner</span>
               </div>
             )}
 
@@ -438,7 +457,17 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     return viatorRefToSlug[normalized] || null;
   };
 
-  const primaryDestinationSlug = (() => {
+  // Prefer server-resolved slug (loadDestinationData + pickPrimaryDestinationForTour) so we
+  // do not trust Viator's primary flag when it points at the wrong continent.
+  const primaryDestinationSlug = useMemo(() => {
+    const serverSlug = destinationData?.slug;
+    if (serverSlug && typeof serverSlug === 'string') {
+      const s = serverSlug.trim();
+      if (s && !/^\d+$/.test(s)) {
+        return s;
+      }
+    }
+
     if (tour?.destinations && tour.destinations.length > 0) {
       const entry = tour.destinations.find((dest) => dest?.primary) || tour.destinations[0];
       if (!entry) return null;
@@ -471,18 +500,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
       }
     }
     return null;
-  })();
-
-  const derivedDestinationName = useMemo(() => {
-    if (destination?.fullName || destination?.name) {
-      return destination.fullName || destination.name;
-    }
-    if (Array.isArray(tour?.destinations) && tour.destinations.length > 0) {
-      const entry = tour.destinations.find((dest) => dest?.primary) || tour.destinations[0];
-      return entry?.destinationName || entry?.name || '';
-    }
-    return '';
-  }, [destination, tour]);
+  }, [destinationData?.slug, tour]);
 
   // Persist local preferences to localStorage
   useEffect(() => {
@@ -493,10 +511,6 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
       console.error('Error saving localStorage preferences on tour detail page:', e);
     }
   }, [localPreferences]);
-
-  const similarSectionTitle = derivedDestinationName
-    ? `Other Tours in ${derivedDestinationName}`
-    : 'Other Tours You Might Like';
 
   const destinationTourUrl = useMemo(() => {
     if (primaryDestinationSlug) {
@@ -513,24 +527,6 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     }
     return null;
   }, [primaryDestinationSlug, tour]);
-
-  // Fallback: try to resolve slug by destination name if URL above is still null
-  const fallbackDestinationSlugByName = useMemo(() => {
-    if (!derivedDestinationName) return null;
-    const match = destinations.find((d) => {
-      const name = (d.fullName || d.name || '').toLowerCase();
-      return name === derivedDestinationName.toLowerCase();
-    });
-    return match?.id || null;
-  }, [derivedDestinationName]);
-
-  const finalDestinationTourUrl = useMemo(() => {
-    if (destinationTourUrl) return destinationTourUrl;
-    if (fallbackDestinationSlugByName) {
-      return `/destinations/${fallbackDestinationSlugByName}/tours`;
-    }
-    return null;
-  }, [destinationTourUrl, fallbackDestinationSlugByName]);
 
   const handleGenerateInsight = useCallback(async () => {
     if (!productId || isGeneratingInsight) return;
@@ -622,23 +618,24 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
   
   // Use fallback if server didn't provide destinationData
   const effectiveDestinationData = destinationData || fallbackDestinationData;
+  /** Server-side loadDestinationData (pickPrimaryDestinationForTour) is canonical vs wrong Viator primary / curated mismatch */
+  const serverDestinationAuthoritative = effectiveDestinationData?.source === 'loadDestinationData';
 
   const primaryDestinationId = useMemo(() => {
-    // Priority 1: Use server-provided destinationData (most reliable)
-    if (effectiveDestinationData?.destinationId) {
-      return effectiveDestinationData.destinationId;
+    const serverId = effectiveDestinationData?.destinationId ?? effectiveDestinationData?.id;
+    if (serverId != null && serverId !== '') {
+      return serverId;
     }
-    
-    // Priority 2: Extract from tour destinations array (prioritize primary)
+
     if (Array.isArray(tour?.destinations) && tour.destinations.length > 0) {
       const primary = tour.destinations.find((d) => d?.primary);
       const selected = primary || tour.destinations[0];
       const destId = selected?.ref || selected?.destinationId || selected?.id || null;
       return destId;
     }
-    
+
     return null;
-  }, [effectiveDestinationData?.destinationId, tour, productId]);
+  }, [effectiveDestinationData?.destinationId, effectiveDestinationData?.id, tour, productId]);
 
   const normalizedPrimaryDestinationId = useMemo(() => {
     if (!primaryDestinationId) return null;
@@ -722,8 +719,8 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
 
   // Get destination name and ID for unmatched destinations (for display in breadcrumbs and sidebar)
   const unmatchedDestinationName = useMemo(() => {
-    if (destination) return null; // Only for unmatched destinations
-    
+    if (destination && !serverDestinationAuthoritative) return null; // Curated wins unless server overrode it
+
     // First try effectiveDestinationData (server data or client fallback)
     if (effectiveDestinationData?.destinationName) {
       return effectiveDestinationData.destinationName;
@@ -752,7 +749,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     }
     
     return null;
-  }, [destination, effectiveDestinationData, tour, destinationNameFromClientLookup]);
+  }, [destination, serverDestinationAuthoritative, effectiveDestinationData, tour, destinationNameFromClientLookup]);
 
   const subtleDestinationName = useMemo(() => {
     if (effectiveDestinationData?.destinationName) {
@@ -773,8 +770,8 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
   // Get Viator destination slug/ID for unmatched destinations (for linking to tours page)
   // Prefer slug from effectiveDestinationData if available, otherwise use ID
   const unmatchedDestinationSlug = useMemo(() => {
-    if (destination) return null; // Only for unmatched destinations
-    
+    if (destination && !serverDestinationAuthoritative) return null;
+
     // Use slug from effectiveDestinationData if available (SEO-friendly, most reliable)
     if (effectiveDestinationData?.slug) {
       return effectiveDestinationData.slug;
@@ -807,7 +804,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     }
     
     return null;
-  }, [destination, effectiveDestinationData, tour, unmatchedDestinationName, destinationSlugFromClientLookup, destinationNameFromClientLookup]);
+  }, [destination, serverDestinationAuthoritative, effectiveDestinationData, tour, unmatchedDestinationName, destinationSlugFromClientLookup, destinationNameFromClientLookup]);
 
   const subtleDestinationSlug = useMemo(() => {
     // Prioritize client lookup (most up-to-date, from Supabase with name)
@@ -847,24 +844,94 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     return effectiveDestinationData?.slug || effectiveDestinationData?.destinationId || null;
   }, [effectiveDestinationData, destinationSlugFromClientLookup, unmatchedDestinationSlug, destinationNameFromClientLookup, unmatchedDestinationName]);
 
+  const displayDestinationNameForUi = useMemo(() => {
+    if (serverDestinationAuthoritative && effectiveDestinationData?.destinationName) {
+      return effectiveDestinationData.destinationName;
+    }
+    if (destination?.fullName || destination?.name) {
+      return destination.fullName || destination.name;
+    }
+    return (
+      effectiveDestinationData?.destinationName ||
+      subtleDestinationName ||
+      unmatchedDestinationName ||
+      ''
+    );
+  }, [
+    serverDestinationAuthoritative,
+    effectiveDestinationData?.destinationName,
+    destination,
+    subtleDestinationName,
+    unmatchedDestinationName,
+  ]);
+
+  const displayDestinationSlugForUi = useMemo(() => {
+    if (serverDestinationAuthoritative) {
+      return (
+        effectiveDestinationData?.slug ||
+        effectiveDestinationData?.destinationId ||
+        effectiveDestinationData?.id ||
+        null
+      );
+    }
+    return (
+      destination?.id ||
+      subtleDestinationSlug ||
+      unmatchedDestinationSlug ||
+      effectiveDestinationData?.slug ||
+      effectiveDestinationData?.destinationId ||
+      null
+    );
+  }, [serverDestinationAuthoritative, effectiveDestinationData, destination, subtleDestinationSlug, unmatchedDestinationSlug]);
+
+  const derivedDestinationName = useMemo(() => {
+    if (serverDestinationAuthoritative && effectiveDestinationData?.destinationName) {
+      return effectiveDestinationData.destinationName;
+    }
+    if (destination?.fullName || destination?.name) {
+      return destination.fullName || destination.name;
+    }
+    if (Array.isArray(tour?.destinations) && tour.destinations.length > 0) {
+      const entry = tour.destinations.find((dest) => dest?.primary) || tour.destinations[0];
+      return entry?.destinationName || entry?.name || '';
+    }
+    return '';
+  }, [serverDestinationAuthoritative, effectiveDestinationData?.destinationName, destination, tour]);
+
+  const similarSectionTitle = derivedDestinationName
+    ? `Other Tours in ${derivedDestinationName}`
+    : 'Other Tours You Might Like';
+
+  // Fallback: try to resolve slug by destination name if URL above is still null (after derivedDestinationName)
+  const fallbackDestinationSlugByName = useMemo(() => {
+    if (!derivedDestinationName) return null;
+    const match = destinations.find((d) => {
+      const name = (d.fullName || d.name || '').toLowerCase();
+      return name === derivedDestinationName.toLowerCase();
+    });
+    return match?.id || null;
+  }, [derivedDestinationName]);
+
+  const finalDestinationTourUrl = useMemo(() => {
+    if (destinationTourUrl) return destinationTourUrl;
+    if (fallbackDestinationSlugByName) {
+      return `/destinations/${fallbackDestinationSlugByName}/tours`;
+    }
+    return null;
+  }, [destinationTourUrl, fallbackDestinationSlugByName]);
+
   /** Main-content section → destination tag guide (same URL as the small category link above the title). */
   const tagGuideSectionCta = useMemo(() => {
     if (!primaryTagName) return null;
     const destSlug =
-      destination?.id ||
+      displayDestinationSlugForUi ||
       subtleDestinationSlug ||
       unmatchedDestinationSlug ||
       effectiveDestinationData?.slug ||
       effectiveDestinationData?.destinationId;
     const tagSlug = getTagSlugFromName(primaryTagName);
     if (!destSlug || !tagSlug) return null;
-    const destName =
-      destination?.fullName ||
-      destination?.name ||
-      effectiveDestinationData?.destinationName ||
-      unmatchedDestinationName ||
-      subtleDestinationName ||
-      null;
+    const destName = displayDestinationNameForUi || subtleDestinationName || unmatchedDestinationName || null;
     return {
       href: `/destinations/${destSlug}/guides/${tagSlug}`,
       tagLabel: primaryTagName,
@@ -872,9 +939,8 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     };
   }, [
     primaryTagName,
-    destination?.id,
-    destination?.fullName,
-    destination?.name,
+    displayDestinationSlugForUi,
+    displayDestinationNameForUi,
     subtleDestinationSlug,
     unmatchedDestinationSlug,
     effectiveDestinationData?.slug,
@@ -1171,8 +1237,16 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
   // The PageViewTracker automatically detects tour pages and updates aggregated counts
 
   useEffect(() => {
-    // First priority: Use effectiveDestinationData from server or client fallback (most reliable)
-    // This is especially important for the 3200+ destinations that aren't in the curated 182
+    // First: Viator ref → slug map (tour geography) — more reliable than fuzzy name matching
+    if (primaryDestinationSlug) {
+      const matchedBySlug = destinations.find((dest) => dest.id === primaryDestinationSlug);
+      if (matchedBySlug) {
+        setDestination(matchedBySlug);
+        return;
+      }
+    }
+
+    // Second: Server slug when it matches a curated destination exactly (avoid wrong fuzzy matches)
     if (effectiveDestinationData?.slug) {
       const matchedByServerSlug = destinations.find((dest) => dest.id === effectiveDestinationData.slug);
       if (matchedByServerSlug) {
@@ -1180,10 +1254,10 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
         return;
       }
     }
-    
-    // Also try matching by destination name from effectiveDestinationData
+
+    // Third: Exact destination name match only (no broad .includes — that matched "Lima" incorrectly)
     if (effectiveDestinationData?.destinationName) {
-      const destNameLower = effectiveDestinationData.destinationName.toLowerCase();
+      const destNameLower = effectiveDestinationData.destinationName.toLowerCase().trim();
       const matchedByServerName = destinations.find((dest) => {
         const destId = (dest.id || '').toLowerCase();
         const destFullName = (dest.fullName || dest.name || '').toLowerCase();
@@ -1191,23 +1265,12 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
         return (
           destId === destNameLower ||
           destFullName === destNameLower ||
-          destFullName.includes(destNameLower) ||
-          destNameLower.includes(destFullName) ||
           destName === destNameLower ||
-          destId === effectiveDestinationData.slug?.toLowerCase()
+          destId === (effectiveDestinationData.slug || '').toLowerCase()
         );
       });
       if (matchedByServerName) {
         setDestination(matchedByServerName);
-        return;
-      }
-    }
-
-    // Second priority: Try primaryDestinationSlug (from viatorRefToSlug mapping)
-    if (primaryDestinationSlug) {
-      const matchedBySlug = destinations.find((dest) => dest.id === primaryDestinationSlug);
-      if (matchedBySlug) {
-        setDestination(matchedBySlug);
         return;
       }
     }
@@ -1225,8 +1288,8 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
           return (
             dest.id === primaryDestinationSlug ||
             destFullName === destName ||
-            destFullName.includes(destName) ||
-            destName.includes(destFullName) ||
+            (destName.length >= 4 && destFullName.includes(destName)) ||
+            (destFullName.length >= 4 && destName.includes(destFullName)) ||
             destId === destName.replace(/\s/g, '-') ||
             destNameOnly === destName
           );
@@ -1239,18 +1302,28 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
       }
     }
 
-    // Last resort: Try to extract from tour title
+    // Last resort: substring match in title (require length ≥ 4 to avoid "lima"-style false positives)
     if (tour?.title) {
       const titleLower = tour.title.toLowerCase();
       const matchedDest = destinations.find((dest) => {
         const destName = (dest.name || dest.fullName || '').toLowerCase();
-        return destName && titleLower.includes(destName);
+        return destName.length >= 4 && titleLower.includes(destName);
       });
       if (matchedDest) {
         setDestination(matchedDest);
       }
     }
   }, [tour, primaryDestinationSlug, effectiveDestinationData]);
+
+  // Drop curated destination when it disagrees with server-resolved slug (e.g. Lima vs moshi)
+  useEffect(() => {
+    if (!serverDestinationAuthoritative || !destination) return;
+    const serverSlug = (effectiveDestinationData?.slug || '').toString().toLowerCase();
+    const curId = (destination.id || '').toString().toLowerCase();
+    if (serverSlug && curId && serverSlug !== curId) {
+      setDestination(null);
+    }
+  }, [serverDestinationAuthoritative, effectiveDestinationData?.slug, destination]);
 
   if (!tour) {
     return (
@@ -1518,23 +1591,26 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
     if (pricing && pricing > 0) {
       return pricing;
     }
-    // Try pricing.amount
-    if (tour.pricing?.amount) {
-      return tour.pricing.amount;
+    // Try pricing.amount (currency-aware — avoids JPY shown as USD)
+    if (tour.pricing?.amount != null) {
+      const n = normalizeProductPriceToUsd(tour.pricing.amount, tour);
+      if (n && n > 0) return n;
     }
-    // Try price object
-    if (tour.price?.amount) {
-      return tour.price.amount;
+    if (tour.price?.amount != null) {
+      const n = normalizeProductPriceToUsd(tour.price.amount, tour);
+      if (n && n > 0) return n;
     }
-    // Try bookingInfo
-    if (tour.bookingInfo?.price) {
-      return tour.bookingInfo.price;
+    if (tour.bookingInfo?.price != null) {
+      const n = normalizeProductPriceToUsd(tour.bookingInfo.price, tour);
+      if (n && n > 0) return n;
     }
-    // Last resort: age-band matrix (can be a low per-person slice — avoid when summary exists)
     if (tour.pricingMatrix && Array.isArray(tour.pricingMatrix) && tour.pricingMatrix.length > 0) {
-      const adultPrice = tour.pricingMatrix.find(p => p.ageBand === 'ADULT')?.price;
-      if (adultPrice) return adultPrice;
-      return tour.pricingMatrix[0]?.price || 0;
+      const adultPrice = tour.pricingMatrix.find((p) => p.ageBand === 'ADULT')?.price;
+      const raw = adultPrice ?? tour.pricingMatrix[0]?.price;
+      if (raw != null) {
+        const n = normalizeProductPriceToUsd(raw, tour);
+        if (n && n > 0) return n;
+      }
     }
     return 0;
   };
@@ -2124,7 +2200,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
             <Link href="/" className="text-gray-500 hover:text-gray-700">Home</Link>
             <span className="text-gray-400">/</span>
             <Link href="/destinations" className="text-gray-500 hover:text-gray-700">Destinations</Link>
-            {destination && (
+            {destination && !serverDestinationAuthoritative && (
               <>
                 <span className="text-gray-400">/</span>
                 <Link href={`/destinations/${destination.id}`} className="text-gray-500 hover:text-gray-700">
@@ -2134,7 +2210,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                 <Link href={`/destinations/${destination.id}/tours`} className="text-gray-500 hover:text-gray-700">Tours</Link>
               </>
             )}
-            {!destination && (effectiveDestinationData?.destinationName || unmatchedDestinationName || effectiveDestinationData?.destinationId) && (
+            {(serverDestinationAuthoritative || !destination) && (effectiveDestinationData?.destinationName || unmatchedDestinationName || effectiveDestinationData?.destinationId) && (
               <>
                 <span className="text-gray-400">/</span>
                 {(subtleDestinationSlug || unmatchedDestinationSlug || effectiveDestinationData?.destinationId) ? (
@@ -2154,7 +2230,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                 )}
               </>
             )}
-            {!destination && !effectiveDestinationData?.destinationName && !unmatchedDestinationName && !effectiveDestinationData?.destinationId && (
+            {!serverDestinationAuthoritative && !destination && !effectiveDestinationData?.destinationName && !unmatchedDestinationName && !effectiveDestinationData?.destinationId && (
               <>
                 <span className="text-gray-400">/</span>
                 <span className="text-gray-500">Tours</span>
@@ -2212,17 +2288,21 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                 <MapPin className="w-3.5 h-3.5 shrink-0 mt-0.5" aria-hidden />
                 <span className="min-w-0">
                   {(() => {
-                    const destLabel = destination?.category
-                      || destination?.fullName
-                      || destination?.name
-                      || effectiveDestinationData?.destinationName
-                      || unmatchedDestinationName
-                      || '';
-                    const destSlug = destination?.id
-                      || subtleDestinationSlug
-                      || unmatchedDestinationSlug
-                      || effectiveDestinationData?.slug
-                      || effectiveDestinationData?.destinationId;
+                    const destLabel = serverDestinationAuthoritative
+                      ? (displayDestinationNameForUi || '')
+                      : (destination?.category
+                        || destination?.fullName
+                        || destination?.name
+                        || effectiveDestinationData?.destinationName
+                        || unmatchedDestinationName
+                        || '');
+                    const destSlug = serverDestinationAuthoritative
+                      ? (displayDestinationSlugForUi || subtleDestinationSlug || effectiveDestinationData?.slug || effectiveDestinationData?.destinationId)
+                      : (destination?.id
+                        || subtleDestinationSlug
+                        || unmatchedDestinationSlug
+                        || effectiveDestinationData?.slug
+                        || effectiveDestinationData?.destinationId);
                     const tagSlug = primaryTagName ? getTagSlugFromName(primaryTagName) : '';
                     const tagGuideUrl = primaryTagName && destSlug && tagSlug
                       ? `/destinations/${destSlug}/guides/${tagSlug}`
@@ -2257,7 +2337,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
               <div className="flex items-start gap-2 sm:gap-3">
                 <h1 className="font-poppins font-bold text-2xl sm:text-3xl text-gray-900 tracking-tight leading-tight flex-1 min-w-0">
                   {(() => {
-                    const destName = destination?.fullName || destination?.name || effectiveDestinationData?.destinationName || unmatchedDestinationName;
+                    const destName = displayDestinationNameForUi;
                     return destName ? `${tour.title} in ${destName}` : tour.title;
                   })()}
                 </h1>
@@ -2298,7 +2378,26 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   </button>
                 </div>
               </div>
-              <p className="mt-1.5 text-gray-500 text-sm">Operated by {supplierName || 'Tour operator'}</p>
+              {operatorPremiumData && (
+                <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:flex-wrap">
+                  <div className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 rounded-full border border-amber-200 bg-gradient-to-r from-amber-50 to-white px-3 py-1.5 text-xs font-semibold text-amber-900 shadow-sm">
+                    <span className="inline-flex items-center gap-1.5">
+                      <Crown className="w-4 h-4 text-amber-500 shrink-0" aria-hidden />
+                      Premium TopTours partner
+                    </span>
+                  </div>
+                  <Link
+                    href="#operator-tours"
+                    className="text-xs font-semibold text-amber-800 underline-offset-2 hover:underline w-fit"
+                  >
+                    More from this operator on TopTours
+                  </Link>
+                </div>
+              )}
+              <p className="mt-1.5 text-gray-500 text-sm">
+                Operated by{' '}
+                {operatorPremiumData?.operator_name || supplierName || 'Tour operator'}
+              </p>
               {duration && (
                 <p className="mt-1 flex items-center gap-1.5 text-sm text-gray-600">
                   <Clock className="w-4 h-4 shrink-0" aria-hidden />
@@ -2327,6 +2426,18 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                 <p className="text-sm font-semibold text-gray-900">Book with confidence</p>
                 <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                   <ul className="space-y-1.5 text-xs text-gray-700 sm:flex-1">
+                    {operatorPremiumData && (
+                      <li className="flex items-start gap-2">
+                        <Crown className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" aria-hidden />
+                        <span>
+                          Premium partner: this operator is verified and may link several tours on TopTours — see{' '}
+                          <Link href="#operator-tours" className="font-semibold text-amber-900 underline-offset-2 hover:underline">
+                            more from this operator
+                          </Link>
+                          .
+                        </span>
+                      </li>
+                    )}
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
                       <span>Get live availability and the latest price in real time.</span>
@@ -2431,12 +2542,17 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
 
       {/* Destination Sticky Navigation */}
       {(() => {
-        const destId = destination?.id || subtleDestinationSlug || unmatchedDestinationSlug || effectiveDestinationData?.slug || effectiveDestinationData?.destinationId;
+        const destId =
+          displayDestinationSlugForUi ||
+          subtleDestinationSlug ||
+          unmatchedDestinationSlug ||
+          effectiveDestinationData?.slug ||
+          effectiveDestinationData?.destinationId;
         if (!destId) return null;
         return (
           <DestinationStickyNav
             destinationId={destId}
-            destinationName={destination?.fullName || destination?.name || effectiveDestinationData?.destinationName || unmatchedDestinationName}
+            destinationName={displayDestinationNameForUi || effectiveDestinationData?.destinationName || unmatchedDestinationName}
             hasRestaurants={destinationFeatures.hasRestaurants}
             hasAirportTransfers={destinationFeatures.hasAirportTransfers}
             hasBabyEquipment={destinationFeatures.hasBabyEquipment}
@@ -3067,12 +3183,14 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                           <Crown className="w-4 h-4 text-amber-500" title="Premium Operator" />
                         )}
                       </div>
-                      <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
-                        {operatorPremiumData ? 'Premium TopTours Partner' : supplierName}
+                      <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2 flex-wrap">
+                        {operatorPremiumData
+                          ? operatorPremiumData.operator_name || supplierName
+                          : supplierName}
                         {operatorPremiumData && (
                           <Badge className="bg-amber-100 text-amber-700 border-amber-300">
                             <Crown className="w-3 h-3 mr-1" />
-                            Premium
+                            Premium partner
                           </Badge>
                         )}
                       </h2>
@@ -3355,19 +3473,19 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
             </article>
 
           {/* Other Tours from Premium Operator Section */}
-          {operatorPremiumData && operatorTours && operatorTours.length > 0 && (
+          {operatorPremiumData && (
             <motion.section
               id="operator-tours"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="mt-16"
+              className="mt-20 scroll-mt-28 rounded-2xl border border-amber-200/80 bg-amber-50/40 p-6 sm:p-8"
             >
-              <div className="mb-6 flex items-center gap-3">
+              <div className="mb-6 flex flex-wrap items-center gap-3">
                 <Crown className="w-6 h-6 text-amber-500" />
-                <h2 className="text-3xl font-bold text-gray-900">
-                  Other Tours from {operatorPremiumData.operator_name}
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
+                  Other tours from {operatorPremiumData.operator_name}
                 </h2>
                 <Badge className="bg-amber-100 text-amber-700 border-amber-300">
                   <Crown className="w-3 h-3 mr-1" />
@@ -3378,10 +3496,29 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
               <p className="text-gray-600 mb-6">
                 Explore more premium experiences from this verified TopTours partner
               </p>
+
+              {(!operatorTours || operatorTours.length === 0) && (
+                <p className="text-sm text-gray-700 rounded-xl border border-amber-200 bg-white px-4 py-3">
+                  Other tours from this operator will show here when linked in your subscription. Refresh the page if you just completed signup.
+                  {process.env.NODE_ENV === 'development' ? (
+                    <span className="block mt-2 text-xs text-gray-500">
+                      Dev: premium tour links need <code className="bg-gray-100 px-1 rounded">SUPABASE_SERVICE_ROLE_KEY</code> on the server.
+                    </span>
+                  ) : null}
+                </p>
+              )}
               
+              {operatorTours && operatorTours.length > 0 && (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {operatorTours.map((operatorTour, index) => {
-                  const operatorTourUrl = operatorTour.url || `/tours/${operatorTour.productId}`;
+                  const rawUrl = operatorTour.url || '';
+                  const alreadySlugged =
+                    /^\/tours\/[^/]+\/[^/]+/.test(rawUrl) && !rawUrl.includes('//');
+                  const operatorTourUrl = alreadySlugged
+                    ? rawUrl
+                    : operatorTour.title
+                      ? getTourUrl(operatorTour.productId, operatorTour.title)
+                      : rawUrl || `/tours/${operatorTour.productId}`;
                   
                   return (
                     <Card key={operatorTour.productId || index} className="bg-white border-2 border-amber-200 overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
@@ -3449,6 +3586,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   );
                 })}
               </div>
+              )}
 
               {operatorPremiumData.aggregatedStats && (
                 <div className="mt-6 p-4 bg-amber-50 rounded-lg border border-amber-200">
@@ -3482,14 +3620,13 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
               const primaryTourDestination =
                 tour?.destinations?.find((dest) => dest?.primary) || tour?.destinations?.[0];
               const fallbackDestinationName =
-                destination?.fullName ||
-                destination?.name ||
+                displayDestinationNameForUi ||
                 effectiveDestinationData?.destinationName ||
                 primaryTourDestination?.destinationName ||
                 primaryTourDestination?.name ||
                 null;
               const destGuideSlug =
-                destination?.id ||
+                displayDestinationSlugForUi ||
                 subtleDestinationSlug ||
                 unmatchedDestinationSlug ||
                 effectiveDestinationData?.slug ||
@@ -3682,21 +3819,32 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
             <div className="max-w-4xl mx-auto space-y-6">
               {/* Destination and tours links - tour detail page does not show restaurant list */}
               {(() => {
-                // Use destination if available (hardcoded), otherwise use effectiveDestinationData
-                // IMPORTANT: Always use slug for links, never the numeric ID
-                const destName = effectiveDestinationData?.destinationName || unmatchedDestinationName || subtleDestinationName || destination?.name || destination?.fullName || '';
-                const destSlugFromServer = effectiveDestinationData?.slug || subtleDestinationSlug || unmatchedDestinationSlug;
+                // Prefer server loadDestinationData + display helpers over curated `destination` (avoids Lima vs Moshi)
+                const destName =
+                  displayDestinationNameForUi ||
+                  effectiveDestinationData?.destinationName ||
+                  unmatchedDestinationName ||
+                  subtleDestinationName ||
+                  '';
+                const destSlugFromServer =
+                  displayDestinationSlugForUi ||
+                  effectiveDestinationData?.slug ||
+                  subtleDestinationSlug ||
+                  unmatchedDestinationSlug;
                 const isNumericSlug = destSlugFromServer && /^\d+$/.test(destSlugFromServer);
                 const finalSlug = isNumericSlug && destName 
                   ? generateSlugFromName(destName)
                   : (destSlugFromServer || effectiveDestinationData?.destinationId);
                 
-                const destForDisplay = destination || {
-                  id: finalSlug || effectiveDestinationData?.destinationId,
-                  name: destName,
-                  fullName: destName,
-                  country: effectiveDestinationData?.country || null,
-                };
+                const destForDisplay =
+                  serverDestinationAuthoritative || !destination
+                    ? {
+                        id: finalSlug || effectiveDestinationData?.destinationId,
+                        name: destName,
+                        fullName: destName,
+                        country: effectiveDestinationData?.country || null,
+                      }
+                    : destination;
                 
                 const destinationGuides = destForDisplay.country ? getGuidesByCountry(destForDisplay.country) : [];
                 const hasGuides = destinationGuides && destinationGuides.length > 0;
@@ -3826,6 +3974,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
           matchScoresEnabled={matchScoresEnabled}
           travelers={sharedTravelers}
           setTravelers={setSharedTravelers}
+          operatorPremiumData={operatorPremiumData}
         />
       )}
 

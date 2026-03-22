@@ -58,6 +58,7 @@ function TourCard({
   const { toast } = useToast();
   const [showMatchModal, setShowMatchModal] = useState(false);
   const productId = tour.productId || tour.productCode || tour.product_id;
+  const productIdKey = productId != null ? String(productId) : '';
   const tourUrl = tour.slug 
     ? `/tours/${productId}/${tour.slug}` 
     : getTourUrl(productId, tour.seo?.title || tour.title || tour.tour_name);
@@ -77,8 +78,10 @@ function TourCard({
   // Check description in multiple locations - API responses vary
   const description = tour.description || tour.seo?.description || tour.content?.heroDescription || tour.content?.description || '';
   
-  // Check if this tour has premium operator status
-  const isPremiumOperator = premiumOperatorTourIds.includes(productId);
+  // Check if this tour has premium operator status (IDs may be string vs number from APIs)
+  const isPremiumOperator = premiumOperatorTourIds.some(
+    (id) => id != null && String(id) === productIdKey
+  );
   
   // Get flags from tour
   const flags = tour.flags || tour.specialFlags || [];
@@ -128,9 +131,16 @@ function TourCard({
                 Featured
               </Badge>
             )}
+            {/* Premium + match: stacked top-left so the crown is not covered by the AI Match chip */}
+            <div
+              className={`absolute top-3 left-3 z-20 flex flex-col gap-1.5 items-start max-w-[min(100%,calc(100%-7rem))] ${
+                isFeatured || isPromoted ? 'pointer-events-none' : ''
+              }`}
+            >
             {isPremiumOperator && !isFeatured && !isPromoted && (
-              <div className="absolute top-3 left-3 z-20">
-                <Crown className="w-5 h-5 text-amber-500 drop-shadow-lg" title="Premium Operator" />
+              <div className="flex items-center gap-1 rounded-md bg-white/95 backdrop-blur-sm px-2 py-0.5 border border-amber-200/90 shadow-sm pointer-events-auto">
+                <Crown className="w-4 h-4 text-amber-500 shrink-0" title="Premium Operator" />
+                <span className="text-[10px] font-semibold text-amber-900 leading-none">Premium</span>
               </div>
             )}
             {/* Match Score Badge - Left side, always visible */}
@@ -140,7 +150,7 @@ function TourCard({
                 e.stopPropagation();
                 setShowMatchModal(true);
               }}
-              className="absolute top-3 left-3 z-20 bg-white/95 hover:bg-white backdrop-blur-sm rounded-lg px-2.5 py-1.5 shadow-lg border border-purple-200 hover:border-purple-400 transition-all cursor-pointer flex items-center gap-1.5"
+              className="bg-white/95 hover:bg-white backdrop-blur-sm rounded-lg px-2.5 py-1.5 shadow-lg border border-purple-200 hover:border-purple-400 transition-all cursor-pointer flex items-center gap-1.5 pointer-events-auto"
               title={matchScore && matchScore.score !== undefined
                 ? `Click to see why this is a ${matchScore.score}% match` 
                 : "Click to see AI match analysis"}
@@ -163,6 +173,7 @@ function TourCard({
                 <span className="text-xs text-gray-600">AI Match</span>
               )}
             </button>
+            </div>
             
             {/* Price + Special Offer - Right side (stacked) */}
             {price > 0 && (

@@ -1,14 +1,17 @@
 /**
  * Viator Pricing API Integration
  *
- * Fetches fromPrice from /availability/schedules endpoint.
- * Schedules API returns supplier (local) currency by default; we request USD and
- * fall back to converting JPY/other common currencies so the site always shows USD.
+ * Schedules: GET /availability/schedules/{productCode}?currency=USD — use root `currency` plus
+ * `summary.fromPrice` (and bookableItems pricing) as supplier denomination when API does not return USD.
+ * For merchant-accurate conversion, Viator documents POST /exchange-rates (cached by expiry); we use
+ * static CURRENCY_TO_USD until that is wired.
  */
 
-// Approximate rates to USD (used only when API returns non-USD). Update periodically if needed.
+// Approximate rates to USD when converting supplier-denominated amounts (see schedules root `currency`).
+// For production parity with Viator invoicing, prefer POST /exchange-rates (cache by expiry) and replace these.
+// https://partnerresources.viator.com — Calculating Product Pricing
 const CURRENCY_TO_USD = {
-  JPY: 0.0067,   // ~150 JPY = 1 USD
+  JPY: 0.0067,
   EUR: 1.08,
   GBP: 1.27,
   AUD: 0.65,
@@ -23,6 +26,26 @@ const CURRENCY_TO_USD = {
   SGD: 0.74,
   HKD: 0.13,
   NZD: 0.60,
+  TWD: 0.031,
+  VND: 0.00004,
+  IDR: 0.000063,
+  PHP: 0.018,
+  MYR: 0.21,
+  AED: 0.27,
+  DKK: 0.14,
+  NOK: 0.091,
+  SEK: 0.091,
+  PLN: 0.25,
+  TRY: 0.029,
+  ZAR: 0.054,
+  CLP: 0.001,
+  COP: 0.00024,
+  ARS: 0.001,
+  PEN: 0.27,
+  ISK: 0.007,
+  FJD: 0.44,
+  RUB: 0.011,
+  ILS: 0.27,
 };
 
 /**
@@ -39,6 +62,65 @@ function parsePositivePrice(raw) {
     if (Number.isFinite(parsed) && parsed > 0) return parsed;
   }
   return null;
+}
+
+/**
+ * Convert a retail amount to USD when we know the ISO currency (Partner API returns the requested
+ * currency on `?currency=USD`, but cached rows may still hold supplier-currency numbers).
+ */
+function convertRetailAmountToUsd(amount, currencyCode) {
+  if (amount == null || !Number.isFinite(amount) || amount <= 0) return null;
+  const cc = (currencyCode || 'USD').toUpperCase();
+  if (cc === 'USD') return amount;
+  if (CURRENCY_TO_USD[cc] != null) {
+    const usd = Math.round(amount * CURRENCY_TO_USD[cc] * 100) / 100;
+    return usd > 0 ? usd : amount;
+  }
+  return amount;
+}
+
+/**
+ * Best-effort retail currency from the product payload (schedules use `summary.currencyCode` separately).
+ * @param {object|null|undefined} tour
+ * @returns {string} ISO code or '' if unknown
+ */
+export function getProductRetailCurrencyCode(tour) {
+  if (!tour || typeof tour !== 'object') return '';
+  const root = (tour.currency || '').toString().trim().toUpperCase();
+  if (root) return root;
+  const sum = tour.pricing?.summary;
+  const fromSummary =
+    (sum?.currencyCode || sum?.currency || '').toString().trim().toUpperCase() ||
+    (tour.pricingInfo?.currency || '').toString().trim().toUpperCase() ||
+    (tour.pricing?.currency || '').toString().trim().toUpperCase() ||
+    '';
+  if (fromSummary) return fromSummary;
+
+  const pi = tour.pricingInfo;
+  if (pi && typeof pi === 'object') {
+    const top = (pi.currency || pi.priceCurrency || '').toString().trim().toUpperCase();
+    if (top) return top;
+    // Some cached products store currency only on age-band retail rows
+    const band0 = Array.isArray(pi.ageBands) ? pi.ageBands[0] : null;
+    const fromBand = (band0?.currency || band0?.recommendedRetailPriceCurrency || '').toString().trim().toUpperCase();
+    if (fromBand) return fromBand;
+    const bands = Array.isArray(pi.ageBands) ? pi.ageBands : [];
+    const bandCurrencies = bands
+      .map((b) => (b?.currency || b?.price?.currency || '').toString().trim().toUpperCase())
+      .filter(Boolean);
+    if (bandCurrencies.length && bandCurrencies.every((x) => x === bandCurrencies[0])) {
+      return bandCurrencies[0];
+    }
+  }
+  return '';
+}
+
+/** Normalize a single raw retail amount using {@link getProductRetailCurrencyCode} (for legacy fallbacks). */
+export function normalizeProductPriceToUsd(rawPrice, tour) {
+  const r = parsePositivePrice(rawPrice);
+  if (r == null) return null;
+  const cc = getProductRetailCurrencyCode(tour) || 'USD';
+  return convertRetailAmountToUsd(r, cc);
 }
 
 /**
@@ -106,26 +188,33 @@ export function getFromPriceFromProductTour(tour) {
 
   const pi = tour.pricingInfo;
 
+  let raw = null;
+
   // Same priority as explore cards: priceFrom → recommendedRetailPrice → fromPrice
   const fromInfoTop =
     parsePositivePrice(pi?.priceFrom) ??
     parsePositivePrice(pi?.recommendedRetailPrice) ??
     parsePositivePrice(pi?.fromPrice);
-  if (fromInfoTop != null) return fromInfoTop;
+  if (fromInfoTop != null) raw = fromInfoTop;
 
-  const fromBands = getFromPriceFromPricingInfoAgeBands(pi);
-  if (fromBands != null) return fromBands;
+  if (raw == null) {
+    const fromBands = getFromPriceFromPricingInfoAgeBands(pi);
+    if (fromBands != null) raw = fromBands;
+  }
 
-  const fromSummary =
-    parsePositivePrice(tour.pricing?.summary?.fromPrice) ??
-    parsePositivePrice(tour.pricing?.fromPrice) ??
-    parsePositivePrice(tour.price?.fromPrice);
+  if (raw == null) {
+    const fromSummary =
+      parsePositivePrice(tour.pricing?.summary?.fromPrice) ??
+      parsePositivePrice(tour.pricing?.fromPrice) ??
+      parsePositivePrice(tour.price?.fromPrice);
+    if (fromSummary != null) raw = fromSummary;
+  }
 
-  if (fromSummary != null) return fromSummary;
+  if (raw == null && typeof tour.price === 'number' && tour.price > 0) {
+    raw = tour.price;
+  }
 
-  if (typeof tour.price === 'number' && tour.price > 0) return tour.price;
-
-  return null;
+  return normalizeProductPriceToUsd(raw, tour);
 }
 
 /**
@@ -154,34 +243,22 @@ export function hasRichPricingInfoInTour(tour) {
 }
 
 /**
- * Merge product-derived price with schedules API price. When the cached product only has a weak
- * `pricing.summary.fromPrice`, schedules often matches list cards / Viator (e.g. private charters).
+ * Merge product-derived price (USD-normalized) with schedules API price (USD).
+ * When schedules return a price, it is authoritative: amounts follow supplier currency in the
+ * schedules payload (see root `currency` + `summary.fromPrice`), then we convert to USD in getFromPrice.
+ * Product cache can be stale or wrong-currency; we do not use numeric ratio heuristics (e.g. p &gt; 2000).
  *
  * @param {number|null|undefined} productPrice
  * @param {number|null|undefined} schedulePrice
  * @param {object|null|undefined} tour
  * @returns {number|null}
  */
-export function reconcileProductPriceWithSchedule(productPrice, schedulePrice, tour) {
-  const p = parsePositivePrice(productPrice);
+export function reconcileProductPriceWithSchedule(productPrice, schedulePrice, _tour) {
   const s = parsePositivePrice(schedulePrice);
-
-  if (p == null && s == null) return null;
-  if (s == null) return p;
-  if (p == null) return s;
-
-  if (hasRichPricingInfoInTour(tour)) {
-    return p;
+  if (s != null && s > 0) {
+    return s;
   }
-
-  // Thin product: summary-only or stale cache — schedules is more reliable when it's much higher
-  if (s > p && s > 100) {
-    if (p < 45) return s;
-    if (p / s < 0.12) return s;
-    if (p <= 35 && s - p >= 150) return s;
-  }
-
-  return p;
+  return parsePositivePrice(productPrice);
 }
 
 /**
@@ -256,21 +333,27 @@ export async function getFromPrice(productId) {
       rawPrice = minPrimaryBandRrp;
     }
 
-    const currency = (data?.summary?.currencyCode || data?.summary?.currency || '').toUpperCase();
+    // Partner schedules: root `currency` is supplier denomination for summary + bookableItems (see API samples).
+    // Example: "currency": "AUD", "summary": { "fromPrice": 56.15 } → 56.15 AUD, not USD.
+    const scheduleCurrency = (
+      (typeof data.currency === 'string' && data.currency.trim()) ||
+      data?.summary?.currencyCode ||
+      data?.summary?.currency ||
+      ''
+    )
+      .toString()
+      .toUpperCase();
 
-    if (currency === 'USD') {
+    if (scheduleCurrency === 'USD' || !scheduleCurrency) {
       return rawPrice;
     }
 
-    if (currency && CURRENCY_TO_USD[currency] != null) {
-      const usd = Math.round(rawPrice * CURRENCY_TO_USD[currency] * 100) / 100;
+    if (CURRENCY_TO_USD[scheduleCurrency] != null) {
+      const usd = Math.round(rawPrice * CURRENCY_TO_USD[scheduleCurrency] * 100) / 100;
       return usd > 0 ? usd : rawPrice;
     }
 
-    if (!currency && rawPrice > 2000 && rawPrice < 500000) {
-      return Math.round(rawPrice * CURRENCY_TO_USD.JPY * 100) / 100;
-    }
-
+    // Unknown ISO code: return raw (caller may still show $ — prefer adding rate or POST /exchange-rates).
     return rawPrice;
   } catch (error) {
     return null;

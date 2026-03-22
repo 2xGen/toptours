@@ -987,8 +987,17 @@ export default function ToursListingClient({
     const promotedProductIds = new Set(
       promotedTours.map(t => t.productId || t.productCode).filter(Boolean)
     );
+
+    const premiumProductIds = new Set(
+      (premiumOperatorTourIds || []).map((id) => String(id ?? '').trim().toLowerCase()).filter(Boolean)
+    );
+    const isPremiumTour = (tour) => {
+      const pid = tour?.productId || tour?.productCode;
+      if (!pid) return false;
+      return premiumProductIds.has(String(pid).trim().toLowerCase());
+    };
     
-    // Sort: Promoted first, then Featured, then by selected sort option
+    // Sort: Promoted first, then premium operator (badge), then Featured, then by selected sort option
     filtered.sort((a, b) => {
       const productIdA = a.productId || a.productCode;
       const productIdB = b.productId || b.productCode;
@@ -998,6 +1007,12 @@ export default function ToursListingClient({
       // Promoted listings always first
       if (isPromotedA && !isPromotedB) return -1;
       if (!isPromotedA && isPromotedB) return 1;
+
+      // Premium partner tours next (matches TourCard premium badge)
+      const isPremiumA = isPremiumTour(a);
+      const isPremiumB = isPremiumTour(b);
+      if (isPremiumA && !isPremiumB) return -1;
+      if (!isPremiumA && isPremiumB) return 1;
       
       // Within promoted group, maintain order (oldest subscription first = loyalty)
       // Within regular group, featured first
@@ -1036,7 +1051,7 @@ export default function ToursListingClient({
     });
 
     return filtered;
-  }, [allTours, searchTerm, activeFilters, sortBy, isFiltered, matchScores, promotedTours]);
+  }, [allTours, searchTerm, activeFilters, sortBy, isFiltered, matchScores, promotedTours, premiumOperatorTourIds]);
 
   // OPTIMIZED: Memoize featured/regular tour separation to avoid recalculation
   const { featuredTours, regularTours } = useMemo(() => {

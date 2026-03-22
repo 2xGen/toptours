@@ -29,6 +29,7 @@ import { calculateEnhancedMatchScore } from '@/lib/tourMatchingEnhanced';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 import { destinations } from '../../../../../src/data/destinationsData';
 import { travelGuides } from '../../../../../src/data/travelGuidesData';
+import PartnerShowcaseHeroCards from '../partnerGuides/PartnerShowcaseHeroCards';
 
 const AIRPORT_TRANSFERS_OG_IMAGE = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/airport%20transfers.png';
 const DISCOVER_CARS_URL = 'https://www.discovercars.com/?a_aid=toptours&a_cid=65100b9c';
@@ -253,10 +254,14 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
         // Tag guide: product search by destination + tag (more accurate than freetext)
         body = { viatorDestinationId: String(viatorDestinationId), tagIds: [Number(tagId)], page: 1, includeDestination: true };
       } else {
-        // Category guide or fallback: freetext search
+        // Category guide or fallback: freetext search (optional toursSearchQuery overrides category+destination)
         const destinationName = destination.fullName || destination.name;
         const categoryName = guideData?.categoryName || guideData?.title || '';
-        const searchTerm = [categoryName, destinationName].filter(Boolean).join(' ').trim() || destinationName;
+        const fromQuery = guideData?.toursSearchQuery && String(guideData.toursSearchQuery).trim();
+        const searchTerm =
+          fromQuery ||
+          [categoryName, destinationName].filter(Boolean).join(' ').trim() ||
+          destinationName;
         body = { searchTerm, page: 1 };
       }
       const res = await fetch('/api/internal/viator-search', {
@@ -277,10 +282,20 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
     } finally {
       setLoadingCategoryTours(false);
     }
-  }, [destination, guideData?.categoryName, guideData?.title, viatorDestinationId, tagId]);
+  }, [destination, guideData?.categoryName, guideData?.title, guideData?.toursSearchQuery, viatorDestinationId, tagId]);
 
   // H1 display title: strip site name suffix (e.g. " | TopTours.ai") so the heading is just the guide title
   const displayTitle = (guideData?.title || '').replace(/\s*\|\s*TopTours\.ai\s*$/i, '').trim() || guideData?.title || '';
+
+  /** Tours index URL with optional search (e.g. Tanzania safari, not the long category label). */
+  const toursListHref = React.useMemo(() => {
+    const q =
+      (guideData?.toursSearchQuery && String(guideData.toursSearchQuery).trim()) ||
+      guideData?.categoryName ||
+      '';
+    if (!q) return `/destinations/${destinationId}/tours`;
+    return `/destinations/${destinationId}/tours?search=${encodeURIComponent(q)}`;
+  }, [destinationId, guideData?.toursSearchQuery, guideData?.categoryName]);
 
   // Icon mapping
   const iconMap = {
@@ -454,6 +469,13 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
         hasAirportTransfers={destinationFeatures.hasAirportTransfers}
         hasBabyEquipment={destinationFeatures.hasBabyEquipment}
       />
+
+      {guideData?.partnerShowcaseTours?.length > 0 && !guideData?.isPlaceholder && (
+        <PartnerShowcaseHeroCards
+          tours={guideData.partnerShowcaseTours}
+          operatorLabel="Kiliclimb Africa Safaris"
+        />
+      )}
 
       {/* Tag guide placeholder: show "Generate with AI" CTA (no Gemini until user clicks) */}
       {guideData?.isPlaceholder && tagGuidePlaceholder && (
@@ -679,7 +701,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                     <p className="text-gray-800 font-medium mb-4">
                       Looking to book?{' '}
                       <Link
-                        href={`/destinations/${destinationId}/tours${guideData.categoryName ? `?search=${encodeURIComponent(guideData.categoryName)}` : ''}`}
+                        href={toursListHref}
                         className="text-blue-600 hover:text-blue-800 underline font-semibold"
                       >
                         View all available {guideData.categoryName ? guideData.categoryName.toLowerCase() : 'tours'} in {destination.fullName || destination.name} with live pricing and instant confirmation
@@ -689,11 +711,13 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
                       <Button
                         size="lg"
-                        onClick={loadCategoryTours}
+                        asChild
                         className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-6 rounded-xl shadow-lg"
                       >
-                        View {guideData.categoryName || 'tours'} in {destination.fullName || destination.name}
-                        <ArrowRight className="ml-2 w-5 h-5" />
+                        <Link href={toursListHref}>
+                          View {guideData.categoryName || 'tours'} in {destination.fullName || destination.name}
+                          <ArrowRight className="ml-2 w-5 h-5" />
+                        </Link>
                       </Button>
                       <span className="text-xs text-gray-500">
                         or <Link href={`/destinations/${destinationId}/tours`} className="text-blue-600 hover:underline">browse all {destination.fullName || destination.name} tours</Link>

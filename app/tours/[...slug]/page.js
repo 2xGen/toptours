@@ -9,6 +9,8 @@ import { generateTourFAQs, generateFAQSchema } from '@/lib/faqGeneration';
 import { buildEnhancedMetaDescription, buildEnhancedTitle } from '@/lib/metaDescription';
 import { getTourEnrichmentCached } from '@/lib/tourEnrichment';
 import { generateTourSlug, getTourCanonicalPath } from '@/utils/tourHelpers';
+import { getTourOperatorPremiumSubscription, getOperatorPremiumTourIds } from '@/lib/tourOperatorPremiumServer';
+import { resolveOperatorAggregatedStatsForDisplay } from '@/lib/operatorAggregatedStatsViator';
 
 // Revalidate every 7 days - page-level cache (not API JSON cache, so Viator compliant)
 // Increased from 24h to 7 days to reduce ISR writes during Google reindexing
@@ -75,8 +77,8 @@ const getCachedTourExtras = unstable_cache(
 
     return { tourData, destData };
   },
-  ['tour-extras'],
-  { revalidate: 604800, tags: ['tours'] } // 7 days to match page cache
+  ['tour-extras-slug'],
+  { revalidate: 604800, tags: ['tours'] } // 7 days; cache key includes fn args (productId, tour)
 );
 
 /**
@@ -294,7 +296,7 @@ export default async function TourDetailPage({ params }) {
       console.error('Error generating FAQs:', error);
     }
 
-    const {
+    let {
       pricing,
       promotionScore,
       tourEnrichment,
@@ -303,6 +305,20 @@ export default async function TourDetailPage({ params }) {
       reviews,
       primaryTagName
     } = tourData;
+
+    try {
+      const freshPrem = await getTourOperatorPremiumSubscription(productId);
+      if (freshPrem) {
+        operatorPremiumData = freshPrem;
+        operatorTours = await getOperatorPremiumTourIds(productId);
+        const stats = await resolveOperatorAggregatedStatsForDisplay(freshPrem, productId, tour);
+        if (stats) {
+          operatorPremiumData = { ...operatorPremiumData, aggregatedStats: stats };
+        }
+      }
+    } catch {
+      // keep cached values
+    }
 
     // Fetch similar tours server-side (for SEO - crawlers can see it)
     const similarTours = []; // Load on demand via "Load similar tours" to save Viator API

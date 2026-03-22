@@ -37,3 +37,19 @@ export const createSupabaseServiceRoleClient = () => {
   });
 };
 
+/**
+ * Server-only Supabase client for tour-operator premium **reads** (listing UI).
+ * Prefers the service role when set; otherwise uses the anon key so local/dev
+ * works without SUPABASE_SERVICE_ROLE_KEY. RLS must allow public SELECT for
+ * active `tour_operator_subscriptions` / linked `operator_tours`.
+ */
+export function createSupabaseServerClientForTourOperatorPremiumReads() {
+  if (typeof window !== 'undefined') {
+    throw new Error('Tour operator premium reads client should only be used on the server');
+  }
+  const key = supabaseServiceRoleKey || supabaseAnonKey;
+  return createClient(supabaseUrl, key, {
+    auth: { autoRefreshToken: false, persistSession: false },
+  });
+}
+

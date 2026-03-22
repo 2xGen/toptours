@@ -10,6 +10,10 @@ import {
   getTagGuideContent,
   contentToGuideData,
 } from '@/lib/tagGuideContent';
+import {
+  ARUSHA_KILICLIMB_GUIDE_SLUG,
+  getKiliclimbPartnerGuideData,
+} from '../partnerGuides/arushaKiliclimbTanzania';
 // Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
 export const revalidate = 604800; // 7 days - increased to reduce ISR writes during Google reindexing
 
@@ -268,6 +272,13 @@ export async function generateMetadata({ params }) {
         },
       };
     }
+
+    // Static partner guide: Kiliclimb Africa Safaris (Arusha) — metadata matches rendered page when not in DB
+    const normDestMeta = normalizeSlug(destinationId);
+    const normCatMeta = normalizeSlug(categorySlug);
+    if (!guideData && normDestMeta === 'arusha' && normCatMeta === ARUSHA_KILICLIMB_GUIDE_SLUG) {
+      guideData = getKiliclimbPartnerGuideData();
+    }
     
     // Same as page: tag-based guides — real cache vs placeholder ("Generate with AI" shell).
     // SEO: noindex placeholders until tag_guide_content has generated unique body copy (otherwise thin / doorway-style).
@@ -469,6 +480,25 @@ export default async function CategoryGuidePage({ params }) {
         highlights: [],
       };
       console.log(`⚠️ Created minimal destination for ${destinationId}: ${destinationName} (no generated content found)`);
+    }
+
+    // Featured static partner guide: Kiliclimb Africa Safaris (Arusha) — before tag placeholders
+    const normDestPage = normalizeSlug(destinationId);
+    const normCatPage = normalizeSlug(categorySlug);
+    if (normDestPage === 'arusha' && normCatPage === ARUSHA_KILICLIMB_GUIDE_SLUG) {
+      const staticGuide = getKiliclimbPartnerGuideData();
+      if (!guideData) {
+        guideData = staticGuide;
+        guideSource = 'static_partner';
+      } else {
+        guideData = {
+          ...guideData,
+          partnerShowcaseTours: staticGuide.partnerShowcaseTours,
+          toursSearchQuery: staticGuide.toursSearchQuery ?? guideData.toursSearchQuery,
+          // Prefer static display label so UI strings don’t repeat “partner” from legacy DB copy
+          categoryName: staticGuide.categoryName || guideData.categoryName,
+        };
+      }
     }
 
     // Tag guide: prefer cached tag guide content first (viator_tag_traits lookup may be incomplete),

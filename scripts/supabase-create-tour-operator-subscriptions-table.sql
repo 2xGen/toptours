@@ -109,11 +109,21 @@ DECLARE
   avg_rating DECIMAL(3,2);
   tours_count INTEGER;
 BEGIN
-  -- Calculate aggregated stats for the operator
+  -- Weighted average across tours (matches Viator-style: sum(rating * reviews) / sum(reviews))
   SELECT 
-    COALESCE(SUM(review_count), 0),
-    COALESCE(AVG(rating), 0),
-    COUNT(*)
+    COALESCE(SUM(COALESCE(review_count, 0)), 0)::integer,
+    CASE
+      WHEN COALESCE(SUM(COALESCE(review_count, 0)), 0) > 0 THEN
+        ROUND(
+          (
+            SUM(COALESCE(rating, 0)::numeric * COALESCE(review_count, 0)::numeric)
+            / NULLIF(SUM(COALESCE(review_count, 0))::numeric, 0)
+          )::numeric,
+          2
+        )
+      ELSE 0::numeric
+    END,
+    COUNT(*)::integer
   INTO total_reviews_count, avg_rating, tours_count
   FROM operator_tours
   WHERE operator_subscription_id = COALESCE(NEW.operator_subscription_id, OLD.operator_subscription_id)

@@ -9,7 +9,8 @@ import { buildEnhancedMetaDescription, buildEnhancedTitle } from '@/lib/metaDesc
 import { getCachedTour, cacheTour, useSupabaseCache, getCachedSimilarTours, cacheSimilarTours, generateSimilarToursCacheKey, extractCountryFromDestinationName } from '@/lib/viatorCache';
 import { getDestinationNameById } from '@/lib/destinationIdLookup';
 import { getViatorDestinationById } from '@/lib/supabaseCache';
-import { getTourOperatorPremiumSubscription, getOperatorPremiumTourIds, getOperatorAggregatedStats } from '@/lib/tourOperatorPremiumServer';
+import { getTourOperatorPremiumSubscription, getOperatorPremiumTourIds } from '@/lib/tourOperatorPremiumServer';
+import { resolveOperatorAggregatedStatsForDisplay } from '@/lib/operatorAggregatedStatsViator';
 import { generateTourSlug, getTourCanonicalPath } from '@/utils/tourHelpers';
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { getDestinationFeatures } from '@/lib/destinationFeatures';
@@ -313,7 +314,7 @@ export default async function TourDetailPage({ params }) {
       }
     }
 
-    const {
+    let {
       pricing,
       promotionScore,
       tourEnrichment,
@@ -322,6 +323,21 @@ export default async function TourDetailPage({ params }) {
       reviews,
       primaryTagName
     } = tourData;
+
+    // Operator premium must not sit behind 7-day unstable_cache (stale null / subscription fixes)
+    try {
+      const freshPrem = await getTourOperatorPremiumSubscription(productId);
+      if (freshPrem) {
+        operatorPremiumData = freshPrem;
+        operatorTours = await getOperatorPremiumTourIds(productId);
+        const stats = await resolveOperatorAggregatedStatsForDisplay(freshPrem, productId, tour);
+        if (stats) {
+          operatorPremiumData = { ...operatorPremiumData, aggregatedStats: stats };
+        }
+      }
+    } catch {
+      // keep cached tourData.operatorPremiumData / operatorTours
+    }
 
     // Similar tours are fetched server-side via Suspense (for SEO - crawlers can see it)
     // This is just 1 API call and returns 12 tours with full data
