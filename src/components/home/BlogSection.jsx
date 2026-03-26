@@ -10,6 +10,10 @@ import { useRouter } from 'next/navigation';
 
 const TopDestinations = () => {
   const router = useRouter();
+  const normalizeSupabaseDestinationImageUrl = (url) => {
+    if (!url) return url;
+    return url.replace(/\/destinations\/\//g, '/destinations/');
+  };
   // Popular destinations from different categories
   const topDestinations = [
     {
@@ -105,14 +109,14 @@ const TopDestinations = () => {
                 <Card className="bg-white border-0 shadow-lg group-hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col hover:-translate-y-1 rounded-3xl">
                   <div className="relative w-full h-56 overflow-hidden">
                     <Image
-                      src={destination.imageUrl}
+                      src={normalizeSupabaseDestinationImageUrl(destination.imageUrl)}
                       alt={destination.name}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                       priority={index < 3}
                       fetchPriority={index < 3 ? 'high' : 'auto'}
-                      unoptimized={destination.imageUrl.includes('supabase.co')}
+                      unoptimized={normalizeSupabaseDestinationImageUrl(destination.imageUrl)?.includes('supabase.co')}
                     />
                     <Badge className="absolute top-4 left-4 adventure-gradient text-white">
                       {destination.category}

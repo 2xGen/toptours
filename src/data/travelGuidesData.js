@@ -1476,6 +1476,19 @@ This page will be updated as new information becomes available.`,
   }
 ];
 
+// Normalize malformed Supabase Storage URLs:
+// `/destinations//file.jpg` can return 400, while `/destinations/file.jpg` works.
+const normalizeSupabaseDestinationImageUrl = (url) => {
+  if (!url) return url;
+  return url.replace(/\/destinations\/\//g, '/destinations/');
+};
+
+for (const guide of travelGuides) {
+  if (guide && guide.image) {
+    guide.image = normalizeSupabaseDestinationImageUrl(guide.image);
+  }
+}
+
 export const getRelatedGuides = (currentGuideId) => {
   const currentGuide = travelGuides.find(guide => guide.id === currentGuideId);
   if (!currentGuide) return [];

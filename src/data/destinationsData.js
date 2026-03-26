@@ -10094,6 +10094,19 @@ export const destinations = [
   }
 ];
 
+// Supabase Storage URLs must not contain an extra slash after the bucket name.
+// Example: `/destinations//aruba.webp` returns 400, while `/destinations/aruba.webp` works.
+const normalizeSupabaseDestinationImageUrl = (url) => {
+  if (!url) return url;
+  return url.replace(/\/destinations\/\//g, '/destinations/');
+};
+
+for (const dest of destinations) {
+  if (dest && dest.imageUrl) {
+    dest.imageUrl = normalizeSupabaseDestinationImageUrl(dest.imageUrl);
+  }
+}
+
 export const getDestinationById = (id) => {
   return destinations.find(dest => dest.id === id);
 };
