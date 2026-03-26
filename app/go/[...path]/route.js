@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 const OG_IMAGE_URL =
-  'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/travel%20guides.png';
+  'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/Aruba/og%20fb%20go.jpg';
 const TRACKING_QUERY = 'pid=P00276441&mcid=42383&medium=link';
 const VIATOR_BASE = 'https://www.viator.com/';
 
