@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 const OG_IMAGE_URL =
-  'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/Aruba/og%20fb%20go.jpg';
+  'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/OG%20images/toptours%20og%20fc%20sq.jpg';
 const TRACKING_QUERY = 'pid=P00276441&mcid=42383&medium=link';
 const VIATOR_BASE = 'https://www.viator.com/';
 const SOCIAL_BOT_UA_REGEX =
@@ -87,11 +87,17 @@ export async function GET(request, { params }) {
         var destinationUrl = ${JSON.stringify(destinationUrl)};
         var countdownEl = document.getElementById('countdown');
         var etaEl = document.getElementById('eta');
+        var statusEl = document.getElementById('statusText');
         var fallbackEl = document.getElementById('fallback');
 
         var durationMs = 1000;
         var start = Date.now();
         var deadline = start + durationMs;
+        var statusSteps = [
+          'Getting your tour ready...',
+          'Finding the best available price...',
+          'Sending you there now...'
+        ];
 
         function tick() {
           var now = Date.now();
@@ -102,6 +108,12 @@ export async function GET(request, { params }) {
           if (etaEl) {
             var eta = remainingMs <= 0 ? 0 : remainingMs;
             etaEl.textContent = 'ETA ~' + (eta <= 0 ? 0 : Math.ceil(eta / 1000)) + 's';
+          }
+
+          if (statusEl) {
+            var progress = 1 - remainingMs / durationMs;
+            var idx = Math.min(statusSteps.length - 1, Math.floor(progress * statusSteps.length));
+            statusEl.textContent = statusSteps[idx];
           }
 
           if (remainingMs <= 0) return;
@@ -145,10 +157,9 @@ export async function GET(request, { params }) {
     <style>
       :root {
         --brand: #00AA6C;
-        --brand2: #667eea;
-        --text: #ffffff;
-        --muted: rgba(255,255,255,.75);
-        --glass: rgba(15,23,42,.22);
+        --brand2: #2f80ed;
+        --text: #0f172a;
+        --muted: #475569;
       }
       * { box-sizing: border-box; }
       body {
@@ -156,45 +167,24 @@ export async function GET(request, { params }) {
         min-height: 100vh;
         font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
         color: var(--text);
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: radial-gradient(900px 360px at 95% -20%, rgba(47,128,237,.13), transparent 55%),
+                    radial-gradient(900px 420px at -10% 120%, rgba(0,170,108,.10), transparent 60%),
+                    linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
         position: relative;
         overflow: hidden;
         display: grid;
         place-items: center;
         padding: 24px;
       }
-      /* Decorative animated blobs (hero-like background) */
-      .bgblob {
-        position: absolute;
-        border-radius: 999px;
-        filter: blur(40px);
-        opacity: .35;
-        transform: translateZ(0);
-        animation: floaty 10s ease-in-out infinite;
-        pointer-events: none;
-      }
-      .bgblob.b1 { width: 340px; height: 340px; left: -80px; top: -90px; background: rgba(124,58,237,.9); }
-      .bgblob.b2 { width: 420px; height: 420px; right: -170px; top: -60px; background: rgba(37,99,235,.9); animation-duration: 13s; }
-      .bgblob.b3 { width: 380px; height: 380px; left: 10%; bottom: -210px; background: rgba(0,170,108,.55); animation-duration: 16s; }
-      @keyframes floaty {
-        0%,100% { transform: translate3d(0,0,0) scale(1); }
-        50% { transform: translate3d(0,-18px,0) scale(1.06); }
-      }
-      .overlay {
-        position: absolute;
-        inset: 0;
-        background: rgba(0,0,0,.28);
-        pointer-events: none;
-      }
       .card {
-        width: min(720px, 100%);
-        border-radius: 22px;
-        background: rgba(255,255,255,.10);
-        border: 1px solid rgba(255,255,255,.18);
-        box-shadow: 0 22px 55px rgba(2,6,23,.22);
-        padding: 28px 22px;
+        width: min(700px, 100%);
+        border-radius: 20px;
+        background: rgba(255,255,255,.92);
+        border: 1px solid rgba(148,163,184,.25);
+        box-shadow: 0 18px 45px rgba(15,23,42,.08);
+        padding: 26px 22px;
         text-align: center;
-        backdrop-filter: blur(12px);
+        backdrop-filter: blur(6px);
         position: relative;
         z-index: 1;
       }
@@ -204,8 +194,8 @@ export async function GET(request, { params }) {
         gap: 10px;
         padding: 8px 16px;
         border-radius: 999px;
-        background: rgba(255,255,255,.12);
-        border: 1px solid rgba(255,255,255,.20);
+        background: rgba(47,128,237,.08);
+        border: 1px solid rgba(47,128,237,.18);
         margin-bottom: 16px;
       }
       .brandDot {
@@ -216,7 +206,7 @@ export async function GET(request, { params }) {
         box-shadow: 0 0 0 6px rgba(0,170,108,.10);
       }
       h1 {
-        font-size: 22px;
+        font-size: 24px;
         line-height: 1.25;
         margin: 0 0 10px;
         letter-spacing: -0.01em;
@@ -226,6 +216,13 @@ export async function GET(request, { params }) {
         color: var(--muted);
         font-size: 14px;
       }
+      .status {
+        margin: 0 0 14px;
+        color: #0f172a;
+        font-weight: 600;
+        font-size: 14px;
+        min-height: 20px;
+      }
       .row {
         display: flex;
         gap: 14px;
@@ -234,14 +231,15 @@ export async function GET(request, { params }) {
         flex-wrap: wrap;
       }
       .spinner {
-        width: 44px;
-        height: 44px;
+        width: 34px;
+        height: 34px;
         border-radius: 50%;
-        border: 3px solid rgba(255,255,255,.22);
-        border-top-color: rgba(255,255,255,.95);
-        border-right-color: rgba(0,170,108,.75);
-        animation: spin 1s linear infinite;
+        border: 3px solid rgba(15,23,42,.12);
+        border-top-color: var(--brand2);
+        border-right-color: var(--brand);
+        animation: spin .85s linear infinite;
       }
+      @keyframes spin { to { transform: rotate(360deg); } }
       .progressWrap {
         min-width: 220px;
         flex: 1;
@@ -254,11 +252,11 @@ export async function GET(request, { params }) {
         margin-bottom: 8px;
       }
       .bar {
-        height: 10px;
+        height: 8px;
         border-radius: 999px;
-        background: rgba(255,255,255,.15);
+        background: rgba(148,163,184,.20);
         overflow: hidden;
-        border: 1px solid rgba(255,255,255,.18);
+        border: 1px solid rgba(148,163,184,.25);
       }
       .bar > div {
         height: 100%;
@@ -272,7 +270,7 @@ export async function GET(request, { params }) {
         to { transform: scaleX(1); }
       }
       .cta {
-        margin-top: 18px;
+        margin-top: 14px;
         font-size: 13px;
         color: var(--muted);
       }
@@ -285,7 +283,7 @@ export async function GET(request, { params }) {
       .countdown {
         font-variant-numeric: tabular-nums;
         font-weight: 700;
-        color: #ffffff;
+        color: #0f172a;
       }
       @media (prefers-reduced-motion: reduce) {
         .spinner { animation: none; }
@@ -294,27 +292,24 @@ export async function GET(request, { params }) {
     </style>
   </head>
   <body>
-    <div class="bgblob b1" aria-hidden="true"></div>
-    <div class="bgblob b2" aria-hidden="true"></div>
-    <div class="bgblob b3" aria-hidden="true"></div>
-    <div class="overlay" aria-hidden="true"></div>
     <main class="card">
       <div class="brandmark" aria-hidden="true">
         <span class="brandDot" aria-hidden="true"></span>
         <span style="font-weight: 800; letter-spacing: .2px;">TopTours.ai</span>
       </div>
-      <h1>Taking you to the best price...</h1>
+      <h1>Just a second while we get your tour ready...</h1>
       <p class="sub">
         ${isSocialPreviewBot
           ? 'Preparing rich preview details for social platforms.'
-          : 'Finding your tour and calculating the best price in <span class="countdown" id="countdown">1</span> second<span id="plural"> </span>.'}
+          : 'We are finding the best available price and sending you there in <span class="countdown" id="countdown">1</span> second<span id="plural"> </span>.'}
       </p>
+      <p class="status" id="statusText">${isSocialPreviewBot ? 'Preparing social preview.' : 'Getting your tour ready...'}</p>
       <div class="row">
         <div class="spinner" aria-hidden="true"></div>
         <div class="progressWrap">
           <div class="progressMeta">
-            <span>Finding best price</span>
-            <span id="eta">${isSocialPreviewBot ? 'Crawler mode' : 'ETA ~1s'}</span>
+            <span>Finalizing your route</span>
+            <span id="eta">${isSocialPreviewBot ? 'Preview mode' : 'Almost there'}</span>
           </div>
           <div class="bar"><div></div></div>
         </div>
