@@ -4,6 +4,8 @@ const OG_IMAGE_URL =
   'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/Aruba/og%20fb%20go.jpg';
 const TRACKING_QUERY = 'pid=P00276441&mcid=42383&medium=link';
 const VIATOR_BASE = 'https://www.viator.com/';
+const SOCIAL_BOT_UA_REGEX =
+  /(facebookexternalhit|facebot|twitterbot|linkedinbot|slackbot|whatsapp|telegrambot|discordbot|skypeuripreview|googlebot)/i;
 
 function safeDecodeURIComponent(value) {
   try {
@@ -48,6 +50,8 @@ export const dynamic = 'force-dynamic';
 
 export async function GET(request, { params }) {
   const pathParts = Array.isArray(params?.path) ? params.path : [];
+  const userAgent = request.headers.get('user-agent') || '';
+  const isSocialPreviewBot = SOCIAL_BOT_UA_REGEX.test(userAgent);
 
   const decodedParts = pathParts.map((p) => safeDecodeURIComponent(p));
   const viatorPath = decodedParts.join('/');
@@ -71,6 +75,51 @@ export async function GET(request, { params }) {
 
   const htmlTitle = escapeHtml(title);
   const escapedDestinationUrl = escapeHtml(destinationUrl);
+  const redirectHeadMarkup = isSocialPreviewBot
+    ? ''
+    : `<!-- Redirect -->
+    <meta http-equiv="refresh" content="1; url=${escapedDestinationUrl}" />`;
+
+  const redirectScriptMarkup = isSocialPreviewBot
+    ? ''
+    : `<script>
+      (function () {
+        var destinationUrl = ${JSON.stringify(destinationUrl)};
+        var countdownEl = document.getElementById('countdown');
+        var etaEl = document.getElementById('eta');
+        var fallbackEl = document.getElementById('fallback');
+
+        var durationMs = 1000;
+        var start = Date.now();
+        var deadline = start + durationMs;
+
+        function tick() {
+          var now = Date.now();
+          var remainingMs = Math.max(0, deadline - now);
+          var remainingSec = Math.ceil(remainingMs / 1000);
+          if (countdownEl) countdownEl.textContent = String(remainingSec);
+
+          if (etaEl) {
+            var eta = remainingMs <= 0 ? 0 : remainingMs;
+            etaEl.textContent = 'ETA ~' + (eta <= 0 ? 0 : Math.ceil(eta / 1000)) + 's';
+          }
+
+          if (remainingMs <= 0) return;
+          requestAnimationFrame(tick);
+        }
+
+        tick();
+
+        setTimeout(function () {
+          try {
+            window.location.replace(destinationUrl);
+          } catch (e) {
+            if (fallbackEl) fallbackEl.style.display = 'inline';
+          }
+        }, durationMs);
+      })();
+    </script>`;
+
   const html = `<!doctype html>
 <html lang="en">
   <head>
@@ -90,8 +139,7 @@ export async function GET(request, { params }) {
     <meta property="twitter:description" content="Taking you to the best price..." />
     <meta property="twitter:image" content="${OG_IMAGE_URL}" />
 
-    <!-- Redirect -->
-    <meta http-equiv="refresh" content="1; url=${escapedDestinationUrl}" />
+    ${redirectHeadMarkup}
     <title>${htmlTitle} | TopTours.ai</title>
 
     <style>
@@ -257,14 +305,16 @@ export async function GET(request, { params }) {
       </div>
       <h1>Taking you to the best price...</h1>
       <p class="sub">
-        Finding your tour and calculating the best price in <span class="countdown" id="countdown">1</span> second<span id="plural"> </span>.
+        ${isSocialPreviewBot
+          ? 'Preparing rich preview details for social platforms.'
+          : 'Finding your tour and calculating the best price in <span class="countdown" id="countdown">1</span> second<span id="plural"> </span>.'}
       </p>
       <div class="row">
         <div class="spinner" aria-hidden="true"></div>
         <div class="progressWrap">
           <div class="progressMeta">
             <span>Finding best price</span>
-            <span id="eta">ETA ~1s</span>
+            <span id="eta">${isSocialPreviewBot ? 'Crawler mode' : 'ETA ~1s'}</span>
           </div>
           <div class="bar"><div></div></div>
         </div>
@@ -280,43 +330,7 @@ export async function GET(request, { params }) {
       </div>
     </main>
 
-    <script>
-      (function () {
-        var destinationUrl = ${JSON.stringify(destinationUrl)};
-        var countdownEl = document.getElementById('countdown');
-        var etaEl = document.getElementById('eta');
-        var fallbackEl = document.getElementById('fallback');
-
-        var durationMs = 1000;
-        var start = Date.now();
-        var deadline = start + durationMs;
-
-        function tick() {
-          var now = Date.now();
-          var remainingMs = Math.max(0, deadline - now);
-          var remainingSec = Math.ceil(remainingMs / 1000);
-          if (countdownEl) countdownEl.textContent = String(remainingSec);
-
-          if (etaEl) {
-            var eta = remainingMs <= 0 ? 0 : remainingMs;
-            etaEl.textContent = 'ETA ~' + (eta <= 0 ? 0 : Math.ceil(eta / 1000)) + 's';
-          }
-
-          if (remainingMs <= 0) return;
-          requestAnimationFrame(tick);
-        }
-
-        tick();
-
-        setTimeout(function () {
-          try {
-            window.location.replace(destinationUrl);
-          } catch (e) {
-            if (fallbackEl) fallbackEl.style.display = 'inline';
-          }
-        }, durationMs);
-      })();
-    </script>
+    ${redirectScriptMarkup}
   </body>
 </html>`;
 
