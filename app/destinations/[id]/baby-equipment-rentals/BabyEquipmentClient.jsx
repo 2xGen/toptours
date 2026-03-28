@@ -46,8 +46,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 
-// BabyQuip affiliate link
-const BABYQUIP_AFFILIATE_LINK = 'https://www.babyquip.com?a=ae23028';
+import { BABYQUIP_AFFILIATE_URL } from '@/lib/babyquipAffiliate';
 
 // Normalize slug: convert special characters to ASCII (e.g., "banús" -> "banus")
 function normalizeSlug(slug) {
@@ -188,9 +187,9 @@ export default function BabyEquipmentClient({ destination, categoryGuides = [], 
                   <Button
                     asChild
                     className="sunset-gradient text-white font-semibold px-6 py-3 hover:scale-105 transition-transform duration-200"
-                    onClick={() => window.open(BABYQUIP_AFFILIATE_LINK, '_blank')}
+                    onClick={() => window.open(BABYQUIP_AFFILIATE_URL, '_blank')}
                   >
-                    <a href={BABYQUIP_AFFILIATE_LINK} target="_blank" rel="noopener noreferrer">
+                    <a href={BABYQUIP_AFFILIATE_URL} target="_blank" rel="noopener noreferrer">
                       Browse Available Equipment
                       <ExternalLink className="w-4 h-4 ml-2" />
                     </a>
@@ -234,9 +233,9 @@ export default function BabyEquipmentClient({ destination, categoryGuides = [], 
                 <Button
                   asChild
                   className="sunset-gradient text-white font-semibold px-6 py-3 hover:scale-105 transition-transform duration-200"
-                  onClick={() => window.open(BABYQUIP_AFFILIATE_LINK, '_blank')}
+                  onClick={() => window.open(BABYQUIP_AFFILIATE_URL, '_blank')}
                 >
-                  <a href={BABYQUIP_AFFILIATE_LINK} target="_blank" rel="noopener noreferrer">
+                  <a href={BABYQUIP_AFFILIATE_URL} target="_blank" rel="noopener noreferrer">
                     Browse Available Equipment
                     <ExternalLink className="w-4 h-4 ml-2" />
                   </a>
@@ -323,9 +322,9 @@ export default function BabyEquipmentClient({ destination, categoryGuides = [], 
                           asChild
                           variant="outline"
                           className="w-full border-blue-300 text-blue-600 hover:bg-blue-50"
-                          onClick={() => window.open(BABYQUIP_AFFILIATE_LINK, '_blank')}
+                          onClick={() => window.open(BABYQUIP_AFFILIATE_URL, '_blank')}
                         >
-                          <a href={BABYQUIP_AFFILIATE_LINK} target="_blank" rel="noopener noreferrer">
+                          <a href={BABYQUIP_AFFILIATE_URL} target="_blank" rel="noopener noreferrer">
                             Rent on BabyQuip
                             <ExternalLink className="w-4 h-4 ml-2" />
                           </a>
@@ -747,9 +746,9 @@ export default function BabyEquipmentClient({ destination, categoryGuides = [], 
                 asChild
                 size="lg"
                 className="bg-white text-purple-600 hover:bg-gray-100 transition-transform duration-200 px-8 py-6 text-lg font-semibold hover:scale-105"
-                onClick={() => window.open(BABYQUIP_AFFILIATE_LINK, '_blank')}
+                onClick={() => window.open(BABYQUIP_AFFILIATE_URL, '_blank')}
               >
-                <a href={BABYQUIP_AFFILIATE_LINK} target="_blank" rel="noopener noreferrer">
+                <a href={BABYQUIP_AFFILIATE_URL} target="_blank" rel="noopener noreferrer">
                   Browse Baby Equipment Rentals in {destinationName}
                   <ShoppingCart className="ml-2 h-5 w-5" />
                 </a>
@@ -773,9 +772,9 @@ export default function BabyEquipmentClient({ destination, categoryGuides = [], 
           <Button
             asChild
             className="sunset-gradient text-white hover:scale-105 transition-transform duration-200 px-6 py-6 text-base font-semibold shadow-2xl"
-            onClick={() => window.open(BABYQUIP_AFFILIATE_LINK, '_blank')}
+            onClick={() => window.open(BABYQUIP_AFFILIATE_URL, '_blank')}
           >
-            <a href={BABYQUIP_AFFILIATE_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+            <a href={BABYQUIP_AFFILIATE_URL} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
               Browse Equipment Rentals
               <ExternalLink className="w-5 h-5" />
             </a>

@@ -1,46 +1,62 @@
 import { NextResponse } from 'next/server';
-import {
-  resolveCatchAllPath,
-  resolveBabyDestinationSlug,
-  safeDecodeURIComponent,
-  escapeHtml,
-  titleCaseWords,
-} from '@/lib/affiliateRedirectUtils';
+import { DISCOVER_CARS_AFFILIATE_URL, CAR_RENTAL_OG_IMAGE_URL } from '@/lib/discoverCarsAffiliate';
+import { DISCOVER_DC_GENERIC_SLUG } from '@/lib/discoverCarsDcOptions';
+import { safeDecodeURIComponent, escapeHtml, titleCaseWords } from '@/lib/affiliateRedirectUtils';
 
-const OG_IMAGE_URL_VIATOR =
-  'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/OG%20images/toptours%20og%20fc%20sq.jpg';
-const TRACKING_QUERY = 'pid=P00276441&mcid=42383&medium=link';
-const VIATOR_BASE = 'https://www.viator.com/';
 const SOCIAL_BOT_UA_REGEX =
   /(facebookexternalhit|facebot|twitterbot|linkedinbot|slackbot|whatsapp|telegrambot|discordbot|skypeuripreview|googlebot)/i;
 
-function extractTitleFromPathParts(pathParts) {
-  if (!pathParts?.length) return 'TopTours';
+const VALID_DC_SEGMENT = /^[a-z0-9-]{1,120}$/;
 
-  const slugSource =
-    pathParts.length >= 2 ? pathParts[pathParts.length - 2] : pathParts[pathParts.length - 1];
+/** Old short slugs → canonical (308). */
+const LEGACY_DC_SLUG_REDIRECTS = {
+  discover: DISCOVER_DC_GENERIC_SLUG,
+  prague: 'car-rentals-in-prague',
+  'punta-cana': 'car-rentals-in-punta-cana',
+  aruba: 'car-rentals-in-aruba',
+  bonaire: 'car-rentals-in-bonaire',
+  nassau: 'car-rentals-in-nassau',
+  amsterdam: 'car-rentals-in-amsterdam',
+  curacao: 'car-rentals-in-curacao',
+  miami: 'car-rentals-in-miami',
+  'new-york-city': 'car-rentals-in-new-york-city',
+  'las-vegas': 'car-rentals-in-las-vegas',
+};
 
-  const decoded = safeDecodeURIComponent(slugSource);
-  const normalized = decoded.replace(/[-_]+/g, ' ');
-  return titleCaseWords(normalized);
-}
+const CAR_RENTALS_IN_PREFIX = /^car-rentals-in-(.+)$/;
 
 export const dynamic = 'force-dynamic';
 
+async function resolveSegmentParam(request, params) {
+  const resolved = params && typeof params.then === 'function' ? await params : params;
+  let segment = safeDecodeURIComponent(String(resolved?.segment ?? ''));
+  if (segment) return segment;
+  try {
+    const u = new URL(request.url);
+    const m = u.pathname.match(/^\/dc\/([^/]+)$/i);
+    if (m) return safeDecodeURIComponent(m[1]);
+  } catch {
+    // ignore
+  }
+  return '';
+}
+
 export async function GET(request, { params }) {
-  const pathParts = await resolveCatchAllPath(request, params, 'go');
-  const userAgent = request.headers.get('user-agent') || '';
-  const isSocialPreviewBot = SOCIAL_BOT_UA_REGEX.test(userAgent);
+  const rawSegment = (await resolveSegmentParam(request, params)).trim();
+  const seg = rawSegment.toLowerCase();
 
-  const decodedParts = pathParts.map((p) => safeDecodeURIComponent(p));
-
-  if (resolveBabyDestinationSlug(decodedParts)) {
-    try {
-      const u = new URL(request.url);
-      return NextResponse.redirect(`${u.origin}/fb/${decodedParts.join('/')}`, 308);
-    } catch {
-      return NextResponse.redirect(`https://toptours.ai/fb/${decodedParts.join('/')}`, 308);
-    }
+  if (!VALID_DC_SEGMENT.test(seg)) {
+    return new NextResponse(
+      '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Not found</title></head><body><p>Invalid car rental link.</p></body></html>',
+      {
+        status: 404,
+        headers: {
+          'Content-Type': 'text/html; charset=utf-8',
+          'X-Robots-Tag': 'noindex',
+          'Cache-Control': 'no-store, max-age=0',
+        },
+      }
+    );
   }
 
   const origin = (() => {
@@ -52,22 +68,69 @@ export async function GET(request, { params }) {
     }
   })();
 
-  const viatorPath = decodedParts.join('/');
-  const destinationBaseUrl = `${VIATOR_BASE}${viatorPath}`;
-  const queryJoiner = destinationBaseUrl.includes('?') ? '&' : '?';
-  const destinationUrl = `${destinationBaseUrl}${queryJoiner}${TRACKING_QUERY}`;
-  const previewTitle = extractTitleFromPathParts(decodedParts);
-  const ogDescription = 'Taking you to the best price...';
-  const ogImageUrl = OG_IMAGE_URL_VIATOR;
-  const pageUrl = `${origin}/go/${decodedParts.join('/')}`;
+  const legacyTarget = LEGACY_DC_SLUG_REDIRECTS[seg];
+  if (legacyTarget) {
+    return NextResponse.redirect(`${origin}/dc/${legacyTarget}`, 308);
+  }
+
+  const userAgent = request.headers.get('user-agent') || '';
+  const isSocialPreviewBot = SOCIAL_BOT_UA_REGEX.test(userAgent);
+
+  const destinationUrl = DISCOVER_CARS_AFFILIATE_URL;
+  const ogImageUrl = CAR_RENTAL_OG_IMAGE_URL;
+  const pageUrl = `${origin}/dc/${seg}`;
+
+  let previewTitle;
+  let ogDescription;
+  /** Set for city-specific /dc/car-rentals-in-* links (drives personalized loading copy). */
+  let placeForUi = null;
+
+  if (seg === DISCOVER_DC_GENERIC_SLUG) {
+    previewTitle = 'Best Car Rental Options — Compare & Save';
+    ogDescription =
+      'Compare prices from 1,000+ companies—clear prices, free cancellation. Find the best rental for your trip on Discover Cars.';
+  } else {
+    const placeMatch = CAR_RENTALS_IN_PREFIX.exec(seg);
+    if (!placeMatch) {
+      return new NextResponse(
+        '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Not found</title></head><body><p>Invalid car rental link. Use /dc/best-car-rental-options or /dc/car-rentals-in-…</p></body></html>',
+        {
+          status: 404,
+          headers: {
+            'Content-Type': 'text/html; charset=utf-8',
+            'X-Robots-Tag': 'noindex',
+            'Cache-Control': 'no-store, max-age=0',
+          },
+        }
+      );
+    }
+    const placeSlug = placeMatch[1].trim();
+    placeForUi = titleCaseWords(placeSlug.replace(/[-_]+/g, ' '));
+    previewTitle = `Car Rentals in ${placeForUi}`;
+    ogDescription = `Save up to 70% on car rentals in ${placeForUi}. Compare deals from 1,000+ companies with Discover Cars—clear prices, no hidden fees, free cancellation.`;
+  }
+
+  const loadingHeadline = placeForUi
+    ? `Just a second while we find the best options for your ${placeForUi} trip...`
+    : 'Just a second while we find the best rental options for your trip...';
   const loadingSubHtml = isSocialPreviewBot
     ? 'Preparing rich preview details for social platforms.'
-    : 'We are finding the best available price and sending you there in <span class="countdown" id="countdown">1</span> second<span id="plural"> </span>.';
-  const statusSteps = [
-    'Getting your tour ready...',
-    'Finding the best available price...',
-    'Sending you there now...',
-  ];
+    : 'We are finding the best rental rates and sending you there in <span class="countdown" id="countdown">1</span> second<span id="plural"> </span>.';
+  const loadingStatusInitial = isSocialPreviewBot
+    ? 'Preparing social preview.'
+    : 'Finding the best rental options...';
+  const progressLabel = 'Finalizing your search';
+  const statusSteps = placeForUi
+    ? [
+        `Finding the best options in ${placeForUi}...`,
+        'Comparing rates from trusted providers...',
+        'Opening Discover Cars now...',
+      ]
+    : [
+        'Finding the best rental options...',
+        'Comparing rates from trusted providers...',
+        'Opening Discover Cars now...',
+      ];
 
   const htmlTitle = escapeHtml(previewTitle);
   const htmlOgDescription = escapeHtml(ogDescription);
@@ -136,7 +199,6 @@ export async function GET(request, { params }) {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex,nofollow" />
 
-    <!-- Social preview -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="${htmlTitle}" />
     <meta property="og:description" content="${htmlOgDescription}" />
@@ -294,16 +356,16 @@ export async function GET(request, { params }) {
         <span class="brandDot" aria-hidden="true"></span>
         <span style="font-weight: 800; letter-spacing: .2px;">TopTours.ai</span>
       </div>
-      <h1>Just a second while we get your tour ready...</h1>
+      <h1>${escapeHtml(loadingHeadline)}</h1>
       <p class="sub">
         ${loadingSubHtml}
       </p>
-      <p class="status" id="statusText">${isSocialPreviewBot ? 'Preparing social preview.' : 'Getting your tour ready...'}</p>
+      <p class="status" id="statusText">${escapeHtml(loadingStatusInitial)}</p>
       <div class="row">
         <div class="spinner" aria-hidden="true"></div>
         <div class="progressWrap">
           <div class="progressMeta">
-            <span>Finalizing your route</span>
+            <span>${escapeHtml(progressLabel)}</span>
             <span id="eta">${isSocialPreviewBot ? 'Preview mode' : 'Almost there'}</span>
           </div>
           <div class="bar"><div></div></div>

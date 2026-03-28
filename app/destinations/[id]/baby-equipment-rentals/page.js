@@ -4,6 +4,7 @@ import { getDestinationFullContent } from '@/data/destinationFullContent';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
 import { getDestinationFeatures } from '@/lib/destinationFeatures';
 import { getBabyEquipmentRentalsByDestination } from '@/lib/babyEquipmentRentals';
+import { BABY_EQUIPMENT_OG_IMAGE_URL } from '@/lib/babyquipAffiliate';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import BabyEquipmentClient from './BabyEquipmentClient';
 
@@ -29,7 +30,7 @@ export async function generateMetadata({ params }) {
   // Check if destination exists (with guides first)
   let destination = getDestinationById(id);
   let destinationName = null;
-  let ogImage = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/OG%20images/baby%20equipment.png';
+  let ogImage = BABY_EQUIPMENT_OG_IMAGE_URL;
   
   // If not in destinations with guides, check Viator destinations (without guides)
   if (!destination) {

@@ -13,6 +13,7 @@
     "sync-destinations": "node scripts/sync-destinations.js",
     "generate-static": "node scripts/generate-static.js",
     "generate-sitemap": "node scripts/generate-sitemap.js",
+    "generate-baby-fb-slugs": "node scripts/generate-baby-fb-slugs.cjs",
     "generate-guides-sitemap": "node scripts/generate-guides-sitemap.js",
     "generate-favicon": "node scripts/generate-favicon.js",
     "populate-hardcoded-tours": "node scripts/bulk-populate-hardcoded-tours.js",

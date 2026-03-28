@@ -4,11 +4,16 @@ import { useEffect, useMemo, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Lock, Link as LinkIcon, Copy, LogOut, Sparkles } from 'lucide-react';
+import { Lock, Link as LinkIcon, Copy, LogOut, Sparkles, Baby, BookOpen, Car, Shield } from 'lucide-react';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
 
 import { getSiteOrigin } from '@/lib/siteUrl';
+import { BABYQUIP_AFFILIATE_URL } from '@/lib/babyquipAffiliate';
+import { DISCOVER_CARS_AFFILIATE_URL } from '@/lib/discoverCarsAffiliate';
+import { DISCOVER_DC_GENERIC_SLUG, DISCOVER_DC_PRESETS } from '@/lib/discoverCarsDcOptions';
+import { SAFETYWING_NOMAD_INSURANCE_URL, SAFETYWING_NOMAD_INSURANCE_COMPLETE_URL } from '@/lib/safetyWingAffiliate';
+import { SW_NOMAD_INSURANCE_SLUG, SAFETY_WING_SW_PRESETS } from '@/lib/safetyWingSwOptions';
 
 function normalizeViatorInput(input) {
   const trimmed = String(input || '').trim();
@@ -31,6 +36,36 @@ function toGoPathFromViatorUrl(viatorUrl) {
   return pathname || null;
 }
 
+const PACKING_LIST_GUIDES = [
+  { label: 'Aruba beach packing list', slug: 'aruba-packing-list' },
+  { label: 'Curaçao beach packing list', slug: 'curacao-packing-list' },
+  { label: 'Beach vacation packing list (general)', slug: 'beach-vacation-packing-list' },
+];
+
+const VIATOR_HISTORY_STORAGE_KEY = 'toptours_admin_viator_go_history_v1';
+const VIATOR_HISTORY_MAX = 10;
+
+function readViatorHistory() {
+  if (typeof window === 'undefined') return [];
+  try {
+    const raw = localStorage.getItem(VIATOR_HISTORY_STORAGE_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return [];
+    return parsed.filter((u) => typeof u === 'string' && u.trim().length > 0).slice(0, VIATOR_HISTORY_MAX);
+  } catch {
+    return [];
+  }
+}
+
+function writeViatorHistory(urls) {
+  try {
+    localStorage.setItem(VIATOR_HISTORY_STORAGE_KEY, JSON.stringify(urls.slice(0, VIATOR_HISTORY_MAX)));
+  } catch {
+    // private mode / quota
+  }
+}
+
 export default function GeneratorClient() {
   const origin = useMemo(() => getSiteOrigin(), []);
 
@@ -43,6 +78,21 @@ export default function GeneratorClient() {
   const [viatorInput, setViatorInput] = useState('');
   const [generatedGoUrl, setGeneratedGoUrl] = useState('');
   const [generatedError, setGeneratedError] = useState('');
+  const [viatorRecent, setViatorRecent] = useState([]);
+  const [copiedViatorHistoryUrl, setCopiedViatorHistoryUrl] = useState(null);
+
+  const [babyDestinations, setBabyDestinations] = useState([]);
+  const [babyLoading, setBabyLoading] = useState(false);
+  const [babyFetchError, setBabyFetchError] = useState('');
+  const [babySearch, setBabySearch] = useState('');
+  const [babySelectedId, setBabySelectedId] = useState('');
+  const [copiedPackingSlug, setCopiedPackingSlug] = useState(null);
+
+  const [dcPresetSlug, setDcPresetSlug] = useState(DISCOVER_DC_GENERIC_SLUG);
+  const [copiedDcKey, setCopiedDcKey] = useState(null);
+
+  const [swPresetSlug, setSwPresetSlug] = useState(SW_NOMAD_INSURANCE_SLUG);
+  const [copiedSwKey, setCopiedSwKey] = useState(null);
 
   useEffect(() => {
     const adminToken = sessionStorage.getItem('admin_token');
@@ -51,6 +101,50 @@ export default function GeneratorClient() {
     }
     setCheckingAuth(false);
   }, []);
+
+  useEffect(() => {
+    if (!authenticated) return;
+    setViatorRecent(readViatorHistory());
+  }, [authenticated]);
+
+  useEffect(() => {
+    if (!authenticated) return;
+    let cancelled = false;
+    (async () => {
+      setBabyLoading(true);
+      setBabyFetchError('');
+      try {
+        const res = await fetch('/api/admin/baby-equipment-destinations');
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Failed to load destinations');
+        if (!cancelled) setBabyDestinations(Array.isArray(data.destinations) ? data.destinations : []);
+      } catch (e) {
+        if (!cancelled) setBabyFetchError(e.message || 'Failed to load destinations');
+      } finally {
+        if (!cancelled) setBabyLoading(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [authenticated]);
+
+  const filteredBabyDestinations = useMemo(() => {
+    const q = babySearch.trim().toLowerCase();
+    if (!q) return babyDestinations;
+    return babyDestinations.filter(
+      (d) =>
+        d.id.toLowerCase().includes(q) ||
+        String(d.label || '')
+          .toLowerCase()
+          .includes(q)
+    );
+  }, [babyDestinations, babySearch]);
+
+  const babyGoUrl = babySelectedId ? `${origin}/fb/baby-equipment-rental-in-${babySelectedId}` : '';
+
+  const dcUrl = `${origin}/dc/${dcPresetSlug}`;
+  const swUrl = `${origin}/sw/${swPresetSlug}`;
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -93,9 +187,74 @@ export default function GeneratorClient() {
         return;
       }
 
-      setGeneratedGoUrl(`${origin}/go/${goPath}`);
+      const goUrl = `${origin}/go/${goPath}`;
+      setGeneratedGoUrl(goUrl);
+      setViatorRecent((prev) => {
+        const next = [goUrl, ...prev.filter((u) => u !== goUrl)].slice(0, VIATOR_HISTORY_MAX);
+        writeViatorHistory(next);
+        return next;
+      });
     } catch {
       setGeneratedError('Please paste a valid Viator URL.');
+    }
+  };
+
+  const handleCopy = async () => {
+    try {
+      if (!generatedGoUrl) return;
+      await navigator.clipboard.writeText(generatedGoUrl);
+    } catch {
+      // Clipboard can fail depending on browser permissions; ignore.
+    }
+  };
+
+  const copyViatorHistoryUrl = async (url) => {
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopiedViatorHistoryUrl(url);
+      window.setTimeout(() => setCopiedViatorHistoryUrl(null), 2000);
+    } catch {
+      // ignore
+    }
+  };
+
+  const handleCopyBaby = async () => {
+    try {
+      if (!babyGoUrl) return;
+      await navigator.clipboard.writeText(babyGoUrl);
+    } catch {
+      // ignore
+    }
+  };
+
+  const copyPackingGuideUrl = async (slug) => {
+    const url = `${origin}/travel-guides/${slug}`;
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopiedPackingSlug(slug);
+      window.setTimeout(() => setCopiedPackingSlug(null), 2000);
+    } catch {
+      // ignore
+    }
+  };
+
+  const copyDcUrl = async () => {
+    try {
+      await navigator.clipboard.writeText(dcUrl);
+      setCopiedDcKey(dcPresetSlug);
+      window.setTimeout(() => setCopiedDcKey(null), 2000);
+    } catch {
+      // ignore
+    }
+  };
+
+  const copySwUrl = async () => {
+    try {
+      await navigator.clipboard.writeText(swUrl);
+      setCopiedSwKey(swPresetSlug);
+      window.setTimeout(() => setCopiedSwKey(null), 2000);
+    } catch {
+      // ignore
     }
   };
 
@@ -158,23 +317,17 @@ export default function GeneratorClient() {
     );
   }
 
-  const handleCopy = async () => {
-    try {
-      if (!generatedGoUrl) return;
-      await navigator.clipboard.writeText(generatedGoUrl);
-    } catch {
-      // Clipboard can fail depending on browser permissions; ignore.
-    }
-  };
-
   return (
     <div className="min-h-screen bg-gray-50">
       <NavigationNext />
       <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16">
         <div className="mb-6 flex items-start justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Viator Link Generator</h1>
-            <p className="text-gray-600">Paste a Viator URL and get a toptours.ai tracking redirect link.</p>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Link generator</h1>
+            <p className="text-gray-600">
+              Viator, Discover Cars, SafetyWing travel insurance, packing list guides, and BabyQuip—copy short links
+              without leaving this page.
+            </p>
           </div>
           <Button
             variant="outline"
@@ -189,11 +342,11 @@ export default function GeneratorClient() {
           </Button>
         </div>
 
-        <Card>
+        <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Sparkles className="w-5 h-5" />
-              Generate
+              Viator tours
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-5">
@@ -226,10 +379,292 @@ export default function GeneratorClient() {
                 </div>
                 <Input value={generatedGoUrl} readOnly />
                 <p className="text-xs text-gray-500">
-                  Facebook preview will use your link title + the fixed TopTours image, then redirects after 1 second.
+                  Social previews use the tour title + the fixed TopTours image; visitors redirect after 1 second.
                 </p>
               </div>
             )}
+
+            <div className="rounded-lg border border-gray-200 bg-gray-50/80 p-4 space-y-3">
+              <div>
+                <p className="text-sm font-medium text-gray-800">Recent Viator links</p>
+                <p className="text-xs text-gray-500 mt-0.5">
+                  Last {VIATOR_HISTORY_MAX} links you generated here—one-click copy when you need the same link again
+                  (e.g. posting in multiple Facebook groups).
+                </p>
+              </div>
+              {viatorRecent.length === 0 ? (
+                <p className="text-sm text-gray-500">No history yet. Create a link above and it will show up here.</p>
+              ) : (
+                <ul className="space-y-2 list-none p-0 m-0">
+                  {viatorRecent.map((url) => (
+                    <li key={url}>
+                      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
+                        <p
+                          className="flex-1 min-w-0 font-mono text-xs sm:text-sm text-gray-800 truncate bg-white border border-gray-200 rounded-md px-3 py-2"
+                          title={url}
+                        >
+                          {url}
+                        </p>
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          onClick={() => copyViatorHistoryUrl(url)}
+                          className="shrink-0 w-full sm:w-auto flex items-center justify-center gap-2"
+                        >
+                          <Copy className="w-4 h-4" />
+                          {copiedViatorHistoryUrl === url ? 'Copied' : 'Copy'}
+                        </Button>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Car className="w-5 h-5" />
+              Car rentals (Discover Cars)
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-5">
+            <p className="text-sm text-gray-600">
+              Only two URL shapes are valid:{' '}
+              <code className="text-xs bg-gray-100 px-1 rounded">/dc/best-car-rental-options</code> (one generic
+              link) or <code className="text-xs bg-gray-100 px-1 rounded">/dc/car-rentals-in-{'{place}'}</code> (e.g.{' '}
+              <code className="text-xs bg-gray-100 px-1 rounded">car-rentals-in-miami</code>). Then redirect to{' '}
+              <a
+                href={DISCOVER_CARS_AFFILIATE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-emerald-700 underline font-medium"
+              >
+                {DISCOVER_CARS_AFFILIATE_URL}
+              </a>
+              . Old short URLs like <code className="text-xs bg-gray-100 px-1 rounded">/dc/miami</code> 308 to the
+              new path. Social previews use the car-rental OG image.
+            </p>
+
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700" htmlFor="dc-preset">
+                Quick pick
+              </label>
+              <select
+                id="dc-preset"
+                className="w-full h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                value={dcPresetSlug}
+                onChange={(e) => setDcPresetSlug(e.target.value)}
+              >
+                {DISCOVER_DC_PRESETS.map(({ label, slug }) => (
+                  <option key={slug} value={slug}>
+                    {label}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="space-y-2">
+              <div className="flex items-center justify-between gap-3">
+                <label className="text-sm font-medium text-gray-700">Your /dc/ link</label>
+                <Button type="button" variant="outline" size="sm" onClick={copyDcUrl} className="flex items-center gap-2">
+                  <Copy className="w-4 h-4" />
+                  {copiedDcKey === dcPresetSlug ? 'Copied' : 'Copy'}
+                </Button>
+              </div>
+              <Input value={dcUrl} readOnly className="font-mono text-xs sm:text-sm" />
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <BookOpen className="w-5 h-5" />
+              Packing list travel guides
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-5">
+            <p className="text-sm text-gray-600">
+              Public travel guide URLs on this site (Amazon disclosure pages). Uses your current origin (
+              <code className="text-xs bg-gray-100 px-1 rounded">{origin}</code>
+              ).
+            </p>
+            <ul className="space-y-4 list-none p-0 m-0">
+              {PACKING_LIST_GUIDES.map(({ label, slug }) => {
+                const fullUrl = `${origin}/travel-guides/${slug}`;
+                return (
+                  <li key={slug} className="rounded-lg border border-gray-200 bg-white p-3 sm:p-4">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:gap-3">
+                      <div className="flex-1 min-w-0 space-y-1.5">
+                        <label className="text-sm font-medium text-gray-800">{label}</label>
+                        <Input value={fullUrl} readOnly className="font-mono text-xs sm:text-sm" />
+                      </div>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={() => copyPackingGuideUrl(slug)}
+                        className="shrink-0 w-full sm:w-auto flex items-center justify-center gap-2"
+                      >
+                        <Copy className="w-4 h-4" />
+                        {copiedPackingSlug === slug ? 'Copied' : 'Copy'}
+                      </Button>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </CardContent>
+        </Card>
+
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Baby className="w-5 h-5" />
+              Baby gear (BabyQuip)
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-5">
+            <p className="text-sm text-gray-600">
+              Redirects to{' '}
+              <a
+                href={BABYQUIP_AFFILIATE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-purple-700 underline font-medium"
+              >
+                {BABYQUIP_AFFILIATE_URL}
+              </a>
+              . Social previews use the baby equipment OG image and title like the destination pages.
+            </p>
+
+            {babyFetchError && (
+              <div className="text-sm text-red-600 bg-red-50 p-3 rounded-lg">{babyFetchError}</div>
+            )}
+
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700" htmlFor="baby-search">
+                Search destination
+              </label>
+              <Input
+                id="baby-search"
+                value={babySearch}
+                onChange={(e) => setBabySearch(e.target.value)}
+                placeholder="Type e.g. aruba, punta, new york"
+                disabled={babyLoading}
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700" htmlFor="baby-select">
+                Destination
+              </label>
+              <select
+                id="baby-select"
+                className="w-full h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                value={babySelectedId}
+                onChange={(e) => setBabySelectedId(e.target.value)}
+                disabled={babyLoading || babyDestinations.length === 0}
+              >
+                <option value="">{babyLoading ? 'Loading…' : 'Choose a destination…'}</option>
+                {filteredBabyDestinations.map((d) => (
+                  <option key={d.id} value={d.id}>
+                    {d.label} — {d.id}
+                  </option>
+                ))}
+              </select>
+              {!babyLoading && babyDestinations.length > 0 && (
+                <p className="text-xs text-gray-500">
+                  Showing {filteredBabyDestinations.length} of {babyDestinations.length} destinations with baby equipment
+                  pages.
+                </p>
+              )}
+            </div>
+
+            {babyGoUrl && (
+              <div className="space-y-2">
+                <div className="flex items-center justify-between gap-3">
+                  <label className="text-sm font-medium text-gray-700">Your /fb/ link</label>
+                  <Button variant="outline" size="sm" onClick={handleCopyBaby} className="flex items-center gap-2">
+                    <Copy className="w-4 h-4" />
+                    Copy
+                  </Button>
+                </div>
+                <Input value={babyGoUrl} readOnly />
+                <p className="text-xs text-gray-500">
+                  Path format: <code className="text-xs bg-gray-100 px-1 rounded">/fb/baby-equipment-rental-in-{'{slug}'}</code>{' '}
+                  — BabyQuip redirect (Viator stays on <code className="text-xs bg-gray-100 px-1 rounded">/go/</code>).
+                </p>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Shield className="w-5 h-5" />
+              Travel insurance (SafetyWing)
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-5">
+            <p className="text-sm text-gray-600">
+              Only two URL shapes are valid:{' '}
+              <code className="text-xs bg-gray-100 px-1 rounded">/sw/nomad-insurance</code> (Essential) and{' '}
+              <code className="text-xs bg-gray-100 px-1 rounded">/sw/nomad-insurance-complete</code>. Visitors see a
+              short interstitial, then redirect to SafetyWing with your ambassador parameters. Essential lands on{' '}
+              <a
+                href={SAFETYWING_NOMAD_INSURANCE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sky-700 underline font-medium break-all"
+              >
+                {SAFETYWING_NOMAD_INSURANCE_URL}
+              </a>
+              ; Complete on{' '}
+              <a
+                href={SAFETYWING_NOMAD_INSURANCE_COMPLETE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sky-700 underline font-medium break-all"
+              >
+                {SAFETYWING_NOMAD_INSURANCE_COMPLETE_URL}
+              </a>
+              . Social previews use the travel insurance OG image.
+            </p>
+
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700" htmlFor="sw-preset">
+                Plan
+              </label>
+              <select
+                id="sw-preset"
+                className="w-full h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                value={swPresetSlug}
+                onChange={(e) => setSwPresetSlug(e.target.value)}
+              >
+                {SAFETY_WING_SW_PRESETS.map(({ label, slug }) => (
+                  <option key={slug} value={slug}>
+                    {label}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="space-y-2">
+              <div className="flex items-center justify-between gap-3">
+                <label className="text-sm font-medium text-gray-700">Your /sw/ link</label>
+                <Button type="button" variant="outline" size="sm" onClick={copySwUrl} className="flex items-center gap-2">
+                  <Copy className="w-4 h-4" />
+                  {copiedSwKey === swPresetSlug ? 'Copied' : 'Copy'}
+                </Button>
+              </div>
+              <Input value={swUrl} readOnly className="font-mono text-xs sm:text-sm" />
+            </div>
           </CardContent>
         </Card>
       </main>

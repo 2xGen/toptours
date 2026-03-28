@@ -1,47 +1,49 @@
 import { NextResponse } from 'next/server';
-import {
-  resolveCatchAllPath,
-  resolveBabyDestinationSlug,
-  safeDecodeURIComponent,
-  escapeHtml,
-  titleCaseWords,
-} from '@/lib/affiliateRedirectUtils';
+import { BABYQUIP_AFFILIATE_URL, BABY_EQUIPMENT_OG_IMAGE_URL } from '@/lib/babyquipAffiliate';
+import { safeDecodeURIComponent, escapeHtml, titleCaseWords } from '@/lib/affiliateRedirectUtils';
 
-const OG_IMAGE_URL_VIATOR =
-  'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/OG%20images/toptours%20og%20fc%20sq.jpg';
-const TRACKING_QUERY = 'pid=P00276441&mcid=42383&medium=link';
-const VIATOR_BASE = 'https://www.viator.com/';
 const SOCIAL_BOT_UA_REGEX =
   /(facebookexternalhit|facebot|twitterbot|linkedinbot|slackbot|whatsapp|telegrambot|discordbot|skypeuripreview|googlebot)/i;
 
-function extractTitleFromPathParts(pathParts) {
-  if (!pathParts?.length) return 'TopTours';
-
-  const slugSource =
-    pathParts.length >= 2 ? pathParts[pathParts.length - 2] : pathParts[pathParts.length - 1];
-
-  const decoded = safeDecodeURIComponent(slugSource);
-  const normalized = decoded.replace(/[-_]+/g, ' ');
-  return titleCaseWords(normalized);
-}
+const BABY_SEGMENT_PREFIX = /^baby-equipment-rental-in-(.+)$/i;
 
 export const dynamic = 'force-dynamic';
 
+async function resolveSegmentParam(request, params) {
+  const resolved = params && typeof params.then === 'function' ? await params : params;
+  let segment = safeDecodeURIComponent(String(resolved?.segment ?? ''));
+  if (segment) return segment;
+  try {
+    const u = new URL(request.url);
+    const m = u.pathname.match(/^\/fb\/([^/]+)$/i);
+    if (m) return safeDecodeURIComponent(m[1]);
+  } catch {
+    // ignore
+  }
+  return '';
+}
+
 export async function GET(request, { params }) {
-  const pathParts = await resolveCatchAllPath(request, params, 'go');
+  const rawSegment = await resolveSegmentParam(request, params);
+  const match = BABY_SEGMENT_PREFIX.exec(rawSegment.trim());
+  if (!match) {
+    return new NextResponse(
+      '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Not found</title></head><body><p>Invalid baby gear link.</p></body></html>',
+      {
+        status: 404,
+        headers: {
+          'Content-Type': 'text/html; charset=utf-8',
+          'X-Robots-Tag': 'noindex',
+          'Cache-Control': 'no-store, max-age=0',
+        },
+      }
+    );
+  }
+
+  const babySlug = match[1].trim().toLowerCase();
+
   const userAgent = request.headers.get('user-agent') || '';
   const isSocialPreviewBot = SOCIAL_BOT_UA_REGEX.test(userAgent);
-
-  const decodedParts = pathParts.map((p) => safeDecodeURIComponent(p));
-
-  if (resolveBabyDestinationSlug(decodedParts)) {
-    try {
-      const u = new URL(request.url);
-      return NextResponse.redirect(`${u.origin}/fb/${decodedParts.join('/')}`, 308);
-    } catch {
-      return NextResponse.redirect(`https://toptours.ai/fb/${decodedParts.join('/')}`, 308);
-    }
-  }
 
   const origin = (() => {
     try {
@@ -52,21 +54,23 @@ export async function GET(request, { params }) {
     }
   })();
 
-  const viatorPath = decodedParts.join('/');
-  const destinationBaseUrl = `${VIATOR_BASE}${viatorPath}`;
-  const queryJoiner = destinationBaseUrl.includes('?') ? '&' : '?';
-  const destinationUrl = `${destinationBaseUrl}${queryJoiner}${TRACKING_QUERY}`;
-  const previewTitle = extractTitleFromPathParts(decodedParts);
-  const ogDescription = 'Taking you to the best price...';
-  const ogImageUrl = OG_IMAGE_URL_VIATOR;
-  const pageUrl = `${origin}/go/${decodedParts.join('/')}`;
+  const destName = titleCaseWords(babySlug.replace(/[-_]+/g, ' '));
+  const destinationUrl = BABYQUIP_AFFILIATE_URL;
+  const previewTitle = `Baby Equipment Rentals in ${destName}`;
+  const ogDescription = `Rent strollers, car seats, cribs, and more in ${destName}. Delivered to your hotel or vacation rental.`;
+  const ogImageUrl = BABY_EQUIPMENT_OG_IMAGE_URL;
+  const pageUrl = `${origin}/fb/${rawSegment.trim()}`;
+
+  const loadingHeadline = 'Just a second while we open BabyQuip…';
   const loadingSubHtml = isSocialPreviewBot
-    ? 'Preparing rich preview details for social platforms.'
-    : 'We are finding the best available price and sending you there in <span class="countdown" id="countdown">1</span> second<span id="plural"> </span>.';
+    ? 'Preparing preview for social platforms.'
+    : 'Sending you to BabyQuip with our partner link in <span class="countdown" id="countdown">1</span> second<span id="plural"> </span>.';
+  const loadingStatusInitial = isSocialPreviewBot ? 'Preparing social preview.' : 'Getting your baby gear link ready…';
+  const progressLabel = 'Connecting to BabyQuip';
   const statusSteps = [
-    'Getting your tour ready...',
-    'Finding the best available price...',
-    'Sending you there now...',
+    'Getting your baby gear link ready…',
+    'Opening clean, safe rentals…',
+    'Sending you there now…',
   ];
 
   const htmlTitle = escapeHtml(previewTitle);
@@ -136,7 +140,6 @@ export async function GET(request, { params }) {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex,nofollow" />
 
-    <!-- Social preview -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="${htmlTitle}" />
     <meta property="og:description" content="${htmlOgDescription}" />
@@ -294,16 +297,16 @@ export async function GET(request, { params }) {
         <span class="brandDot" aria-hidden="true"></span>
         <span style="font-weight: 800; letter-spacing: .2px;">TopTours.ai</span>
       </div>
-      <h1>Just a second while we get your tour ready...</h1>
+      <h1>${escapeHtml(loadingHeadline)}</h1>
       <p class="sub">
         ${loadingSubHtml}
       </p>
-      <p class="status" id="statusText">${isSocialPreviewBot ? 'Preparing social preview.' : 'Getting your tour ready...'}</p>
+      <p class="status" id="statusText">${escapeHtml(loadingStatusInitial)}</p>
       <div class="row">
         <div class="spinner" aria-hidden="true"></div>
         <div class="progressWrap">
           <div class="progressMeta">
-            <span>Finalizing your route</span>
+            <span>${escapeHtml(progressLabel)}</span>
             <span id="eta">${isSocialPreviewBot ? 'Preview mode' : 'Almost there'}</span>
           </div>
           <div class="bar"><div></div></div>
