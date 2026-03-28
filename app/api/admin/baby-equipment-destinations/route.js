@@ -35,10 +35,14 @@ export async function GET() {
 
     if (error) throw error;
 
-    const destinations = (data || []).map((row) => ({
-      id: row.destination_id,
-      label: labelFromSeoTitle(row.seo_title, row.destination_id),
-    }));
+    const destinations = (data || [])
+      .map((row) => ({
+        id: row.destination_id,
+        label: labelFromSeoTitle(row.seo_title, row.destination_id),
+      }))
+      .sort((a, b) =>
+        String(a.label || '').localeCompare(String(b.label || ''), 'en', { sensitivity: 'base' })
+      );
 
     return NextResponse.json({ destinations });
   } catch (err) {

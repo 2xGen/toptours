@@ -4,7 +4,19 @@ import { useEffect, useMemo, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Lock, Link as LinkIcon, Copy, LogOut, Sparkles, Baby, BookOpen, Car, Shield } from 'lucide-react';
+import {
+  Lock,
+  Link as LinkIcon,
+  Copy,
+  LogOut,
+  Sparkles,
+  Baby,
+  BookOpen,
+  Car,
+  Shield,
+  Hotel,
+  Umbrella,
+} from 'lucide-react';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
 
@@ -14,6 +26,8 @@ import { DISCOVER_CARS_AFFILIATE_URL } from '@/lib/discoverCarsAffiliate';
 import { DISCOVER_DC_GENERIC_SLUG, DISCOVER_DC_PRESETS } from '@/lib/discoverCarsDcOptions';
 import { SAFETYWING_NOMAD_INSURANCE_URL, SAFETYWING_NOMAD_INSURANCE_COMPLETE_URL } from '@/lib/safetyWingAffiliate';
 import { SW_NOMAD_INSURANCE_SLUG, SAFETY_WING_SW_PRESETS } from '@/lib/safetyWingSwOptions';
+import { EX_DEFAULT_SLUG, EXPEDIA_EX_PRESETS } from '@/lib/expediaExOptions';
+import { COCONUT_BG_SLUG, COCONUT_RENTALS_AFFILIATE_URL } from '@/lib/coconutRentalsAffiliate';
 
 function normalizeViatorInput(input) {
   const trimmed = String(input || '').trim();
@@ -94,6 +108,10 @@ export default function GeneratorClient() {
   const [swPresetSlug, setSwPresetSlug] = useState(SW_NOMAD_INSURANCE_SLUG);
   const [copiedSwKey, setCopiedSwKey] = useState(null);
 
+  const [exPresetSlug, setExPresetSlug] = useState(EX_DEFAULT_SLUG);
+  const [copiedExKey, setCopiedExKey] = useState(null);
+  const [copiedBg, setCopiedBg] = useState(false);
+
   useEffect(() => {
     const adminToken = sessionStorage.getItem('admin_token');
     if (adminToken) {
@@ -131,20 +149,34 @@ export default function GeneratorClient() {
 
   const filteredBabyDestinations = useMemo(() => {
     const q = babySearch.trim().toLowerCase();
-    if (!q) return babyDestinations;
-    return babyDestinations.filter(
-      (d) =>
-        d.id.toLowerCase().includes(q) ||
-        String(d.label || '')
-          .toLowerCase()
-          .includes(q)
+    const list = !q
+      ? babyDestinations
+      : babyDestinations.filter(
+          (d) =>
+            d.id.toLowerCase().includes(q) ||
+            String(d.label || '')
+              .toLowerCase()
+              .includes(q)
+        );
+    return [...list].sort((a, b) =>
+      String(a.label || '').localeCompare(String(b.label || ''), 'en', { sensitivity: 'base' })
     );
   }, [babyDestinations, babySearch]);
+
+  const expediaPresetsAlphabetical = useMemo(
+    () =>
+      [...EXPEDIA_EX_PRESETS].sort((a, b) =>
+        a.label.localeCompare(b.label, 'en', { sensitivity: 'base' })
+      ),
+    []
+  );
 
   const babyGoUrl = babySelectedId ? `${origin}/fb/baby-equipment-rental-in-${babySelectedId}` : '';
 
   const dcUrl = `${origin}/dc/${dcPresetSlug}`;
   const swUrl = `${origin}/sw/${swPresetSlug}`;
+  const exUrl = `${origin}/ex/${exPresetSlug}`;
+  const bgUrl = `${origin}/bg/${COCONUT_BG_SLUG}`;
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -258,6 +290,26 @@ export default function GeneratorClient() {
     }
   };
 
+  const copyExUrl = async () => {
+    try {
+      await navigator.clipboard.writeText(exUrl);
+      setCopiedExKey(exPresetSlug);
+      window.setTimeout(() => setCopiedExKey(null), 2000);
+    } catch {
+      // ignore
+    }
+  };
+
+  const copyBgUrl = async () => {
+    try {
+      await navigator.clipboard.writeText(bgUrl);
+      setCopiedBg(true);
+      window.setTimeout(() => setCopiedBg(false), 2000);
+    } catch {
+      // ignore
+    }
+  };
+
   if (checkingAuth) {
     return (
       <div className="min-h-screen bg-gray-50">
@@ -325,8 +377,8 @@ export default function GeneratorClient() {
           <div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">Link generator</h1>
             <p className="text-gray-600">
-              Viator, Discover Cars, SafetyWing travel insurance, packing list guides, and BabyQuip—copy short links
-              without leaving this page.
+              Viator, Discover Cars, Expedia/Vrbo hotels, beach gear rentals in Aruba (Coconut Rentals), SafetyWing travel
+              insurance, packing list guides, and BabyQuip—copy short links without leaving this page.
             </p>
           </div>
           <Button
@@ -601,6 +653,91 @@ export default function GeneratorClient() {
                 </p>
               </div>
             )}
+          </CardContent>
+        </Card>
+
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Hotel className="w-5 h-5" />
+              Hotels & rentals (Expedia / Vrbo)
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-5">
+            <p className="text-sm text-gray-600">
+              Short links under <code className="text-xs bg-gray-100 px-1 rounded">/ex/{'{preset}'}</code> redirect to
+              your Expedia affiliate URLs (or Vrbo for the home preset). Examples:{' '}
+              <code className="text-xs bg-gray-100 px-1 rounded">/ex/hotels-aruba</code>,{' '}
+              <code className="text-xs bg-gray-100 px-1 rounded">/ex/expedia-home</code>,{' '}
+              <code className="text-xs bg-gray-100 px-1 rounded">/ex/vrbo-home</code>. Visitors see a one-second
+              interstitial; social previews use the dedicated hotels OG image.
+            </p>
+
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700" htmlFor="ex-preset">
+                Destination / page
+              </label>
+              <select
+                id="ex-preset"
+                className="w-full h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                value={exPresetSlug}
+                onChange={(e) => setExPresetSlug(e.target.value)}
+              >
+                {expediaPresetsAlphabetical.map(({ label, slug }) => (
+                  <option key={slug} value={slug}>
+                    {label}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="space-y-2">
+              <div className="flex items-center justify-between gap-3">
+                <label className="text-sm font-medium text-gray-700">Your /ex/ link</label>
+                <Button type="button" variant="outline" size="sm" onClick={copyExUrl} className="flex items-center gap-2">
+                  <Copy className="w-4 h-4" />
+                  {copiedExKey === exPresetSlug ? 'Copied' : 'Copy'}
+                </Button>
+              </div>
+              <Input value={exUrl} readOnly className="font-mono text-xs sm:text-sm" />
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Umbrella className="w-5 h-5" />
+              Beach gear rentals in Aruba (Coconut Rentals)
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-5">
+            <p className="text-sm text-gray-600">
+              Canonical short link{' '}
+              <code className="text-xs bg-gray-100 px-1 rounded">{`/bg/${COCONUT_BG_SLUG}`}</code> (legacy{' '}
+              <code className="text-xs bg-gray-100 px-1 rounded">/bg</code> 308s here) redirects to Coconut Rentals
+              with your ref. Lands on{' '}
+              <a
+                href={COCONUT_RENTALS_AFFILIATE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-amber-800 underline font-medium break-all"
+              >
+                {COCONUT_RENTALS_AFFILIATE_URL}
+              </a>
+              . Social previews use the beach-chair OG image.
+            </p>
+
+            <div className="space-y-2">
+              <div className="flex items-center justify-between gap-3">
+                <label className="text-sm font-medium text-gray-700">Your beach gear link</label>
+                <Button type="button" variant="outline" size="sm" onClick={copyBgUrl} className="flex items-center gap-2">
+                  <Copy className="w-4 h-4" />
+                  {copiedBg ? 'Copied' : 'Copy'}
+                </Button>
+              </div>
+              <Input value={bgUrl} readOnly className="font-mono text-xs sm:text-sm" />
+            </div>
           </CardContent>
         </Card>
 
