@@ -15,10 +15,9 @@ import {
   getKiliclimbPartnerGuideData,
 } from '../partnerGuides/arushaKiliclimbTanzania';
 import { isLowValueGuideTag } from '@/lib/guideIndexing';
-import { GUIDE_SECTION_REVALIDATE_SECONDS } from '@/lib/guideSectionCacheConfig';
 
-/** ISR: align with Data Cache for guide-adjacent fetches (see categoryGuides / destinationFeatures). */
-export const revalidate = GUIDE_SECTION_REVALIDATE_SECONDS;
+/** ISR: 30 days — keep in sync with src/lib/guideSectionCacheConfig.js (Next requires a numeric literal here). */
+export const revalidate = 2592000;
 
 // Function to fetch all guides for a destination from database
 // NOTE: This function is no longer used - we use getAllCategoryGuidesForDestination instead

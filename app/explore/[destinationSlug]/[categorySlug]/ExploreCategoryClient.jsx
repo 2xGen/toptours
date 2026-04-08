@@ -24,7 +24,7 @@ import {
   Ship,
   Moon,
   Bus,
-  Helicopter,
+  Plane,
   Waves,
   Building2,
   Palette,
@@ -54,7 +54,7 @@ const CATEGORY_ICONS = {
   'night-skyline': Moon,
   'day-trips': Bus,
   'family-kids': Baby,
-  'helicopter-views': Helicopter,
+  'helicopter-views': Plane,
   'cruises-water': Waves,
   'brooklyn-tours': Building2,
 };
@@ -121,8 +121,8 @@ const SUBCATEGORY_ICONS = {
   'classic-manhattan': Camera,
   'manhattan-brooklyn-skyline': Building2,
   'night-flights': Moon,
-  'airport-niagara': Helicopter,
-  'big-apple-deluxe': Helicopter,
+  'airport-niagara': Plane,
+  'big-apple-deluxe': Plane,
   // Cruises & Water
   'sightseeing-landmarks': Ship,
   'architecture-yacht': Ship,

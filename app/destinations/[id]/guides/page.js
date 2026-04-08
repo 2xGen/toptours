@@ -11,7 +11,6 @@ import { getViatorDestinationBySlugCached } from '@/lib/supabaseCache';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import { slugToViatorId as slugToViatorIdMap } from '@/data/viatorDestinationMap';
 import { dedupeCategoryGuides } from '@/lib/guidePageGrouping';
-import { GUIDE_SECTION_REVALIDATE_SECONDS } from '@/lib/guideSectionCacheConfig';
 import GuidesListingClient from './GuidesListingClient';
 
 function generateSlug(name) {
@@ -35,7 +34,8 @@ function resolveDestinationImageUrl(destinationId, destination) {
 
 const TRAVEL_GUIDE_OG_IMAGE = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/travel%20guides.png';
 
-export const revalidate = GUIDE_SECTION_REVALIDATE_SECONDS;
+// Must be a static literal for Next.js (see guideSectionCacheConfig.js — 30 days in seconds).
+export const revalidate = 2592000;
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }) {
