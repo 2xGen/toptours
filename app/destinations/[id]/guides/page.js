@@ -113,11 +113,12 @@ export async function generateMetadata({ params }) {
     alternates: {
       canonical: `https://toptours.ai/destinations/${destinationId}/guides`,
     },
+    // Directory of guide links — thin for SEO vs individual guides; keep for users, pass link flow to child URLs.
     robots: {
-      index: true,
+      index: false,
       follow: true,
       googleBot: {
-        index: true,
+        index: false,
         follow: true,
         'max-video-preview': -1,
         'max-image-preview': 'large',

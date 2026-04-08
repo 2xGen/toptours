@@ -74,6 +74,12 @@ function getDisplayCategoryName(categoryName) {
 
 const DISCOVER_CARS_URL = 'https://www.discovercars.com/?a_aid=toptours&a_cid=65100b9c';
 
+/** Must-See, Best time, Popular tour categories — one shell so bands/headers never drift. */
+const HUB_TRIO_ACCORDION_SECTION_CLASS =
+  'py-6 bg-gray-50 overflow-hidden scroll-mt-20';
+const HUB_TRIO_ACCORDION_TRIGGER_CLASS =
+  'w-full flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all';
+
 // SEO: limit same-page links so landing supports this destination's pages (not 46 guides + 20 other cities)
 const MAX_POPULAR_GUIDES_ON_LANDING = 8;
 const MAX_OTHER_DESTINATIONS_ON_LANDING = 8;
@@ -1888,11 +1894,11 @@ export default function DestinationDetailClient({ destination, promotionScores =
 
         {/* Must-See Attractions - Collapsible Accordion */}
         {safeDestination.highlights && safeDestination.highlights.length > 0 && (
-          <section className="py-6 bg-gray-50 overflow-hidden">
+          <section className={HUB_TRIO_ACCORDION_SECTION_CLASS}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <button
                 onClick={() => toggleSection('mustSee')}
-                className="w-full flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all"
+                className={HUB_TRIO_ACCORDION_TRIGGER_CLASS}
                 aria-expanded={expandedSections.mustSee}
                 aria-controls="must-see-content"
               >
@@ -1935,11 +1941,11 @@ export default function DestinationDetailClient({ destination, promotionScores =
 
         {/* Best Time to Visit - Collapsible Accordion */}
         {safeDestination.bestTimeToVisit && (
-          <section className="py-6 bg-white overflow-hidden">
+          <section className={HUB_TRIO_ACCORDION_SECTION_CLASS}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <button
                 onClick={() => toggleSection('bestTime')}
-                className="w-full flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all"
+                className={HUB_TRIO_ACCORDION_TRIGGER_CLASS}
                 aria-expanded={expandedSections.bestTime}
                 aria-controls="best-time-content"
               >
@@ -2011,11 +2017,11 @@ export default function DestinationDetailClient({ destination, promotionScores =
 
         {/* Popular Tour Categories - Collapsible Accordion */}
         {categoryGuidesProp && categoryGuidesProp.length > 0 && (
-          <section id="guides" className="py-6 bg-gray-50 overflow-hidden scroll-mt-20">
+          <section id="guides" className={HUB_TRIO_ACCORDION_SECTION_CLASS}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <button
                 onClick={() => toggleSection('tourCategories')}
-                className="w-full flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all"
+                className={HUB_TRIO_ACCORDION_TRIGGER_CLASS}
                 aria-expanded={expandedSections.tourCategories}
                 aria-controls="tour-categories-content"
               >
