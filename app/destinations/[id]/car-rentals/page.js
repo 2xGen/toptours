@@ -23,6 +23,19 @@ function carRentalsMeta(name) {
   };
 }
 
+/** Discover Cars affiliate pages: useful for users, noindex so SEO focuses on destination hub + tours. */
+const CAR_RENTALS_ROBOTS = {
+  index: false,
+  follow: true,
+  googleBot: {
+    index: false,
+    follow: true,
+    'max-video-preview': -1,
+    'max-image-preview': 'large',
+    'max-snippet': -1,
+  },
+};
+
 export const revalidate = 604800; // 7 days
 
 export async function generateMetadata({ params }) {
@@ -50,7 +63,7 @@ export async function generateMetadata({ params }) {
           locale: 'en_US',
         },
         twitter: { card: 'summary_large_image', title: `Car Rentals in ${destinationName}`, description: desc, images: [CAR_RENTAL_OG_IMAGE] },
-        robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 } },
+        robots: CAR_RENTALS_ROBOTS,
       };
     }
     if (/^d?\d+$/.test(id)) {
@@ -66,7 +79,7 @@ export async function generateMetadata({ params }) {
             alternates: { canonical: `https://toptours.ai/destinations/${id}/car-rentals` },
             openGraph: { title: `Car Rentals in ${dest.name}`, description: desc, url: `https://toptours.ai/destinations/${id}/car-rentals`, images: [{ url: CAR_RENTAL_OG_IMAGE, width: 1200, height: 630, alt: `Car Rentals in ${dest.name}` }], type: 'website', siteName: 'TopTours.ai', locale: 'en_US' },
             twitter: { card: 'summary_large_image', title: `Car Rentals in ${dest.name}`, description: desc, images: [CAR_RENTAL_OG_IMAGE] },
-            robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 } },
+            robots: CAR_RENTALS_ROBOTS,
           };
         }
       } catch (_) {}
@@ -82,11 +95,11 @@ export async function generateMetadata({ params }) {
           alternates: { canonical: `https://toptours.ai/destinations/${id}/car-rentals` },
           openGraph: { title: `Car Rentals in ${dest.name}`, description: desc, url: `https://toptours.ai/destinations/${id}/car-rentals`, images: [{ url: CAR_RENTAL_OG_IMAGE, width: 1200, height: 630, alt: `Car Rentals in ${dest.name}` }], type: 'website', siteName: 'TopTours.ai', locale: 'en_US' },
           twitter: { card: 'summary_large_image', title: `Car Rentals in ${dest.name}`, description: desc, images: [CAR_RENTAL_OG_IMAGE] },
-          robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 } },
+          robots: CAR_RENTALS_ROBOTS,
         };
       }
     } catch (_) {}
-    return { title: 'Car Rentals – Compare & Book', robots: { index: true, follow: true } };
+    return { title: 'Car Rentals – Compare & Book', robots: CAR_RENTALS_ROBOTS };
   }
 
   const name = destination.fullName || destination.name;
@@ -107,7 +120,7 @@ export async function generateMetadata({ params }) {
       locale: 'en_US',
     },
     twitter: { card: 'summary_large_image', title: `Car Rentals in ${name}`, description: desc, images: [CAR_RENTAL_OG_IMAGE] },
-    robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 } },
+    robots: CAR_RENTALS_ROBOTS,
   };
 }
 
