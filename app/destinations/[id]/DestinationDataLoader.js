@@ -2,6 +2,8 @@ import { getTrendingToursByDestination, getPromotedToursByDestination } from '@/
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { getHardcodedToursByDestination } from '@/lib/promotionSystem';
 import { getBabyEquipmentRentalsByDestination } from '@/lib/babyEquipmentRentals';
+import { getTopRestaurantsForDestination } from '@/lib/restaurants';
+import { isLowValueGuideTag } from '@/lib/guideIndexing';
 
 /**
  * Fetches all destination data in parallel for better performance
@@ -14,7 +16,8 @@ export async function fetchDestinationData(destination, destinationIdForScores) 
     promotedTourData,
     hardcodedTours,
     categoryGuides,
-    hasBabyEquipmentRentals
+    hasBabyEquipmentRentals,
+    topRestaurants,
   ] = await Promise.allSettled([
     // Trending tours
     getTrendingToursByDestination(destinationIdForScores, 3).catch(() => []),
@@ -31,17 +34,30 @@ export async function fetchDestinationData(destination, destinationIdForScores) 
     // Baby equipment rentals check
     getBabyEquipmentRentalsByDestination(destination.id)
       .then(data => !!data)
-      .catch(() => false)
+      .catch(() => false),
+
+    // Top restaurants for destination hub carousel
+    getTopRestaurantsForDestination(destination.id, 30, destination).catch(() => []),
   ]);
 
   // Extract values from Promise.allSettled results (promotion scores no longer fetched - pass empty; restaurants removed)
+  const rawCategoryGuides = categoryGuides.status === 'fulfilled' ? categoryGuides.value : [];
+  const filteredCategoryGuides = (rawCategoryGuides || []).filter((guide) => {
+    return !isLowValueGuideTag({
+      slug: guide?.category_slug,
+      name: guide?.category_name,
+      title: guide?.title,
+    });
+  });
+
   const result = {
     promotionScores: {},
     trendingTours: trendingTours.status === 'fulfilled' ? trendingTours.value : [],
     promotedTourData: promotedTourData.status === 'fulfilled' ? promotedTourData.value : [],
     hardcodedTours: hardcodedTours.status === 'fulfilled' ? hardcodedTours.value : {},
-    categoryGuides: categoryGuides.status === 'fulfilled' ? categoryGuides.value : [],
+    categoryGuides: filteredCategoryGuides,
     hasBabyEquipmentRentals: hasBabyEquipmentRentals.status === 'fulfilled' ? hasBabyEquipmentRentals.value : false,
+    topRestaurants: topRestaurants.status === 'fulfilled' ? topRestaurants.value : [],
   };
 
   // Enrich tourCategories with hasGuide property

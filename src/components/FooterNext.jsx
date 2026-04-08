@@ -116,7 +116,11 @@ const FooterNext = () => {
             </span>
           </p>
           <p className="text-gray-500 text-sm mt-2">
-            We may earn a commission from bookings made through our affiliate links at no extra cost to you.
+            We may earn a commission from tour and activity bookings (for example via Viator) and from qualifying travel insurance sign-ups (SafetyWing) through our affiliate links—at no extra cost to you.{' '}
+            <Link href="/disclosure" className="text-yellow-500/90 hover:text-yellow-400 underline">
+              Full disclosure
+            </Link>
+            .
           </p>
           <p className="text-gray-500 text-sm mt-2">
             TopTours.ai<span className="text-xs align-super ml-1">™</span> is owned and operated by{' '}

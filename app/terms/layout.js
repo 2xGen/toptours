@@ -48,8 +48,8 @@ export const metadata = {
   },
 };
 
-// Static page - cache for 7 days (rarely changes)
-export const revalidate = 604800; // 7 days
+// Fully static until next deploy (no periodic ISR) — legal HTML is CDN-served for bots.
+export const revalidate = false;
 
 export default function TermsLayout({ children }) {
   return children;

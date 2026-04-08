@@ -1,7 +1,8 @@
 "use client";
 import { useEffect } from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Shield, DollarSign, Users, CheckCircle } from 'lucide-react';
+import { Shield, DollarSign, Users, CheckCircle, Umbrella } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
@@ -32,6 +33,12 @@ export default function DisclosurePage() {
       icon: CheckCircle,
       title: 'Quality Partners',
       description: 'We only partner with reputable tour operators who meet our standards for safety, quality, and customer service.'
+    },
+    {
+      icon: Umbrella,
+      title: 'Travel insurance',
+      description:
+        'Our travel insurance guide links to SafetyWing as an ambassador partner. If you purchase a policy through those links, we may earn a commission at no extra cost to you. Coverage terms are set by SafetyWing—not TopTours.ai.'
     }
   ];
 
@@ -86,6 +93,17 @@ export default function DisclosurePage() {
                       We currently partner directly with Viator, our primary booking affiliate. 
                       When you click on our recommendations and complete a booking with Viator, we may earn a commission from that purchase. 
                       This standard affiliate model helps fund improvements to TopTours.ai and future features.
+                    </p>
+
+                    <h3 className="text-xl font-semibold text-gray-800 mb-4">Travel insurance (SafetyWing)</h3>
+                    <p className="mb-6">
+                      We also participate in SafetyWing&apos;s ambassador program for travel medical insurance (for example Nomad Insurance). 
+                      Outbound links to SafetyWing from this site—including on our{' '}
+                      <Link href="/travel-insurance" className="text-blue-600 hover:text-blue-800 underline font-medium">
+                        travel insurance overview
+                      </Link>
+                      {' '}and in navigation where we promote coverage—use referral parameters so SafetyWing can attribute the visit to TopTours.ai. 
+                      If you buy a qualifying plan, we may receive a commission. You pay the same published price as if you went directly; we do not control premiums, coverage, or claims.
                     </p>
 
                     <h3 className="text-xl font-semibold text-gray-800 mb-4">No Extra Cost to You</h3>

@@ -22,6 +22,18 @@ import { getFromPriceFromProductTour, reconcileProductPriceWithSchedule } from '
 // Increased from 24h to 7 days to reduce ISR writes during Google reindexing
 export const revalidate = 604800; // 7 days
 
+const TOUR_DETAIL_ROBOTS = {
+  index: false,
+  follow: true,
+  googleBot: {
+    index: false,
+    follow: true,
+    'max-video-preview': -1,
+    'max-image-preview': 'large',
+    'max-snippet': -1,
+  },
+};
+
 // Cache tour data fetching at Next.js level (24 hours - matches page cache)
 const getCachedTourData = unstable_cache(
   async (productId) => {
@@ -100,7 +112,7 @@ export async function generateMetadata({ params }) {
         return {
           title: 'Tour Not Found | TopTours.ai',
       description: 'The tour you are looking for could not be found.',
-      robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
+      robots: TOUR_DETAIL_ROBOTS,
         };
       }
 
@@ -112,7 +124,7 @@ export async function generateMetadata({ params }) {
         return {
           title: 'Tour Not Found | TopTours.ai',
         description: 'The tour you are looking for could not be found.',
-        robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
+        robots: TOUR_DETAIL_ROBOTS,
         };
       }
 
@@ -241,17 +253,7 @@ export async function generateMetadata({ params }) {
         description: description,
         images: image ? [image] : [],
       },
-      robots: {
-        index: true,
-        follow: true,
-        googleBot: {
-          index: true,
-          follow: true,
-          'max-video-preview': -1,
-          'max-image-preview': 'large',
-          'max-snippet': -1,
-        },
-      },
+      robots: TOUR_DETAIL_ROBOTS,
     };
   } catch (error) {
     // Only log errors in development to reduce I/O during crawls
@@ -261,7 +263,7 @@ export async function generateMetadata({ params }) {
     return {
       title: 'Tour | TopTours.ai',
       description: 'Discover amazing tours and experiences.',
-      robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
+      robots: TOUR_DETAIL_ROBOTS,
     };
   }
 }

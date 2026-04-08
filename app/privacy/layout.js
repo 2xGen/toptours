@@ -1,5 +1,9 @@
 import { absoluteUrl } from '@/lib/siteUrl';
 
+// Same as terms / cookie / disclosure: pre-rendered HTML for crawlers, no ISR wakeups.
+export const dynamic = 'force-static';
+export const revalidate = false;
+
 const pageUrl = absoluteUrl('/privacy');
 const defaultOg = absoluteUrl('/OG%20Images/Discover%20Top%20Tours%20and%20Restaurants.jpg');
 

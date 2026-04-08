@@ -1,14 +1,11 @@
+import { unstable_cache } from 'next/cache';
 import { createSupabaseServiceRoleClient } from '@/lib/supabaseClient';
 import { getTagGuidesForDestination } from '@/lib/tagGuideContent';
+import { GUIDE_SECTION_REVALIDATE_SECONDS } from '@/lib/guideSectionCacheConfig';
 import {
   getArushaKiliclimbListingMeta,
   ARUSHA_KILICLIMB_GUIDE_SLUG,
 } from '../../app/destinations/[id]/guides/partnerGuides/arushaKiliclimbTanzania.js';
-
-// Simple in-memory cache to avoid repeated DB calls during builds / SSR.
-// Keyed by normalized destination slug.
-const destinationGuidesCache = new Map();
-const destinationGuidesInFlight = new Map();
 
 /**
  * Get all category guides for a destination (database only)
@@ -29,92 +26,80 @@ function normalizeDestinationId(destinationId) {
     .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
 }
 
+async function loadAllCategoryGuidesForDestinationNormalized(normalizedDestinationId) {
+  // Check database for guides (all guides are now in the database)
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
+    if (normalizedDestinationId === 'arusha') {
+      const meta = getArushaKiliclimbListingMeta();
+      return [
+        {
+          category_slug: meta.category_slug,
+          category_name: meta.category_name,
+          title: meta.title,
+          subtitle: meta.subtitle,
+          hero_image: meta.hero_image,
+        },
+      ];
+    }
+    return [];
+  }
+
+  try {
+    const supabase = createSupabaseServiceRoleClient();
+
+    const { data, error } = await supabase
+      .from('category_guides')
+      .select('category_slug, category_name, title, subtitle, hero_image')
+      .eq('destination_id', normalizedDestinationId)
+      .order('category_name', { ascending: true });
+
+    if (error) {
+      console.error(`[getAllCategoryGuidesForDestination] DB error for ${normalizedDestinationId}: ${error.message}`);
+      return [];
+    }
+
+    const categoryGuides = Array.isArray(data) ? data : [];
+    const tagGuides = await getTagGuidesForDestination(normalizedDestinationId).catch(() => []);
+    let combined = [...categoryGuides, ...tagGuides];
+
+    if (normalizedDestinationId === 'arusha') {
+      const meta = getArushaKiliclimbListingMeta();
+      const exists = combined.some(
+        (g) => String(g.category_slug || '').toLowerCase() === ARUSHA_KILICLIMB_GUIDE_SLUG
+      );
+      if (!exists) {
+        combined.push({
+          category_slug: meta.category_slug,
+          category_name: meta.category_name,
+          title: meta.title,
+          subtitle: meta.subtitle,
+          hero_image: meta.hero_image,
+        });
+      }
+    }
+
+    return combined.sort((a, b) => (a.category_name || a.title || '').localeCompare(b.category_name || b.title || ''));
+  } catch (dbError) {
+    console.error(
+      `[getAllCategoryGuidesForDestination] Database lookup failed for ${normalizedDestinationId}: ${dbError?.message || dbError}`
+    );
+    return [];
+  }
+}
+
 export async function getAllCategoryGuidesForDestination(destinationId) {
   try {
-    // Normalize destination ID to handle special characters (e.g., Curaçao -> curacao)
     const normalizedDestinationId = normalizeDestinationId(destinationId);
     if (!normalizedDestinationId) return [];
 
-    if (destinationGuidesCache.has(normalizedDestinationId)) {
-      return destinationGuidesCache.get(normalizedDestinationId);
-    }
-
-    if (destinationGuidesInFlight.has(normalizedDestinationId)) {
-      return destinationGuidesInFlight.get(normalizedDestinationId);
-    }
-
-    const inFlightPromise = (async () => {
-    // Check database for guides (all guides are now in the database)
-    if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
-      if (normalizedDestinationId === 'arusha') {
-        const meta = getArushaKiliclimbListingMeta();
-        return [
-          {
-            category_slug: meta.category_slug,
-            category_name: meta.category_name,
-            title: meta.title,
-            subtitle: meta.subtitle,
-            hero_image: meta.hero_image,
-          },
-        ];
-      }
-      return [];
-    }
-
-    try {
-      const supabase = createSupabaseServiceRoleClient();
-      
-      // destination_id is stored as slug in database, so normalize once and query once
-      const { data, error } = await supabase
-        .from('category_guides')
-        .select('category_slug, category_name, title, subtitle, hero_image')
-        .eq('destination_id', normalizedDestinationId)
-        .order('category_name', { ascending: true });
-
-      if (error) {
-        // Keep logs minimal in production/builds
-        console.error(`[getAllCategoryGuidesForDestination] DB error for ${normalizedDestinationId}: ${error.message}`);
-        return [];
-      }
-
-      const categoryGuides = Array.isArray(data) ? data : [];
-      const tagGuides = await getTagGuidesForDestination(normalizedDestinationId).catch(() => []);
-      let combined = [...categoryGuides, ...tagGuides];
-
-      if (normalizedDestinationId === 'arusha') {
-        const meta = getArushaKiliclimbListingMeta();
-        const exists = combined.some(
-          (g) => String(g.category_slug || '').toLowerCase() === ARUSHA_KILICLIMB_GUIDE_SLUG
-        );
-        if (!exists) {
-          combined.push({
-            category_slug: meta.category_slug,
-            category_name: meta.category_name,
-            title: meta.title,
-            subtitle: meta.subtitle,
-            hero_image: meta.hero_image,
-          });
-        }
-      }
-
-      return combined.sort((a, b) => (a.category_name || a.title || '').localeCompare(b.category_name || b.title || ''));
-    } catch (dbError) {
-      // Database error - return empty array
-      console.error(`[getAllCategoryGuidesForDestination] Database lookup failed for ${normalizedDestinationId}: ${dbError?.message || dbError}`);
-      return [];
-    }
-    })();
-
-    destinationGuidesInFlight.set(normalizedDestinationId, inFlightPromise);
-    const result = await inFlightPromise;
-    destinationGuidesCache.set(normalizedDestinationId, result);
-    return result;
+    return unstable_cache(
+      () => loadAllCategoryGuidesForDestinationNormalized(normalizedDestinationId),
+      ['category-guides-list', normalizedDestinationId],
+      { revalidate: GUIDE_SECTION_REVALIDATE_SECONDS }
+    )();
   } catch (error) {
     console.error(`[getAllCategoryGuidesForDestination] Unexpected error for ${destinationId}: ${error?.message || String(error)}`);
     return [];
-  } finally {
-    const normalizedDestinationId = normalizeDestinationId(destinationId);
-    if (normalizedDestinationId) destinationGuidesInFlight.delete(normalizedDestinationId);
   }
 }
 

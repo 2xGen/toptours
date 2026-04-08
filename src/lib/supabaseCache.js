@@ -3,7 +3,9 @@
  * Reduces database calls by caching frequently accessed data
  */
 
+import { unstable_cache } from 'next/cache';
 import { createSupabaseServiceRoleClient } from './supabaseClient';
+import { GUIDE_SECTION_REVALIDATE_SECONDS } from '@/lib/guideSectionCacheConfig';
 
 // In-memory cache for short-lived data (auth checks, etc.)
 const memoryCache = new Map();
@@ -277,6 +279,20 @@ export async function getViatorDestinationBySlug(slug) {
   } catch (error) {
     return null;
   }
+}
+
+/**
+ * Same row as {@link getViatorDestinationBySlug} but cached across requests (Data Cache).
+ * Use on high-traffic ISR pages (e.g. category guides) to cut repeated Supabase reads from bots.
+ */
+export function getViatorDestinationBySlugCached(slug) {
+  if (!slug) return Promise.resolve(null);
+  const key = String(slug).trim();
+  return unstable_cache(
+    () => getViatorDestinationBySlug(key),
+    ['viator-destination-slug', key.toLowerCase()],
+    { revalidate: GUIDE_SECTION_REVALIDATE_SECONDS }
+  )();
 }
 
 /**

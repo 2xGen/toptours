@@ -5,7 +5,7 @@ import FooterNext from '@/components/FooterNext';
 import { useToast } from '@/components/ui/use-toast';
 import { motion } from 'framer-motion';
 import { 
-  Star, ExternalLink, Loader2, Brain, MapPin, Calendar, Clock, Car, Search, BookOpen, ArrowRight, X, UtensilsCrossed, DollarSign, ChevronLeft, ChevronRight, ChevronDown, Info, Share2, Heart, Crown, Building2, Sparkles, Baby, Plane, Waves, ShieldCheck
+  Star, ExternalLink, Loader2, Brain, MapPin, Calendar, Clock, Car, Search, BookOpen, ArrowRight, X, UtensilsCrossed, DollarSign, ChevronLeft, ChevronRight, ChevronDown, Info, Share2, Heart, Crown, Building2, Sparkles, Baby, Plane, Waves, ShieldCheck, Shield
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { Input } from '@/components/ui/input';
@@ -79,7 +79,7 @@ const MAX_POPULAR_GUIDES_ON_LANDING = 8;
 const MAX_OTHER_DESTINATIONS_ON_LANDING = 8;
 const MAX_RELATED_GUIDES_CAROUSEL = 5;
 
-export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [], promotedTours = [], hardcodedTours = {}, categoryGuides: categoryGuidesProp = [], hasBabyEquipmentRentals = false }) {
+export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [], promotedTours = [], hardcodedTours = {}, categoryGuides: categoryGuidesProp = [], hasBabyEquipmentRentals = false, topRestaurants = [] }) {
   
   // Ensure destination exists
   if (!destination) {
@@ -109,6 +109,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
   const safeTrendingTours = Array.isArray(trendingTours) ? trendingTours : [];
   const safePromotedTours = Array.isArray(promotedTours) ? promotedTours : [];
   const safeHardcodedTours = hardcodedTours && typeof hardcodedTours === 'object' ? hardcodedTours : {};
+  const safeTopRestaurants = Array.isArray(topRestaurants) ? topRestaurants : [];
 
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -121,6 +122,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
   const [categoryGuides, setCategoryGuides] = useState([]);
   const [countryDestinations, setCountryDestinations] = useState([]);
   const [guideCarouselIndex, setGuideCarouselIndex] = useState(0);
+  const [visibleRestaurantCount, setVisibleRestaurantCount] = useState(6);
   const [isMobile, setIsMobile] = useState(false);
   const [isClient, setIsClient] = useState(false);
   const [selectedTour, setSelectedTour] = useState(null);
@@ -1320,6 +1322,14 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   <span>Airport Transfers</span>
                 </Link>
               )}
+              {/* Travel Insurance */}
+              <Link 
+                href="/travel-insurance"
+                className="flex items-center gap-2 whitespace-nowrap font-semibold text-gray-900 hover:text-emerald-600 transition-colors border-b-2 border-transparent hover:border-emerald-600 pb-1"
+              >
+                <Shield className="w-4 h-4" />
+                <span>Travel Insurance</span>
+              </Link>
               {/* Baby Equipment Rentals - Only if available */}
               {hasBabyEquipmentRentals && (
                 <Link 
@@ -2065,6 +2075,96 @@ export default function DestinationDetailClient({ destination, promotionScores =
                     )}
                   </CardContent>
                 </Card>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Top Restaurants (inline on destination page; no separate destination restaurant listing page) */}
+        {safeTopRestaurants.length > 0 && (
+          <section id="restaurants" className="py-8 bg-white scroll-mt-20">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex items-center justify-between mb-5">
+                <div>
+                  <h2 className="text-2xl sm:text-3xl font-poppins font-bold text-gray-900">
+                    Top Restaurants in {safeDestination.fullName || safeDestination.name}
+                  </h2>
+                  <p className="text-sm text-gray-600 mt-1">
+                    Discover where to eat, then continue to top tours in {safeDestination.fullName || safeDestination.name}.
+                  </p>
+                </div>
+                <UtensilsCrossed className="w-6 h-6 text-rose-500 hidden sm:block" />
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                {safeTopRestaurants.slice(0, visibleRestaurantCount).map((restaurant) => {
+                  const rating = Number(restaurant?.ratings?.googleRating || 0);
+                  const reviews = Number(restaurant?.ratings?.reviewCount || 0);
+                  const hasRating = rating > 0;
+                  return (
+                    <Link
+                      key={restaurant.slug || restaurant.id}
+                      href={`/destinations/${safeDestination.id}/restaurants/${restaurant.slug}`}
+                      className="group"
+                      prefetch={true}
+                    >
+                      <Card className="h-full border border-gray-200 hover:border-rose-300 hover:shadow-lg transition-all duration-200">
+                        <CardContent className="p-5">
+                          <h3 className="text-lg font-semibold text-gray-900 group-hover:text-rose-600 line-clamp-2">
+                            {restaurant.name}
+                          </h3>
+                          <p className="text-sm text-gray-600 mt-2 line-clamp-2">
+                            {restaurant.summary ||
+                              restaurant.tagline ||
+                              restaurant.description ||
+                              restaurant.seo?.description ||
+                              `Popular dining spot in ${safeDestination.fullName || safeDestination.name}.`}
+                          </p>
+
+                          <div className="mt-4 flex items-center justify-between">
+                            <div className="flex items-center gap-2 text-sm text-gray-700">
+                              {hasRating ? (
+                                <>
+                                  <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
+                                  <span className="font-medium">{rating.toFixed(1)}</span>
+                                  <span className="text-gray-500">({reviews.toLocaleString()})</span>
+                                </>
+                              ) : (
+                                <span className="text-gray-500">No rating yet</span>
+                              )}
+                            </div>
+                            {restaurant.pricing?.priceRange && (
+                              <Badge variant="outline" className="text-xs">
+                                {restaurant.pricing.priceRange}
+                              </Badge>
+                            )}
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  );
+                })}
+              </div>
+
+              {visibleRestaurantCount < safeTopRestaurants.length && (
+                <div className="mt-6 text-center">
+                  <Button
+                    variant="outline"
+                    onClick={() => setVisibleRestaurantCount((prev) => Math.min(prev + 6, safeTopRestaurants.length))}
+                    className="font-medium"
+                  >
+                    Load more restaurants
+                  </Button>
+                </div>
+              )}
+
+              <div className="mt-5 text-center">
+                <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/tours`}>
+                  <Button variant="secondary" className="inline-flex items-center gap-2">
+                    View tours in {safeDestination.fullName || safeDestination.name}
+                    <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </PrefetchOnHoverLink>
               </div>
             </div>
           </section>

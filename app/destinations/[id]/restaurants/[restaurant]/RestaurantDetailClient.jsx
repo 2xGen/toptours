@@ -57,7 +57,6 @@ import {
   PremiumStickyCTA,
   AnimatedPremiumBadge,
 } from '@/components/restaurant/RestaurantPremiumCTAs';
-import { PromoteRestaurantBanner } from '@/components/restaurant/PromoteRestaurantBanner';
 import { isPremiumRestaurant, getPremiumConfig, COLOR_SCHEMES } from '@/lib/restaurantPremium';
 import RestaurantMatchModal from '@/components/restaurant/RestaurantMatchModal';
 
@@ -370,12 +369,6 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
       {
         '@type': 'ListItem',
         position: 4,
-        name: 'Restaurants',
-        item: `https://toptours.ai/destinations/${destination.id}/restaurants`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 5,
         name: restaurant.shortName || restaurant.name,
         item: `https://toptours.ai/destinations/${destination.id}/restaurants/${restaurant.slug}`,
       },
@@ -430,6 +423,22 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
   }, [matchScoresEnabled, otherRestaurants, localRestaurantPreferences]);
 
   const headingCuisine = cuisines.length > 0 ? `${cuisines.join(' & ')} restaurant in ${destination.name}` : `Restaurant in ${destination.name}`;
+  const heroDescription =
+    restaurant.uniqueContent ||
+    restaurant.story ||
+    restaurant.description ||
+    restaurant.summary ||
+    restaurant.metaDescription ||
+    restaurant.tagline ||
+    '';
+  const aboutDescription =
+    restaurant.uniqueContent ||
+    restaurant.story ||
+    restaurant.description ||
+    restaurant.summary ||
+    restaurant.metaDescription ||
+    restaurant.tagline ||
+    '';
 
   const formatCategorySlug = (categoryName) =>
     categoryName
@@ -486,7 +495,7 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
 
               {/* Description */}
               <p className="text-lg sm:text-xl text-white/90 mb-6 max-w-3xl mx-auto">
-                {restaurant.metaDescription || restaurant.tagline || restaurant.summary}
+                {heroDescription}
               </p>
 
               {/* Restaurant Info - styled as subtle text, not buttons */}
@@ -532,39 +541,15 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
 
               {/* Action Buttons */}
               <div className="flex flex-wrap items-center justify-center gap-3">
-                <button
-                  type="button"
-                  aria-label={isBookmarked(restaurant.id) ? 'Saved' : 'Save to favorites'}
-                  onClick={async (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const { data } = await supabase.auth.getUser();
-                    if (!data?.user) {
-                      toast({
-                        title: 'Sign in required',
-                        description: 'Create a free account to save restaurants to your favorites.',
-                      });
-                      return;
-                    }
-                    try {
-                      const wasBookmarked = isBookmarked(restaurant.id);
-                      await toggle(restaurant.id);
-                      toast({
-                        title: wasBookmarked ? 'Removed from favorites' : 'Saved to favorites',
-                        description: 'You can view your favorites in your profile.',
-                      });
-                    } catch (_) {}
-                  }}
-                  className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border transition-all ${
-                    isBookmarked(restaurant.id) 
-                      ? 'bg-red-500/20 border-red-400/50 text-white hover:bg-red-500/30' 
-                      : 'bg-white/10 border-white/30 text-white hover:bg-white/20'
-                  }`}
-                  title={isBookmarked(restaurant.id) ? 'Saved' : 'Save to favorites'}
+                <Button
+                  asChild
+                  className="bg-white text-blue-700 hover:bg-white/90 gap-2 font-semibold"
                 >
-                  <Heart className="w-4 h-4" fill={isBookmarked(restaurant.id) ? 'currentColor' : 'none'} />
-                  <span className="text-sm font-medium">{isBookmarked(restaurant.id) ? 'Saved' : 'Save'}</span>
-                </button>
+                  <Link href={`/destinations/${destination.id}/tours`}>
+                    <Sparkles className="w-4 h-4" />
+                    Best Tours in {destination.name}
+                  </Link>
+                </Button>
 
                 <button
                   onClick={() => setShowShareModal(true)}
@@ -640,10 +625,6 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                 {destination.name}
               </Link>
               <span className="text-gray-400">/</span>
-              <Link href={`/destinations/${destination.id}/restaurants`} className="text-gray-500 hover:text-gray-700">
-                Restaurants
-              </Link>
-              <span className="text-gray-400">/</span>
               <span className="text-gray-900 font-medium">{restaurant.shortName || restaurant.name}</span>
             </nav>
           </div>
@@ -653,7 +634,7 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
         <DestinationStickyNav
           destinationId={destination.id}
           destinationName={destination.fullName || destination.name}
-          hasRestaurants={true}
+          hasRestaurants={false}
           hasAirportTransfers={destinationFeatures.hasAirportTransfers}
           hasBabyEquipment={destinationFeatures.hasBabyEquipment}
         />
@@ -706,7 +687,7 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
             >
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-700 leading-relaxed text-lg mb-6">
-                  {restaurant.summary}
+                  {aboutDescription}
                 </p>
                 {restaurant.story?.paragraphs?.map((paragraph, index) => (
                   <p key={index} className="text-gray-700 leading-relaxed text-lg mb-4">
@@ -1027,55 +1008,7 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                     </div>
                   )}
                 </div>
-                <div className="mt-6 pt-4 border-t border-purple-200">
-                  <div className="flex flex-col items-center gap-4">
-                    <p className="text-xs text-gray-500 text-center">
-                      Set your dining preferences to see how well this restaurant matches your taste.
-                    </p>
-                    <Button
-                      onClick={async () => {
-                        try {
-                          setIsGeneratingMatch(true);
-                          setMatchError(null);
-                          const localMatch = calculateLocalMatch();
-                          if (localMatch?.error) {
-                            throw new Error(localMatch.error);
-                          }
-                          setMatchData(localMatch);
-                          setShowMatchResultsModal(true);
-                        } catch (err) {
-                          console.error('Error calculating restaurant match:', err);
-                          setMatchError(err.message || 'Failed to calculate match. Please try again.');
-                        } finally {
-                          setIsGeneratingMatch(false);
-                        }
-                      }}
-                      disabled={isGeneratingMatch}
-                      className="sunset-gradient text-white font-semibold px-6 py-3"
-                    >
-                      {isGeneratingMatch ? (
-                        <span className="flex items-center gap-2">
-                          <span className="relative flex h-4 w-4">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
-                            <span className="relative inline-flex rounded-full h-4 w-4 bg-white" />
-                          </span>
-                          Calculating match…
-                        </span>
-                      ) : (
-                        'See Match with My Preferences'
-                      )}
-                    </Button>
-                    <Button
-                      type="button"
-                      variant="outline"
-                      onClick={() => setShowPreferencesModal(true)}
-                      className="w-full sm:w-auto"
-                    >
-                      Set Preferences
-                    </Button>
-                    {matchError && <p className="text-sm text-red-600">{matchError}</p>}
-                  </div>
-                </div>
+                {/* Preference match CTA intentionally hidden for now */}
               </motion.section>
             )}
 
@@ -1121,13 +1054,7 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                   </div>
                 </motion.div>
               )
-            ) : (
-              <PromoteRestaurantBanner 
-                restaurant={restaurant} 
-                destination={destination}
-                user={user}
-              />
-            )}
+            ) : null}
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -1252,8 +1179,13 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                           <div className="bg-blue-100 text-blue-600 rounded-lg p-2">
                             <ExternalLink className="w-4 h-4" />
                           </div>
-                          <a href={restaurant.contact.website} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                            Visit {restaurant.name}'s Website
+                          <a
+                            href={restaurant.contact.website}
+                            target="_blank"
+                            rel="nofollow sponsored noopener noreferrer"
+                            className="text-blue-600 hover:underline text-sm"
+                          >
+                            Official restaurant website (opens new tab)
                           </a>
                         </div>
                       )}
@@ -1270,6 +1202,14 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                         <ExternalLink className="w-3 h-3" />
                       </a>
                     )}
+                    <div className="mt-4">
+                      <Link href={`/destinations/${destination.id}/tours`}>
+                        <Button variant="outline" className="w-full sm:w-auto border-blue-300 text-blue-700 hover:bg-blue-50">
+                          Plan Tours Around This Restaurant
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                      </Link>
+                    </div>
                     
                     {/* Google Places API Attribution */}
                     <p className="text-xs text-gray-500 mt-4">
@@ -1899,19 +1839,19 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                   viewport={{ once: true }}
                 >
                   <Link
-                    href={`/destinations/${destination.id}/restaurants`}
+                    href={`/destinations/${destination.id}`}
                     className="block h-full"
                   >
                     <Card className="h-full border border-blue-100 bg-white shadow-lg hover:shadow-xl transition-shadow flex flex-col items-center justify-center text-center p-6">
                       <UtensilsCrossed className="w-8 h-8 text-blue-600 mb-3" />
                       <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                        View All Restaurants in {destination.name}
+                        Explore {destination.name} Destination Hub
                       </h3>
                       <p className="text-sm text-gray-600 mb-4">
-                        Explore every curated dining spot we recommend across the island.
+                        Browse tours, travel guides, and more trip planning resources for {destination.name}.
                       </p>
                       <span className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600">
-                        Browse the list
+                        Go to destination
                         <ArrowRight className="w-4 h-4" />
                       </span>
                     </Card>
@@ -2315,20 +2255,11 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-gray-200">
-              <Button
-                onClick={async () => {
-                  const wasBookmarked = isBookmarked(restaurant.id);
-                  await toggle(restaurant.id);
-                  toast({
-                    title: wasBookmarked ? 'Removed from favorites' : 'Saved to favorites',
-                    description: 'You can view your favorites in your profile.',
-                  });
-                }}
-                variant="outline"
-                className="flex-1 border-2 border-orange-200 hover:bg-orange-50"
-              >
-                <Heart className={`w-4 h-4 mr-2 ${isBookmarked(restaurant.id) ? 'text-red-600 fill-red-600' : 'text-gray-600'}`} />
-                {isBookmarked(restaurant.id) ? 'Saved to Favorites' : 'Save to Favorites'}
+              <Button asChild variant="outline" className="flex-1 border-2 border-blue-200 hover:bg-blue-50">
+                <Link href={`/destinations/${destination.id}/tours`}>
+                  <Sparkles className="w-4 h-4 mr-2 text-blue-700" />
+                  Discover {destination.name} Tours
+                </Link>
               </Button>
               {showReserveButton && bookingUrl && (
                 <Button

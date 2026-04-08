@@ -4,10 +4,12 @@
  * Optimized to avoid unnecessary API calls
  */
 
+import { unstable_cache } from 'next/cache';
 import { DESTINATIONS_WITH_RESTAURANTS } from '@/data/destinationsWithRestaurants';
 import { createSupabaseServiceRoleClient } from './supabaseClient';
 import { getBabyEquipmentRentalsByDestination } from './babyEquipmentRentals';
 import { getAllCategoryGuidesForDestination } from './categoryGuides';
+import { GUIDE_SECTION_REVALIDATE_SECONDS } from '@/lib/guideSectionCacheConfig';
 
 /**
  * Lightweight check if destination has restaurants
@@ -71,6 +73,19 @@ export async function checkHasAirportTransfers(destinationId) {
   }
 }
 
+async function loadDestinationFeaturesUncached(destinationId) {
+  const [hasRestaurants, hasBabyEquipment, hasAirportTransfers] = await Promise.all([
+    checkHasRestaurants(destinationId),
+    checkHasBabyEquipment(destinationId),
+    checkHasAirportTransfers(destinationId),
+  ]);
+  return {
+    hasRestaurants,
+    hasBabyEquipment,
+    hasAirportTransfers,
+  };
+}
+
 /**
  * Get all destination features in one call (optimized)
  * Returns object with hasRestaurants, hasBabyEquipment, hasAirportTransfers
@@ -83,17 +98,11 @@ export async function getDestinationFeatures(destinationId) {
       hasAirportTransfers: false,
     };
   }
-  
-  // Run all checks in parallel for better performance
-  const [hasRestaurants, hasBabyEquipment, hasAirportTransfers] = await Promise.all([
-    checkHasRestaurants(destinationId),
-    checkHasBabyEquipment(destinationId),
-    checkHasAirportTransfers(destinationId),
-  ]);
-  
-  return {
-    hasRestaurants,
-    hasBabyEquipment,
-    hasAirportTransfers,
-  };
+
+  const key = String(destinationId).toLowerCase().trim();
+  return unstable_cache(
+    () => loadDestinationFeaturesUncached(destinationId),
+    ['destination-features', key],
+    { revalidate: GUIDE_SECTION_REVALIDATE_SECONDS }
+  )();
 }

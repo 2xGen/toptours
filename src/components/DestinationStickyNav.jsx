@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import { Car, BookOpen, Baby } from 'lucide-react';
+import { Car, BookOpen, Baby, Shield } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 /**
@@ -84,6 +84,15 @@ export default function DestinationStickyNav({
           >
             <Car className="w-4 h-4" />
             <span>Car Rentals</span>
+          </Link>
+
+          {/* Travel Insurance - Always available */}
+          <Link
+            href="/travel-insurance"
+            className="flex items-center gap-2 whitespace-nowrap font-semibold text-gray-900 hover:text-emerald-600 transition-colors border-b-2 border-transparent hover:border-emerald-600 pb-1"
+          >
+            <Shield className="w-4 h-4" />
+            <span>Travel Insurance</span>
           </Link>
 
           {/* Airport Transfers - Optional */}

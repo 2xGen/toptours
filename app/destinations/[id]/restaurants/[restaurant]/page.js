@@ -7,6 +7,7 @@ import {
   getRestaurantCountsByDestination,
   formatRestaurantForFrontend,
   findRestaurantByName,
+  isRestaurantLikelyInDestination,
 } from '@/lib/restaurants';
 import {
   getRestaurantBySlug as getRestaurantBySlugFromStatic,
@@ -16,6 +17,7 @@ import { getRestaurantPromotionScore } from '@/lib/promotionSystem';
 import { getRestaurantPremiumSubscription } from '@/lib/restaurantPremiumServer';
 import { getAllCategoryGuidesForDestination } from '../../lib/categoryGuides';
 import { getDestinationFeatures } from '@/lib/destinationFeatures';
+import { isLowValueGuideTag } from '@/lib/guideIndexing';
 
 // Old restaurant slugs with their expected names for fuzzy matching
 const OLD_RESTAURANT_REDIRECTS = {
@@ -65,6 +67,17 @@ const OLD_RESTAURANT_REDIRECTS = {
 // Force dynamic so each request is server-rendered; no cache writes.
 export const dynamic = 'force-dynamic';
 
+function cleanText(value) {
+  return String(value || '').replace(/\s+/g, ' ').trim();
+}
+
+function excerpt(value, max = 180) {
+  const text = cleanText(value);
+  if (!text) return '';
+  if (text.length <= max) return text;
+  return `${text.slice(0, max - 1).trimEnd()}...`;
+}
+
 export async function generateMetadata({ params }) {
   const { id: destinationId, restaurant: restaurantSlug } = await params;
   const destination = resolveDestinationById(destinationId);
@@ -73,6 +86,10 @@ export async function generateMetadata({ params }) {
   let restaurant = await getRestaurantBySlugFromDB(destinationId, restaurantSlug);
   if (restaurant) {
     restaurant = formatRestaurantForFrontend(restaurant);
+    // Guard against bad source rows that were assigned to the wrong destination.
+    if (!isRestaurantLikelyInDestination(restaurant, destination)) {
+      restaurant = null;
+    }
   } else {
     restaurant = getRestaurantBySlugFromStatic(destinationId, restaurantSlug);
   }
@@ -96,7 +113,12 @@ export async function generateMetadata({ params }) {
   const reviewText = reviewCount > 0 ? `${reviewCount.toLocaleString()} reviews` : '';
   const ratingInfo = ratingText && reviewText ? ` (${ratingText}, ${reviewText})` : ratingText ? ` (${ratingText})` : reviewText ? ` (${reviewText})` : '';
   
-  const metaDescription = restaurant.metaDescription || restaurant.seo?.description ||
+  const metaDescription =
+    cleanText(restaurant.metaDescription) ||
+    excerpt(restaurant.uniqueContent, 180) ||
+    excerpt(restaurant.story, 180) ||
+    cleanText(restaurant.seo?.description) ||
+    excerpt(restaurant.summary || restaurant.description, 180) ||
     `${restaurant.name} is a top-rated restaurant in ${destination.name}${ratingInfo}. Discover signature dishes, hours, and how to plan the perfect meal in ${destination.name}.`;
 
   // Always use standardized OG image so dimensions are correct
@@ -169,6 +191,10 @@ export default async function RestaurantPage({ params }) {
   let restaurant = await getRestaurantBySlugFromDB(destinationId, restaurantSlug);
   if (restaurant) {
     restaurant = formatRestaurantForFrontend(restaurant);
+    // Guard against bad source rows that were assigned to the wrong destination.
+    if (!isRestaurantLikelyInDestination(restaurant, destination)) {
+      restaurant = null;
+    }
   } else {
     restaurant = getRestaurantBySlugFromStatic(destinationId, restaurantSlug);
   }
@@ -186,8 +212,8 @@ export default async function RestaurantPage({ params }) {
         // Found by name! Redirect to the correct new slug
         redirect(`/destinations/${destinationId}/restaurants/${foundByName.slug}`);
       } else {
-        // Not found by name either - redirect to destination restaurant hub
-        redirect(`/destinations/${destinationId}/restaurants`);
+        // Not found by name either - fallback to destination page
+        redirect(`/destinations/${destinationId}`);
       }
     }
   }
@@ -245,7 +271,14 @@ export default async function RestaurantPage({ params }) {
   const otherRestaurants = otherRestaurantsResult.status === 'fulfilled' ? otherRestaurantsResult.value : [];
   const initialPromotionScore = initialPromotionScoreResult.status === 'fulfilled' ? initialPromotionScoreResult.value : null;
   const premiumSubscription = premiumSubscriptionResult.status === 'fulfilled' ? premiumSubscriptionResult.value : null;
-  const categoryGuides = categoryGuidesResult.status === 'fulfilled' ? categoryGuidesResult.value : [];
+  const categoryGuidesRaw = categoryGuidesResult.status === 'fulfilled' ? categoryGuidesResult.value : [];
+  const categoryGuides = (categoryGuidesRaw || []).filter((guide) => {
+    return !isLowValueGuideTag({
+      slug: guide?.category_slug,
+      name: guide?.category_name,
+      title: guide?.title,
+    });
+  });
   const features = destinationFeaturesResult.status === 'fulfilled' ? destinationFeaturesResult.value : { hasRestaurants: false, hasBabyEquipment: false, hasAirportTransfers: false };
 
   // Generate breadcrumb schema for SEO
@@ -274,12 +307,6 @@ export default async function RestaurantPage({ params }) {
       {
         "@type": "ListItem",
         "position": 4,
-        "name": "Restaurants",
-        "item": `https://toptours.ai/destinations/${destination.id}/restaurants`
-      },
-      {
-        "@type": "ListItem",
-        "position": 5,
         "name": restaurant.name || restaurant.title || 'Restaurant',
         "item": `https://toptours.ai/destinations/${destination.id}/restaurants/${restaurant.slug}`
       }

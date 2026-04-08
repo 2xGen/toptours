@@ -163,13 +163,17 @@ export default function GeneratorClient() {
     );
   }, [babyDestinations, babySearch]);
 
-  const expediaPresetsAlphabetical = useMemo(
-    () =>
-      [...EXPEDIA_EX_PRESETS].sort((a, b) =>
-        a.label.localeCompare(b.label, 'en', { sensitivity: 'base' })
-      ),
-    []
-  );
+  /** Expedia home + Vrbo home first, then all other presets A–Z by label. */
+  const expediaPresetsOrdered = useMemo(() => {
+    const topSlugs = ['expedia-home', 'vrbo-home'];
+    const top = topSlugs
+      .map((slug) => EXPEDIA_EX_PRESETS.find((p) => p.slug === slug))
+      .filter(Boolean);
+    const rest = EXPEDIA_EX_PRESETS.filter((p) => !topSlugs.includes(p.slug)).sort((a, b) =>
+      a.label.localeCompare(b.label, 'en', { sensitivity: 'base' })
+    );
+    return [...top, ...rest];
+  }, []);
 
   const babyGoUrl = babySelectedId ? `${origin}/fb/baby-equipment-rental-in-${babySelectedId}` : '';
 
@@ -683,7 +687,7 @@ export default function GeneratorClient() {
                 value={exPresetSlug}
                 onChange={(e) => setExPresetSlug(e.target.value)}
               >
-                {expediaPresetsAlphabetical.map(({ label, slug }) => (
+                {expediaPresetsOrdered.map(({ label, slug }) => (
                   <option key={slug} value={slug}>
                     {label}
                   </option>

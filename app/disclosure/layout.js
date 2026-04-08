@@ -8,11 +8,14 @@ const defaultOg = absoluteUrl('/OG%20Images/Discover%20Top%20Tours%20and%20Resta
 
 export const metadata = {
   title: 'Affiliate Disclosure | TopTours.ai',
-  description: 'Transparency is important to us. Learn how TopTours.ai operates, how we\'re compensated through affiliate partnerships, and our commitment to unbiased recommendations.',
-  keywords: 'affiliate disclosure, TopTours.ai disclosure, affiliate links, transparency, travel affiliate',
+  description:
+    'How TopTours.ai earns commissions: tour bookings (Viator), travel insurance (SafetyWing ambassador links), and other partners—at no extra cost to you.',
+  keywords:
+    'affiliate disclosure, TopTours.ai disclosure, affiliate links, Viator, SafetyWing, travel insurance affiliate, transparency',
   openGraph: {
     title: 'Affiliate Disclosure | TopTours.ai',
-    description: 'Learn how TopTours.ai operates and how we\'re compensated through affiliate partnerships. Full transparency about our business model.',
+    description:
+      'Tours (Viator), travel insurance (SafetyWing), and how affiliate compensation works—full transparency.',
     url: pageUrl,
     siteName: 'TopTours.ai',
     images: [
@@ -29,7 +32,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Affiliate Disclosure | TopTours.ai',
-    description: 'Full transparency about how TopTours.ai operates and affiliate partnerships.',
+    description: 'Tours, travel insurance (SafetyWing), and affiliate transparency.',
     images: [defaultOg],
   },
   alternates: {
@@ -48,8 +51,8 @@ export const metadata = {
   },
 };
 
-// Static page - cache for 7 days (rarely changes)
-export const revalidate = 604800; // 7 days
+// Fully static until next deploy (no periodic ISR) — legal HTML is CDN-served for bots.
+export const revalidate = false;
 
 export default function DisclosureLayout({ children }) {
   return children;

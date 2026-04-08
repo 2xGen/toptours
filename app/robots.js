@@ -36,8 +36,8 @@ export default function robots() {
         ],
       },
     ],
-    // Main sitemap + tour sitemap index (also submitted in GSC; here for crawler discovery)
-    sitemap: [`${origin}/sitemap.xml`, `${origin}/sitemap-tours`],
+    // Keep robots sitemap discovery focused on indexable URL sets only.
+    sitemap: [`${origin}/sitemap.xml`],
   };
 }
 

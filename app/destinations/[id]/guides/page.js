@@ -7,10 +7,11 @@ import { getRelatedDestinations, getDestinationsByCountry } from '@/data/destina
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { getBabyEquipmentRentalsByDestination } from '@/lib/babyEquipmentRentals';
 import { getDestinationFeatures } from '@/lib/destinationFeatures';
-import { getViatorDestinationBySlug } from '@/lib/supabaseCache';
+import { getViatorDestinationBySlugCached } from '@/lib/supabaseCache';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import { slugToViatorId as slugToViatorIdMap } from '@/data/viatorDestinationMap';
 import { dedupeCategoryGuides } from '@/lib/guidePageGrouping';
+import { GUIDE_SECTION_REVALIDATE_SECONDS } from '@/lib/guideSectionCacheConfig';
 import GuidesListingClient from './GuidesListingClient';
 
 function generateSlug(name) {
@@ -34,8 +35,7 @@ function resolveDestinationImageUrl(destinationId, destination) {
 
 const TRAVEL_GUIDE_OG_IMAGE = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/travel%20guides.png';
 
-// Revalidate every 7 days
-export const revalidate = 604800;
+export const revalidate = GUIDE_SECTION_REVALIDATE_SECONDS;
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }) {
@@ -55,7 +55,7 @@ export async function generateMetadata({ params }) {
     } else {
       // Try database lookup
       try {
-        const dbDestination = await getViatorDestinationBySlug(destinationId);
+        const dbDestination = await getViatorDestinationBySlugCached(destinationId);
         if (dbDestination && dbDestination.name) {
           destination = {
             id: destinationId,
@@ -155,7 +155,7 @@ export default async function GuidesListingPage({ params }) {
     } else {
       // Try database lookup
       try {
-        const dbDestination = await getViatorDestinationBySlug(destinationId);
+        const dbDestination = await getViatorDestinationBySlugCached(destinationId);
         if (dbDestination && dbDestination.name) {
           destination = {
             id: destinationId,
@@ -289,7 +289,7 @@ export default async function GuidesListingPage({ params }) {
     } else if (destination?.destinationId) {
       viatorDestinationId = String(destination.destinationId);
     } else {
-      const dbDest = await getViatorDestinationBySlug(destinationId);
+      const dbDest = await getViatorDestinationBySlugCached(destinationId);
       if (dbDest?.id) viatorDestinationId = String(dbDest.id);
     }
   } catch {

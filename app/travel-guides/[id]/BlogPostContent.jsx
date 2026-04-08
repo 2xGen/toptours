@@ -4602,7 +4602,7 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                       <div className="bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-200 rounded-lg p-8 my-8">
                         <h3 className="text-2xl font-bold text-gray-900 mb-4">When to Go & What to Pack</h3>
                         <p className="text-gray-700 leading-relaxed">
-                          Time your island hop with the <Link href="https://www.toptours.ai/travel-guides/best-time-to-visit-caribbean" className="text-indigo-600 hover:underline">Best Time to Visit the Caribbean</Link> guide—it breaks down peak sunshine, shoulder-season deals, and hurricane-belt considerations at a glance. Packing one suitcase for both vibes? The <Link href="https://www.toptours.ai/travel-guides/beach-vacation-packing-list" className="text-blue-600 hover:underline">Beach Vacation Packing List</Link> covers reef-safe sun care, snorkel gear, and resort-ready outfits that work from Palm Beach sunsets to Willemstad strolls.
+                          Time your island hop with the <Link href="https://toptours.ai/travel-guides/best-time-to-visit-caribbean" className="text-indigo-600 hover:underline">Best Time to Visit the Caribbean</Link> guide—it breaks down peak sunshine, shoulder-season deals, and hurricane-belt considerations at a glance. Packing one suitcase for both vibes? The <Link href="https://toptours.ai/travel-guides/beach-vacation-packing-list" className="text-blue-600 hover:underline">Beach Vacation Packing List</Link> covers reef-safe sun care, snorkel gear, and resort-ready outfits that work from Palm Beach sunsets to Willemstad strolls.
                         </p>
                       </div>
                       
@@ -4847,10 +4847,10 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                       <div className="bg-gradient-to-r from-yellow-50 to-teal-50 border border-yellow-200 rounded-lg p-8 my-8">
                         <h3 className="text-2xl font-bold text-gray-900 mb-4">When to Visit & What to Pack</h3>
                         <p className="text-gray-700 leading-relaxed mb-4">
-                          Compare seasonal weather patterns with the island-wide insights in <Link href="https://www.toptours.ai/travel-guides/best-time-to-visit-caribbean" className="text-indigo-600 hover:underline">Best Time to Visit the Caribbean</Link>. It highlights when trade winds cool Curaçao and when Jamaica’s dry season brings perfect waterfall days, so you can dodge storms and cruise crowds.
+                          Compare seasonal weather patterns with the island-wide insights in <Link href="https://toptours.ai/travel-guides/best-time-to-visit-caribbean" className="text-indigo-600 hover:underline">Best Time to Visit the Caribbean</Link>. It highlights when trade winds cool Curaçao and when Jamaica’s dry season brings perfect waterfall days, so you can dodge storms and cruise crowds.
                         </p>
                         <p className="text-gray-700 leading-relaxed">
-                          Packing for both? Start with the essentials from our <Link href="https://www.toptours.ai/travel-guides/beach-vacation-packing-list" className="text-blue-600 hover:underline">Beach Vacation Packing List</Link>, then add reef-safe sunscreen for Curaçao’s snorkel spots and quick-dry layers plus sturdy water shoes for Jamaica’s river climbs.
+                          Packing for both? Start with the essentials from our <Link href="https://toptours.ai/travel-guides/beach-vacation-packing-list" className="text-blue-600 hover:underline">Beach Vacation Packing List</Link>, then add reef-safe sunscreen for Curaçao’s snorkel spots and quick-dry layers plus sturdy water shoes for Jamaica’s river climbs.
                         </p>
                       </div>
                       
@@ -5343,10 +5343,10 @@ const BlogPostContent = ({ slug, onOpenModal }) => {
                       <div className="bg-gradient-to-r from-yellow-50 to-cyan-50 border border-yellow-200 rounded-lg p-8 my-8">
                         <h3 className="text-2xl font-bold text-gray-900 mb-4">When to Visit & What to Pack</h3>
                         <p className="text-gray-700 leading-relaxed mb-4">
-                          Use <Link href="https://www.toptours.ai/travel-guides/best-time-to-visit-caribbean" className="text-indigo-600 hover:underline">Best Time to Visit the Caribbean</Link> to see when Curaçao’s trade winds feel coolest and when Punta Cana’s resort corridor hits peak sunshine or afternoon showers. It’s the fastest way to map out ideal months for reef visibility, Saona boat days, and crowd levels.
+                          Use <Link href="https://toptours.ai/travel-guides/best-time-to-visit-caribbean" className="text-indigo-600 hover:underline">Best Time to Visit the Caribbean</Link> to see when Curaçao’s trade winds feel coolest and when Punta Cana’s resort corridor hits peak sunshine or afternoon showers. It’s the fastest way to map out ideal months for reef visibility, Saona boat days, and crowd levels.
                         </p>
                         <p className="text-gray-700 leading-relaxed">
-                          For packing, start with the must-haves in the <Link href="https://www.toptours.ai/travel-guides/beach-vacation-packing-list" className="text-blue-600 hover:underline">Beach Vacation Packing List</Link>. Add snorkel gear and rash guards for Curaçao’s coves, plus breezy resort wear for Punta Cana’s beachfront dinners and spa days.
+                          For packing, start with the must-haves in the <Link href="https://toptours.ai/travel-guides/beach-vacation-packing-list" className="text-blue-600 hover:underline">Beach Vacation Packing List</Link>. Add snorkel gear and rash guards for Curaçao’s coves, plus breezy resort wear for Punta Cana’s beachfront dinners and spa days.
                         </p>
                       </div>
                       

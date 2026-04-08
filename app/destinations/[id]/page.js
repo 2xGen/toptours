@@ -376,7 +376,8 @@ export default async function DestinationDetailPage({ params }) {
     promotedTours,
     hardcodedTours,
     categoryGuides,
-    hasBabyEquipmentRentals
+    hasBabyEquipmentRentals,
+    topRestaurants
   } = await fetchDestinationData(destination, destinationIdForScores);
 
   const destHubUrl = absoluteUrl(`/destinations/${destination.id}`);
@@ -645,6 +646,7 @@ export default async function DestinationDetailPage({ params }) {
           hardcodedTours={hardcodedTours}
           categoryGuides={categoryGuides}
           hasBabyEquipmentRentals={hasBabyEquipmentRentals}
+          topRestaurants={topRestaurants}
         />
       </ErrorBoundary>
     </>

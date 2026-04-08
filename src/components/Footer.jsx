@@ -76,7 +76,11 @@ const Footer = () => {
             </Link>
           </p>
           <p className="text-gray-500 text-sm mt-2">
-            We may earn a commission from bookings made through our affiliate links at no extra cost to you.
+            We may earn a commission from tour and activity bookings (for example via Viator) and from qualifying travel insurance sign-ups (SafetyWing) through our affiliate links—at no extra cost to you.{' '}
+            <Link to="/disclosure" className="text-yellow-500/90 hover:text-yellow-400 underline">
+              Full disclosure
+            </Link>
+            .
           </p>
           <p className="text-gray-500 text-sm mt-2">
             <a 

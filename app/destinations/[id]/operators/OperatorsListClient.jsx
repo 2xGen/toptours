@@ -91,7 +91,7 @@ export default function OperatorsListClient({ destination, operators = [], topTo
         '@type': 'Organization',
         '@id': `https://toptours.ai/destinations/${destination.id}/operators#${encodeURIComponent(operator.operator_name)}`,
         name: operator.operator_name,
-        url: `https://toptours.ai/destinations/${destination.id}/tours?operator=${encodeURIComponent(operator.operator_name)}`,
+        url: `https://toptours.ai/destinations/${destination.id}/tours`,
         ...(operator.tours && operator.tours.length > 0 && {
           offers: {
             '@type': 'AggregateOffer',

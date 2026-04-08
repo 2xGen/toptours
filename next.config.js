@@ -63,11 +63,6 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/destinations/:id/restaurants/:path*',
-        destination: '/destinations/:id',
-        permanent: true,
-      },
-      {
         source: '/destinations/:id/restaurants',
         destination: '/destinations/:id',
         permanent: true,
@@ -80,6 +75,12 @@ const nextConfig = {
       },
       {
         source: '/toptours/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      // Bots and old links sometimes request /index; canonical home is /
+      {
+        source: '/index',
         destination: '/',
         permanent: true,
       },

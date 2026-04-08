@@ -14,8 +14,11 @@ import {
   ARUSHA_KILICLIMB_GUIDE_SLUG,
   getKiliclimbPartnerGuideData,
 } from '../partnerGuides/arushaKiliclimbTanzania';
-// Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
-export const revalidate = 604800; // 7 days - increased to reduce ISR writes during Google reindexing
+import { isLowValueGuideTag } from '@/lib/guideIndexing';
+import { GUIDE_SECTION_REVALIDATE_SECONDS } from '@/lib/guideSectionCacheConfig';
+
+/** ISR: align with Data Cache for guide-adjacent fetches (see categoryGuides / destinationFeatures). */
+export const revalidate = GUIDE_SECTION_REVALIDATE_SECONDS;
 
 // Function to fetch all guides for a destination from database
 // NOTE: This function is no longer used - we use getAllCategoryGuidesForDestination instead
@@ -334,6 +337,12 @@ export async function generateMetadata({ params }) {
     const categoryName = guideData.categoryName || guideData.title || 'Tours';
     const bookingTitle = destName && categoryName ? `Best ${destName} ${categoryName}` : null;
 
+    const noindexThinGuide = isLowValueGuideTag({
+      slug: categorySlug,
+      name: guideData?.categoryName,
+      title: guideData?.title,
+    });
+
     return {
       title: seo.title || guideData.title || bookingTitle || 'Guide',
       description: seo.description || guideData.subtitle,
@@ -363,17 +372,29 @@ export async function generateMetadata({ params }) {
       alternates: {
         canonical: `https://toptours.ai/destinations/${destinationId}/guides/${categorySlug}`,
       },
-      robots: {
-        index: true,
-        follow: true,
-        googleBot: {
-          index: true,
-          follow: true,
-          'max-video-preview': -1,
-          'max-image-preview': 'large',
-          'max-snippet': -1,
-        },
-      },
+      robots: noindexThinGuide
+        ? {
+            index: false,
+            follow: true,
+            googleBot: {
+              index: false,
+              follow: true,
+              'max-video-preview': -1,
+              'max-image-preview': 'large',
+              'max-snippet': -1,
+            },
+          }
+        : {
+            index: true,
+            follow: true,
+            googleBot: {
+              index: true,
+              follow: true,
+              'max-video-preview': -1,
+              'max-image-preview': 'large',
+              'max-snippet': -1,
+            },
+          },
     };
   } catch (error) {
     console.error('Error in generateMetadata:', error);
@@ -664,8 +685,8 @@ export default async function CategoryGuidePage({ params }) {
   const allAvailableGuideSlugs = allAvailableGuides.map(g => g.category_slug).filter(Boolean);
 
   // Viator destination ID for "Load tours" (product search by destination and optionally tag)
-  const { getViatorDestinationBySlug } = await import('@/lib/supabaseCache');
-  const viatorDest = await getViatorDestinationBySlug(destinationId);
+  const { getViatorDestinationBySlugCached } = await import('@/lib/supabaseCache');
+  const viatorDest = await getViatorDestinationBySlugCached(destinationId);
   const viatorDestinationId = viatorDest?.id ?? null;
 
   // Fetch destination features (lightweight checks for sticky nav)

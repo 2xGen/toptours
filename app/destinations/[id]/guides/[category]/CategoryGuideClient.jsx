@@ -287,15 +287,10 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
   // H1 display title: strip site name suffix (e.g. " | TopTours.ai") so the heading is just the guide title
   const displayTitle = (guideData?.title || '').replace(/\s*\|\s*TopTours\.ai\s*$/i, '').trim() || guideData?.title || '';
 
-  /** Tours index URL with optional search (e.g. Tanzania safari, not the long category label). */
+  /** Keep CTA links on the clean canonical tours listing URL (avoid crawl-spam via query params). */
   const toursListHref = React.useMemo(() => {
-    const q =
-      (guideData?.toursSearchQuery && String(guideData.toursSearchQuery).trim()) ||
-      guideData?.categoryName ||
-      '';
-    if (!q) return `/destinations/${destinationId}/tours`;
-    return `/destinations/${destinationId}/tours?search=${encodeURIComponent(q)}`;
-  }, [destinationId, guideData?.toursSearchQuery, guideData?.categoryName]);
+    return `/destinations/${destinationId}/tours`;
+  }, [destinationId]);
 
   // Icon mapping
   const iconMap = {

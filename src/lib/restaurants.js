@@ -4,6 +4,253 @@
 
 import { createSupabaseServiceRoleClient } from './supabaseClient';
 
+function normalizeText(value) {
+  return String(value || '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9\s-]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function canonicalCountry(value) {
+  const v = normalizeText(value);
+  const aliases = {
+    us: 'united states',
+    usa: 'united states',
+    'united states of america': 'united states',
+    gb: 'united kingdom',
+    uk: 'united kingdom',
+    britain: 'united kingdom',
+    'great britain': 'united kingdom',
+    'czech republic': 'czechia',
+  };
+  return aliases[v] || v;
+}
+
+function inferCountryFromAddress(row) {
+  const address = normalizeText(
+    row?.formatted_address ||
+      row?.formattedAddress ||
+      row?.contact?.address ||
+      row?.address ||
+      '',
+  );
+  if (!address) return '';
+
+  if (address.includes(' usa') || address.includes(' united states')) return 'united states';
+  if (address.includes(' uk') || address.includes(' united kingdom')) return 'united kingdom';
+
+  const parts = address
+    .split(',')
+    .map((p) => canonicalCountry(p.trim()))
+    .filter(Boolean);
+  const tail = parts.slice(-2);
+  for (const chunk of tail) {
+    if (chunk.length >= 3 && chunk.length <= 40) return chunk;
+  }
+
+  return '';
+}
+
+const COUNTRY_CALLING_CODES = {
+  aw: '297', // Aruba
+  cw: '599', // Curacao
+  bq: '599', // Caribbean Netherlands
+  sx: '1-721', // Sint Maarten
+  us: '1',
+  ca: '1',
+  gb: '44',
+  ie: '353',
+  fr: '33',
+  es: '34',
+  it: '39',
+  pt: '351',
+  de: '49',
+  nl: '31',
+  be: '32',
+  ch: '41',
+  at: '43',
+  gr: '30',
+  tr: '90',
+  hr: '385',
+  cz: '420',
+  hu: '36',
+  pl: '48',
+  dk: '45',
+  se: '46',
+  no: '47',
+  fi: '358',
+  is: '354',
+  jp: '81',
+  kr: '82',
+  cn: '86',
+  sg: '65',
+  th: '66',
+  my: '60',
+  id: '62',
+  vn: '84',
+  ph: '63',
+  in: '91',
+  ae: '971',
+  sa: '966',
+  qa: '974',
+  eg: '20',
+  ma: '212',
+  za: '27',
+  au: '61',
+  nz: '64',
+  mx: '52',
+  br: '55',
+  ar: '54',
+  cl: '56',
+  co: '57',
+  pe: '51',
+  ec: '593',
+  pa: '507',
+  cr: '506',
+  do: '1-809',
+  jm: '1-876',
+  bs: '1-242',
+  bb: '1-246',
+  lc: '1-758',
+  gd: '1-473',
+  tt: '1-868',
+  ag: '1-268',
+  kn: '1-869',
+  vc: '1-784',
+  bz: '501',
+  mu: '230',
+  pf: '689',
+};
+
+const COUNTRY_NAME_CALLING_CODES = {
+  aruba: '297',
+  curacao: '599',
+  'sint maarten': '1-721',
+  'united states': '1',
+  canada: '1',
+  jamaica: '1-876',
+  bahamas: '1-242',
+  barbados: '1-246',
+  'st lucia': '1-758',
+  grenada: '1-473',
+  'trinidad and tobago': '1-868',
+  'antigua and barbuda': '1-268',
+  'st kitts and nevis': '1-869',
+  belize: '501',
+  mexico: '52',
+  portugal: '351',
+  spain: '34',
+  italy: '39',
+  france: '33',
+  'united kingdom': '44',
+  netherlands: '31',
+  germany: '49',
+  croatia: '385',
+  czechia: '420',
+  greece: '30',
+  turkey: '90',
+  japan: '81',
+  'south korea': '82',
+  china: '86',
+  singapore: '65',
+  indonesia: '62',
+  thailand: '66',
+  vietnam: '84',
+  philippines: '63',
+  india: '91',
+  australia: '61',
+  'new zealand': '64',
+  colombia: '57',
+  panama: '507',
+  'costa rica': '506',
+  chile: '56',
+  argentina: '54',
+  brazil: '55',
+};
+
+function formatPhoneWithCountryCode(phone, countryIsoCode, inferredCountryName = '') {
+  const raw = String(phone || '').trim();
+  if (!raw) return null;
+  if (raw.startsWith('+')) return raw;
+  const iso = String(countryIsoCode || '').trim().toLowerCase();
+  const code =
+    COUNTRY_CALLING_CODES[iso] ||
+    COUNTRY_NAME_CALLING_CODES[canonicalCountry(inferredCountryName)];
+  if (!code) return raw;
+  return `+${code} ${raw}`;
+}
+
+function safeParseJsonObject(value) {
+  if (!value) return null;
+  if (typeof value === 'object') return value;
+  if (typeof value !== 'string') return null;
+  try {
+    return JSON.parse(value);
+  } catch {
+    return null;
+  }
+}
+
+function extractRestaurantCountrySignals(row) {
+  const result = {
+    longName: '',
+    shortName: '',
+    isoCode: '',
+    isoCountryName: '',
+  };
+
+  result.isoCode = normalizeText(row?.country_iso_code || row?.countryIsoCode || '');
+  try {
+    const isoRaw = String(row?.country_iso_code || row?.countryIsoCode || '').trim().toUpperCase();
+    if (/^[A-Z]{2}$/.test(isoRaw) && typeof Intl !== 'undefined' && Intl.DisplayNames) {
+      const dn = new Intl.DisplayNames(['en'], { type: 'region' });
+      result.isoCountryName = normalizeText(dn.of(isoRaw) || '');
+    }
+  } catch {
+    // Ignore locale conversion failures.
+  }
+
+  const components = safeParseJsonObject(row?.address_components || row?.addressComponents);
+  if (Array.isArray(components)) {
+    const countryComp = components.find((comp) =>
+      Array.isArray(comp?.types) && comp.types.includes('country')
+    );
+    if (countryComp) {
+      result.longName = normalizeText(countryComp.long_name || '');
+      result.shortName = normalizeText(countryComp.short_name || '');
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Data-quality guard:
+ * Reject records where Google country clearly conflicts with destination country.
+ */
+export function isRestaurantLikelyInDestination(row, destination) {
+  if (!row || !destination) return true;
+  const destinationCountry = canonicalCountry(destination.country || '');
+  if (!destinationCountry) return true;
+
+  const country = extractRestaurantCountrySignals(row);
+  let observedCountry = canonicalCountry(
+    country.longName || country.isoCountryName || country.shortName || country.isoCode,
+  );
+  if (!observedCountry) {
+    observedCountry = canonicalCountry(inferCountryFromAddress(row));
+  }
+  if (!observedCountry) return false;
+
+  if (observedCountry === destinationCountry) return true;
+  if (observedCountry.includes(destinationCountry) || destinationCountry.includes(observedCountry)) return true;
+
+  return false;
+}
+
 /**
  * Get all restaurants for a destination
  * Handles pagination for destinations with >1000 restaurants
@@ -66,6 +313,53 @@ export async function getRestaurantsForDestinationWithLimit(destinationId, limit
     return [];
   }
   return data || [];
+}
+
+/**
+ * Get top restaurants for a destination ranked by rating + review volume.
+ * We fetch a wider candidate set, then score in-memory to avoid thin high-rating/low-review outliers.
+ * @param {string} destinationId
+ * @param {number} limit
+ * @returns {Promise<Array>} formatted restaurants
+ */
+export async function getTopRestaurantsForDestination(destinationId, limit = 24, destination = null) {
+  if (!destinationId || limit < 1) return [];
+  const supabase = createSupabaseServiceRoleClient();
+  const fetchSize = Math.max(limit * 4, 60);
+
+  const { data, error } = await supabase
+    .from('restaurants')
+    .select('*')
+    .eq('destination_id', destinationId)
+    .eq('is_active', true)
+    .order('google_rating', { ascending: false })
+    .order('review_count', { ascending: false })
+    .range(0, fetchSize - 1);
+
+  if (error) {
+    console.error('Error fetching top restaurants:', error);
+    return [];
+  }
+
+  const ranked = (data || [])
+    .filter((row) => isRestaurantLikelyInDestination(row, destination))
+    .map((r) => ({
+      row: r,
+      rating: Number(r.google_rating) || 0,
+      reviews: Number(r.review_count) || 0,
+    }))
+    .sort((a, b) => {
+      const scoreA = a.rating * Math.log10(a.reviews + 10);
+      const scoreB = b.rating * Math.log10(b.reviews + 10);
+      if (scoreA !== scoreB) return scoreB - scoreA;
+      if (a.rating !== b.rating) return b.rating - a.rating;
+      return b.reviews - a.reviews;
+    })
+    .slice(0, limit)
+    .map((item) => formatRestaurantForFrontend(item.row))
+    .filter(Boolean);
+
+  return ranked;
 }
 
 /**
@@ -292,7 +586,12 @@ heroImage: null,
       contact: {
         email: dbRestaurant.email || null,
         phone: dbRestaurant.phone || null,
-        formattedPhone: dbRestaurant.formatted_phone || dbRestaurant.phone || null,
+        formattedPhone:
+          formatPhoneWithCountryCode(
+            dbRestaurant.formatted_phone || dbRestaurant.phone || null,
+            dbRestaurant.country_iso_code || null,
+            inferCountryFromAddress(dbRestaurant)
+          ) || null,
         address: dbRestaurant.address || dbRestaurant.formatted_address || '',
         neighborhood: dbRestaurant.neighborhood || null,
         website: dbRestaurant.website || null,
