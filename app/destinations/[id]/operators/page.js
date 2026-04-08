@@ -20,6 +20,19 @@ function generateSlug(name) {
     .replace(/^-|-$/g, '');
 }
 
+/** Operator directory pages: thin vs destination hub + /tours; noindex, keep links followable. */
+const OPERATORS_LISTING_ROBOTS = {
+  index: false,
+  follow: true,
+  googleBot: {
+    index: false,
+    follow: true,
+    'max-video-preview': -1,
+    'max-image-preview': 'large',
+    'max-snippet': -1,
+  },
+};
+
 // Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
 export const revalidate = 604800; // 7 days - increased to reduce ISR writes during Google reindexing
 
@@ -67,17 +80,7 @@ export async function generateMetadata({ params }) {
           description,
           images: [ogImage],
         },
-        robots: {
-          index: true,
-          follow: true,
-          googleBot: {
-            index: true,
-            follow: true,
-            'max-video-preview': -1,
-            'max-image-preview': 'large',
-            'max-snippet': -1,
-          },
-        },
+        robots: OPERATORS_LISTING_ROBOTS,
       };
     }
     
@@ -120,17 +123,7 @@ export async function generateMetadata({ params }) {
               description,
               images: [defaultOgImage],
             },
-            robots: {
-              index: true,
-              follow: true,
-              googleBot: {
-                index: true,
-                follow: true,
-                'max-video-preview': -1,
-                'max-image-preview': 'large',
-                'max-snippet': -1,
-              },
-            },
+            robots: OPERATORS_LISTING_ROBOTS,
           };
         }
       } catch (error) {
@@ -174,30 +167,17 @@ export async function generateMetadata({ params }) {
             description,
             images: [defaultOgImage],
           },
-          robots: {
-            index: true,
-            follow: true,
-            googleBot: {
-              index: true,
-              follow: true,
-              'max-video-preview': -1,
-              'max-image-preview': 'large',
-              'max-snippet': -1,
-            },
-          },
+          robots: OPERATORS_LISTING_ROBOTS,
         };
       }
     } catch (error) {
       // Continue
     }
     
-    // If all lookups fail, return generic metadata (but still indexable)
+    // If all lookups fail, return generic metadata (noindex listing)
     return {
       title: 'Tour Operators – Book Direct',
-      robots: {
-        index: true,
-        follow: true,
-      },
+      robots: OPERATORS_LISTING_ROBOTS,
     };
   }
 
@@ -234,17 +214,7 @@ export async function generateMetadata({ params }) {
         description,
         images: [ogImage],
       },
-      robots: {
-        index: true,
-        follow: true,
-        googleBot: {
-          index: true,
-          follow: true,
-          'max-video-preview': -1,
-          'max-image-preview': 'large',
-          'max-snippet': -1,
-        },
-      },
+      robots: OPERATORS_LISTING_ROBOTS,
     };
 }
 
