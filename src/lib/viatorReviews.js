@@ -25,7 +25,7 @@ function hashReviewCount(count) {
  */
 export async function fetchProductReviews(productId, options = {}) {
   // Use the same API key as other Viator API calls (production)
-  const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
+  const apiKey = process.env.VIATOR_API_KEY;
   
   if (!apiKey) {
     throw new Error('VIATOR_API_KEY not configured');

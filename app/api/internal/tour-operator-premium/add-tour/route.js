@@ -69,7 +69,10 @@ export async function POST(request) {
     if (useSupabaseCache()) tourData = await getCachedTour(productId);
     if (!tourData) {
       // Try fetching from Viator API
-      const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
+      const apiKey = process.env.VIATOR_API_KEY;
+      if (!apiKey) {
+        return NextResponse.json({ error: 'VIATOR_API_KEY is not configured' }, { status: 500 });
+      }
       const response = await fetch(
         `https://api.viator.com/partner/products/${productId}?currency=USD`,
         {

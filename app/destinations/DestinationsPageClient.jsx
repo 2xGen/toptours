@@ -5,8 +5,6 @@ import FooterNext from '@/components/FooterNext';
 import SmartTourFinder from '@/components/home/SmartTourFinder';
 import { destinations, getDestinationsByCountry } from '@/data/destinationsData';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
-import { getDestinationFullContent } from '@/data/destinationFullContent';
-import generatedFullContentData from '../../generated-destination-full-content.json';
 import { Search, MapPin, ArrowRight, Globe, Ticket, UtensilsCrossed } from 'lucide-react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -55,8 +53,8 @@ const regionToCategory = {
 };
 
 export default function DestinationsPageClient({ 
-  viatorDestinations = [], 
   viatorDestinationsClassified = [],
+  generatedDestinationsWithGuides = [],
   totalAvailableDestinations = 0 
 }) {
   const router = useRouter();
@@ -142,35 +140,16 @@ export default function DestinationsPageClient({
       isViator: false,
     }));
     
-    // Also include destinations from generated content that have guides AND an image but aren't in destinationsData.js
-    // Logic: Only show destinations with guides if they have a featured image (for the premium experience)
+    // Also include generated destinations (prepared server-side) that have guides + image.
     const regularDestIds = new Set(regularDests.map(d => d.id));
-    const generatedDestsWithGuides = Object.keys(generatedFullContentData || {})
-      .filter(slug => {
-        // Skip if already in regular destinations
-        if (regularDestIds.has(slug)) return false;
-        
-        // Check if this destination has any categories with guides
-        const content = generatedFullContentData[slug];
-        if (!content || !content.tourCategories) return false;
-        
-        // Check if any category has hasGuide: true
-        const hasGuides = content.tourCategories.some(cat => 
-          typeof cat === 'object' && cat.hasGuide === true
-        );
-        
-        if (!hasGuides) return false;
-        
-        // Also check if destination has an image (featured image requirement)
-        const seoContent = getDestinationSeoContent(slug);
-        const hasImage = !!(content.imageUrl || seoContent?.imageUrl || seoContent?.ogImage);
-        
-        // Only include if it has both guides AND an image
-        return hasImage;
+    const generatedDestsWithGuides = (Array.isArray(generatedDestinationsWithGuides) ? generatedDestinationsWithGuides : [])
+      .filter((content) => {
+        const slug = content?.id;
+        if (!slug) return false;
+        return !regularDestIds.has(slug);
       })
-      .map(slug => {
-        const content = generatedFullContentData[slug];
-        const seoContent = getDestinationSeoContent(slug);
+      .map((content) => {
+        const slug = content.id;
         const classifiedDest = classifiedDataIndex?.bySlug.get(slug)?.[0];
         
         return {
@@ -180,15 +159,15 @@ export default function DestinationsPageClient({
           category: classifiedDest?.region ? (regionToCategory[classifiedDest.region] || classifiedDest.region) : null,
           region: classifiedDest?.region || content.region || null,
           country: classifiedDest?.country || content.country || null,
-          briefDescription: seoContent?.briefDescription || content.briefDescription || `Discover tours and activities in ${content.destinationName || slug}`,
-          heroDescription: seoContent?.heroDescription || content.heroDescription || null,
-          imageUrl: content.imageUrl || seoContent?.imageUrl || seoContent?.ogImage || null,
+          briefDescription: content.briefDescription || `Discover tours and activities in ${content.destinationName || slug}`,
+          heroDescription: content.heroDescription || null,
+          imageUrl: content.imageUrl || null,
           tourCategories: content.tourCategories || [],
           whyVisit: content.whyVisit || [],
           highlights: content.highlights || [],
           gettingAround: content.gettingAround || '',
           bestTimeToVisit: content.bestTimeToVisit || null,
-          seo: content.seo || seoContent?.seo || null,
+          seo: content.seo || null,
           isViator: false, // These have guides, so they're featured destinations
         };
       });
@@ -276,7 +255,7 @@ export default function DestinationsPageClient({
         
         // Use region and country directly from classified data (already set by OpenAI script)
         // But fallback to generated content if classified data doesn't have it
-        const generatedContent = generatedFullContentData[slug];
+        const generatedContent = generatedDestsWithGuides.find((d) => d.id === slug);
         const region = classifiedDest.region || generatedContent?.region || null;
         const country = classifiedDest.country || generatedContent?.country || null;
         
@@ -303,7 +282,7 @@ export default function DestinationsPageClient({
       });
     
     return [...allFeaturedDests, ...viatorDests];
-  }, [destinations, searchTerm, selectedCategory, viatorDestinationsClassified, classifiedDataIndex]);
+  }, [destinations, searchTerm, selectedCategory, viatorDestinationsClassified, classifiedDataIndex, generatedDestinationsWithGuides]);
 
   // Filter destinations based on search and category
   const filteredDestinations = useMemo(() => {
@@ -1029,7 +1008,7 @@ export default function DestinationsPageClient({
             "mainEntity": {
               "@type": "ItemList",
               "numberOfItems": totalAvailableDestinations || 3564,
-              "itemListElement": uniqueDestinations.slice(0, 100).map((dest, index) => ({
+              "itemListElement": uniqueDestinations.slice(0, 24).map((dest, index) => ({
                 "@type": "ListItem",
                 "position": index + 1,
                 "item": {
@@ -1037,7 +1016,6 @@ export default function DestinationsPageClient({
                   "name": dest.fullName || dest.name,
                   "url": `https://toptours.ai/destinations/${dest.id}`,
                   "description": dest.briefDescription || `Explore tours and activities in ${dest.fullName || dest.name}`,
-                  "image": dest.imageUrl || undefined,
                   "address": dest.country ? {
                     "@type": "PostalAddress",
                     "addressLocality": dest.name,

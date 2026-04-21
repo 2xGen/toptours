@@ -51,7 +51,10 @@ export async function POST(request) {
     const supabase = createSupabaseServiceRoleClient();
     
     // Fetch tour data for selected tours
-    const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
+    const apiKey = process.env.VIATOR_API_KEY;
+    if (!apiKey) {
+      return NextResponse.json({ error: 'VIATOR_API_KEY is not configured' }, { status: 500 });
+    }
     const tourDataPromises = selectedTourIds.map(async (productId) => {
       try {
         const response = await fetch(

@@ -1,11 +1,63 @@
 // Using Pages Router instead of App Router to bypass caching issue
 
+const WINDOW_MS = 60 * 1000;
+const MAX_REQUESTS_PER_WINDOW = 10;
+const ipWindowStore = new Map();
+
+function getClientIp(req) {
+  const forwardedFor = req.headers['x-forwarded-for'];
+  if (typeof forwardedFor === 'string' && forwardedFor.length > 0) {
+    return forwardedFor.split(',')[0].trim();
+  }
+  const realIp = req.headers['x-real-ip'];
+  if (typeof realIp === 'string' && realIp.length > 0) return realIp.trim();
+  return 'unknown';
+}
+
+function passRateLimit(ip) {
+  const now = Date.now();
+  const existing = ipWindowStore.get(ip);
+  if (!existing || now - existing.startedAt > WINDOW_MS) {
+    ipWindowStore.set(ip, { count: 1, startedAt: now });
+    return true;
+  }
+  existing.count += 1;
+  return existing.count <= MAX_REQUESTS_PER_WINDOW;
+}
+
+function isSameOriginRequest(req) {
+  const host = req.headers.host;
+  const origin = req.headers.origin;
+  const referer = req.headers.referer;
+  try {
+    if (origin && new URL(origin).host === host) return true;
+  } catch {}
+  try {
+    if (referer && new URL(referer).host === host) return true;
+  } catch {}
+  return false;
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
+    const internalApiKey = process.env.INTERNAL_API_KEY;
+    const providedInternalApiKey = req.headers['x-internal-api-key'];
+    const hasValidInternalKey = Boolean(
+      internalApiKey && providedInternalApiKey && providedInternalApiKey === internalApiKey
+    );
+    if (!hasValidInternalKey && !isSameOriginRequest(req)) {
+      return res.status(403).json({ error: 'Forbidden' });
+    }
+
+    const ip = getClientIp(req);
+    if (!hasValidInternalKey && !passRateLimit(ip)) {
+      return res.status(429).json({ error: 'Too many requests' });
+    }
+
     const { destination, searchTerm } = req.body;
     const term = destination || searchTerm;
     
@@ -13,10 +65,10 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'No destination provided' });
     }
 
-    // Base64 encoded key to bypass GitHub scanner
-    // MANUALLY REPLACE THIS WITH YOUR BASE64 ENCODED KEY ON GITHUB
-    const encodedKey = 'c2stcHJvai1DOFNwbXByMXphR19jaWpZWWh4bUlhOU1JdG1zb1pNVzVJYXpqUFU1ZWlWYThNblpkeGg1ZHF2SjZGZHlNanY3TTdFVnhwYkw3TlQzQmxia0ZKc294eVRIcTlkRWNhc01RTmF5djB1OEIxc1EzaTFhV2xWUXBjMzYyVnNleDRTNkd4STBCSXB4bUc0dFBIeDM5NERVQV9Nb3ZiWUE=';
-    const apiKey = Buffer.from(encodedKey, 'base64').toString('utf8');
+    const apiKey = process.env.OPENAI_API_KEY;
+    if (!apiKey) {
+      return res.status(500).json({ error: 'OPENAI_API_KEY not configured' });
+    }
 
     const prompt = `Generate 6 popular tour categories for ${term}. Return only the activity types, one per line.`;
 

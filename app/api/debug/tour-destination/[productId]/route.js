@@ -2,6 +2,12 @@ import { NextResponse } from 'next/server';
 import { getCachedTour, useSupabaseCache } from '@/lib/viatorCache';
 
 export async function GET(request, { params }) {
+  const debugKey = process.env.DEBUG_API_KEY;
+  const providedKey = request.headers.get('x-debug-key') || new URL(request.url).searchParams.get('debugKey');
+  if (process.env.NODE_ENV === 'production' && (!debugKey || providedKey !== debugKey)) {
+    return NextResponse.json({ error: 'Not found' }, { status: 404 });
+  }
+
   try {
     const resolvedParams = await params;
     const productId = resolvedParams.productId;
@@ -14,7 +20,10 @@ export async function GET(request, { params }) {
     if (useSupabaseCache()) tour = await getCachedTour(productId);
     if (!tour) {
       // Cache miss - fetch from Viator API
-      const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
+      const apiKey = process.env.VIATOR_API_KEY;
+      if (!apiKey) {
+        return NextResponse.json({ error: 'VIATOR_API_KEY is not configured' }, { status: 500 });
+      }
       const url = `https://api.viator.com/partner/products/${productId}?currency=USD`;
       
       const productResponse = await fetch(url, {

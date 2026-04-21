@@ -253,7 +253,7 @@ function StickyPriceBar({
                   {rating.toFixed(1)}★
                 </span>
                 <span className="text-xs text-gray-600">
-                  {reviewCount > 1000 ? `${(reviewCount / 1000).toFixed(1)}k` : reviewCount.toLocaleString()}
+                  {reviewCount > 1000 ? `${(reviewCount / 1000).toFixed(1)}k` : reviewCount.toLocaleString('en-US')}
                 </span>
               </div>
             )}
@@ -3207,7 +3207,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                               {operatorPremiumData.aggregatedStats.average_rating?.toFixed(1) || 'N/A'}
                             </span>
                             <span className="text-gray-600 ml-1">
-                              ({operatorPremiumData.aggregatedStats.total_reviews?.toLocaleString() || 0} reviews across {operatorPremiumData.aggregatedStats.total_tours_count || 0} tours)
+                              ({operatorPremiumData.aggregatedStats.total_reviews?.toLocaleString('en-US') || 0} reviews across {operatorPremiumData.aggregatedStats.total_tours_count || 0} tours)
                             </span>
                           </div>
                         </div>
@@ -3597,7 +3597,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-gray-600">Total Reviews Across All Tours</span>
                     <span className="font-semibold text-gray-900">
-                      {operatorPremiumData.aggregatedStats.total_reviews?.toLocaleString() || 0}
+                      {operatorPremiumData.aggregatedStats.total_reviews?.toLocaleString('en-US') || 0}
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-sm mt-2">

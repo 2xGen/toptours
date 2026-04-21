@@ -347,8 +347,7 @@ export async function getTourPromotionScore(productId) {
  */
 async function fetchTourMetadataAsync(productId) {
   try {
-    // Use same fallback pattern as other API routes
-    const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
+    const apiKey = process.env.VIATOR_API_KEY;
     
     if (!apiKey) {
       console.warn(`VIATOR_API_KEY not set, cannot fetch metadata for ${productId}`);

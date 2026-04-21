@@ -25,6 +25,44 @@ function normalizeSlug(s) {
     .replace(/^-|-$/g, '');
 }
 
+const WINDOW_MS = 60 * 1000;
+const MAX_REQUESTS_PER_WINDOW = 6;
+const ipWindowStore = new Map();
+
+function getClientIp(req) {
+  const forwardedFor = req.headers['x-forwarded-for'];
+  if (typeof forwardedFor === 'string' && forwardedFor.length > 0) {
+    return forwardedFor.split(',')[0].trim();
+  }
+  const realIp = req.headers['x-real-ip'];
+  if (typeof realIp === 'string' && realIp.length > 0) return realIp.trim();
+  return 'unknown';
+}
+
+function passRateLimit(ip) {
+  const now = Date.now();
+  const existing = ipWindowStore.get(ip);
+  if (!existing || now - existing.startedAt > WINDOW_MS) {
+    ipWindowStore.set(ip, { count: 1, startedAt: now });
+    return true;
+  }
+  existing.count += 1;
+  return existing.count <= MAX_REQUESTS_PER_WINDOW;
+}
+
+function isSameOriginRequest(req) {
+  const host = req.headers.host;
+  const origin = req.headers.origin;
+  const referer = req.headers.referer;
+  try {
+    if (origin && new URL(origin).host === host) return true;
+  } catch {}
+  try {
+    if (referer && new URL(referer).host === host) return true;
+  } catch {}
+  return false;
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', ['POST']);
@@ -32,6 +70,20 @@ export default async function handler(req, res) {
   }
 
   try {
+    const internalApiKey = process.env.INTERNAL_API_KEY;
+    const providedInternalApiKey = req.headers['x-internal-api-key'];
+    const hasValidInternalKey = Boolean(
+      internalApiKey && providedInternalApiKey && providedInternalApiKey === internalApiKey
+    );
+    if (!hasValidInternalKey && !isSameOriginRequest(req)) {
+      return res.status(403).json({ error: 'Forbidden' });
+    }
+
+    const ip = getClientIp(req);
+    if (!hasValidInternalKey && !passRateLimit(ip)) {
+      return res.status(429).json({ error: 'Too many requests' });
+    }
+
     const { destinationId, tagSlug } = req.body || {};
     if (!destinationId || !tagSlug) {
       return res.status(400).json({ error: 'destinationId and tagSlug are required' });

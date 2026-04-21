@@ -366,8 +366,8 @@ export default function DestinationDetailClient({ destination, promotionScores =
       icon: MapPin,
       iconGradient: 'from-blue-500 to-blue-600',
       title: 'Tours & Activities',
-      description: `Discover ${totalToursCount ? `${totalToursCount.toLocaleString()}+` : '1,900+'} top-rated tours and activities in ${destName}. From cultural experiences to adventure tours, find the perfect activity for your trip.`,
-      badge: totalToursCount ? `${totalToursCount.toLocaleString()}+ tours` : null,
+      description: `Discover ${totalToursCount ? `${totalToursCount.toLocaleString('en-US')}+` : '1,900+'} top-rated tours and activities in ${destName}. From cultural experiences to adventure tours, find the perfect activity for your trip.`,
+      badge: totalToursCount ? `${totalToursCount.toLocaleString('en-US')}+ tours` : null,
       ctaText: 'Browse tours & prices',
       ctaColorClass: 'text-blue-600',
     });
@@ -1082,7 +1082,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                       className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20 hover:bg-white/20 transition-all group"
                     >
                       <div className="text-2xl sm:text-3xl font-bold text-white mb-1">
-                        {totalToursCount ? `${totalToursCount.toLocaleString()}+` : '1,900+'}
+                        {totalToursCount ? `${totalToursCount.toLocaleString('en-US')}+` : '1,900+'}
                       </div>
                       <div className="text-xs sm:text-sm text-white/80">Tours</div>
                           </Link>
@@ -1213,7 +1213,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                     className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20 hover:bg-white/20 transition-all group text-center w-[140px]"
                   >
                     <div className="text-2xl sm:text-3xl font-bold text-white mb-1">
-                      {totalToursCount ? `${totalToursCount.toLocaleString()}+` : '1,900+'}
+                      {totalToursCount ? `${totalToursCount.toLocaleString('en-US')}+` : '1,900+'}
                     </div>
                     <div className="text-xs sm:text-sm text-white/80">Tours</div>
                   </Link>
@@ -1295,7 +1295,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
               >
                 <span>Tours</span>
                 <Badge variant="secondary" className="bg-blue-100 text-blue-700">
-                  {totalToursCount ? `${totalToursCount.toLocaleString()}+` : '1,900+'}
+                  {totalToursCount ? `${totalToursCount.toLocaleString('en-US')}+` : '1,900+'}
                 </Badge>
               </Link>
               {categoryGuidesProp.length > 0 && (
@@ -1558,7 +1558,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                 {totalToursCount != null && totalToursCount > 0 && (
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-white border border-gray-200 px-3 py-1.5 shadow-sm">
                     <MapPin className="w-4 h-4 text-blue-600" aria-hidden />
-                    {totalToursCount.toLocaleString()}+ bookable tours
+                    {totalToursCount.toLocaleString('en-US')}+ bookable tours
                   </span>
                 )}
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-white border border-gray-200 px-3 py-1.5 shadow-sm">
@@ -1659,7 +1659,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   >
                     <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/tours`}>
                       {totalToursCount !== null && totalToursCount > 0 
-                        ? `Browse all ${totalToursCount.toLocaleString()} tours & filters`
+                        ? `Browse all ${totalToursCount.toLocaleString('en-US')} tours & filters`
                         : `Browse all tours & filters`
                       }
                       <ArrowRight className="w-5 h-5 ml-2" />
@@ -2133,7 +2133,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                                 <>
                                   <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
                                   <span className="font-medium">{rating.toFixed(1)}</span>
-                                  <span className="text-gray-500">({reviews.toLocaleString()})</span>
+                                  <span className="text-gray-500">({reviews.toLocaleString('en-US')})</span>
                                 </>
                               ) : (
                                 <span className="text-gray-500">No rating yet</span>

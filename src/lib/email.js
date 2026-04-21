@@ -130,7 +130,7 @@ export async function sendInstantBoostConfirmationEmail({
     const { data, error } = await resend.emails.send({
       from: `${FROM_NAME} <${FROM_EMAIL}>`,
       to: [to],
-      subject: `Your instant boost is live! ${points.toLocaleString()} points added`,
+      subject: `Your instant boost is live! ${points.toLocaleString('en-US')} points added`,
       html: `
         <!DOCTYPE html>
         <html>
@@ -149,7 +149,7 @@ export async function sendInstantBoostConfirmationEmail({
               <div style="background: white; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #f59e0b;">
                 <h2 style="margin-top: 0; color: #f59e0b;">Boost Details</h2>
                 <p style="margin: 10px 0;"><strong>${itemLabel}:</strong> ${itemName}</p>
-                <p style="margin: 10px 0;"><strong>Points Added:</strong> ${points.toLocaleString()}</p>
+                <p style="margin: 10px 0;"><strong>Points Added:</strong> ${points.toLocaleString('en-US')}</p>
                 <p style="margin: 10px 0;"><strong>Status:</strong> <span style="color: #10b981; font-weight: 600;">✓ Live on leaderboard</span></p>
               </div>
               

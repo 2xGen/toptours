@@ -2322,15 +2322,15 @@ export default function ToursListingClient({
               <p className="text-gray-600" suppressHydrationWarning>
                 Showing <span className="font-semibold text-gray-800">{filteredTours.length}</span>
                 {!isSearching && !isFiltered && totalToursAvailable > 0 && (
-                  <span> of {totalToursAvailable.toLocaleString()}+</span>
+                  <span> of {totalToursAvailable.toLocaleString('en-US')}+</span>
                 )}
                 {' tours'}
                 {isSearching && ' (searched from all available tours)'}
                 {isFiltered && !isSearching && filteredTotalCount > 0 && (
-                  <span> (filtered from {filteredTotalCount.toLocaleString()}+ available tours)</span>
+                  <span> (filtered from {filteredTotalCount.toLocaleString('en-US')}+ available tours)</span>
                 )}
                 {isFiltered && !isSearching && filteredTotalCount === 0 && totalToursAvailable > 0 && (
-                  <span> (filtered from {totalToursAvailable.toLocaleString()}+ available tours)</span>
+                  <span> (filtered from {totalToursAvailable.toLocaleString('en-US')}+ available tours)</span>
                 )}
                 {isFiltered && !isSearching && filteredTotalCount === 0 && totalToursAvailable === 0 && ' (filtered from all available tours)'}
                 {!isSearching && !isFiltered && hasActiveFilters && ' matching your criteria'}
@@ -2498,7 +2498,7 @@ export default function ToursListingClient({
                         Loading more tours...
                       </>
                     ) : (
-                      `Load More Tours (${filteredTours.length} of ${filteredTotalCount > 0 ? filteredTotalCount.toLocaleString() : 'many'}+)`
+                      `Load More Tours (${filteredTours.length} of ${filteredTotalCount > 0 ? filteredTotalCount.toLocaleString('en-US') : 'many'}+)`
                     )}
                   </Button>
                 </div>
@@ -2519,7 +2519,7 @@ export default function ToursListingClient({
                         Loading more tours...
                       </>
                     ) : (
-                      `Load More Tours (${regularTours.length + featuredTours.length} of ${totalToursAvailable > 0 ? totalToursAvailable.toLocaleString() : 'many'}+)`
+                      `Load More Tours (${regularTours.length + featuredTours.length} of ${totalToursAvailable > 0 ? totalToursAvailable.toLocaleString('en-US') : 'many'}+)`
                     )}
                   </Button>
                 </div>
@@ -2540,7 +2540,7 @@ export default function ToursListingClient({
                         Loading more results...
                       </>
                     ) : (
-                      `Load More Results (${searchResults.length} of ${searchTotalCount > 0 ? searchTotalCount.toLocaleString() : 'many'}+)`
+                      `Load More Results (${searchResults.length} of ${searchTotalCount > 0 ? searchTotalCount.toLocaleString('en-US') : 'many'}+)`
                     )}
                   </Button>
                 </div>

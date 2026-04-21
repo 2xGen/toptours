@@ -58,7 +58,7 @@ export default function DestinationStickyNav({
             <span>{toursLinkText || 'Tours'}</span>
             {showCounts && tourCount !== null && (
               <Badge variant="secondary" className="bg-blue-100 text-blue-700">
-                {tourCount.toLocaleString()}+
+                {tourCount.toLocaleString('en-US')}+
               </Badge>
             )}
           </Link>

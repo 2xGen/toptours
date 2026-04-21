@@ -18,6 +18,7 @@ import { getRestaurantPremiumSubscription } from '@/lib/restaurantPremiumServer'
 import { getAllCategoryGuidesForDestination } from '../../lib/categoryGuides';
 import { getDestinationFeatures } from '@/lib/destinationFeatures';
 import { isLowValueGuideTag } from '@/lib/guideIndexing';
+import { cache } from 'react';
 
 // Old restaurant slugs with their expected names for fuzzy matching
 const OLD_RESTAURANT_REDIRECTS = {
@@ -78,21 +79,23 @@ function excerpt(value, max = 180) {
   return `${text.slice(0, max - 1).trimEnd()}...`;
 }
 
-export async function generateMetadata({ params }) {
-  const { id: destinationId, restaurant: restaurantSlug } = await params;
+const getRestaurantPageSeed = cache(async (destinationId, restaurantSlug) => {
   const destination = resolveDestinationById(destinationId);
-  
-  // Try database first, fallback to static files
   let restaurant = await getRestaurantBySlugFromDB(destinationId, restaurantSlug);
   if (restaurant) {
     restaurant = formatRestaurantForFrontend(restaurant);
-    // Guard against bad source rows that were assigned to the wrong destination.
     if (!isRestaurantLikelyInDestination(restaurant, destination)) {
       restaurant = null;
     }
   } else {
     restaurant = getRestaurantBySlugFromStatic(destinationId, restaurantSlug);
   }
+  return { destination, restaurant };
+});
+
+export async function generateMetadata({ params }) {
+  const { id: destinationId, restaurant: restaurantSlug } = await params;
+  const { destination, restaurant } = await getRestaurantPageSeed(destinationId, restaurantSlug);
 
   if (!destination || !restaurant) {
     return {
@@ -110,7 +113,7 @@ export async function generateMetadata({ params }) {
   const rating = restaurant.ratings?.googleRating;
   const reviewCount = restaurant.ratings?.reviewCount || 0;
   const ratingText = rating ? `${rating.toFixed(1)}-star rating` : '';
-  const reviewText = reviewCount > 0 ? `${reviewCount.toLocaleString()} reviews` : '';
+  const reviewText = reviewCount > 0 ? `${reviewCount.toLocaleString('en-US')} reviews` : '';
   const ratingInfo = ratingText && reviewText ? ` (${ratingText}, ${reviewText})` : ratingText ? ` (${ratingText})` : reviewText ? ` (${reviewText})` : '';
   
   const metaDescription =
@@ -184,20 +187,7 @@ export async function generateStaticParams() {
 
 export default async function RestaurantPage({ params }) {
   const { id: destinationId, restaurant: restaurantSlug } = await params;
-
-  const destination = resolveDestinationById(destinationId);
-  
-  // Try database first, fallback to static files
-  let restaurant = await getRestaurantBySlugFromDB(destinationId, restaurantSlug);
-  if (restaurant) {
-    restaurant = formatRestaurantForFrontend(restaurant);
-    // Guard against bad source rows that were assigned to the wrong destination.
-    if (!isRestaurantLikelyInDestination(restaurant, destination)) {
-      restaurant = null;
-    }
-  } else {
-    restaurant = getRestaurantBySlugFromStatic(destinationId, restaurantSlug);
-  }
+  const { destination, restaurant } = await getRestaurantPageSeed(destinationId, restaurantSlug);
 
   // If restaurant not found in database OR static files, check if it's an old restaurant
   if (!restaurant && destination) {

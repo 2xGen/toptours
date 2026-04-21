@@ -14,6 +14,21 @@ const URLS_PER_SITEMAP = 10000; // Reduced from 45k to prevent Vercel timeout
 
 export async function GET() {
   try {
+    // Tour detail pages are currently noindex, so publishing huge tour sitemaps creates
+    // expensive crawl traffic without SEO benefit. Keep disabled by default.
+    if (process.env.ENABLE_TOUR_SITEMAP !== 'true') {
+      const emptyIndex = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+</sitemapindex>`;
+      return new NextResponse(emptyIndex, {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/xml',
+          'Cache-Control': 'public, s-maxage=86400, stale-while-revalidate=604800',
+        },
+      });
+    }
+
     const baseUrl = getSiteOrigin();
     const totalTours = await getTourSitemapCount();
     const numSitemaps = Math.ceil(totalTours / URLS_PER_SITEMAP);
@@ -23,8 +38,8 @@ export async function GET() {
     let sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Tour Sitemap Index -->
-  <!-- Total Tours: ${totalTours.toLocaleString()} -->
-  <!-- Sitemaps: ${numSitemaps} (${URLS_PER_SITEMAP.toLocaleString()} URLs each) -->
+  <!-- Total Tours: ${totalTours.toLocaleString('en-US')} -->
+  <!-- Sitemaps: ${numSitemaps} (${URLS_PER_SITEMAP.toLocaleString('en-US')} URLs each) -->
   <!-- lastmod: ${lastmod} (generation date) -->
 `;
     for (let i = 0; i < numSitemaps; i++) {

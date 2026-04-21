@@ -212,7 +212,7 @@ export default function PromotionExplainerModal({ isOpen, onClose }) {
                               <div className="text-center mb-4">
                                 <div className="text-4xl mb-2">{planEmojis[planKey]}</div>
                                 <h4 className="text-xl font-bold text-gray-900 mb-1">{plan.planName}</h4>
-                                <p className="text-xs text-gray-600">{plan.dailyPoints.toLocaleString()} points/day</p>
+                                <p className="text-xs text-gray-600">{plan.dailyPoints.toLocaleString('en-US')} points/day</p>
                               </div>
 
                               <div className="text-center mb-4 pb-4 border-b border-gray-200">
@@ -230,7 +230,7 @@ export default function PromotionExplainerModal({ isOpen, onClose }) {
                                 <li className="flex items-start gap-2">
                                   <span className="text-orange-600 font-bold mt-0.5">✓</span>
                                   <span className="text-gray-700">
-                                    <strong className="text-gray-900">{plan.dailyPoints.toLocaleString()} points/day</strong>
+                                    <strong className="text-gray-900">{plan.dailyPoints.toLocaleString('en-US')} points/day</strong>
                                   </span>
                                 </li>
                                 <li className="flex items-start gap-2">
@@ -285,7 +285,7 @@ export default function PromotionExplainerModal({ isOpen, onClose }) {
                           >
                             <div className="text-center mb-4">
                               <div className="text-3xl font-extrabold text-gray-900 mb-2">
-                                {packageInfo.points.toLocaleString()} points
+                                {packageInfo.points.toLocaleString('en-US')} points
                               </div>
                               {savings && (
                                 <span className="inline-block px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold mb-2">

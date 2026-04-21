@@ -1,7 +1,123 @@
+const WINDOW_MS = 60 * 1000;
+const MAX_REQUESTS_PER_WINDOW = 20;
+const ipWindowStore = new Map();
+
+const ALLOWED_BOTS = [/googlebot/i, /googleother/i, /google-adsbot/i, /bingbot/i, /duckduckbot/i];
+const BLOCKED_BOTS = [
+  /ahrefsbot/i,
+  /semrushbot/i,
+  /mj12bot/i,
+  /dotbot/i,
+  /petalbot/i,
+  /bytespider/i,
+  /ccbot/i,
+  /megaindex/i,
+  /seznambot/i,
+  /claudebot/i,
+  /gptbot/i,
+  /chatgpt-user/i,
+  /cohere-ai/i,
+  /perplexitybot/i,
+];
+const CRAWLER_SIGNATURES = /bot|crawler|spider|crawl|scrapy|slurp|archiver/i;
+
+function botIsAllowed(userAgent = '') {
+  return ALLOWED_BOTS.some((pattern) => pattern.test(userAgent));
+}
+
+function botIsBlocked(userAgent = '') {
+  const allow = botIsAllowed(userAgent);
+  if (allow) return false;
+  return BLOCKED_BOTS.some((pattern) => pattern.test(userAgent));
+}
+
+function isNonAllowlistedCrawler(userAgent = '') {
+  if (botIsAllowed(userAgent)) return false;
+  return CRAWLER_SIGNATURES.test(userAgent);
+}
+
+function getClientIp(req) {
+  const forwardedFor = req.headers['x-forwarded-for'];
+  if (typeof forwardedFor === 'string' && forwardedFor.length > 0) {
+    return forwardedFor.split(',')[0].trim();
+  }
+
+  const realIp = req.headers['x-real-ip'];
+  if (typeof realIp === 'string' && realIp.length > 0) {
+    return realIp.trim();
+  }
+
+  return 'unknown';
+}
+
+function passRateLimit(ip) {
+  const now = Date.now();
+  const existing = ipWindowStore.get(ip);
+
+  if (!existing || now - existing.startedAt > WINDOW_MS) {
+    ipWindowStore.set(ip, { count: 1, startedAt: now });
+    return true;
+  }
+
+  existing.count += 1;
+  return existing.count <= MAX_REQUESTS_PER_WINDOW;
+}
+
+function isSameOriginRequest(req) {
+  const host = req.headers.host;
+  const secFetchSite = req.headers['sec-fetch-site'];
+  if (secFetchSite === 'same-origin' || secFetchSite === 'same-site') {
+    return true;
+  }
+
+  const origin = req.headers.origin;
+  if (origin) {
+    try {
+      if (new URL(origin).host === host) return true;
+    } catch {}
+  }
+
+  const referer = req.headers.referer;
+  if (referer) {
+    try {
+      if (new URL(referer).host === host) return true;
+    } catch {}
+  }
+
+  return false;
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', ['POST']);
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  const userAgent = req.headers['user-agent'] || '';
+  if (
+    botIsBlocked(userAgent) ||
+    isNonAllowlistedCrawler(userAgent) ||
+    /amazonbot|meta-external|meta-webindexer|oai-searchbot|chatgpt-user|perplexity-user|seranking|ahrefs|semrush|petalbot|baiduspider|qwantbot|applebot|yandexbot/i.test(
+      userAgent
+    )
+  ) {
+    return res.status(403).json({ error: 'Forbidden' });
+  }
+
+  const internalApiKey = process.env.INTERNAL_API_KEY;
+  const requestInternalApiKey = req.headers['x-internal-api-key'];
+  const hasValidInternalApiKey = Boolean(
+    internalApiKey && requestInternalApiKey && requestInternalApiKey === internalApiKey
+  );
+  const sameOrigin = isSameOriginRequest(req);
+
+  if (internalApiKey && !hasValidInternalApiKey && !sameOrigin) {
+    return res.status(403).json({ error: 'Forbidden' });
+  }
+
+  const ip = getClientIp(req);
+  if (!sameOrigin && !hasValidInternalApiKey && !passRateLimit(ip)) {
+    return res.status(429).json({ error: 'Too many requests' });
   }
 
   try {
@@ -15,8 +131,8 @@ export default async function handler(req, res) {
       // No caching for search requests - always get fresh results
       res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
     } else {
-      // Cache destination-only requests (initial page load) for performance
-      res.setHeader('Cache-Control', 'public, s-maxage=1800, stale-while-revalidate=3600');
+      // Cache destination-only requests aggressively to minimize repeat function work/cost.
+      res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=604800');
     }
     const {
       destination,
@@ -31,7 +147,7 @@ export default async function handler(req, res) {
       tagIds = body.tagIds || [],
     } = body;
 
-    const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
+    const apiKey = process.env.VIATOR_API_KEY;
 
     if (!apiKey) {
       return res.status(500).json({ error: 'API key not configured' });

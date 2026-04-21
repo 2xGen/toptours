@@ -525,7 +525,7 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                     <span className="font-medium text-white">{restaurant.ratings.googleRating.toFixed(1)}</span>
                     {restaurant.ratings.reviewCount && (
                       <span className="text-white/70">
-                        ({restaurant.ratings.reviewCount.toLocaleString()})
+                        ({restaurant.ratings.reviewCount.toLocaleString('en-US')})
                       </span>
                     )}
                   </span>
@@ -1109,7 +1109,7 @@ export default function RestaurantDetailClient({ destination, restaurant, otherR
                       </span>
                       {restaurant.ratings.reviewCount && (
                         <span className="text-sm text-blue-600/80">
-                          ({restaurant.ratings.reviewCount.toLocaleString()} reviews)
+                          ({restaurant.ratings.reviewCount.toLocaleString('en-US')} reviews)
                         </span>
                       )}
                       {restaurant.reviewsUri && (

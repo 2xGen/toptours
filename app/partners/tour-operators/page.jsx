@@ -1147,13 +1147,13 @@ function TourOperatorsPartnerPageContent() {
                                   <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
                                   <span className="font-semibold">{tourData.rating.toFixed(1)}</span>
                                   {tourData.reviewCount > 0 && (
-                                    <span>({tourData.reviewCount.toLocaleString()} reviews)</span>
+                                    <span>({tourData.reviewCount.toLocaleString('en-US')} reviews)</span>
                                   )}
                                 </div>
                               )}
                               {tourData.price > 0 && (
                                 <div className="font-semibold text-orange-600">
-                                  From ${tourData.price.toLocaleString()}
+                                  From ${tourData.price.toLocaleString('en-US')}
                                 </div>
                               )}
                             </div>
@@ -1821,7 +1821,7 @@ function TourOperatorsPartnerPageContent() {
                                     </div>
                                   )}
                                   {tour.reviewCount > 0 && (
-                                    <span>({tour.reviewCount.toLocaleString()} reviews)</span>
+                                    <span>({tour.reviewCount.toLocaleString('en-US')} reviews)</span>
                                   )}
                                   <a
                                     href={tour.toptoursUrl}

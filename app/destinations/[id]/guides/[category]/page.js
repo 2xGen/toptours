@@ -18,6 +18,19 @@ import { isLowValueGuideTag } from '@/lib/guideIndexing';
 
 /** ISR: 30 days — keep in sync with src/lib/guideSectionCacheConfig.js (Next requires a numeric literal here). */
 export const revalidate = 2592000;
+const IS_DEV = process.env.NODE_ENV === 'development';
+
+function devLog(...args) {
+  if (IS_DEV) console.log(...args);
+}
+
+function devWarn(...args) {
+  if (IS_DEV) console.warn(...args);
+}
+
+function devError(...args) {
+  if (IS_DEV) console.error(...args);
+}
 
 // Function to fetch all guides for a destination from database
 // NOTE: This function is no longer used - we use getAllCategoryGuidesForDestination instead
@@ -117,7 +130,7 @@ async function getGuideFromDatabase(destinationId, categorySlug) {
         return null;
       }
       // Other errors - log but don't throw
-      console.warn(`Database error for ${destinationId}/${categorySlug}:`, error.message);
+      devWarn(`Database error for ${destinationId}/${categorySlug}:`, error.message);
       return null;
     }
     
@@ -126,8 +139,8 @@ async function getGuideFromDatabase(destinationId, categorySlug) {
     }
     
     // Mark that this came from database
-    console.log(`✅ [DATABASE] Found guide for ${destinationId}/${categorySlug} in database`);
-    console.log(`📊 [DATABASE] Guide title: ${data.title || 'N/A'}`);
+    devLog(`✅ [DATABASE] Found guide for ${destinationId}/${categorySlug} in database`);
+    devLog(`📊 [DATABASE] Guide title: ${data.title || 'N/A'}`);
     
     // Convert database format to frontend format
     // Parse JSON strings if they're strings (Supabase returns JSONB as objects, but sometimes as strings)
@@ -396,7 +409,7 @@ export async function generateMetadata({ params }) {
           },
     };
   } catch (error) {
-    console.error('Error in generateMetadata:', error);
+    devError('Error in generateMetadata:', error);
     return {
       title: 'Guide Not Found',
       robots: {
@@ -436,9 +449,9 @@ export default async function CategoryGuidePage({ params }) {
     let guideSource = 'database';
     
     if (!guideData) {
-      console.log(`⚠️ [SERVER] No guide found in database for ${destinationId}/${categorySlug}`);
+      devLog(`⚠️ [SERVER] No guide found in database for ${destinationId}/${categorySlug}`);
     } else {
-      console.log(`✅ [SERVER] Found guide in database for ${destinationId}/${categorySlug}`);
+      devLog(`✅ [SERVER] Found guide in database for ${destinationId}/${categorySlug}`);
     }
     
     // STEP 2: Try to get destination (destinationsData.js first, then generated content)
@@ -465,10 +478,10 @@ export default async function CategoryGuidePage({ params }) {
             heroDescription: fullContent.heroDescription || null,
             seo: fullContent.seo || null,
           };
-          console.log(`✅ Found full destination data from generated content: ${destinationId} -> ${destination.name}`);
+          devLog(`✅ Found full destination data from generated content: ${destinationId} -> ${destination.name}`);
         }
       } catch (error) {
-        console.warn(`Error getting destination full content for ${destinationId}:`, error.message);
+        devWarn(`Error getting destination full content for ${destinationId}:`, error.message);
       }
     }
     
@@ -499,7 +512,7 @@ export default async function CategoryGuidePage({ params }) {
         whyVisit: [],
         highlights: [],
       };
-      console.log(`⚠️ Created minimal destination for ${destinationId}: ${destinationName} (no generated content found)`);
+      devLog(`⚠️ Created minimal destination for ${destinationId}: ${destinationName} (no generated content found)`);
     }
 
     // Featured static partner guide: Kiliclimb Africa Safaris (Arusha) — before tag placeholders
@@ -642,7 +655,7 @@ export default async function CategoryGuidePage({ params }) {
         ]
       };
       guideSource = 'default';
-      console.log(`✅ [SERVER] Created default airport transfers guide for ${destinationId}`);
+      devLog(`✅ [SERVER] Created default airport transfers guide for ${destinationId}`);
     }
     
     // SEO: 404 placeholder guides (no real content) so they don't inflate "Excluded by noindex" in GSC
@@ -653,13 +666,13 @@ export default async function CategoryGuidePage({ params }) {
     
     // Final check
     if (!destination || !guideData) {
-      console.error(`❌ Cannot render page: destination=${!!destination}, guideData=${!!guideData}`);
+      devError(`❌ Cannot render page: destination=${!!destination}, guideData=${!!guideData}`);
       notFound();
     }
     
-    console.log(`✅ Rendering guide: ${destination.name} - ${guideData.title}`);
-    console.log(`📊 GUIDE SOURCE: ${guideSource.toUpperCase()} ${guideSource === 'database' ? '✅ (from database - migrated)' : '⚠️ (from hardcoded JSON - not migrated)'}`);
-    console.log('Guide data structure:', {
+    devLog(`✅ Rendering guide: ${destination.name} - ${guideData.title}`);
+    devLog(`📊 GUIDE SOURCE: ${guideSource.toUpperCase()} ${guideSource === 'database' ? '✅ (from database - migrated)' : '⚠️ (from hardcoded JSON - not migrated)'}`);
+    devLog('Guide data structure:', {
       hasTitle: !!guideData.title,
       hasSubtitle: !!guideData.subtitle,
       hasSeo: !!guideData.seo,
@@ -675,13 +688,20 @@ export default async function CategoryGuidePage({ params }) {
   try {
     allAvailableGuides = await getAllCategoryGuidesForDestination(destinationId);
   } catch (error) {
-    console.error('Error fetching category guides for guide page:', error);
+    devError('Error fetching category guides for guide page:', error);
     // Fallback to empty array
     allAvailableGuides = [];
   }
   
   // Also create slugs array for backward compatibility
-  const allAvailableGuideSlugs = allAvailableGuides.map(g => g.category_slug).filter(Boolean);
+  const lightweightAllAvailableGuides = (allAvailableGuides || []).map((guide) => ({
+    category_slug: guide.category_slug || null,
+    category_name: guide.category_name || null,
+    title: guide.title || null,
+    subtitle: guide.subtitle || null,
+    hero_image: guide.hero_image || null,
+  }));
+  const allAvailableGuideSlugs = lightweightAllAvailableGuides.map(g => g.category_slug).filter(Boolean);
 
   // Viator destination ID for "Load tours" (product search by destination and optionally tag)
   const { getViatorDestinationBySlugCached } = await import('@/lib/supabaseCache');
@@ -814,28 +834,6 @@ export default async function CategoryGuidePage({ params }) {
           }
         }))
       }] : []),
-      // Related Travel Guides List Schema - Other category guides for this destination
-      ...(allAvailableGuides && allAvailableGuides.length > 0 ? [{
-        '@type': 'ItemList',
-        name: `Related Travel Guides for ${destination.name}`,
-        description: `Explore comprehensive guides to plan your perfect trip to ${destination.name}, including other popular tour categories and travel experiences`,
-        numberOfItems: Math.min(allAvailableGuides.length, 6), // Max 6 related guides shown
-        itemListElement: allAvailableGuides
-          .filter(guide => guide.category_slug !== categorySlug) // Exclude current guide
-          .slice(0, 6) // Show up to 6 other guides
-          .map((guide, index) => ({
-            '@type': 'ListItem',
-            position: index + 1,
-            item: {
-              '@type': 'Article',
-              '@id': `https://toptours.ai/destinations/${destinationId}/guides/${guide.category_slug}`,
-              name: guide.title || guide.category_name,
-              description: guide.subtitle || `Discover ${guide.category_name} in ${destination.name}`,
-              image: guide.hero_image || destination.imageUrl,
-              url: `https://toptours.ai/destinations/${destinationId}/guides/${guide.category_slug}`
-          }
-        }))
-      }] : []),
     ],
   };
 
@@ -852,7 +850,7 @@ export default async function CategoryGuidePage({ params }) {
         categoryTours={categoryTours}
         promotionScores={promotionScores}
         availableGuideSlugs={allAvailableGuideSlugs}
-        allAvailableGuides={allAvailableGuides}
+        allAvailableGuides={lightweightAllAvailableGuides}
         destinationFeatures={features}
         viatorDestinationId={viatorDestinationId}
         tagId={resolvedTagId}
@@ -862,22 +860,14 @@ export default async function CategoryGuidePage({ params }) {
           name: destination.name,
           fullName: destination.fullName || destination.name,
           imageUrl: destination.imageUrl || null,
-          country: destination.country || null,
           category: destination.category || null,
-          tourCategories: destination.tourCategories || [],
-          bestTimeToVisit: destination.bestTimeToVisit || null,
           gettingAround: destination.gettingAround || null,
-          whyVisit: destination.whyVisit || [],
-          highlights: destination.highlights || [],
-          briefDescription: destination.briefDescription || null,
-          heroDescription: destination.heroDescription || null,
-          seo: destination.seo || null,
         }}
       />
     </>
   );
   } catch (error) {
-    console.error('Error in CategoryGuidePage:', error);
+    devError('Error in CategoryGuidePage:', error);
     notFound();
   }
 }

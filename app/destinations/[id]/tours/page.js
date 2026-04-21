@@ -13,8 +13,8 @@ import { getDestinationSeoContent } from '@/data/destinationSeoContent';
 import { hasDestinationPage, getDestinationFullContent } from '@/data/destinationFullContent';
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { getDestinationFeatures } from '@/lib/destinationFeatures';
-import { headers } from 'next/headers';
-import { absoluteUrl } from '@/lib/siteUrl';
+import { absoluteUrl, getSiteOrigin } from '@/lib/siteUrl';
+import { unstable_cache } from 'next/cache';
 
 // Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
 export const revalidate = 604800; // 7 days - increased to reduce ISR writes during Google reindexing
@@ -443,6 +443,46 @@ function generateSlug(name) {
     .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
 }
 
+const getCachedDestinationToursPageOne = unstable_cache(
+  async (viatorDestinationId) => {
+    if (!viatorDestinationId) {
+      return { tours: [], totalCount: 0 };
+    }
+
+    const baseUrl = getSiteOrigin();
+    const internalHeaders = { 'Content-Type': 'application/json' };
+    if (process.env.INTERNAL_API_KEY) {
+      internalHeaders['x-internal-api-key'] = process.env.INTERNAL_API_KEY;
+    }
+
+    const requestBody = {
+      searchTerm: '',
+      page: 1,
+      viatorDestinationId: String(viatorDestinationId),
+      includeDestination: true,
+    };
+
+    const response = await fetch(`${baseUrl}/api/internal/viator-search`, {
+      method: 'POST',
+      headers: internalHeaders,
+      body: JSON.stringify(requestBody),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text().catch(() => '');
+      throw new Error(`Failed to fetch destination tours: ${response.status} ${errorText}`);
+    }
+
+    const data = await response.json();
+    return {
+      tours: data.products?.results || data.tours || [],
+      totalCount: data.products?.totalCount || (data.products?.results || data.tours || []).length || 0,
+    };
+  },
+  ['destination-tours-page-one'],
+  { revalidate: 86400, tags: ['destination-tours'] }
+);
+
 /**
  * Tours listing page for a destination
  */
@@ -674,59 +714,11 @@ export default async function ToursListingPage({ params }) {
   let dynamicTours = [];
   let totalToursAvailable = 0;
   try {
-    // EXACT same variable names and logic as DestinationDetailClient.jsx line 400-401
-    const destinationName = destination.fullName || destination.name || destination.destinationName || destination.id;
     const viatorDestinationId = destination.destinationId || destination.viatorDestinationId;
-    
-    // Prefer env baseUrl so we avoid headers() and allow static/ISR; fallback to request host for same-origin fetch.
-    let baseUrl = process.env.NEXT_PUBLIC_BASE_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null);
-    if (!baseUrl) {
-      const headersList = await headers();
-      const host = headersList.get('host') || 'localhost:3000';
-      baseUrl = `${process.env.NODE_ENV === 'production' ? 'https' : 'http'}://${host}`;
-    }
-
-    // Use /products/search endpoint (standard approach) when we have destination ID and no search term
-    // This is 100% accurate for all 3300+ destinations
-    let requestBody = {
-      searchTerm: '', // No search term - use /products/search endpoint
-      page: 1,
-      viatorDestinationId: viatorDestinationId ? String(viatorDestinationId) : null,
-      includeDestination: !!viatorDestinationId // Use /products/search when destination ID is available
-    };
-
-    // EXACT same fetch call as DestinationDetailClient.jsx line 423-429
-    // Cache allowed - our API route has 1h cache headers, and page has 24h cache
-    let response = await fetch(`${baseUrl}/api/internal/viator-search`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(requestBody),
-      next: { revalidate: 86400 }, // Cache for 24 hours - increased to reduce costs
-    });
-
-    if (!response.ok) {
-      let errorData = {};
-      try {
-        const text = await response.text();
-        try {
-          errorData = JSON.parse(text);
-        } catch {
-          errorData = { error: text || 'Unknown error', raw: text };
-        }
-      } catch (e) {
-        errorData = { error: 'Failed to parse error response', details: e.message };
-      }
-      
-      const errorMessage = errorData.error || errorData.details || errorData.message || `HTTP ${response.status}`;
-      throw new Error(`Failed to fetch tours: ${response.status} - ${errorMessage}`);
-    }
-
-    // EXACT same data extraction as DestinationDetailClient.jsx line 454-458
-    const data = await response.json();
-    const allTours = data.products?.results || data.tours || [];
-    totalToursAvailable = data.products?.totalCount || allTours.length || 0; // Fix: assign to outer variable, don't declare new one
+    const { tours: allTours, totalCount } = await getCachedDestinationToursPageOne(
+      viatorDestinationId ? String(viatorDestinationId) : null
+    );
+    totalToursAvailable = totalCount;
     
     // COMPLIANCE: Only fetch page 1 on initial load (max 50 products per Viator rules)
     // Client-side will handle pagination when users click "Load More" or "Next Page"
@@ -736,14 +728,11 @@ export default async function ToursListingPage({ params }) {
     const seenTourIds = new Set();
     
     // Process only the first page (user-driven pagination happens client-side)
-    if (data && !data.error) {
-      const tours = data.products?.results || [];
-      for (const tour of tours) {
-        const tourId = tour.productId || tour.productCode;
-        if (tourId && !seenTourIds.has(tourId)) {
-          seenTourIds.add(tourId);
-          allToursList.push(tour);
-        }
+    for (const tour of allTours) {
+      const tourId = tour.productId || tour.productCode;
+      if (tourId && !seenTourIds.has(tourId)) {
+        seenTourIds.add(tourId);
+        allToursList.push(tour);
       }
     }
     

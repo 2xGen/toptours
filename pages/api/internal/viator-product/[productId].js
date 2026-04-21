@@ -20,7 +20,7 @@ export default async function handler(req, res) {
     if (useSupabaseCache()) data = await getCachedTour(productId);
     if (!data) {
       // Cache miss - fetch from Viator API
-      const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
+      const apiKey = process.env.VIATOR_API_KEY;
 
       if (!apiKey) {
         return res.status(500).json({ error: 'API key not configured' });

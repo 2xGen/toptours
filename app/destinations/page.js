@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import DestinationsPageClient from './DestinationsPageClient';
 import { absoluteUrl } from '@/lib/siteUrl';
+import { getDestinationSeoContent } from '@/data/destinationSeoContent';
 
 // Revalidate every 24 hours - listing page with mostly static data
 export const revalidate = 604800; // 7 days - increased to reduce ISR writes during Google reindexing
@@ -50,19 +51,68 @@ export async function generateMetadata() {
 }
 
 export default async function DestinationsPage() {
-  const [viatorDestinationsData, viatorDestinationsClassifiedData] = await Promise.all([
-    import('@/data/viatorDestinations.json').then(m => m.default),
+  const [viatorDestinationsClassifiedData, generatedFullContentData] = await Promise.all([
     import('@/data/viatorDestinationsClassified.json').then(m => m.default),
+    import('../../generated-destination-full-content.json').then(m => m.default),
   ]);
-  const viatorDestinations = Array.isArray(viatorDestinationsData) ? viatorDestinationsData : [];
-  const viatorDestinationsClassified = Array.isArray(viatorDestinationsClassifiedData) ? viatorDestinationsClassifiedData : [];
+  const rawClassified = Array.isArray(viatorDestinationsClassifiedData) ? viatorDestinationsClassifiedData : [];
+  const generatedContent = generatedFullContentData && typeof generatedFullContentData === 'object' ? generatedFullContentData : {};
+
+  // Send only fields actually used by DestinationsPageClient.
+  const viatorDestinationsClassified = rawClassified
+    .filter((dest) => {
+      const type = (dest?.type || '').toUpperCase();
+      return !type || type === 'CITY' || type === 'COUNTRY' || type === 'REGION';
+    })
+    .map((dest) => ({
+      destinationId: dest.destinationId || dest.id || null,
+      id: dest.id || dest.destinationId || null,
+      destinationName: dest.destinationName || dest.name || '',
+      name: dest.name || dest.destinationName || '',
+      region: dest.region || null,
+      country: dest.country || null,
+      type: dest.type || null,
+    }));
+
+  // Build a compact featured list server-side so client doesn't import the huge generated JSON.
+  const generatedDestinationsWithGuides = Object.entries(generatedContent)
+    .filter(([slug, content]) => {
+      const hasGuides = Array.isArray(content?.tourCategories)
+        && content.tourCategories.some((cat) => typeof cat === 'object' && cat?.hasGuide === true);
+      if (!hasGuides) return false;
+      const seoContent = getDestinationSeoContent(slug);
+      const hasImage = Boolean(content?.imageUrl || seoContent?.imageUrl || seoContent?.ogImage);
+      return hasImage;
+    })
+    .map(([slug, content]) => {
+      const seoContent = getDestinationSeoContent(slug);
+      return {
+        id: slug,
+        destinationName: content?.destinationName || slug,
+        region: content?.region || null,
+        country: content?.country || null,
+        briefDescription:
+          seoContent?.briefDescription ||
+          content?.briefDescription ||
+          `Discover tours and activities in ${content?.destinationName || slug}`,
+        heroDescription: seoContent?.heroDescription || content?.heroDescription || null,
+        imageUrl: content?.imageUrl || seoContent?.imageUrl || seoContent?.ogImage || null,
+        tourCategories: Array.isArray(content?.tourCategories) ? content.tourCategories : [],
+        whyVisit: Array.isArray(content?.whyVisit) ? content.whyVisit : [],
+        highlights: Array.isArray(content?.highlights) ? content.highlights : [],
+        gettingAround: content?.gettingAround || '',
+        bestTimeToVisit: content?.bestTimeToVisit || null,
+        seo: content?.seo || seoContent?.seo || null,
+      };
+    });
+
   const totalAvailableDestinations = viatorDestinationsClassified.length;
 
   return (
     <Suspense fallback={null}>
       <DestinationsPageClient
-        viatorDestinations={viatorDestinations}
         viatorDestinationsClassified={viatorDestinationsClassified}
+        generatedDestinationsWithGuides={generatedDestinationsWithGuides}
         totalAvailableDestinations={totalAvailableDestinations}
       />
     </Suspense>

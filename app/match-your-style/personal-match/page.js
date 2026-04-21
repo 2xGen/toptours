@@ -1,8 +1,6 @@
 import MatchYourStyleClient from '../MatchYourStyleClient';
 import { absoluteUrl } from '@/lib/siteUrl';
 
-export const dynamic = 'force-dynamic';
-
 export async function generateMetadata() {
   const canonical = absoluteUrl('/match-your-style/personal-match');
   const title = 'Personal Match - Hand-Picked Tours in 24 Hours | TopTours.ai';

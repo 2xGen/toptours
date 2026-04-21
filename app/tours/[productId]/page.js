@@ -40,7 +40,8 @@ const getCachedTourData = unstable_cache(
     let tour = null;
     if (useSupabaseCache()) tour = await getCachedTour(productId);
     if (!tour) {
-      const apiKey = process.env.VIATOR_API_KEY || '282a363f-5d60-456a-a6a0-774ec4832b07';
+      const apiKey = process.env.VIATOR_API_KEY;
+      if (!apiKey) return null;
       const url = `https://api.viator.com/partner/products/${productId}?currency=USD`;
       
       const productResponse = await fetch(url, {

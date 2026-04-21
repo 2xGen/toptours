@@ -306,7 +306,7 @@ export default async function handler(req, res) {
                 <div style="background: white; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #f59e0b;">
                   <h2 style="margin-top: 0; color: #f59e0b;">Boost Details</h2>
                   <p style="margin: 10px 0;"><strong>Tour:</strong> ${ibt.tourName}</p>
-                  <p style="margin: 10px 0;"><strong>Points Added:</strong> ${ibt.points.toLocaleString()}</p>
+                  <p style="margin: 10px 0;"><strong>Points Added:</strong> ${ibt.points.toLocaleString('en-US')}</p>
                   <p style="margin: 10px 0;"><strong>Status:</strong> <span style="color: #10b981; font-weight: 600;">✓ Live on leaderboard</span></p>
                 </div>
                 
@@ -356,7 +356,7 @@ export default async function handler(req, res) {
                 <div style="background: white; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #f59e0b;">
                   <h2 style="margin-top: 0; color: #f59e0b;">Boost Details</h2>
                   <p style="margin: 10px 0;"><strong>Restaurant:</strong> ${ibr.restaurantName}</p>
-                  <p style="margin: 10px 0;"><strong>Points Added:</strong> ${ibr.points.toLocaleString()}</p>
+                  <p style="margin: 10px 0;"><strong>Points Added:</strong> ${ibr.points.toLocaleString('en-US')}</p>
                   <p style="margin: 10px 0;"><strong>Status:</strong> <span style="color: #10b981; font-weight: 600;">✓ Live on leaderboard</span></p>
                 </div>
                 

@@ -248,7 +248,7 @@ export default function AdminDashboardClient() {
               <Users className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stats?.totalUsers?.toLocaleString() || 0}</div>
+              <div className="text-2xl font-bold">{stats?.totalUsers?.toLocaleString('en-US') || 0}</div>
               <p className="text-xs text-muted-foreground mt-1">
                 {stats?.usersLast30Days || 0} new in last 30 days
               </p>
@@ -262,9 +262,9 @@ export default function AdminDashboardClient() {
               <Eye className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stats?.totalPageViews?.toLocaleString() || 0}</div>
+              <div className="text-2xl font-bold">{stats?.totalPageViews?.toLocaleString('en-US') || 0}</div>
               <p className="text-xs text-muted-foreground mt-1">
-                {stats?.pageViewsLast30Days?.toLocaleString() || 0} in last 30 days
+                {stats?.pageViewsLast30Days?.toLocaleString('en-US') || 0} in last 30 days
               </p>
             </CardContent>
           </Card>
@@ -276,7 +276,7 @@ export default function AdminDashboardClient() {
               <Globe className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stats?.uniqueSessions?.toLocaleString() || 0}</div>
+              <div className="text-2xl font-bold">{stats?.uniqueSessions?.toLocaleString('en-US') || 0}</div>
               <p className="text-xs text-muted-foreground mt-1">
                 Last {dateRange} days
               </p>
@@ -290,7 +290,7 @@ export default function AdminDashboardClient() {
               <TrendingUp className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stats?.activeUsers?.toLocaleString() || 0}</div>
+              <div className="text-2xl font-bold">{stats?.activeUsers?.toLocaleString('en-US') || 0}</div>
               <p className="text-xs text-muted-foreground mt-1">
                 Logged in users (last 30 days)
               </p>
@@ -321,7 +321,7 @@ export default function AdminDashboardClient() {
                     </div>
                     <div className="ml-4 text-right">
                       <p className="text-sm font-semibold text-gray-900">
-                        {page.view_count?.toLocaleString() || 0}
+                        {page.view_count?.toLocaleString('en-US') || 0}
                       </p>
                       <p className="text-xs text-gray-500">views</p>
                     </div>
@@ -354,7 +354,7 @@ export default function AdminDashboardClient() {
                     </div>
                     <div className="text-right">
                       <span className="text-sm font-semibold text-gray-900">
-                        {type.view_count?.toLocaleString() || 0}
+                        {type.view_count?.toLocaleString('en-US') || 0}
                       </span>
                       <span className="text-xs text-gray-500 ml-2">
                         ({type.percentage?.toFixed(1) || 0}%)
@@ -384,7 +384,7 @@ export default function AdminDashboardClient() {
                 {stats?.topDestinations?.slice(0, 5).map((dest, index) => (
                   <div key={index} className="flex items-center justify-between text-sm">
                     <span className="text-gray-700 capitalize">{dest.destination_id || 'N/A'}</span>
-                    <span className="font-semibold text-gray-900">{dest.view_count?.toLocaleString() || 0}</span>
+                    <span className="font-semibold text-gray-900">{dest.view_count?.toLocaleString('en-US') || 0}</span>
                   </div>
                 ))}
                 {(!stats?.topDestinations || stats.topDestinations.length === 0) && (
@@ -403,7 +403,7 @@ export default function AdminDashboardClient() {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
-                {stats?.dailyAverage?.toLocaleString() || 0}
+                {stats?.dailyAverage?.toLocaleString('en-US') || 0}
               </div>
               <p className="text-xs text-muted-foreground mt-1">
                 Page views per day (last {dateRange} days)
@@ -477,7 +477,7 @@ export default function AdminDashboardClient() {
                     </div>
                     <div className="ml-4 text-right">
                       <p className="text-2xl font-bold text-purple-600">
-                        {dest.viewCount.toLocaleString()}
+                        {dest.viewCount.toLocaleString('en-US')}
                       </p>
                       <p className="text-xs text-gray-500">views</p>
                       <a

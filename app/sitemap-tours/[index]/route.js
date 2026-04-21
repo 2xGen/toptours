@@ -39,7 +39,7 @@ export async function GET(request, { params }) {
     let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Tour Sitemap ${pageIndex} -->
-  <!-- Tours ${(pageIndex * URLS_PER_SITEMAP + 1).toLocaleString()} - ${Math.min((pageIndex + 1) * URLS_PER_SITEMAP, totalTours).toLocaleString()} of ${totalTours.toLocaleString()} -->
+  <!-- Tours ${(pageIndex * URLS_PER_SITEMAP + 1).toLocaleString('en-US')} - ${Math.min((pageIndex + 1) * URLS_PER_SITEMAP, totalTours).toLocaleString('en-US')} of ${totalTours.toLocaleString('en-US')} -->
 `;
 
     tours.forEach((tour) => {

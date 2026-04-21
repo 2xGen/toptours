@@ -137,7 +137,7 @@ export default function ToursHubClient({
                         : 'Tour Destinations'}
                     </h2>
                     <p className="text-lg text-gray-600">
-                      Showing {((currentPage - 1) * 24) + 1}-{Math.min(currentPage * 24, totalDestinations)} of {totalDestinations.toLocaleString()}{' '}
+                      Showing {((currentPage - 1) * 24) + 1}-{Math.min(currentPage * 24, totalDestinations)} of {totalDestinations.toLocaleString('en-US')}{' '}
                       {totalDestinations === 1
                         ? 'destination'
                         : 'destinations'}

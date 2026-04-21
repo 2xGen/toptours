@@ -41,7 +41,7 @@ export default async function handler(req, res) {
                 <p>Your Resend email setup is working correctly!</p>
                 <p><strong>From:</strong> ${fromEmail}</p>
                 <p><strong>To:</strong> ${to}</p>
-                <p><strong>Time:</strong> ${new Date().toLocaleString()}</p>
+                <p><strong>Time:</strong> ${new Date().toLocaleString('en-US')}</p>
               </div>
             </div>
           `,
