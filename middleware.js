@@ -61,7 +61,7 @@ function isLikelyBotRequest(userAgent) {
   if (botIsAllowed(userAgent)) return false;
   return (
     CRAWLER_SIGNATURES.test(userAgent) ||
-    /amazonbot|meta-external|meta-webindexer|oai-searchbot|chatgpt-user|perplexity-user|seranking|ahrefs|semrush|petalbot|baiduspider|qwantbot|applebot|yandexbot/i.test(
+    /amazonbot|meta-external|meta-webindexer|oai-searchbot|chatgpt-user|perplexity-user|seranking|ahrefs|semrush|petalbot|baiduspider|qwantbot|applebot|yandexbot|barkrowler/i.test(
       userAgent
     )
   );
@@ -147,6 +147,8 @@ export const config = {
   matcher: [
     '/tours/:path*',
     '/destinations/:path*',
+    // Affiliate hop to Viator (meta-refresh / JS); was unguarded — crawlers inflated partner "clicks".
+    '/go/:path*',
     '/api/internal/viator-search',
     '/robots.txt',
     '/sitemap.xml',

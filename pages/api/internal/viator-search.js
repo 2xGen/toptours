@@ -97,7 +97,7 @@ export default async function handler(req, res) {
   if (
     botIsBlocked(userAgent) ||
     isNonAllowlistedCrawler(userAgent) ||
-    /amazonbot|meta-external|meta-webindexer|oai-searchbot|chatgpt-user|perplexity-user|seranking|ahrefs|semrush|petalbot|baiduspider|qwantbot|applebot|yandexbot/i.test(
+    /amazonbot|meta-external|meta-webindexer|oai-searchbot|chatgpt-user|perplexity-user|seranking|ahrefs|semrush|petalbot|baiduspider|qwantbot|applebot|yandexbot|barkrowler/i.test(
       userAgent
     )
   ) {
