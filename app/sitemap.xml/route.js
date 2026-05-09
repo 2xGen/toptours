@@ -4,6 +4,9 @@ import { getSiteOrigin } from '@/lib/siteUrl';
 
 export const maxDuration = 120;
 
+/** Match app/sitemap.js so the index is CDN-friendly alongside child sitemaps. */
+export const revalidate = 3600;
+
 function escapeXml(text) {
   return String(text)
     .replace(/&/g, '&amp;')
@@ -44,7 +47,7 @@ export async function GET() {
       status: 200,
       headers: {
         'Content-Type': 'application/xml; charset=utf-8',
-        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+        'Cache-Control': 'public, s-maxage=86400, stale-while-revalidate=604800',
       },
     });
   } catch (err) {

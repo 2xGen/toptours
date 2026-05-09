@@ -4,6 +4,11 @@ import { getAllSitemapEntries, SITEMAP_CHUNK_SIZE } from '../lib/sitemapData.js'
 export const maxDuration = 120;
 
 /**
+ * ISR: avoid Cache-Control: max-age=0,must-revalidate on huge /sitemap/N.xml (Google "Couldn't fetch" timeouts).
+ */
+export const revalidate = 3600;
+
+/**
  * Split main sitemap when >50k URLs (Google limit) to avoid "Temporary processing error" in GSC.
  * When we have multiple chunks, /sitemap.xml becomes a sitemap index listing /sitemap/0.xml, /sitemap/1.xml, ...
  */
