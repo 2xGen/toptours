@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { getToursForSitemapPage, getTourSitemapCount } from '@/lib/tourSitemap';
 import { generateTourSlug } from '@/utils/tourHelpers';
 import { getSiteOrigin } from '@/lib/siteUrl';
-import { entriesToUrlsetXml, readGeneratedFile, SITEMAP_STATIC_CACHE_HEADERS } from '../../lib/sitemapXml.js';
+import { entriesToUrlsetXml, readGeneratedFile, SITEMAP_STATIC_CACHE_HEADERS } from '../../../lib/sitemapXml.js';
 
 const URLS_PER_SITEMAP = 10000;
 
