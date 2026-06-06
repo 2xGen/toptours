@@ -1,55 +1,52 @@
 import { NextResponse } from 'next/server';
 import { getAllSitemapEntries, SITEMAP_CHUNK_SIZE } from '../../lib/sitemapData.js';
 import { getSiteOrigin } from '@/lib/siteUrl';
+import { getTourSitemapCount } from '@/lib/tourSitemap';
+import {
+  buildSitemapIndexXml,
+  readGeneratedFile,
+  readGeneratedManifest,
+  SITEMAP_STATIC_CACHE_HEADERS,
+} from '../../lib/sitemapXml.js';
 
 export const maxDuration = 120;
-
-/** Match app/sitemap.js so the index is CDN-friendly alongside child sitemaps. */
 export const revalidate = 3600;
 
-function escapeXml(text) {
-  return String(text)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;');
-}
+const TOURS_PER_SITEMAP = 10000;
 
 /**
- * Root sitemap index for URLs built in app/sitemap.js.
- * next.js issue: generateSitemaps() does not register /sitemap.xml (404); child /sitemap/N.xml still works.
- * https://github.com/vercel/next.js/issues/77304
+ * Root sitemap index — serves pre-generated XML at build time; falls back to runtime generation.
  */
 export async function GET() {
+  const staticIndex = readGeneratedFile('sitemap-index.xml');
+  if (staticIndex) {
+    return new NextResponse(staticIndex, { status: 200, headers: SITEMAP_STATIC_CACHE_HEADERS });
+  }
+
   try {
     const origin = getSiteOrigin().replace(/\/$/, '');
-    const entries = await getAllSitemapEntries();
-    const numChunks = Math.max(1, Math.ceil(entries.length / SITEMAP_CHUNK_SIZE));
+    const entries = (await getAllSitemapEntries()) || [];
+    const mainChunks = Math.max(1, Math.ceil(entries.length / SITEMAP_CHUNK_SIZE));
     const lastmod = new Date().toISOString();
+    const indexLocs = [];
 
-    let xml = `<?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-`;
-
-    for (let i = 0; i < numChunks; i++) {
-      const loc = `${origin}/sitemap/${i}.xml`;
-      xml += `  <sitemap>
-    <loc>${escapeXml(loc)}</loc>
-    <lastmod>${escapeXml(lastmod)}</lastmod>
-  </sitemap>
-`;
+    for (let i = 0; i < mainChunks; i++) {
+      indexLocs.push(`${origin}/sitemap/${i}.xml`);
     }
 
-    xml += `</sitemapindex>`;
+    let tourChunks = 0;
+    try {
+      const totalTours = await getTourSitemapCount();
+      tourChunks = totalTours > 0 ? Math.ceil(totalTours / TOURS_PER_SITEMAP) : 0;
+      for (let i = 0; i < tourChunks; i++) {
+        indexLocs.push(`${origin}/sitemap-tours/${i}`);
+      }
+    } catch (err) {
+      console.warn('Tour sitemap count unavailable for index fallback:', err?.message);
+    }
 
-    return new NextResponse(xml, {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/xml; charset=utf-8',
-        'Cache-Control': 'public, s-maxage=86400, stale-while-revalidate=604800',
-      },
-    });
+    const xml = buildSitemapIndexXml(indexLocs, lastmod);
+    return new NextResponse(xml, { status: 200, headers: SITEMAP_STATIC_CACHE_HEADERS });
   } catch (err) {
     console.error('Error generating sitemap index:', err);
     return new NextResponse('Sitemap unavailable', { status: 503 });

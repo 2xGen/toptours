@@ -36,6 +36,10 @@ scripts/viator-tag-names.txt
 # vercel
 .vercel
 
+# Build-time sitemap cache (regenerated on each deploy)
+/public/generated-sitemaps/*
+!/public/generated-sitemaps/.gitkeep
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

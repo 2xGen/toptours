@@ -5,7 +5,7 @@ import TourDetailClient from './TourDetailClient';
 // Similar tours loaded on demand via "Load similar tours" (saves 1 Viator API call per tour page view)
 import { loadTourData, loadDestinationData } from './TourDataLoader';
 import { getTourEnrichmentCached, generateTourEnrichment, cleanText } from '@/lib/tourEnrichment';
-import { buildEnhancedMetaDescription, buildEnhancedTitle } from '@/lib/metaDescription';
+import { buildEnhancedMetaDescription, buildEnhancedTitle, extractOperatorName } from '@/lib/metaDescription';
 import { getCachedTour, cacheTour, useSupabaseCache, getCachedSimilarTours, cacheSimilarTours, generateSimilarToursCacheKey, extractCountryFromDestinationName } from '@/lib/viatorCache';
 import { getDestinationNameById } from '@/lib/destinationIdLookup';
 import { getViatorDestinationById } from '@/lib/supabaseCache';
@@ -23,10 +23,10 @@ import { getFromPriceFromProductTour, reconcileProductPriceWithSchedule } from '
 export const revalidate = 604800; // 7 days
 
 const TOUR_DETAIL_ROBOTS = {
-  index: false,
+  index: true,
   follow: true,
   googleBot: {
-    index: false,
+    index: true,
     follow: true,
     'max-video-preview': -1,
     'max-image-preview': 'large',
@@ -502,7 +502,12 @@ export default async function TourDetailPage({ params }) {
 
     // Tour detail does not list restaurants — skip Supabase/static restaurant fetches (saves DB + latency per page).
 
-    // Generate breadcrumb schema for SEO
+    const tourSlug = generateTourSlug(tour.title);
+    const canonicalUrl = tourSlug
+      ? `https://toptours.ai/tours/${productId}/${tourSlug}`
+      : `https://toptours.ai/tours/${productId}`;
+
+    // Generate breadcrumb schema for SEO (tour item must match canonical slug URL)
     const breadcrumbSchema = {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
@@ -512,39 +517,48 @@ export default async function TourDetailPage({ params }) {
           "position": 1,
           "name": "Home",
           "item": "https://toptours.ai"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Tours",
-          "item": "https://toptours.ai/tours"
         }
       ]
     };
 
-    // Add destination to breadcrumb if available
     if (destinationData?.slug || destinationData?.name) {
       const destinationName = destinationData.name || destinationData.slug || 'Destination';
       const destinationSlug = destinationData.slug || destinationData.id;
-      breadcrumbSchema.itemListElement.push({
-        "@type": "ListItem",
-        "position": 2,
-        "name": destinationName,
-        "item": `https://toptours.ai/destinations/${destinationSlug}`
-      });
-      breadcrumbSchema.itemListElement.push({
-        "@type": "ListItem",
-        "position": 3,
-        "name": tour?.title || 'Tour',
-        "item": `https://toptours.ai/tours/${productId}`
-      });
+      breadcrumbSchema.itemListElement.push(
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Destinations",
+          "item": "https://toptours.ai/destinations"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": destinationName,
+          "item": `https://toptours.ai/destinations/${destinationSlug}`
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": tour?.title || 'Tour',
+          "item": canonicalUrl
+        }
+      );
     } else {
-      breadcrumbSchema.itemListElement.push({
-        "@type": "ListItem",
-        "position": 2,
-        "name": tour?.title || 'Tour',
-        "item": `https://toptours.ai/tours/${productId}`
-      });
+      breadcrumbSchema.itemListElement.push(
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tours",
+          "item": "https://toptours.ai/destinations"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": tour?.title || 'Tour',
+          "item": canonicalUrl
+        }
+      );
     }
 
     // Build Product schema - only include if at least offers OR aggregateRating is available
@@ -560,9 +574,8 @@ export default async function TourDetailPage({ params }) {
                      tour.reviews?.totalReviews && 
                      tour.reviews?.totalReviews > 0;
     
-    const tourSlug = generateTourSlug(tour.title);
-    const canonicalUrl = tourSlug ? `https://toptours.ai/tours/${productId}/${tourSlug}` : `https://toptours.ai/tours/${productId}`;
     const mainImage = tour.images?.[0]?.variants?.[3]?.url || tour.images?.[0]?.variants?.[0]?.url;
+    const operatorName = extractOperatorName(tour);
     
     // Only create Product schema if valid (Google requires offers, review, or aggregateRating)
     // CRITICAL: Only include properties that exist - don't set undefined values
@@ -578,6 +591,13 @@ export default async function TourDetailPage({ params }) {
       // Only add image if available
       if (mainImage) {
         schema.image = [mainImage];
+      }
+
+      if (operatorName) {
+        schema.brand = {
+          "@type": "Brand",
+          "name": operatorName
+        };
       }
       
       // Only add offers if available (Google requirement)

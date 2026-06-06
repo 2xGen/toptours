@@ -1,78 +1,51 @@
 import { NextResponse } from 'next/server';
 import { getTourSitemapCount } from '@/lib/tourSitemap';
 import { getSiteOrigin } from '@/lib/siteUrl';
+import {
+  buildSitemapIndexXml,
+  readGeneratedManifest,
+  SITEMAP_STATIC_CACHE_HEADERS,
+} from '../../lib/sitemapXml.js';
 
-/**
- * Sitemap INDEX for tours
- * Lists all tour sitemap files (sitemap-tours-0, sitemap-tours-1, etc.)
- * 
- * With 140k+ tours and 10k per sitemap = ~15 sitemap files
- * Reduced from 45k to prevent Vercel timeout on large queries
- */
-
-const URLS_PER_SITEMAP = 10000; // Reduced from 45k to prevent Vercel timeout
+const URLS_PER_SITEMAP = 10000;
 
 export async function GET() {
+  const manifest = readGeneratedManifest();
+  if (manifest?.tourChunks > 0) {
+    const origin = getSiteOrigin().replace(/\/$/, '');
+    const lastmod = manifest.generatedAt || new Date().toISOString();
+    const tourLocs = Array.from({ length: manifest.tourChunks }, (_, i) => `${origin}/sitemap-tours/${i}`);
+    const xml = buildSitemapIndexXml(tourLocs, lastmod);
+    return new NextResponse(xml, { status: 200, headers: SITEMAP_STATIC_CACHE_HEADERS });
+  }
+
   try {
-    // Tour detail pages are currently noindex, so publishing huge tour sitemaps creates
-    // expensive crawl traffic without SEO benefit. Keep disabled by default.
-    if (process.env.ENABLE_TOUR_SITEMAP !== 'true') {
-      const emptyIndex = `<?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-</sitemapindex>`;
+    const baseUrl = getSiteOrigin();
+    const totalTours = await getTourSitemapCount();
+    const numSitemaps = totalTours > 0 ? Math.ceil(totalTours / URLS_PER_SITEMAP) : 0;
+    const lastmod = new Date().toISOString();
+
+    if (numSitemaps === 0) {
+      const emptyIndex = buildSitemapIndexXml([], lastmod);
       return new NextResponse(emptyIndex, {
         status: 200,
-        headers: {
-          'Content-Type': 'application/xml',
-          'Cache-Control': 'public, s-maxage=86400, stale-while-revalidate=604800',
-        },
+        headers: SITEMAP_STATIC_CACHE_HEADERS,
       });
     }
 
-    const baseUrl = getSiteOrigin();
-    const totalTours = await getTourSitemapCount();
-    const numSitemaps = Math.ceil(totalTours / URLS_PER_SITEMAP);
-    const lastmod = new Date().toISOString().split('T')[0];
-
-    // Generate sitemap index XML
-    let sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Tour Sitemap Index -->
-  <!-- Total Tours: ${totalTours.toLocaleString('en-US')} -->
-  <!-- Sitemaps: ${numSitemaps} (${URLS_PER_SITEMAP.toLocaleString('en-US')} URLs each) -->
-  <!-- lastmod: ${lastmod} (generation date) -->
-`;
-    for (let i = 0; i < numSitemaps; i++) {
-      sitemapIndex += `
-  <sitemap>
-    <loc>${baseUrl}/sitemap-tours/${i}</loc>
-    <lastmod>${lastmod}</lastmod>
-  </sitemap>`;
-    }
-
-    sitemapIndex += `
-</sitemapindex>`;
+    const tourLocs = Array.from({ length: numSitemaps }, (_, i) => `${baseUrl}/sitemap-tours/${i}`);
+    const sitemapIndex = buildSitemapIndexXml(tourLocs, lastmod);
 
     return new NextResponse(sitemapIndex, {
       status: 200,
-      headers: {
-        'Content-Type': 'application/xml',
-        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
-      },
+      headers: SITEMAP_STATIC_CACHE_HEADERS,
     });
   } catch (error) {
     console.error('Error generating tours sitemap index:', error);
-    
-    // Return empty index on error
-    const emptyIndex = `<?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-</sitemapindex>`;
-    
+    const emptyIndex = buildSitemapIndexXml([], new Date().toISOString());
     return new NextResponse(emptyIndex, {
       status: 200,
-      headers: {
-        'Content-Type': 'application/xml',
-      },
+      headers: { 'Content-Type': 'application/xml' },
     });
   }
 }

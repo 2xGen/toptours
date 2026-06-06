@@ -6,7 +6,7 @@ import TourDetailClient from '../[productId]/TourDetailClient';
 import { loadTourData, loadDestinationData } from '../[productId]/TourDataLoader';
 import { getCachedTour, cacheTour, useSupabaseCache } from '@/lib/viatorCache';
 import { generateTourFAQs, generateFAQSchema } from '@/lib/faqGeneration';
-import { buildEnhancedMetaDescription, buildEnhancedTitle } from '@/lib/metaDescription';
+import { buildEnhancedMetaDescription, buildEnhancedTitle, extractOperatorName } from '@/lib/metaDescription';
 import { getTourEnrichmentCached } from '@/lib/tourEnrichment';
 import { generateTourSlug, getTourCanonicalPath } from '@/utils/tourHelpers';
 import { getTourOperatorPremiumSubscription, getOperatorPremiumTourIds } from '@/lib/tourOperatorPremiumServer';
@@ -17,10 +17,10 @@ import { resolveOperatorAggregatedStatsForDisplay } from '@/lib/operatorAggregat
 export const revalidate = 604800; // 7 days
 
 const TOUR_DETAIL_ROBOTS = {
-  index: false,
+  index: true,
   follow: true,
   googleBot: {
-    index: false,
+    index: true,
     follow: true,
     'max-video-preview': -1,
     'max-image-preview': 'large',
@@ -329,6 +329,7 @@ export default async function TourDetailPage({ params }) {
     const tourSlug = generateTourSlug(tour.title);
     const canonicalUrl = tourSlug ? `https://toptours.ai/tours/${productId}/${tourSlug}` : `https://toptours.ai/tours/${productId}`;
     const mainImage = tour.images?.[0]?.variants?.[3]?.url || tour.images?.[0]?.variants?.[0]?.url;
+    const operatorName = extractOperatorName(tour);
     
     // Build Product schema - only include if at least offers OR aggregateRating is available
     // CRITICAL: Check BOTH pricing prop AND tour object for pricing (Viator API has multiple locations)
@@ -361,6 +362,13 @@ export default async function TourDetailPage({ params }) {
       // Only add image if available
       if (mainImage) {
         schema.image = [mainImage];
+      }
+
+      if (operatorName) {
+        schema.brand = {
+          '@type': 'Brand',
+          name: operatorName,
+        };
       }
       
       // Only add offers if available (Google requirement)
