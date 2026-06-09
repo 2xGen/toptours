@@ -388,17 +388,23 @@ async function main() {
   let tourChunks = 0;
   let totalTours = 0;
 
-  try {
-    totalTours = await getTourSitemapCount(supabase);
-    tourChunks = totalTours > 0 ? Math.ceil(totalTours / TOURS_PER_SITEMAP) : 0;
-    console.log(`  Tour sitemap entries: ${totalTours.toLocaleString('en-US')} (${tourChunks} file(s))`);
-    for (let i = 0; i < tourChunks; i++) {
-      const tours = await getToursForSitemapPage(supabase, i, TOURS_PER_SITEMAP);
-      fs.writeFileSync(path.join(GENERATED_SITEMAP_DIR, `tours-${i}.xml`), toursToUrlsetXml(tours, i, totalTours));
-      console.log(`    wrote tours-${i}.xml (${tours.length.toLocaleString('en-US')} URLs)`);
+  // Tour PDPs are noindex by default; omit 280k+ URLs from sitemap unless explicitly enabled.
+  const includeTourSitemap = process.env.ENABLE_TOUR_SITEMAP === 'true';
+  if (includeTourSitemap) {
+    try {
+      totalTours = await getTourSitemapCount(supabase);
+      tourChunks = totalTours > 0 ? Math.ceil(totalTours / TOURS_PER_SITEMAP) : 0;
+      console.log(`  Tour sitemap entries: ${totalTours.toLocaleString('en-US')} (${tourChunks} file(s))`);
+      for (let i = 0; i < tourChunks; i++) {
+        const tours = await getToursForSitemapPage(supabase, i, TOURS_PER_SITEMAP);
+        fs.writeFileSync(path.join(GENERATED_SITEMAP_DIR, `tours-${i}.xml`), toursToUrlsetXml(tours, i, totalTours));
+        console.log(`    wrote tours-${i}.xml (${tours.length.toLocaleString('en-US')} URLs)`);
+      }
+    } catch (err) {
+      console.error('  Failed tour sitemaps:', err?.message || err);
     }
-  } catch (err) {
-    console.error('  Failed tour sitemaps:', err?.message || err);
+  } else {
+    console.log('  Tour sitemap: skipped (ENABLE_TOUR_SITEMAP is not true)');
   }
 
   const lastmod = new Date().toISOString();

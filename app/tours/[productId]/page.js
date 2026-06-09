@@ -17,22 +17,11 @@ import { getDestinationFeatures } from '@/lib/destinationFeatures';
 import { generateTourFAQs, generateFAQSchema } from '@/lib/faqGeneration';
 import { getCachedReviews } from '@/lib/viatorReviews';
 import { getFromPriceFromProductTour, reconcileProductPriceWithSchedule } from '@/lib/viatorPricing';
+import { getTourDetailRobots } from '@/lib/tourIndexing';
 
 // Revalidate every 7 days - page-level cache (not API JSON cache, so Viator compliant)
 // Increased from 24h to 7 days to reduce ISR writes during Google reindexing
 export const revalidate = 604800; // 7 days
-
-const TOUR_DETAIL_ROBOTS = {
-  index: true,
-  follow: true,
-  googleBot: {
-    index: true,
-    follow: true,
-    'max-video-preview': -1,
-    'max-image-preview': 'large',
-    'max-snippet': -1,
-  },
-};
 
 // Cache tour data fetching at Next.js level (24 hours - matches page cache)
 const getCachedTourData = unstable_cache(
@@ -113,7 +102,7 @@ export async function generateMetadata({ params }) {
         return {
           title: 'Tour Not Found | TopTours.ai',
       description: 'The tour you are looking for could not be found.',
-      robots: TOUR_DETAIL_ROBOTS,
+      robots: getTourDetailRobots(null),
         };
       }
 
@@ -125,7 +114,7 @@ export async function generateMetadata({ params }) {
         return {
           title: 'Tour Not Found | TopTours.ai',
         description: 'The tour you are looking for could not be found.',
-        robots: TOUR_DETAIL_ROBOTS,
+        robots: getTourDetailRobots(null),
         };
       }
 
@@ -254,7 +243,7 @@ export async function generateMetadata({ params }) {
         description: description,
         images: image ? [image] : [],
       },
-      robots: TOUR_DETAIL_ROBOTS,
+      robots: getTourDetailRobots(tour),
     };
   } catch (error) {
     // Only log errors in development to reduce I/O during crawls
@@ -264,7 +253,7 @@ export async function generateMetadata({ params }) {
     return {
       title: 'Tour | TopTours.ai',
       description: 'Discover amazing tours and experiences.',
-      robots: TOUR_DETAIL_ROBOTS,
+      robots: getTourDetailRobots(null),
     };
   }
 }

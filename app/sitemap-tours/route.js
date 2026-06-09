@@ -10,6 +10,11 @@ import {
 const URLS_PER_SITEMAP = 10000;
 
 export async function GET() {
+  if (process.env.ENABLE_TOUR_SITEMAP !== 'true') {
+    const emptyIndex = buildSitemapIndexXml([], new Date().toISOString());
+    return new NextResponse(emptyIndex, { status: 200, headers: SITEMAP_STATIC_CACHE_HEADERS });
+  }
+
   const manifest = readGeneratedManifest();
   if (manifest?.tourChunks > 0) {
     const origin = getSiteOrigin().replace(/\/$/, '');

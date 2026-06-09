@@ -34,15 +34,16 @@ export async function GET() {
       indexLocs.push(`${origin}/sitemap/${i}.xml`);
     }
 
-    let tourChunks = 0;
-    try {
-      const totalTours = await getTourSitemapCount();
-      tourChunks = totalTours > 0 ? Math.ceil(totalTours / TOURS_PER_SITEMAP) : 0;
-      for (let i = 0; i < tourChunks; i++) {
-        indexLocs.push(`${origin}/sitemap-tours/${i}`);
+    if (process.env.ENABLE_TOUR_SITEMAP === 'true') {
+      try {
+        const totalTours = await getTourSitemapCount();
+        const tourChunks = totalTours > 0 ? Math.ceil(totalTours / TOURS_PER_SITEMAP) : 0;
+        for (let i = 0; i < tourChunks; i++) {
+          indexLocs.push(`${origin}/sitemap-tours/${i}`);
+        }
+      } catch (err) {
+        console.warn('Tour sitemap count unavailable for index fallback:', err?.message);
       }
-    } catch (err) {
-      console.warn('Tour sitemap count unavailable for index fallback:', err?.message);
     }
 
     const xml = buildSitemapIndexXml(indexLocs, lastmod);
