@@ -11,8 +11,6 @@ import DestinationDetailClient from './DestinationDetailClient';
 import { fetchDestinationData } from './DestinationDataLoader';
 import { absoluteUrl, getSiteOrigin } from '@/lib/siteUrl';
 import { requireFeaturedDestination } from '@/lib/requireFeaturedDestination';
-import { loadV3DestinationHub } from '@/lib/loadV3DestinationHub';
-
 // Helper to generate slug
 function generateSlug(name) {
   return name
@@ -373,8 +371,6 @@ export default async function DestinationDetailPage({ params }) {
   // Use the same destination ID for promotions as we use for tours
   const destinationIdForScores = destination.destinationId || destination.id;
   
-  const v3Hub = await loadV3DestinationHub(id);
-
   // Fetch all destination data in parallel for better performance
   const {
     promotionScores,
@@ -653,7 +649,6 @@ export default async function DestinationDetailPage({ params }) {
           categoryGuides={categoryGuides}
           hasBabyEquipmentRentals={hasBabyEquipmentRentals}
           topRestaurants={topRestaurants}
-          v3Hub={v3Hub}
         />
       </ErrorBoundary>
     </>

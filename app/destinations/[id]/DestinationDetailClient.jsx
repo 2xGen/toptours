@@ -36,7 +36,6 @@ import { resolveUserPreferences } from '@/lib/preferenceResolution';
 import { useBookmarks } from '@/hooks/useBookmarks';
 import { dedupeCategoryGuides, groupGuidesIntoSections } from '@/lib/guidePageGrouping';
 import ArushaKiliclimbFeaturedStrip from './guides/partnerGuides/ArushaKiliclimbFeaturedStrip';
-import V3DestinationHubClient from '@/components/destination/V3DestinationHubClient';
 // OPTIMIZED: Lazy load modals - only load when opened
 const ShareModal = lazy(() => import('@/components/sharing/ShareModal'));
 const SmartTourFinder = lazy(() => import('@/components/home/SmartTourFinder'));
@@ -87,7 +86,7 @@ const MAX_POPULAR_GUIDES_ON_LANDING = 8;
 const MAX_OTHER_DESTINATIONS_ON_LANDING = 8;
 const MAX_RELATED_GUIDES_CAROUSEL = 5;
 
-export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [], promotedTours = [], hardcodedTours = {}, categoryGuides: categoryGuidesProp = [], hasBabyEquipmentRentals = false, topRestaurants = [], v3Hub = null }) {
+export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [], promotedTours = [], hardcodedTours = {}, categoryGuides: categoryGuidesProp = [], hasBabyEquipmentRentals = false, topRestaurants = [] }) {
   
   // Ensure destination exists
   if (!destination) {
@@ -1040,9 +1039,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
       <NavigationNext onOpenModal={handleOpenModal} />
       
       <div className="min-h-screen pt-16 pb-24 sm:pb-0 overflow-x-hidden" suppressHydrationWarning>
-        {v3Hub ? (
-          <V3DestinationHubClient {...v3Hub} />
-        ) : (
         <section className="relative pt-4 pb-12 sm:pt-6 sm:pb-16 md:pt-8 md:pb-20 overflow-hidden ocean-gradient">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {safeDestination.imageUrl ? (
@@ -1282,7 +1278,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
             )}
           </div>
         </section>
-        )}
 
         {/* Breadcrumb */}
         <section className="bg-white border-b">
