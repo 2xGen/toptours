@@ -11,7 +11,7 @@ const PartnerWithUs = () => {
     {
       icon: Crown,
       title: 'Reach a Global Audience',
-      description: 'Connect with travelers actively searching for tours and activities. Our platform reaches a global audience across 3,300+ destinations worldwide.'
+      description: 'Connect with travelers actively searching for tours and activities. Our platform reaches a global audience across 247 curated destinations worldwide.'
     },
     {
       icon: BarChart3,
@@ -49,7 +49,7 @@ const PartnerWithUs = () => {
             Partner with TopTours.ai
           </h2>
           <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
-            Join tour operators looking to grow their business. Get premium visibility across 3,300+ destinations worldwide and reach millions of travelers.
+            Join tour operators looking to grow their business. Get premium visibility across 247 curated destinations worldwide and reach millions of travelers.
           </p>
         </motion.div>
 

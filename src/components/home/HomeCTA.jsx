@@ -95,8 +95,8 @@ const HomeCTA = ({ onOpenModal, onOpenOnboardingModal }) => {
               className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20"
             >
               <Trophy className="w-8 h-8 text-yellow-300 mx-auto mb-3" />
-              <h3 className="text-lg font-bold text-white mb-2">3300+ Destinations</h3>
-              <p className="text-sm text-white/90">Explore worldwide</p>
+              <h3 className="text-lg font-bold text-white mb-2">247 Curated Destinations</h3>
+              <p className="text-sm text-white/90">Hand-picked worldwide</p>
             </motion.div>
           </div>
         </motion.div>

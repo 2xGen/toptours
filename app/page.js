@@ -9,15 +9,15 @@ export async function generateMetadata() {
   const ogImage = absoluteUrl('/og-homepage.jpg');
 
   return {
-    title: 'TopTours.ai - AI-Powered Tour & Excursion Discovery | 300,000+ Tours Worldwide',
-    description: 'Tours & Excursions That Match Your Style. Get personalized recommendations with AI-powered Best Match. Explore 300,000+ tours and 38,000+ travel guides across 3,300+ destinations worldwide. See match scores on every listing. Book tours and discover travel experiences.',
+    title: 'TopTours.ai - AI-Powered Tour & Excursion Discovery | 150,000+ Tours in 247 Destinations',
+    description: 'Tours & Excursions That Match Your Style. Get personalized recommendations with AI-powered Best Match. Explore 150,000+ tours and 1,800+ travel guides across 247 curated destinations worldwide. See match scores on every listing. Book tours and discover travel experiences.',
     keywords: 'tours, activities, travel planning, AI travel recommendations, destination guides, book tours online, travel experiences, vacation activities, personalized travel, best match tours, travel style matching, things to do, travel booking, tour booking, travel guide, destination guide, travel recommendations, AI travel planner',
     alternates: {
       canonical: canonicalUrl,
     },
     openGraph: {
       title: 'TopTours.ai - Tours & Excursions That Match Your Style',
-      description: 'Get personalized tour and excursion recommendations with AI-powered Best Match. Explore 300,000+ tours across 3,300+ destinations. See match scores on every listing.',
+      description: 'Get personalized tour and excursion recommendations with AI-powered Best Match. Explore 150,000+ tours across 247 curated destinations. See match scores on every listing.',
       url: canonicalUrl,
       siteName: 'TopTours.ai',
       images: [{
@@ -32,7 +32,7 @@ export async function generateMetadata() {
     twitter: {
       card: 'summary_large_image',
       title: 'TopTours.ai - Tours & Excursions That Match Your Style',
-      description: 'AI-powered Best Match for personalized travel recommendations. 300,000+ tours across 3,300+ destinations.',
+      description: 'AI-powered Best Match for personalized travel recommendations. 150,000+ tours across 247 curated destinations.',
       images: [ogImage],
     },
     robots: {

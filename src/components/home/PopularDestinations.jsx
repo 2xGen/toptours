@@ -8,12 +8,9 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { destinations } from '@/data/destinationsData';
+import { getDestinationListingImageUrl } from '@/lib/destinationImageUrl';
 
 const PopularDestinations = () => {
-  const normalizeSupabaseDestinationImageUrl = (url) => {
-    if (!url) return url;
-    return url.replace(/\/destinations\/\//g, '/destinations/');
-  };
   // Get destinations by region from actual data
   const getDestinationsByRegion = () => {
     const regions = ['Caribbean', 'Europe', 'Asia-Pacific', 'North America', 'South America', 'Middle East', 'Africa'];
@@ -199,7 +196,7 @@ const PopularDestinations = () => {
                               {destination.imageUrl && (
                                 <div className="relative h-48 overflow-hidden">
                                   <Image
-                                    src={normalizeSupabaseDestinationImageUrl(destination.imageUrl)}
+                                    src={getDestinationListingImageUrl(destination.imageUrl)}
                                     alt={destination.fullName || destination.name}
                                     fill
                                     className="object-cover transition-transform duration-300 hover:scale-105"

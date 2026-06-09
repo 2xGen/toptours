@@ -1,4 +1,20 @@
 import { NextResponse } from 'next/server';
+import featuredSlugs from './src/data/featuredDestinationSlugs.json';
+
+const FEATURED_DESTINATION_SLUGS = new Set(
+  (Array.isArray(featuredSlugs) ? featuredSlugs : []).map((slug) => String(slug).toLowerCase())
+);
+
+function isFeaturedDestinationSlug(slug) {
+  return slug && FEATURED_DESTINATION_SLUGS.has(String(slug).toLowerCase());
+}
+
+function getSlugFromPath(pathname, prefix) {
+  if (!pathname.startsWith(prefix)) return null;
+  const rest = pathname.slice(prefix.length);
+  const segment = rest.split('/')[0];
+  return segment ? segment.toLowerCase() : null;
+}
 
 const ALLOWED_BOTS = [
   /googlebot/i,
@@ -104,6 +120,16 @@ export function middleware(request) {
     return NextResponse.next();
   }
 
+  const destinationSlug = getSlugFromPath(pathname, '/destinations/');
+  if (destinationSlug && !isFeaturedDestinationSlug(destinationSlug)) {
+    return new NextResponse('Not Found', { status: 404 });
+  }
+
+  const apiDestinationSlug = getSlugFromPath(pathname, '/api/destinations/');
+  if (apiDestinationSlug && !isFeaturedDestinationSlug(apiDestinationSlug)) {
+    return NextResponse.json({ error: 'Not found' }, { status: 404 });
+  }
+
   if (botIsBlocked(userAgent)) {
     return new NextResponse('Forbidden', { status: 403 });
   }
@@ -147,7 +173,7 @@ export const config = {
   matcher: [
     '/tours/:path*',
     '/destinations/:path*',
-    // Affiliate hop to Viator (meta-refresh / JS); was unguarded — crawlers inflated partner "clicks".
+    '/api/destinations/:path*',
     '/go/:path*',
     '/api/internal/viator-search',
     '/robots.txt',

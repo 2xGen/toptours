@@ -15,6 +15,7 @@ import {
   getKiliclimbPartnerGuideData,
 } from '../partnerGuides/arushaKiliclimbTanzania';
 import { isLowValueGuideTag } from '@/lib/guideIndexing';
+import { requireFeaturedDestination } from '@/lib/requireFeaturedDestination';
 
 /** ISR: 30 days — keep in sync with src/lib/guideSectionCacheConfig.js (Next requires a numeric literal here). */
 export const revalidate = 2592000;
@@ -257,7 +258,8 @@ async function resolveDestinationForMetadata(destinationId) {
 export async function generateMetadata({ params }) {
   try {
     const { id: destinationId, category: categorySlug } = await params;
-    
+    requireFeaturedDestination(destinationId);
+
     let guideData = await getGuideFromDatabase(destinationId, categorySlug);
     let destination = await resolveDestinationForMetadata(destinationId);
     
@@ -429,7 +431,8 @@ export async function generateMetadata({ params }) {
 export default async function CategoryGuidePage({ params }) {
   try {
     const { id: destinationId, category: categorySlug } = await params;
-    
+    requireFeaturedDestination(destinationId);
+
     // Check if category slug needs normalization (has special characters)
     // Normalize the slug and compare - if different, redirect to normalized version
     const normalizedCategorySlug = normalizeSlug(categorySlug);

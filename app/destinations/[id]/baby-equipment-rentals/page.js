@@ -7,6 +7,7 @@ import { getBabyEquipmentRentalsByDestination } from '@/lib/babyEquipmentRentals
 import { BABY_EQUIPMENT_OG_IMAGE_URL } from '@/lib/babyquipAffiliate';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import BabyEquipmentClient from './BabyEquipmentClient';
+import { requireFeaturedDestination } from '@/lib/requireFeaturedDestination';
 
 // Force dynamic rendering
 // Revalidate every hour for fresh data
@@ -26,7 +27,8 @@ function generateSlug(name) {
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
-  
+  requireFeaturedDestination(id);
+
   // Check if destination exists (with guides first)
   let destination = getDestinationById(id);
   let destinationName = null;
@@ -124,6 +126,7 @@ export async function generateMetadata({ params }) {
 
 export default async function BabyEquipmentPage({ params }) {
   const { id } = await params;
+  requireFeaturedDestination(id);
   
   // Check if destination exists (with guides first)
   let destination = getDestinationById(id);

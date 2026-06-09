@@ -15,6 +15,7 @@ import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import PrefetchOnHoverLink from '@/components/PrefetchOnHoverLink';
 import { getRelatedDestinations, getDestinationsByIds, getDestinationsByCountry } from '../../../src/data/destinationsData.js';
+import { isFeaturedDestination } from '@/lib/featuredDestinations';
 import { getGuidesByCategory, getGuidesByIds, getGuidesByCountry } from '../../../src/data/travelGuidesData.js';
 // Tours and destination data are passed as props from the server component
 import { getTourUrl, getTourProductId, getViatorDestinationHubUrl } from '@/utils/tourHelpers';
@@ -35,6 +36,7 @@ import { resolveUserPreferences } from '@/lib/preferenceResolution';
 import { useBookmarks } from '@/hooks/useBookmarks';
 import { dedupeCategoryGuides, groupGuidesIntoSections } from '@/lib/guidePageGrouping';
 import ArushaKiliclimbFeaturedStrip from './guides/partnerGuides/ArushaKiliclimbFeaturedStrip';
+import V3DestinationHubClient from '@/components/destination/V3DestinationHubClient';
 // OPTIMIZED: Lazy load modals - only load when opened
 const ShareModal = lazy(() => import('@/components/sharing/ShareModal'));
 const SmartTourFinder = lazy(() => import('@/components/home/SmartTourFinder'));
@@ -85,7 +87,7 @@ const MAX_POPULAR_GUIDES_ON_LANDING = 8;
 const MAX_OTHER_DESTINATIONS_ON_LANDING = 8;
 const MAX_RELATED_GUIDES_CAROUSEL = 5;
 
-export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [], promotedTours = [], hardcodedTours = {}, categoryGuides: categoryGuidesProp = [], hasBabyEquipmentRentals = false, topRestaurants = [] }) {
+export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [], promotedTours = [], hardcodedTours = {}, categoryGuides: categoryGuidesProp = [], hasBabyEquipmentRentals = false, topRestaurants = [], v3Hub = null }) {
   
   // Ensure destination exists
   if (!destination) {
@@ -694,9 +696,11 @@ export default function DestinationDetailClient({ destination, promotionScores =
     fetchAllToursForDestination();
 
     // Load all related destinations from the same region
-    const related = getRelatedDestinations(safeDestination.id);
+    const related = getRelatedDestinations(safeDestination.id).filter((dest) =>
+      isFeaturedDestination(dest.id)
+    );
     // Filter out duplicates by id to prevent React key errors
-    const uniqueRelated = related.filter((dest, index, self) => 
+    const uniqueRelated = related.filter((dest, index, self) =>
       index === self.findIndex(d => d.id === dest.id)
     );
     setRelatedDestinations(uniqueRelated);
@@ -792,8 +796,13 @@ export default function DestinationDetailClient({ destination, promotionScores =
             const destId = dest.id || '';
             const destName = (dest.name || dest.fullName || '').toLowerCase().trim();
             
-            // Check both ID and name to avoid duplicates
-            if (destId && !seenIds.has(destId) && !seenNames.has(destName)) {
+            // Check both ID and name to avoid duplicates; only link to live featured hubs
+            if (
+              destId &&
+              isFeaturedDestination(destId) &&
+              !seenIds.has(destId) &&
+              !seenNames.has(destName)
+            ) {
               seenIds.add(destId);
               seenNames.add(destName);
               allCountryDests.push(dest);
@@ -805,10 +814,10 @@ export default function DestinationDetailClient({ destination, promotionScores =
         // Continue without classified destinations - not critical
       }
       
-      // Sort alphabetically
-      const sortedDests = allCountryDests.sort((a, b) => 
-        (a.name || '').localeCompare(b.name || '')
-      );
+      // Sort alphabetically (featured destinations only)
+      const sortedDests = allCountryDests
+        .filter((dest) => isFeaturedDestination(dest.id))
+        .sort((a, b) => (a.name || '').localeCompare(b.name || ''));
       
       setCountryDestinations(sortedDests);
     }
@@ -1031,7 +1040,9 @@ export default function DestinationDetailClient({ destination, promotionScores =
       <NavigationNext onOpenModal={handleOpenModal} />
       
       <div className="min-h-screen pt-16 pb-24 sm:pb-0 overflow-x-hidden" suppressHydrationWarning>
-        {/* Hero Section */}
+        {v3Hub ? (
+          <V3DestinationHubClient {...v3Hub} />
+        ) : (
         <section className="relative pt-4 pb-12 sm:pt-6 sm:pb-16 md:pt-8 md:pb-20 overflow-hidden ocean-gradient">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {safeDestination.imageUrl ? (
@@ -1271,6 +1282,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
             )}
           </div>
         </section>
+        )}
 
         {/* Breadcrumb */}
         <section className="bg-white border-b">

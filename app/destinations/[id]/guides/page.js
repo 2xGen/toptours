@@ -4,6 +4,7 @@ import { getDestinationFullContent } from '@/data/destinationFullContent';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
 import { getGuidesByIds } from '@/data/travelGuidesData';
 import { getRelatedDestinations, getDestinationsByCountry } from '@/data/destinationsData';
+import { isFeaturedDestination } from '@/lib/featuredDestinations';
 import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { getBabyEquipmentRentalsByDestination } from '@/lib/babyEquipmentRentals';
 import { getDestinationFeatures } from '@/lib/destinationFeatures';
@@ -12,6 +13,7 @@ import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassifie
 import { slugToViatorId as slugToViatorIdMap } from '@/data/viatorDestinationMap';
 import { dedupeCategoryGuides } from '@/lib/guidePageGrouping';
 import GuidesListingClient from './GuidesListingClient';
+import { requireFeaturedDestination } from '@/lib/requireFeaturedDestination';
 
 function generateSlug(name) {
   if (!name) return '';
@@ -40,6 +42,7 @@ export const revalidate = 2592000;
 // Generate metadata for SEO
 export async function generateMetadata({ params }) {
   const { id: destinationId } = await params;
+  requireFeaturedDestination(destinationId);
   let destination = getDestinationById(destinationId);
   
   // If not in curated destinations, check generated content
@@ -130,6 +133,7 @@ export async function generateMetadata({ params }) {
 
 export default async function GuidesListingPage({ params }) {
   const { id: destinationId } = await params;
+  requireFeaturedDestination(destinationId);
   
   // Get destination data
   let destination = getDestinationById(destinationId);
@@ -211,7 +215,9 @@ export default async function GuidesListingPage({ params }) {
     ? getGuidesByIds(relatedGuideIds)
     : [];
 
-  const relatedDestinations = getRelatedDestinations(destinationId);
+  const relatedDestinations = getRelatedDestinations(destinationId).filter((dest) =>
+    isFeaturedDestination(dest.id)
+  );
 
   let countryDestinations = [];
   if (destination?.country && destination.id) {
@@ -264,7 +270,12 @@ export default async function GuidesListingPage({ params }) {
         classified.forEach((dest) => {
           const destId = dest.id || '';
           const destName = (dest.name || dest.fullName || '').toLowerCase().trim();
-          if (destId && !seenIds.has(destId) && !seenNames.has(destName)) {
+          if (
+            destId &&
+            isFeaturedDestination(destId) &&
+            !seenIds.has(destId) &&
+            !seenNames.has(destName)
+          ) {
             seenIds.add(destId);
             seenNames.add(destName);
             all.push(dest);
@@ -274,7 +285,9 @@ export default async function GuidesListingPage({ params }) {
     } catch (e) {
       // ignore
     }
-    countryDestinations = all.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+    countryDestinations = all
+      .filter((dest) => isFeaturedDestination(dest.id))
+      .sort((a, b) => (a.name || '').localeCompare(b.name || ''));
   }
 
   const guidesForClient = dedupeCategoryGuides(allGuides);

@@ -17,6 +17,7 @@ import FooterNext from '@/components/FooterNext';
 import ExploreSubcategoryClient from './ExploreSubcategoryClient';
 import ExploreTourDetailClient from './ExploreTourDetailClient';
 import { getViatorAffiliateTourUrl } from '@/utils/tourHelpers';
+import { requireFeaturedDestination } from '@/lib/requireFeaturedDestination';
 
 export const revalidate = 3600;
 
@@ -29,6 +30,7 @@ function truncateMetaDesc(str) {
 
 export async function generateMetadata({ params }) {
   const { destinationSlug, categorySlug, subSlug } = await params;
+  requireFeaturedDestination(destinationSlug);
   const [destination, categories, subFromDb, tourFromDb] = await Promise.all([
     getV3LandingDestination(destinationSlug),
     getV3LandingCategories(destinationSlug),
@@ -83,6 +85,7 @@ export async function generateStaticParams() {
 
 export default async function ExploreSubcategoryPage({ params }) {
   const { destinationSlug, categorySlug, subSlug } = await params;
+  requireFeaturedDestination(destinationSlug);
   const [destination, categories, subFromDb, tourFromDb] = await Promise.all([
     getV3LandingDestination(destinationSlug),
     getV3LandingCategories(destinationSlug),

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createSupabaseServiceRoleClient } from '@/lib/supabaseClient';
+import { isFeaturedDestination } from '@/lib/featuredDestinations';
 
 const CACHE_TTL_DAYS = 7;
 const WINDOW_MS = 60 * 1000;
@@ -72,6 +73,10 @@ export async function GET(request, { params }) {
     if (!id) {
       console.error('No destination ID provided in params:', resolvedParams);
       return NextResponse.json({ error: 'Destination ID required', params: resolvedParams }, { status: 400 });
+    }
+
+    if (!isFeaturedDestination(id)) {
+      return NextResponse.json({ error: 'Not found' }, { status: 404 });
     }
     
     if (process.env.NODE_ENV === 'development') {

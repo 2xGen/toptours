@@ -177,7 +177,7 @@ export default function HomePageClient() {
         "@type": "HowToStep",
         "position": 3,
         "name": "Explore Destinations",
-        "text": "Explore tours and restaurants across 3,300+ destinations worldwide. Find hidden gems and popular spots that match your travel style."
+        "text": "Explore tours and restaurants across 247 curated destinations worldwide. Find hidden gems and popular spots that match your travel style."
       }
     ]
   };
@@ -201,10 +201,7 @@ export default function HomePageClient() {
         <PartnerWithUs />
         <HomeCTA onOpenModal={handleOpenModal} onOpenOnboardingModal={handleOpenOnboardingModal} />
         <TravelGuidesPreview />
-        {/* OPTIMIZED: Lazy load DestinationLinksFooter - it imports 583 KB of destination data */}
-        <Suspense fallback={null}>
-          <DestinationLinksFooter />
-        </Suspense>
+        <DestinationLinksFooter />
       </main>
 
       <FooterNext />

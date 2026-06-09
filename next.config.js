@@ -56,6 +56,40 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // /explore/* retired — one canonical hub per city under /destinations/*
+      {
+        source: '/explore',
+        destination: '/destinations',
+        permanent: true,
+      },
+      {
+        source: '/explore/:destination/tours',
+        destination: '/destinations/:destination/tours',
+        permanent: true,
+      },
+      {
+        source: '/explore/:destination/:path+',
+        destination: '/destinations/:destination/tours',
+        permanent: true,
+      },
+      {
+        source: '/explore/:destination',
+        destination: '/destinations/:destination',
+        permanent: true,
+      },
+
+      // Legacy chunked sitemap URLs → single urlset at /sitemap.xml
+      {
+        source: '/sitemap/:index.xml',
+        destination: '/sitemap.xml',
+        permanent: true,
+      },
+      {
+        source: '/sitemap/:index',
+        destination: '/sitemap.xml',
+        permanent: true,
+      },
+
       // Restaurants removed (Option B): 301 all restaurant URLs to destination or /destinations
       {
         source: '/restaurants',

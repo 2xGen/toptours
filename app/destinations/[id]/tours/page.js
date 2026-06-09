@@ -15,6 +15,7 @@ import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { getDestinationFeatures } from '@/lib/destinationFeatures';
 import { absoluteUrl, getSiteOrigin } from '@/lib/siteUrl';
 import { unstable_cache } from 'next/cache';
+import { requireFeaturedDestination } from '@/lib/requireFeaturedDestination';
 
 // Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
 export const revalidate = 604800; // 7 days - increased to reduce ISR writes during Google reindexing
@@ -41,6 +42,7 @@ function toursListingHasNonEmptyQuery(searchParams) {
 
 export async function generateMetadata({ params, searchParams }) {
   const { id } = await params;
+  requireFeaturedDestination(id);
   const sp = searchParams != null ? await searchParams : {};
   const isFacetedUrl = toursListingHasNonEmptyQuery(sp);
   const toursCanonical = absoluteUrl(`/destinations/${id}/tours`);
@@ -488,6 +490,7 @@ const getCachedDestinationToursPageOne = unstable_cache(
  */
 export default async function ToursListingPage({ params }) {
   const { id } = await params;
+  requireFeaturedDestination(id);
   const viatorDestinationsClassifiedData = (await import('@/data/viatorDestinationsClassified.json')).default;
   let destination = getDestinationById(id);
   let isViatorDestination = false;

@@ -10,6 +10,8 @@ import ErrorBoundary from '@/components/ErrorBoundary';
 import DestinationDetailClient from './DestinationDetailClient';
 import { fetchDestinationData } from './DestinationDataLoader';
 import { absoluteUrl, getSiteOrigin } from '@/lib/siteUrl';
+import { requireFeaturedDestination } from '@/lib/requireFeaturedDestination';
+import { loadV3DestinationHub } from '@/lib/loadV3DestinationHub';
 
 // Helper to generate slug
 function generateSlug(name) {
@@ -28,6 +30,7 @@ export const revalidate = 604800; // 7 days - increased to reduce ISR writes dur
 // Generate metadata for SEO
 export async function generateMetadata({ params }) {
   const { id } = await params;
+  requireFeaturedDestination(id);
   let destination = getDestinationById(id);
   
   // If not in curated destinations, check generated content
@@ -155,6 +158,7 @@ export async function generateMetadata({ params }) {
 
 export default async function DestinationDetailPage({ params }) {
   const { id } = await params;
+  requireFeaturedDestination(id);
   let destination = getDestinationById(id);
   
   // If ID is numeric (Viator destination ID), look it up in Supabase and redirect to slug
@@ -369,6 +373,8 @@ export default async function DestinationDetailPage({ params }) {
   // Use the same destination ID for promotions as we use for tours
   const destinationIdForScores = destination.destinationId || destination.id;
   
+  const v3Hub = await loadV3DestinationHub(id);
+
   // Fetch all destination data in parallel for better performance
   const {
     promotionScores,
@@ -647,6 +653,7 @@ export default async function DestinationDetailPage({ params }) {
           categoryGuides={categoryGuides}
           hasBabyEquipmentRentals={hasBabyEquipmentRentals}
           topRestaurants={topRestaurants}
+          v3Hub={v3Hub}
         />
       </ErrorBoundary>
     </>

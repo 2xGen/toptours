@@ -6,7 +6,8 @@
   "scripts": {
     "clean": "node scripts/clean-next.js",
     "dev": "node scripts/clean-next.js && next dev",
-    "build": "node scripts/generate-production-sitemaps.js && next build",
+    "build": "node scripts/generate-featured-destination-slugs.js && node scripts/generate-production-sitemaps.js && next build",
+    "generate-featured-destination-slugs": "node scripts/generate-featured-destination-slugs.js",
     "generate-production-sitemaps": "node scripts/generate-production-sitemaps.js",
     "analyze": "ANALYZE=true next build",
     "start": "next start",

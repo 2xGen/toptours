@@ -10,6 +10,7 @@ import { getPremiumRestaurantIds } from '@/lib/restaurantPremiumServer';
 import { getAllCategoryGuidesForDestination } from '../lib/categoryGuides';
 import { getDestinationFeatures } from '@/lib/destinationFeatures';
 import RestaurantsListClient from './RestaurantsListClient';
+import { requireFeaturedDestination } from '@/lib/requireFeaturedDestination';
 
 // Revalidate every hour for fresh data
 // Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
@@ -28,6 +29,7 @@ async function getRestaurantsForPage(destinationId) {
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
+  requireFeaturedDestination(id);
   const destination = resolveDestinationById(id);
 
   if (!destination) {
@@ -93,6 +95,7 @@ export async function generateMetadata({ params }) {
 
 export default async function RestaurantsIndexPage({ params }) {
   const { id } = await params;
+  requireFeaturedDestination(id);
   const destination = resolveDestinationById(id);
 
   if (!destination) {

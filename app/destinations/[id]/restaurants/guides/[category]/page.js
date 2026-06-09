@@ -5,6 +5,7 @@ import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { getTrendingToursByDestination } from '@/lib/promotionSystem';
 import RestaurantGuideClient from './RestaurantGuideClient';
 import { formatRestaurantForFrontend } from '@/lib/restaurants';
+import { requireFeaturedDestination } from '@/lib/requireFeaturedDestination';
 
 // ISR: cache for 24h so repeated requests don't run the function (saves cost).
 export const revalidate = 604800; // 7 days - match rest of site, reduce ISR writes
@@ -12,7 +13,8 @@ export const revalidate = 604800; // 7 days - match rest of site, reduce ISR wri
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;
   const { id, category } = resolvedParams;
-  
+  requireFeaturedDestination(id);
+
   const destination = resolveDestinationById(id);
   if (!destination) {
     return {
@@ -90,6 +92,7 @@ export async function generateMetadata({ params }) {
 export default async function RestaurantGuidePage({ params }) {
   const resolvedParams = await params;
   const { id, category } = resolvedParams;
+  requireFeaturedDestination(id);
   
   const destination = resolveDestinationById(id);
   if (!destination) {

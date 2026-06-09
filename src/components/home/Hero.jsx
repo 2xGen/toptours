@@ -7,6 +7,7 @@ import { Search, MapPin, Globe, UtensilsCrossed, Ticket, BookOpen, ArrowRight, S
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import AnimatedHeroBackground from './AnimatedHeroBackground';
+import { SITE_STATS } from '@/lib/siteStats';
 // OPTIMIZED: Lazy load large destination data - only load when user starts typing
 // This prevents blocking LCP with 1.27 MB of data processing
 
@@ -290,15 +291,15 @@ const Hero = ({ onOpenOnboardingModal }) => {
             <div className="flex flex-wrap gap-6 justify-center text-white/90 text-sm">
               <div className="flex items-center gap-2">
                 <Ticket className="h-5 w-5 text-yellow-300" />
-                <span>300,000+ tours</span>
+                <span>{SITE_STATS.tours} tours</span>
               </div>
               <div className="flex items-center gap-2">
                 <Globe className="h-5 w-5 text-blue-200" />
-                <span>3,300+ destinations</span>
+                <span>{SITE_STATS.destinationsLabel}</span>
               </div>
               <div className="flex items-center gap-2">
                 <BookOpen className="h-5 w-5 text-green-200" />
-                <span>38,000+ travel guides</span>
+                <span>{SITE_STATS.travelGuides} travel guides</span>
               </div>
             </div>
           </motion.div>

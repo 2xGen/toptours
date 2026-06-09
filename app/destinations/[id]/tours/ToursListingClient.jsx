@@ -42,6 +42,7 @@ import { toast, useToast } from '@/components/ui/use-toast';
 import { getTourUrl, getTourProductId } from '@/utils/tourHelpers';
 import { getGuidesByCountry } from '@/data/travelGuidesData';
 import { getDestinationById, getDestinationsByCountry } from '@/data/destinationsData';
+import { isFeaturedDestination } from '@/lib/featuredDestinations';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import { hasDestinationPage } from '@/data/destinationFullContent';
 // OPTIMIZED: Lazy load modals - they're only shown conditionally
@@ -420,7 +421,7 @@ export default function ToursListingClient({
       const allDestinations = [...destinationsFromData, ...classifiedDestinations];
       const seen = new Set();
       const uniqueDestinations = allDestinations.filter(dest => {
-        if (seen.has(dest.id)) {
+        if (!isFeaturedDestination(dest.id) || seen.has(dest.id)) {
           return false;
         }
         seen.add(dest.id);
@@ -433,9 +434,11 @@ export default function ToursListingClient({
       );
     } else {
       // Sort alphabetically
-      return destinationsFromData.sort((a, b) => 
-        (a.name || a.fullName || '').localeCompare(b.name || b.fullName || '')
-      );
+      return destinationsFromData
+        .filter((dest) => isFeaturedDestination(dest.id))
+        .sort((a, b) => 
+          (a.name || a.fullName || '').localeCompare(b.name || b.fullName || '')
+        );
     }
   }, [destination.country, destination.id, destination.name, destination.fullName]);
   // Initialize search term from URL query parameter if present

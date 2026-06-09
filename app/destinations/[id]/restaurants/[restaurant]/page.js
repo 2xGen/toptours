@@ -18,6 +18,7 @@ import { getRestaurantPremiumSubscription } from '@/lib/restaurantPremiumServer'
 import { getAllCategoryGuidesForDestination } from '../../lib/categoryGuides';
 import { getDestinationFeatures } from '@/lib/destinationFeatures';
 import { isLowValueGuideTag } from '@/lib/guideIndexing';
+import { requireFeaturedDestination } from '@/lib/requireFeaturedDestination';
 import { cache } from 'react';
 
 // Old restaurant slugs with their expected names for fuzzy matching
@@ -95,6 +96,7 @@ const getRestaurantPageSeed = cache(async (destinationId, restaurantSlug) => {
 
 export async function generateMetadata({ params }) {
   const { id: destinationId, restaurant: restaurantSlug } = await params;
+  requireFeaturedDestination(destinationId);
   const { destination, restaurant } = await getRestaurantPageSeed(destinationId, restaurantSlug);
 
   if (!destination || !restaurant) {
@@ -187,6 +189,7 @@ export async function generateStaticParams() {
 
 export default async function RestaurantPage({ params }) {
   const { id: destinationId, restaurant: restaurantSlug } = await params;
+  requireFeaturedDestination(destinationId);
   const { destination, restaurant } = await getRestaurantPageSeed(destinationId, restaurantSlug);
 
   // If restaurant not found in database OR static files, check if it's an old restaurant

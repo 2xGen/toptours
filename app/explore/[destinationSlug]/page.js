@@ -4,6 +4,7 @@ import { fetchProductsBulk } from '@/lib/viatorBulk';
 import ExploreLandingClient from './ExploreLandingClient';
 import NavigationNext from '@/components/NavigationNext';
 import FooterNext from '@/components/FooterNext';
+import { requireFeaturedDestination } from '@/lib/requireFeaturedDestination';
 
 export const revalidate = 3600; // 1 hour
 
@@ -11,6 +12,7 @@ const META_DESC_MAX = 160;
 
 export async function generateMetadata({ params }) {
   const { destinationSlug } = await params;
+  requireFeaturedDestination(destinationSlug);
   const { destination } = await getV3LandingData(destinationSlug);
   if (!destination) return { title: 'Explore' };
 
@@ -38,6 +40,7 @@ export async function generateMetadata({ params }) {
 
 export default async function ExploreDestinationPage({ params }) {
   const { destinationSlug } = await params;
+  requireFeaturedDestination(destinationSlug);
   let { destination, topPicks, categories } = await getV3LandingData(destinationSlug);
   const toursData = await getV3LandingAllToursForDestination(destinationSlug);
   const tours = toursData?.tours ?? [];

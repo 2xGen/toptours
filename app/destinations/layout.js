@@ -1,15 +1,15 @@
 import { absoluteUrl, getSiteOrigin } from '@/lib/siteUrl';
 
 const destinationsCanonical = absoluteUrl('/destinations');
-const destinationsOgImage = absoluteUrl('/OG%20Images/discover%20tours%20guides%20and%20restaurants%20in%20over%203500%20destinations.jpg');
+const destinationsOgImage = absoluteUrl('/OG%20Images/TopTours%20Destinations.jpg');
 
 export const metadata = {
-  title: 'Discover Top Travel Destinations Worldwide – Find Tours & Activities',
-  description: 'Explore 175+ amazing travel destinations across the globe with AI-powered tour recommendations. From Caribbean beaches to European cities, find your perfect adventure with expert guides and curated activities.',
+  title: 'Discover Curated Travel Destinations – Find Tours & Activities',
+  description: 'Explore 247 hand-picked travel destinations with AI-powered tour recommendations. From Caribbean beaches to European cities, find your perfect adventure with expert guides and curated activities.',
   keywords: 'travel destinations, vacation spots, places to visit, travel guide, tours, activities, Caribbean destinations, Europe travel, Asia travel, adventure travel',
   openGraph: {
     title: 'Discover Top Travel Destinations Worldwide – Find Tours & Activities',
-    description: 'Explore 175+ amazing travel destinations across the globe with AI-powered tour recommendations. From Caribbean beaches to European cities, find your perfect adventure.',
+    description: 'Explore 247 hand-picked travel destinations with AI-powered tour recommendations. From Caribbean beaches to European cities, find your perfect adventure.',
     url: destinationsCanonical,
     siteName: 'TopTours.ai',
     images: [
@@ -17,7 +17,7 @@ export const metadata = {
         url: destinationsOgImage,
         width: 1200,
         height: 630,
-        alt: 'Discover tours, guides and excursions in over 3,500 destinations',
+        alt: 'Discover tours, guides and excursions in curated TopTours destinations',
       },
     ],
     locale: 'en_US',
@@ -26,7 +26,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Discover Top Travel Destinations Worldwide – Find Tours & Activities',
-    description: 'Explore 175+ amazing travel destinations with AI-powered tour recommendations. Find your perfect adventure today!',
+    description: 'Explore 247 hand-picked travel destinations with AI-powered tour recommendations. Find your perfect adventure today!',
     images: [destinationsOgImage],
   },
   alternates: {
@@ -58,7 +58,7 @@ export default function DestinationsLayout({ children }) {
             "name": "Travel Destinations",
             "description": "Explore amazing travel destinations worldwide with AI-powered recommendations",
             "url": destinationsCanonical,
-            "numberOfItems": 175,
+            "numberOfItems": 247,
             "itemListElement": [
               {
                 "@type": "ListItem",

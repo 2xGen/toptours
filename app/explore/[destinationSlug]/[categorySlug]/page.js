@@ -7,6 +7,7 @@ import FooterNext from '@/components/FooterNext';
 import ExploreCategoryClient from './ExploreCategoryClient';
 import { ArrowRight } from 'lucide-react';
 import { fetchProductsBulk } from '@/lib/viatorBulk';
+import { requireFeaturedDestination } from '@/lib/requireFeaturedDestination';
 
 export const revalidate = 3600;
 
@@ -14,6 +15,7 @@ const META_DESC_MAX = 160;
 
 export async function generateMetadata({ params }) {
   const { destinationSlug, categorySlug } = await params;
+  requireFeaturedDestination(destinationSlug);
   const [destination, categories, pageMeta] = await Promise.all([
     getV3LandingDestination(destinationSlug),
     getV3LandingCategories(destinationSlug),
@@ -46,6 +48,7 @@ export async function generateMetadata({ params }) {
 
 export default async function ExploreCategoryPage({ params }) {
   const { destinationSlug, categorySlug } = await params;
+  requireFeaturedDestination(destinationSlug);
   const [destination, categories, contentFromDb] = await Promise.all([
     getV3LandingDestination(destinationSlug),
     getV3LandingCategories(destinationSlug),

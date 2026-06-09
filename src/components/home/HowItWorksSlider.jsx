@@ -50,13 +50,13 @@ const steps = [
   },
   {
     icon: Eye,
-    title: 'Discover 3300+ Destinations',
-    description: 'Explore tours across 3300+ destinations worldwide. Find hidden gems and popular spots that match your travel style.',
+    title: 'Discover 247 Curated Destinations',
+    description: 'Explore tours across 247 hand-picked destinations worldwide. Find hidden gems and popular spots that match your travel style.',
     color: 'from-green-500 to-emerald-500',
     iconColor: 'text-green-500',
     bgGradient: 'from-green-50 to-emerald-50',
     borderColor: 'border-green-200',
-    details: ['3300+ destinations', '300,000+ tours', '38,000+ travel guides']
+    details: ['247 curated destinations', '150,000+ tours', '1,800+ travel guides']
   }
 ];
 

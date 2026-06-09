@@ -12,6 +12,8 @@ import FooterNext from '@/components/FooterNext';
 import { ToursCategoryFilter } from '@/components/explore/ToursCategoryFilter';
 import { ToursSortSelect } from '@/components/explore/ToursSortSelect';
 import ExploreToursListingClient from './ExploreToursListingClient';
+import { requireFeaturedDestination } from '@/lib/requireFeaturedDestination';
+import { getFeaturedDestinationSlugSet } from '@/lib/featuredDestinations';
 
 export const revalidate = 3600;
 
@@ -24,7 +26,9 @@ export async function generateStaticParams() {
       .from('v3_landing_category_tours')
       .select('destination_slug')
       .limit(100);
-    const slugs = [...new Set((data || []).map((r) => r.destination_slug).filter(Boolean))];
+    const featured = getFeaturedDestinationSlugSet();
+    const slugs = [...new Set((data || []).map((r) => r.destination_slug).filter(Boolean))]
+      .filter((slug) => featured.has(String(slug).toLowerCase()));
     return slugs.map((destinationSlug) => ({ destinationSlug }));
   } catch {
     return [{ destinationSlug: 'new-york-city' }];
@@ -51,6 +55,7 @@ function buildQuery(params) {
 
 export async function generateMetadata({ params, searchParams }) {
   const { destinationSlug } = await params;
+  requireFeaturedDestination(destinationSlug);
   const { category: categoryParam } = await searchParams || {};
   const destination = await getV3LandingDestination(destinationSlug);
   const data = await getV3LandingAllToursForDestination(destinationSlug);
@@ -96,6 +101,7 @@ export async function generateMetadata({ params, searchParams }) {
 
 export default async function ExploreToursPage({ params, searchParams }) {
   const { destinationSlug } = await params;
+  requireFeaturedDestination(destinationSlug);
   const search = await searchParams || {};
   const categoryParam = search.category;
   const sortParam = search.sort;

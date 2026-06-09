@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, BookOpen, Clock } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { travelGuides } from '@/data/travelGuidesData';
+import { getDestinationListingImageUrl } from '@/lib/destinationImageUrl';
 
 const TravelGuidesPreview = () => {
   // Get 3 featured travel guides
@@ -52,7 +53,7 @@ const TravelGuidesPreview = () => {
                 <div className="relative h-48 w-full overflow-hidden">
                   {guide.image ? (
                     <Image
-                      src={guide.image}
+                      src={getDestinationListingImageUrl(guide.image)}
                       alt={guide.title}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"

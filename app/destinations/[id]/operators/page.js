@@ -7,6 +7,7 @@ import { getDestinationFullContent } from '@/data/destinationFullContent';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import { getAllCategoryGuidesForDestination } from '../lib/categoryGuides';
 import OperatorsListClient from './OperatorsListClient';
+import { requireFeaturedDestination } from '@/lib/requireFeaturedDestination';
 import { getRestaurantsForDestination as getRestaurantsForDestinationFromDB, formatRestaurantForFrontend } from '@/lib/restaurants';
 
 // Helper to generate slug
@@ -38,6 +39,7 @@ export const revalidate = 604800; // 7 days - increased to reduce ISR writes dur
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
+  requireFeaturedDestination(id);
   let destination = getDestinationById(id);
 
   if (!destination) {
@@ -220,6 +222,7 @@ export async function generateMetadata({ params }) {
 
 export default async function OperatorsListingPage({ params }) {
   const { id } = await params;
+  requireFeaturedDestination(id);
   let destination = getDestinationById(id);
   let viatorDestinationId = null;
 

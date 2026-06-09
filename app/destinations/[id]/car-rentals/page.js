@@ -6,6 +6,7 @@ import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassifie
 import { getViatorDestinationById, getViatorDestinationBySlug } from '@/lib/supabaseCache';
 import { getDestinationFeatures } from '@/lib/destinationFeatures';
 import CarRentalsClient from './CarRentalsClient';
+import { requireFeaturedDestination } from '@/lib/requireFeaturedDestination';
 
 const DEFAULT_OG = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/Explore%20any%20destination%20with%20TopToursai.png';
 const CAR_RENTAL_OG_IMAGE = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/car%20rental.png';
@@ -40,6 +41,7 @@ export const revalidate = 604800; // 7 days
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
+  requireFeaturedDestination(id);
   let destination = getDestinationById(id);
 
   if (!destination) {
@@ -126,6 +128,7 @@ export async function generateMetadata({ params }) {
 
 export default async function CarRentalsPage({ params }) {
   const { id } = await params;
+  requireFeaturedDestination(id);
   let destination = getDestinationById(id);
 
   if (!destination) {
