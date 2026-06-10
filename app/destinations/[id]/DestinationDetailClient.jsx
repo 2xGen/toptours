@@ -1397,6 +1397,9 @@ export default function DestinationDetailClient({ destination, promotionScores =
           hasBabyEquipment={hasBabyEquipmentRentals}
         />
 
+        {/* Paid partner placement — must stay visible on curated hubs (Arusha) */}
+        <ArushaKiliclimbFeaturedStrip destinationId={safeDestination.id} />
+
         {useCuratedHubPicks && (
           <DestinationHubCuratedPicks
             config={hubPicksConfig}
@@ -2061,8 +2064,6 @@ export default function DestinationDetailClient({ destination, promotionScores =
             </div>
           </section>
         )}
-
-        <ArushaKiliclimbFeaturedStrip destinationId={safeDestination.id} />
 
         {/* Popular Tour Categories - Collapsible Accordion */}
         {categoryGuidesProp && categoryGuidesProp.length > 0 && (
