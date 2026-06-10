@@ -36,6 +36,14 @@ import { resolveUserPreferences } from '@/lib/preferenceResolution';
 import { useBookmarks } from '@/hooks/useBookmarks';
 import { dedupeCategoryGuides, groupGuidesIntoSections } from '@/lib/guidePageGrouping';
 import ArushaKiliclimbFeaturedStrip from './guides/partnerGuides/ArushaKiliclimbFeaturedStrip';
+import DestinationHubCuratedPicks from '@/components/destination/DestinationHubCuratedPicks';
+import DestinationStickyNav from '@/components/DestinationStickyNav';
+import {
+  getDestinationHubPicks,
+  collectHubPickProductCodes,
+  hubUsesStaticDisplay,
+} from '@/lib/destinationHubPicks';
+import { DESTINATIONS_WITH_RESTAURANTS } from '@/data/destinationsWithRestaurants';
 // OPTIMIZED: Lazy load modals - only load when opened
 const ShareModal = lazy(() => import('@/components/sharing/ShareModal'));
 const SmartTourFinder = lazy(() => import('@/components/home/SmartTourFinder'));
@@ -86,7 +94,7 @@ const MAX_POPULAR_GUIDES_ON_LANDING = 8;
 const MAX_OTHER_DESTINATIONS_ON_LANDING = 8;
 const MAX_RELATED_GUIDES_CAROUSEL = 5;
 
-export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [], promotedTours = [], hardcodedTours = {}, categoryGuides: categoryGuidesProp = [], hasBabyEquipmentRentals = false, topRestaurants = [] }) {
+export default function DestinationDetailClient({ destination, promotionScores = {}, trendingTours = [], promotedTours = [], hardcodedTours = {}, categoryGuides: categoryGuidesProp = [], hasBabyEquipmentRentals = false, topRestaurants = [], hubTours = [], hubToursTotalCount = null }) {
   
   // Ensure destination exists
   if (!destination) {
@@ -119,10 +127,18 @@ export default function DestinationDetailClient({ destination, promotionScores =
   const safeTopRestaurants = Array.isArray(topRestaurants) ? topRestaurants : [];
 
 
+  const hubPicksConfigEarly = getDestinationHubPicks(safeDestination.id);
+  const usesStaticHubPicks = hubUsesStaticDisplay(hubPicksConfigEarly);
+  const hasHubToursSeed = Array.isArray(hubTours) && hubTours.length > 0;
+
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [tours, setTours] = useState({ all: [] });
-  const [loading, setLoading] = useState({ all: false });
-  const [totalToursCount, setTotalToursCount] = useState(null);
+  const [tours, setTours] = useState({ all: hasHubToursSeed ? hubTours : [] });
+  const [loading, setLoading] = useState({
+    all: Boolean(hubPicksConfigEarly) && !hasHubToursSeed && !usesStaticHubPicks,
+  });
+  const [totalToursCount, setTotalToursCount] = useState(
+    hubToursTotalCount ?? hubPicksConfigEarly?.catalogTourCount ?? null
+  );
   const [visibleTours, setVisibleTours] = useState({});
   const [relatedDestinations, setRelatedDestinations] = useState([]);
   const [relatedGuides, setRelatedGuides] = useState([]);
@@ -309,6 +325,25 @@ export default function DestinationDetailClient({ destination, promotionScores =
     }
     return out;
   }, [tours.all, topPickProductIdSet]);
+
+  const hubPicksConfig = useMemo(
+    () => getDestinationHubPicks(safeDestination.id),
+    [safeDestination.id]
+  );
+  const useCuratedHubPicks = Boolean(hubPicksConfig);
+  const curatedHeroEyebrow = hubPicksConfig?.heroEyebrow;
+  const curatedHeroTitle = hubPicksConfig?.heroTitle;
+  const curatedHeroDescription = hubPicksConfig?.heroDescription;
+
+  const hasRestaurantsNav = useMemo(() => {
+    const id = String(safeDestination.id || '').toLowerCase();
+    return DESTINATIONS_WITH_RESTAURANTS.has(id) || safeTopRestaurants.length > 0;
+  }, [safeDestination.id, safeTopRestaurants.length]);
+
+  const hasAirportTransfersNav = useMemo(
+    () => categoryGuidesProp.some((guide) => guide.category_slug === 'airport-transfers'),
+    [categoryGuidesProp]
+  );
 
   /** Viator “things to do” for this destination (tracked partner link). */
   const viatorDestinationHubUrl = useMemo(
@@ -690,9 +725,10 @@ export default function DestinationDetailClient({ destination, promotionScores =
     }
     setVisibleTours(visible);
     
-    // Always fetch from API (compliance: no hardcoded data ingestion)
-    // Use same approach as tours listing page
-    fetchAllToursForDestination();
+    // Curated hubs with static card data skip tour API calls on the hub page
+    if (!usesStaticHubPicks) {
+      fetchAllToursForDestination();
+    }
 
     // Load all related destinations from the same region
     const related = getRelatedDestinations(safeDestination.id).filter((dest) =>
@@ -841,8 +877,11 @@ export default function DestinationDetailClient({ destination, promotionScores =
 
   // Fetch all tours for destination (single API call, cached for 7 days)
   const fetchAllToursForDestination = async () => {
-    // Set loading state
-    setLoading({ all: true });
+    const hubTourLimit = getDestinationHubPicks(safeDestination.id) ? 50 : 24;
+    const hasExistingTours = tours.all.length > 0;
+    if (!hasExistingTours) {
+      setLoading({ all: true });
+    }
 
     try {
       // Use the existing working viator-search endpoint instead
@@ -853,6 +892,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
       const requestBody = {
         searchTerm: '',
         page: 1,
+        count: hubTourLimit,
         viatorDestinationId: viatorDestinationId ? String(viatorDestinationId) : null,
         includeDestination: !!viatorDestinationId
       };
@@ -927,11 +967,34 @@ export default function DestinationDetailClient({ destination, promotionScores =
       const data = await response.json();
       
       // The viator-search endpoint returns data.products.results, not data.tours
-      const allTours = data.products?.results || data.tours || [];
+      let allTours = data.products?.results || data.tours || [];
       const totalCount = data.products?.totalCount || allTours.length || 0;
       
       // Store total count for button
       setTotalToursCount(totalCount);
+
+      const hubConfig = getDestinationHubPicks(safeDestination.id);
+      if (hubConfig) {
+        const pickCodes = collectHubPickProductCodes(hubConfig);
+        const existingIds = new Set(
+          allTours.map((t) => getTourProductId(t)).filter(Boolean).map(String)
+        );
+        const missingCodes = pickCodes.filter((code) => !existingIds.has(String(code)));
+        if (missingCodes.length > 0) {
+          const fetched = await Promise.all(
+            missingCodes.map(async (code) => {
+              try {
+                const tourResponse = await fetch(`/api/internal/tour/${encodeURIComponent(code)}`);
+                if (!tourResponse.ok) return null;
+                return tourResponse.json();
+              } catch {
+                return null;
+              }
+            })
+          );
+          allTours = [...allTours, ...fetched.filter(Boolean)];
+        }
+      }
 
       // Store all tours (no need to group by category anymore)
       if (allTours.length > 0) {
@@ -948,8 +1011,21 @@ export default function DestinationDetailClient({ destination, promotionScores =
           return reviewsB - reviewsA;
         });
         
-        // Hub: fetch extra so "More tours" grid stays full after excluding top picks (no duplicate cards)
-        setTours({ all: sortedTours.slice(0, 24) });
+        let finalTours = sortedTours.slice(0, hubTourLimit);
+        if (hubConfig) {
+          const pickCodeSet = new Set(collectHubPickProductCodes(hubConfig).map(String));
+          const included = new Set(
+            finalTours.map((t) => String(getTourProductId(t) || '')).filter(Boolean)
+          );
+          for (const tour of sortedTours) {
+            const id = String(getTourProductId(tour) || '');
+            if (pickCodeSet.has(id) && !included.has(id)) {
+              finalTours.push(tour);
+              included.add(id);
+            }
+          }
+        }
+        setTours({ all: finalTours });
       } else {
         setTours({ all: [] });
         setTotalToursCount(0);
@@ -1051,16 +1127,24 @@ export default function DestinationDetailClient({ destination, promotionScores =
                 >
                   <div className="flex items-center gap-3 mb-4 md:mb-6">
                     <h1 className="flex flex-col gap-0.5 flex-1">
-                      <span className="text-sm sm:text-base font-medium text-white/90 uppercase tracking-wide">Things to do in</span>
+                      <span className="text-sm sm:text-base font-medium text-white/90 uppercase tracking-wide">
+                        {useCuratedHubPicks && curatedHeroEyebrow ? curatedHeroEyebrow : 'Things to do in'}
+                      </span>
                       <span className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold text-white flex items-center gap-3 flex-wrap">
-                        <span>{safeDestination.fullName}</span>
-                        {(safeDestination.category || safeDestination.region) && (
+                        <span>{useCuratedHubPicks && curatedHeroTitle ? curatedHeroTitle : safeDestination.fullName}</span>
+                        {!useCuratedHubPicks && (safeDestination.category || safeDestination.region) && (
                           <span className="flex items-center text-base sm:text-lg font-medium text-white">
                             <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 text-white" />
                             {safeDestination.category || safeDestination.region}
                           </span>
                         )}
                       </span>
+                      {useCuratedHubPicks && (safeDestination.category || safeDestination.region) && (
+                        <span className="flex items-center text-base sm:text-lg font-medium text-white/90 mt-1">
+                          <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5" />
+                          {safeDestination.fullName} · {safeDestination.category || safeDestination.region}
+                        </span>
+                      )}
                     </h1>
                     <Button
                       variant="ghost"
@@ -1073,7 +1157,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                     </Button>
                   </div>
                   <p className="text-lg sm:text-xl text-white/90 mb-4 md:mb-5">
-                    {safeDestination.heroDescription}
+                    {useCuratedHubPicks && curatedHeroDescription ? curatedHeroDescription : safeDestination.heroDescription}
                   </p>
                   <p className="text-sm sm:text-base text-white/85 mb-6 md:mb-8 flex flex-wrap items-center gap-x-3 gap-y-1">
                     <span className="inline-flex items-center gap-1.5">
@@ -1182,16 +1266,24 @@ export default function DestinationDetailClient({ destination, promotionScores =
               >
                 <div className="flex items-center justify-center gap-3 mb-4 md:mb-6">
                   <h1 className="flex flex-col gap-0.5 items-center text-center">
-                    <span className="text-sm sm:text-base font-medium text-white/90 uppercase tracking-wide">Things to do in</span>
+                    <span className="text-sm sm:text-base font-medium text-white/90 uppercase tracking-wide">
+                      {useCuratedHubPicks && curatedHeroEyebrow ? curatedHeroEyebrow : 'Things to do in'}
+                    </span>
                     <span className="text-3xl sm:text-4xl md:text-6xl font-poppins font-bold text-white flex items-center gap-3 flex-wrap justify-center">
-                      <span>{safeDestination.fullName}</span>
-                      {(safeDestination.category || safeDestination.region) && (
+                      <span>{useCuratedHubPicks && curatedHeroTitle ? curatedHeroTitle : safeDestination.fullName}</span>
+                      {!useCuratedHubPicks && (safeDestination.category || safeDestination.region) && (
                         <span className="flex items-center text-base sm:text-lg font-medium text-white">
                           <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 text-white" />
                           {safeDestination.category || safeDestination.region}
                         </span>
                       )}
                     </span>
+                    {useCuratedHubPicks && (safeDestination.category || safeDestination.region) && (
+                      <span className="flex items-center text-base sm:text-lg font-medium text-white/90 mt-1 justify-center">
+                        <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5" />
+                        {safeDestination.fullName} · {safeDestination.category || safeDestination.region}
+                      </span>
+                    )}
                   </h1>
                   <Button
                     variant="ghost"
@@ -1204,7 +1296,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                   </Button>
                 </div>
                 <p className="text-lg sm:text-xl text-white/90 mb-4 max-w-3xl mx-auto">
-                  {safeDestination.heroDescription}
+                  {useCuratedHubPicks && curatedHeroDescription ? curatedHeroDescription : safeDestination.heroDescription}
                 </p>
                 <p className="text-sm sm:text-base text-white/85 mb-8 max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center">
                   <span className="inline-flex items-center gap-1.5">
@@ -1292,85 +1384,31 @@ export default function DestinationDetailClient({ destination, promotionScores =
           </div>
         </section>
 
-        {/* Sticky Navigation Hub - Quick Access */}
-        <section className="sticky top-16 z-40 bg-white border-b shadow-sm">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 py-3 sm:py-2">
-            <nav className="flex items-center gap-5 sm:gap-6 py-1 overflow-x-auto hide-scrollbar min-w-0 flex-1">
-              <Link 
-                href={`/destinations/${safeDestination.id}/tours`}
-                className="flex items-center gap-2 whitespace-nowrap font-semibold text-blue-700 hover:text-blue-800 transition-colors border-b-2 border-blue-600 pb-1 shrink-0"
-              >
-                <span>Tours</span>
-                <Badge variant="secondary" className="bg-blue-100 text-blue-700">
-                  {totalToursCount ? `${totalToursCount.toLocaleString('en-US')}+` : '1,900+'}
-                </Badge>
-              </Link>
-              {categoryGuidesProp.length > 0 && (
-                <Link 
-                  href={`/destinations/${safeDestination.id}/guides`}
-                  className="flex items-center gap-2 whitespace-nowrap font-semibold text-gray-900 hover:text-indigo-600 transition-colors border-b-2 border-transparent hover:border-indigo-600 pb-1"
-                >
-                  <BookOpen className="w-4 h-4" />
-                  <span>Travel Guides</span>
-                  <Badge variant="secondary" className="bg-indigo-100 text-indigo-700">
-                    {categoryGuidesProp.length}+
-                  </Badge>
-                </Link>
-              )}
-              {/* Car Rentals - Always available */}
-              <Link 
-                href={`/destinations/${safeDestination.id}/car-rentals`}
-                className="flex items-center gap-2 whitespace-nowrap font-semibold text-gray-900 hover:text-green-600 transition-colors border-b-2 border-transparent hover:border-green-600 pb-1"
-              >
-                <Car className="w-4 h-4" />
-                <span>Car Rentals</span>
-              </Link>
-              {/* Airport Transfers - Check if guide exists */}
-              {categoryGuidesProp.some(guide => guide.category_slug === 'airport-transfers') && (
-                <Link 
-                  href={`/destinations/${safeDestination.id}/guides/airport-transfers`}
-                  className="flex items-center gap-2 whitespace-nowrap font-semibold text-gray-900 hover:text-cyan-600 transition-colors border-b-2 border-transparent hover:border-cyan-600 pb-1"
-                >
-                  <Plane className="w-4 h-4" />
-                  <span>Airport Transfers</span>
-                </Link>
-              )}
-              {/* Travel Insurance */}
-              <Link 
-                href="/travel-insurance"
-                className="flex items-center gap-2 whitespace-nowrap font-semibold text-gray-900 hover:text-emerald-600 transition-colors border-b-2 border-transparent hover:border-emerald-600 pb-1"
-              >
-                <Shield className="w-4 h-4" />
-                <span>Travel Insurance</span>
-              </Link>
-              {/* Baby Equipment Rentals - Only if available */}
-              {hasBabyEquipmentRentals && (
-                <Link 
-                  href={`#baby-equipment`}
-                  className="flex items-center gap-2 whitespace-nowrap font-semibold text-gray-900 hover:text-pink-600 transition-colors border-b-2 border-transparent hover:border-pink-600 pb-1"
-                >
-                  <Baby className="w-4 h-4" />
-                  <span>Baby Equipment Rentals</span>
-                </Link>
-              )}
-            </nav>
-            <div className="flex items-center gap-2 shrink-0 sm:pl-2">
-              <Button
-                asChild
-                size="sm"
-                className="w-full sm:w-auto sunset-gradient text-white font-semibold shadow-md hover:scale-[1.02] transition-transform"
-              >
-                <PrefetchOnHoverLink href={`/destinations/${safeDestination.id}/tours`} className="inline-flex items-center justify-center gap-1.5">
-                  Browse tours
-                  <ArrowRight className="w-4 h-4 shrink-0" />
-                </PrefetchOnHoverLink>
-              </Button>
-            </div>
-            </div>
-          </section>
+        <DestinationStickyNav
+          destinationId={safeDestination.id}
+          destinationName={safeDestination.fullName || safeDestination.name}
+          activeKey="hub"
+          showCounts
+          tourCount={totalToursCount}
+          guideCount={categoryGuidesProp.length > 0 ? categoryGuidesProp.length : null}
+          hasRestaurants={hasRestaurantsNav}
+          restaurantCount={safeTopRestaurants.length > 0 ? safeTopRestaurants.length : null}
+          hasAirportTransfers={hasAirportTransfersNav}
+          hasBabyEquipment={hasBabyEquipmentRentals}
+        />
+
+        {useCuratedHubPicks && (
+          <DestinationHubCuratedPicks
+            config={hubPicksConfig}
+            tours={tours.all}
+            destination={safeDestination}
+            loading={loading.all}
+            totalToursCount={totalToursCount}
+          />
+        )}
 
         {/* Above-the-fold: top picks to book */}
-        {topPicksTours.length > 0 && (
+        {!useCuratedHubPicks && topPicksTours.length > 0 && (
           <section id="top-picks" className="py-10 sm:py-12 bg-white border-b scroll-mt-24">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
@@ -1428,8 +1466,8 @@ export default function DestinationDetailClient({ destination, promotionScores =
           </section>
         )}
 
-        {/* Compact guide topics — links to full guides index + categories */}
-        {topGuideTopicCards.length > 0 && (
+        {/* Compact guide topics — hidden on curated hubs (grid section below is enough) */}
+        {topGuideTopicCards.length > 0 && !useCuratedHubPicks && (
           <section
             id="guide-topics"
             className="py-6 bg-slate-50/90 border-y border-slate-200/80 scroll-mt-24"
@@ -1478,7 +1516,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
         )}
 
         {/* Promoted Listings Section - Moved Higher for Hub Style */}
-        {(safePromotedTours && safePromotedTours.length > 0) && promotedToursForSection.length > 0 && (
+        {!useCuratedHubPicks && (safePromotedTours && safePromotedTours.length > 0) && promotedToursForSection.length > 0 && (
           <section className="py-12 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center gap-2 mb-6">
@@ -1542,6 +1580,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
 
 
         {/* Popular Tours & Activities */}
+        {!useCuratedHubPicks && (
         <section id="tours" className="py-12 sm:py-16 bg-gray-50 overflow-hidden scroll-mt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -1722,7 +1761,10 @@ export default function DestinationDetailClient({ destination, promotionScores =
             )}
           </div>
         </section>
+        )}
 
+        {!useCuratedHubPicks && (
+        <>
         {/* Destination guide accordions — after main tour grid (tours first for conversion; content stays in HTML for SEO) */}
         {/* Why Visit Section - Collapsible Accordion */}
         {safeDestination.whyVisit && safeDestination.whyVisit.length > 0 && (
@@ -2092,9 +2134,11 @@ export default function DestinationDetailClient({ destination, promotionScores =
             </div>
           </section>
         )}
+        </>
+        )}
 
         {/* Top Restaurants (inline on destination page; no separate destination restaurant listing page) */}
-        {safeTopRestaurants.length > 0 && (
+        {!useCuratedHubPicks && safeTopRestaurants.length > 0 && (
           <section id="restaurants" className="py-8 bg-white scroll-mt-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between mb-5">
@@ -2184,6 +2228,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
         )}
 
         {/* Popular Pages — after main tour funnel so booking stays primary */}
+        {!useCuratedHubPicks && (
         <section className="py-12 bg-gradient-to-br from-indigo-50 to-blue-50 border-t border-indigo-100/80">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -2252,8 +2297,10 @@ export default function DestinationDetailClient({ destination, promotionScores =
             </motion.div>
           </div>
         </section>
+        )}
 
         {/* Tour Operators & Other Destinations */}
+        {!useCuratedHubPicks && (
         <section className="py-12 bg-white border-t">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Tour Operators */}
@@ -2329,9 +2376,10 @@ export default function DestinationDetailClient({ destination, promotionScores =
             )}
           </div>
         </section>
+        )}
 
         {/* Related Travel Guides Carousel Section - limited to 5 for SEO (same-destination focus) */}
-        {relatedGuidesForCarousel.length > 0 && (
+        {!useCuratedHubPicks && relatedGuidesForCarousel.length > 0 && (
           <section className="py-12 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <h3 className="text-2xl font-poppins font-bold text-gray-800 mb-6 text-center">
@@ -2509,6 +2557,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
         )}
 
         {/* Plan Your Trip Section */}
+        {!useCuratedHubPicks && (
         <section className="py-12 sm:py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -2566,9 +2615,10 @@ export default function DestinationDetailClient({ destination, promotionScores =
             </motion.div>
           </div>
         </section>
+        )}
 
         {/* FAQ Section - Scalable template-based approach */}
-        {(safeDestination.bestTimeToVisit || safeDestination.gettingAround || safeDestination.whyVisit?.length > 0 || (safeDestination.highlights && safeDestination.highlights.length > 0) || (safeDestination.tourCategories && safeDestination.tourCategories.length > 0) || (categoryGuidesProp && categoryGuidesProp.length > 0)) && (
+        {!useCuratedHubPicks && (safeDestination.bestTimeToVisit || safeDestination.gettingAround || safeDestination.whyVisit?.length > 0 || (safeDestination.highlights && safeDestination.highlights.length > 0) || (safeDestination.tourCategories && safeDestination.tourCategories.length > 0) || (categoryGuidesProp && categoryGuidesProp.length > 0)) && (
           <section className="py-12 bg-gray-50">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.div
@@ -2727,10 +2777,14 @@ export default function DestinationDetailClient({ destination, promotionScores =
               viewport={{ once: true }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Ready to Explore {safeDestination.fullName}?
+                {useCuratedHubPicks
+                  ? `Ready to book your ${safeDestination.fullName} tour?`
+                  : `Ready to Explore ${safeDestination.fullName}?`}
               </h2>
               <p className="text-xl text-white/90 mb-8">
-                Discover the best tours and activities in {safeDestination.fullName} with AI-powered recommendations tailored just for you.
+                {useCuratedHubPicks
+                  ? `Browse all tours with filters, or open any pick above for live price and availability.`
+                  : `Discover the best tours and activities in ${safeDestination.fullName} with AI-powered recommendations tailored just for you.`}
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Button

@@ -3,7 +3,6 @@ import { Inter } from 'next/font/google'
 import { Suspense, lazy } from 'react'
 import { Toaster } from '@/components/ui/toaster'
 import PageViewTracker from '@/components/PageViewTracker'
-import ClientHeadScripts from './ClientHeadScripts'
 import { absoluteUrl, getSiteOrigin } from '@/lib/siteUrl'
 
 // OPTIMIZED: Lazy load non-critical components for better initial page load
@@ -169,7 +168,22 @@ export default function RootLayout({ children }) {
         style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', backgroundAttachment: 'fixed' }}
         suppressHydrationWarning
       >
-        <ClientHeadScripts />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"10cc6f6541b9f7bcd21bab9b7ab99987"})});
+                if ('serviceWorker' in navigator) {
+                  var registerSw = function() {
+                    navigator.serviceWorker.register('/sw.js').catch(function(){});
+                  };
+                  if (document.readyState === 'complete') registerSw();
+                  else window.addEventListener('load', registerSw);
+                }
+              })();
+            `
+          }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `

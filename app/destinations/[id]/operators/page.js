@@ -5,11 +5,14 @@ import { getViatorDestinationById, getViatorDestinationBySlug } from '@/lib/supa
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
 import { getDestinationFullContent } from '@/data/destinationFullContent';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
-import { getAllCategoryGuidesForDestination } from '../lib/categoryGuides';
 import OperatorsListClient from './OperatorsListClient';
 import { requireFeaturedDestination } from '@/lib/requireFeaturedDestination';
-import { getRestaurantsForDestination as getRestaurantsForDestinationFromDB, formatRestaurantForFrontend } from '@/lib/restaurants';
-
+import {
+  isOperatorPagesEnabled,
+  loadOperatorPageIndex,
+  getOperatorPagePath,
+  getViatorDestinationIdForSlug,
+} from '@/lib/operatorPages';
 // Helper to generate slug
 function generateSlug(name) {
   return name
@@ -21,18 +24,20 @@ function generateSlug(name) {
     .replace(/^-|-$/g, '');
 }
 
-/** Operator directory pages: thin vs destination hub + /tours; noindex, keep links followable. */
-const OPERATORS_LISTING_ROBOTS = {
-  index: false,
-  follow: true,
-  googleBot: {
-    index: false,
+function getOperatorsListingRobots(destinationId) {
+  const indexed = isOperatorPagesEnabled(destinationId);
+  return {
+    index: indexed,
     follow: true,
-    'max-video-preview': -1,
-    'max-image-preview': 'large',
-    'max-snippet': -1,
-  },
-};
+    googleBot: {
+      index: indexed,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  };
+}
 
 // Revalidate every 24 hours - page-level cache (not API JSON cache, so Viator compliant)
 export const revalidate = 604800; // 7 days - increased to reduce ISR writes during Google reindexing
@@ -82,7 +87,7 @@ export async function generateMetadata({ params }) {
           description,
           images: [ogImage],
         },
-        robots: OPERATORS_LISTING_ROBOTS,
+        robots: getOperatorsListingRobots(id),
       };
     }
     
@@ -125,7 +130,7 @@ export async function generateMetadata({ params }) {
               description,
               images: [defaultOgImage],
             },
-            robots: OPERATORS_LISTING_ROBOTS,
+            robots: getOperatorsListingRobots(id),
           };
         }
       } catch (error) {
@@ -169,7 +174,7 @@ export async function generateMetadata({ params }) {
             description,
             images: [defaultOgImage],
           },
-          robots: OPERATORS_LISTING_ROBOTS,
+          robots: getOperatorsListingRobots(id),
         };
       }
     } catch (error) {
@@ -179,16 +184,20 @@ export async function generateMetadata({ params }) {
     // If all lookups fail, return generic metadata (noindex listing)
     return {
       title: 'Tour Operators – Book Direct',
-      robots: OPERATORS_LISTING_ROBOTS,
+      robots: getOperatorsListingRobots(id),
     };
   }
 
   const defaultOgImage = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/Explore%20any%20destination%20with%20TopToursai.png';
   const ogImage = destination.imageUrl || defaultOgImage;
-  const description = `Discover trusted tour operators in ${destination.fullName}. Browse operators offering tours and activities with instant booking and free cancellation.`;
+  const operatorIndex = isOperatorPagesEnabled(id) ? loadOperatorPageIndex(id) : null;
+  const operatorCount = operatorIndex?.operatorCount || 0;
+  const description = operatorCount > 0
+    ? `Compare ${operatorCount} tour operators in ${destination.fullName}. See combined ratings, tour catalogs, and book with live availability on TopTours.ai.`
+    : `Discover trusted tour operators in ${destination.fullName}. Browse operators offering tours and activities with instant booking and free cancellation.`;
 
     return {
-      title: `Tour Operators in ${destination.fullName} – Book Direct`,
+      title: `Tour Operators in ${destination.fullName} – Reviews & Tours`,
       description,
       keywords: `tour operators ${destination.fullName}, ${destination.fullName} tour companies, ${destination.fullName} tour providers`,
       alternates: {
@@ -216,7 +225,7 @@ export async function generateMetadata({ params }) {
         description,
         images: [ogImage],
       },
-      robots: OPERATORS_LISTING_ROBOTS,
+      robots: getOperatorsListingRobots(id),
     };
 }
 
@@ -320,6 +329,10 @@ export default async function OperatorsListingPage({ params }) {
     notFound();
   }
 
+  if (!viatorDestinationId) {
+    viatorDestinationId = getViatorDestinationIdForSlug(id);
+  }
+
   // Fetch operators for this destination (just the list, no tour matching)
   let operators = [];
   if (viatorDestinationId) {
@@ -329,48 +342,25 @@ export default async function OperatorsListingPage({ params }) {
     }
   }
     
-  // No server-side viator-search on operators page (saves cost; page is low priority).
-  // Client shows a CTA linking to /destinations/[id] (destination detail page).
-  const topTours = [];
-
-  // Fetch category guides for this destination (limit to 6 for internal linking)
-  let categoryGuides = [];
-  try {
-    const allGuides = await getAllCategoryGuidesForDestination(id);
-    categoryGuides = allGuides.slice(0, 6);
-  } catch (error) {
-    console.error('Error fetching category guides:', error);
-  }
-
-  // Fetch restaurants for this destination (for internal linking)
-  let restaurants = [];
-  try {
-    if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) {
-      const dbRestaurants = await getRestaurantsForDestinationFromDB(id);
-      restaurants = (dbRestaurants || [])
-        .map(restaurant => {
-          try {
-            return formatRestaurantForFrontend(restaurant);
-          } catch (err) {
-            console.error('Error formatting restaurant:', err, restaurant?.id);
-            return null;
-          }
-        })
-        .filter(restaurant => restaurant !== null && restaurant !== undefined)
-        .slice(0, 6); // Limit to 6 for display
-    }
-  } catch (error) {
-    console.error('Error fetching restaurants:', error);
-    // Continue without restaurants - page will still work
+  let operatorPages = [];
+  if (isOperatorPagesEnabled(id)) {
+    const index = loadOperatorPageIndex(id);
+    operatorPages = (index?.operators || []).map((op) => ({
+      slug: op.slug,
+      operatorName: op.operatorName,
+      tourCount: op.tourCount,
+      totalReviews: op.totalReviews,
+      averageRating: op.averageRating,
+      href: getOperatorPagePath(id, op.slug),
+    }));
   }
 
   return (
     <OperatorsListClient
       destination={destination}
       operators={operators}
-      topTours={topTours}
-      categoryGuides={categoryGuides}
-      restaurants={restaurants}
+      operatorPages={operatorPages}
+      operatorPagesEnabled={isOperatorPagesEnabled(id)}
     />
   );
 }

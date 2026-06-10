@@ -661,6 +661,7 @@ export default function RestaurantsListClient({ destination, restaurants, promot
         <DestinationStickyNav
           destinationId={destination.id}
           destinationName={destination.fullName || destination.name}
+          activeKey="restaurants"
           hasRestaurants={true}
           hasAirportTransfers={destinationFeatures.hasAirportTransfers}
           hasBabyEquipment={destinationFeatures.hasBabyEquipment}

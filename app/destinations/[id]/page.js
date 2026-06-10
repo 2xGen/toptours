@@ -11,6 +11,8 @@ import DestinationDetailClient from './DestinationDetailClient';
 import { fetchDestinationData } from './DestinationDataLoader';
 import { absoluteUrl, getSiteOrigin } from '@/lib/siteUrl';
 import { requireFeaturedDestination } from '@/lib/requireFeaturedDestination';
+import { getDestinationHubPicks, hubUsesStaticDisplay } from '@/lib/destinationHubPicks';
+import { fetchDestinationHubTours } from '@/lib/fetchDestinationHubTours';
 // Helper to generate slug
 function generateSlug(name) {
   return name
@@ -382,6 +384,20 @@ export default async function DestinationDetailPage({ params }) {
     topRestaurants
   } = await fetchDestinationData(destination, destinationIdForScores);
 
+  let hubTours = [];
+  let hubToursTotalCount = null;
+  const hubPicksConfig = getDestinationHubPicks(destination.id);
+  if (hubPicksConfig && destination.destinationId) {
+    const hubData = await fetchDestinationHubTours(destination.destinationId, {
+      destinationId: destination.id,
+      limit: hubUsesStaticDisplay(hubPicksConfig) ? 1 : 50,
+    });
+    hubTours = hubData.tours;
+    hubToursTotalCount = hubData.totalCount || hubPicksConfig.catalogTourCount || null;
+  } else if (hubPicksConfig) {
+    hubToursTotalCount = hubPicksConfig.catalogTourCount ?? null;
+  }
+
   const destHubUrl = absoluteUrl(`/destinations/${destination.id}`);
   const logoUrl = absoluteUrl('/logo.png');
 
@@ -649,6 +665,8 @@ export default async function DestinationDetailPage({ params }) {
           categoryGuides={categoryGuides}
           hasBabyEquipmentRentals={hasBabyEquipmentRentals}
           topRestaurants={topRestaurants}
+          hubTours={hubTours}
+          hubToursTotalCount={hubToursTotalCount}
         />
       </ErrorBoundary>
     </>

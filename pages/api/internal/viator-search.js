@@ -145,6 +145,7 @@ export default async function handler(req, res) {
       viatorDestinationId = body.viatorDestinationId,
       includeDestination = body.includeDestination !== false,
       tagIds = body.tagIds || [],
+      count: requestedCount = body.count,
     } = body;
 
     const apiKey = process.env.VIATOR_API_KEY;
@@ -155,7 +156,7 @@ export default async function handler(req, res) {
 
     const term = destination || searchTerm;
     // Reuse hasSearchTerm from above (already calculated for cache headers)
-    const perPage = 48; // 48 = 16 rows × 3 columns (perfect fit for grid, under 50 API limit)
+    const perPage = Math.min(Math.max(Number(requestedCount) || 48, 1), 50);
     const start = (page - 1) * perPage + 1;
 
     // Use /products/search when we have destination ID AND no search term (default destination page)

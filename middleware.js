@@ -9,6 +9,18 @@ function isFeaturedDestinationSlug(slug) {
   return slug && FEATURED_DESTINATION_SLUGS.has(String(slug).toLowerCase());
 }
 
+function isNumericViatorDestinationId(slug) {
+  return /^\d+$/.test(String(slug || ''));
+}
+
+/** Retired destination hubs/tours → curated listing (301-equivalent for GET). */
+function redirectToDestinationsHub(request) {
+  const url = request.nextUrl.clone();
+  url.pathname = '/destinations';
+  url.search = '';
+  return NextResponse.redirect(url, 308);
+}
+
 function getSlugFromPath(pathname, prefix) {
   if (!pathname.startsWith(prefix)) return null;
   const rest = pathname.slice(prefix.length);
@@ -121,8 +133,12 @@ export function middleware(request) {
   }
 
   const destinationSlug = getSlugFromPath(pathname, '/destinations/');
-  if (destinationSlug && !isFeaturedDestinationSlug(destinationSlug)) {
-    return new NextResponse('Not Found', { status: 404 });
+  if (
+    destinationSlug &&
+    !isNumericViatorDestinationId(destinationSlug) &&
+    !isFeaturedDestinationSlug(destinationSlug)
+  ) {
+    return redirectToDestinationsHub(request);
   }
 
   const apiDestinationSlug = getSlugFromPath(pathname, '/api/destinations/');

@@ -1866,6 +1866,7 @@ export default function ToursListingClient({
       <DestinationStickyNav
         destinationId={destination.id}
         destinationName={destination.fullName || destination.name}
+        activeKey="tours"
         hasRestaurants={destinationFeatures.hasRestaurants}
         hasAirportTransfers={destinationFeatures.hasAirportTransfers}
         hasBabyEquipment={destinationFeatures.hasBabyEquipment}

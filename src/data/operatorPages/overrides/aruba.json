@@ -1,0 +1,6 @@
+{
+  "_comment": "Optional manual blurbs/FAQs per operator slug. Rebuild script merges these into aruba.json.",
+  "de-palm-tours-vba": {
+    "blurb": "De Palm Tours VBA is one of Aruba's longest-running tour companies, known for De Palm Island day trips, catamaran snorkel sails, and the Atlantis Submarine experience. With thousands of verified reviews across their Aruba catalog, they remain a go-to choice for families and first-time visitors who want reliable transport and bundled island activities."
+  }
+}

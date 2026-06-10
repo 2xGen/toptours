@@ -1,6 +1,6 @@
 export const slugToViatorId = {
   "aruba": "28",
-  "curacao": "22694",
+  "curacao": "725",
   "st-lucia": "41314",
   "barbados": "30",
   "jamaica": "34",
@@ -58,7 +58,7 @@ export const slugToViatorId = {
   "tel-aviv": "d920",
   "amman": "d5503",
   "beirut": "d4215",
-  "prague": "48",
+  "prague": "462",
   "vienna": "454",
   "budapest": "499",
   "reykjavik": "905",

@@ -1,29 +1,19 @@
 "use client";
 
 import Link from 'next/link';
-import { Car, BookOpen, Baby, Shield } from 'lucide-react';
+import { ArrowRight, BookOpen, Baby, Shield, Plane, UtensilsCrossed } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import PrefetchOnHoverLink from '@/components/PrefetchOnHoverLink';
 
 /**
- * Reusable sticky navigation bar for destination-related pages
- * Shows quick access to Tours, Travel Guides, and Car Rentals
- * 
- * @param {Object} props
- * @param {string} props.destinationId - Destination slug/ID
- * @param {string} props.destinationName - Display name for destination (optional, falls back to ID)
- * @param {string} props.toursLinkText - Optional label for Tours link (e.g. "View all tours in Tanah Rata")
- * @param {boolean} props.showCounts - Whether to show counts (default: false to avoid API calls)
- * @param {number} props.tourCount - Optional tour count to display
- * @param {number} props.guideCount - Optional guide count to display
- * @param {boolean} props.hasRestaurants - Whether to show restaurants link
- * @param {number} props.restaurantCount - Optional restaurant count
- * @param {boolean} props.hasAirportTransfers - Whether airport transfers guide exists
- * @param {boolean} props.hasBabyEquipment - Whether baby equipment rentals page exists
+ * Reusable sticky navigation for destination hub and sub-pages.
  */
 export default function DestinationStickyNav({
   destinationId,
   destinationName,
   toursLinkText = null,
+  activeKey = null,
   showCounts = false,
   tourCount = null,
   guideCount = null,
@@ -31,6 +21,7 @@ export default function DestinationStickyNav({
   restaurantCount = null,
   hasAirportTransfers = false,
   hasBabyEquipment = false,
+  showBrowseButton = false,
 }) {
   if (!destinationId) {
     return null;
@@ -38,84 +29,100 @@ export default function DestinationStickyNav({
 
   const displayName = destinationName || destinationId;
 
+  const itemClass = (key) => {
+    const isActive = activeKey === key || (activeKey === 'hub' && key === 'tours');
+    return [
+      'flex items-center gap-2 whitespace-nowrap font-semibold transition-colors border-b-2 pb-1 shrink-0',
+      isActive
+        ? 'text-blue-700 border-blue-600'
+        : 'text-gray-900 border-transparent hover:text-blue-600 hover:border-blue-600',
+    ].join(' ');
+  };
+
   return (
     <section className="sticky top-16 z-40 bg-white border-b shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <nav className="flex items-center gap-6 py-4 overflow-x-auto hide-scrollbar">
-          {/* Explore destination - links to main destination page */}
-          <Link 
-            href={`/destinations/${destinationId}`}
-            className="flex items-center gap-2 whitespace-nowrap font-semibold text-gray-900 hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 pb-1"
-          >
-            <span>Explore {displayName}</span>
-          </Link>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 py-3 sm:py-2">
+        <nav className="flex items-center gap-5 sm:gap-6 py-1 overflow-x-auto hide-scrollbar min-w-0 flex-1">
+          {activeKey !== 'hub' && (
+            <Link href={`/destinations/${destinationId}`} className={itemClass('hub')}>
+              <span>Explore {displayName}</span>
+            </Link>
+          )}
 
-          {/* Tours */}
-          <Link 
-            href={`/destinations/${destinationId}/tours`}
-            className="flex items-center gap-2 whitespace-nowrap font-semibold text-gray-900 hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 pb-1"
-          >
+          <Link href={`/destinations/${destinationId}/tours`} className={itemClass('tours')}>
             <span>{toursLinkText || 'Tours'}</span>
-            {showCounts && tourCount !== null && (
+            {showCounts && tourCount != null && tourCount > 0 && (
               <Badge variant="secondary" className="bg-blue-100 text-blue-700">
                 {tourCount.toLocaleString('en-US')}+
               </Badge>
             )}
           </Link>
 
-          {/* Travel Guides */}
-          <Link 
-            href={`/destinations/${destinationId}/guides`}
-            className="flex items-center gap-2 whitespace-nowrap font-semibold text-gray-900 hover:text-indigo-600 transition-colors border-b-2 border-transparent hover:border-indigo-600 pb-1"
-          >
-            <BookOpen className="w-4 h-4" />
-            <span>Travel Guides</span>
-            {showCounts && guideCount !== null && (
+          <Link href={`/destinations/${destinationId}/guides`} className={itemClass('guides')}>
+            <BookOpen className="w-4 h-4 shrink-0" aria-hidden />
+            <span>Guides</span>
+            {showCounts && guideCount != null && guideCount > 0 && (
               <Badge variant="secondary" className="bg-indigo-100 text-indigo-700">
                 {guideCount}+
               </Badge>
             )}
           </Link>
 
-          {/* Car Rentals - Always available */}
-          <Link 
-            href={`/destinations/${destinationId}/car-rentals`}
-            className="flex items-center gap-2 whitespace-nowrap font-semibold text-gray-900 hover:text-green-600 transition-colors border-b-2 border-transparent hover:border-green-600 pb-1"
-          >
-            <Car className="w-4 h-4" />
-            <span>Car Rentals</span>
-          </Link>
+          {hasRestaurants && (
+            <Link href={`/destinations/${destinationId}/restaurants`} className={itemClass('restaurants')}>
+              <UtensilsCrossed className="w-4 h-4 shrink-0" aria-hidden />
+              <span>Restaurants</span>
+              {showCounts && restaurantCount != null && restaurantCount > 0 && (
+                <Badge variant="secondary" className="bg-rose-100 text-rose-700">
+                  {restaurantCount}+
+                </Badge>
+              )}
+            </Link>
+          )}
 
-          {/* Travel Insurance - Always available */}
-          <Link
-            href="/travel-insurance"
-            className="flex items-center gap-2 whitespace-nowrap font-semibold text-gray-900 hover:text-emerald-600 transition-colors border-b-2 border-transparent hover:border-emerald-600 pb-1"
-          >
-            <Shield className="w-4 h-4" />
+          <Link href="/travel-insurance" className={itemClass('travel-insurance')}>
+            <Shield className="w-4 h-4 shrink-0" aria-hidden />
             <span>Travel Insurance</span>
           </Link>
 
-          {/* Airport Transfers - Optional */}
           {hasAirportTransfers && (
-            <Link 
+            <Link
               href={`/destinations/${destinationId}/guides/airport-transfers`}
-              className="flex items-center gap-2 whitespace-nowrap font-semibold text-gray-900 hover:text-cyan-600 transition-colors border-b-2 border-transparent hover:border-cyan-600 pb-1"
+              className={itemClass('airport-transfers')}
             >
+              <Plane className="w-4 h-4 shrink-0" aria-hidden />
               <span>Airport Transfers</span>
             </Link>
           )}
 
-          {/* Baby Equipment Rentals - Optional */}
           {hasBabyEquipment && (
-            <Link 
+            <Link
               href={`/destinations/${destinationId}/baby-equipment-rentals`}
-              className="flex items-center gap-2 whitespace-nowrap font-semibold text-gray-900 hover:text-pink-600 transition-colors border-b-2 border-transparent hover:border-pink-600 pb-1"
+              className={itemClass('baby-equipment')}
             >
-              <Baby className="w-4 h-4" />
+              <Baby className="w-4 h-4 shrink-0" aria-hidden />
               <span>Baby Equipment</span>
             </Link>
           )}
         </nav>
+
+        {showBrowseButton && (
+          <div className="flex items-center gap-2 shrink-0 sm:pl-2">
+            <Button
+              asChild
+              size="sm"
+              className="w-full sm:w-auto sunset-gradient text-white font-semibold shadow-md hover:scale-[1.02] transition-transform"
+            >
+              <PrefetchOnHoverLink
+                href={`/destinations/${destinationId}/tours`}
+                className="inline-flex items-center justify-center gap-1.5"
+              >
+                Browse tours
+                <ArrowRight className="w-4 h-4 shrink-0" />
+              </PrefetchOnHoverLink>
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );
