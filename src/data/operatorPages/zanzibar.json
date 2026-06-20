@@ -1,0 +1,2011 @@
+{
+  "destinationSlug": "zanzibar",
+  "viatorDestinationId": "5590",
+  "destinationName": "Zanzibar",
+  "builtAt": "2026-06-12T08:34:39.671Z",
+  "partial": true,
+  "operatorCount": 40,
+  "operators": [
+    {
+      "slug": "abdi-suleiman",
+      "operatorName": "Abdi Suleiman",
+      "operatorKey": "abdi suleiman",
+      "tourCount": 1,
+      "totalReviews": 10,
+      "averageRating": 4.9,
+      "blurb": "Abdi Suleiman specializes in private tours across Zanzibar. Use this page as a single hub to compare every Abdi Suleiman listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Private Spice Tour in Zanzibar with Pick Up.",
+      "faqs": [
+        {
+          "question": "Is Abdi Suleiman worth it?",
+          "answer": "Based on 10 verified traveler reviews averaging 4.9 stars, Abdi Suleiman is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Abdi Suleiman offer in Zanzibar?",
+          "answer": "Abdi Suleiman currently lists 1 bookable tour in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Abdi Suleiman tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Private Spice Tour in Zanzibar with Pick Up\" with 10 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "297908P3",
+          "title": "Private Spice Tour in Zanzibar with Pick Up",
+          "slug": "private-spice-tour-in-zanzibar-with-pick-up",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/a4/ed/e4.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9,
+          "reviewCount": 10,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "africa-beyond-tours-travel-ltd",
+      "operatorName": "Africa & Beyond Tours & Travel Ltd",
+      "operatorKey": "africa & beyond tours & travel ltd",
+      "tourCount": 13,
+      "totalReviews": 12,
+      "averageRating": 4.75,
+      "blurb": "Africa & Beyond Tours & Travel Ltd specializes in island day trips and snorkeling across Zanzibar. Use this page as a single hub to compare every Africa & Beyond Tours & Travel Ltd listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is Africa & Beyond Tours & Travel Ltd worth it?",
+          "answer": "Based on 12 verified traveler reviews averaging 4.75 stars, Africa & Beyond Tours & Travel Ltd is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Africa & Beyond Tours & Travel Ltd offer in Zanzibar?",
+          "answer": "Africa & Beyond Tours & Travel Ltd currently lists 13 bookable tours in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Africa & Beyond Tours & Travel Ltd tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Prison Island Tour, Stone Town, Secret Garden, Spice Tour, Emerson Restaurant\" with 2 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "262913P105",
+          "title": "Prison Island Tour, Stone Town, Secret Garden, Spice Tour, Emerson Restaurant",
+          "slug": "prison-island-tour-stone-town-secret-garden-spice-tour-emerson-restaurant",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0e/c8/2f/dd.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 2,
+          "durationMinutes": 720
+        },
+        {
+          "productId": "262913P193",
+          "title": "Baraka Aquarium; Jozani Forest Tour; Kuza Cave; Paje Beach; The Rock Restaurant",
+          "slug": "baraka-aquarium-jozani-forest-tour-kuza-cave-paje-beach-the-rock-restaurant",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0e/c5/f7/6b.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 2,
+          "durationMinutes": 540
+        },
+        {
+          "productId": "262913P141",
+          "title": "Snorkeling at Blue Lagoon; Starfish; The Rock Restaurant & Paje Beach",
+          "slug": "snorkeling-at-blue-lagoon-starfish-the-rock-restaurant-paje-beach",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0d/0d/c9/67.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 2,
+          "durationMinutes": 510
+        },
+        {
+          "productId": "262913P148",
+          "title": "Mnemba Island, Jozani Forest Tour, The Rock, Salaam Cave Tour",
+          "slug": "mnemba-island-jozani-forest-tour-the-rock-salaam-cave-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/11/fa/3f/a7.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.5,
+          "reviewCount": 2,
+          "durationMinutes": 420
+        },
+        {
+          "productId": "262913P122",
+          "title": "Dolphin Tour; Le Saint Tropez; Nungwi Beach & Kendwa Beach Tour",
+          "slug": "dolphin-tour-le-saint-tropez-nungwi-beach-kendwa-beach-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/d8/e4/cd.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.5,
+          "reviewCount": 2,
+          "durationMinutes": 480
+        },
+        {
+          "productId": "262913P172",
+          "title": "Stone Town Tour; Secret Garden Restaurant; Jozani Forest; The Rock Restaurant",
+          "slug": "stone-town-tour-secret-garden-restaurant-jozani-forest-the-rock-restaurant",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0f/09/a2/4b.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4,
+          "reviewCount": 1,
+          "durationMinutes": 480
+        },
+        {
+          "productId": "262913P149",
+          "title": "Spice Tour, Stone Town, Secret Garden, Kuza Cave, Paje Beach,The Rock Restaurant",
+          "slug": "spice-tour-stone-town-secret-garden-kuza-cave-paje-beachthe-rock-restaurant",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0f/0b/c8/81.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": 720
+        },
+        {
+          "productId": "262913P150",
+          "title": "Mnemba Dolphin Tour, Island Pongwe, Kuza Cave, Paje Beach, The Rock Restaurant",
+          "slug": "mnemba-dolphin-tour-island-pongwe-kuza-cave-paje-beach-the-rock-restaurant",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0e/ba/0e/04.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 660
+        },
+        {
+          "productId": "262913P59",
+          "title": "Kuza Cave Tour, Paje Beach Tour, The Rock Restaurant, Spice Tour, Secret Garden",
+          "slug": "kuza-cave-tour-paje-beach-tour-the-rock-restaurant-spice-tour-secret-garden",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0f/84/ce/fc.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 600
+        },
+        {
+          "productId": "262913P169",
+          "title": "Mnemba Island Tour; The Island Pongwe Restaurant; The Secret Garden; The Rock",
+          "slug": "mnemba-island-tour-the-island-pongwe-restaurant-the-secret-garden-the-rock",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0f/09/aa/7f.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 600
+        },
+        {
+          "productId": "262913P181",
+          "title": "Mnemba Island Tour; Salaam Cave; Kuza Cave; The Rock Restaurant",
+          "slug": "mnemba-island-tour-salaam-cave-kuza-cave-the-rock-restaurant",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0e/ba/0a/30.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 540
+        },
+        {
+          "productId": "262913P160",
+          "title": "Monkey Tour, Prison Tour, Secret Garden, Stone Town, Salaam Cave",
+          "slug": "monkey-tour-prison-tour-secret-garden-stone-town-salaam-cave",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0c/24/74/ec.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 660
+        },
+        {
+          "productId": "262913P188",
+          "title": "Mnemba Dolphin Tour; Spice Tour with Lunch; Prison Island Tour",
+          "slug": "mnemba-dolphin-tour-spice-tour-with-lunch-prison-island-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0e/ba/0f/ee.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 540
+        }
+      ]
+    },
+    {
+      "slug": "africa-experience-tours",
+      "operatorName": "Africa Experience Tours",
+      "operatorKey": "africa experience tours",
+      "tourCount": 3,
+      "totalReviews": 4,
+      "averageRating": 5,
+      "blurb": "Africa Experience Tours specializes in popular local experiences across Zanzibar. Use this page as a single hub to compare every Africa Experience Tours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Ocean safari tour, Special for Holland America Line Guests to Zanzibar, Stone town tour.",
+      "faqs": [
+        {
+          "question": "Is Africa Experience Tours worth it?",
+          "answer": "Based on 4 verified traveler reviews averaging 5 stars, Africa Experience Tours is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Africa Experience Tours offer in Zanzibar?",
+          "answer": "Africa Experience Tours currently lists 3 bookable tours in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Africa Experience Tours tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Ocean safari tour\" with 2 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "195348P2",
+          "title": "Ocean safari tour",
+          "slug": "ocean-safari-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/09/27/aa/80.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 2,
+          "durationMinutes": 480
+        },
+        {
+          "productId": "195348P9",
+          "title": "Special for Holland America Line Guests to Zanzibar",
+          "slug": "special-for-holland-america-line-guests-to-zanzibar",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/8b/27/9a.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": 300
+        },
+        {
+          "productId": "195348P1",
+          "title": "Stone town tour",
+          "slug": "stone-town-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/09/25/49/6a.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": 180
+        }
+      ]
+    },
+    {
+      "slug": "beach-bush-tours",
+      "operatorName": "Beach & Bush Tours",
+      "operatorKey": "beach & bush tours",
+      "tourCount": 1,
+      "totalReviews": 11,
+      "averageRating": 5,
+      "blurb": "Beach & Bush Tours specializes in snorkeling across Zanzibar. Use this page as a single hub to compare every Beach & Bush Tours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Mnemba Snorkeling and Swimming with Dolphins Trip.",
+      "faqs": [
+        {
+          "question": "Is Beach & Bush Tours worth it?",
+          "answer": "Based on 11 verified traveler reviews averaging 5 stars, Beach & Bush Tours is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Beach & Bush Tours offer in Zanzibar?",
+          "answer": "Beach & Bush Tours currently lists 1 bookable tour in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Beach & Bush Tours tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Mnemba Snorkeling and Swimming with Dolphins Trip\" with 11 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5570666P2",
+          "title": "Mnemba Snorkeling and Swimming with Dolphins Trip",
+          "slug": "mnemba-snorkeling-and-swimming-with-dolphins-trip",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/7b/92/a9.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 11,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "beach-safari",
+      "operatorName": "Beach & Safari",
+      "operatorKey": "beach & safari",
+      "tourCount": 3,
+      "totalReviews": 36,
+      "averageRating": 4.75,
+      "blurb": "Beach & Safari specializes in popular local experiences across Zanzibar. Use this page as a single hub to compare every Beach & Safari listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes From Zanzibar: Selous Game Reserve Day Safari with Flights, Zanzibar 1 Day Scuba Diving beginner course and Lunch, Zanzibar : Dolphin Adventure at Kizimkazi.",
+      "faqs": [
+        {
+          "question": "Is Beach & Safari worth it?",
+          "answer": "Based on 36 verified traveler reviews averaging 4.75 stars, Beach & Safari is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Beach & Safari offer in Zanzibar?",
+          "answer": "Beach & Safari currently lists 3 bookable tours in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Beach & Safari tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"From Zanzibar: Selous Game Reserve Day Safari with Flights\" with 35 traveler reviews and a 4.7-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "306082P1",
+          "title": "From Zanzibar: Selous Game Reserve Day Safari with Flights",
+          "slug": "from-zanzibar-selous-game-reserve-day-safari-with-flights",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0f/32/6b/d6.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.742857,
+          "reviewCount": 35,
+          "durationMinutes": null
+        },
+        {
+          "productId": "306082P46",
+          "title": "Zanzibar 1 Day Scuba Diving beginner course and Lunch",
+          "slug": "zanzibar-1-day-scuba-diving-beginner-course-and-lunch",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/13/2b/5e/67.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": 360
+        },
+        {
+          "productId": "306082P85",
+          "title": "Zanzibar : Dolphin Adventure at Kizimkazi",
+          "slug": "zanzibar-dolphin-adventure-at-kizimkazi",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/11/45/ff/cc.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 120
+        }
+      ]
+    },
+    {
+      "slug": "blue-wave-islands-boat-trip",
+      "operatorName": "Blue Wave islands boat trip",
+      "operatorKey": "blue wave islands boat trip",
+      "tourCount": 2,
+      "totalReviews": 18,
+      "averageRating": 4.78,
+      "blurb": "Blue Wave islands boat trip specializes in island day trips and private tours across Zanzibar. Use this page as a single hub to compare every Blue Wave islands boat trip listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Nakupenda Sandbank and Prison Island Boat tour with lunch and Nyange Sandbank Full Day Private Tour with Lunch.",
+      "faqs": [
+        {
+          "question": "Is Blue Wave islands boat trip worth it?",
+          "answer": "Based on 18 verified traveler reviews averaging 4.78 stars, Blue Wave islands boat trip is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Blue Wave islands boat trip offer in Zanzibar?",
+          "answer": "Blue Wave islands boat trip currently lists 2 bookable tours in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Blue Wave islands boat trip tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Nakupenda Sandbank and Prison Island Boat tour with lunch\" with 16 traveler reviews and a 4.8-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "324100P1",
+          "title": "Nakupenda Sandbank and Prison Island Boat tour with lunch",
+          "slug": "nakupenda-sandbank-and-prison-island-boat-tour-with-lunch",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/64/ba/0e.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.75,
+          "reviewCount": 16,
+          "durationMinutes": null
+        },
+        {
+          "productId": "324100P11",
+          "title": "Nyange Sandbank Full Day Private Tour with Lunch",
+          "slug": "nyange-sandbank-full-day-private-tour-with-lunch",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/02/fe/f1.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 2,
+          "durationMinutes": 360
+        }
+      ]
+    },
+    {
+      "slug": "boat-trips-club",
+      "operatorName": "Boat Trips Club",
+      "operatorKey": "boat trips club",
+      "tourCount": 2,
+      "totalReviews": 0,
+      "averageRating": null,
+      "blurb": "Boat Trips Club specializes in sunset cruises and island day trips across Zanzibar. Use this page as a single hub to compare every Boat Trips Club listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Zanzibar Sunset Dhow Cruise with Open Bar – Nungwi and Kendwa and Prison Island and Giant Tortoises Half Day Local Boat Trip.",
+      "faqs": [
+        {
+          "question": "Is Boat Trips Club worth it?",
+          "answer": "Boat Trips Club offers 2 bookable tours in Zanzibar. Compare options below and read reviews on each tour page before booking."
+        },
+        {
+          "question": "How many tours does Boat Trips Club offer in Zanzibar?",
+          "answer": "Boat Trips Club currently lists 2 bookable tours in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Boat Trips Club tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Zanzibar Sunset Dhow Cruise with Open Bar – Nungwi and Kendwa\"."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "45382P155",
+          "title": "Zanzibar Sunset Dhow Cruise with Open Bar – Nungwi and Kendwa",
+          "slug": "zanzibar-sunset-dhow-cruise-with-open-bar-nungwi-and-kendwa",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/0b/a9/79.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 120
+        },
+        {
+          "productId": "45382P207",
+          "title": "Prison Island and Giant Tortoises Half Day Local Boat Trip",
+          "slug": "prison-island-and-giant-tortoises-half-day-local-boat-trip",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/0f/ca/95.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 180
+        }
+      ]
+    },
+    {
+      "slug": "bookings-central-tours-safari",
+      "operatorName": "Bookings Central Tours & Safari",
+      "operatorKey": "bookings central tours & safari",
+      "tourCount": 2,
+      "totalReviews": 65,
+      "averageRating": 4.17,
+      "blurb": "Bookings Central Tours & Safari specializes in island day trips across Zanzibar. Use this page as a single hub to compare every Bookings Central Tours & Safari listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Stone Town and Prison Island from Zanzibar and Spices and Stone Town Tour in Zanzibar.",
+      "faqs": [
+        {
+          "question": "Is Bookings Central Tours & Safari worth it?",
+          "answer": "Based on 65 verified traveler reviews averaging 4.17 stars, Bookings Central Tours & Safari is solid for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Bookings Central Tours & Safari offer in Zanzibar?",
+          "answer": "Bookings Central Tours & Safari currently lists 2 bookable tours in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Bookings Central Tours & Safari tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Stone Town and Prison Island from Zanzibar\" with 50 traveler reviews and a 4.1-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "40425P4",
+          "title": "Stone Town and Prison Island from Zanzibar",
+          "slug": "stone-town-and-prison-island-from-zanzibar",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/81/e9/82.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.1,
+          "reviewCount": 50,
+          "durationMinutes": 300
+        },
+        {
+          "productId": "40425P1",
+          "title": "Spices and Stone Town Tour in Zanzibar",
+          "slug": "spices-and-stone-town-tour-in-zanzibar",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/06/6c/21/3f.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.4,
+          "reviewCount": 15,
+          "durationMinutes": 300
+        }
+      ]
+    },
+    {
+      "slug": "charisma-experience",
+      "operatorName": "Charisma_Experience",
+      "operatorKey": "charisma experience",
+      "tourCount": 1,
+      "totalReviews": 26,
+      "averageRating": 4.04,
+      "blurb": "Charisma_Experience specializes in sunset cruises across Zanzibar. Use this page as a single hub to compare every Charisma_Experience listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Zanzibar Dhow Evening Sunset Cruise Tour at Nungwi&Kendwa Beach.",
+      "faqs": [
+        {
+          "question": "Is Charisma_Experience worth it?",
+          "answer": "Based on 26 verified traveler reviews averaging 4.04 stars, Charisma_Experience is solid for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Charisma_Experience offer in Zanzibar?",
+          "answer": "Charisma_Experience currently lists 1 bookable tour in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Charisma_Experience tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Zanzibar Dhow Evening Sunset Cruise Tour at Nungwi&Kendwa Beach\" with 26 traveler reviews and a 4.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "427486P19",
+          "title": "Zanzibar Dhow Evening Sunset Cruise Tour at Nungwi&Kendwa Beach",
+          "slug": "zanzibar-dhow-evening-sunset-cruise-tour-at-nungwikendwa-beach",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/8c/45/85.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.0384617,
+          "reviewCount": 26,
+          "durationMinutes": 240
+        }
+      ]
+    },
+    {
+      "slug": "coastline-tours-and-travel",
+      "operatorName": "COASTLINE TOURS AND TRAVEL",
+      "operatorKey": "coastline tours and travel",
+      "tourCount": 5,
+      "totalReviews": 66,
+      "averageRating": 4.89,
+      "blurb": "COASTLINE TOURS AND TRAVEL specializes in private tours, island day trips and sunset cruises across Zanzibar. Use this page as a single hub to compare every COASTLINE TOURS AND TRAVEL listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is COASTLINE TOURS AND TRAVEL worth it?",
+          "answer": "Based on 66 verified traveler reviews averaging 4.89 stars, COASTLINE TOURS AND TRAVEL is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does COASTLINE TOURS AND TRAVEL offer in Zanzibar?",
+          "answer": "COASTLINE TOURS AND TRAVEL currently lists 5 bookable tours in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular COASTLINE TOURS AND TRAVEL tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Private Stone Town Walking Tour\" with 40 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "320977P2",
+          "title": "Private Stone Town Walking Tour",
+          "slug": "private-stone-town-walking-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/13/2a/89/e2.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 40,
+          "durationMinutes": 180
+        },
+        {
+          "productId": "320977P11",
+          "title": "Jet Ski Experience from Kendwa Beach",
+          "slug": "jet-ski-experience-from-kendwa-beach",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/68/34/1e.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.681818,
+          "reviewCount": 22,
+          "durationMinutes": 30
+        },
+        {
+          "productId": "320977P31",
+          "title": "Zanzibar Under Water Sea Walk",
+          "slug": "zanzibar-under-water-sea-walk",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/13/e0/17/7f.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 3,
+          "durationMinutes": 60
+        },
+        {
+          "productId": "320977P26",
+          "title": "Full Day Mnemba Island Luxury Dhow in Zanzibar",
+          "slug": "full-day-mnemba-island-luxury-dhow-in-zanzibar",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/13/d1/1b/fa.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": 540
+        },
+        {
+          "productId": "320977P38",
+          "title": "Zanzibar Romantic Sunset Dhow Cruise with Drinks",
+          "slug": "zanzibar-romantic-sunset-dhow-cruise-with-drinks",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/r/33/23/3e/48/caption.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 120
+        }
+      ]
+    },
+    {
+      "slug": "dream-dhow-zanzibar",
+      "operatorName": "Dream Dhow Zanzibar",
+      "operatorKey": "dream dhow zanzibar",
+      "tourCount": 2,
+      "totalReviews": 182,
+      "averageRating": 4.96,
+      "blurb": "Dream Dhow Zanzibar specializes in island day trips, private tours and sunset cruises across Zanzibar. Use this page as a single hub to compare every Dream Dhow Zanzibar listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Private/Sharing: Explore Mnemba Island with a dhow and Romantic Private Sunset Cruise on a Dhow Boat.",
+      "faqs": [
+        {
+          "question": "Is Dream Dhow Zanzibar worth it?",
+          "answer": "Based on 182 verified traveler reviews averaging 4.96 stars, Dream Dhow Zanzibar is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Dream Dhow Zanzibar offer in Zanzibar?",
+          "answer": "Dream Dhow Zanzibar currently lists 2 bookable tours in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Dream Dhow Zanzibar tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Private/Sharing: Explore Mnemba Island with a dhow\" with 176 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "277963P4",
+          "title": "Private/Sharing: Explore Mnemba Island with a dhow",
+          "slug": "privatesharing-explore-mnemba-island-with-a-dhow",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/09/fb/fc.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9602275,
+          "reviewCount": 176,
+          "durationMinutes": 540
+        },
+        {
+          "productId": "277963P3",
+          "title": "Romantic Private Sunset Cruise on a Dhow Boat",
+          "slug": "romantic-private-sunset-cruise-on-a-dhow-boat",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/ee/0e/9c.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 6,
+          "durationMinutes": 180
+        }
+      ]
+    },
+    {
+      "slug": "eseki-luxury-travel",
+      "operatorName": "Eseki Luxury Travel",
+      "operatorKey": "eseki luxury travel",
+      "tourCount": 2,
+      "totalReviews": 0,
+      "averageRating": null,
+      "blurb": "Eseki Luxury Travel specializes in airport transfers across Zanzibar. Use this page as a single hub to compare every Eseki Luxury Travel listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Zanzibar VIP Transfer in Range Rover Sport and 5 Day Luxury Tanzania Safari Experience.",
+      "faqs": [
+        {
+          "question": "Is Eseki Luxury Travel worth it?",
+          "answer": "Eseki Luxury Travel offers 2 bookable tours in Zanzibar. Compare options below and read reviews on each tour page before booking."
+        },
+        {
+          "question": "How many tours does Eseki Luxury Travel offer in Zanzibar?",
+          "answer": "Eseki Luxury Travel currently lists 2 bookable tours in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Eseki Luxury Travel tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Zanzibar VIP Transfer in Range Rover Sport\"."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5528980P1",
+          "title": "Zanzibar VIP Transfer in Range Rover Sport",
+          "slug": "zanzibar-vip-transfer-in-range-rover-sport",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/0e/56/a4.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": null
+        },
+        {
+          "productId": "5528980P9",
+          "title": "5 Day Luxury Tanzania Safari Experience",
+          "slug": "5-day-luxury-tanzania-safari-experience",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/r/33/0d/d9/c2/caption.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 7200
+        }
+      ]
+    },
+    {
+      "slug": "explore-zanzibar-local-tour-guides",
+      "operatorName": "Explore Zanzibar local tour guides",
+      "operatorKey": "explore zanzibar local tour guides",
+      "tourCount": 1,
+      "totalReviews": 8,
+      "averageRating": 5,
+      "blurb": "Explore Zanzibar local tour guides specializes in island day trips across Zanzibar. Use this page as a single hub to compare every Explore Zanzibar local tour guides listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Prison island& Explore the world heritage site in Stone town.",
+      "faqs": [
+        {
+          "question": "Is Explore Zanzibar local tour guides worth it?",
+          "answer": "Based on 8 verified traveler reviews averaging 5 stars, Explore Zanzibar local tour guides is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Explore Zanzibar local tour guides offer in Zanzibar?",
+          "answer": "Explore Zanzibar local tour guides currently lists 1 bookable tour in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Explore Zanzibar local tour guides tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Prison island& Explore the world heritage site in Stone town\" with 8 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "359452P2",
+          "title": "Prison island& Explore the world heritage site in Stone town",
+          "slug": "prison-island-explore-the-world-heritage-site-in-stone-town",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0f/f1/12/ef.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 8,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "giklik-tours-safari",
+      "operatorName": "Giklik Tours & Safari",
+      "operatorKey": "giklik tours & safari",
+      "tourCount": 1,
+      "totalReviews": 16,
+      "averageRating": 5,
+      "blurb": "Giklik Tours & Safari specializes in popular local experiences across Zanzibar. Use this page as a single hub to compare every Giklik Tours & Safari listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Stone Town Tour.",
+      "faqs": [
+        {
+          "question": "Is Giklik Tours & Safari worth it?",
+          "answer": "Based on 16 verified traveler reviews averaging 5 stars, Giklik Tours & Safari is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Giklik Tours & Safari offer in Zanzibar?",
+          "answer": "Giklik Tours & Safari currently lists 1 bookable tour in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Giklik Tours & Safari tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Stone Town Tour\" with 16 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "285857P1",
+          "title": "Stone Town Tour",
+          "slug": "stone-town-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/32/79/9a.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 16,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "halisi-africa-tours",
+      "operatorName": "HALISI AFRICA TOURS",
+      "operatorKey": "halisi africa tours",
+      "tourCount": 1,
+      "totalReviews": 10,
+      "averageRating": 5,
+      "blurb": "HALISI AFRICA TOURS specializes in popular local experiences across Zanzibar. Use this page as a single hub to compare every HALISI AFRICA TOURS listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Cooking Class Tour.",
+      "faqs": [
+        {
+          "question": "Is HALISI AFRICA TOURS worth it?",
+          "answer": "Based on 10 verified traveler reviews averaging 5 stars, HALISI AFRICA TOURS is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does HALISI AFRICA TOURS offer in Zanzibar?",
+          "answer": "HALISI AFRICA TOURS currently lists 1 bookable tour in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular HALISI AFRICA TOURS tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Cooking Class Tour\" with 10 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "204244P1",
+          "title": "Cooking Class Tour",
+          "slug": "cooking-class-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/92/b0/07.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 10,
+          "durationMinutes": 300
+        }
+      ]
+    },
+    {
+      "slug": "island-beaches-and-safaris",
+      "operatorName": "Island Beaches and Safaris",
+      "operatorKey": "island beaches and safaris",
+      "tourCount": 1,
+      "totalReviews": 26,
+      "averageRating": 5,
+      "blurb": "Island Beaches and Safaris specializes in popular local experiences across Zanzibar. Use this page as a single hub to compare every Island Beaches and Safaris listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Stone Town Historical tour.",
+      "faqs": [
+        {
+          "question": "Is Island Beaches and Safaris worth it?",
+          "answer": "Based on 26 verified traveler reviews averaging 5 stars, Island Beaches and Safaris is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Island Beaches and Safaris offer in Zanzibar?",
+          "answer": "Island Beaches and Safaris currently lists 1 bookable tour in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Island Beaches and Safaris tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Stone Town Historical tour\" with 26 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5557594P5",
+          "title": "Stone Town Historical tour",
+          "slug": "stone-town-historical-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/a3/3c/3c.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 26,
+          "durationMinutes": 150
+        }
+      ]
+    },
+    {
+      "slug": "juma-amir-tour-guide-zanzibar",
+      "operatorName": "Juma Amir Tour Guide Zanzibar",
+      "operatorKey": "juma amir tour guide zanzibar",
+      "tourCount": 1,
+      "totalReviews": 149,
+      "averageRating": 4.98,
+      "blurb": "Juma Amir Tour Guide Zanzibar specializes in island day trips across Zanzibar. Use this page as a single hub to compare every Juma Amir Tour Guide Zanzibar listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Walking City Tour in Zanzibar Island.",
+      "faqs": [
+        {
+          "question": "Is Juma Amir Tour Guide Zanzibar worth it?",
+          "answer": "Based on 149 verified traveler reviews averaging 4.98 stars, Juma Amir Tour Guide Zanzibar is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Juma Amir Tour Guide Zanzibar offer in Zanzibar?",
+          "answer": "Juma Amir Tour Guide Zanzibar currently lists 1 bookable tour in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Juma Amir Tour Guide Zanzibar tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Walking City Tour in Zanzibar Island\" with 149 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "381966P1",
+          "title": "Walking City Tour in Zanzibar Island",
+          "slug": "walking-city-tour-in-zanzibar-island",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/10/07/88/f1.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9798656,
+          "reviewCount": 149,
+          "durationMinutes": 150
+        }
+      ]
+    },
+    {
+      "slug": "kijo-viaggio",
+      "operatorName": "kijo Viaggio",
+      "operatorKey": "kijo viaggio",
+      "tourCount": 1,
+      "totalReviews": 6,
+      "averageRating": 4.5,
+      "blurb": "kijo Viaggio specializes in island day trips and private tours across Zanzibar. Use this page as a single hub to compare every kijo Viaggio listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Full Day Private Stone Town, Spice Farm & Prison Island Tour.",
+      "faqs": [
+        {
+          "question": "Is kijo Viaggio worth it?",
+          "answer": "Based on 6 verified traveler reviews averaging 4.5 stars, kijo Viaggio is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does kijo Viaggio offer in Zanzibar?",
+          "answer": "kijo Viaggio currently lists 1 bookable tour in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular kijo Viaggio tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Full Day Private Stone Town, Spice Farm & Prison Island Tour\" with 6 traveler reviews and a 4.5-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "417104P6",
+          "title": "Full Day Private Stone Town, Spice Farm & Prison Island Tour",
+          "slug": "full-day-private-stone-town-spice-farm-prison-island-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/d7/9f/f7.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.5,
+          "reviewCount": 6,
+          "durationMinutes": 480
+        }
+      ]
+    },
+    {
+      "slug": "kiyzo",
+      "operatorName": "Kiyzo",
+      "operatorKey": "kiyzo",
+      "tourCount": 3,
+      "totalReviews": 131,
+      "averageRating": 4.38,
+      "blurb": "Kiyzo specializes in popular local experiences across Zanzibar. Use this page as a single hub to compare every Kiyzo listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Zanzibar Spice Tour & Cooking Class, Nakupenda Beach Tour, Zanzibar Boat/Yacht Charter.",
+      "faqs": [
+        {
+          "question": "Is Kiyzo worth it?",
+          "answer": "Based on 131 verified traveler reviews averaging 4.38 stars, Kiyzo is solid for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Kiyzo offer in Zanzibar?",
+          "answer": "Kiyzo currently lists 3 bookable tours in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Kiyzo tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Zanzibar Spice Tour & Cooking Class\" with 87 traveler reviews and a 4.4-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "140215P9",
+          "title": "Zanzibar Spice Tour & Cooking Class",
+          "slug": "zanzibar-spice-tour-cooking-class",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0e/80/ce/e0.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.37931,
+          "reviewCount": 87,
+          "durationMinutes": 300
+        },
+        {
+          "productId": "140215P23",
+          "title": "Nakupenda Beach Tour",
+          "slug": "nakupenda-beach-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/a7/6a/ed.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.2702703,
+          "reviewCount": 37,
+          "durationMinutes": 240
+        },
+        {
+          "productId": "140215P73",
+          "title": "Zanzibar Boat/Yacht Charter",
+          "slug": "zanzibar-boatyacht-charter",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/ff/bb/bd.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 7,
+          "durationMinutes": 180
+        }
+      ]
+    },
+    {
+      "slug": "le-kobe-adventures-safaris",
+      "operatorName": "LE KOBE ADVENTURES & SAFARIS",
+      "operatorKey": "le kobe adventures & safaris",
+      "tourCount": 2,
+      "totalReviews": 26,
+      "averageRating": 5,
+      "blurb": "LE KOBE ADVENTURES & SAFARIS specializes in popular local experiences across Zanzibar. Use this page as a single hub to compare every LE KOBE ADVENTURES & SAFARIS listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes 1-Day Fly in Shared Safari to Mikumi National Park from Zanzibar and 1-Day Shared Safari to Nyerere NP from Zanzibar.",
+      "faqs": [
+        {
+          "question": "Is LE KOBE ADVENTURES & SAFARIS worth it?",
+          "answer": "Based on 26 verified traveler reviews averaging 5 stars, LE KOBE ADVENTURES & SAFARIS is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does LE KOBE ADVENTURES & SAFARIS offer in Zanzibar?",
+          "answer": "LE KOBE ADVENTURES & SAFARIS currently lists 2 bookable tours in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular LE KOBE ADVENTURES & SAFARIS tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"1-Day Fly in Shared Safari to Mikumi National Park from Zanzibar\" with 20 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "252690P7",
+          "title": "1-Day Fly in Shared Safari to Mikumi National Park from Zanzibar",
+          "slug": "1-day-fly-in-shared-safari-to-mikumi-national-park-from-zanzibar",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/4e/d2/6d.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 20,
+          "durationMinutes": 480
+        },
+        {
+          "productId": "252690P10",
+          "title": "1-Day Shared Safari to Nyerere NP from Zanzibar",
+          "slug": "1-day-shared-safari-to-nyerere-np-from-zanzibar",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/7c/71/b5.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 6,
+          "durationMinutes": 480
+        }
+      ]
+    },
+    {
+      "slug": "mudikei-zanzibar-tour-guide",
+      "operatorName": "Mudikei Zanzibar Tour Guide",
+      "operatorKey": "mudikei zanzibar tour guide",
+      "tourCount": 2,
+      "totalReviews": 121,
+      "averageRating": 4.99,
+      "blurb": "Mudikei Zanzibar Tour Guide specializes in popular local experiences across Zanzibar. Use this page as a single hub to compare every Mudikei Zanzibar Tour Guide listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Stone Town Complete Guide: History, Spice Market and Local's life and Zanzibar Spice Tour & Stone Town Treasure: Best Guide Awaits.",
+      "faqs": [
+        {
+          "question": "Is Mudikei Zanzibar Tour Guide worth it?",
+          "answer": "Based on 121 verified traveler reviews averaging 4.99 stars, Mudikei Zanzibar Tour Guide is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Mudikei Zanzibar Tour Guide offer in Zanzibar?",
+          "answer": "Mudikei Zanzibar Tour Guide currently lists 2 bookable tours in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Mudikei Zanzibar Tour Guide tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Stone Town Complete Guide: History, Spice Market and Local's life\" with 114 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "388068P1",
+          "title": "Stone Town Complete Guide: History, Spice Market and Local's life",
+          "slug": "stone-town-complete-guide-history-spice-market-and-locals-life",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/11/91/95/7a.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.991228,
+          "reviewCount": 114,
+          "durationMinutes": null
+        },
+        {
+          "productId": "388068P3",
+          "title": "Zanzibar Spice Tour & Stone Town Treasure: Best Guide Awaits",
+          "slug": "zanzibar-spice-tour-stone-town-treasure-best-guide-awaits",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/6e/0e/df.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 7,
+          "durationMinutes": 360
+        }
+      ]
+    },
+    {
+      "slug": "my-unique-zanzibar",
+      "operatorName": "My Unique Zanzibar",
+      "operatorKey": "my unique zanzibar",
+      "tourCount": 2,
+      "totalReviews": 66,
+      "averageRating": 5,
+      "blurb": "My Unique Zanzibar specializes in private tours across Zanzibar. Use this page as a single hub to compare every My Unique Zanzibar listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Private Tour Zanzibar Unique Stone Town with spice Farm Plantations and Authentic Stone Town Walking Tour With The Local Zanzibar Cuisine.",
+      "faqs": [
+        {
+          "question": "Is My Unique Zanzibar worth it?",
+          "answer": "Based on 66 verified traveler reviews averaging 5 stars, My Unique Zanzibar is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does My Unique Zanzibar offer in Zanzibar?",
+          "answer": "My Unique Zanzibar currently lists 2 bookable tours in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular My Unique Zanzibar tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Private Tour Zanzibar Unique Stone Town with spice Farm Plantations\" with 56 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "355242P1",
+          "title": "Private Tour Zanzibar Unique Stone Town with spice Farm Plantations",
+          "slug": "private-tour-zanzibar-unique-stone-town-with-spice-farm-plantations",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0f/54/ef/87.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 56,
+          "durationMinutes": 300
+        },
+        {
+          "productId": "355242P12",
+          "title": "Authentic Stone Town Walking Tour With The Local Zanzibar Cuisine",
+          "slug": "authentic-stone-town-walking-tour-with-the-local-zanzibar-cuisine",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/81/60/6b.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 10,
+          "durationMinutes": 180
+        }
+      ]
+    },
+    {
+      "slug": "nouman-tour-guide",
+      "operatorName": "Nouman Tour Guide",
+      "operatorKey": "nouman tour guide",
+      "tourCount": 1,
+      "totalReviews": 57,
+      "averageRating": 4.88,
+      "blurb": "Nouman Tour Guide specializes in popular local experiences across Zanzibar. Use this page as a single hub to compare every Nouman Tour Guide listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Stone Town Tour.",
+      "faqs": [
+        {
+          "question": "Is Nouman Tour Guide worth it?",
+          "answer": "Based on 57 verified traveler reviews averaging 4.88 stars, Nouman Tour Guide is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Nouman Tour Guide offer in Zanzibar?",
+          "answer": "Nouman Tour Guide currently lists 1 bookable tour in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Nouman Tour Guide tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Stone Town Tour\" with 57 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "207937P1",
+          "title": "Stone Town Tour",
+          "slug": "stone-town-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0f/db/0f/4d.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.877193,
+          "reviewCount": 57,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "paradise-tours-safaris",
+      "operatorName": "Paradise Tours & Safaris",
+      "operatorKey": "paradise tours & safaris",
+      "tourCount": 1,
+      "totalReviews": 24,
+      "averageRating": 4.71,
+      "blurb": "Paradise Tours & Safaris specializes in popular local experiences across Zanzibar. Use this page as a single hub to compare every Paradise Tours & Safaris listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Stone Town tour.",
+      "faqs": [
+        {
+          "question": "Is Paradise Tours & Safaris worth it?",
+          "answer": "Based on 24 verified traveler reviews averaging 4.71 stars, Paradise Tours & Safaris is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Paradise Tours & Safaris offer in Zanzibar?",
+          "answer": "Paradise Tours & Safaris currently lists 1 bookable tour in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Paradise Tours & Safaris tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Stone Town tour\" with 24 traveler reviews and a 4.7-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "187155P3",
+          "title": "Stone Town tour",
+          "slug": "stone-town-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/09/ea/ca/0f.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.7083335,
+          "reviewCount": 24,
+          "durationMinutes": 180
+        }
+      ]
+    },
+    {
+      "slug": "payo-quad-zanzibar",
+      "operatorName": "Payo Quad Zanzibar",
+      "operatorKey": "payo quad zanzibar",
+      "tourCount": 2,
+      "totalReviews": 88,
+      "averageRating": 4.89,
+      "blurb": "Payo Quad Zanzibar specializes in sunset cruises across Zanzibar. Use this page as a single hub to compare every Payo Quad Zanzibar listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Nungwi & Kendwa: 4H Quad Tour – Beaches, Villages & Community and Zanzibar Nungwi & Kendwa: Sunset Quad Adventure with Hotel Pickup.",
+      "faqs": [
+        {
+          "question": "Is Payo Quad Zanzibar worth it?",
+          "answer": "Based on 88 verified traveler reviews averaging 4.89 stars, Payo Quad Zanzibar is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Payo Quad Zanzibar offer in Zanzibar?",
+          "answer": "Payo Quad Zanzibar currently lists 2 bookable tours in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Payo Quad Zanzibar tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Nungwi & Kendwa: 4H Quad Tour – Beaches, Villages & Community\" with 87 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5507656P1",
+          "title": "Nungwi & Kendwa: 4H Quad Tour – Beaches, Villages & Community",
+          "slug": "nungwi-kendwa-4h-quad-tour-beaches-villages-community",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/d0/85/ab.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.8850574,
+          "reviewCount": 87,
+          "durationMinutes": 240
+        },
+        {
+          "productId": "5507656P3",
+          "title": "Zanzibar Nungwi & Kendwa: Sunset Quad Adventure with Hotel Pickup",
+          "slug": "zanzibar-nungwi-kendwa-sunset-quad-adventure-with-hotel-pickup",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/r/32/97/29/8f/caption.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": 180
+        }
+      ]
+    },
+    {
+      "slug": "phenomenon-tours-and-safari",
+      "operatorName": "Phenomenon Tours and Safari",
+      "operatorKey": "phenomenon tours and safari",
+      "tourCount": 2,
+      "totalReviews": 85,
+      "averageRating": 4.91,
+      "blurb": "Phenomenon Tours and Safari specializes in island day trips, private tours and snorkeling across Zanzibar. Use this page as a single hub to compare every Phenomenon Tours and Safari listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Private Tour to Mnemba Island with Lunch and Private Half Day Dolphins and Snorkeling in Mnemba.",
+      "faqs": [
+        {
+          "question": "Is Phenomenon Tours and Safari worth it?",
+          "answer": "Based on 85 verified traveler reviews averaging 4.91 stars, Phenomenon Tours and Safari is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Phenomenon Tours and Safari offer in Zanzibar?",
+          "answer": "Phenomenon Tours and Safari currently lists 2 bookable tours in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Phenomenon Tours and Safari tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Private Tour to Mnemba Island with Lunch\" with 69 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "461598P2",
+          "title": "Private Tour to Mnemba Island with Lunch",
+          "slug": "private-tour-to-mnemba-island-with-lunch",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/89/6b/51.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.884058,
+          "reviewCount": 69,
+          "durationMinutes": null
+        },
+        {
+          "productId": "461598P11",
+          "title": "Private Half Day Dolphins and Snorkeling in Mnemba",
+          "slug": "private-half-day-dolphins-and-snorkeling-in-mnemba",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/16/9c/9d/10.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 16,
+          "durationMinutes": 180
+        }
+      ]
+    },
+    {
+      "slug": "quadtour-by-osseliche-zanzibar",
+      "operatorName": "Quadtour by Osseliche Zanzibar",
+      "operatorKey": "quadtour by osseliche zanzibar",
+      "tourCount": 2,
+      "totalReviews": 525,
+      "averageRating": 4.91,
+      "blurb": "Quadtour by Osseliche Zanzibar specializes in kayaking across Zanzibar. Use this page as a single hub to compare every Quadtour by Osseliche Zanzibar listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes 4h Quad Adventures in Zanzibar: Nungwi / Kendwa and Zanzibar:Transparent heart or regular Kayak and Drone with Pickup.",
+      "faqs": [
+        {
+          "question": "Is Quadtour by Osseliche Zanzibar worth it?",
+          "answer": "Based on 525 verified traveler reviews averaging 4.91 stars, Quadtour by Osseliche Zanzibar is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Quadtour by Osseliche Zanzibar offer in Zanzibar?",
+          "answer": "Quadtour by Osseliche Zanzibar currently lists 2 bookable tours in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Quadtour by Osseliche Zanzibar tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"4h Quad Adventures in Zanzibar: Nungwi / Kendwa\" with 467 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "427971P2",
+          "title": "4h Quad Adventures in Zanzibar: Nungwi / Kendwa",
+          "slug": "4h-quad-adventures-in-zanzibar-nungwi-kendwa",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/69/92/4f.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.910064,
+          "reviewCount": 467,
+          "durationMinutes": 240
+        },
+        {
+          "productId": "427971P3",
+          "title": "Zanzibar:Transparent heart or regular Kayak and Drone with Pickup",
+          "slug": "zanzibartransparent-heart-or-regular-kayak-and-drone-with-pickup",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/14/fb/46.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.87931,
+          "reviewCount": 58,
+          "durationMinutes": 60
+        }
+      ]
+    },
+    {
+      "slug": "swahili-family-tours",
+      "operatorName": "Swahili Family Tours",
+      "operatorKey": "swahili family tours",
+      "tourCount": 2,
+      "totalReviews": 23,
+      "averageRating": 5,
+      "blurb": "Swahili Family Tours specializes in popular local experiences across Zanzibar. Use this page as a single hub to compare every Swahili Family Tours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Come and taste the Zanzibar feelings and Swahili Kitchen.",
+      "faqs": [
+        {
+          "question": "Is Swahili Family Tours worth it?",
+          "answer": "Based on 23 verified traveler reviews averaging 5 stars, Swahili Family Tours is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Swahili Family Tours offer in Zanzibar?",
+          "answer": "Swahili Family Tours currently lists 2 bookable tours in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Swahili Family Tours tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Come and taste the Zanzibar feelings\" with 14 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "210718P1",
+          "title": "Come and taste the Zanzibar feelings",
+          "slug": "come-and-taste-the-zanzibar-feelings",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/09/93/c5/3f.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 14,
+          "durationMinutes": null
+        },
+        {
+          "productId": "210718P2",
+          "title": "Swahili Kitchen",
+          "slug": "swahili-kitchen",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/95/17/a6.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 9,
+          "durationMinutes": 120
+        }
+      ]
+    },
+    {
+      "slug": "sweet-apple-tours-and-safaris",
+      "operatorName": "Sweet Apple Tours and Safaris",
+      "operatorKey": "sweet apple tours and safaris",
+      "tourCount": 2,
+      "totalReviews": 9,
+      "averageRating": 5,
+      "blurb": "Sweet Apple Tours and Safaris specializes in sunset cruises and private tours across Zanzibar. Use this page as a single hub to compare every Sweet Apple Tours and Safaris listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Full - Day Private Zanzibar Tour with dolphins & Sunset Beach and Private Full Day Jozani Forest Kuza cave Paje Beach The Rock.",
+      "faqs": [
+        {
+          "question": "Is Sweet Apple Tours and Safaris worth it?",
+          "answer": "Based on 9 verified traveler reviews averaging 5 stars, Sweet Apple Tours and Safaris is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Sweet Apple Tours and Safaris offer in Zanzibar?",
+          "answer": "Sweet Apple Tours and Safaris currently lists 2 bookable tours in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Sweet Apple Tours and Safaris tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Full - Day Private Zanzibar Tour with dolphins & Sunset Beach\" with 7 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "383428P3",
+          "title": "Full - Day Private Zanzibar Tour with dolphins & Sunset Beach",
+          "slug": "full-day-private-zanzibar-tour-with-dolphins-sunset-beach",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/13/a4/6c.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 7,
+          "durationMinutes": 420
+        },
+        {
+          "productId": "383428P19",
+          "title": "Private Full Day Jozani Forest Kuza cave Paje Beach The Rock",
+          "slug": "private-full-day-jozani-forest-kuza-cave-paje-beach-the-rock",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/16/b6/a1/77.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 2,
+          "durationMinutes": 480
+        }
+      ]
+    },
+    {
+      "slug": "unforgettable-zanzibar",
+      "operatorName": "Unforgettable Zanzibar",
+      "operatorKey": "unforgettable zanzibar",
+      "tourCount": 1,
+      "totalReviews": 14,
+      "averageRating": 4.93,
+      "blurb": "Unforgettable Zanzibar specializes in private tours across Zanzibar. Use this page as a single hub to compare every Unforgettable Zanzibar listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Full day private Nakupenda bis / Nyange Sandbank in Zanzibar.",
+      "faqs": [
+        {
+          "question": "Is Unforgettable Zanzibar worth it?",
+          "answer": "Based on 14 verified traveler reviews averaging 4.93 stars, Unforgettable Zanzibar is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Unforgettable Zanzibar offer in Zanzibar?",
+          "answer": "Unforgettable Zanzibar currently lists 1 bookable tour in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Unforgettable Zanzibar tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Full day private Nakupenda bis / Nyange Sandbank in Zanzibar\" with 14 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "424638P5",
+          "title": "Full day private Nakupenda bis / Nyange Sandbank in Zanzibar",
+          "slug": "full-day-private-nakupenda-bis-nyange-sandbank-in-zanzibar",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/11/e7/e4/97.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.928571,
+          "reviewCount": 14,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "urban-tours-safaris",
+      "operatorName": "Urban Tours & Safaris",
+      "operatorKey": "urban tours & safaris",
+      "tourCount": 1,
+      "totalReviews": 7,
+      "averageRating": 3.86,
+      "blurb": "Urban Tours & Safaris specializes in private tours across Zanzibar. Use this page as a single hub to compare every Urban Tours & Safaris listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Safari Blue Private Full-Day Tour.",
+      "faqs": [
+        {
+          "question": "Is Urban Tours & Safaris worth it?",
+          "answer": "Based on 7 verified traveler reviews averaging 3.86 stars, Urban Tours & Safaris is mixed but still popular for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Urban Tours & Safaris offer in Zanzibar?",
+          "answer": "Urban Tours & Safaris currently lists 1 bookable tour in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Urban Tours & Safaris tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Safari Blue Private Full-Day Tour\" with 7 traveler reviews and a 3.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "324997P3",
+          "title": "Safari Blue Private Full-Day Tour",
+          "slug": "safari-blue-private-full-day-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/37/94/d2.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 3.857143,
+          "reviewCount": 7,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "we-cab-tours-and-safaris",
+      "operatorName": "We Cab Tours and Safaris",
+      "operatorKey": "we cab tours and safaris",
+      "tourCount": 8,
+      "totalReviews": 41,
+      "averageRating": 4.66,
+      "blurb": "We Cab Tours and Safaris specializes in airport transfers and island day trips across Zanzibar. Use this page as a single hub to compare every We Cab Tours and Safaris listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is We Cab Tours and Safaris worth it?",
+          "answer": "Based on 41 verified traveler reviews averaging 4.66 stars, We Cab Tours and Safaris is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does We Cab Tours and Safaris offer in Zanzibar?",
+          "answer": "We Cab Tours and Safaris currently lists 8 bookable tours in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular We Cab Tours and Safaris tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Zanzibar Airport Transfers (Pickup/Shuttles in Zanzibar)\" with 30 traveler reviews and a 4.5-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "216355P1",
+          "title": "Zanzibar Airport Transfers (Pickup/Shuttles in Zanzibar)",
+          "slug": "zanzibar-airport-transfers-pickupshuttles-in-zanzibar",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/78/c4/98.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.5333333,
+          "reviewCount": 30,
+          "durationMinutes": null
+        },
+        {
+          "productId": "216355P35",
+          "title": "Car Rental in Zanzibar (family Car 7 Pax)",
+          "slug": "car-rental-in-zanzibar-family-car-7-pax",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/03/62/96.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 4,
+          "durationMinutes": 1440
+        },
+        {
+          "productId": "216355P30",
+          "title": "Zanzibar Airport Transport (Pickup/Drop off)",
+          "slug": "zanzibar-airport-transport-pickupdrop-off",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/ff/65/d7.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 2,
+          "durationMinutes": null
+        },
+        {
+          "productId": "216355P24",
+          "title": "Zanzibar Airport Drop off from Far North or Far South of Zanzibar Island.",
+          "slug": "zanzibar-airport-drop-off-from-far-north-or-far-south-of-zanzibar-island",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/07/46/de.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 2,
+          "durationMinutes": null
+        },
+        {
+          "productId": "216355P11",
+          "title": "Zanzibar Airport Drop off",
+          "slug": "zanzibar-airport-drop-off",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/00/51/a0.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 2,
+          "durationMinutes": null
+        },
+        {
+          "productId": "216355P22",
+          "title": "Zanzibar Airport pickup to far North or far South of Zanzibar Island (Unguja).",
+          "slug": "zanzibar-airport-pickup-to-far-north-or-far-south-of-zanzibar-island-unguja",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/78/c4/98.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": null
+        },
+        {
+          "productId": "216355P23",
+          "title": "Zanzibar Airport Pickup to Mid Far of Zanzibar (Unguja).",
+          "slug": "zanzibar-airport-pickup-to-mid-far-of-zanzibar-unguja",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/07/46/de.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": null
+        },
+        {
+          "productId": "216355P29",
+          "title": "Zanzibar Airport Drop Off from Mid Far (Unguja)",
+          "slug": "zanzibar-airport-drop-off-from-mid-far-unguja",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/ff/65/d7.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "yasco-guide-zanzibar",
+      "operatorName": "Yasco guide zanzibar",
+      "operatorKey": "yasco guide zanzibar",
+      "tourCount": 1,
+      "totalReviews": 9,
+      "averageRating": 5,
+      "blurb": "Yasco guide zanzibar specializes in island day trips and private tours across Zanzibar. Use this page as a single hub to compare every Yasco guide zanzibar listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Private Stone Town Prison Island and Nakupenda Sandbank Tour.",
+      "faqs": [
+        {
+          "question": "Is Yasco guide zanzibar worth it?",
+          "answer": "Based on 9 verified traveler reviews averaging 5 stars, Yasco guide zanzibar is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Yasco guide zanzibar offer in Zanzibar?",
+          "answer": "Yasco guide zanzibar currently lists 1 bookable tour in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Yasco guide zanzibar tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Private Stone Town Prison Island and Nakupenda Sandbank Tour\" with 9 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5598703P1",
+          "title": "Private Stone Town Prison Island and Nakupenda Sandbank Tour",
+          "slug": "private-stone-town-prison-island-and-nakupenda-sandbank-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/16/35/31/1f.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 9,
+          "durationMinutes": 420
+        }
+      ]
+    },
+    {
+      "slug": "zan-archipelago-tours-safaris",
+      "operatorName": "Zan Archipelago Tours & Safaris",
+      "operatorKey": "zan archipelago tours & safaris",
+      "tourCount": 2,
+      "totalReviews": 159,
+      "averageRating": 4.6,
+      "blurb": "Zan Archipelago Tours & Safaris specializes in island day trips across Zanzibar. Use this page as a single hub to compare every Zan Archipelago Tours & Safaris listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Spice Tour + Stone Town Tour + Prison Island and Luxury Spice Tour With Lunch.",
+      "faqs": [
+        {
+          "question": "Is Zan Archipelago Tours & Safaris worth it?",
+          "answer": "Based on 159 verified traveler reviews averaging 4.6 stars, Zan Archipelago Tours & Safaris is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Zan Archipelago Tours & Safaris offer in Zanzibar?",
+          "answer": "Zan Archipelago Tours & Safaris currently lists 2 bookable tours in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Zan Archipelago Tours & Safaris tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Spice Tour + Stone Town Tour + Prison Island\" with 132 traveler reviews and a 4.6-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "193132P28",
+          "title": "Spice Tour + Stone Town Tour + Prison Island",
+          "slug": "spice-tour-stone-town-tour-prison-island",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/04/19/dc.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.621212,
+          "reviewCount": 132,
+          "durationMinutes": null
+        },
+        {
+          "productId": "193132P2",
+          "title": "Luxury Spice Tour With Lunch",
+          "slug": "luxury-spice-tour-with-lunch",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/32/76/1c.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.5185184,
+          "reviewCount": 27,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "zan-irah-tours-safaris",
+      "operatorName": "Zan Irah tours & safaris",
+      "operatorKey": "zan irah tours & safaris",
+      "tourCount": 1,
+      "totalReviews": 60,
+      "averageRating": 4.9,
+      "blurb": "Zan Irah tours & safaris specializes in island day trips and private tours across Zanzibar. Use this page as a single hub to compare every Zan Irah tours & safaris listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Unique private Stone Town tour & Prison Island tour in Zanzibar.",
+      "faqs": [
+        {
+          "question": "Is Zan Irah tours & safaris worth it?",
+          "answer": "Based on 60 verified traveler reviews averaging 4.9 stars, Zan Irah tours & safaris is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Zan Irah tours & safaris offer in Zanzibar?",
+          "answer": "Zan Irah tours & safaris currently lists 1 bookable tour in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Zan Irah tours & safaris tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Unique private Stone Town tour & Prison Island tour in Zanzibar\" with 60 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "326413P1",
+          "title": "Unique private Stone Town tour & Prison Island tour in Zanzibar",
+          "slug": "unique-private-stone-town-tour-prison-island-tour-in-zanzibar",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/3f/4d/5c.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9,
+          "reviewCount": 60,
+          "durationMinutes": 480
+        }
+      ]
+    },
+    {
+      "slug": "zanspice-tours-zanzibar-taxi-tours",
+      "operatorName": "Zanspice Tours | Zanzibar Taxi & Tours",
+      "operatorKey": "zanspice tours | zanzibar taxi & tours",
+      "tourCount": 2,
+      "totalReviews": 2,
+      "averageRating": 4,
+      "blurb": "Zanspice Tours | Zanzibar Taxi & Tours specializes in sunset cruises and airport transfers across Zanzibar. Use this page as a single hub to compare every Zanspice Tours | Zanzibar Taxi & Tours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Sunset Dhow Cruise in Nungwi & Kendwa – Zanzibar Tour and Zanzibar Airport Shared Taxi Transfer to Any Hotel.",
+      "faqs": [
+        {
+          "question": "Is Zanspice Tours | Zanzibar Taxi & Tours worth it?",
+          "answer": "Based on 2 verified traveler reviews averaging 4 stars, Zanspice Tours | Zanzibar Taxi & Tours is solid for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Zanspice Tours | Zanzibar Taxi & Tours offer in Zanzibar?",
+          "answer": "Zanspice Tours | Zanzibar Taxi & Tours currently lists 2 bookable tours in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Zanspice Tours | Zanzibar Taxi & Tours tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Sunset Dhow Cruise in Nungwi & Kendwa – Zanzibar Tour\" with 2 traveler reviews and a 4.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "353982P8",
+          "title": "Sunset Dhow Cruise in Nungwi & Kendwa – Zanzibar Tour",
+          "slug": "sunset-dhow-cruise-in-nungwi-kendwa-zanzibar-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/71/df/27.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4,
+          "reviewCount": 2,
+          "durationMinutes": 190
+        },
+        {
+          "productId": "353982P15",
+          "title": "Zanzibar Airport Shared Taxi Transfer to Any Hotel",
+          "slug": "zanzibar-airport-shared-taxi-transfer-to-any-hotel",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/02/b4/94.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 85
+        }
+      ]
+    },
+    {
+      "slug": "zanzibar-crystal-tours-safaris",
+      "operatorName": "Zanzibar Crystal Tours & Safaris",
+      "operatorKey": "zanzibar crystal tours & safaris",
+      "tourCount": 4,
+      "totalReviews": 33,
+      "averageRating": 4.7,
+      "blurb": "Zanzibar Crystal Tours & Safaris specializes in snorkeling, island day trips and private tours across Zanzibar. Use this page as a single hub to compare every Zanzibar Crystal Tours & Safaris listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is Zanzibar Crystal Tours & Safaris worth it?",
+          "answer": "Based on 33 verified traveler reviews averaging 4.7 stars, Zanzibar Crystal Tours & Safaris is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Zanzibar Crystal Tours & Safaris offer in Zanzibar?",
+          "answer": "Zanzibar Crystal Tours & Safaris currently lists 4 bookable tours in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Zanzibar Crystal Tours & Safaris tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"A Half Day Private Dolphins And Snorkeling Tour To Mnemba Island\" with 16 traveler reviews and a 4.4-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "251888P4",
+          "title": "A Half Day Private Dolphins And Snorkeling Tour To Mnemba Island",
+          "slug": "a-half-day-private-dolphins-and-snorkeling-tour-to-mnemba-island",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/8b/4a/99.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.375,
+          "reviewCount": 16,
+          "durationMinutes": 180
+        },
+        {
+          "productId": "251888P32",
+          "title": "A Full Day Safari Blue Tour And Blue Lagoon",
+          "slug": "a-full-day-safari-blue-tour-and-blue-lagoon",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/27/81/b8.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 9,
+          "durationMinutes": null
+        },
+        {
+          "productId": "251888P1",
+          "title": "A Half Day Private Stone Town Tour",
+          "slug": "a-half-day-private-stone-town-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/05/ff/74.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 7,
+          "durationMinutes": null
+        },
+        {
+          "productId": "251888P29",
+          "title": "Private Half Day Tour To Prison Island and Stone Town By Night",
+          "slug": "private-half-day-tour-to-prison-island-and-stone-town-by-night",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/3d/a0/40.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "zanzibar-marab",
+      "operatorName": "Zanzibar marab",
+      "operatorKey": "zanzibar marab",
+      "tourCount": 2,
+      "totalReviews": 36,
+      "averageRating": 4.97,
+      "blurb": "Zanzibar marab specializes in popular local experiences across Zanzibar. Use this page as a single hub to compare every Zanzibar marab listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes STONE TOWN WALKING TOUR ( Lunch Included ) and Luxury Tour to SALAAM CAVE and THE ROCK RESTAURANT.",
+      "faqs": [
+        {
+          "question": "Is Zanzibar marab worth it?",
+          "answer": "Based on 36 verified traveler reviews averaging 4.97 stars, Zanzibar marab is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Zanzibar marab offer in Zanzibar?",
+          "answer": "Zanzibar marab currently lists 2 bookable tours in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Zanzibar marab tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"STONE TOWN WALKING TOUR ( Lunch Included )\" with 19 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "370672P4",
+          "title": "STONE TOWN WALKING TOUR ( Lunch Included )",
+          "slug": "stone-town-walking-tour-lunch-included-",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/11/55/b1/dd.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9473686,
+          "reviewCount": 19,
+          "durationMinutes": null
+        },
+        {
+          "productId": "370672P2",
+          "title": "Luxury Tour to SALAAM CAVE and THE ROCK RESTAURANT",
+          "slug": "luxury-tour-to-salaam-cave-and-the-rock-restaurant",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/10/3f/8d/ff.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 17,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "zanzibar-yacht-charter-southwest",
+      "operatorName": "Zanzibar Yacht Charter - Southwest",
+      "operatorKey": "zanzibar yacht charter - southwest",
+      "tourCount": 1,
+      "totalReviews": 16,
+      "averageRating": 5,
+      "blurb": "Zanzibar Yacht Charter - Southwest specializes in catamaran cruises, island day trips and private tours across Zanzibar. Use this page as a single hub to compare every Zanzibar Yacht Charter - Southwest listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Zanzibar lineup includes Private Catamaran - Prison Island & Nakupenda Sandbank (8 hrs).",
+      "faqs": [
+        {
+          "question": "Is Zanzibar Yacht Charter - Southwest worth it?",
+          "answer": "Based on 16 verified traveler reviews averaging 5 stars, Zanzibar Yacht Charter - Southwest is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Zanzibar Yacht Charter - Southwest offer in Zanzibar?",
+          "answer": "Zanzibar Yacht Charter - Southwest currently lists 1 bookable tour in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Zanzibar Yacht Charter - Southwest tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Private Catamaran - Prison Island & Nakupenda Sandbank (8 hrs)\" with 16 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "438526P2",
+          "title": "Private Catamaran - Prison Island & Nakupenda Sandbank (8 hrs)",
+          "slug": "private-catamaran-prison-island-nakupenda-sandbank-8-hrs",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/d7/cd/65.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 16,
+          "durationMinutes": 480
+        }
+      ]
+    },
+    {
+      "slug": "zanziflowers-tours-and-safaris",
+      "operatorName": "Zanziflowers Tours And Safaris",
+      "operatorKey": "zanziflowers tours and safaris",
+      "tourCount": 4,
+      "totalReviews": 25,
+      "averageRating": 5,
+      "blurb": "Zanziflowers Tours And Safaris specializes in private tours, island day trips, snorkeling, food tours and airport transfers across Zanzibar. Use this page as a single hub to compare every Zanziflowers Tours And Safaris listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is Zanziflowers Tours And Safaris worth it?",
+          "answer": "Based on 25 verified traveler reviews averaging 5 stars, Zanziflowers Tours And Safaris is generally excellent for tours in Zanzibar. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Zanziflowers Tours And Safaris offer in Zanzibar?",
+          "answer": "Zanziflowers Tours And Safaris currently lists 4 bookable tours in Zanzibar on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Zanziflowers Tours And Safaris tour in Zanzibar?",
+          "answer": "The highest-reviewed option is \"Zanzibar Private Tour & Cooking Class\" with 14 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "252195P2",
+          "title": "Zanzibar Private Tour & Cooking Class",
+          "slug": "zanzibar-private-tour-cooking-class",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/10/00/22/37.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 14,
+          "durationMinutes": null
+        },
+        {
+          "productId": "252195P1",
+          "title": "Mnemba Island, Nungwi Village & Sea Turtle Experience",
+          "slug": "mnemba-island-nungwi-village-sea-turtle-experience",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0f/ec/49/d4.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 9,
+          "durationMinutes": 420
+        },
+        {
+          "productId": "252195P3",
+          "title": "Luxury Safari Blue – Snorkeling, Sandbank & Seafood Lunch",
+          "slug": "luxury-safari-blue-snorkeling-sandbank-seafood-lunch",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/11/d6/a0/26.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 2,
+          "durationMinutes": 480
+        },
+        {
+          "productId": "252195P17",
+          "title": "Premium Private Transfer in Zanzibar – Airport, Hotels, Beaches",
+          "slug": "premium-private-transfer-in-zanzibar-airport-hotels-beaches",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/b7/1a/68.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": null
+        }
+      ]
+    }
+  ]
+}

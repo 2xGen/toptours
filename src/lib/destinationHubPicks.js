@@ -2,6 +2,20 @@ import { arubaHubPicks } from '@/data/destinationHubPicks/aruba';
 import { curacaoHubPicks } from '@/data/destinationHubPicks/curacao';
 import { pragueHubPicks } from '@/data/destinationHubPicks/prague';
 import { arushaHubPicks } from '@/data/destinationHubPicks/arusha';
+import { reykjavikHubPicks } from '@/data/destinationHubPicks/reykjavik';
+import { zanzibarHubPicks } from '@/data/destinationHubPicks/zanzibar';
+import { sanJoseHubPicks } from '@/data/destinationHubPicks/san-jose';
+import { cuscoHubPicks } from '@/data/destinationHubPicks/cusco';
+import { marrakechHubPicks } from '@/data/destinationHubPicks/marrakech';
+import { kualaLumpurHubPicks } from '@/data/destinationHubPicks/kuala-lumpur';
+import { hanoiHubPicks } from '@/data/destinationHubPicks/hanoi';
+import { dubrovnikHubPicks } from '@/data/destinationHubPicks/dubrovnik';
+import { cairoHubPicks } from '@/data/destinationHubPicks/cairo';
+import { interlakenHubPicks } from '@/data/destinationHubPicks/interlaken';
+import { banffHubPicks } from '@/data/destinationHubPicks/banff';
+import { siemReapHubPicks } from '@/data/destinationHubPicks/siem-reap';
+import { galapagosIslandsHubPicks } from '@/data/destinationHubPicks/galapagos-islands';
+import { queenstownHubPicks } from '@/data/destinationHubPicks/queenstown';
 import { getHubPickDisplay } from '@/data/destinationHubPicks/staticDisplay';
 
 const PICKS_BY_DESTINATION = {
@@ -9,6 +23,20 @@ const PICKS_BY_DESTINATION = {
   curacao: curacaoHubPicks,
   prague: pragueHubPicks,
   arusha: arushaHubPicks,
+  reykjavik: reykjavikHubPicks,
+  zanzibar: zanzibarHubPicks,
+  'san-jose': sanJoseHubPicks,
+  cusco: cuscoHubPicks,
+  marrakech: marrakechHubPicks,
+  'kuala-lumpur': kualaLumpurHubPicks,
+  hanoi: hanoiHubPicks,
+  dubrovnik: dubrovnikHubPicks,
+  cairo: cairoHubPicks,
+  interlaken: interlakenHubPicks,
+  banff: banffHubPicks,
+  'siem-reap': siemReapHubPicks,
+  'galapagos-islands': galapagosIslandsHubPicks,
+  queenstown: queenstownHubPicks,
 };
 
 export function getDestinationHubPicks(destinationId) {

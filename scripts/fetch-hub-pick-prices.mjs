@@ -8,6 +8,20 @@ const DESTINATIONS = [
   { id: '725', name: 'curacao' },
   { id: '462', name: 'prague' },
   { id: '5593', name: 'arusha' },
+  { id: '905', name: 'reykjavik' },
+  { id: '5590', name: 'zanzibar' },
+  { id: '747', name: 'san-jose' },
+  { id: '927', name: 'cusco' },
+  { id: '825', name: 'marrakech' },
+  { id: '335', name: 'kuala-lumpur' },
+  { id: '351', name: 'hanoi' },
+  { id: '904', name: 'dubrovnik' },
+  { id: '722', name: 'cairo' },
+  { id: '5011', name: 'interlaken' },
+  { id: '611', name: 'banff' },
+  { id: '5480', name: 'siem-reap' },
+  { id: '936', name: 'galapagos-islands' },
+  { id: '407', name: 'queenstown' },
 ];
 
 async function searchDestination(destId) {

@@ -1,0 +1,2457 @@
+{
+  "destinationSlug": "banff",
+  "viatorDestinationId": "611",
+  "destinationName": "Banff",
+  "builtAt": "2026-06-20T21:34:57.706Z",
+  "operatorCount": 53,
+  "operators": [
+    {
+      "slug": "1a-scenic-route-tour-by-banff-explorer",
+      "operatorName": "1A Scenic Route Tour by Banff Explorer",
+      "operatorKey": "1a scenic route tour by banff explorer",
+      "tourCount": 1,
+      "totalReviews": 7,
+      "averageRating": 5,
+      "blurb": "1A Scenic Route Tour by Banff Explorer specializes in popular local experiences across Banff. Use this page as a single hub to compare every 1A Scenic Route Tour by Banff Explorer listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Moraine Lake and Lake Louise Shuttle | End of Summer Seat Sale!.",
+      "faqs": [
+        {
+          "question": "Is 1A Scenic Route Tour by Banff Explorer worth it?",
+          "answer": "Based on 7 verified traveler reviews averaging 5 stars, 1A Scenic Route Tour by Banff Explorer is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does 1A Scenic Route Tour by Banff Explorer offer in Banff?",
+          "answer": "1A Scenic Route Tour by Banff Explorer currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular 1A Scenic Route Tour by Banff Explorer tour in Banff?",
+          "answer": "The highest-reviewed option is \"Moraine Lake and Lake Louise Shuttle | End of Summer Seat Sale!\" with 7 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5560878P11",
+          "title": "Moraine Lake and Lake Louise Shuttle | End of Summer Seat Sale!",
+          "slug": "moraine-lake-and-lake-louise-shuttle-end-of-summer-seat-sale",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/16/4e/6e/9d.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 7,
+          "durationMinutes": 360
+        }
+      ]
+    },
+    {
+      "slug": "abestx-canada",
+      "operatorName": "ABestX | Canada",
+      "operatorKey": "abestx | canada",
+      "tourCount": 2,
+      "totalReviews": 8,
+      "averageRating": 4.75,
+      "blurb": "ABestX | Canada specializes in popular local experiences across Banff. Use this page as a single hub to compare every ABestX | Canada listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Moraine Lake, Lake Louise, Emerald & Johnston Canyon Shared Tour and Round-Trip Shuttle Tour to Banff, Lake Louise & Johnston Canyon.",
+      "faqs": [
+        {
+          "question": "Is ABestX | Canada worth it?",
+          "answer": "Based on 8 verified traveler reviews averaging 4.75 stars, ABestX | Canada is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does ABestX | Canada offer in Banff?",
+          "answer": "ABestX | Canada currently lists 2 bookable tours in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular ABestX | Canada tour in Banff?",
+          "answer": "The highest-reviewed option is \"Moraine Lake, Lake Louise, Emerald & Johnston Canyon Shared Tour\" with 4 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "74643P22",
+          "title": "Moraine Lake, Lake Louise, Emerald & Johnston Canyon Shared Tour",
+          "slug": "moraine-lake-lake-louise-emerald-johnston-canyon-shared-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/r/32/e8/9f/27/caption.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 4,
+          "durationMinutes": null
+        },
+        {
+          "productId": "74643P29",
+          "title": "Round-Trip Shuttle Tour to Banff, Lake Louise & Johnston Canyon",
+          "slug": "round-trip-shuttle-tour-to-banff-lake-louise-johnston-canyon",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/13/63/c6/e9.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.5,
+          "reviewCount": 4,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "alberta-exploration-tours",
+      "operatorName": "Alberta Exploration Tours",
+      "operatorKey": "alberta exploration tours",
+      "tourCount": 1,
+      "totalReviews": 13,
+      "averageRating": 5,
+      "blurb": "Alberta Exploration Tours specializes in airport transfers and private tours across Banff. Use this page as a single hub to compare every Alberta Exploration Tours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Private Transfer from Banff to Calgary or Calgary Airport.",
+      "faqs": [
+        {
+          "question": "Is Alberta Exploration Tours worth it?",
+          "answer": "Based on 13 verified traveler reviews averaging 5 stars, Alberta Exploration Tours is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Alberta Exploration Tours offer in Banff?",
+          "answer": "Alberta Exploration Tours currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Alberta Exploration Tours tour in Banff?",
+          "answer": "The highest-reviewed option is \"Private Transfer from Banff to Calgary or Calgary Airport\" with 13 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5565566P7",
+          "title": "Private Transfer from Banff to Calgary or Calgary Airport",
+          "slug": "private-transfer-from-banff-to-calgary-or-calgary-airport",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/83/40/aa.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 13,
+          "durationMinutes": 90
+        }
+      ]
+    },
+    {
+      "slug": "alpine-air-adventures",
+      "operatorName": "Alpine Air Adventures",
+      "operatorKey": "alpine air adventures",
+      "tourCount": 4,
+      "totalReviews": 105,
+      "averageRating": 4.71,
+      "blurb": "Alpine Air Adventures specializes in popular local experiences across Banff. Use this page as a single hub to compare every Alpine Air Adventures listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is Alpine Air Adventures worth it?",
+          "answer": "Based on 105 verified traveler reviews averaging 4.71 stars, Alpine Air Adventures is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Alpine Air Adventures offer in Banff?",
+          "answer": "Alpine Air Adventures currently lists 4 bookable tours in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Alpine Air Adventures tour in Banff?",
+          "answer": "The highest-reviewed option is \"Calgary Airport Shuttle to Banff & Lake Louise\" with 64 traveler reviews and a 4.7-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "167195P5",
+          "title": "Calgary Airport Shuttle to Banff & Lake Louise",
+          "slug": "calgary-airport-shuttle-to-banff-lake-louise",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0c/06/51/c4.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.65625,
+          "reviewCount": 64,
+          "durationMinutes": null
+        },
+        {
+          "productId": "167195P14",
+          "title": "Moraine Lake And Lake Louise Tour from Banff",
+          "slug": "moraine-lake-and-lake-louise-tour-from-banff",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/13/2b/69/f8.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.6666665,
+          "reviewCount": 21,
+          "durationMinutes": 240
+        },
+        {
+          "productId": "167195P1",
+          "title": "Rock Climbing Adventure in Banff: Beginner",
+          "slug": "rock-climbing-adventure-in-banff-beginner",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/11/64/e2/67.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9473686,
+          "reviewCount": 19,
+          "durationMinutes": 420
+        },
+        {
+          "productId": "167195P9",
+          "title": "Moraine Lake: Larch Valley Hike, Departure from Banff",
+          "slug": "moraine-lake-larch-valley-hike-departure-from-banff",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/11/ed/7a/b3.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "banff-jasper-travels-inc",
+      "operatorName": "Banff & Jasper Travels Inc.",
+      "operatorKey": "banff & jasper travels inc.",
+      "tourCount": 2,
+      "totalReviews": 1,
+      "averageRating": 5,
+      "blurb": "Banff & Jasper Travels Inc. specializes in popular local experiences across Banff. Use this page as a single hub to compare every Banff & Jasper Travels Inc. listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Lake Louise, Banff Gondola, Minnewanka and Banff Town Tour and Columbia Icefield Adventure, Skywalk, Peyto Lake and Glacier Tour.",
+      "faqs": [
+        {
+          "question": "Is Banff & Jasper Travels Inc. worth it?",
+          "answer": "Based on 1 verified traveler reviews averaging 5 stars, Banff & Jasper Travels Inc. is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Banff & Jasper Travels Inc. offer in Banff?",
+          "answer": "Banff & Jasper Travels Inc. currently lists 2 bookable tours in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Banff & Jasper Travels Inc. tour in Banff?",
+          "answer": "The highest-reviewed option is \"Lake Louise, Banff Gondola, Minnewanka and Banff Town Tour\" with 1 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5586385P3",
+          "title": "Lake Louise, Banff Gondola, Minnewanka and Banff Town Tour",
+          "slug": "lake-louise-banff-gondola-minnewanka-and-banff-town-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/b4/c5/e7.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": 510
+        },
+        {
+          "productId": "5586385P6",
+          "title": "Columbia Icefield Adventure, Skywalk, Peyto Lake and Glacier Tour",
+          "slug": "columbia-icefield-adventure-skywalk-peyto-lake-and-glacier-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/04/27/df.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 510
+        }
+      ]
+    },
+    {
+      "slug": "banff-adventures",
+      "operatorName": "Banff Adventures",
+      "operatorKey": "banff adventures",
+      "tourCount": 2,
+      "totalReviews": 30,
+      "averageRating": 5,
+      "blurb": "Banff Adventures specializes in popular local experiences across Banff. Use this page as a single hub to compare every Banff Adventures listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Banff Nature E-bike Tour and Banff Highlights E-Bike Tour.",
+      "faqs": [
+        {
+          "question": "Is Banff Adventures worth it?",
+          "answer": "Based on 30 verified traveler reviews averaging 5 stars, Banff Adventures is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Banff Adventures offer in Banff?",
+          "answer": "Banff Adventures currently lists 2 bookable tours in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Banff Adventures tour in Banff?",
+          "answer": "The highest-reviewed option is \"Banff Nature E-bike Tour\" with 16 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "164259P9",
+          "title": "Banff Nature E-bike Tour",
+          "slug": "banff-nature-e-bike-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/r/32/aa/76/c1/caption.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 16,
+          "durationMinutes": 120
+        },
+        {
+          "productId": "164259P8",
+          "title": "Banff Highlights E-Bike Tour",
+          "slug": "banff-highlights-e-bike-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/r/32/aa/71/33/caption.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 14,
+          "durationMinutes": 150
+        }
+      ]
+    },
+    {
+      "slug": "banff-everyday-tours",
+      "operatorName": "Banff Everyday Tours",
+      "operatorKey": "banff everyday tours",
+      "tourCount": 1,
+      "totalReviews": 12,
+      "averageRating": 4.83,
+      "blurb": "Banff Everyday Tours specializes in popular local experiences across Banff. Use this page as a single hub to compare every Banff Everyday Tours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Best of Glaciers from Calgary/Canmore/Banff.",
+      "faqs": [
+        {
+          "question": "Is Banff Everyday Tours worth it?",
+          "answer": "Based on 12 verified traveler reviews averaging 4.83 stars, Banff Everyday Tours is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Banff Everyday Tours offer in Banff?",
+          "answer": "Banff Everyday Tours currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Banff Everyday Tours tour in Banff?",
+          "answer": "The highest-reviewed option is \"Best of Glaciers from Calgary/Canmore/Banff\" with 12 traveler reviews and a 4.8-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "382010P8",
+          "title": "Best of Glaciers from Calgary/Canmore/Banff",
+          "slug": "best-of-glaciers-from-calgarycanmorebanff",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/13/da/7e/84.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.8333335,
+          "reviewCount": 12,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "banff-explorer",
+      "operatorName": "Banff Explorer™",
+      "operatorKey": "banff explorer™",
+      "tourCount": 3,
+      "totalReviews": 115,
+      "averageRating": 4.63,
+      "blurb": "Banff Explorer™ specializes in sightseeing tours and private tours across Banff. Use this page as a single hub to compare every Banff Explorer™ listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes From Banff: Shuttle Service to Moraine Lake & Lake Louise, From Banff: Affordable Moraine Lake and Lake Louise Shuttle Bus, Banff Explorer Private Tour with Lake Louise and Moraine Lake.",
+      "faqs": [
+        {
+          "question": "Is Banff Explorer™ worth it?",
+          "answer": "Based on 115 verified traveler reviews averaging 4.63 stars, Banff Explorer™ is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Banff Explorer™ offer in Banff?",
+          "answer": "Banff Explorer™ currently lists 3 bookable tours in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Banff Explorer™ tour in Banff?",
+          "answer": "The highest-reviewed option is \"From Banff: Shuttle Service to Moraine Lake & Lake Louise\" with 110 traveler reviews and a 4.6-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "465356P9",
+          "title": "From Banff: Shuttle Service to Moraine Lake & Lake Louise",
+          "slug": "from-banff-shuttle-service-to-moraine-lake-lake-louise",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/13/18/4c/2d.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.6181817,
+          "reviewCount": 110,
+          "durationMinutes": 300
+        },
+        {
+          "productId": "465356P28",
+          "title": "From Banff: Affordable Moraine Lake and Lake Louise Shuttle Bus",
+          "slug": "from-banff-affordable-moraine-lake-and-lake-louise-shuttle-bus",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/d3/df/2e.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 4,
+          "durationMinutes": 300
+        },
+        {
+          "productId": "465356P16",
+          "title": "Banff Explorer Private Tour with Lake Louise and Moraine Lake",
+          "slug": "banff-explorer-private-tour-with-lake-louise-and-moraine-lake",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/46/6f/9c.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "banff-jasper-collection-by-pursuit",
+      "operatorName": "Banff Jasper Collection By Pursuit",
+      "operatorKey": "banff jasper collection by pursuit",
+      "tourCount": 3,
+      "totalReviews": 3144,
+      "averageRating": 4.65,
+      "blurb": "Banff Jasper Collection By Pursuit specializes in airport transfers across Banff. Use this page as a single hub to compare every Banff Jasper Collection By Pursuit listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Banff Gondola Ride Admission, Banff Tour with Gondola & Lake Cruise - roundtrip from Banff, Alberta Transfer: Banff, Jasper, Lake Louise, Calgary.",
+      "faqs": [
+        {
+          "question": "Is Banff Jasper Collection By Pursuit worth it?",
+          "answer": "Based on 3,144 verified traveler reviews averaging 4.65 stars, Banff Jasper Collection By Pursuit is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Banff Jasper Collection By Pursuit offer in Banff?",
+          "answer": "Banff Jasper Collection By Pursuit currently lists 3 bookable tours in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Banff Jasper Collection By Pursuit tour in Banff?",
+          "answer": "The highest-reviewed option is \"Banff Gondola Ride Admission\" with 2,864 traveler reviews and a 4.6-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "3026P46",
+          "title": "Banff Gondola Ride Admission",
+          "slug": "banff-gondola-ride-admission",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/95/d1/4f.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.6494412,
+          "reviewCount": 2864,
+          "durationMinutes": null
+        },
+        {
+          "productId": "3026B02",
+          "title": "Banff Tour with Gondola & Lake Cruise - roundtrip from Banff",
+          "slug": "banff-tour-with-gondola-lake-cruise-roundtrip-from-banff",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/06/e4/dd/a5.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.739645,
+          "reviewCount": 169,
+          "durationMinutes": 390
+        },
+        {
+          "productId": "3026BARC",
+          "title": "Alberta Transfer: Banff, Jasper, Lake Louise, Calgary",
+          "slug": "alberta-transfer-banff-jasper-lake-louise-calgary",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/95/d7/fb.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.5405407,
+          "reviewCount": 111,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "banff-journey",
+      "operatorName": "Banff Journey",
+      "operatorKey": "banff journey",
+      "tourCount": 4,
+      "totalReviews": 463,
+      "averageRating": 4.9,
+      "blurb": "Banff Journey specializes in popular local experiences across Banff. Use this page as a single hub to compare every Banff Journey listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is Banff Journey worth it?",
+          "answer": "Based on 463 verified traveler reviews averaging 4.9 stars, Banff Journey is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Banff Journey offer in Banff?",
+          "answer": "Banff Journey currently lists 4 bookable tours in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Banff Journey tour in Banff?",
+          "answer": "The highest-reviewed option is \"Lake Louise Moraine Lake Johnston Canyon 1.5h Half Day Tour\" with 367 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "467609P36",
+          "title": "Lake Louise Moraine Lake Johnston Canyon 1.5h Half Day Tour",
+          "slug": "lake-louise-moraine-lake-johnston-canyon-15h-half-day-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/98/f7/7f.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.934605,
+          "reviewCount": 367,
+          "durationMinutes": null
+        },
+        {
+          "productId": "467609P8",
+          "title": "Lake Louise, Emerald Lake/ Moraine Lake Half Day Tour",
+          "slug": "lake-louise-emerald-lake-moraine-lake-half-day-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/14/1a/73/eb.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.77907,
+          "reviewCount": 86,
+          "durationMinutes": null
+        },
+        {
+          "productId": "467609P20",
+          "title": "Johnston Canyon, Marble Canyon Hiking and Banff Town day tour",
+          "slug": "johnston-canyon-marble-canyon-hiking-and-banff-town-day-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/20/65/fb.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.875,
+          "reviewCount": 8,
+          "durationMinutes": null
+        },
+        {
+          "productId": "467609P51",
+          "title": "Lake Louise Moraine Lake Emerald Lake Peyto Lake 3/4 Lakes Tour",
+          "slug": "lake-louise-moraine-lake-emerald-lake-peyto-lake-34-lakes-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/bb/a3/e8.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 2,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "banff-lakes-travel",
+      "operatorName": "Banff Lakes travel",
+      "operatorKey": "banff lakes travel",
+      "tourCount": 2,
+      "totalReviews": 499,
+      "averageRating": 4.79,
+      "blurb": "Banff Lakes travel specializes in sightseeing tours and private tours across Banff. Use this page as a single hub to compare every Banff Lakes travel listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes ShuttleBus 2way Banff to Lake Louise (1Hr) and Moraine Lake (1Hr) and Private tour-Best of Banff: A Signature Journey in the Rocky(3HR).",
+      "faqs": [
+        {
+          "question": "Is Banff Lakes travel worth it?",
+          "answer": "Based on 499 verified traveler reviews averaging 4.79 stars, Banff Lakes travel is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Banff Lakes travel offer in Banff?",
+          "answer": "Banff Lakes travel currently lists 2 bookable tours in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Banff Lakes travel tour in Banff?",
+          "answer": "The highest-reviewed option is \"ShuttleBus 2way Banff to Lake Louise (1Hr) and Moraine Lake (1Hr)\" with 491 traveler reviews and a 4.8-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "483463P1",
+          "title": "ShuttleBus 2way Banff to Lake Louise (1Hr) and Moraine Lake (1Hr)",
+          "slug": "shuttlebus-2way-banff-to-lake-louise-1hr-and-moraine-lake-1hr",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/14/1c/9c/a5.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.786151,
+          "reviewCount": 491,
+          "durationMinutes": 300
+        },
+        {
+          "productId": "483463P8",
+          "title": "Private tour-Best of Banff: A Signature Journey in the Rocky(3HR)",
+          "slug": "private-tour-best-of-banff-a-signature-journey-in-the-rocky3hr",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/04/b9/50.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 8,
+          "durationMinutes": 180
+        }
+      ]
+    },
+    {
+      "slug": "banff-mountain-chauffeur",
+      "operatorName": "Banff Mountain Chauffeur",
+      "operatorKey": "banff mountain chauffeur",
+      "tourCount": 1,
+      "totalReviews": 25,
+      "averageRating": 5,
+      "blurb": "Banff Mountain Chauffeur specializes in popular local experiences across Banff. Use this page as a single hub to compare every Banff Mountain Chauffeur listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Moraine Lake, Lake Louise Afternoon Tour Half day From Banff.",
+      "faqs": [
+        {
+          "question": "Is Banff Mountain Chauffeur worth it?",
+          "answer": "Based on 25 verified traveler reviews averaging 5 stars, Banff Mountain Chauffeur is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Banff Mountain Chauffeur offer in Banff?",
+          "answer": "Banff Mountain Chauffeur currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Banff Mountain Chauffeur tour in Banff?",
+          "answer": "The highest-reviewed option is \"Moraine Lake, Lake Louise Afternoon Tour Half day From Banff\" with 25 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5595589P2",
+          "title": "Moraine Lake, Lake Louise Afternoon Tour Half day From Banff",
+          "slug": "moraine-lake-lake-louise-afternoon-tour-half-day-from-banff",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/16/24/e3/fd.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 25,
+          "durationMinutes": 330
+        }
+      ]
+    },
+    {
+      "slug": "banff-norquay-summer-sightseeing-chairlift-via-ferrata-tours",
+      "operatorName": "Banff Norquay Summer Sightseeing Chairlift & Via Ferrata Tours",
+      "operatorKey": "banff norquay summer sightseeing chairlift & via ferrata tours",
+      "tourCount": 3,
+      "totalReviews": 51,
+      "averageRating": 4.9,
+      "blurb": "Banff Norquay Summer Sightseeing Chairlift & Via Ferrata Tours specializes in popular local experiences across Banff. Use this page as a single hub to compare every Banff Norquay Summer Sightseeing Chairlift & Via Ferrata Tours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Half-Day Guided Via Ferrata Climbing Tour in Banff, Small Group Banff Skyline Via Ferrata 5-hour Tour, Ticket to Banff Norquay with Chairlift Sightseeing.",
+      "faqs": [
+        {
+          "question": "Is Banff Norquay Summer Sightseeing Chairlift & Via Ferrata Tours worth it?",
+          "answer": "Based on 51 verified traveler reviews averaging 4.9 stars, Banff Norquay Summer Sightseeing Chairlift & Via Ferrata Tours is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Banff Norquay Summer Sightseeing Chairlift & Via Ferrata Tours offer in Banff?",
+          "answer": "Banff Norquay Summer Sightseeing Chairlift & Via Ferrata Tours currently lists 3 bookable tours in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Banff Norquay Summer Sightseeing Chairlift & Via Ferrata Tours tour in Banff?",
+          "answer": "The highest-reviewed option is \"Half-Day Guided Via Ferrata Climbing Tour in Banff\" with 31 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "274286P5",
+          "title": "Half-Day Guided Via Ferrata Climbing Tour in Banff",
+          "slug": "half-day-guided-via-ferrata-climbing-tour-in-banff",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/13/ba/f2/fc.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.967742,
+          "reviewCount": 31,
+          "durationMinutes": 225
+        },
+        {
+          "productId": "274286P6",
+          "title": "Small Group Banff Skyline Via Ferrata 5-hour Tour",
+          "slug": "small-group-banff-skyline-via-ferrata-5-hour-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/13/bb/01/c5.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 17,
+          "durationMinutes": 300
+        },
+        {
+          "productId": "274286P2",
+          "title": "Ticket to Banff Norquay with Chairlift Sightseeing",
+          "slug": "ticket-to-banff-norquay-with-chairlift-sightseeing",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/10/59/55/cc.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 3.6666667,
+          "reviewCount": 3,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "banff-todo",
+      "operatorName": "Banff ToDo",
+      "operatorKey": "banff todo",
+      "tourCount": 3,
+      "totalReviews": 230,
+      "averageRating": 4.83,
+      "blurb": "Banff ToDo specializes in popular local experiences across Banff. Use this page as a single hub to compare every Banff ToDo listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Lake Louise Moraine Lake Banff Gondola Hot Springs Bow Falls TRIP, Day Tour to Banff Gondola Johnston Canyon Hiking Hot Springs, 2 Day Moraine Lake Louise Johnston Canyon Gondola Hot Springs.",
+      "faqs": [
+        {
+          "question": "Is Banff ToDo worth it?",
+          "answer": "Based on 230 verified traveler reviews averaging 4.83 stars, Banff ToDo is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Banff ToDo offer in Banff?",
+          "answer": "Banff ToDo currently lists 3 bookable tours in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Banff ToDo tour in Banff?",
+          "answer": "The highest-reviewed option is \"Lake Louise Moraine Lake Banff Gondola Hot Springs Bow Falls TRIP\" with 188 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "463262P37",
+          "title": "Lake Louise Moraine Lake Banff Gondola Hot Springs Bow Falls TRIP",
+          "slug": "lake-louise-moraine-lake-banff-gondola-hot-springs-bow-falls-trip",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/7d/66/70.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.861702,
+          "reviewCount": 188,
+          "durationMinutes": null
+        },
+        {
+          "productId": "463262P26",
+          "title": "Day Tour to Banff Gondola Johnston Canyon Hiking Hot Springs",
+          "slug": "day-tour-to-banff-gondola-johnston-canyon-hiking-hot-springs",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/81/49/c6.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.83871,
+          "reviewCount": 31,
+          "durationMinutes": null
+        },
+        {
+          "productId": "463262P36",
+          "title": "2 Day Moraine Lake Louise Johnston Canyon Gondola Hot Springs",
+          "slug": "2-day-moraine-lake-louise-johnston-canyon-gondola-hot-springs",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/14/cb/76/86.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.2727275,
+          "reviewCount": 11,
+          "durationMinutes": 2880
+        }
+      ]
+    },
+    {
+      "slug": "banff-trail-riders",
+      "operatorName": "Banff Trail Riders",
+      "operatorKey": "banff trail riders",
+      "tourCount": 3,
+      "totalReviews": 998,
+      "averageRating": 4.49,
+      "blurb": "Banff Trail Riders specializes in popular local experiences across Banff. Use this page as a single hub to compare every Banff Trail Riders listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes 1 Hour Bow River Ride, Covered Wagon Ride in Banff with Western Cookout, 1 Hour Spray River Ride.",
+      "faqs": [
+        {
+          "question": "Is Banff Trail Riders worth it?",
+          "answer": "Based on 998 verified traveler reviews averaging 4.49 stars, Banff Trail Riders is solid for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Banff Trail Riders offer in Banff?",
+          "answer": "Banff Trail Riders currently lists 3 bookable tours in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Banff Trail Riders tour in Banff?",
+          "answer": "The highest-reviewed option is \"1 Hour Bow River Ride\" with 454 traveler reviews and a 4.3-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "12217RIDE",
+          "title": "1 Hour Bow River Ride",
+          "slug": "1-hour-bow-river-ride",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/09/b5/50/88.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.30837,
+          "reviewCount": 454,
+          "durationMinutes": 60
+        },
+        {
+          "productId": "12217P14",
+          "title": "Covered Wagon Ride in Banff with Western Cookout",
+          "slug": "covered-wagon-ride-in-banff-with-western-cookout",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/8e/9e/55.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.7387385,
+          "reviewCount": 333,
+          "durationMinutes": 180
+        },
+        {
+          "productId": "12217P16",
+          "title": "1 Hour Spray River Ride",
+          "slug": "1-hour-spray-river-ride",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/d7/5c/2c.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.4691944,
+          "reviewCount": 211,
+          "durationMinutes": 60
+        }
+      ]
+    },
+    {
+      "slug": "banff2go",
+      "operatorName": "Banff2Go",
+      "operatorKey": "banff2go",
+      "tourCount": 1,
+      "totalReviews": 8,
+      "averageRating": 5,
+      "blurb": "Banff2Go specializes in popular local experiences across Banff. Use this page as a single hub to compare every Banff2Go listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Lake View Tour — Lake Moraine, Louise, Emerald, Peyto, Vermillion.",
+      "faqs": [
+        {
+          "question": "Is Banff2Go worth it?",
+          "answer": "Based on 8 verified traveler reviews averaging 5 stars, Banff2Go is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Banff2Go offer in Banff?",
+          "answer": "Banff2Go currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Banff2Go tour in Banff?",
+          "answer": "The highest-reviewed option is \"Lake View Tour — Lake Moraine, Louise, Emerald, Peyto, Vermillion\" with 8 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "375373P9",
+          "title": "Lake View Tour — Lake Moraine, Louise, Emerald, Peyto, Vermillion",
+          "slug": "lake-view-tour-lake-moraine-louise-emerald-peyto-vermillion",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/11/46/15/6f.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 8,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "beyond-banff",
+      "operatorName": "Beyond Banff",
+      "operatorKey": "beyond banff",
+      "tourCount": 2,
+      "totalReviews": 872,
+      "averageRating": 4.9,
+      "blurb": "Beyond Banff specializes in private tours across Banff. Use this page as a single hub to compare every Beyond Banff listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Lake Louise, Moraine Lake and the Icefields Parkway Full-Day Tour and Private Tour for up to 24 guests of Lake Louise and the Icefield Parkway.",
+      "faqs": [
+        {
+          "question": "Is Beyond Banff worth it?",
+          "answer": "Based on 872 verified traveler reviews averaging 4.9 stars, Beyond Banff is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Beyond Banff offer in Banff?",
+          "answer": "Beyond Banff currently lists 2 bookable tours in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Beyond Banff tour in Banff?",
+          "answer": "The highest-reviewed option is \"Lake Louise, Moraine Lake and the Icefields Parkway Full-Day Tour\" with 862 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "47552P2",
+          "title": "Lake Louise, Moraine Lake and the Icefields Parkway Full-Day Tour",
+          "slug": "lake-louise-moraine-lake-and-the-icefields-parkway-full-day-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0e/59/91/6a.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.901392,
+          "reviewCount": 862,
+          "durationMinutes": null
+        },
+        {
+          "productId": "47552P5",
+          "title": "Private Tour for up to 24 guests of Lake Louise and the Icefield Parkway",
+          "slug": "private-tour-for-up-to-24-guests-of-lake-louise-and-the-icefield-parkway",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/96/a2/ee.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9,
+          "reviewCount": 10,
+          "durationMinutes": 480
+        }
+      ]
+    },
+    {
+      "slug": "black-tie-ski-rentals-of-banff",
+      "operatorName": "Black Tie Ski Rentals of Banff",
+      "operatorKey": "black tie ski rentals of banff",
+      "tourCount": 2,
+      "totalReviews": 11,
+      "averageRating": 5,
+      "blurb": "Black Tie Ski Rentals of Banff specializes in popular local experiences across Banff. Use this page as a single hub to compare every Black Tie Ski Rentals of Banff listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Banff Performance Ski Rental Including Delivery and Banff Premium Ski Rental Including Delivery.",
+      "faqs": [
+        {
+          "question": "Is Black Tie Ski Rentals of Banff worth it?",
+          "answer": "Based on 11 verified traveler reviews averaging 5 stars, Black Tie Ski Rentals of Banff is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Black Tie Ski Rentals of Banff offer in Banff?",
+          "answer": "Black Tie Ski Rentals of Banff currently lists 2 bookable tours in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Black Tie Ski Rentals of Banff tour in Banff?",
+          "answer": "The highest-reviewed option is \"Banff Performance Ski Rental Including Delivery\" with 10 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "45993P3",
+          "title": "Banff Performance Ski Rental Including Delivery",
+          "slug": "banff-performance-ski-rental-including-delivery",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/06/6c/69/18.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 10,
+          "durationMinutes": null
+        },
+        {
+          "productId": "45993P1",
+          "title": "Banff Premium Ski Rental Including Delivery",
+          "slug": "banff-premium-ski-rental-including-delivery",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/06/6c/69/14.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "book-my-shuttle",
+      "operatorName": "Book My Shuttle",
+      "operatorKey": "book my shuttle",
+      "tourCount": 1,
+      "totalReviews": 5,
+      "averageRating": 5,
+      "blurb": "Book My Shuttle specializes in private tours across Banff. Use this page as a single hub to compare every Book My Shuttle listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Private Tour: Moraine Lake, Louise, Emerald & Takakkaw Falls cstm.",
+      "faqs": [
+        {
+          "question": "Is Book My Shuttle worth it?",
+          "answer": "Based on 5 verified traveler reviews averaging 5 stars, Book My Shuttle is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Book My Shuttle offer in Banff?",
+          "answer": "Book My Shuttle currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Book My Shuttle tour in Banff?",
+          "answer": "The highest-reviewed option is \"Private Tour: Moraine Lake, Louise, Emerald & Takakkaw Falls cstm\" with 5 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5526884P2",
+          "title": "Private Tour: Moraine Lake, Louise, Emerald & Takakkaw Falls cstm",
+          "slug": "private-tour-moraine-lake-louise-emerald-takakkaw-falls-cstm",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/14/ac/2e/7c.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 5,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "bow-valley-canyon-tours",
+      "operatorName": "Bow Valley Canyon Tours",
+      "operatorKey": "bow valley canyon tours",
+      "tourCount": 1,
+      "totalReviews": 31,
+      "averageRating": 4.87,
+      "blurb": "Bow Valley Canyon Tours specializes in popular local experiences across Banff. Use this page as a single hub to compare every Bow Valley Canyon Tours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Banff Canyoning - Ghost Canyon (Intermediate Level).",
+      "faqs": [
+        {
+          "question": "Is Bow Valley Canyon Tours worth it?",
+          "answer": "Based on 31 verified traveler reviews averaging 4.87 stars, Bow Valley Canyon Tours is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Bow Valley Canyon Tours offer in Banff?",
+          "answer": "Bow Valley Canyon Tours currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Bow Valley Canyon Tours tour in Banff?",
+          "answer": "The highest-reviewed option is \"Banff Canyoning - Ghost Canyon (Intermediate Level)\" with 31 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "20686P1",
+          "title": "Banff Canyoning - Ghost Canyon (Intermediate Level)",
+          "slug": "banff-canyoning-ghost-canyon-intermediate-level",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/93/b5/5c.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.870968,
+          "reviewCount": 31,
+          "durationMinutes": 480
+        }
+      ]
+    },
+    {
+      "slug": "canada-banff-tours",
+      "operatorName": "Canada Banff Tours",
+      "operatorKey": "canada banff tours",
+      "tourCount": 1,
+      "totalReviews": 13,
+      "averageRating": 4.92,
+      "blurb": "Canada Banff Tours specializes in popular local experiences across Banff. Use this page as a single hub to compare every Canada Banff Tours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Banff Lake Louise Moraine & Emerald Lake Tour.",
+      "faqs": [
+        {
+          "question": "Is Canada Banff Tours worth it?",
+          "answer": "Based on 13 verified traveler reviews averaging 4.92 stars, Canada Banff Tours is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Canada Banff Tours offer in Banff?",
+          "answer": "Canada Banff Tours currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Canada Banff Tours tour in Banff?",
+          "answer": "The highest-reviewed option is \"Banff Lake Louise Moraine & Emerald Lake Tour\" with 13 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5560171P2",
+          "title": "Banff Lake Louise Moraine & Emerald Lake Tour",
+          "slug": "banff-lake-louise-moraine-emerald-lake-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/6e/4a/0e.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.923077,
+          "reviewCount": 13,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "canmore-travel-moraine-lake-and-lake-louise-shuttlebus",
+      "operatorName": "Canmore Travel-Moraine Lake and Lake Louise shuttle/bus",
+      "operatorKey": "canmore travel-moraine lake and lake louise shuttle/bus",
+      "tourCount": 2,
+      "totalReviews": 304,
+      "averageRating": 4.94,
+      "blurb": "Canmore Travel-Moraine Lake and Lake Louise shuttle/bus specializes in sunset cruises across Banff. Use this page as a single hub to compare every Canmore Travel-Moraine Lake and Lake Louise shuttle/bus listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Moraine Lake & Louise - Morning or Sunset Tour from Banff/Canmore and Banff/Canmore Moraine Lake & Lake Louise– Hike, Canoe or Sightsee.",
+      "faqs": [
+        {
+          "question": "Is Canmore Travel-Moraine Lake and Lake Louise shuttle/bus worth it?",
+          "answer": "Based on 304 verified traveler reviews averaging 4.94 stars, Canmore Travel-Moraine Lake and Lake Louise shuttle/bus is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Canmore Travel-Moraine Lake and Lake Louise shuttle/bus offer in Banff?",
+          "answer": "Canmore Travel-Moraine Lake and Lake Louise shuttle/bus currently lists 2 bookable tours in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Canmore Travel-Moraine Lake and Lake Louise shuttle/bus tour in Banff?",
+          "answer": "The highest-reviewed option is \"Moraine Lake & Louise - Morning or Sunset Tour from Banff/Canmore\" with 194 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "417125P2",
+          "title": "Moraine Lake & Louise - Morning or Sunset Tour from Banff/Canmore",
+          "slug": "moraine-lake-louise-morning-or-sunset-tour-from-banffcanmore",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/71/ab/49.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9329896,
+          "reviewCount": 194,
+          "durationMinutes": null
+        },
+        {
+          "productId": "417125P1",
+          "title": "Banff/Canmore Moraine Lake & Lake Louise– Hike, Canoe or Sightsee",
+          "slug": "banffcanmore-moraine-lake-lake-louise-hike-canoe-or-sightsee",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/71/a7/5d.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9454546,
+          "reviewCount": 110,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "discover-banff-tours",
+      "operatorName": "Discover Banff Tours",
+      "operatorKey": "discover banff tours",
+      "tourCount": 3,
+      "totalReviews": 913,
+      "averageRating": 4.71,
+      "blurb": "Discover Banff Tours specializes in popular local experiences across Banff. Use this page as a single hub to compare every Discover Banff Tours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Banff National Park Tour with Lake Louise and Moraine Lake, Discover Grizzly Bears from Banff, Discover Lake Louise (Spring & Fall Sightseeing).",
+      "faqs": [
+        {
+          "question": "Is Discover Banff Tours worth it?",
+          "answer": "Based on 913 verified traveler reviews averaging 4.71 stars, Discover Banff Tours is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Discover Banff Tours offer in Banff?",
+          "answer": "Discover Banff Tours currently lists 3 bookable tours in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Discover Banff Tours tour in Banff?",
+          "answer": "The highest-reviewed option is \"Banff National Park Tour with Lake Louise and Moraine Lake\" with 694 traveler reviews and a 4.7-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "3827LL_M",
+          "title": "Banff National Park Tour with Lake Louise and Moraine Lake",
+          "slug": "banff-national-park-tour-with-lake-louise-and-moraine-lake",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/70/2d/03.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.7190204,
+          "reviewCount": 694,
+          "durationMinutes": 255
+        },
+        {
+          "productId": "3827DGB",
+          "title": "Discover Grizzly Bears from Banff",
+          "slug": "discover-grizzly-bears-from-banff",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/38/cb/27.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.6413794,
+          "reviewCount": 145,
+          "durationMinutes": 600
+        },
+        {
+          "productId": "3827P37",
+          "title": "Discover Lake Louise (Spring & Fall Sightseeing)",
+          "slug": "discover-lake-louise-spring-fall-sightseeing",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/73/a3/61.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.7297297,
+          "reviewCount": 74,
+          "durationMinutes": 255
+        }
+      ]
+    },
+    {
+      "slug": "explore-banff-tours-transfers",
+      "operatorName": "Explore Banff Tours & Transfers",
+      "operatorKey": "explore banff tours & transfers",
+      "tourCount": 1,
+      "totalReviews": 9,
+      "averageRating": 5,
+      "blurb": "Explore Banff Tours & Transfers specializes in popular local experiences across Banff. Use this page as a single hub to compare every Explore Banff Tours & Transfers listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Explore Banff + Wildlife.",
+      "faqs": [
+        {
+          "question": "Is Explore Banff Tours & Transfers worth it?",
+          "answer": "Based on 9 verified traveler reviews averaging 5 stars, Explore Banff Tours & Transfers is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Explore Banff Tours & Transfers offer in Banff?",
+          "answer": "Explore Banff Tours & Transfers currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Explore Banff Tours & Transfers tour in Banff?",
+          "answer": "The highest-reviewed option is \"Explore Banff + Wildlife\" with 9 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "387099P6",
+          "title": "Explore Banff + Wildlife",
+          "slug": "explore-banff-wildlife",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/04/ab/d5.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 9,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "free-craft-distillery-tours-experiences",
+      "operatorName": "FREE Craft Distillery Tours & Experiences",
+      "operatorKey": "free craft distillery tours & experiences",
+      "tourCount": 3,
+      "totalReviews": 238,
+      "averageRating": 4.96,
+      "blurb": "FREE Craft Distillery Tours & Experiences specializes in popular local experiences across Banff. Use this page as a single hub to compare every FREE Craft Distillery Tours & Experiences listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Blend Your Own Gin Experience in Banff, Park Distillery Tour with Craft Spirits Tasting, Park Distillery Tour with Whisky Tasting.",
+      "faqs": [
+        {
+          "question": "Is FREE Craft Distillery Tours & Experiences worth it?",
+          "answer": "Based on 238 verified traveler reviews averaging 4.96 stars, FREE Craft Distillery Tours & Experiences is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does FREE Craft Distillery Tours & Experiences offer in Banff?",
+          "answer": "FREE Craft Distillery Tours & Experiences currently lists 3 bookable tours in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular FREE Craft Distillery Tours & Experiences tour in Banff?",
+          "answer": "The highest-reviewed option is \"Blend Your Own Gin Experience in Banff\" with 206 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5492728P2",
+          "title": "Blend Your Own Gin Experience in Banff",
+          "slug": "blend-your-own-gin-experience-in-banff",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/13/2c/76/5b.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9514565,
+          "reviewCount": 206,
+          "durationMinutes": 60
+        },
+        {
+          "productId": "5492728P3",
+          "title": "Park Distillery Tour with Craft Spirits Tasting",
+          "slug": "park-distillery-tour-with-craft-spirits-tasting",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/73/32/e2.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 24,
+          "durationMinutes": 60
+        },
+        {
+          "productId": "5492728P5",
+          "title": "Park Distillery Tour with Whisky Tasting",
+          "slug": "park-distillery-tour-with-whisky-tasting",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/16/63/01/85.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 8,
+          "durationMinutes": 45
+        }
+      ]
+    },
+    {
+      "slug": "grizzly-banff-tours",
+      "operatorName": "Grizzly Banff Tours",
+      "operatorKey": "grizzly banff tours",
+      "tourCount": 1,
+      "totalReviews": 268,
+      "averageRating": 4.99,
+      "blurb": "Grizzly Banff Tours specializes in popular local experiences across Banff. Use this page as a single hub to compare every Grizzly Banff Tours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Moraine Lake & Louise & Banff Day Tour From Calgary-Canmore-Banff.",
+      "faqs": [
+        {
+          "question": "Is Grizzly Banff Tours worth it?",
+          "answer": "Based on 268 verified traveler reviews averaging 4.99 stars, Grizzly Banff Tours is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Grizzly Banff Tours offer in Banff?",
+          "answer": "Grizzly Banff Tours currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Grizzly Banff Tours tour in Banff?",
+          "answer": "The highest-reviewed option is \"Moraine Lake & Louise & Banff Day Tour From Calgary-Canmore-Banff\" with 268 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5579262P1",
+          "title": "Moraine Lake & Louise & Banff Day Tour From Calgary-Canmore-Banff",
+          "slug": "moraine-lake-louise-banff-day-tour-from-calgary-canmore-banff",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/fc/9c/6f.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9925375,
+          "reviewCount": 268,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "guidealong-gypsy-guide",
+      "operatorName": "GuideAlong (GyPSy Guide)",
+      "operatorKey": "guidealong (gypsy guide)",
+      "tourCount": 3,
+      "totalReviews": 48,
+      "averageRating": 4.98,
+      "blurb": "GuideAlong (GyPSy Guide) specializes in popular local experiences across Banff. Use this page as a single hub to compare every GuideAlong (GyPSy Guide) listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Self-Guided Audio Driving Tour in Icefields Parkway, Self-Guided Audio Tours for the Canadian Rockies, Lake Louise and Yoho National Park Self-Guided Driving Audio Tour.",
+      "faqs": [
+        {
+          "question": "Is GuideAlong (GyPSy Guide) worth it?",
+          "answer": "Based on 48 verified traveler reviews averaging 4.98 stars, GuideAlong (GyPSy Guide) is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does GuideAlong (GyPSy Guide) offer in Banff?",
+          "answer": "GuideAlong (GyPSy Guide) currently lists 3 bookable tours in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular GuideAlong (GyPSy Guide) tour in Banff?",
+          "answer": "The highest-reviewed option is \"Self-Guided Audio Driving Tour in Icefields Parkway\" with 28 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "309754P15",
+          "title": "Self-Guided Audio Driving Tour in Icefields Parkway",
+          "slug": "self-guided-audio-driving-tour-in-icefields-parkway",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/13/1b/9c/a2.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 28,
+          "durationMinutes": null
+        },
+        {
+          "productId": "309754P14",
+          "title": "Self-Guided Audio Tours for the Canadian Rockies",
+          "slug": "self-guided-audio-tours-for-the-canadian-rockies",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/13/1b/9c/a2.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9473686,
+          "reviewCount": 19,
+          "durationMinutes": null
+        },
+        {
+          "productId": "309754P67",
+          "title": "Lake Louise and Yoho National Park Self-Guided Driving Audio Tour",
+          "slug": "lake-louise-and-yoho-national-park-self-guided-driving-audio-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/13/1b/9c/a2.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "hawk-eyes-tours-inc",
+      "operatorName": "Hawk Eyes Tours Inc.",
+      "operatorKey": "hawk eyes tours inc.",
+      "tourCount": 1,
+      "totalReviews": 8,
+      "averageRating": 5,
+      "blurb": "Hawk Eyes Tours Inc. specializes in popular local experiences across Banff. Use this page as a single hub to compare every Hawk Eyes Tours Inc. listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Banff: Lake Louise and Moraine Lake Tour with Pickup & Drop.",
+      "faqs": [
+        {
+          "question": "Is Hawk Eyes Tours Inc. worth it?",
+          "answer": "Based on 8 verified traveler reviews averaging 5 stars, Hawk Eyes Tours Inc. is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Hawk Eyes Tours Inc. offer in Banff?",
+          "answer": "Hawk Eyes Tours Inc. currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Hawk Eyes Tours Inc. tour in Banff?",
+          "answer": "The highest-reviewed option is \"Banff: Lake Louise and Moraine Lake Tour with Pickup & Drop\" with 8 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5604294P9",
+          "title": "Banff: Lake Louise and Moraine Lake Tour with Pickup & Drop",
+          "slug": "banff-lake-louise-and-moraine-lake-tour-with-pickup-drop",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/0d/e6/e4.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 8,
+          "durationMinutes": 300
+        }
+      ]
+    },
+    {
+      "slug": "hoponbanff-ltd",
+      "operatorName": "HopOnBanff Ltd.",
+      "operatorKey": "hoponbanff ltd.",
+      "tourCount": 1,
+      "totalReviews": 788,
+      "averageRating": 4.93,
+      "blurb": "HopOnBanff Ltd. specializes in sightseeing tours across Banff. Use this page as a single hub to compare every HopOnBanff Ltd. listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Hop-On and Hop-Off Banff Bus.",
+      "faqs": [
+        {
+          "question": "Is HopOnBanff Ltd. worth it?",
+          "answer": "Based on 788 verified traveler reviews averaging 4.93 stars, HopOnBanff Ltd. is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does HopOnBanff Ltd. offer in Banff?",
+          "answer": "HopOnBanff Ltd. currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular HopOnBanff Ltd. tour in Banff?",
+          "answer": "The highest-reviewed option is \"Hop-On and Hop-Off Banff Bus\" with 788 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "47670P1",
+          "title": "Hop-On and Hop-Off Banff Bus",
+          "slug": "hop-on-and-hop-off-banff-bus",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/59/d8/80.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9314723,
+          "reviewCount": 788,
+          "durationMinutes": 480
+        }
+      ]
+    },
+    {
+      "slug": "into-the-wild-tours",
+      "operatorName": "Into The Wild Tours",
+      "operatorKey": "into the wild tours",
+      "tourCount": 1,
+      "totalReviews": 13,
+      "averageRating": 5,
+      "blurb": "Into The Wild Tours specializes in popular local experiences across Banff. Use this page as a single hub to compare every Into The Wild Tours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Moraine Lake Sunrise 3-Hour Tour from Canmore/Banff.",
+      "faqs": [
+        {
+          "question": "Is Into The Wild Tours worth it?",
+          "answer": "Based on 13 verified traveler reviews averaging 5 stars, Into The Wild Tours is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Into The Wild Tours offer in Banff?",
+          "answer": "Into The Wild Tours currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Into The Wild Tours tour in Banff?",
+          "answer": "The highest-reviewed option is \"Moraine Lake Sunrise 3-Hour Tour from Canmore/Banff\" with 13 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "467394P11",
+          "title": "Moraine Lake Sunrise 3-Hour Tour from Canmore/Banff",
+          "slug": "moraine-lake-sunrise-3-hour-tour-from-canmorebanff",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/6c/69/8f.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 13,
+          "durationMinutes": 420
+        }
+      ]
+    },
+    {
+      "slug": "jumper-tours",
+      "operatorName": "Jumper Tours",
+      "operatorKey": "jumper tours",
+      "tourCount": 1,
+      "totalReviews": 160,
+      "averageRating": 4.9,
+      "blurb": "Jumper Tours specializes in popular local experiences across Banff. Use this page as a single hub to compare every Jumper Tours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Lake Louise & Lake Moraine Tour.",
+      "faqs": [
+        {
+          "question": "Is Jumper Tours worth it?",
+          "answer": "Based on 160 verified traveler reviews averaging 4.9 stars, Jumper Tours is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Jumper Tours offer in Banff?",
+          "answer": "Jumper Tours currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Jumper Tours tour in Banff?",
+          "answer": "The highest-reviewed option is \"Lake Louise & Lake Moraine Tour\" with 160 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5488234P2",
+          "title": "Lake Louise & Lake Moraine Tour",
+          "slug": "lake-louise-lake-moraine-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/13/29/60/7e.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9,
+          "reviewCount": 160,
+          "durationMinutes": 300
+        }
+      ]
+    },
+    {
+      "slug": "legacy-quests",
+      "operatorName": "Legacy Quests",
+      "operatorKey": "legacy quests",
+      "tourCount": 1,
+      "totalReviews": 14,
+      "averageRating": 5,
+      "blurb": "Legacy Quests specializes in private tours across Banff. Use this page as a single hub to compare every Legacy Quests listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Moraine and Lake Louise with Yoho National Park Private Tour.",
+      "faqs": [
+        {
+          "question": "Is Legacy Quests worth it?",
+          "answer": "Based on 14 verified traveler reviews averaging 5 stars, Legacy Quests is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Legacy Quests offer in Banff?",
+          "answer": "Legacy Quests currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Legacy Quests tour in Banff?",
+          "answer": "The highest-reviewed option is \"Moraine and Lake Louise with Yoho National Park Private Tour\" with 14 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "442155P2",
+          "title": "Moraine and Lake Louise with Yoho National Park Private Tour",
+          "slug": "moraine-and-lake-louise-with-yoho-national-park-private-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/16/0f/fd/5c.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 14,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "matrix-tours-and-travel-ltd",
+      "operatorName": "Matrix tours and travel LTD",
+      "operatorKey": "matrix tours and travel ltd",
+      "tourCount": 1,
+      "totalReviews": 14,
+      "averageRating": 4.93,
+      "blurb": "Matrix tours and travel LTD specializes in popular local experiences across Banff. Use this page as a single hub to compare every Matrix tours and travel LTD listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Louise, Moraine, Emerald , Natural Bridge & Canyon Day Trip.",
+      "faqs": [
+        {
+          "question": "Is Matrix tours and travel LTD worth it?",
+          "answer": "Based on 14 verified traveler reviews averaging 4.93 stars, Matrix tours and travel LTD is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Matrix tours and travel LTD offer in Banff?",
+          "answer": "Matrix tours and travel LTD currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Matrix tours and travel LTD tour in Banff?",
+          "answer": "The highest-reviewed option is \"Louise, Moraine, Emerald , Natural Bridge & Canyon Day Trip\" with 14 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5550036P9",
+          "title": "Louise, Moraine, Emerald , Natural Bridge & Canyon Day Trip",
+          "slug": "louise-moraine-emerald-natural-bridge-canyon-day-trip",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/r/33/80/cb/cc/caption.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.928571,
+          "reviewCount": 14,
+          "durationMinutes": 600
+        }
+      ]
+    },
+    {
+      "slug": "monarc-vip-tours",
+      "operatorName": "Monarc VIP Tours",
+      "operatorKey": "monarc vip tours",
+      "tourCount": 4,
+      "totalReviews": 65,
+      "averageRating": 5,
+      "blurb": "Monarc VIP Tours specializes in private tours and airport transfers across Banff. Use this page as a single hub to compare every Monarc VIP Tours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is Monarc VIP Tours worth it?",
+          "answer": "Based on 65 verified traveler reviews averaging 5 stars, Monarc VIP Tours is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Monarc VIP Tours offer in Banff?",
+          "answer": "Monarc VIP Tours currently lists 4 bookable tours in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Monarc VIP Tours tour in Banff?",
+          "answer": "The highest-reviewed option is \"Private VIP Tour in Lake Louise, Moraine and Hidden Gems\" with 33 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5624057P10",
+          "title": "Private VIP Tour in Lake Louise, Moraine and Hidden Gems",
+          "slug": "private-vip-tour-in-lake-louise-moraine-and-hidden-gems",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/10/48/d7.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 33,
+          "durationMinutes": null
+        },
+        {
+          "productId": "5624057P3",
+          "title": "Banff Small-Group Tour in Lake Louise, Moraine and Hidden Gems",
+          "slug": "banff-small-group-tour-in-lake-louise-moraine-and-hidden-gems",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/r/32/cc/3f/1f/caption.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 18,
+          "durationMinutes": null
+        },
+        {
+          "productId": "5624057P19",
+          "title": "Private Airport Transfer YYC to Banff Canmore or Lake Louise",
+          "slug": "private-airport-transfer-yyc-to-banff-canmore-or-lake-louise",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/r/32/c2/f5/1b/caption.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 9,
+          "durationMinutes": null
+        },
+        {
+          "productId": "5624057P18",
+          "title": "Private VIP Tour with Columbia Icefield Skywalk & Glacier Walk",
+          "slug": "private-vip-tour-with-columbia-icefield-skywalk-glacier-walk",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/13/a6/0a.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 5,
+          "durationMinutes": 780
+        }
+      ]
+    },
+    {
+      "slug": "mr-rocky-traveling",
+      "operatorName": "Mr Rocky Traveling",
+      "operatorKey": "mr rocky traveling",
+      "tourCount": 1,
+      "totalReviews": 5,
+      "averageRating": 5,
+      "blurb": "Mr Rocky Traveling specializes in private tours across Banff. Use this page as a single hub to compare every Mr Rocky Traveling listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Banff, Yoho, and Icefield Parkway Private Tour.",
+      "faqs": [
+        {
+          "question": "Is Mr Rocky Traveling worth it?",
+          "answer": "Based on 5 verified traveler reviews averaging 5 stars, Mr Rocky Traveling is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Mr Rocky Traveling offer in Banff?",
+          "answer": "Mr Rocky Traveling currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Mr Rocky Traveling tour in Banff?",
+          "answer": "The highest-reviewed option is \"Banff, Yoho, and Icefield Parkway Private Tour\" with 5 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "453073P1",
+          "title": "Banff, Yoho, and Icefield Parkway Private Tour",
+          "slug": "banff-yoho-and-icefield-parkway-private-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/40/7e/ed.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 5,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "nibble-tours",
+      "operatorName": "Nibble Tours",
+      "operatorKey": "nibble tours",
+      "tourCount": 5,
+      "totalReviews": 139,
+      "averageRating": 4.99,
+      "blurb": "Nibble Tours specializes in food tours across Banff. Use this page as a single hub to compare every Nibble Tours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is Nibble Tours worth it?",
+          "answer": "Based on 139 verified traveler reviews averaging 4.99 stars, Nibble Tours is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Nibble Tours offer in Banff?",
+          "answer": "Nibble Tours currently lists 5 bookable tours in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Nibble Tours tour in Banff?",
+          "answer": "The highest-reviewed option is \"Banff's Canadian Rocky Mountain Food Tour\" with 107 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "332715P5",
+          "title": "Banff's Canadian Rocky Mountain Food Tour",
+          "slug": "banffs-canadian-rocky-mountain-food-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/13/61/38/dd.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.990654,
+          "reviewCount": 107,
+          "durationMinutes": 180
+        },
+        {
+          "productId": "332715P6",
+          "title": "Taste of Banff Food Tour",
+          "slug": "taste-of-banff-food-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/09/0a/d0.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 24,
+          "durationMinutes": 180
+        },
+        {
+          "productId": "332715P7",
+          "title": "Banff's Best Breakfast Food Tour",
+          "slug": "banffs-best-breakfast-food-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/d7/e9/91.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 4,
+          "durationMinutes": 120
+        },
+        {
+          "productId": "332715P8",
+          "title": "Banff's Sips & Sweets Evening Food Tour",
+          "slug": "banffs-sips-sweets-evening-food-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/09/0a/b8.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 3,
+          "durationMinutes": 120
+        },
+        {
+          "productId": "332715P9",
+          "title": "Banff's Winter Wonderland Food Tour",
+          "slug": "banffs-winter-wonderland-food-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/09/0a/b3.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "original-path",
+      "operatorName": "Original Path",
+      "operatorKey": "original path",
+      "tourCount": 1,
+      "totalReviews": 5,
+      "averageRating": 5,
+      "blurb": "Original Path specializes in private tours across Banff. Use this page as a single hub to compare every Original Path listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Private Forest Bathing Experience Connect with Nature.",
+      "faqs": [
+        {
+          "question": "Is Original Path worth it?",
+          "answer": "Based on 5 verified traveler reviews averaging 5 stars, Original Path is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Original Path offer in Banff?",
+          "answer": "Original Path currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Original Path tour in Banff?",
+          "answer": "The highest-reviewed option is \"Private Forest Bathing Experience Connect with Nature\" with 5 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "321339P2",
+          "title": "Private Forest Bathing Experience Connect with Nature",
+          "slug": "private-forest-bathing-experience-connect-with-nature",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/7b/18/55.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 5,
+          "durationMinutes": 150
+        }
+      ]
+    },
+    {
+      "slug": "peak-perfection",
+      "operatorName": "Peak Perfection",
+      "operatorKey": "peak perfection",
+      "tourCount": 1,
+      "totalReviews": 16,
+      "averageRating": 5,
+      "blurb": "Peak Perfection specializes in private tours across Banff. Use this page as a single hub to compare every Peak Perfection listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Moraine Lake and Lake Louise Private Premium Day Tour.",
+      "faqs": [
+        {
+          "question": "Is Peak Perfection worth it?",
+          "answer": "Based on 16 verified traveler reviews averaging 5 stars, Peak Perfection is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Peak Perfection offer in Banff?",
+          "answer": "Peak Perfection currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Peak Perfection tour in Banff?",
+          "answer": "The highest-reviewed option is \"Moraine Lake and Lake Louise Private Premium Day Tour\" with 16 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "408188P4",
+          "title": "Moraine Lake and Lake Louise Private Premium Day Tour",
+          "slug": "moraine-lake-and-lake-louise-private-premium-day-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/e3/3b/7f.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 16,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "radventures",
+      "operatorName": "Radventures",
+      "operatorKey": "radventures",
+      "tourCount": 5,
+      "totalReviews": 1035,
+      "averageRating": 4.77,
+      "blurb": "Radventures specializes in popular local experiences across Banff. Use this page as a single hub to compare every Radventures listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is Radventures worth it?",
+          "answer": "Based on 1,035 verified traveler reviews averaging 4.77 stars, Radventures is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Radventures offer in Banff?",
+          "answer": "Radventures currently lists 5 bookable tours in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Radventures tour in Banff?",
+          "answer": "The highest-reviewed option is \"Banff Highlights & Wildlife | Award-Winning Small Group Adventure\" with 821 traveler reviews and a 4.7-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "299389P5",
+          "title": "Banff Highlights & Wildlife | Award-Winning Small Group Adventure",
+          "slug": "banff-highlights-wildlife-award-winning-small-group-adventure",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/86/0c/bd.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.72229,
+          "reviewCount": 821,
+          "durationMinutes": 180
+        },
+        {
+          "productId": "299389P4",
+          "title": "Electric Fat Biking Adventure in Banff | Small Group Adventure",
+          "slug": "electric-fat-biking-adventure-in-banff-small-group-adventure",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/e5/00/9d.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9534883,
+          "reviewCount": 86,
+          "durationMinutes": 120
+        },
+        {
+          "productId": "299389P8",
+          "title": "Icefields Parkway and Ice Bubbles of Abraham Lake Adventure",
+          "slug": "icefields-parkway-and-ice-bubbles-of-abraham-lake-adventure",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0f/e5/b6/0d.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 65,
+          "durationMinutes": 480
+        },
+        {
+          "productId": "299389P10",
+          "title": "Johnston Canyon Frozen Waterfalls - Small Group Tour",
+          "slug": "johnston-canyon-frozen-waterfalls-small-group-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0f/e3/68/cd.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9607844,
+          "reviewCount": 51,
+          "durationMinutes": 240
+        },
+        {
+          "productId": "299389P14",
+          "title": "Glacier Adventure on the Icefields Parkway Hidden Gems Skywalk",
+          "slug": "glacier-adventure-on-the-icefields-parkway-hidden-gems-skywalk",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/ec/9c/85.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 12,
+          "durationMinutes": 480
+        }
+      ]
+    },
+    {
+      "slug": "rockies-journey",
+      "operatorName": "Rockies Journey",
+      "operatorKey": "rockies journey",
+      "tourCount": 1,
+      "totalReviews": 114,
+      "averageRating": 4.97,
+      "blurb": "Rockies Journey specializes in popular local experiences across Banff. Use this page as a single hub to compare every Rockies Journey listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Athabasca Falls/Abraham icebubble,Sunwpata Falls,Icefield & Peyto.",
+      "faqs": [
+        {
+          "question": "Is Rockies Journey worth it?",
+          "answer": "Based on 114 verified traveler reviews averaging 4.97 stars, Rockies Journey is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Rockies Journey offer in Banff?",
+          "answer": "Rockies Journey currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Rockies Journey tour in Banff?",
+          "answer": "The highest-reviewed option is \"Athabasca Falls/Abraham icebubble,Sunwpata Falls,Icefield & Peyto\" with 114 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5525750P2",
+          "title": "Athabasca Falls/Abraham icebubble,Sunwpata Falls,Icefield & Peyto",
+          "slug": "athabasca-fallsabraham-icebubblesunwpata-fallsicefield-peyto",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/72/00/90.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9736843,
+          "reviewCount": 114,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "rocky-mountain-trips",
+      "operatorName": "Rocky Mountain Trips",
+      "operatorKey": "rocky mountain trips",
+      "tourCount": 1,
+      "totalReviews": 41,
+      "averageRating": 5,
+      "blurb": "Rocky Mountain Trips specializes in popular local experiences across Banff. Use this page as a single hub to compare every Rocky Mountain Trips listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Explore Moraine Lake, Banff, Lake Louise & Minnewanka.",
+      "faqs": [
+        {
+          "question": "Is Rocky Mountain Trips worth it?",
+          "answer": "Based on 41 verified traveler reviews averaging 5 stars, Rocky Mountain Trips is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Rocky Mountain Trips offer in Banff?",
+          "answer": "Rocky Mountain Trips currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Rocky Mountain Trips tour in Banff?",
+          "answer": "The highest-reviewed option is \"Explore Moraine Lake, Banff, Lake Louise & Minnewanka\" with 41 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "402277P2",
+          "title": "Explore Moraine Lake, Banff, Lake Louise & Minnewanka",
+          "slug": "explore-moraine-lake-banff-lake-louise-minnewanka",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/14/6e/c9/93.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 41,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "rtb-tours-shuttles",
+      "operatorName": "RTB Tours & Shuttles",
+      "operatorKey": "rtb tours & shuttles",
+      "tourCount": 1,
+      "totalReviews": 11,
+      "averageRating": 5,
+      "blurb": "RTB Tours & Shuttles specializes in popular local experiences across Banff. Use this page as a single hub to compare every RTB Tours & Shuttles listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Banff National Park Tour with a Small Group.",
+      "faqs": [
+        {
+          "question": "Is RTB Tours & Shuttles worth it?",
+          "answer": "Based on 11 verified traveler reviews averaging 5 stars, RTB Tours & Shuttles is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does RTB Tours & Shuttles offer in Banff?",
+          "answer": "RTB Tours & Shuttles currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular RTB Tours & Shuttles tour in Banff?",
+          "answer": "The highest-reviewed option is \"Banff National Park Tour with a Small Group\" with 11 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "11245P7",
+          "title": "Banff National Park Tour with a Small Group",
+          "slug": "banff-national-park-tour-with-a-small-group",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/6f/cb/ff.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 11,
+          "durationMinutes": 660
+        }
+      ]
+    },
+    {
+      "slug": "sunshine-village-corporation",
+      "operatorName": "Sunshine Village Corporation",
+      "operatorKey": "sunshine village corporation",
+      "tourCount": 1,
+      "totalReviews": 193,
+      "averageRating": 4.76,
+      "blurb": "Sunshine Village Corporation specializes in popular local experiences across Banff. Use this page as a single hub to compare every Sunshine Village Corporation listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Banff Sunshine Village Gondola and Sightseeing.",
+      "faqs": [
+        {
+          "question": "Is Sunshine Village Corporation worth it?",
+          "answer": "Based on 193 verified traveler reviews averaging 4.76 stars, Sunshine Village Corporation is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Sunshine Village Corporation offer in Banff?",
+          "answer": "Sunshine Village Corporation currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Sunshine Village Corporation tour in Banff?",
+          "answer": "The highest-reviewed option is \"Banff Sunshine Village Gondola and Sightseeing\" with 193 traveler reviews and a 4.8-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "39850P1",
+          "title": "Banff Sunshine Village Gondola and Sightseeing",
+          "slug": "banff-sunshine-village-gondola-and-sightseeing",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/06/71/54/5e.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.756477,
+          "reviewCount": 193,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "the-banff-canoe-club",
+      "operatorName": "The Banff Canoe Club",
+      "operatorKey": "the banff canoe club",
+      "tourCount": 3,
+      "totalReviews": 259,
+      "averageRating": 4.9,
+      "blurb": "The Banff Canoe Club specializes in kayaking across Banff. Use this page as a single hub to compare every The Banff Canoe Club listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes River Explorer | Big Canoe Tour in Banff National Park, Wildlife on the Bow | Big Canoe Tour in Banff National Park, Banff National Park- Double Kayak Experience.",
+      "faqs": [
+        {
+          "question": "Is The Banff Canoe Club worth it?",
+          "answer": "Based on 259 verified traveler reviews averaging 4.9 stars, The Banff Canoe Club is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does The Banff Canoe Club offer in Banff?",
+          "answer": "The Banff Canoe Club currently lists 3 bookable tours in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular The Banff Canoe Club tour in Banff?",
+          "answer": "The highest-reviewed option is \"River Explorer | Big Canoe Tour in Banff National Park\" with 156 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "370405P1",
+          "title": "River Explorer | Big Canoe Tour in Banff National Park",
+          "slug": "river-explorer-big-canoe-tour-in-banff-national-park",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0f/e3/2f/80.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.948718,
+          "reviewCount": 156,
+          "durationMinutes": 90
+        },
+        {
+          "productId": "370405P2",
+          "title": "Wildlife on the Bow | Big Canoe Tour in Banff National Park",
+          "slug": "wildlife-on-the-bow-big-canoe-tour-in-banff-national-park",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0f/e3/2f/ea.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.768293,
+          "reviewCount": 82,
+          "durationMinutes": 90
+        },
+        {
+          "productId": "370405P4",
+          "title": "Banff National Park- Double Kayak Experience",
+          "slug": "banff-national-park-double-kayak-experience",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/70/e8/24.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 21,
+          "durationMinutes": 120
+        }
+      ]
+    },
+    {
+      "slug": "the-fairy-bus",
+      "operatorName": "The Fairy Bus",
+      "operatorKey": "the fairy bus",
+      "tourCount": 3,
+      "totalReviews": 10,
+      "averageRating": 4.8,
+      "blurb": "The Fairy Bus specializes in airport transfers and private tours across Banff. Use this page as a single hub to compare every The Fairy Bus listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Calgary/Canmore/Banff: Moraine Lake & Lake Louise Return Shuttle, Calgary/Canmore/Banff: Enchanting Banff National Park Day Tour, Banff to Calgary Exclusive Private Transfer.",
+      "faqs": [
+        {
+          "question": "Is The Fairy Bus worth it?",
+          "answer": "Based on 10 verified traveler reviews averaging 4.8 stars, The Fairy Bus is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does The Fairy Bus offer in Banff?",
+          "answer": "The Fairy Bus currently lists 3 bookable tours in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular The Fairy Bus tour in Banff?",
+          "answer": "The highest-reviewed option is \"Calgary/Canmore/Banff: Moraine Lake & Lake Louise Return Shuttle\" with 7 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5512332P11",
+          "title": "Calgary/Canmore/Banff: Moraine Lake & Lake Louise Return Shuttle",
+          "slug": "calgarycanmorebanff-moraine-lake-lake-louise-return-shuttle",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/14/37/94/3f.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 7,
+          "durationMinutes": 300
+        },
+        {
+          "productId": "5512332P5",
+          "title": "Calgary/Canmore/Banff: Enchanting Banff National Park Day Tour",
+          "slug": "calgarycanmorebanff-enchanting-banff-national-park-day-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/14/1f/b2/b3.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.3333335,
+          "reviewCount": 3,
+          "durationMinutes": null
+        },
+        {
+          "productId": "5512332P29",
+          "title": "Banff to Calgary Exclusive Private Transfer",
+          "slug": "banff-to-calgary-exclusive-private-transfer",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/15/75/ce.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 90
+        }
+      ]
+    },
+    {
+      "slug": "the-rockies-tours-and-transportation",
+      "operatorName": "The Rockies Tours and Transportation",
+      "operatorKey": "the rockies tours and transportation",
+      "tourCount": 1,
+      "totalReviews": 17,
+      "averageRating": 4.94,
+      "blurb": "The Rockies Tours and Transportation specializes in popular local experiences across Banff. Use this page as a single hub to compare every The Rockies Tours and Transportation listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Airport Shuttle: Banff  Calgary.",
+      "faqs": [
+        {
+          "question": "Is The Rockies Tours and Transportation worth it?",
+          "answer": "Based on 17 verified traveler reviews averaging 4.94 stars, The Rockies Tours and Transportation is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does The Rockies Tours and Transportation offer in Banff?",
+          "answer": "The Rockies Tours and Transportation currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular The Rockies Tours and Transportation tour in Banff?",
+          "answer": "The highest-reviewed option is \"Airport Shuttle: Banff  Calgary\" with 17 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "194429P1",
+          "title": "Airport Shuttle: Banff  Calgary",
+          "slug": "airport-shuttle-banff-calgary",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/d7/fc/17.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9411764,
+          "reviewCount": 17,
+          "durationMinutes": 120
+        }
+      ]
+    },
+    {
+      "slug": "tripvia-tours",
+      "operatorName": "Tripvia Tours",
+      "operatorKey": "tripvia tours",
+      "tourCount": 4,
+      "totalReviews": 43,
+      "averageRating": 3.79,
+      "blurb": "Tripvia Tours specializes in popular local experiences across Banff. Use this page as a single hub to compare every Tripvia Tours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is Tripvia Tours worth it?",
+          "answer": "Based on 43 verified traveler reviews averaging 3.79 stars, Tripvia Tours is mixed but still popular for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Tripvia Tours offer in Banff?",
+          "answer": "Tripvia Tours currently lists 4 bookable tours in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Tripvia Tours tour in Banff?",
+          "answer": "The highest-reviewed option is \"Smartphone Audio Driving Tour between Banff and Calgary\" with 25 traveler reviews and a 3.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "214606P17",
+          "title": "Smartphone Audio Driving Tour between Banff and Calgary",
+          "slug": "smartphone-audio-driving-tour-between-banff-and-calgary",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/e2/d0/74.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 3.88,
+          "reviewCount": 25,
+          "durationMinutes": 120
+        },
+        {
+          "productId": "214606P23",
+          "title": "Discover the Rockies: 6 Self-Guided Smartphone Audio Tours Bundle",
+          "slug": "discover-the-rockies-6-self-guided-smartphone-audio-tours-bundle",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/32/97/ba.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 3.7272727,
+          "reviewCount": 11,
+          "durationMinutes": null
+        },
+        {
+          "productId": "214606P3",
+          "title": "The Sights of Banff: a Smartphone Audio Walking Tour",
+          "slug": "the-sights-of-banff-a-smartphone-audio-walking-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/78/30/ad.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 3.5714285,
+          "reviewCount": 7,
+          "durationMinutes": null
+        },
+        {
+          "productId": "214606P60",
+          "title": "Tunnel Mountain Trail: a Smartphone Audio Nature Tour",
+          "slug": "tunnel-mountain-trail-a-smartphone-audio-nature-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/03/7b/fc.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 180
+        }
+      ]
+    },
+    {
+      "slug": "via-via-moraine-lake-shuttle",
+      "operatorName": "Via Via Moraine Lake Shuttle",
+      "operatorKey": "via via moraine lake shuttle",
+      "tourCount": 1,
+      "totalReviews": 6,
+      "averageRating": 5,
+      "blurb": "Via Via Moraine Lake Shuttle specializes in popular local experiences across Banff. Use this page as a single hub to compare every Via Via Moraine Lake Shuttle listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Bestseller from Canmore/Banff: Lake Louise Adventure.",
+      "faqs": [
+        {
+          "question": "Is Via Via Moraine Lake Shuttle worth it?",
+          "answer": "Based on 6 verified traveler reviews averaging 5 stars, Via Via Moraine Lake Shuttle is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Via Via Moraine Lake Shuttle offer in Banff?",
+          "answer": "Via Via Moraine Lake Shuttle currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Via Via Moraine Lake Shuttle tour in Banff?",
+          "answer": "The highest-reviewed option is \"Bestseller from Canmore/Banff: Lake Louise Adventure\" with 6 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "479274P6",
+          "title": "Bestseller from Canmore/Banff: Lake Louise Adventure",
+          "slug": "bestseller-from-canmorebanff-lake-louise-adventure",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/d7/eb/64.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 6,
+          "durationMinutes": 480
+        }
+      ]
+    },
+    {
+      "slug": "vista-chase",
+      "operatorName": "Vista Chase",
+      "operatorKey": "vista chase",
+      "tourCount": 2,
+      "totalReviews": 291,
+      "averageRating": 4.99,
+      "blurb": "Vista Chase specializes in private tours across Banff. Use this page as a single hub to compare every Vista Chase listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Private Customizable Banff Tour Lake Louise-Moraine 6 More Sights and Sunrise Views / Relaxed Day Shuttle to Moraine Lake & Lake Louise.",
+      "faqs": [
+        {
+          "question": "Is Vista Chase worth it?",
+          "answer": "Based on 291 verified traveler reviews averaging 4.99 stars, Vista Chase is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Vista Chase offer in Banff?",
+          "answer": "Vista Chase currently lists 2 bookable tours in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Vista Chase tour in Banff?",
+          "answer": "The highest-reviewed option is \"Private Customizable Banff Tour Lake Louise-Moraine 6 More Sights\" with 271 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "428699P4",
+          "title": "Private Customizable Banff Tour Lake Louise-Moraine 6 More Sights",
+          "slug": "private-customizable-banff-tour-lake-louise-moraine-6-more-sights",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/5f/fa/ab.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9889297,
+          "reviewCount": 271,
+          "durationMinutes": null
+        },
+        {
+          "productId": "428699P11",
+          "title": "Sunrise Views / Relaxed Day Shuttle to Moraine Lake & Lake Louise",
+          "slug": "sunrise-views-relaxed-day-shuttle-to-moraine-lake-lake-louise",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/r/33/0d/3a/29/caption.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 20,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "vistachase",
+      "operatorName": "VistaChase",
+      "operatorKey": "vistachase",
+      "tourCount": 1,
+      "totalReviews": 44,
+      "averageRating": 4.91,
+      "blurb": "VistaChase specializes in popular local experiences across Banff. Use this page as a single hub to compare every VistaChase listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Discover 9 Iconic Banff Sights in a Day! with extra Comfort-12pax.",
+      "faqs": [
+        {
+          "question": "Is VistaChase worth it?",
+          "answer": "Based on 44 verified traveler reviews averaging 4.91 stars, VistaChase is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does VistaChase offer in Banff?",
+          "answer": "VistaChase currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular VistaChase tour in Banff?",
+          "answer": "The highest-reviewed option is \"Discover 9 Iconic Banff Sights in a Day! with extra Comfort-12pax\" with 44 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5526884P1",
+          "title": "Discover 9 Iconic Banff Sights in a Day! with extra Comfort-12pax",
+          "slug": "discover-9-iconic-banff-sights-in-a-day-with-extra-comfort-12pax",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/14/41/70/33.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.909091,
+          "reviewCount": 44,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "white-mountain-adventures",
+      "operatorName": "White Mountain Adventures",
+      "operatorKey": "white mountain adventures",
+      "tourCount": 2,
+      "totalReviews": 309,
+      "averageRating": 4.87,
+      "blurb": "White Mountain Adventures specializes in popular local experiences across Banff. Use this page as a single hub to compare every White Mountain Adventures listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes eBike and Hike Banff to Johnston Canyon small group guided program and Snowshoeing on Top of the World.",
+      "faqs": [
+        {
+          "question": "Is White Mountain Adventures worth it?",
+          "answer": "Based on 309 verified traveler reviews averaging 4.87 stars, White Mountain Adventures is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does White Mountain Adventures offer in Banff?",
+          "answer": "White Mountain Adventures currently lists 2 bookable tours in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular White Mountain Adventures tour in Banff?",
+          "answer": "The highest-reviewed option is \"eBike and Hike Banff to Johnston Canyon small group guided program\" with 207 traveler reviews and a 4.8-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "45607P32",
+          "title": "eBike and Hike Banff to Johnston Canyon small group guided program",
+          "slug": "ebike-and-hike-banff-to-johnston-canyon-small-group-guided-program",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/10/7f/65/0d.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.821256,
+          "reviewCount": 207,
+          "durationMinutes": 240
+        },
+        {
+          "productId": "45607P2",
+          "title": "Snowshoeing on Top of the World",
+          "slug": "snowshoeing-on-top-of-the-world",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/03/47/20.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.980392,
+          "reviewCount": 102,
+          "durationMinutes": 270
+        }
+      ]
+    },
+    {
+      "slug": "wild-northern-journey",
+      "operatorName": "Wild Northern Journey",
+      "operatorKey": "wild northern journey",
+      "tourCount": 1,
+      "totalReviews": 19,
+      "averageRating": 5,
+      "blurb": "Wild Northern Journey specializes in popular local experiences across Banff. Use this page as a single hub to compare every Wild Northern Journey listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes 12 Iconic Stops: Banff & Yoho Premium Small Group Guided Tour.",
+      "faqs": [
+        {
+          "question": "Is Wild Northern Journey worth it?",
+          "answer": "Based on 19 verified traveler reviews averaging 5 stars, Wild Northern Journey is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Wild Northern Journey offer in Banff?",
+          "answer": "Wild Northern Journey currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Wild Northern Journey tour in Banff?",
+          "answer": "The highest-reviewed option is \"12 Iconic Stops: Banff & Yoho Premium Small Group Guided Tour\" with 19 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5637403P2",
+          "title": "12 Iconic Stops: Banff & Yoho Premium Small Group Guided Tour",
+          "slug": "12-iconic-stops-banff-yoho-premium-small-group-guided-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/r/33/38/ab/8c/caption.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 19,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "yamnuska-wolfdog-sanctuary",
+      "operatorName": "Yamnuska Wolfdog Sanctuary",
+      "operatorKey": "yamnuska wolfdog sanctuary",
+      "tourCount": 1,
+      "totalReviews": 47,
+      "averageRating": 4.83,
+      "blurb": "Yamnuska Wolfdog Sanctuary specializes in popular local experiences across Banff. Use this page as a single hub to compare every Yamnuska Wolfdog Sanctuary listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Banff lineup includes Yamnuska Wolfdog Sanctuary Walk Ticket in Canada.",
+      "faqs": [
+        {
+          "question": "Is Yamnuska Wolfdog Sanctuary worth it?",
+          "answer": "Based on 47 verified traveler reviews averaging 4.83 stars, Yamnuska Wolfdog Sanctuary is generally excellent for tours in Banff. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Yamnuska Wolfdog Sanctuary offer in Banff?",
+          "answer": "Yamnuska Wolfdog Sanctuary currently lists 1 bookable tour in Banff on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Yamnuska Wolfdog Sanctuary tour in Banff?",
+          "answer": "The highest-reviewed option is \"Yamnuska Wolfdog Sanctuary Walk Ticket in Canada\" with 47 traveler reviews and a 4.8-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "467164P1",
+          "title": "Yamnuska Wolfdog Sanctuary Walk Ticket in Canada",
+          "slug": "yamnuska-wolfdog-sanctuary-walk-ticket-in-canada",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/6a/d6/a8.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.8297873,
+          "reviewCount": 47,
+          "durationMinutes": null
+        }
+      ]
+    }
+  ],
+  "patchedAt": "2026-06-20T21:34:57.856Z"
+}

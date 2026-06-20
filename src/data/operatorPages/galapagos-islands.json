@@ -1,0 +1,419 @@
+{
+  "destinationSlug": "galapagos-islands",
+  "viatorDestinationId": "936",
+  "destinationName": "Galápagos Islands",
+  "builtAt": "2026-06-20T21:17:05.412Z",
+  "operatorCount": 8,
+  "operators": [
+    {
+      "slug": "andean-escape",
+      "operatorName": "ANDEAN ESCAPE",
+      "operatorKey": "andean escape",
+      "tourCount": 1,
+      "totalReviews": 7,
+      "averageRating": 4.57,
+      "blurb": "ANDEAN ESCAPE specializes in island day trips across Galápagos Islands. Use this page as a single hub to compare every ANDEAN ESCAPE listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Galápagos Islands lineup includes Galapagos the Enchanted Islands 5 Days.",
+      "faqs": [
+        {
+          "question": "Is ANDEAN ESCAPE worth it?",
+          "answer": "Based on 7 verified traveler reviews averaging 4.57 stars, ANDEAN ESCAPE is generally excellent for tours in Galápagos Islands. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does ANDEAN ESCAPE offer in Galápagos Islands?",
+          "answer": "ANDEAN ESCAPE currently lists 1 bookable tour in Galápagos Islands on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular ANDEAN ESCAPE tour in Galápagos Islands?",
+          "answer": "The highest-reviewed option is \"Galapagos the Enchanted Islands 5 Days\" with 7 traveler reviews and a 4.6-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5561269P11",
+          "title": "Galapagos the Enchanted Islands 5 Days",
+          "slug": "galapagos-the-enchanted-islands-5-days",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/72/3e/c1.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.571429,
+          "reviewCount": 7,
+          "durationMinutes": 7200
+        }
+      ]
+    },
+    {
+      "slug": "discovering-galapagos",
+      "operatorName": "Discovering Galapagos",
+      "operatorKey": "discovering galapagos",
+      "tourCount": 1,
+      "totalReviews": 22,
+      "averageRating": 4.91,
+      "blurb": "Discovering Galapagos specializes in popular local experiences across Galápagos Islands. Use this page as a single hub to compare every Discovering Galapagos listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Galápagos Islands lineup includes \"Galapagos Discovery Premium – Bay Tour - 4 Days / 3 Nights\".",
+      "faqs": [
+        {
+          "question": "Is Discovering Galapagos worth it?",
+          "answer": "Based on 22 verified traveler reviews averaging 4.91 stars, Discovering Galapagos is generally excellent for tours in Galápagos Islands. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Discovering Galapagos offer in Galápagos Islands?",
+          "answer": "Discovering Galapagos currently lists 1 bookable tour in Galápagos Islands on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Discovering Galapagos tour in Galápagos Islands?",
+          "answer": "The highest-reviewed option is \"\"Galapagos Discovery Premium – Bay Tour - 4 Days / 3 Nights\"\" with 22 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "156326P13",
+          "title": "\"Galapagos Discovery Premium – Bay Tour - 4 Days / 3 Nights\"",
+          "slug": "galapagos-discovery-premium-bay-tour-4-days-3-nights",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/85/c6/b0.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.909091,
+          "reviewCount": 22,
+          "durationMinutes": 5760
+        }
+      ]
+    },
+    {
+      "slug": "galpagos-native-tour-operator",
+      "operatorName": "Galápagos Native Tour Operator",
+      "operatorKey": "galápagos native tour operator",
+      "tourCount": 1,
+      "totalReviews": 5,
+      "averageRating": 5,
+      "blurb": "Galápagos Native Tour Operator specializes in snorkeling and island day trips across Galápagos Islands. Use this page as a single hub to compare every Galápagos Native Tour Operator listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Galápagos Islands lineup includes 5 days excursion to Galapagos Islands with Snorkel and Volcanoes.",
+      "faqs": [
+        {
+          "question": "Is Galápagos Native Tour Operator worth it?",
+          "answer": "Based on 5 verified traveler reviews averaging 5 stars, Galápagos Native Tour Operator is generally excellent for tours in Galápagos Islands. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Galápagos Native Tour Operator offer in Galápagos Islands?",
+          "answer": "Galápagos Native Tour Operator currently lists 1 bookable tour in Galápagos Islands on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Galápagos Native Tour Operator tour in Galápagos Islands?",
+          "answer": "The highest-reviewed option is \"5 days excursion to Galapagos Islands with Snorkel and Volcanoes\" with 5 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "200239P4",
+          "title": "5 days excursion to Galapagos Islands with Snorkel and Volcanoes",
+          "slug": "5-days-excursion-to-galapagos-islands-with-snorkel-and-volcanoes",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0d/0d/a3/26.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 5,
+          "durationMinutes": 7200
+        }
+      ]
+    },
+    {
+      "slug": "galapagos-natural-life-galapagos-last-minute",
+      "operatorName": "Galapagos Natural Life - Galapagos Last Minute",
+      "operatorKey": "galapagos natural life - galapagos last minute",
+      "tourCount": 2,
+      "totalReviews": 59,
+      "averageRating": 4.69,
+      "blurb": "Galapagos Natural Life - Galapagos Last Minute specializes in island day trips across Galápagos Islands. Use this page as a single hub to compare every Galapagos Natural Life - Galapagos Last Minute listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Galápagos Islands lineup includes Galapagos Intensive 5 days, land base (3Islands) Excludes galapagos flight and The Galapagos Penguin Route 7 Day Tour.",
+      "faqs": [
+        {
+          "question": "Is Galapagos Natural Life - Galapagos Last Minute worth it?",
+          "answer": "Based on 59 verified traveler reviews averaging 4.69 stars, Galapagos Natural Life - Galapagos Last Minute is generally excellent for tours in Galápagos Islands. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Galapagos Natural Life - Galapagos Last Minute offer in Galápagos Islands?",
+          "answer": "Galapagos Natural Life - Galapagos Last Minute currently lists 2 bookable tours in Galápagos Islands on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Galapagos Natural Life - Galapagos Last Minute tour in Galápagos Islands?",
+          "answer": "The highest-reviewed option is \"Galapagos Intensive 5 days, land base (3Islands) Excludes galapagos flight\" with 56 traveler reviews and a 4.7-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "151165P3",
+          "title": "Galapagos Intensive 5 days, land base (3Islands) Excludes galapagos flight",
+          "slug": "galapagos-intensive-5-days-land-base-3islands-excludes-galapagos-flight",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/ae/bd/be.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.678571,
+          "reviewCount": 56,
+          "durationMinutes": 7200
+        },
+        {
+          "productId": "151165P6",
+          "title": "The Galapagos Penguin Route 7 Day Tour",
+          "slug": "the-galapagos-penguin-route-7-day-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/11/89/41/1f.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 3,
+          "durationMinutes": 10080
+        }
+      ]
+    },
+    {
+      "slug": "galapagos-tours-nature-galapagos-ecuador",
+      "operatorName": "Galapagos Tours Nature Galapagos & Ecuador",
+      "operatorKey": "galapagos tours nature galapagos & ecuador",
+      "tourCount": 3,
+      "totalReviews": 18,
+      "averageRating": 4,
+      "blurb": "Galapagos Tours Nature Galapagos & Ecuador specializes in island day trips across Galápagos Islands. Use this page as a single hub to compare every Galapagos Tours Nature Galapagos & Ecuador listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Galápagos Islands lineup includes 5-Day All-Inclusive Galapagos: Isabela and Santa Cruz Island, 4-Day Galapagos Land Tour Visiting Isabela and Santa Cruz, 4-Day Galapagos Tour: Santa Cruz & 2 Uninhabited Islands.",
+      "faqs": [
+        {
+          "question": "Is Galapagos Tours Nature Galapagos & Ecuador worth it?",
+          "answer": "Based on 18 verified traveler reviews averaging 4 stars, Galapagos Tours Nature Galapagos & Ecuador is solid for tours in Galápagos Islands. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Galapagos Tours Nature Galapagos & Ecuador offer in Galápagos Islands?",
+          "answer": "Galapagos Tours Nature Galapagos & Ecuador currently lists 3 bookable tours in Galápagos Islands on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Galapagos Tours Nature Galapagos & Ecuador tour in Galápagos Islands?",
+          "answer": "The highest-reviewed option is \"5-Day All-Inclusive Galapagos: Isabela and Santa Cruz Island\" with 12 traveler reviews and a 3.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "19569P1",
+          "title": "5-Day All-Inclusive Galapagos: Isabela and Santa Cruz Island",
+          "slug": "5-day-all-inclusive-galapagos-isabela-and-santa-cruz-island",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/06/6f/3e/89.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 3.9166667,
+          "reviewCount": 12,
+          "durationMinutes": 7200
+        },
+        {
+          "productId": "19569P22",
+          "title": "4-Day Galapagos Land Tour Visiting Isabela and Santa Cruz",
+          "slug": "4-day-galapagos-land-tour-visiting-isabela-and-santa-cruz",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/06/6f/3e/a3.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4,
+          "reviewCount": 5,
+          "durationMinutes": 5760
+        },
+        {
+          "productId": "19569P42",
+          "title": "4-Day Galapagos Tour: Santa Cruz & 2 Uninhabited Islands",
+          "slug": "4-day-galapagos-tour-santa-cruz-2-uninhabited-islands",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/1e/b9/b1.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": 5760
+        }
+      ]
+    },
+    {
+      "slug": "galapex",
+      "operatorName": "GalapEx",
+      "operatorKey": "galapex",
+      "tourCount": 1,
+      "totalReviews": 8,
+      "averageRating": 5,
+      "blurb": "GalapEx specializes in popular local experiences across Galápagos Islands. Use this page as a single hub to compare every GalapEx listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Galápagos Islands lineup includes Student Tour of Galapagos and Ecuador.",
+      "faqs": [
+        {
+          "question": "Is GalapEx worth it?",
+          "answer": "Based on 8 verified traveler reviews averaging 5 stars, GalapEx is generally excellent for tours in Galápagos Islands. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does GalapEx offer in Galápagos Islands?",
+          "answer": "GalapEx currently lists 1 bookable tour in Galápagos Islands on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular GalapEx tour in Galápagos Islands?",
+          "answer": "The highest-reviewed option is \"Student Tour of Galapagos and Ecuador\" with 8 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5559218P1",
+          "title": "Student Tour of Galapagos and Ecuador",
+          "slug": "student-tour-of-galapagos-and-ecuador",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/6f/2f/84.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 8,
+          "durationMinutes": 25920
+        }
+      ]
+    },
+    {
+      "slug": "rebecca-adventure-travel",
+      "operatorName": "Rebecca Adventure Travel",
+      "operatorKey": "rebecca adventure travel",
+      "tourCount": 5,
+      "totalReviews": 27,
+      "averageRating": 4.74,
+      "blurb": "Rebecca Adventure Travel specializes in island day trips and snorkeling across Galápagos Islands. Use this page as a single hub to compare every Rebecca Adventure Travel listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is Rebecca Adventure Travel worth it?",
+          "answer": "Based on 27 verified traveler reviews averaging 4.74 stars, Rebecca Adventure Travel is generally excellent for tours in Galápagos Islands. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Rebecca Adventure Travel offer in Galápagos Islands?",
+          "answer": "Rebecca Adventure Travel currently lists 5 bookable tours in Galápagos Islands on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Rebecca Adventure Travel tour in Galápagos Islands?",
+          "answer": "The highest-reviewed option is \"5-Day Galapagos Island Hopping Tour: Los Tuneles and Isabela\" with 8 traveler reviews and a 4.4-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "29628P92",
+          "title": "5-Day Galapagos Island Hopping Tour: Los Tuneles and Isabela",
+          "slug": "5-day-galapagos-island-hopping-tour-los-tuneles-and-isabela",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0e/a4/3e/6c.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.375,
+          "reviewCount": 8,
+          "durationMinutes": 7200
+        },
+        {
+          "productId": "29628P81",
+          "title": "5-Day Galapagos Luxury Tour with Local Flights Included",
+          "slug": "5-day-galapagos-luxury-tour-with-local-flights-included",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0e/a2/1f/80.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.8333335,
+          "reviewCount": 6,
+          "durationMinutes": 7200
+        },
+        {
+          "productId": "29628P78",
+          "title": "8-Day Galapagos Island Hopping Tour: Isabela, Giant Tortoises, and Snorkeling",
+          "slug": "8-day-galapagos-island-hopping-tour-isabela-giant-tortoises-and-snorkeling",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/2a/1c/33.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 5,
+          "durationMinutes": 11520
+        },
+        {
+          "productId": "29628P124",
+          "title": "4-Day Galapagos Classic Tour: Santa Cruz, Bartolome or Seymour",
+          "slug": "4-day-galapagos-classic-tour-santa-cruz-bartolome-or-seymour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/2c/d3/66.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.8,
+          "reviewCount": 5,
+          "durationMinutes": 5760
+        },
+        {
+          "productId": "29628P107",
+          "title": "4-Day Galapagos Island Hopping Tour",
+          "slug": "4-day-galapagos-island-hopping-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/25/17/d4.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 3,
+          "durationMinutes": 5760
+        }
+      ]
+    },
+    {
+      "slug": "takiri-travel",
+      "operatorName": "Takiri Travel",
+      "operatorKey": "takiri travel",
+      "tourCount": 5,
+      "totalReviews": 77,
+      "averageRating": 4.86,
+      "blurb": "Takiri Travel specializes in island day trips across Galápagos Islands. Use this page as a single hub to compare every Takiri Travel listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is Takiri Travel worth it?",
+          "answer": "Based on 77 verified traveler reviews averaging 4.86 stars, Takiri Travel is generally excellent for tours in Galápagos Islands. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Takiri Travel offer in Galápagos Islands?",
+          "answer": "Takiri Travel currently lists 5 bookable tours in Galápagos Islands on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Takiri Travel tour in Galápagos Islands?",
+          "answer": "The highest-reviewed option is \"7-day Galapagos Island Hopping Adventure Expedition\" with 28 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "92349P14",
+          "title": "7-day Galapagos Island Hopping Adventure Expedition",
+          "slug": "7-day-galapagos-island-hopping-adventure-expedition",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/0f/58/c1.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 28,
+          "durationMinutes": 10080
+        },
+        {
+          "productId": "92349P15",
+          "title": "8-day Galapagos Island Hopping Adventure Expedition",
+          "slug": "8-day-galapagos-island-hopping-adventure-expedition",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/0f/5e/5b.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 16,
+          "durationMinutes": 11520
+        },
+        {
+          "productId": "92349P12",
+          "title": "5-day Galapagos Island Hopping Adventure Expedition",
+          "slug": "5-day-galapagos-island-hopping-adventure-expedition",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/29/25/7f.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.5384617,
+          "reviewCount": 13,
+          "durationMinutes": 7200
+        },
+        {
+          "productId": "92349P13",
+          "title": "6-day Galapagos Island Hopping Adventure Expedition",
+          "slug": "6-day-galapagos-island-hopping-adventure-expedition",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/29/26/d2.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.75,
+          "reviewCount": 12,
+          "durationMinutes": 8640
+        },
+        {
+          "productId": "92349P11",
+          "title": "10-day Galapagos Island Hopping Adventure Expedition",
+          "slug": "10-day-galapagos-island-hopping-adventure-expedition",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/29/23/a7.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.75,
+          "reviewCount": 8,
+          "durationMinutes": 14400
+        }
+      ]
+    }
+  ],
+  "patchedAt": "2026-06-20T21:17:05.541Z"
+}

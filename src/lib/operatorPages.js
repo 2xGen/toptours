@@ -15,6 +15,11 @@ export const OPERATOR_PAGE_PILOT_DESTINATIONS = new Set([
   'arusha',
   'prague',
   'curacao',
+  'reykjavik',
+  'zanzibar',
+  'banff',
+  'queenstown',
+  'galapagos-islands',
 ]);
 
 export function getOperatorPagePilotSlugs() {
