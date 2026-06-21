@@ -29,6 +29,7 @@ export const OPERATOR_PAGE_PILOT_DESTINATIONS = new Set([
   'interlaken',
   'siem-reap',
   'dubrovnik',
+  'san-jose',
 ]);
 
 export function getOperatorPagePilotSlugs() {

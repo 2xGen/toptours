@@ -89,7 +89,7 @@ export const slugToViatorId = {
   "cabo-san-lucas": "50859",
   "puerto-vallarta": "76",
   "oaxaca": "23876",
-  "san-jose": "747",
+  "san-jose": "793",
   "la-fortuna": "821",
   "manuel-antonio": "747",
   "panama-city": "950",

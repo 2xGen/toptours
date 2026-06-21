@@ -1,0 +1,3791 @@
+{
+  "destinationSlug": "san-jose",
+  "viatorDestinationId": "793",
+  "destinationName": "San José",
+  "builtAt": "2026-06-21T21:27:42.267Z",
+  "operatorCount": 76,
+  "operators": [
+    {
+      "slug": "adrenalina-rafting-turrialba",
+      "operatorName": "Adrenalina Rafting Turrialba",
+      "operatorKey": "adrenalina rafting turrialba",
+      "tourCount": 1,
+      "totalReviews": 361,
+      "averageRating": 4.95,
+      "blurb": "Adrenalina Rafting Turrialba specializes in popular local experiences across San José. Use this page as a single hub to compare every Adrenalina Rafting Turrialba listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Rafting Pacuare River One Day from Turrialba.",
+      "faqs": [
+        {
+          "question": "Is Adrenalina Rafting Turrialba worth it?",
+          "answer": "Based on 361 verified traveler reviews averaging 4.95 stars, Adrenalina Rafting Turrialba is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Adrenalina Rafting Turrialba offer in San José?",
+          "answer": "Adrenalina Rafting Turrialba currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Adrenalina Rafting Turrialba tour in San José?",
+          "answer": "The highest-reviewed option is \"Rafting Pacuare River One Day from Turrialba\" with 361 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "126944P1",
+          "title": "Rafting Pacuare River One Day from Turrialba",
+          "slug": "rafting-pacuare-river-one-day-from-turrialba",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/37/83/c1.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9529085,
+          "reviewCount": 361,
+          "durationMinutes": 360
+        }
+      ]
+    },
+    {
+      "slug": "adrian-gutierrez",
+      "operatorName": "Adrian Gutierrez",
+      "operatorKey": "adrian gutierrez",
+      "tourCount": 1,
+      "totalReviews": 28,
+      "averageRating": 5,
+      "blurb": "Adrian Gutierrez specializes in popular local experiences across San José. Use this page as a single hub to compare every Adrian Gutierrez listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Premium Adventure from San Jose Arenal Volcano Waterfall and Thermal.",
+      "faqs": [
+        {
+          "question": "Is Adrian Gutierrez worth it?",
+          "answer": "Based on 28 verified traveler reviews averaging 5 stars, Adrian Gutierrez is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Adrian Gutierrez offer in San José?",
+          "answer": "Adrian Gutierrez currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Adrian Gutierrez tour in San José?",
+          "answer": "The highest-reviewed option is \"Premium Adventure from San Jose Arenal Volcano Waterfall and Thermal\" with 28 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "169001P7",
+          "title": "Premium Adventure from San Jose Arenal Volcano Waterfall and Thermal",
+          "slug": "premium-adventure-from-san-jose-arenal-volcano-waterfall-and-thermal",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/72/fe/2c.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 28,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "airtime-zipline",
+      "operatorName": "Airtime Zipline",
+      "operatorKey": "airtime zipline",
+      "tourCount": 1,
+      "totalReviews": 290,
+      "averageRating": 4.98,
+      "blurb": "Airtime Zipline specializes in popular local experiences across San José. Use this page as a single hub to compare every Airtime Zipline listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Zipline Tour in La Fortuna with Arenal Volcano Views.",
+      "faqs": [
+        {
+          "question": "Is Airtime Zipline worth it?",
+          "answer": "Based on 290 verified traveler reviews averaging 4.98 stars, Airtime Zipline is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Airtime Zipline offer in San José?",
+          "answer": "Airtime Zipline currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Airtime Zipline tour in San José?",
+          "answer": "The highest-reviewed option is \"Zipline Tour in La Fortuna with Arenal Volcano Views\" with 290 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "411294P1",
+          "title": "Zipline Tour in La Fortuna with Arenal Volcano Views",
+          "slug": "zipline-tour-in-la-fortuna-with-arenal-volcano-views",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/11/c2/48/17.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9793105,
+          "reviewCount": 290,
+          "durationMinutes": 90
+        }
+      ]
+    },
+    {
+      "slug": "aquiares-coffee-community-experience",
+      "operatorName": "Aquiares Coffee & Community Experience",
+      "operatorKey": "aquiares coffee & community experience",
+      "tourCount": 4,
+      "totalReviews": 160,
+      "averageRating": 4.99,
+      "blurb": "Aquiares Coffee & Community Experience specializes in popular local experiences across San José. Use this page as a single hub to compare every Aquiares Coffee & Community Experience listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is Aquiares Coffee & Community Experience worth it?",
+          "answer": "Based on 160 verified traveler reviews averaging 4.99 stars, Aquiares Coffee & Community Experience is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Aquiares Coffee & Community Experience offer in San José?",
+          "answer": "Aquiares Coffee & Community Experience currently lists 4 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Aquiares Coffee & Community Experience tour in San José?",
+          "answer": "The highest-reviewed option is \"A taste of Aquiares - 2 hours Coffee Tour\" with 97 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "106730P2",
+          "title": "A taste of Aquiares - 2 hours Coffee Tour",
+          "slug": "a-taste-of-aquiares-2-hours-coffee-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/36/74/45.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9793816,
+          "reviewCount": 97,
+          "durationMinutes": 120
+        },
+        {
+          "productId": "106730P6",
+          "title": "Horseback our Hacienda - 4 hours Coffee Tour",
+          "slug": "horseback-our-hacienda-4-hours-coffee-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/24/0f/8d.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 48,
+          "durationMinutes": 240
+        },
+        {
+          "productId": "106730P4",
+          "title": "Full day, the Aquiares way - Complete Coffee Tour",
+          "slug": "full-day-the-aquiares-way-complete-coffee-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/36/74/61.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 12,
+          "durationMinutes": 480
+        },
+        {
+          "productId": "106730P7",
+          "title": "Complete Lunch in our house Hacienda La Esperanza",
+          "slug": "complete-lunch-in-our-house-hacienda-la-esperanza",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/8a/40/31.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 3,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "aracari-experience",
+      "operatorName": "Aracari Experience",
+      "operatorKey": "aracari experience",
+      "tourCount": 1,
+      "totalReviews": 10,
+      "averageRating": 5,
+      "blurb": "Aracari Experience specializes in popular local experiences across San José. Use this page as a single hub to compare every Aracari Experience listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Nauyaca Full Day tour.",
+      "faqs": [
+        {
+          "question": "Is Aracari Experience worth it?",
+          "answer": "Based on 10 verified traveler reviews averaging 5 stars, Aracari Experience is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Aracari Experience offer in San José?",
+          "answer": "Aracari Experience currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Aracari Experience tour in San José?",
+          "answer": "The highest-reviewed option is \"Nauyaca Full Day tour\" with 10 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5566974P1",
+          "title": "Nauyaca Full Day tour",
+          "slug": "nauyaca-full-day-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/72/68/76.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 10,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "assisttours",
+      "operatorName": "ASSISTTOURS",
+      "operatorKey": "assisttours",
+      "tourCount": 1,
+      "totalReviews": 781,
+      "averageRating": 4.89,
+      "blurb": "ASSISTTOURS specializes in popular local experiences across San José. Use this page as a single hub to compare every ASSISTTOURS listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Full Day Poas Volcano, La Paz Waterfall Gardens and Coffee Plantation Experience.",
+      "faqs": [
+        {
+          "question": "Is ASSISTTOURS worth it?",
+          "answer": "Based on 781 verified traveler reviews averaging 4.89 stars, ASSISTTOURS is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does ASSISTTOURS offer in San José?",
+          "answer": "ASSISTTOURS currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular ASSISTTOURS tour in San José?",
+          "answer": "The highest-reviewed option is \"Full Day Poas Volcano, La Paz Waterfall Gardens and Coffee Plantation Experience\" with 781 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "370819P1",
+          "title": "Full Day Poas Volcano, La Paz Waterfall Gardens and Coffee Plantation Experience",
+          "slug": "full-day-poas-volcano-la-paz-waterfall-gardens-and-coffee-plantation-experience",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/11/ac/a5/43.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.893726,
+          "reviewCount": 781,
+          "durationMinutes": 600
+        }
+      ]
+    },
+    {
+      "slug": "barrio-bird-walking-tours",
+      "operatorName": "Barrio Bird Walking Tours",
+      "operatorKey": "barrio bird walking tours",
+      "tourCount": 2,
+      "totalReviews": 116,
+      "averageRating": 4.41,
+      "blurb": "Barrio Bird Walking Tours specializes in popular local experiences across San José. Use this page as a single hub to compare every Barrio Bird Walking Tours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes San Jose: Insider Spots, City Highlights - small groups and San Jose ART Walking Tour - small groups, creative experience.",
+      "faqs": [
+        {
+          "question": "Is Barrio Bird Walking Tours worth it?",
+          "answer": "Based on 116 verified traveler reviews averaging 4.41 stars, Barrio Bird Walking Tours is solid for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Barrio Bird Walking Tours offer in San José?",
+          "answer": "Barrio Bird Walking Tours currently lists 2 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Barrio Bird Walking Tours tour in San José?",
+          "answer": "The highest-reviewed option is \"San Jose: Insider Spots, City Highlights - small groups\" with 73 traveler reviews and a 4.2-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "16728P1",
+          "title": "San Jose: Insider Spots, City Highlights - small groups",
+          "slug": "san-jose-insider-spots-city-highlights-small-groups",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/08/39/a2/4e.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.232877,
+          "reviewCount": 73,
+          "durationMinutes": 120
+        },
+        {
+          "productId": "16728P3",
+          "title": "San Jose ART Walking Tour - small groups, creative experience",
+          "slug": "san-jose-art-walking-tour-small-groups-creative-experience",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/06/ec/e1/c3.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.72093,
+          "reviewCount": 43,
+          "durationMinutes": 120
+        }
+      ]
+    },
+    {
+      "slug": "bay-island-cruises-isla-tortuga",
+      "operatorName": "Bay Island Cruises / Isla Tortuga",
+      "operatorKey": "bay island cruises / isla tortuga",
+      "tourCount": 1,
+      "totalReviews": 96,
+      "averageRating": 4.23,
+      "blurb": "Bay Island Cruises / Isla Tortuga specializes in island day trips across San José. Use this page as a single hub to compare every Bay Island Cruises / Isla Tortuga listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Full Day Tour to Tortuga Island from San José.",
+      "faqs": [
+        {
+          "question": "Is Bay Island Cruises / Isla Tortuga worth it?",
+          "answer": "Based on 96 verified traveler reviews averaging 4.23 stars, Bay Island Cruises / Isla Tortuga is solid for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Bay Island Cruises / Isla Tortuga offer in San José?",
+          "answer": "Bay Island Cruises / Isla Tortuga currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Bay Island Cruises / Isla Tortuga tour in San José?",
+          "answer": "The highest-reviewed option is \"Full Day Tour to Tortuga Island from San José\" with 96 traveler reviews and a 4.2-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "152366P4",
+          "title": "Full Day Tour to Tortuga Island from San José",
+          "slug": "full-day-tour-to-tortuga-island-from-san-jos",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/36/41/f7.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.2291665,
+          "reviewCount": 96,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "casa-turire-experiences",
+      "operatorName": "Casa Turire Experiences",
+      "operatorKey": "casa turire experiences",
+      "tourCount": 2,
+      "totalReviews": 1,
+      "averageRating": 4,
+      "blurb": "Casa Turire Experiences specializes in popular local experiences across San José. Use this page as a single hub to compare every Casa Turire Experiences listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Tropical Cooking Classes and Rural Horseback Riding Tour.",
+      "faqs": [
+        {
+          "question": "Is Casa Turire Experiences worth it?",
+          "answer": "Based on 1 verified traveler reviews averaging 4 stars, Casa Turire Experiences is solid for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Casa Turire Experiences offer in San José?",
+          "answer": "Casa Turire Experiences currently lists 2 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Casa Turire Experiences tour in San José?",
+          "answer": "The highest-reviewed option is \"Tropical Cooking Classes\" with 1 traveler reviews and a 4.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "241983P2",
+          "title": "Tropical Cooking Classes",
+          "slug": "tropical-cooking-classes",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/43/4d/8a.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4,
+          "reviewCount": 1,
+          "durationMinutes": 240
+        },
+        {
+          "productId": "241983P1",
+          "title": "Rural Horseback Riding Tour",
+          "slug": "rural-horseback-riding-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/43/4e/43.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 150
+        }
+      ]
+    },
+    {
+      "slug": "chepecletas",
+      "operatorName": "ChepeCletas",
+      "operatorKey": "chepecletas",
+      "tourCount": 1,
+      "totalReviews": 70,
+      "averageRating": 4.94,
+      "blurb": "ChepeCletas specializes in popular local experiences across San José. Use this page as a single hub to compare every ChepeCletas listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes San Jose Bike & Bites Ride.",
+      "faqs": [
+        {
+          "question": "Is ChepeCletas worth it?",
+          "answer": "Based on 70 verified traveler reviews averaging 4.94 stars, ChepeCletas is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does ChepeCletas offer in San José?",
+          "answer": "ChepeCletas currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular ChepeCletas tour in San José?",
+          "answer": "The highest-reviewed option is \"San Jose Bike & Bites Ride\" with 70 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "46388P1",
+          "title": "San Jose Bike & Bites Ride",
+          "slug": "san-jose-bike-bites-ride",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/08/56/59/ed.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9428573,
+          "reviewCount": 70,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "copey-estate-winery",
+      "operatorName": "Copey Estate Winery",
+      "operatorKey": "copey estate winery",
+      "tourCount": 1,
+      "totalReviews": 120,
+      "averageRating": 4.99,
+      "blurb": "Copey Estate Winery specializes in popular local experiences across San José. Use this page as a single hub to compare every Copey Estate Winery listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Wine Tour and Tasting.",
+      "faqs": [
+        {
+          "question": "Is Copey Estate Winery worth it?",
+          "answer": "Based on 120 verified traveler reviews averaging 4.99 stars, Copey Estate Winery is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Copey Estate Winery offer in San José?",
+          "answer": "Copey Estate Winery currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Copey Estate Winery tour in San José?",
+          "answer": "The highest-reviewed option is \"Wine Tour and Tasting\" with 120 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "352563P1",
+          "title": "Wine Tour and Tasting",
+          "slug": "wine-tour-and-tasting",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0e/fb/c0/2e.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.991667,
+          "reviewCount": 120,
+          "durationMinutes": 150
+        }
+      ]
+    },
+    {
+      "slug": "costa-rica-jade-tours",
+      "operatorName": "Costa Rica Jade Tours",
+      "operatorKey": "costa rica jade tours",
+      "tourCount": 5,
+      "totalReviews": 8050,
+      "averageRating": 4.82,
+      "blurb": "Costa Rica Jade Tours specializes in island day trips, kayaking, airport transfers and private tours across San José. Use this page as a single hub to compare every Costa Rica Jade Tours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is Costa Rica Jade Tours worth it?",
+          "answer": "Based on 8,050 verified traveler reviews averaging 4.82 stars, Costa Rica Jade Tours is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Costa Rica Jade Tours offer in San José?",
+          "answer": "Costa Rica Jade Tours currently lists 5 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Costa Rica Jade Tours tour in San José?",
+          "answer": "The highest-reviewed option is \"Manuel Antonio Park Nature Guided Tour with a Nature Specialist\" with 4,364 traveler reviews and a 4.8-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "70025P2",
+          "title": "Manuel Antonio Park Nature Guided Tour with a Nature Specialist",
+          "slug": "manuel-antonio-park-nature-guided-tour-with-a-nature-specialist",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/34/e8/09.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.7994957,
+          "reviewCount": 4364,
+          "durationMinutes": 240
+        },
+        {
+          "productId": "70025P4",
+          "title": "Mangrove Boat Tour Damas Island, Manuel Antonio",
+          "slug": "mangrove-boat-tour-damas-island-manuel-antonio",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/35/ca/27.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.864865,
+          "reviewCount": 2701,
+          "durationMinutes": 240
+        },
+        {
+          "productId": "70025P5",
+          "title": "Mangrove Kayak Tour | Manuel Antonio",
+          "slug": "mangrove-kayak-tour-manuel-antonio",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/5c/4a/43.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.745935,
+          "reviewCount": 492,
+          "durationMinutes": 180
+        },
+        {
+          "productId": "70025P1",
+          "title": "Rainmaker Park Hanging Bridges & Waterfalls Tour with Jade Tours",
+          "slug": "rainmaker-park-hanging-bridges-waterfalls-tour-with-jade-tours",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/06/73/fb/c4.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.8679247,
+          "reviewCount": 477,
+          "durationMinutes": 240
+        },
+        {
+          "productId": "70025P13",
+          "title": "Private One Way Transfer from San José (Airport SJO) to Manuel Antonio, Quepos",
+          "slug": "private-one-way-transfer-from-san-jos-airport-sjo-to-manuel-antonio-quepos",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/2c/8d/a1.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 16,
+          "durationMinutes": 180
+        }
+      ]
+    },
+    {
+      "slug": "crawltours-costa-rica",
+      "operatorName": "CrawlTours Costa Rica",
+      "operatorKey": "crawltours costa rica",
+      "tourCount": 1,
+      "totalReviews": 158,
+      "averageRating": 4.77,
+      "blurb": "CrawlTours Costa Rica specializes in popular local experiences across San José. Use this page as a single hub to compare every CrawlTours Costa Rica listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Bar Crawl in Downtown San Jose.",
+      "faqs": [
+        {
+          "question": "Is CrawlTours Costa Rica worth it?",
+          "answer": "Based on 158 verified traveler reviews averaging 4.77 stars, CrawlTours Costa Rica is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does CrawlTours Costa Rica offer in San José?",
+          "answer": "CrawlTours Costa Rica currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular CrawlTours Costa Rica tour in San José?",
+          "answer": "The highest-reviewed option is \"Bar Crawl in Downtown San Jose\" with 158 traveler reviews and a 4.8-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "204729P1",
+          "title": "Bar Crawl in Downtown San Jose",
+          "slug": "bar-crawl-in-downtown-san-jose",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/0c/7e/84.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.772152,
+          "reviewCount": 158,
+          "durationMinutes": 180
+        }
+      ]
+    },
+    {
+      "slug": "dc-tours-costa-rica",
+      "operatorName": "DC Tours Costa Rica",
+      "operatorKey": "dc tours costa rica",
+      "tourCount": 1,
+      "totalReviews": 18,
+      "averageRating": 5,
+      "blurb": "DC Tours Costa Rica specializes in popular local experiences across San José. Use this page as a single hub to compare every DC Tours Costa Rica listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Zipline tour on the central valley of Costa Rica.",
+      "faqs": [
+        {
+          "question": "Is DC Tours Costa Rica worth it?",
+          "answer": "Based on 18 verified traveler reviews averaging 5 stars, DC Tours Costa Rica is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does DC Tours Costa Rica offer in San José?",
+          "answer": "DC Tours Costa Rica currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular DC Tours Costa Rica tour in San José?",
+          "answer": "The highest-reviewed option is \"Zipline tour on the central valley of Costa Rica\" with 18 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "345782P1",
+          "title": "Zipline tour on the central valley of Costa Rica",
+          "slug": "zipline-tour-on-the-central-valley-of-costa-rica",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0f/04/5d/b0.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 18,
+          "durationMinutes": 150
+        }
+      ]
+    },
+    {
+      "slug": "destination-services-costa-rica",
+      "operatorName": "Destination Services Costa Rica",
+      "operatorKey": "destination services costa rica",
+      "tourCount": 6,
+      "totalReviews": 180,
+      "averageRating": 4.29,
+      "blurb": "Destination Services Costa Rica specializes in sightseeing tours across San José. Use this page as a single hub to compare every Destination Services Costa Rica listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is Destination Services Costa Rica worth it?",
+          "answer": "Based on 180 verified traveler reviews averaging 4.29 stars, Destination Services Costa Rica is solid for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Destination Services Costa Rica offer in San José?",
+          "answer": "Destination Services Costa Rica currently lists 6 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Destination Services Costa Rica tour in San José?",
+          "answer": "The highest-reviewed option is \"Irazú Volcano Half Day Tour from San Jose\" with 60 traveler reviews and a 4.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "36560P10",
+          "title": "Irazú Volcano Half Day Tour from San Jose",
+          "slug": "iraz-volcano-half-day-tour-from-san-jose",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/8b/56/63.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.0333333,
+          "reviewCount": 60,
+          "durationMinutes": 360
+        },
+        {
+          "productId": "36560P181",
+          "title": "Britt Coffee Tour from San José",
+          "slug": "britt-coffee-tour-from-san-jos",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0d/0e/2d/64.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.6037736,
+          "reviewCount": 53,
+          "durationMinutes": 120
+        },
+        {
+          "productId": "36560P180",
+          "title": "VIP City Bus From San José",
+          "slug": "vip-city-bus-from-san-jos",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/0c/38/88.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.4,
+          "reviewCount": 35,
+          "durationMinutes": 300
+        },
+        {
+          "productId": "36560P7",
+          "title": "Doka Coffee Tour- Grecia & Sarchi From San José",
+          "slug": "doka-coffee-tour-grecia-sarchi-from-san-jos",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/09/1e/a5/c1.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.2272725,
+          "reviewCount": 22,
+          "durationMinutes": 360
+        },
+        {
+          "productId": "36560P3",
+          "title": "Zipline Adventure San Luis From San José",
+          "slug": "zipline-adventure-san-luis-from-san-jos",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/09/54/28/e0.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4,
+          "reviewCount": 10,
+          "durationMinutes": 420
+        },
+        {
+          "productId": "36560P297",
+          "title": "4 Days Tamarindo Beach & San José City from Tamarindo",
+          "slug": "4-days-tamarindo-beach-san-jos-city-from-tamarindo",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/99/e3/bf.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 5760
+        }
+      ]
+    },
+    {
+      "slug": "destiny-travel-costa-rica",
+      "operatorName": "Destiny Travel Costa Rica",
+      "operatorKey": "destiny travel costa rica",
+      "tourCount": 7,
+      "totalReviews": 71,
+      "averageRating": 4.38,
+      "blurb": "Destiny Travel Costa Rica specializes in private tours across San José. Use this page as a single hub to compare every Destiny Travel Costa Rica listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is Destiny Travel Costa Rica worth it?",
+          "answer": "Based on 71 verified traveler reviews averaging 4.38 stars, Destiny Travel Costa Rica is solid for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Destiny Travel Costa Rica offer in San José?",
+          "answer": "Destiny Travel Costa Rica currently lists 7 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Destiny Travel Costa Rica tour in San José?",
+          "answer": "The highest-reviewed option is \"San Jose Sightseeing City Tour\" with 61 traveler reviews and a 4.3-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "24578P20",
+          "title": "San Jose Sightseeing City Tour",
+          "slug": "san-jose-sightseeing-city-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/06/d0/c6/a5.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.3114753,
+          "reviewCount": 61,
+          "durationMinutes": null
+        },
+        {
+          "productId": "24578P31",
+          "title": "Arenal Volcano & Baldi Hot Springs one day tour from San Jose",
+          "slug": "arenal-volcano-baldi-hot-springs-one-day-tour-from-san-jose",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/06/70/2b/85.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.3333335,
+          "reviewCount": 3,
+          "durationMinutes": 780
+        },
+        {
+          "productId": "24578P50",
+          "title": "10 Days: Costa Rica Pure Nature",
+          "slug": "10-days-costa-rica-pure-nature",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/06/ef/e0/18.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 3,
+          "durationMinutes": 14400
+        },
+        {
+          "productId": "24578P74",
+          "title": "La Paz Waterfall Gardens and Tabacon Hot Springs Private Day Tour from San Jose",
+          "slug": "la-paz-waterfall-gardens-and-tabacon-hot-springs-private-day-tour-from-san-jose",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/d2/45/24.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 2,
+          "durationMinutes": 780
+        },
+        {
+          "productId": "24578P27",
+          "title": "Day Trip from San Jose to Braulio Carrillo Canopy Tour",
+          "slug": "day-trip-from-san-jose-to-braulio-carrillo-canopy-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/24/5b/9a.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": 360
+        },
+        {
+          "productId": "24578P63",
+          "title": "13 Days - Fly & Drive - Touring Costa Rica",
+          "slug": "13-days-fly-drive-touring-costa-rica",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/ac/de/6e.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": 18720
+        },
+        {
+          "productId": "24578P59",
+          "title": "8 Days - San Jose All in One",
+          "slug": "8-days-san-jose-all-in-one",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/9c/fc/92.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 11520
+        }
+      ]
+    },
+    {
+      "slug": "discover-in",
+      "operatorName": "Discover In",
+      "operatorKey": "discover in",
+      "tourCount": 2,
+      "totalReviews": 31,
+      "averageRating": 4.77,
+      "blurb": "Discover In specializes in popular local experiences across San José. Use this page as a single hub to compare every Discover In listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes San Jose Exclusive Bar Crawl with Drinks and Club Entrys and San Jose : Night Tica Gastronomy and Folk Dance in Costa Rica.",
+      "faqs": [
+        {
+          "question": "Is Discover In worth it?",
+          "answer": "Based on 31 verified traveler reviews averaging 4.77 stars, Discover In is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Discover In offer in San José?",
+          "answer": "Discover In currently lists 2 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Discover In tour in San José?",
+          "answer": "The highest-reviewed option is \"San Jose Exclusive Bar Crawl with Drinks and Club Entrys\" with 16 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5521744P1",
+          "title": "San Jose Exclusive Bar Crawl with Drinks and Club Entrys",
+          "slug": "san-jose-exclusive-bar-crawl-with-drinks-and-club-entrys",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/16/17/92/1d.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 16,
+          "durationMinutes": null
+        },
+        {
+          "productId": "5521744P2",
+          "title": "San Jose : Night Tica Gastronomy and Folk Dance in Costa Rica",
+          "slug": "san-jose-night-tica-gastronomy-and-folk-dance-in-costa-rica",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/14/c3/8b/a8.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.5333333,
+          "reviewCount": 15,
+          "durationMinutes": 180
+        }
+      ]
+    },
+    {
+      "slug": "doticotours",
+      "operatorName": "DoTicoTours",
+      "operatorKey": "doticotours",
+      "tourCount": 1,
+      "totalReviews": 21,
+      "averageRating": 5,
+      "blurb": "DoTicoTours specializes in popular local experiences across San José. Use this page as a single hub to compare every DoTicoTours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Waterfall Bajos del Toro Hiking Experience.",
+      "faqs": [
+        {
+          "question": "Is DoTicoTours worth it?",
+          "answer": "Based on 21 verified traveler reviews averaging 5 stars, DoTicoTours is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does DoTicoTours offer in San José?",
+          "answer": "DoTicoTours currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular DoTicoTours tour in San José?",
+          "answer": "The highest-reviewed option is \"Waterfall Bajos del Toro Hiking Experience\" with 21 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "280958P2",
+          "title": "Waterfall Bajos del Toro Hiking Experience",
+          "slug": "waterfall-bajos-del-toro-hiking-experience",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/2e/35/d6.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 21,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "eagles-shuttle-costa-rica",
+      "operatorName": "Eagles shuttle Costa Rica",
+      "operatorKey": "eagles shuttle costa rica",
+      "tourCount": 1,
+      "totalReviews": 27,
+      "averageRating": 4.93,
+      "blurb": "Eagles shuttle Costa Rica specializes in private tours across San José. Use this page as a single hub to compare every Eagles shuttle Costa Rica listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Private Shuttle SJO–La Fortuna + Refreshment Stop.",
+      "faqs": [
+        {
+          "question": "Is Eagles shuttle Costa Rica worth it?",
+          "answer": "Based on 27 verified traveler reviews averaging 4.93 stars, Eagles shuttle Costa Rica is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Eagles shuttle Costa Rica offer in San José?",
+          "answer": "Eagles shuttle Costa Rica currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Eagles shuttle Costa Rica tour in San José?",
+          "answer": "The highest-reviewed option is \"Private Shuttle SJO–La Fortuna + Refreshment Stop\" with 27 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "479798P3",
+          "title": "Private Shuttle SJO–La Fortuna + Refreshment Stop",
+          "slug": "private-shuttle-sjola-fortuna-refreshment-stop",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/14/cb/13/f1.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9259257,
+          "reviewCount": 27,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "ecotours-toro-amarillo-360",
+      "operatorName": "Ecotours Toro Amarillo 360",
+      "operatorKey": "ecotours toro amarillo 360",
+      "tourCount": 1,
+      "totalReviews": 35,
+      "averageRating": 4.91,
+      "blurb": "Ecotours Toro Amarillo 360 specializes in popular local experiences across San José. Use this page as a single hub to compare every Ecotours Toro Amarillo 360 listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Costa Rica Canyon Waterfall Bajos del Toro.",
+      "faqs": [
+        {
+          "question": "Is Ecotours Toro Amarillo 360 worth it?",
+          "answer": "Based on 35 verified traveler reviews averaging 4.91 stars, Ecotours Toro Amarillo 360 is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Ecotours Toro Amarillo 360 offer in San José?",
+          "answer": "Ecotours Toro Amarillo 360 currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Ecotours Toro Amarillo 360 tour in San José?",
+          "answer": "The highest-reviewed option is \"Costa Rica Canyon Waterfall Bajos del Toro\" with 35 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5571873P3",
+          "title": "Costa Rica Canyon Waterfall Bajos del Toro",
+          "slug": "costa-rica-canyon-waterfall-bajos-del-toro",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/b4/e3/db.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9142857,
+          "reviewCount": 35,
+          "durationMinutes": 300
+        }
+      ]
+    },
+    {
+      "slug": "ecotreks-monteverde",
+      "operatorName": "Ecotreks Monteverde",
+      "operatorKey": "ecotreks monteverde",
+      "tourCount": 1,
+      "totalReviews": 15,
+      "averageRating": 4.2,
+      "blurb": "Ecotreks Monteverde specializes in popular local experiences across San José. Use this page as a single hub to compare every Ecotreks Monteverde listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Monteverde Cloud Forest Suspension Bridges with Naturalist Guide.",
+      "faqs": [
+        {
+          "question": "Is Ecotreks Monteverde worth it?",
+          "answer": "Based on 15 verified traveler reviews averaging 4.2 stars, Ecotreks Monteverde is solid for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Ecotreks Monteverde offer in San José?",
+          "answer": "Ecotreks Monteverde currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Ecotreks Monteverde tour in San José?",
+          "answer": "The highest-reviewed option is \"Monteverde Cloud Forest Suspension Bridges with Naturalist Guide\" with 15 traveler reviews and a 4.2-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "315971P1",
+          "title": "Monteverde Cloud Forest Suspension Bridges with Naturalist Guide",
+          "slug": "monteverde-cloud-forest-suspension-bridges-with-naturalist-guide",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/10/7c/3c/46.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.2,
+          "reviewCount": 15,
+          "durationMinutes": 150
+        }
+      ]
+    },
+    {
+      "slug": "expediciones-tropicales-day-tours",
+      "operatorName": "Expediciones Tropicales Day Tours",
+      "operatorKey": "expediciones tropicales day tours",
+      "tourCount": 6,
+      "totalReviews": 79,
+      "averageRating": 4.61,
+      "blurb": "Expediciones Tropicales Day Tours specializes in popular local experiences across San José. Use this page as a single hub to compare every Expediciones Tropicales Day Tours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is Expediciones Tropicales Day Tours worth it?",
+          "answer": "Based on 79 verified traveler reviews averaging 4.61 stars, Expediciones Tropicales Day Tours is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Expediciones Tropicales Day Tours offer in San José?",
+          "answer": "Expediciones Tropicales Day Tours currently lists 6 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Expediciones Tropicales Day Tours tour in San José?",
+          "answer": "The highest-reviewed option is \"Irazú Volcano, Orosi Valley & Lankester Gardens from San José\" with 45 traveler reviews and a 4.6-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "218955P3",
+          "title": "Irazú Volcano, Orosi Valley & Lankester Gardens from San José",
+          "slug": "iraz-volcano-orosi-valley-lankester-gardens-from-san-jos",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/45/17/cf.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.6444445,
+          "reviewCount": 45,
+          "durationMinutes": 600
+        },
+        {
+          "productId": "218955P5",
+          "title": "Manuel Antonio Beach & National Park Day Tour from San José",
+          "slug": "manuel-antonio-beach-national-park-day-tour-from-san-jos",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/45/13/5f.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.5,
+          "reviewCount": 16,
+          "durationMinutes": 780
+        },
+        {
+          "productId": "218955P4",
+          "title": "Poás Volcano, Coffee & Crafts Tour-Grecia & Sarchí from San José",
+          "slug": "pos-volcano-coffee-crafts-tour-grecia-sarch-from-san-jos",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/10/9a/85/4f.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.785714,
+          "reviewCount": 14,
+          "durationMinutes": 540
+        },
+        {
+          "productId": "218955P17",
+          "title": "Rain Forest Adventure Full Day Tour from San Jose",
+          "slug": "rain-forest-adventure-full-day-tour-from-san-jose",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/08/cc/92.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 3,
+          "reviewCount": 2,
+          "durationMinutes": 660
+        },
+        {
+          "productId": "218955P12",
+          "title": "San Luis Adventure Park Full-Day Tour from San José",
+          "slug": "san-luis-adventure-park-full-day-tour-from-san-jos",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/10/76/94/2c.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": 1920
+        },
+        {
+          "productId": "218955P15",
+          "title": "Manuel Antonio National Park Beach Day Tour from San José",
+          "slug": "manuel-antonio-national-park-beach-day-tour-from-san-jos",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/10/7b/3e/31.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": 780
+        }
+      ]
+    },
+    {
+      "slug": "explornatura",
+      "operatorName": "Explornatura",
+      "operatorKey": "explornatura",
+      "tourCount": 1,
+      "totalReviews": 190,
+      "averageRating": 4.96,
+      "blurb": "Explornatura specializes in popular local experiences across San José. Use this page as a single hub to compare every Explornatura listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Rafting Pacuare River from Turrialba.",
+      "faqs": [
+        {
+          "question": "Is Explornatura worth it?",
+          "answer": "Based on 190 verified traveler reviews averaging 4.96 stars, Explornatura is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Explornatura offer in San José?",
+          "answer": "Explornatura currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Explornatura tour in San José?",
+          "answer": "The highest-reviewed option is \"Rafting Pacuare River from Turrialba\" with 190 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "11971P1",
+          "title": "Rafting Pacuare River from Turrialba",
+          "slug": "rafting-pacuare-river-from-turrialba",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/2a/a1/37.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.963158,
+          "reviewCount": 190,
+          "durationMinutes": 300
+        }
+      ]
+    },
+    {
+      "slug": "faro-travel-costa-rica",
+      "operatorName": "Faro Travel Costa Rica",
+      "operatorKey": "faro travel costa rica",
+      "tourCount": 2,
+      "totalReviews": 6,
+      "averageRating": 5,
+      "blurb": "Faro Travel Costa Rica specializes in popular local experiences across San José. Use this page as a single hub to compare every Faro Travel Costa Rica listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Shared Shuttle from San Jose to Manuel Antonio and Shared Shuttle from San Jose to Monteverde.",
+      "faqs": [
+        {
+          "question": "Is Faro Travel Costa Rica worth it?",
+          "answer": "Based on 6 verified traveler reviews averaging 5 stars, Faro Travel Costa Rica is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Faro Travel Costa Rica offer in San José?",
+          "answer": "Faro Travel Costa Rica currently lists 2 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Faro Travel Costa Rica tour in San José?",
+          "answer": "The highest-reviewed option is \"Shared Shuttle from San Jose to Manuel Antonio\" with 3 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "139151P32",
+          "title": "Shared Shuttle from San Jose to Manuel Antonio",
+          "slug": "shared-shuttle-from-san-jose-to-manuel-antonio",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/bd/8b/b2.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 3,
+          "durationMinutes": 4
+        },
+        {
+          "productId": "139151P25",
+          "title": "Shared Shuttle from San Jose to Monteverde",
+          "slug": "shared-shuttle-from-san-jose-to-monteverde",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/bd/88/c0.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 3,
+          "durationMinutes": 240
+        }
+      ]
+    },
+    {
+      "slug": "foodie-tours-costa-rica",
+      "operatorName": "Foodie Tours Costa Rica",
+      "operatorKey": "foodie tours costa rica",
+      "tourCount": 3,
+      "totalReviews": 48,
+      "averageRating": 4.88,
+      "blurb": "Foodie Tours Costa Rica specializes in food tours across San José. Use this page as a single hub to compare every Foodie Tours Costa Rica listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes San Jose City Tour & Tasting - Costa Rican Coffee and Chocolate, San Jose Foodie Tour | Costa Rican Culinary Culture, San Jose City Tour & Costa Rican Specialty Coffee Tastings.",
+      "faqs": [
+        {
+          "question": "Is Foodie Tours Costa Rica worth it?",
+          "answer": "Based on 48 verified traveler reviews averaging 4.88 stars, Foodie Tours Costa Rica is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Foodie Tours Costa Rica offer in San José?",
+          "answer": "Foodie Tours Costa Rica currently lists 3 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Foodie Tours Costa Rica tour in San José?",
+          "answer": "The highest-reviewed option is \"San Jose City Tour & Tasting - Costa Rican Coffee and Chocolate\" with 22 traveler reviews and a 4.8-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "68129P1",
+          "title": "San Jose City Tour & Tasting - Costa Rican Coffee and Chocolate",
+          "slug": "san-jose-city-tour-tasting-costa-rican-coffee-and-chocolate",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/0c/d5/26.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.818182,
+          "reviewCount": 22,
+          "durationMinutes": null
+        },
+        {
+          "productId": "68129P3",
+          "title": "San Jose Foodie Tour | Costa Rican Culinary Culture",
+          "slug": "san-jose-foodie-tour-costa-rican-culinary-culture",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/7e/bb/c6.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 19,
+          "durationMinutes": null
+        },
+        {
+          "productId": "68129P4",
+          "title": "San Jose City Tour & Costa Rican Specialty Coffee Tastings",
+          "slug": "san-jose-city-tour-costa-rican-specialty-coffee-tastings",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/a7/df/7a.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.714286,
+          "reviewCount": 7,
+          "durationMinutes": 165
+        }
+      ]
+    },
+    {
+      "slug": "fortuna-expeditions",
+      "operatorName": "Fortuna Expeditions",
+      "operatorKey": "fortuna expeditions",
+      "tourCount": 1,
+      "totalReviews": 72,
+      "averageRating": 5,
+      "blurb": "Fortuna Expeditions specializes in airport transfers and private tours across San José. Use this page as a single hub to compare every Fortuna Expeditions listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes San Jose Airport to La Fortuna Private VIP Transfer.",
+      "faqs": [
+        {
+          "question": "Is Fortuna Expeditions worth it?",
+          "answer": "Based on 72 verified traveler reviews averaging 5 stars, Fortuna Expeditions is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Fortuna Expeditions offer in San José?",
+          "answer": "Fortuna Expeditions currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Fortuna Expeditions tour in San José?",
+          "answer": "The highest-reviewed option is \"San Jose Airport to La Fortuna Private VIP Transfer\" with 72 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "308019P1",
+          "title": "San Jose Airport to La Fortuna Private VIP Transfer",
+          "slug": "san-jose-airport-to-la-fortuna-private-vip-transfer",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/cf/1c/29.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 72,
+          "durationMinutes": 180
+        }
+      ]
+    },
+    {
+      "slug": "go-local-costa-rica",
+      "operatorName": "Go Local Costa Rica",
+      "operatorKey": "go local costa rica",
+      "tourCount": 1,
+      "totalReviews": 14,
+      "averageRating": 5,
+      "blurb": "Go Local Costa Rica specializes in popular local experiences across San José. Use this page as a single hub to compare every Go Local Costa Rica listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes San Jose Walking City Tour Coffee and Chocolate Tastings.",
+      "faqs": [
+        {
+          "question": "Is Go Local Costa Rica worth it?",
+          "answer": "Based on 14 verified traveler reviews averaging 5 stars, Go Local Costa Rica is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Go Local Costa Rica offer in San José?",
+          "answer": "Go Local Costa Rica currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Go Local Costa Rica tour in San José?",
+          "answer": "The highest-reviewed option is \"San Jose Walking City Tour Coffee and Chocolate Tastings\" with 14 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5585860P3",
+          "title": "San Jose Walking City Tour Coffee and Chocolate Tastings",
+          "slug": "san-jose-walking-city-tour-coffee-and-chocolate-tastings",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/r/32/bd/75/f8/caption.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 14,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "go-tours-costa-rica",
+      "operatorName": "Go Tours Costa Rica",
+      "operatorKey": "go tours costa rica",
+      "tourCount": 5,
+      "totalReviews": 5609,
+      "averageRating": 4.9,
+      "blurb": "Go Tours Costa Rica specializes in popular local experiences across San José. Use this page as a single hub to compare every Go Tours Costa Rica listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is Go Tours Costa Rica worth it?",
+          "answer": "Based on 5,609 verified traveler reviews averaging 4.9 stars, Go Tours Costa Rica is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Go Tours Costa Rica offer in San José?",
+          "answer": "Go Tours Costa Rica currently lists 5 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Go Tours Costa Rica tour in San José?",
+          "answer": "The highest-reviewed option is \"Arenal Volcano Full-Day Combo Tour with Lunch and Dinner\" with 3,660 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "62880P1",
+          "title": "Arenal Volcano Full-Day Combo Tour with Lunch and Dinner",
+          "slug": "arenal-volcano-full-day-combo-tour-with-lunch-and-dinner",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/06/72/f3/49.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9215846,
+          "reviewCount": 3660,
+          "durationMinutes": 840
+        },
+        {
+          "productId": "62880P6",
+          "title": "Arenal Volcano Experience Full-Day Tour from San Jose",
+          "slug": "arenal-volcano-experience-full-day-tour-from-san-jose",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/74/49/b0.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.8744364,
+          "reviewCount": 1553,
+          "durationMinutes": 840
+        },
+        {
+          "productId": "62880P4",
+          "title": "Monteverde Hanging Bridges Day Trip from San Jose",
+          "slug": "monteverde-hanging-bridges-day-trip-from-san-jose",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/2d/2e/60.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.7772512,
+          "reviewCount": 211,
+          "durationMinutes": 780
+        },
+        {
+          "productId": "62880P7",
+          "title": "Volcano, Waterfalls, Zipline, Hot Springs Full Day Tour",
+          "slug": "volcano-waterfalls-zipline-hot-springs-full-day-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/36/7e/30.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.805369,
+          "reviewCount": 149,
+          "durationMinutes": 840
+        },
+        {
+          "productId": "62880P9",
+          "title": "Manuel Antonio National Park; Beach & Sightseeing Day Trip from San Jose",
+          "slug": "manuel-antonio-national-park-beach-sightseeing-day-trip-from-san-jose",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/b7/6c/68.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.75,
+          "reviewCount": 36,
+          "durationMinutes": 720
+        }
+      ]
+    },
+    {
+      "slug": "golden-beans-co",
+      "operatorName": "Golden Beans Co.",
+      "operatorKey": "golden beans co.",
+      "tourCount": 2,
+      "totalReviews": 4,
+      "averageRating": 5,
+      "blurb": "Golden Beans Co. specializes in popular local experiences across San José. Use this page as a single hub to compare every Golden Beans Co. listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes San José Coffee Crawl and Tour.",
+      "faqs": [
+        {
+          "question": "Is Golden Beans Co. worth it?",
+          "answer": "Based on 4 verified traveler reviews averaging 5 stars, Golden Beans Co. is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Golden Beans Co. offer in San José?",
+          "answer": "Golden Beans Co. currently lists 2 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Golden Beans Co. tour in San José?",
+          "answer": "The highest-reviewed option is \"San José Coffee Crawl\" with 4 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "412767P2",
+          "title": "San José Coffee Crawl",
+          "slug": "san-jos-coffee-crawl",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/13/f6/e8.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 4,
+          "durationMinutes": 150
+        },
+        {
+          "productId": "412767P1",
+          "title": "Tour",
+          "slug": "tour",
+          "imageUrl": null,
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "greenway-nature-day-tours",
+      "operatorName": "Greenway Nature Day Tours",
+      "operatorKey": "greenway nature day tours",
+      "tourCount": 20,
+      "totalReviews": 51,
+      "averageRating": 4.92,
+      "blurb": "Greenway Nature Day Tours specializes in private tours and island day trips across San José. Use this page as a single hub to compare every Greenway Nature Day Tours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is Greenway Nature Day Tours worth it?",
+          "answer": "Based on 51 verified traveler reviews averaging 4.92 stars, Greenway Nature Day Tours is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Greenway Nature Day Tours offer in San José?",
+          "answer": "Greenway Nature Day Tours currently lists 20 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Greenway Nature Day Tours tour in San José?",
+          "answer": "The highest-reviewed option is \"Tortuguero One Day Private Tour from San Jose\" with 19 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "26853P120",
+          "title": "Tortuguero One Day Private Tour from San Jose",
+          "slug": "tortuguero-one-day-private-tour-from-san-jose",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0c/0d/fa/20.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 19,
+          "durationMinutes": 600
+        },
+        {
+          "productId": "26853P60",
+          "title": "Poas Volcano & La Paz Waterfalls Gardens. Private Tour",
+          "slug": "poas-volcano-la-paz-waterfalls-gardens-private-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/b0/f5/12.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 9,
+          "durationMinutes": 600
+        },
+        {
+          "productId": "26853P39",
+          "title": "Arenal Volcano Zipline & Baldi Hot Springs Private Tour",
+          "slug": "arenal-volcano-zipline-baldi-hot-springs-private-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/b2/7a/b7.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 5,
+          "durationMinutes": 720
+        },
+        {
+          "productId": "26853P105",
+          "title": "Greenway Adventures 8D/7N Vacation Package",
+          "slug": "greenway-adventures-8d7n-vacation-package",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/ec/72/42.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 5,
+          "durationMinutes": 11520
+        },
+        {
+          "productId": "26853P71",
+          "title": "La Paz Waterfalls Gardens. Private Tour from San Jose",
+          "slug": "la-paz-waterfalls-gardens-private-tour-from-san-jose",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/9d/76/da.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4,
+          "reviewCount": 4,
+          "durationMinutes": 540
+        },
+        {
+          "productId": "26853P79",
+          "title": "Jungle & Islands Expedition 5 Days Vacation Package",
+          "slug": "jungle-islands-expedition-5-days-vacation-package",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/b0/9e/b3.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 2,
+          "durationMinutes": 7200
+        },
+        {
+          "productId": "26853P103",
+          "title": "Costa Rica Top Adventure 8D/7N Vacation Package",
+          "slug": "costa-rica-top-adventure-8d7n-vacation-package",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/eb/77/44.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 2,
+          "durationMinutes": 11520
+        },
+        {
+          "productId": "26853P102",
+          "title": "Costa Rica Highlights 8D/7N Vacation Package",
+          "slug": "costa-rica-highlights-8d7n-vacation-package",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/eb/72/1f.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 2,
+          "durationMinutes": 11520
+        },
+        {
+          "productId": "26853P25",
+          "title": "Irazu Volcano, small towns and Hot Springs. Private Tour",
+          "slug": "irazu-volcano-small-towns-and-hot-springs-private-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/r/32/f8/ba/25/caption.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": 540
+        },
+        {
+          "productId": "26853P98",
+          "title": "Corcovado Deluxe & Arenal Volcano Expedition 8D/7N Vacation Package",
+          "slug": "corcovado-deluxe-arenal-volcano-expedition-8d7n-vacation-package",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/e7/0f/66.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": 11520
+        },
+        {
+          "productId": "26853P124",
+          "title": "Arenal Sloths Lovers & Baldi Hot Springs Private Tour",
+          "slug": "arenal-sloths-lovers-baldi-hot-springs-private-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0f/43/94/fc.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": 600
+        },
+        {
+          "productId": "26853P101",
+          "title": "Costa Rica Fun Adventure 8D/7N Vacation Package",
+          "slug": "costa-rica-fun-adventure-8d7n-vacation-package",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/eb/59/38.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 11520
+        },
+        {
+          "productId": "26853P115",
+          "title": "Costa Rica Safari 14D/13N Vacation Package",
+          "slug": "costa-rica-safari-14d13n-vacation-package",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/f3/cf/23.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 20160
+        },
+        {
+          "productId": "26853P111",
+          "title": "Costa Rica Explorer 10D/9N Vacation Package",
+          "slug": "costa-rica-explorer-10d9n-vacation-package",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/ef/29/7d.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 14400
+        },
+        {
+          "productId": "26853P114",
+          "title": "Between Oceans 14D/13N Vacation Package from San Jose",
+          "slug": "between-oceans-14d13n-vacation-package-from-san-jose",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/ef/3f/e1.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 20160
+        },
+        {
+          "productId": "26853P90",
+          "title": "Costa Rica Rivers, Rainforest & Beaches. 6D/5N Vacation Package",
+          "slug": "costa-rica-rivers-rainforest-beaches-6d5n-vacation-package",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/e4/60/b3.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 8640
+        },
+        {
+          "productId": "26853P92",
+          "title": "Costa Rica Pura Vida 6D/5N Vacation Package",
+          "slug": "costa-rica-pura-vida-6d5n-vacation-package",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/e7/50/61.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 8640
+        },
+        {
+          "productId": "26853P96",
+          "title": "Classic Costa Rica 8D/7N Vacation Package",
+          "slug": "classic-costa-rica-8d7n-vacation-package",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/e4/50/30.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 11520
+        },
+        {
+          "productId": "26853P20",
+          "title": "Arenal Volcano and Hot Springs. Private Tour",
+          "slug": "arenal-volcano-and-hot-springs-private-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/ba/60/01.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 540
+        },
+        {
+          "productId": "26853P99",
+          "title": "Corcovado & Arenal Volcano Expedition 8D/7N Vacation Package",
+          "slug": "corcovado-arenal-volcano-expedition-8d7n-vacation-package",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/e7/04/91.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 11520
+        }
+      ]
+    },
+    {
+      "slug": "hacienda-ebano",
+      "operatorName": "Hacienda Ebano",
+      "operatorKey": "hacienda ebano",
+      "tourCount": 5,
+      "totalReviews": 120,
+      "averageRating": 5,
+      "blurb": "Hacienda Ebano specializes in private tours across San José. Use this page as a single hub to compare every Hacienda Ebano listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is Hacienda Ebano worth it?",
+          "answer": "Based on 120 verified traveler reviews averaging 5 stars, Hacienda Ebano is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Hacienda Ebano offer in San José?",
+          "answer": "Hacienda Ebano currently lists 5 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Hacienda Ebano tour in San José?",
+          "answer": "The highest-reviewed option is \"Ebano Waterfalls and Rainforest Safari Tour\" with 72 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "172814P1",
+          "title": "Ebano Waterfalls and Rainforest Safari Tour",
+          "slug": "ebano-waterfalls-and-rainforest-safari-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/1b/9a/37.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 72,
+          "durationMinutes": 240
+        },
+        {
+          "productId": "172814P2",
+          "title": "Special Private Waterfalls and Jungle Safari Tour",
+          "slug": "special-private-waterfalls-and-jungle-safari-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0e/c8/44/ae.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 41,
+          "durationMinutes": null
+        },
+        {
+          "productId": "172814P4",
+          "title": "Guided hiking Tour by the Mystic Ebano Rainforest in Costa Rica",
+          "slug": "guided-hiking-tour-by-the-mystic-ebano-rainforest-in-costa-rica",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0f/41/01/d6.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 6,
+          "durationMinutes": 150
+        },
+        {
+          "productId": "172814P6",
+          "title": "Nauyaca Waterfalls and Hacienda Ébano Safari Adventure",
+          "slug": "nauyaca-waterfalls-and-hacienda-bano-safari-adventure",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/1b/8e/52.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": null
+        },
+        {
+          "productId": "172814P3",
+          "title": "Day Pass to Hacienda Ébano",
+          "slug": "day-pass-to-hacienda-bano",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/2c/59/6d.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "hacienda-pozo-azul",
+      "operatorName": "Hacienda Pozo Azul",
+      "operatorKey": "hacienda pozo azul",
+      "tourCount": 3,
+      "totalReviews": 26,
+      "averageRating": 4.85,
+      "blurb": "Hacienda Pozo Azul specializes in popular local experiences across San José. Use this page as a single hub to compare every Hacienda Pozo Azul listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Sarapiqui Forest Horseback Riding Experience in Costa Rica, Whitewater Rafting Class II & III, Canopy Tour Pozo Azul.",
+      "faqs": [
+        {
+          "question": "Is Hacienda Pozo Azul worth it?",
+          "answer": "Based on 26 verified traveler reviews averaging 4.85 stars, Hacienda Pozo Azul is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Hacienda Pozo Azul offer in San José?",
+          "answer": "Hacienda Pozo Azul currently lists 3 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Hacienda Pozo Azul tour in San José?",
+          "answer": "The highest-reviewed option is \"Sarapiqui Forest Horseback Riding Experience in Costa Rica\" with 11 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "209183P3",
+          "title": "Sarapiqui Forest Horseback Riding Experience in Costa Rica",
+          "slug": "sarapiqui-forest-horseback-riding-experience-in-costa-rica",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/7c/24/d4.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 11,
+          "durationMinutes": 120
+        },
+        {
+          "productId": "209183P1",
+          "title": "Whitewater Rafting Class II & III",
+          "slug": "whitewater-rafting-class-ii-iii",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/09/8d/66/ce.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.6363635,
+          "reviewCount": 11,
+          "durationMinutes": 120
+        },
+        {
+          "productId": "209183P2",
+          "title": "Canopy Tour Pozo Azul",
+          "slug": "canopy-tour-pozo-azul",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/09/9b/b0/0b.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 4,
+          "durationMinutes": 120
+        }
+      ]
+    },
+    {
+      "slug": "intrepid-urban-adventures-latin-america",
+      "operatorName": "Intrepid Urban Adventures - Latin America",
+      "operatorKey": "intrepid urban adventures - latin america",
+      "tourCount": 2,
+      "totalReviews": 477,
+      "averageRating": 4.59,
+      "blurb": "Intrepid Urban Adventures - Latin America specializes in food tours across San José. Use this page as a single hub to compare every Intrepid Urban Adventures - Latin America listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes San Jose By Night: Sights & Culture Tour with Local Dinner and San Jose on Foot: Market Food Delights and City Sights Tour.",
+      "faqs": [
+        {
+          "question": "Is Intrepid Urban Adventures - Latin America worth it?",
+          "answer": "Based on 477 verified traveler reviews averaging 4.59 stars, Intrepid Urban Adventures - Latin America is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Intrepid Urban Adventures - Latin America offer in San José?",
+          "answer": "Intrepid Urban Adventures - Latin America currently lists 2 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Intrepid Urban Adventures - Latin America tour in San José?",
+          "answer": "The highest-reviewed option is \"San Jose By Night: Sights & Culture Tour with Local Dinner\" with 246 traveler reviews and a 4.4-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5207COSTA7",
+          "title": "San Jose By Night: Sights & Culture Tour with Local Dinner",
+          "slug": "san-jose-by-night-sights-culture-tour-with-local-dinner",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/70/64/de.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.4349594,
+          "reviewCount": 246,
+          "durationMinutes": 240
+        },
+        {
+          "productId": "5207BITES",
+          "title": "San Jose on Foot: Market Food Delights and City Sights Tour",
+          "slug": "san-jose-on-foot-market-food-delights-and-city-sights-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/70/64/df.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.753247,
+          "reviewCount": 231,
+          "durationMinutes": 180
+        }
+      ]
+    },
+    {
+      "slug": "ivantours",
+      "operatorName": "Ivantours",
+      "operatorKey": "ivantours",
+      "tourCount": 1,
+      "totalReviews": 12,
+      "averageRating": 4.42,
+      "blurb": "Ivantours specializes in popular local experiences across San José. Use this page as a single hub to compare every Ivantours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes The Authentic Tortuguero National Park One Day Tour.",
+      "faqs": [
+        {
+          "question": "Is Ivantours worth it?",
+          "answer": "Based on 12 verified traveler reviews averaging 4.42 stars, Ivantours is solid for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Ivantours offer in San José?",
+          "answer": "Ivantours currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Ivantours tour in San José?",
+          "answer": "The highest-reviewed option is \"The Authentic Tortuguero National Park One Day Tour\" with 12 traveler reviews and a 4.4-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "32282P1",
+          "title": "The Authentic Tortuguero National Park One Day Tour",
+          "slug": "the-authentic-tortuguero-national-park-one-day-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/06/d5/56/88.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.4166665,
+          "reviewCount": 12,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "johnny-loves-nature",
+      "operatorName": "Johnny loves nature",
+      "operatorKey": "johnny loves nature",
+      "tourCount": 3,
+      "totalReviews": 401,
+      "averageRating": 4.65,
+      "blurb": "Johnny loves nature specializes in private tours across San José. Use this page as a single hub to compare every Johnny loves nature listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Monteverde Cloud Forest Night Wildlife Experience, Private Night Walk tour, Combo Tour Suspension Bridges + Night Walk in Cloud Forest.",
+      "faqs": [
+        {
+          "question": "Is Johnny loves nature worth it?",
+          "answer": "Based on 401 verified traveler reviews averaging 4.65 stars, Johnny loves nature is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Johnny loves nature offer in San José?",
+          "answer": "Johnny loves nature currently lists 3 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Johnny loves nature tour in San José?",
+          "answer": "The highest-reviewed option is \"Monteverde Cloud Forest Night Wildlife Experience\" with 394 traveler reviews and a 4.6-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "23968P2",
+          "title": "Monteverde Cloud Forest Night Wildlife Experience",
+          "slug": "monteverde-cloud-forest-night-wildlife-experience",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/06/8e/34/bf.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.647208,
+          "reviewCount": 394,
+          "durationMinutes": 120
+        },
+        {
+          "productId": "23968P29",
+          "title": "Private Night Walk tour",
+          "slug": "private-night-walk-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/10/26/e0/e1.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 4,
+          "durationMinutes": 120
+        },
+        {
+          "productId": "23968P26",
+          "title": "Combo Tour Suspension Bridges + Night Walk in Cloud Forest",
+          "slug": "combo-tour-suspension-bridges-night-walk-in-cloud-forest",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/16/2a/a1/10.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 3,
+          "durationMinutes": 270
+        }
+      ]
+    },
+    {
+      "slug": "la-carpintera-canopy-tour",
+      "operatorName": "La Carpintera Canopy Tour",
+      "operatorKey": "la carpintera canopy tour",
+      "tourCount": 1,
+      "totalReviews": 516,
+      "averageRating": 4.95,
+      "blurb": "La Carpintera Canopy Tour specializes in popular local experiences across San José. Use this page as a single hub to compare every La Carpintera Canopy Tour listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Zip Line, Rappel, Hiking La Carpintera Tour in San Jose.",
+      "faqs": [
+        {
+          "question": "Is La Carpintera Canopy Tour worth it?",
+          "answer": "Based on 516 verified traveler reviews averaging 4.95 stars, La Carpintera Canopy Tour is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does La Carpintera Canopy Tour offer in San José?",
+          "answer": "La Carpintera Canopy Tour currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular La Carpintera Canopy Tour tour in San José?",
+          "answer": "The highest-reviewed option is \"Zip Line, Rappel, Hiking La Carpintera Tour in San Jose\" with 516 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "110036P1",
+          "title": "Zip Line, Rappel, Hiking La Carpintera Tour in San Jose",
+          "slug": "zip-line-rappel-hiking-la-carpintera-tour-in-san-jose",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/09/e1/94/70.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9457364,
+          "reviewCount": 516,
+          "durationMinutes": 180
+        }
+      ]
+    },
+    {
+      "slug": "la-paz-waterfall-gardens",
+      "operatorName": "La Paz Waterfall Gardens",
+      "operatorKey": "la paz waterfall gardens",
+      "tourCount": 1,
+      "totalReviews": 235,
+      "averageRating": 4.31,
+      "blurb": "La Paz Waterfall Gardens specializes in popular local experiences across San José. Use this page as a single hub to compare every La Paz Waterfall Gardens listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Skip the Line:Day Ticket-La Paz Waterfall Gardens Nature Park & Wildlife Refuge.",
+      "faqs": [
+        {
+          "question": "Is La Paz Waterfall Gardens worth it?",
+          "answer": "Based on 235 verified traveler reviews averaging 4.31 stars, La Paz Waterfall Gardens is solid for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does La Paz Waterfall Gardens offer in San José?",
+          "answer": "La Paz Waterfall Gardens currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular La Paz Waterfall Gardens tour in San José?",
+          "answer": "The highest-reviewed option is \"Skip the Line:Day Ticket-La Paz Waterfall Gardens Nature Park & Wildlife Refuge\" with 235 traveler reviews and a 4.3-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "43054P1",
+          "title": "Skip the Line:Day Ticket-La Paz Waterfall Gardens Nature Park & Wildlife Refuge",
+          "slug": "skip-the-lineday-ticket-la-paz-waterfall-gardens-nature-park-wildlife-refuge",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/06/df/a9/e6.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.306383,
+          "reviewCount": 235,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "lands-in-love-vegan-experience-hotel-and-resort",
+      "operatorName": "Lands in love Vegan Experience Hotel and Resort",
+      "operatorKey": "lands in love vegan experience hotel and resort",
+      "tourCount": 1,
+      "totalReviews": 11,
+      "averageRating": 5,
+      "blurb": "Lands in love Vegan Experience Hotel and Resort specializes in popular local experiences across San José. Use this page as a single hub to compare every Lands in love Vegan Experience Hotel and Resort listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Bungee Jump near San José, Costa Rica w/ Canopy Ziplines and Superman Cable.",
+      "faqs": [
+        {
+          "question": "Is Lands in love Vegan Experience Hotel and Resort worth it?",
+          "answer": "Based on 11 verified traveler reviews averaging 5 stars, Lands in love Vegan Experience Hotel and Resort is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Lands in love Vegan Experience Hotel and Resort offer in San José?",
+          "answer": "Lands in love Vegan Experience Hotel and Resort currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Lands in love Vegan Experience Hotel and Resort tour in San José?",
+          "answer": "The highest-reviewed option is \"Bungee Jump near San José, Costa Rica w/ Canopy Ziplines and Superman Cable\" with 11 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "40636P6",
+          "title": "Bungee Jump near San José, Costa Rica w/ Canopy Ziplines and Superman Cable",
+          "slug": "bungee-jump-near-san-jos-costa-rica-w-canopy-ziplines-and-superman-cable",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/r/32/9d/a2/e9/caption.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 11,
+          "durationMinutes": 300
+        }
+      ]
+    },
+    {
+      "slug": "marbella-tours",
+      "operatorName": "Marbella Tours",
+      "operatorKey": "marbella tours",
+      "tourCount": 1,
+      "totalReviews": 320,
+      "averageRating": 4.47,
+      "blurb": "Marbella Tours specializes in popular local experiences across San José. Use this page as a single hub to compare every Marbella Tours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Poás Volcano, Café Doka and Peace Falls Day Tour.",
+      "faqs": [
+        {
+          "question": "Is Marbella Tours worth it?",
+          "answer": "Based on 320 verified traveler reviews averaging 4.47 stars, Marbella Tours is solid for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Marbella Tours offer in San José?",
+          "answer": "Marbella Tours currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Marbella Tours tour in San José?",
+          "answer": "The highest-reviewed option is \"Poás Volcano, Café Doka and Peace Falls Day Tour\" with 320 traveler reviews and a 4.5-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "336652P2",
+          "title": "Poás Volcano, Café Doka and Peace Falls Day Tour",
+          "slug": "pos-volcano-caf-doka-and-peace-falls-day-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0e/39/56/e1.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.471875,
+          "reviewCount": 320,
+          "durationMinutes": 600
+        }
+      ]
+    },
+    {
+      "slug": "mypinkbus",
+      "operatorName": "MyPinkBus",
+      "operatorKey": "mypinkbus",
+      "tourCount": 1,
+      "totalReviews": 59,
+      "averageRating": 4.69,
+      "blurb": "MyPinkBus specializes in popular local experiences across San José. Use this page as a single hub to compare every MyPinkBus listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Shuttle from San Jose to La Fortuna.",
+      "faqs": [
+        {
+          "question": "Is MyPinkBus worth it?",
+          "answer": "Based on 59 verified traveler reviews averaging 4.69 stars, MyPinkBus is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does MyPinkBus offer in San José?",
+          "answer": "MyPinkBus currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular MyPinkBus tour in San José?",
+          "answer": "The highest-reviewed option is \"Shuttle from San Jose to La Fortuna\" with 59 traveler reviews and a 4.7-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "378910P7",
+          "title": "Shuttle from San Jose to La Fortuna",
+          "slug": "shuttle-from-san-jose-to-la-fortuna",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/20/85/a6.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.6949153,
+          "reviewCount": 59,
+          "durationMinutes": 240
+        }
+      ]
+    },
+    {
+      "slug": "natural-adventures",
+      "operatorName": "Natural Adventures",
+      "operatorKey": "natural adventures",
+      "tourCount": 1,
+      "totalReviews": 6,
+      "averageRating": 5,
+      "blurb": "Natural Adventures specializes in popular local experiences across San José. Use this page as a single hub to compare every Natural Adventures listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Transport from San Jose to la Fortuna.",
+      "faqs": [
+        {
+          "question": "Is Natural Adventures worth it?",
+          "answer": "Based on 6 verified traveler reviews averaging 5 stars, Natural Adventures is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Natural Adventures offer in San José?",
+          "answer": "Natural Adventures currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Natural Adventures tour in San José?",
+          "answer": "The highest-reviewed option is \"Transport from San Jose to la Fortuna\" with 6 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "113027P2",
+          "title": "Transport from San Jose to la Fortuna",
+          "slug": "transport-from-san-jose-to-la-fortuna",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/r/32/c7/cc/9b/caption.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 6,
+          "durationMinutes": 180
+        }
+      ]
+    },
+    {
+      "slug": "nature-tours-la-fortuna",
+      "operatorName": "Nature Tours La Fortuna",
+      "operatorKey": "nature tours la fortuna",
+      "tourCount": 1,
+      "totalReviews": 11,
+      "averageRating": 5,
+      "blurb": "Nature Tours La Fortuna specializes in popular local experiences across San José. Use this page as a single hub to compare every Nature Tours La Fortuna listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Horseback Riding Adventure in La Fortuna with River Crossings.",
+      "faqs": [
+        {
+          "question": "Is Nature Tours La Fortuna worth it?",
+          "answer": "Based on 11 verified traveler reviews averaging 5 stars, Nature Tours La Fortuna is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Nature Tours La Fortuna offer in San José?",
+          "answer": "Nature Tours La Fortuna currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Nature Tours La Fortuna tour in San José?",
+          "answer": "The highest-reviewed option is \"Horseback Riding Adventure in La Fortuna with River Crossings\" with 11 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5659802P4",
+          "title": "Horseback Riding Adventure in La Fortuna with River Crossings",
+          "slug": "horseback-riding-adventure-in-la-fortuna-with-river-crossings",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/r/33/2a/c2/fc/caption.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 11,
+          "durationMinutes": 140
+        }
+      ]
+    },
+    {
+      "slug": "paraiso-travel-cr",
+      "operatorName": "Paraiso Travel CR",
+      "operatorKey": "paraiso travel cr",
+      "tourCount": 1,
+      "totalReviews": 26,
+      "averageRating": 5,
+      "blurb": "Paraiso Travel CR specializes in airport transfers and private tours across San José. Use this page as a single hub to compare every Paraiso Travel CR listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Private Transfer from Airports to La Fortuna.",
+      "faqs": [
+        {
+          "question": "Is Paraiso Travel CR worth it?",
+          "answer": "Based on 26 verified traveler reviews averaging 5 stars, Paraiso Travel CR is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Paraiso Travel CR offer in San José?",
+          "answer": "Paraiso Travel CR currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Paraiso Travel CR tour in San José?",
+          "answer": "The highest-reviewed option is \"Private Transfer from Airports to La Fortuna\" with 26 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5613091P2",
+          "title": "Private Transfer from Airports to La Fortuna",
+          "slug": "private-transfer-from-airports-to-la-fortuna",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/11/78/f5.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 26,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "pasin-costa-rica",
+      "operatorName": "Pasión Costa Rica",
+      "operatorKey": "pasión costa rica",
+      "tourCount": 1,
+      "totalReviews": 31,
+      "averageRating": 4.94,
+      "blurb": "Pasión Costa Rica specializes in popular local experiences across San José. Use this page as a single hub to compare every Pasión Costa Rica listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Monteverde Night Walk Tour: the night life of the forest.",
+      "faqs": [
+        {
+          "question": "Is Pasión Costa Rica worth it?",
+          "answer": "Based on 31 verified traveler reviews averaging 4.94 stars, Pasión Costa Rica is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Pasión Costa Rica offer in San José?",
+          "answer": "Pasión Costa Rica currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Pasión Costa Rica tour in San José?",
+          "answer": "The highest-reviewed option is \"Monteverde Night Walk Tour: the night life of the forest\" with 31 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "33091P5",
+          "title": "Monteverde Night Walk Tour: the night life of the forest",
+          "slug": "monteverde-night-walk-tour-the-night-life-of-the-forest",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/c1/62/30.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.935484,
+          "reviewCount": 31,
+          "durationMinutes": 120
+        }
+      ]
+    },
+    {
+      "slug": "queveri-horseback-riding-tours",
+      "operatorName": "Queveri Horseback Riding Tours",
+      "operatorKey": "queveri horseback riding tours",
+      "tourCount": 1,
+      "totalReviews": 36,
+      "averageRating": 5,
+      "blurb": "Queveri Horseback Riding Tours specializes in popular local experiences across San José. Use this page as a single hub to compare every Queveri Horseback Riding Tours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Queveri Horseback Riding Tours.",
+      "faqs": [
+        {
+          "question": "Is Queveri Horseback Riding Tours worth it?",
+          "answer": "Based on 36 verified traveler reviews averaging 5 stars, Queveri Horseback Riding Tours is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Queveri Horseback Riding Tours offer in San José?",
+          "answer": "Queveri Horseback Riding Tours currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Queveri Horseback Riding Tours tour in San José?",
+          "answer": "The highest-reviewed option is \"Queveri Horseback Riding Tours\" with 36 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "195541P1",
+          "title": "Queveri Horseback Riding Tours",
+          "slug": "queveri-horseback-riding-tours",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/09/27/99/36.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 36,
+          "durationMinutes": 240
+        }
+      ]
+    },
+    {
+      "slug": "rhomtrip",
+      "operatorName": "RHOMTRIP",
+      "operatorKey": "rhomtrip",
+      "tourCount": 2,
+      "totalReviews": 21,
+      "averageRating": 4.9,
+      "blurb": "RHOMTRIP specializes in airport transfers across San José. Use this page as a single hub to compare every RHOMTRIP listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Departure by Minivan from San Jose City to San Jose Airport SJO and Arrival Transfer San Jose Airport SJO to San Jose City by Minivan.",
+      "faqs": [
+        {
+          "question": "Is RHOMTRIP worth it?",
+          "answer": "Based on 21 verified traveler reviews averaging 4.9 stars, RHOMTRIP is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does RHOMTRIP offer in San José?",
+          "answer": "RHOMTRIP currently lists 2 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular RHOMTRIP tour in San José?",
+          "answer": "The highest-reviewed option is \"Departure by Minivan from San Jose City to San Jose Airport SJO\" with 12 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "40380P333",
+          "title": "Departure by Minivan from San Jose City to San Jose Airport SJO",
+          "slug": "departure-by-minivan-from-san-jose-city-to-san-jose-airport-sjo",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/27/41/6f.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 12,
+          "durationMinutes": null
+        },
+        {
+          "productId": "40380P332",
+          "title": "Arrival Transfer San Jose Airport SJO to San Jose City by Minivan",
+          "slug": "arrival-transfer-san-jose-airport-sjo-to-san-jose-city-by-minivan",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/27/41/6f.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.7777777,
+          "reviewCount": 9,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "ride-pura-vida",
+      "operatorName": "Ride Pura Vida",
+      "operatorKey": "ride pura vida",
+      "tourCount": 2,
+      "totalReviews": 4,
+      "averageRating": 5,
+      "blurb": "Ride Pura Vida specializes in airport transfers and private tours across San José. Use this page as a single hub to compare every Ride Pura Vida listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Private Transfer: SJO Airport ⇆ Caldera Cruise Port, Puntarenas and One-Way Private Transfer: SJO Airport to/from Uvita or Dominical.",
+      "faqs": [
+        {
+          "question": "Is Ride Pura Vida worth it?",
+          "answer": "Based on 4 verified traveler reviews averaging 5 stars, Ride Pura Vida is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Ride Pura Vida offer in San José?",
+          "answer": "Ride Pura Vida currently lists 2 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Ride Pura Vida tour in San José?",
+          "answer": "The highest-reviewed option is \"Private Transfer: SJO Airport ⇆ Caldera Cruise Port, Puntarenas\" with 2 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "130516P27",
+          "title": "Private Transfer: SJO Airport ⇆ Caldera Cruise Port, Puntarenas",
+          "slug": "private-transfer-sjo-airport-caldera-cruise-port-puntarenas",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/13/cf/9b/2d.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 2,
+          "durationMinutes": 120
+        },
+        {
+          "productId": "130516P24",
+          "title": "One-Way Private Transfer: SJO Airport to/from Uvita or Dominical",
+          "slug": "one-way-private-transfer-sjo-airport-tofrom-uvita-or-dominical",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/73/2d/4c.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 2,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "ros-pura-vida",
+      "operatorName": "Ríos Pura Vida",
+      "operatorKey": "ríos pura vida",
+      "tourCount": 1,
+      "totalReviews": 16,
+      "averageRating": 5,
+      "blurb": "Ríos Pura Vida specializes in popular local experiences across San José. Use this page as a single hub to compare every Ríos Pura Vida listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Sarapiqui River, Costa Rica Rafting Tour Adventure.",
+      "faqs": [
+        {
+          "question": "Is Ríos Pura Vida worth it?",
+          "answer": "Based on 16 verified traveler reviews averaging 5 stars, Ríos Pura Vida is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Ríos Pura Vida offer in San José?",
+          "answer": "Ríos Pura Vida currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Ríos Pura Vida tour in San José?",
+          "answer": "The highest-reviewed option is \"Sarapiqui River, Costa Rica Rafting Tour Adventure\" with 16 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5558314P1",
+          "title": "Sarapiqui River, Costa Rica Rafting Tour Adventure",
+          "slug": "sarapiqui-river-costa-rica-rafting-tour-adventure",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/6c/1d/82.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 16,
+          "durationMinutes": 180
+        }
+      ]
+    },
+    {
+      "slug": "roca-verde",
+      "operatorName": "Roca Verde",
+      "operatorKey": "roca verde",
+      "tourCount": 2,
+      "totalReviews": 2,
+      "averageRating": 5,
+      "blurb": "Roca Verde specializes in private tours across San José. Use this page as a single hub to compare every Roca Verde listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Direct Shared Shuttle from San Jose & Juan Santamaria Airport to Monteverde and Private Shuttle San Jose & SJO Airport to and from Monteverde.",
+      "faqs": [
+        {
+          "question": "Is Roca Verde worth it?",
+          "answer": "Based on 2 verified traveler reviews averaging 5 stars, Roca Verde is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Roca Verde offer in San José?",
+          "answer": "Roca Verde currently lists 2 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Roca Verde tour in San José?",
+          "answer": "The highest-reviewed option is \"Direct Shared Shuttle from San Jose & Juan Santamaria Airport to Monteverde\" with 1 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "138326P13",
+          "title": "Direct Shared Shuttle from San Jose & Juan Santamaria Airport to Monteverde",
+          "slug": "direct-shared-shuttle-from-san-jose-juan-santamaria-airport-to-monteverde",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/ad/25/e2.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": 240
+        },
+        {
+          "productId": "138326P17",
+          "title": "Private Shuttle San Jose & SJO Airport to and from Monteverde",
+          "slug": "private-shuttle-san-jose-sjo-airport-to-and-from-monteverde",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0f/fb/71/ca.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": 180
+        }
+      ]
+    },
+    {
+      "slug": "sama-transfers-cr",
+      "operatorName": "SAMA Transfers CR",
+      "operatorKey": "sama transfers cr",
+      "tourCount": 1,
+      "totalReviews": 29,
+      "averageRating": 5,
+      "blurb": "SAMA Transfers CR specializes in airport transfers across San José. Use this page as a single hub to compare every SAMA Transfers CR listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Transfer from SJO Airport or surrounding to Manuel Antonio.",
+      "faqs": [
+        {
+          "question": "Is SAMA Transfers CR worth it?",
+          "answer": "Based on 29 verified traveler reviews averaging 5 stars, SAMA Transfers CR is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does SAMA Transfers CR offer in San José?",
+          "answer": "SAMA Transfers CR currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular SAMA Transfers CR tour in San José?",
+          "answer": "The highest-reviewed option is \"Transfer from SJO Airport or surrounding to Manuel Antonio\" with 29 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "240431P2",
+          "title": "Transfer from SJO Airport or surrounding to Manuel Antonio",
+          "slug": "transfer-from-sjo-airport-or-surrounding-to-manuel-antonio",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/13/eb/c6/d6.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 29,
+          "durationMinutes": 180
+        }
+      ]
+    },
+    {
+      "slug": "san-jose-urban-tours",
+      "operatorName": "San Jose Urban Tours",
+      "operatorKey": "san jose urban tours",
+      "tourCount": 3,
+      "totalReviews": 2451,
+      "averageRating": 4.83,
+      "blurb": "San Jose Urban Tours specializes in food tours across San José. Use this page as a single hub to compare every San Jose Urban Tours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes San Jose: Bites and Sights Walking Food Tour including Markets, San Jose By Night: Farm to Table Dinner & Cocktail Class, San José Bites, Sights & History: Markets Tour & National Museum.",
+      "faqs": [
+        {
+          "question": "Is San Jose Urban Tours worth it?",
+          "answer": "Based on 2,451 verified traveler reviews averaging 4.83 stars, San Jose Urban Tours is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does San Jose Urban Tours offer in San José?",
+          "answer": "San Jose Urban Tours currently lists 3 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular San Jose Urban Tours tour in San José?",
+          "answer": "The highest-reviewed option is \"San Jose: Bites and Sights Walking Food Tour including Markets\" with 1,882 traveler reviews and a 4.8-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "298743P5",
+          "title": "San Jose: Bites and Sights Walking Food Tour including Markets",
+          "slug": "san-jose-bites-and-sights-walking-food-tour-including-markets",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/b7/62/f7.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.8262486,
+          "reviewCount": 1882,
+          "durationMinutes": 210
+        },
+        {
+          "productId": "298743P4",
+          "title": "San Jose By Night: Farm to Table Dinner & Cocktail Class",
+          "slug": "san-jose-by-night-farm-to-table-dinner-cocktail-class",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/1d/3d/a5.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.8391867,
+          "reviewCount": 541,
+          "durationMinutes": 240
+        },
+        {
+          "productId": "298743P6",
+          "title": "San José Bites, Sights & History: Markets Tour & National Museum",
+          "slug": "san-jos-bites-sights-history-markets-tour-national-museum",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0f/35/15/00.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.75,
+          "reviewCount": 28,
+          "durationMinutes": 300
+        }
+      ]
+    },
+    {
+      "slug": "sarapiqui-outdoor-center",
+      "operatorName": "Sarapiqui Outdoor Center",
+      "operatorKey": "sarapiqui outdoor center",
+      "tourCount": 2,
+      "totalReviews": 195,
+      "averageRating": 4.92,
+      "blurb": "Sarapiqui Outdoor Center specializes in popular local experiences across San José. Use this page as a single hub to compare every Sarapiqui Outdoor Center listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Sarapiquí River Family Rafting Adventure Class II & III and Sarapiquí River Wildlife Safari Float.",
+      "faqs": [
+        {
+          "question": "Is Sarapiqui Outdoor Center worth it?",
+          "answer": "Based on 195 verified traveler reviews averaging 4.92 stars, Sarapiqui Outdoor Center is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Sarapiqui Outdoor Center offer in San José?",
+          "answer": "Sarapiqui Outdoor Center currently lists 2 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Sarapiqui Outdoor Center tour in San José?",
+          "answer": "The highest-reviewed option is \"Sarapiquí River Family Rafting Adventure Class II & III\" with 192 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "11944P1",
+          "title": "Sarapiquí River Family Rafting Adventure Class II & III",
+          "slug": "sarapiqu-river-family-rafting-adventure-class-ii-iii",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0c/03/ec/2e.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.921875,
+          "reviewCount": 192,
+          "durationMinutes": 180
+        },
+        {
+          "productId": "11944P3",
+          "title": "Sarapiquí River Wildlife Safari Float",
+          "slug": "sarapiqu-river-wildlife-safari-float",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/09/b7/fd/10.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 3,
+          "durationMinutes": 180
+        }
+      ]
+    },
+    {
+      "slug": "sarapiqu-xperience",
+      "operatorName": "Sarapiquí Xperience",
+      "operatorKey": "sarapiquí xperience",
+      "tourCount": 2,
+      "totalReviews": 43,
+      "averageRating": 4.86,
+      "blurb": "Sarapiquí Xperience specializes in popular local experiences across San José. Use this page as a single hub to compare every Sarapiquí Xperience listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Sarapiqui Rainforest Night Walk : Wildlife & Adventure. and Sarapiqui Frog Experience: Night Experience in the Jungle..",
+      "faqs": [
+        {
+          "question": "Is Sarapiquí Xperience worth it?",
+          "answer": "Based on 43 verified traveler reviews averaging 4.86 stars, Sarapiquí Xperience is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Sarapiquí Xperience offer in San José?",
+          "answer": "Sarapiquí Xperience currently lists 2 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Sarapiquí Xperience tour in San José?",
+          "answer": "The highest-reviewed option is \"Sarapiqui Rainforest Night Walk : Wildlife & Adventure.\" with 33 traveler reviews and a 4.8-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "365068P2",
+          "title": "Sarapiqui Rainforest Night Walk : Wildlife & Adventure.",
+          "slug": "sarapiqui-rainforest-night-walk-wildlife-adventure",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/11/5c/f3/85.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.818182,
+          "reviewCount": 33,
+          "durationMinutes": null
+        },
+        {
+          "productId": "365068P1",
+          "title": "Sarapiqui Frog Experience: Night Experience in the Jungle.",
+          "slug": "sarapiqui-frog-experience-night-experience-in-the-jungle",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/d3/7a/61.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 10,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "selva-adventures-rafting-sarapiqui",
+      "operatorName": "Selva Adventures, Rafting Sarapiqui",
+      "operatorKey": "selva adventures, rafting sarapiqui",
+      "tourCount": 2,
+      "totalReviews": 31,
+      "averageRating": 5,
+      "blurb": "Selva Adventures, Rafting Sarapiqui specializes in popular local experiences across San José. Use this page as a single hub to compare every Selva Adventures, Rafting Sarapiqui listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Rafting Adventure at Rio Sarapiqui and Action Packed Class 4 Rafting Adventure.",
+      "faqs": [
+        {
+          "question": "Is Selva Adventures, Rafting Sarapiqui worth it?",
+          "answer": "Based on 31 verified traveler reviews averaging 5 stars, Selva Adventures, Rafting Sarapiqui is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Selva Adventures, Rafting Sarapiqui offer in San José?",
+          "answer": "Selva Adventures, Rafting Sarapiqui currently lists 2 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Selva Adventures, Rafting Sarapiqui tour in San José?",
+          "answer": "The highest-reviewed option is \"Rafting Adventure at Rio Sarapiqui\" with 29 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "401501P1",
+          "title": "Rafting Adventure at Rio Sarapiqui",
+          "slug": "rafting-adventure-at-rio-sarapiqui",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/10/62/dc/cc.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 29,
+          "durationMinutes": 240
+        },
+        {
+          "productId": "401501P2",
+          "title": "Action Packed Class 4 Rafting Adventure",
+          "slug": "action-packed-class-4-rafting-adventure",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/11/95/df.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 2,
+          "durationMinutes": 180
+        }
+      ]
+    },
+    {
+      "slug": "summer-travel-costa-rica",
+      "operatorName": "Summer Travel Costa Rica",
+      "operatorKey": "summer travel costa rica",
+      "tourCount": 5,
+      "totalReviews": 171,
+      "averageRating": 4.63,
+      "blurb": "Summer Travel Costa Rica specializes in airport transfers and private tours across San José. Use this page as a single hub to compare every Summer Travel Costa Rica listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is Summer Travel Costa Rica worth it?",
+          "answer": "Based on 171 verified traveler reviews averaging 4.63 stars, Summer Travel Costa Rica is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Summer Travel Costa Rica offer in San José?",
+          "answer": "Summer Travel Costa Rica currently lists 5 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Summer Travel Costa Rica tour in San José?",
+          "answer": "The highest-reviewed option is \"All-inclusive package 7 nights 8 days in the best destinations in Costa Rica\" with 104 traveler reviews and a 4.7-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "150268P13",
+          "title": "All-inclusive package 7 nights 8 days in the best destinations in Costa Rica",
+          "slug": "all-inclusive-package-7-nights-8-days-in-the-best-destinations-in-costa-rica",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/b5/f5/7b.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.6923075,
+          "reviewCount": 104,
+          "durationMinutes": 11520
+        },
+        {
+          "productId": "150268P20",
+          "title": "Costa Rica 7 Nights 8 Days All Inclusive Deluxe Package",
+          "slug": "costa-rica-7-nights-8-days-all-inclusive-deluxe-package",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/c1/20/cd.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.794872,
+          "reviewCount": 39,
+          "durationMinutes": 11520
+        },
+        {
+          "productId": "150268P15",
+          "title": "Dinner + Typical dance show at the best viewpoint in San José",
+          "slug": "dinner-typical-dance-show-at-the-best-viewpoint-in-san-jos",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/d4/f6/54.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.0434785,
+          "reviewCount": 23,
+          "durationMinutes": 300
+        },
+        {
+          "productId": "150268P25",
+          "title": "San Jose to Guanacaste: Private Transfer",
+          "slug": "san-jose-to-guanacaste-private-transfer",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/71/01/22.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 3,
+          "durationMinutes": 300
+        },
+        {
+          "productId": "150268P16",
+          "title": "Costa Rica Wild : Premium All Inclusive Experience 8 Days",
+          "slug": "costa-rica-wild-premium-all-inclusive-experience-8-days",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/67/2a/5e.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.5,
+          "reviewCount": 2,
+          "durationMinutes": 11520
+        }
+      ]
+    },
+    {
+      "slug": "syl-travel-day-tours",
+      "operatorName": "Syl Travel Day Tours",
+      "operatorKey": "syl travel day tours",
+      "tourCount": 6,
+      "totalReviews": 36,
+      "averageRating": 4.89,
+      "blurb": "Syl Travel Day Tours specializes in private tours and airport transfers across San José. Use this page as a single hub to compare every Syl Travel Day Tours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is Syl Travel Day Tours worth it?",
+          "answer": "Based on 36 verified traveler reviews averaging 4.89 stars, Syl Travel Day Tours is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Syl Travel Day Tours offer in San José?",
+          "answer": "Syl Travel Day Tours currently lists 6 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Syl Travel Day Tours tour in San José?",
+          "answer": "The highest-reviewed option is \"Poas Volcano and La Paz Waterfall Gardens Private Tour\" with 22 traveler reviews and a 4.8-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "33709P22",
+          "title": "Poas Volcano and La Paz Waterfall Gardens Private Tour",
+          "slug": "poas-volcano-and-la-paz-waterfall-gardens-private-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/a8/5e/f1.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.818182,
+          "reviewCount": 22,
+          "durationMinutes": 480
+        },
+        {
+          "productId": "33709P19",
+          "title": "Private La Paz Waterfall Gardens & Starbucks Alsacia Coffee Tour",
+          "slug": "private-la-paz-waterfall-gardens-starbucks-alsacia-coffee-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/16/9c/96/ce.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 4,
+          "durationMinutes": null
+        },
+        {
+          "productId": "33709P44",
+          "title": "San José walking tour: History, Culture and Coffee tasting",
+          "slug": "san-jos-walking-tour-history-culture-and-coffee-tasting",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/14/cb/27/83.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 4,
+          "durationMinutes": 180
+        },
+        {
+          "productId": "33709P11",
+          "title": "Puntarenas Private Shore Excursion: Crocodiles & Zipline",
+          "slug": "puntarenas-private-shore-excursion-crocodiles-zipline",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/16/a6/15/a2.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 2,
+          "durationMinutes": null
+        },
+        {
+          "productId": "33709P25",
+          "title": "Private Transfer: San José Apto to Puerto Viejo / Cahuita (Limón)",
+          "slug": "private-transfer-san-jos-apto-to-puerto-viejo-cahuita-limn",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/a8/55/92.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 2,
+          "durationMinutes": 240
+        },
+        {
+          "productId": "33709P29",
+          "title": "Private Sightseeing Tour from SJO to Manuel Antonio National Park",
+          "slug": "private-sightseeing-tour-from-sjo-to-manuel-antonio-national-park",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/09/4c/3f/29.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 2,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "tapir-chocolates",
+      "operatorName": "Tapir Chocolates",
+      "operatorKey": "tapir chocolates",
+      "tourCount": 1,
+      "totalReviews": 142,
+      "averageRating": 4.91,
+      "blurb": "Tapir Chocolates specializes in popular local experiences across San José. Use this page as a single hub to compare every Tapir Chocolates listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Chocolate Making and Tasting at a Local Factory in San José.",
+      "faqs": [
+        {
+          "question": "Is Tapir Chocolates worth it?",
+          "answer": "Based on 142 verified traveler reviews averaging 4.91 stars, Tapir Chocolates is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Tapir Chocolates offer in San José?",
+          "answer": "Tapir Chocolates currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Tapir Chocolates tour in San José?",
+          "answer": "The highest-reviewed option is \"Chocolate Making and Tasting at a Local Factory in San José\" with 142 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "288510P1",
+          "title": "Chocolate Making and Tasting at a Local Factory in San José",
+          "slug": "chocolate-making-and-tasting-at-a-local-factory-in-san-jos",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/37/ae/c3.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9084506,
+          "reviewCount": 142,
+          "durationMinutes": 120
+        }
+      ]
+    },
+    {
+      "slug": "taxigo-dmc",
+      "operatorName": "taxiGo DMC",
+      "operatorKey": "taxigo dmc",
+      "tourCount": 2,
+      "totalReviews": 0,
+      "averageRating": null,
+      "blurb": "taxiGo DMC specializes in airport transfers and private tours across San José. Use this page as a single hub to compare every taxiGo DMC listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Private Transfer from San Jose Airport (SJO) to Puntarenas Port and Private Transfer from San Jose Airport (SJO) to Puerto Limon Port.",
+      "faqs": [
+        {
+          "question": "Is taxiGo DMC worth it?",
+          "answer": "taxiGo DMC offers 2 bookable tours in San José. Compare options below and read reviews on each tour page before booking."
+        },
+        {
+          "question": "How many tours does taxiGo DMC offer in San José?",
+          "answer": "taxiGo DMC currently lists 2 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular taxiGo DMC tour in San José?",
+          "answer": "The highest-reviewed option is \"Private Transfer from San Jose Airport (SJO) to Puntarenas Port\"."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "320728P695",
+          "title": "Private Transfer from San Jose Airport (SJO) to Puntarenas Port",
+          "slug": "private-transfer-from-san-jose-airport-sjo-to-puntarenas-port",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/11/52/54/48.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 100
+        },
+        {
+          "productId": "320728P227",
+          "title": "Private Transfer from San Jose Airport (SJO) to Puerto Limon Port",
+          "slug": "private-transfer-from-san-jose-airport-sjo-to-puerto-limon-port",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/10/7d/71/62.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 210
+        }
+      ]
+    },
+    {
+      "slug": "taxis-unidos",
+      "operatorName": "Taxis Unidos",
+      "operatorKey": "taxis unidos",
+      "tourCount": 1,
+      "totalReviews": 6,
+      "averageRating": 5,
+      "blurb": "Taxis Unidos specializes in airport transfers and private tours across San José. Use this page as a single hub to compare every Taxis Unidos listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Private Transfer from Juan Santamaria Airport to Guanacaste.",
+      "faqs": [
+        {
+          "question": "Is Taxis Unidos worth it?",
+          "answer": "Based on 6 verified traveler reviews averaging 5 stars, Taxis Unidos is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Taxis Unidos offer in San José?",
+          "answer": "Taxis Unidos currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Taxis Unidos tour in San José?",
+          "answer": "The highest-reviewed option is \"Private Transfer from Juan Santamaria Airport to Guanacaste\" with 6 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "301416P2",
+          "title": "Private Transfer from Juan Santamaria Airport to Guanacaste",
+          "slug": "private-transfer-from-juan-santamaria-airport-to-guanacaste",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/14/55/a7/d8.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 6,
+          "durationMinutes": 180
+        }
+      ]
+    },
+    {
+      "slug": "the-baqueano",
+      "operatorName": "The Baqueano",
+      "operatorKey": "the baqueano",
+      "tourCount": 2,
+      "totalReviews": 9,
+      "averageRating": 5,
+      "blurb": "The Baqueano specializes in airport transfers and private tours across San José. Use this page as a single hub to compare every The Baqueano listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Private Transfer in Costa Rica (Main Destinations) and La Paz Waterfall Gardens (Transportation).",
+      "faqs": [
+        {
+          "question": "Is The Baqueano worth it?",
+          "answer": "Based on 9 verified traveler reviews averaging 5 stars, The Baqueano is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does The Baqueano offer in San José?",
+          "answer": "The Baqueano currently lists 2 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular The Baqueano tour in San José?",
+          "answer": "The highest-reviewed option is \"Private Transfer in Costa Rica (Main Destinations)\" with 8 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "72598P21",
+          "title": "Private Transfer in Costa Rica (Main Destinations)",
+          "slug": "private-transfer-in-costa-rica-main-destinations",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/35/65/a2.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 8,
+          "durationMinutes": null
+        },
+        {
+          "productId": "72598P14",
+          "title": "La Paz Waterfall Gardens (Transportation)",
+          "slug": "la-paz-waterfall-gardens-transportation",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/8f/3e/84.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": 600
+        }
+      ]
+    },
+    {
+      "slug": "the-real-san-jos",
+      "operatorName": "The Real San José",
+      "operatorKey": "the real san josé",
+      "tourCount": 1,
+      "totalReviews": 20,
+      "averageRating": 4.7,
+      "blurb": "The Real San José specializes in popular local experiences across San José. Use this page as a single hub to compare every The Real San José listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes 3-Hour Downtown San Jose Walking Tour.",
+      "faqs": [
+        {
+          "question": "Is The Real San José worth it?",
+          "answer": "Based on 20 verified traveler reviews averaging 4.7 stars, The Real San José is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does The Real San José offer in San José?",
+          "answer": "The Real San José currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular The Real San José tour in San José?",
+          "answer": "The highest-reviewed option is \"3-Hour Downtown San Jose Walking Tour\" with 20 traveler reviews and a 4.7-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "362203P1",
+          "title": "3-Hour Downtown San Jose Walking Tour",
+          "slug": "3-hour-downtown-san-jose-walking-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0f/64/82/f4.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.7,
+          "reviewCount": 20,
+          "durationMinutes": 120
+        }
+      ]
+    },
+    {
+      "slug": "tico-paradise-costa-rica",
+      "operatorName": "Tico Paradise Costa Rica",
+      "operatorKey": "tico paradise costa rica",
+      "tourCount": 6,
+      "totalReviews": 5,
+      "averageRating": 5,
+      "blurb": "Tico Paradise Costa Rica specializes in private tours across San José. Use this page as a single hub to compare every Tico Paradise Costa Rica listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is Tico Paradise Costa Rica worth it?",
+          "answer": "Based on 5 verified traveler reviews averaging 5 stars, Tico Paradise Costa Rica is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Tico Paradise Costa Rica offer in San José?",
+          "answer": "Tico Paradise Costa Rica currently lists 6 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Tico Paradise Costa Rica tour in San José?",
+          "answer": "The highest-reviewed option is \"Private Transport San Jose to Arenal - Premium Service VIP\" with 4 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "113328P40",
+          "title": "Private Transport San Jose to Arenal - Premium Service VIP",
+          "slug": "private-transport-san-jose-to-arenal-premium-service-vip",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/0e/85/5b.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 4,
+          "durationMinutes": 240
+        },
+        {
+          "productId": "113328P50",
+          "title": "Private Transport SJO Airport to Arenal - Premium Service VIP",
+          "slug": "private-transport-sjo-airport-to-arenal-premium-service-vip",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/e7/a7/17.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": 240
+        },
+        {
+          "productId": "113328P33",
+          "title": "Private Transport San Jose to Puerto Viejo - Premium Service VIP",
+          "slug": "private-transport-san-jose-to-puerto-viejo-premium-service-vip",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/15/8d/79.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 240
+        },
+        {
+          "productId": "113328P56",
+          "title": "11-Days Private Tico Paradise Luxury Tour",
+          "slug": "11-days-private-tico-paradise-luxury-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/3d/af/0a.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 15840
+        },
+        {
+          "productId": "113328P49",
+          "title": "Private Transport San Jose to Los Sueños Marriott",
+          "slug": "private-transport-san-jose-to-los-sueos-marriott",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/14/6e/67/53.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": null
+        },
+        {
+          "productId": "113328P43",
+          "title": "Private Transport San Jose to Manuel Antonio",
+          "slug": "private-transport-san-jose-to-manuel-antonio",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/29/ef/c3.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "ticos-river-adventures",
+      "operatorName": "Ticos River Adventures",
+      "operatorKey": "ticos river adventures",
+      "tourCount": 1,
+      "totalReviews": 204,
+      "averageRating": 4.94,
+      "blurb": "Ticos River Adventures specializes in popular local experiences across San José. Use this page as a single hub to compare every Ticos River Adventures listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Pacuare River.",
+      "faqs": [
+        {
+          "question": "Is Ticos River Adventures worth it?",
+          "answer": "Based on 204 verified traveler reviews averaging 4.94 stars, Ticos River Adventures is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Ticos River Adventures offer in San José?",
+          "answer": "Ticos River Adventures currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Ticos River Adventures tour in San José?",
+          "answer": "The highest-reviewed option is \"Pacuare River\" with 204 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "107337P1",
+          "title": "Pacuare River",
+          "slug": "pacuare-river",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/36/95/e2.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9411764,
+          "reviewCount": 204,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "ticoway",
+      "operatorName": "TicoWay",
+      "operatorKey": "ticoway",
+      "tourCount": 1,
+      "totalReviews": 28,
+      "averageRating": 4.89,
+      "blurb": "TicoWay specializes in private tours across San José. Use this page as a single hub to compare every TicoWay listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Private Direct: SJO Airport to/from Manuel Antonio Quepos (1 Way).",
+      "faqs": [
+        {
+          "question": "Is TicoWay worth it?",
+          "answer": "Based on 28 verified traveler reviews averaging 4.89 stars, TicoWay is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does TicoWay offer in San José?",
+          "answer": "TicoWay currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular TicoWay tour in San José?",
+          "answer": "The highest-reviewed option is \"Private Direct: SJO Airport to/from Manuel Antonio Quepos (1 Way)\" with 28 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "130516P29",
+          "title": "Private Direct: SJO Airport to/from Manuel Antonio Quepos (1 Way)",
+          "slug": "private-direct-sjo-airport-tofrom-manuel-antonio-quepos-1-way",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/13/e7/c3/25.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.892857,
+          "reviewCount": 28,
+          "durationMinutes": 180
+        }
+      ]
+    },
+    {
+      "slug": "tour-completo-del-cacao-y-chocolate",
+      "operatorName": "Tour completo del cacao y chocolate",
+      "operatorKey": "tour completo del cacao y chocolate",
+      "tourCount": 1,
+      "totalReviews": 6,
+      "averageRating": 5,
+      "blurb": "Tour completo del cacao y chocolate specializes in popular local experiences across San José. Use this page as a single hub to compare every Tour completo del cacao y chocolate listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Fine Chocolate Tour in Costa Rica.",
+      "faqs": [
+        {
+          "question": "Is Tour completo del cacao y chocolate worth it?",
+          "answer": "Based on 6 verified traveler reviews averaging 5 stars, Tour completo del cacao y chocolate is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Tour completo del cacao y chocolate offer in San José?",
+          "answer": "Tour completo del cacao y chocolate currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Tour completo del cacao y chocolate tour in San José?",
+          "answer": "The highest-reviewed option is \"Fine Chocolate Tour in Costa Rica\" with 6 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5585971P8",
+          "title": "Fine Chocolate Tour in Costa Rica",
+          "slug": "fine-chocolate-tour-in-costa-rica",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/d7/de/5e.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 6,
+          "durationMinutes": 120
+        }
+      ]
+    },
+    {
+      "slug": "tours-costa-rica",
+      "operatorName": "Tours Costa Rica",
+      "operatorKey": "tours costa rica",
+      "tourCount": 8,
+      "totalReviews": 6218,
+      "averageRating": 4.9,
+      "blurb": "Tours Costa Rica specializes in food tours across San José. Use this page as a single hub to compare every Tours Costa Rica listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is Tours Costa Rica worth it?",
+          "answer": "Based on 6,218 verified traveler reviews averaging 4.9 stars, Tours Costa Rica is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Tours Costa Rica offer in San José?",
+          "answer": "Tours Costa Rica currently lists 8 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Tours Costa Rica tour in San José?",
+          "answer": "The highest-reviewed option is \"Arenal Volcano Full-Day Combo Tour with Lunch and Dinner\" with 3,660 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "62880P1",
+          "title": "Arenal Volcano Full-Day Combo Tour with Lunch and Dinner",
+          "slug": "arenal-volcano-full-day-combo-tour-with-lunch-and-dinner",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/06/72/f3/49.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9215846,
+          "reviewCount": 3660,
+          "durationMinutes": 840
+        },
+        {
+          "productId": "62880P6",
+          "title": "Arenal Volcano Experience Full-Day Tour from San Jose",
+          "slug": "arenal-volcano-experience-full-day-tour-from-san-jose",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/74/49/b0.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.8744364,
+          "reviewCount": 1553,
+          "durationMinutes": 840
+        },
+        {
+          "productId": "62880P3",
+          "title": "Manuel Antonio National Park Sightseeing and Wildlife Day Tour from San Jose",
+          "slug": "manuel-antonio-national-park-sightseeing-and-wildlife-day-tour-from-san-jose",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/06/72/f3/4e.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.8668313,
+          "reviewCount": 811,
+          "durationMinutes": 720
+        },
+        {
+          "productId": "62880P7",
+          "title": "Volcano, Waterfalls, Zipline, Hot Springs Full Day Tour",
+          "slug": "volcano-waterfalls-zipline-hot-springs-full-day-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/36/7e/30.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.805369,
+          "reviewCount": 149,
+          "durationMinutes": 840
+        },
+        {
+          "productId": "68129P3",
+          "title": "San Jose Foodie Tour | Costa Rican Culinary Culture",
+          "slug": "san-jose-foodie-tour-costa-rican-culinary-culture",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/7e/bb/c6.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 19,
+          "durationMinutes": null
+        },
+        {
+          "productId": "345782P1",
+          "title": "Zipline tour on the central valley of Costa Rica",
+          "slug": "zipline-tour-on-the-central-valley-of-costa-rica",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0f/04/5d/b0.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 18,
+          "durationMinutes": 150
+        },
+        {
+          "productId": "68129P4",
+          "title": "San Jose City Tour & Costa Rican Specialty Coffee Tastings",
+          "slug": "san-jose-city-tour-costa-rican-specialty-coffee-tastings",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/a7/df/7a.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.714286,
+          "reviewCount": 7,
+          "durationMinutes": 165
+        },
+        {
+          "productId": "124937P9",
+          "title": "Irazu Volcano and Cartago Hiking from San Jose",
+          "slug": "irazu-volcano-and-cartago-hiking-from-san-jose",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/99/d7/f2.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 3,
+          "reviewCount": 1,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "transporte-privado-desde-el-aeropuerto-de-san-jos-a-la-fortuna",
+      "operatorName": "Transporte privado desde el Aeropuerto de San José a La Fortuna",
+      "operatorKey": "transporte privado desde el aeropuerto de san josé a la fortuna",
+      "tourCount": 1,
+      "totalReviews": 5,
+      "averageRating": 5,
+      "blurb": "Transporte privado desde el Aeropuerto de San José a La Fortuna specializes in private tours across San José. Use this page as a single hub to compare every Transporte privado desde el Aeropuerto de San José a La Fortuna listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Private transportation from San José Airport to La Fortuna.",
+      "faqs": [
+        {
+          "question": "Is Transporte privado desde el Aeropuerto de San José a La Fortuna worth it?",
+          "answer": "Based on 5 verified traveler reviews averaging 5 stars, Transporte privado desde el Aeropuerto de San José a La Fortuna is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Transporte privado desde el Aeropuerto de San José a La Fortuna offer in San José?",
+          "answer": "Transporte privado desde el Aeropuerto de San José a La Fortuna currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Transporte privado desde el Aeropuerto de San José a La Fortuna tour in San José?",
+          "answer": "The highest-reviewed option is \"Private transportation from San José Airport to La Fortuna\" with 5 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "424934P1",
+          "title": "Private transportation from San José Airport to La Fortuna",
+          "slug": "private-transportation-from-san-jos-airport-to-la-fortuna",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/16/83/51/09.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 5,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "travel-menu",
+      "operatorName": "Travel Menu",
+      "operatorKey": "travel menu",
+      "tourCount": 1,
+      "totalReviews": 18,
+      "averageRating": 4.61,
+      "blurb": "Travel Menu specializes in popular local experiences across San José. Use this page as a single hub to compare every Travel Menu listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Guided Walking Tour in San Jose with Lunch.",
+      "faqs": [
+        {
+          "question": "Is Travel Menu worth it?",
+          "answer": "Based on 18 verified traveler reviews averaging 4.61 stars, Travel Menu is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Travel Menu offer in San José?",
+          "answer": "Travel Menu currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Travel Menu tour in San José?",
+          "answer": "The highest-reviewed option is \"Guided Walking Tour in San Jose with Lunch\" with 18 traveler reviews and a 4.6-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "442191P1",
+          "title": "Guided Walking Tour in San Jose with Lunch",
+          "slug": "guided-walking-tour-in-san-jose-with-lunch",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/26/02/d2.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.611111,
+          "reviewCount": 18,
+          "durationMinutes": 210
+        }
+      ]
+    },
+    {
+      "slug": "travel-tropical-tours",
+      "operatorName": "Travel Tropical Tours",
+      "operatorKey": "travel tropical tours",
+      "tourCount": 1,
+      "totalReviews": 14,
+      "averageRating": 5,
+      "blurb": "Travel Tropical Tours specializes in private tours across San José. Use this page as a single hub to compare every Travel Tropical Tours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Costa Rica - Private Tour Experience.",
+      "faqs": [
+        {
+          "question": "Is Travel Tropical Tours worth it?",
+          "answer": "Based on 14 verified traveler reviews averaging 5 stars, Travel Tropical Tours is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Travel Tropical Tours offer in San José?",
+          "answer": "Travel Tropical Tours currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Travel Tropical Tours tour in San José?",
+          "answer": "The highest-reviewed option is \"Costa Rica - Private Tour Experience\" with 14 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "329103P1",
+          "title": "Costa Rica - Private Tour Experience",
+          "slug": "costa-rica-private-tour-experience",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0f/5e/64/8b.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 14,
+          "durationMinutes": 8640
+        }
+      ]
+    },
+    {
+      "slug": "travelwellcr",
+      "operatorName": "TravelWellCR",
+      "operatorKey": "travelwellcr",
+      "tourCount": 1,
+      "totalReviews": 9,
+      "averageRating": 4,
+      "blurb": "TravelWellCR specializes in popular local experiences across San José. Use this page as a single hub to compare every TravelWellCR listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Early Volcano Poás Tour.",
+      "faqs": [
+        {
+          "question": "Is TravelWellCR worth it?",
+          "answer": "Based on 9 verified traveler reviews averaging 4 stars, TravelWellCR is solid for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does TravelWellCR offer in San José?",
+          "answer": "TravelWellCR currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular TravelWellCR tour in San José?",
+          "answer": "The highest-reviewed option is \"Early Volcano Poás Tour\" with 9 traveler reviews and a 4.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5600584P2",
+          "title": "Early Volcano Poás Tour",
+          "slug": "early-volcano-pos-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/16/59/ee/4b.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4,
+          "reviewCount": 9,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "turrialtours",
+      "operatorName": "Turrialtours",
+      "operatorKey": "turrialtours",
+      "tourCount": 1,
+      "totalReviews": 11,
+      "averageRating": 5,
+      "blurb": "Turrialtours specializes in popular local experiences across San José. Use this page as a single hub to compare every Turrialtours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Day Tubing the Pejibaye River.",
+      "faqs": [
+        {
+          "question": "Is Turrialtours worth it?",
+          "answer": "Based on 11 verified traveler reviews averaging 5 stars, Turrialtours is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Turrialtours offer in San José?",
+          "answer": "Turrialtours currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Turrialtours tour in San José?",
+          "answer": "The highest-reviewed option is \"Day Tubing the Pejibaye River\" with 11 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "146967P2",
+          "title": "Day Tubing the Pejibaye River",
+          "slug": "day-tubing-the-pejibaye-river",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/09/6e/f7/54.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 11,
+          "durationMinutes": 360
+        }
+      ]
+    },
+    {
+      "slug": "vacations-costa-rica",
+      "operatorName": "Vacations Costa Rica",
+      "operatorKey": "vacations costa rica",
+      "tourCount": 2,
+      "totalReviews": 1830,
+      "averageRating": 4.91,
+      "blurb": "Vacations Costa Rica specializes in popular local experiences across San José. Use this page as a single hub to compare every Vacations Costa Rica listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes La Fortuna Waterfall, Hanging Bridges, Arenal Volcano Combo Tour and Combo tour Poas Volcano and La Paz waterfall and Coffee tour.",
+      "faqs": [
+        {
+          "question": "Is Vacations Costa Rica worth it?",
+          "answer": "Based on 1,830 verified traveler reviews averaging 4.91 stars, Vacations Costa Rica is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Vacations Costa Rica offer in San José?",
+          "answer": "Vacations Costa Rica currently lists 2 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Vacations Costa Rica tour in San José?",
+          "answer": "The highest-reviewed option is \"La Fortuna Waterfall, Hanging Bridges, Arenal Volcano Combo Tour\" with 1,824 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "12732P5",
+          "title": "La Fortuna Waterfall, Hanging Bridges, Arenal Volcano Combo Tour",
+          "slug": "la-fortuna-waterfall-hanging-bridges-arenal-volcano-combo-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/08/77/dd/93.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.910636,
+          "reviewCount": 1824,
+          "durationMinutes": null
+        },
+        {
+          "productId": "187932P1",
+          "title": "Combo tour Poas Volcano and La Paz waterfall and Coffee tour",
+          "slug": "combo-tour-poas-volcano-and-la-paz-waterfall-and-coffee-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/08/6b/fc/f5.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.1666665,
+          "reviewCount": 6,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "vamonos-costa-rica-tours",
+      "operatorName": "Vamonos Costa Rica Tours",
+      "operatorKey": "vamonos costa rica tours",
+      "tourCount": 1,
+      "totalReviews": 6,
+      "averageRating": 5,
+      "blurb": "Vamonos Costa Rica Tours specializes in popular local experiences across San José. Use this page as a single hub to compare every Vamonos Costa Rica Tours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Quetzales Route: Naturalist Exploration in the Cloud Forest.",
+      "faqs": [
+        {
+          "question": "Is Vamonos Costa Rica Tours worth it?",
+          "answer": "Based on 6 verified traveler reviews averaging 5 stars, Vamonos Costa Rica Tours is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Vamonos Costa Rica Tours offer in San José?",
+          "answer": "Vamonos Costa Rica Tours currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Vamonos Costa Rica Tours tour in San José?",
+          "answer": "The highest-reviewed option is \"Quetzales Route: Naturalist Exploration in the Cloud Forest\" with 6 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "370517P1",
+          "title": "Quetzales Route: Naturalist Exploration in the Cloud Forest",
+          "slug": "quetzales-route-naturalist-exploration-in-the-cloud-forest",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/d8/0f/20.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 6,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "viajes-nana-costa-rica",
+      "operatorName": "VIAJES NANA COSTA RICA",
+      "operatorKey": "viajes nana costa rica",
+      "tourCount": 1,
+      "totalReviews": 8,
+      "averageRating": 4.5,
+      "blurb": "VIAJES NANA COSTA RICA specializes in popular local experiences across San José. Use this page as a single hub to compare every VIAJES NANA COSTA RICA listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Doka Café, Poas Volcano and La Paz Waterfall Garden.",
+      "faqs": [
+        {
+          "question": "Is VIAJES NANA COSTA RICA worth it?",
+          "answer": "Based on 8 verified traveler reviews averaging 4.5 stars, VIAJES NANA COSTA RICA is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does VIAJES NANA COSTA RICA offer in San José?",
+          "answer": "VIAJES NANA COSTA RICA currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular VIAJES NANA COSTA RICA tour in San José?",
+          "answer": "The highest-reviewed option is \"Doka Café, Poas Volcano and La Paz Waterfall Garden\" with 8 traveler reviews and a 4.5-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "224061P7",
+          "title": "Doka Café, Poas Volcano and La Paz Waterfall Garden",
+          "slug": "doka-caf-poas-volcano-and-la-paz-waterfall-garden",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/c7/49/2d.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.5,
+          "reviewCount": 8,
+          "durationMinutes": 480
+        }
+      ]
+    },
+    {
+      "slug": "vip-city-bus-city-tour",
+      "operatorName": "Vip City Bus (City tour)",
+      "operatorKey": "vip city bus (city tour)",
+      "tourCount": 2,
+      "totalReviews": 472,
+      "averageRating": 4.22,
+      "blurb": "Vip City Bus (City tour) specializes in sightseeing tours across San José. Use this page as a single hub to compare every Vip City Bus (City tour) listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes San Jose Walking and Bus City Tour and Half-Day San Jose Evening Bus Tour with Dinner and Pickup.",
+      "faqs": [
+        {
+          "question": "Is Vip City Bus (City tour) worth it?",
+          "answer": "Based on 472 verified traveler reviews averaging 4.22 stars, Vip City Bus (City tour) is solid for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Vip City Bus (City tour) offer in San José?",
+          "answer": "Vip City Bus (City tour) currently lists 2 bookable tours in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Vip City Bus (City tour) tour in San José?",
+          "answer": "The highest-reviewed option is \"San Jose Walking and Bus City Tour\" with 353 traveler reviews and a 4.4-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "36475P1",
+          "title": "San Jose Walking and Bus City Tour",
+          "slug": "san-jose-walking-and-bus-city-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/06/71/1f/b8.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.354108,
+          "reviewCount": 353,
+          "durationMinutes": 300
+        },
+        {
+          "productId": "36475P2",
+          "title": "Half-Day San Jose Evening Bus Tour with Dinner and Pickup",
+          "slug": "half-day-san-jose-evening-bus-tour-with-dinner-and-pickup",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/06/71/1f/ba.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 3.815126,
+          "reviewCount": 119,
+          "durationMinutes": 300
+        }
+      ]
+    },
+    {
+      "slug": "xplore-arenal",
+      "operatorName": "Xplore Arenal",
+      "operatorKey": "xplore arenal",
+      "tourCount": 1,
+      "totalReviews": 40,
+      "averageRating": 4.85,
+      "blurb": "Xplore Arenal specializes in popular local experiences across San José. Use this page as a single hub to compare every Xplore Arenal listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their San José lineup includes Pacos Horseback Ride Through Arenal’s Forest and Cross Rivers.",
+      "faqs": [
+        {
+          "question": "Is Xplore Arenal worth it?",
+          "answer": "Based on 40 verified traveler reviews averaging 4.85 stars, Xplore Arenal is generally excellent for tours in San José. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Xplore Arenal offer in San José?",
+          "answer": "Xplore Arenal currently lists 1 bookable tour in San José on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Xplore Arenal tour in San José?",
+          "answer": "The highest-reviewed option is \"Pacos Horseback Ride Through Arenal’s Forest and Cross Rivers\" with 40 traveler reviews and a 4.8-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5567872P1",
+          "title": "Pacos Horseback Ride Through Arenal’s Forest and Cross Rivers",
+          "slug": "pacos-horseback-ride-through-arenals-forest-and-cross-rivers",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/72/f5/e9.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.85,
+          "reviewCount": 40,
+          "durationMinutes": 120
+        }
+      ]
+    }
+  ],
+  "patchedAt": "2026-06-21T21:27:42.627Z"
+}
