@@ -7,7 +7,13 @@ import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import { generateTourSlug } from '@/utils/tourHelpers';
 import { slugToViatorId } from '@/data/viatorDestinationMap';
+import { getDestinationById } from '@/data/destinationsData';
+import { getDestinationFullContent } from '@/data/destinationFullContent';
+import { getDestinationSeoContent } from '@/data/destinationSeoContent';
 import { enrichOperatorSeo } from '@/lib/operatorPageSeo';
+
+const DEFAULT_DEST_IMAGE =
+  'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/Explore%20any%20destination%20with%20TopToursai.png';
 
 /** Destinations with indexable /operators/[slug] pages enabled (phased rollout). */
 export const OPERATOR_PAGE_PILOT_DESTINATIONS = new Set([
@@ -33,6 +39,41 @@ export const OPERATOR_MEANINGFUL_REVIEW_COUNT = 5;
 
 export function isOperatorPagesEnabled(destinationSlug) {
   return OPERATOR_PAGE_PILOT_DESTINATIONS.has(String(destinationSlug || '').toLowerCase());
+}
+
+/** Featured hubs not in destinationsData.js (e.g. siem-reap) still need a destination record. */
+export function resolveDestinationForOperatorPages(destinationId) {
+  const id = String(destinationId || '').toLowerCase();
+  const curated = getDestinationById(id);
+  if (curated) return curated;
+
+  const fullContent = getDestinationFullContent(id);
+  const seoContent = getDestinationSeoContent(id);
+  if (fullContent || seoContent) {
+    const destinationName = fullContent?.destinationName || seoContent?.destinationName || id;
+    return {
+      id,
+      name: destinationName,
+      fullName: destinationName,
+      imageUrl:
+        seoContent?.ogImage ||
+        fullContent?.imageUrl ||
+        seoContent?.imageUrl ||
+        DEFAULT_DEST_IMAGE,
+    };
+  }
+
+  const index = loadOperatorPageIndex(id);
+  if (index?.destinationName) {
+    return {
+      id,
+      name: index.destinationName,
+      fullName: index.destinationName,
+      imageUrl: DEFAULT_DEST_IMAGE,
+    };
+  }
+
+  return null;
 }
 
 /** Normalize for deduping Charisma_Experience vs Charisma Experience. */

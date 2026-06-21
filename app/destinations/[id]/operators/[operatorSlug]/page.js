@@ -1,10 +1,10 @@
 import { notFound } from 'next/navigation';
-import { getDestinationById } from '@/data/destinationsData';
 import { requireFeaturedDestination } from '@/lib/requireFeaturedDestination';
 import {
   isOperatorPagesEnabled,
   loadOperatorPageIndex,
   resolveOperatorPage,
+  resolveDestinationForOperatorPages,
   buildOperatorIntro,
   getOperatorPagePath,
   getOperatorPagePilotSlugs,
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }) {
   const operator = resolveOperatorPage(id, operatorSlug);
   if (!operator) return { title: 'Operator not found' };
 
-  const destination = getDestinationById(id);
+  const destination = resolveDestinationForOperatorPages(id);
   const destName = destination?.fullName || destination?.name || operator.destinationName || id;
   const title = `${operator.operatorName} Tours in ${destName} | Reviews & Booking`;
   const description =
@@ -67,7 +67,7 @@ export default async function OperatorDetailPage({ params }) {
     notFound();
   }
 
-  const destination = getDestinationById(id);
+  const destination = resolveDestinationForOperatorPages(id);
   if (!destination) {
     notFound();
   }
