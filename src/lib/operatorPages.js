@@ -28,6 +28,7 @@ export const OPERATOR_PAGE_PILOT_DESTINATIONS = new Set([
   'galapagos-islands',
   'interlaken',
   'siem-reap',
+  'dubrovnik',
 ]);
 
 export function getOperatorPagePilotSlugs() {
