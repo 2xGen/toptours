@@ -6,7 +6,9 @@
   "scripts": {
     "clean": "node scripts/clean-next.js",
     "dev": "node scripts/clean-next.js && next dev",
-    "build": "node scripts/generate-featured-destination-slugs.js && node scripts/generate-production-sitemaps.js && next build",
+    "build": "node scripts/generate-featured-destination-slugs.js && node scripts/generate-production-sitemaps.js && node scripts/write-indexnow-key.js && node scripts/submit-indexnow.js && next build",
+    "indexnow:submit": "node scripts/submit-indexnow.js",
+    "indexnow:key": "node scripts/write-indexnow-key.js",
     "generate-featured-destination-slugs": "node scripts/generate-featured-destination-slugs.js",
     "generate-production-sitemaps": "node scripts/generate-production-sitemaps.js",
     "analyze": "ANALYZE=true next build",
