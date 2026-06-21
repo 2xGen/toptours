@@ -20,6 +20,8 @@ export const OPERATOR_PAGE_PILOT_DESTINATIONS = new Set([
   'banff',
   'queenstown',
   'galapagos-islands',
+  'interlaken',
+  'siem-reap',
 ]);
 
 export function getOperatorPagePilotSlugs() {
