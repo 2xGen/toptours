@@ -30,6 +30,9 @@ import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 import { destinations } from '../../../../../src/data/destinationsData';
 import { travelGuides } from '../../../../../src/data/travelGuidesData';
 import PartnerShowcaseHeroCards from '../partnerGuides/PartnerShowcaseHeroCards';
+import AngkorSunriseGuideSections from '../partnerGuides/AngkorSunriseGuideSections';
+import SiemReapAirportTransfersSections from '../partnerGuides/SiemReapAirportTransfersSections';
+import SiemReapAdditionalFeesSections from '../partnerGuides/SiemReapAdditionalFeesSections';
 
 const AIRPORT_TRANSFERS_OG_IMAGE = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/airport%20transfers.png';
 const DISCOVER_CARS_URL = 'https://www.discovercars.com/?a_aid=toptours&a_cid=65100b9c';
@@ -51,15 +54,36 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
   const heroImageUrl = guideData?.heroImage || destinationProp?.imageUrl
     || (categorySlug === 'airport-transfers' ? AIRPORT_TRANSFERS_OG_IMAGE : null);
   
-  // Calculate stats from actual tours for hero display
+  const isAngkorSunriseLayout = guideData?.guideLayout === 'angkor-sunrise';
+  const isAirportTransfersLayout = guideData?.guideLayout === 'siem-reap-airport-transfers';
+  const isAngkorWatToursLayout = guideData?.guideLayout === 'siem-reap-angkor-wat-tours';
+  const isAdditionalFeesLayout = guideData?.guideLayout === 'siem-reap-additional-fees';
+  const isBikeToursLayout = guideData?.guideLayout === 'siem-reap-bike-tours';
+  const isDayTripsLayout = guideData?.guideLayout === 'siem-reap-day-trips';
+  const isCuratedToursGuideLayout =
+    isAirportTransfersLayout || isAngkorWatToursLayout || isBikeToursLayout || isDayTripsLayout;
+  const isEditorialGuideLayout =
+    isAngkorSunriseLayout || isCuratedToursGuideLayout || isAdditionalFeesLayout;
+
+  // Calculate stats from actual tours for hero display (or static guide stats / showcase tours)
   const heroStats = React.useMemo(() => {
-    const tourCount = effectiveCategoryTours?.length || 0;
+    const showcaseCount = guideData?.partnerShowcaseTours?.length || 0;
+    const tourCount = effectiveCategoryTours?.length || showcaseCount || guideData?.stats?.toursAvailable || 0;
     const prices = (effectiveCategoryTours || [])
       .map(t => parseFloat(t.pricing?.summary?.fromPrice || t.pricing?.fromPrice || t.price || 0))
       .filter(p => p > 0);
-    const minPrice = prices.length > 0 ? Math.min(...prices) : 0;
-    return { tourCount, minPrice };
-  }, [effectiveCategoryTours]);
+    const showcasePrices = (guideData?.partnerShowcaseTours || [])
+      .map(t => Number(t.priceFrom))
+      .filter(p => p > 0);
+    const minPrice =
+      prices.length > 0
+        ? Math.min(...prices)
+        : showcasePrices.length > 0
+          ? Math.min(...showcasePrices)
+          : guideData?.stats?.priceFrom || 0;
+    const reviewCount = guideData?.stats?.reviewCount || null;
+    return { tourCount, minPrice, reviewCount };
+  }, [effectiveCategoryTours, guideData?.partnerShowcaseTours, guideData?.stats]);
   
   // User preferences for matching
   const [user, setUser] = React.useState(null);
@@ -356,17 +380,30 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
                 </p>
                 {!guideData?.isPlaceholder && (
                   <p className="text-sm text-white/80 mb-4">
-                    Compare the best {guideData.categoryName ? guideData.categoryName.toLowerCase() : 'tours'} in {destination.fullName || destination.name} — see prices, durations, and book with instant confirmation.
+                    {guideData.heroTagline ||
+                      `Compare the best ${guideData.categoryName ? guideData.categoryName.toLowerCase() : 'tours'} in ${destination.fullName || destination.name} — see prices, durations, and book with instant confirmation.`}
                   </p>
                 )}
                 
                 {/* Quick Stats - Compact */}
-                {heroStats.tourCount > 0 && (
+                {(heroStats.tourCount > 0 || heroStats.reviewCount > 0 || heroStats.minPrice > 0) && (
                   <div className="flex flex-wrap gap-2 mb-4">
-                    <div className="flex items-center gap-1.5 bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-lg text-sm">
-                      <Star className="w-4 h-4 text-white" />
-                      <span className="text-white font-medium">{heroStats.tourCount}+ tours</span>
-                    </div>
+                    {heroStats.reviewCount > 0 && (
+                      <div className="flex items-center gap-1.5 bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-lg text-sm">
+                        <Star className="w-4 h-4 text-white" />
+                        <span className="text-white font-medium">
+                          {heroStats.reviewCount >= 1000
+                            ? `${Math.floor(heroStats.reviewCount / 1000) * 1000}+ reviews`
+                            : `${heroStats.reviewCount}+ reviews`}
+                        </span>
+                      </div>
+                    )}
+                    {heroStats.tourCount > 0 && !heroStats.reviewCount && (
+                      <div className="flex items-center gap-1.5 bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-lg text-sm">
+                        <Star className="w-4 h-4 text-white" />
+                        <span className="text-white font-medium">{heroStats.tourCount}+ tours</span>
+                      </div>
+                    )}
                     {heroStats.minPrice > 0 && (
                       <div className="flex items-center gap-1.5 bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-lg text-sm">
                         <DollarSign className="w-4 h-4 text-white" />
@@ -416,17 +453,30 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
               </p>
               {!guideData?.isPlaceholder && (
                 <p className="text-sm text-white/80 mb-4">
-                  Compare the best {guideData.categoryName ? guideData.categoryName.toLowerCase() : 'tours'} in {destination.fullName || destination.name} — see prices, durations, and book with instant confirmation.
+                  {guideData.heroTagline ||
+                    `Compare the best ${guideData.categoryName ? guideData.categoryName.toLowerCase() : 'tours'} in ${destination.fullName || destination.name} — see prices, durations, and book with instant confirmation.`}
                 </p>
               )}
               
               {/* Quick Stats - Centered Compact */}
-              {heroStats.tourCount > 0 && (
+              {(heroStats.tourCount > 0 || heroStats.reviewCount > 0 || heroStats.minPrice > 0) && (
                 <div className="flex flex-wrap justify-center gap-2 mb-4">
-                  <div className="flex items-center gap-1.5 bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-lg text-sm">
-                    <Star className="w-4 h-4 text-white" />
-                    <span className="text-white font-medium">{heroStats.tourCount}+ tours</span>
-                  </div>
+                  {heroStats.reviewCount > 0 && (
+                    <div className="flex items-center gap-1.5 bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-lg text-sm">
+                      <Star className="w-4 h-4 text-white" />
+                      <span className="text-white font-medium">
+                        {heroStats.reviewCount >= 1000
+                          ? `${Math.floor(heroStats.reviewCount / 1000) * 1000}+ reviews`
+                          : `${heroStats.reviewCount}+ reviews`}
+                      </span>
+                    </div>
+                  )}
+                  {heroStats.tourCount > 0 && !heroStats.reviewCount && (
+                    <div className="flex items-center gap-1.5 bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-lg text-sm">
+                      <Star className="w-4 h-4 text-white" />
+                      <span className="text-white font-medium">{heroStats.tourCount}+ tours</span>
+                    </div>
+                  )}
                   {heroStats.minPrice > 0 && (
                     <div className="flex items-center gap-1.5 bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-lg text-sm">
                       <DollarSign className="w-4 h-4 text-white" />
@@ -468,7 +518,37 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
       {guideData?.partnerShowcaseTours?.length > 0 && !guideData?.isPlaceholder && (
         <PartnerShowcaseHeroCards
           tours={guideData.partnerShowcaseTours}
-          operatorLabel="Kiliclimb Africa Safaris"
+          operatorLabel={guideData.showcaseConfig?.operatorLabel || 'Kiliclimb Africa Safaris'}
+          showPartnerBadge={guideData.showcaseConfig?.showPartnerBadge !== false}
+          heading={guideData.showcaseConfig?.heading}
+          description={guideData.showcaseConfig?.description}
+          centered={guideData.showcaseConfig?.centered === true}
+        />
+      )}
+
+      {isAngkorSunriseLayout && !guideData?.isPlaceholder && (
+        <AngkorSunriseGuideSections
+          showcaseTours={guideData.partnerShowcaseTours}
+          relatedGuideLinks={guideData.relatedGuideLinks}
+        />
+      )}
+
+      {isAdditionalFeesLayout && !guideData?.isPlaceholder && (
+        <SiemReapAdditionalFeesSections
+          pageData={guideData}
+          relatedGuideLinks={guideData.relatedGuideLinks}
+        />
+      )}
+
+      {isCuratedToursGuideLayout && !guideData?.isPlaceholder && (
+        <SiemReapAirportTransfersSections
+          topPick={guideData.topPick}
+          transferSections={guideData.transferSections}
+          relatedGuideLinks={guideData.relatedGuideLinks}
+          introParagraphs={guideData.introParagraphs}
+          comparisonSection={guideData.comparisonSection}
+          tipsSection={guideData.tipsSection}
+          topPickHeading={guideData.topPickHeading}
         />
       )}
 
@@ -542,6 +622,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
       {!guideData?.isPlaceholder && (
       <>
       {/* Introduction Section with Background */}
+      {!isEditorialGuideLayout && (
       <section className="py-12 sm:py-16 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Link Back to Destination */}
@@ -583,6 +664,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
           </motion.div>
 
           {/* Booking-intent lead (template from existing data) then Introduction */}
+          {!isEditorialGuideLayout && (
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -599,6 +681,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
               </p>
             </div>
           </motion.div>
+          )}
 
           {/* Match to Your Style - Toggle (off by default to save cost for crawlers) + Button - when we have tours */}
           {effectiveCategoryTours && effectiveCategoryTours.length > 0 && (
@@ -771,6 +854,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
           )}
         </div>
       </section>
+      )}
 
       {/* Why Choose Section - Only show if there's content */}
       {guideData.whyChoose && Array.isArray(guideData.whyChoose) && guideData.whyChoose.length > 0 && (
@@ -895,6 +979,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
       )}
 
       {/* What to Expect */}
+      {!guideData.hideWhatToExpect && (
       <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
@@ -938,8 +1023,10 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
         </motion.div>
         </div>
       </section>
+      )}
 
       {/* Tips Section */}
+      {!guideData.hideExpertTips && (
       <section className="py-12 sm:py-16 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
@@ -968,11 +1055,12 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
         </motion.div>
         </div>
       </section>
+      )}
 
       {/* FAQs - Matching travel-guides style */}
       <section className="py-12 sm:py-16 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg shadow-lg p-8 md:p-12">
+        <div className={`mx-auto px-4 sm:px-6 lg:px-8 ${isEditorialGuideLayout ? 'max-w-5xl' : 'max-w-7xl'}`}>
+          <div className={`rounded-lg shadow-lg p-8 md:p-12 ${isEditorialGuideLayout ? 'bg-gray-50 border border-gray-200' : 'bg-gradient-to-br from-blue-50 to-purple-50'}`}>
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
             
             <div className="space-y-6 max-w-4xl mx-auto">
@@ -1000,6 +1088,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
       </section>
 
       {/* Final CTA */}
+      {!isEditorialGuideLayout && (
       <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
@@ -1035,6 +1124,7 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
         </motion.div>
         </div>
       </section>
+      )}
 
       {/* Related Travel Guides Section - Same style as restaurant page */}
       {(() => {

@@ -14,8 +14,33 @@ import {
   ARUSHA_KILICLIMB_GUIDE_SLUG,
   getKiliclimbPartnerGuideData,
 } from '../partnerGuides/arushaKiliclimbTanzania';
+import {
+  ANGKOR_SUNRISE_GUIDE_SLUG,
+  getAngkorSunriseGuideData,
+} from '../partnerGuides/siemReapAngkorSunrise';
+import {
+  SIEM_REAP_AIRPORT_TRANSFERS_SLUG,
+  getSiemReapAirportTransfersGuideData,
+} from '../partnerGuides/siemReapAirportTransfers';
+import {
+  SIEM_REAP_ANGKOR_WAT_TOURS_SLUG,
+  getSiemReapAngkorWatToursGuideData,
+} from '../partnerGuides/siemReapAngkorWatTours';
+import {
+  SIEM_REAP_ADDITIONAL_FEES_SLUG,
+  getSiemReapAdditionalFeesGuideData,
+} from '../partnerGuides/siemReapAdditionalFees';
+import {
+  SIEM_REAP_BIKE_TOURS_SLUG,
+  getSiemReapBikeToursGuideData,
+} from '../partnerGuides/siemReapBikeTours';
+import {
+  SIEM_REAP_DAY_TRIPS_SLUG,
+  getSiemReapDayTripsGuideData,
+} from '../partnerGuides/siemReapDayTrips';
 import { isLowValueGuideTag } from '@/lib/guideIndexing';
 import { requireFeaturedDestination } from '@/lib/requireFeaturedDestination';
+import { getTourUrl } from '@/utils/tourHelpers';
 
 /** ISR: 30 days — keep in sync with src/lib/guideSectionCacheConfig.js (Next requires a numeric literal here). */
 export const revalidate = 2592000;
@@ -31,6 +56,89 @@ function devWarn(...args) {
 
 function devError(...args) {
   if (IS_DEV) console.error(...args);
+}
+
+const TRAVEL_GUIDE_OG_IMAGE = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/travel%20guides.png';
+const AIRPORT_TRANSFERS_OG_IMAGE = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/airport%20transfers.png';
+
+function resolveGuideOgImage(guideData, destination, categorySlug) {
+  const defaultOgImage =
+    categorySlug === 'airport-transfers' ? AIRPORT_TRANSFERS_OG_IMAGE : TRAVEL_GUIDE_OG_IMAGE;
+  return guideData?.heroImage || destination?.imageUrl || defaultOgImage;
+}
+
+function resolveGuideSchemaDates(guideData) {
+  if (guideData?.schemaDatePublished) {
+    return {
+      datePublished: guideData.schemaDatePublished,
+      dateModified: guideData.schemaDateModified || guideData.schemaDatePublished,
+    };
+  }
+  if (
+    guideData?.guideLayout === 'angkor-sunrise' ||
+    guideData?.guideLayout === 'siem-reap-airport-transfers' ||
+    guideData?.guideLayout === 'siem-reap-angkor-wat-tours' ||
+    guideData?.guideLayout === 'siem-reap-additional-fees' ||
+    guideData?.guideLayout === 'siem-reap-bike-tours' ||
+    guideData?.guideLayout === 'siem-reap-day-trips'
+  ) {
+    return { datePublished: '2026-06-10', dateModified: '2026-06-10' };
+  }
+  return { datePublished: '2025-12-31', dateModified: '2025-12-31' };
+}
+
+function buildGuideFeaturedToursItemList(guideData, destination, featuredTours) {
+  if (!Array.isArray(featuredTours) || featuredTours.length === 0) return null;
+
+  const destName = destination?.fullName || destination?.name || '';
+  const categoryLabel = guideData?.categoryName || 'Tours';
+
+  return {
+    '@type': 'ItemList',
+    name: `Best ${categoryLabel} in ${destName}`,
+    description:
+      guideData?.subtitle ||
+      `Curated ${String(categoryLabel).toLowerCase()} in ${destName} with prices and booking links`,
+    numberOfItems: featuredTours.length,
+    itemListElement: featuredTours.map((tour, index) => {
+      const productId = tour.productId || tour.id;
+      const title = tour.title || 'Tour';
+      const tourPath = productId ? getTourUrl(productId, title) : null;
+      const tourUrl = tourPath ? `https://toptours.ai${tourPath}` : null;
+
+      return {
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'Product',
+          name: title,
+          description: tour.bestFor || tour.summary || `${title} in ${destName}`,
+          ...(tour.imageUrl || tour.image ? { image: tour.imageUrl || tour.image } : {}),
+          ...(tourUrl ? { url: tourUrl } : {}),
+          ...(tour.rating != null
+            ? {
+                aggregateRating: {
+                  '@type': 'AggregateRating',
+                  ratingValue: Number(tour.rating),
+                  reviewCount: Number(tour.reviewCount || 0),
+                  bestRating: 5,
+                },
+              }
+            : {}),
+          ...(tour.priceFrom != null
+            ? {
+                offers: {
+                  '@type': 'Offer',
+                  price: Number(tour.priceFrom),
+                  priceCurrency: 'USD',
+                  availability: 'https://schema.org/InStock',
+                },
+              }
+            : {}),
+        },
+      };
+    }),
+  };
 }
 
 // Function to fetch all guides for a destination from database
@@ -296,6 +404,30 @@ export async function generateMetadata({ params }) {
     if (!guideData && normDestMeta === 'arusha' && normCatMeta === ARUSHA_KILICLIMB_GUIDE_SLUG) {
       guideData = getKiliclimbPartnerGuideData();
     }
+
+    if (!guideData && normDestMeta === 'siem-reap' && normCatMeta === ANGKOR_SUNRISE_GUIDE_SLUG) {
+      guideData = getAngkorSunriseGuideData();
+    }
+
+    if (normDestMeta === 'siem-reap' && normCatMeta === SIEM_REAP_AIRPORT_TRANSFERS_SLUG) {
+      guideData = getSiemReapAirportTransfersGuideData();
+    }
+
+    if (normDestMeta === 'siem-reap' && normCatMeta === SIEM_REAP_ANGKOR_WAT_TOURS_SLUG) {
+      guideData = getSiemReapAngkorWatToursGuideData();
+    }
+
+    if (normDestMeta === 'siem-reap' && normCatMeta === SIEM_REAP_ADDITIONAL_FEES_SLUG) {
+      guideData = getSiemReapAdditionalFeesGuideData();
+    }
+
+    if (normDestMeta === 'siem-reap' && normCatMeta === SIEM_REAP_BIKE_TOURS_SLUG) {
+      guideData = getSiemReapBikeToursGuideData();
+    }
+
+    if (normDestMeta === 'siem-reap' && normCatMeta === SIEM_REAP_DAY_TRIPS_SLUG) {
+      guideData = getSiemReapDayTripsGuideData();
+    }
     
     // Same as page: tag-based guides — real cache vs placeholder ("Generate with AI" shell).
     // SEO: noindex placeholders until tag_guide_content has generated unique body copy (otherwise thin / doorway-style).
@@ -341,11 +473,8 @@ export async function generateMetadata({ params }) {
       };
     }
 
-    // Use guide heroImage if available, otherwise destination imageUrl, otherwise fallback to category-specific default
-    const TRAVEL_GUIDE_OG_IMAGE = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/travel%20guides.png';
-    const AIRPORT_TRANSFERS_OG_IMAGE = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/airport%20transfers.png';
-    const defaultOgImage = categorySlug === 'airport-transfers' ? AIRPORT_TRANSFERS_OG_IMAGE : TRAVEL_GUIDE_OG_IMAGE;
-    const ogImage = guideData.heroImage || destination.imageUrl || defaultOgImage;
+    // Prefer guide heroImage (e.g. SAI editorial guides) over generic category fallbacks
+    const ogImage = resolveGuideOgImage(guideData, destination, categorySlug);
     const seo = guideData.seo || {};
     const destName = destination.fullName || destination.name || '';
     const categoryName = guideData.categoryName || guideData.title || 'Tours';
@@ -446,6 +575,14 @@ export default async function CategoryGuidePage({ params }) {
       // Note: redirect() throws NEXT_REDIRECT error which is expected - Next.js catches it
       redirect(`/destinations/${destinationId}/guides/${normalizedCategorySlug}`);
     }
+
+    // Legacy angkor-wat slug → curated shore excursions guide
+    if (
+      normalizeSlug(destinationId) === 'siem-reap' &&
+      normalizedCategorySlug === 'angkor-wat'
+    ) {
+      redirect('/destinations/siem-reap/guides/shore-excursions');
+    }
     
     // STEP 1: Get guide data from database (all guides are now in the database)
     let guideData = await getGuideFromDatabase(destinationId, categorySlug);
@@ -533,6 +670,174 @@ export default async function CategoryGuidePage({ params }) {
           toursSearchQuery: staticGuide.toursSearchQuery ?? guideData.toursSearchQuery,
           // Prefer static display label so UI strings don’t repeat “partner” from legacy DB copy
           categoryName: staticGuide.categoryName || guideData.categoryName,
+        };
+      }
+    }
+
+    if (normDestPage === 'siem-reap' && normCatPage === ANGKOR_SUNRISE_GUIDE_SLUG) {
+      const staticGuide = getAngkorSunriseGuideData();
+      if (!guideData) {
+        guideData = staticGuide;
+        guideSource = 'static_editorial';
+      } else {
+        guideData = {
+          ...staticGuide,
+          ...guideData,
+          partnerShowcaseTours: staticGuide.partnerShowcaseTours,
+          relatedGuideLinks: staticGuide.relatedGuideLinks,
+          showcaseConfig: staticGuide.showcaseConfig,
+          guideLayout: staticGuide.guideLayout,
+        };
+      }
+    }
+
+    if (normDestPage === 'siem-reap' && normCatPage === SIEM_REAP_ANGKOR_WAT_TOURS_SLUG) {
+      const staticGuide = getSiemReapAngkorWatToursGuideData();
+      if (!guideData) {
+        guideData = staticGuide;
+        guideSource = 'static_editorial';
+      } else {
+        guideData = {
+          ...guideData,
+          ...staticGuide,
+          topPick: staticGuide.topPick,
+          transferSections: staticGuide.transferSections,
+          relatedGuideLinks: staticGuide.relatedGuideLinks,
+          guideLayout: staticGuide.guideLayout,
+          hideWhatToExpect: staticGuide.hideWhatToExpect,
+          hideExpertTips: staticGuide.hideExpertTips,
+          faqs: staticGuide.faqs,
+          seo: staticGuide.seo,
+          stats: staticGuide.stats,
+          heroTagline: staticGuide.heroTagline,
+          heroImage: staticGuide.heroImage,
+          introParagraphs: staticGuide.introParagraphs,
+          comparisonSection: staticGuide.comparisonSection,
+          tipsSection: staticGuide.tipsSection,
+          topPickHeading: staticGuide.topPickHeading,
+          schemaDatePublished: staticGuide.schemaDatePublished,
+          schemaDateModified: staticGuide.schemaDateModified,
+          curatedToursForSchema: staticGuide.curatedToursForSchema,
+        };
+      }
+    }
+
+    if (normDestPage === 'siem-reap' && normCatPage === SIEM_REAP_AIRPORT_TRANSFERS_SLUG) {
+      const staticGuide = getSiemReapAirportTransfersGuideData();
+      if (!guideData) {
+        guideData = staticGuide;
+        guideSource = 'static_editorial';
+      } else {
+        guideData = {
+          ...guideData,
+          ...staticGuide,
+          topPick: staticGuide.topPick,
+          transferSections: staticGuide.transferSections,
+          relatedGuideLinks: staticGuide.relatedGuideLinks,
+          guideLayout: staticGuide.guideLayout,
+          hideWhatToExpect: staticGuide.hideWhatToExpect,
+          hideExpertTips: staticGuide.hideExpertTips,
+          faqs: staticGuide.faqs,
+          seo: staticGuide.seo,
+          stats: staticGuide.stats,
+          heroTagline: staticGuide.heroTagline,
+          heroImage: staticGuide.heroImage,
+          schemaDatePublished: staticGuide.schemaDatePublished,
+          schemaDateModified: staticGuide.schemaDateModified,
+          curatedToursForSchema: staticGuide.curatedToursForSchema,
+        };
+      }
+    }
+
+    if (normDestPage === 'siem-reap' && normCatPage === SIEM_REAP_ADDITIONAL_FEES_SLUG) {
+      const staticGuide = getSiemReapAdditionalFeesGuideData();
+      if (!guideData) {
+        guideData = staticGuide;
+        guideSource = 'static_editorial';
+      } else {
+        guideData = {
+          ...guideData,
+          ...staticGuide,
+          quickAnswer: staticGuide.quickAnswer,
+          angkorPass: staticGuide.angkorPass,
+          tipping: staticGuide.tipping,
+          otherCosts: staticGuide.otherCosts,
+          entryCosts: staticGuide.entryCosts,
+          avoidSurprises: staticGuide.avoidSurprises,
+          dayExample: staticGuide.dayExample,
+          featuredTourSections: staticGuide.featuredTourSections,
+          relatedGuideLinks: staticGuide.relatedGuideLinks,
+          guideLayout: staticGuide.guideLayout,
+          hideWhatToExpect: staticGuide.hideWhatToExpect,
+          hideExpertTips: staticGuide.hideExpertTips,
+          faqs: staticGuide.faqs,
+          seo: staticGuide.seo,
+          heroTagline: staticGuide.heroTagline,
+          heroImage: staticGuide.heroImage,
+          schemaDatePublished: staticGuide.schemaDatePublished,
+          schemaDateModified: staticGuide.schemaDateModified,
+        };
+      }
+    }
+
+    if (normDestPage === 'siem-reap' && normCatPage === SIEM_REAP_BIKE_TOURS_SLUG) {
+      const staticGuide = getSiemReapBikeToursGuideData();
+      if (!guideData) {
+        guideData = staticGuide;
+        guideSource = 'static_editorial';
+      } else {
+        guideData = {
+          ...guideData,
+          ...staticGuide,
+          topPick: staticGuide.topPick,
+          transferSections: staticGuide.transferSections,
+          relatedGuideLinks: staticGuide.relatedGuideLinks,
+          guideLayout: staticGuide.guideLayout,
+          hideWhatToExpect: staticGuide.hideWhatToExpect,
+          hideExpertTips: staticGuide.hideExpertTips,
+          faqs: staticGuide.faqs,
+          seo: staticGuide.seo,
+          stats: staticGuide.stats,
+          heroTagline: staticGuide.heroTagline,
+          heroImage: staticGuide.heroImage,
+          introParagraphs: staticGuide.introParagraphs,
+          comparisonSection: staticGuide.comparisonSection,
+          tipsSection: staticGuide.tipsSection,
+          topPickHeading: staticGuide.topPickHeading,
+          schemaDatePublished: staticGuide.schemaDatePublished,
+          schemaDateModified: staticGuide.schemaDateModified,
+          curatedToursForSchema: staticGuide.curatedToursForSchema,
+        };
+      }
+    }
+
+    if (normDestPage === 'siem-reap' && normCatPage === SIEM_REAP_DAY_TRIPS_SLUG) {
+      const staticGuide = getSiemReapDayTripsGuideData();
+      if (!guideData) {
+        guideData = staticGuide;
+        guideSource = 'static_editorial';
+      } else {
+        guideData = {
+          ...guideData,
+          ...staticGuide,
+          topPick: staticGuide.topPick,
+          transferSections: staticGuide.transferSections,
+          relatedGuideLinks: staticGuide.relatedGuideLinks,
+          guideLayout: staticGuide.guideLayout,
+          hideWhatToExpect: staticGuide.hideWhatToExpect,
+          hideExpertTips: staticGuide.hideExpertTips,
+          faqs: staticGuide.faqs,
+          seo: staticGuide.seo,
+          stats: staticGuide.stats,
+          heroTagline: staticGuide.heroTagline,
+          heroImage: staticGuide.heroImage,
+          introParagraphs: staticGuide.introParagraphs,
+          comparisonSection: staticGuide.comparisonSection,
+          tipsSection: staticGuide.tipsSection,
+          topPickHeading: staticGuide.topPickHeading,
+          schemaDatePublished: staticGuide.schemaDatePublished,
+          schemaDateModified: staticGuide.schemaDateModified,
+          curatedToursForSchema: staticGuide.curatedToursForSchema,
         };
       }
     }
@@ -719,12 +1024,20 @@ export default async function CategoryGuidePage({ params }) {
   const categoryTours = [];
   const promotionScores = {};
 
-  // OG image: airport-transfers use dedicated image; other guides use travel guide OG
-  const TRAVEL_GUIDE_OG_IMAGE = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/travel%20guides.png';
-  const AIRPORT_TRANSFERS_OG_IMAGE = 'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/airport%20transfers.png';
-  const categoryOgImage = categorySlug === 'airport-transfers' ? AIRPORT_TRANSFERS_OG_IMAGE : TRAVEL_GUIDE_OG_IMAGE;
-  const schemaImage = categorySlug === 'airport-transfers' ? AIRPORT_TRANSFERS_OG_IMAGE : (guideData.heroImage || destination.imageUrl);
+  // OG + schema images: editorial guides use heroImage (e.g. SAI airport taxi photo)
+  const schemaImage = resolveGuideOgImage(guideData, destination, categorySlug);
+  const schemaDates = resolveGuideSchemaDates(guideData);
   const pageUrl = `https://toptours.ai/destinations/${destinationId}/guides/${categorySlug}`;
+
+  const schemaFeaturedTours =
+    Array.isArray(guideData.curatedToursForSchema) && guideData.curatedToursForSchema.length > 0
+      ? guideData.curatedToursForSchema
+      : categoryTours;
+  const featuredToursItemList = buildGuideFeaturedToursItemList(
+    guideData,
+    destination,
+    schemaFeaturedTours
+  );
 
   // JSON-LD Schema for SEO: WebPage, Article, FAQPage (only when we have FAQs), BreadcrumbList, TouristAttraction, ItemList(s)
   // Google requires FAQPage mainEntity to be a non-empty array; omit FAQPage when there are no FAQs to avoid GSC errors
@@ -751,7 +1064,7 @@ export default async function CategoryGuidePage({ params }) {
         description: guideData.subtitle || guideData.seo?.description,
         primaryImageOfPage: {
           '@type': 'ImageObject',
-          url: categoryOgImage,
+          url: schemaImage,
           width: 1200,
           height: 630,
         },
@@ -775,8 +1088,8 @@ export default async function CategoryGuidePage({ params }) {
             url: 'https://toptours.ai/logo.png',
           },
         },
-        datePublished: '2025-12-31',
-        dateModified: '2025-12-31',
+        datePublished: schemaDates.datePublished,
+        dateModified: schemaDates.dateModified,
       },
       // Only include FAQPage when mainEntity has at least one valid Question (required for valid FAQ rich results)
       ...(faqMainEntity.length > 0 ? [{
@@ -819,24 +1132,7 @@ export default async function CategoryGuidePage({ params }) {
         image: schemaImage,
         ...(destination.category ? { address: { '@type': 'PostalAddress', addressCountry: destination.category } } : {}),
       },
-      // Tour List Schema - Featured tours for this category (max 8 tours)
-      ...(categoryTours && categoryTours.length > 0 ? [{
-        '@type': 'ItemList',
-        name: `${guideData.categoryName} Tours in ${destination.name}`,
-        description: `Featured ${guideData.categoryName.toLowerCase()} tours and activities in ${destination.name}`,
-        numberOfItems: categoryTours.length,
-        itemListElement: categoryTours.slice(0, 8).map((tour, index) => ({
-          '@type': 'ListItem',
-          position: index + 1,
-          item: {
-            '@type': 'TouristAttraction',
-            name: tour.title,
-            description: `${tour.title} - ${guideData.categoryName} in ${destination.name}`,
-            image: tour.image || guideData.heroImage || destination.imageUrl,
-            url: `https://toptours.ai/tours/${tour.productId}/${tour.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`
-          }
-        }))
-      }] : []),
+      ...(featuredToursItemList ? [featuredToursItemList] : []),
     ],
   };
 

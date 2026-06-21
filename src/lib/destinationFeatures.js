@@ -9,6 +9,7 @@ import { DESTINATIONS_WITH_RESTAURANTS } from '@/data/destinationsWithRestaurant
 import { createSupabaseServiceRoleClient } from './supabaseClient';
 import { getBabyEquipmentRentalsByDestination } from './babyEquipmentRentals';
 import { getAllCategoryGuidesForDestination } from './categoryGuides';
+import { destinationHasTravelInsurancePage } from './destinationTravelInsurance';
 import { GUIDE_SECTION_REVALIDATE_SECONDS } from '@/lib/guideSectionCacheConfig';
 
 /**
@@ -74,15 +75,18 @@ export async function checkHasAirportTransfers(destinationId) {
 }
 
 async function loadDestinationFeaturesUncached(destinationId) {
-  const [hasRestaurants, hasBabyEquipment, hasAirportTransfers] = await Promise.all([
-    checkHasRestaurants(destinationId),
-    checkHasBabyEquipment(destinationId),
-    checkHasAirportTransfers(destinationId),
-  ]);
+  const [hasRestaurants, hasBabyEquipment, hasAirportTransfers, hasDestinationTravelInsurance] =
+    await Promise.all([
+      checkHasRestaurants(destinationId),
+      checkHasBabyEquipment(destinationId),
+      checkHasAirportTransfers(destinationId),
+      Promise.resolve(destinationHasTravelInsurancePage(destinationId)),
+    ]);
   return {
     hasRestaurants,
     hasBabyEquipment,
     hasAirportTransfers,
+    hasDestinationTravelInsurance,
   };
 }
 
@@ -96,6 +100,7 @@ export async function getDestinationFeatures(destinationId) {
       hasRestaurants: false,
       hasBabyEquipment: false,
       hasAirportTransfers: false,
+      hasDestinationTravelInsurance: false,
     };
   }
 

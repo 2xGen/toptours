@@ -138,6 +138,7 @@ export const slugToViatorId = {
   "singapore": "60449",
   "beijing": "321",
   "shanghai": "13",
+  "siem-reap": "5480",
   "xian": "326",
   "guilin": "323",
   "seoul": "972",

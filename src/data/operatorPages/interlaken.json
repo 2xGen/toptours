@@ -1,0 +1,1491 @@
+{
+  "destinationSlug": "interlaken",
+  "viatorDestinationId": "5011",
+  "destinationName": "Interlaken",
+  "builtAt": "2026-06-21T18:19:28.540Z",
+  "operatorCount": 28,
+  "operators": [
+    {
+      "slug": "airtime-paragliding",
+      "operatorName": "Airtime Paragliding",
+      "operatorKey": "airtime paragliding",
+      "tourCount": 1,
+      "totalReviews": 556,
+      "averageRating": 4.97,
+      "blurb": "Airtime Paragliding specializes in popular local experiences across Interlaken. Use this page as a single hub to compare every Airtime Paragliding listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Interlaken lineup includes Mürren: Paragliding over the Lauterbrunnen Valley.",
+      "faqs": [
+        {
+          "question": "Is Airtime Paragliding worth it?",
+          "answer": "Based on 556 verified traveler reviews averaging 4.97 stars, Airtime Paragliding is generally excellent for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Airtime Paragliding offer in Interlaken?",
+          "answer": "Airtime Paragliding currently lists 1 bookable tour in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Airtime Paragliding tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"Mürren: Paragliding over the Lauterbrunnen Valley\" with 556 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "7519P1",
+          "title": "Mürren: Paragliding over the Lauterbrunnen Valley",
+          "slug": "mrren-paragliding-over-the-lauterbrunnen-valley",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/7d/48/ac.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9694242,
+          "reviewCount": 556,
+          "durationMinutes": 60
+        }
+      ]
+    },
+    {
+      "slug": "alpinair-paragliding-interlaken",
+      "operatorName": "AlpinAir Paragliding Interlaken",
+      "operatorKey": "alpinair paragliding interlaken",
+      "tourCount": 1,
+      "totalReviews": 5,
+      "averageRating": 5,
+      "blurb": "AlpinAir Paragliding Interlaken specializes in popular local experiences across Interlaken. Use this page as a single hub to compare every AlpinAir Paragliding Interlaken listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Interlaken lineup includes Tandem Paragliding in Interlaken.",
+      "faqs": [
+        {
+          "question": "Is AlpinAir Paragliding Interlaken worth it?",
+          "answer": "Based on 5 verified traveler reviews averaging 5 stars, AlpinAir Paragliding Interlaken is generally excellent for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does AlpinAir Paragliding Interlaken offer in Interlaken?",
+          "answer": "AlpinAir Paragliding Interlaken currently lists 1 bookable tour in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular AlpinAir Paragliding Interlaken tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"Tandem Paragliding in Interlaken\" with 5 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "436352P1",
+          "title": "Tandem Paragliding in Interlaken",
+          "slug": "tandem-paragliding-in-interlaken",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/08/1e/c7.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 5,
+          "durationMinutes": 75
+        }
+      ]
+    },
+    {
+      "slug": "alptransfer-alpexcursion",
+      "operatorName": "AlpTransfer & AlpExcursion",
+      "operatorKey": "alptransfer & alpexcursion",
+      "tourCount": 7,
+      "totalReviews": 9,
+      "averageRating": 5,
+      "blurb": "AlpTransfer & AlpExcursion specializes in airport transfers and private tours across Interlaken. Use this page as a single hub to compare every AlpTransfer & AlpExcursion listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is AlpTransfer & AlpExcursion worth it?",
+          "answer": "Based on 9 verified traveler reviews averaging 5 stars, AlpTransfer & AlpExcursion is generally excellent for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does AlpTransfer & AlpExcursion offer in Interlaken?",
+          "answer": "AlpTransfer & AlpExcursion currently lists 7 bookable tours in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular AlpTransfer & AlpExcursion tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"Private transfer from Interlaken to Zurich Airport\" with 4 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "7227P171",
+          "title": "Private transfer from Interlaken to Zurich Airport",
+          "slug": "private-transfer-from-interlaken-to-zurich-airport",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/d7/27/19.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 4,
+          "durationMinutes": 120
+        },
+        {
+          "productId": "7227P312",
+          "title": "Private Transfer Service from Interlaken to Lucerne",
+          "slug": "private-transfer-service-from-interlaken-to-lucerne",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/d7/27/19.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 2,
+          "durationMinutes": null
+        },
+        {
+          "productId": "7227P94",
+          "title": "Private Transfer from Interlaken to Geneva Airport",
+          "slug": "private-transfer-from-interlaken-to-geneva-airport",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/d8/14/67.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": null
+        },
+        {
+          "productId": "7227P184",
+          "title": "Private transfer from Gstaad Saanen to Geneva Airport",
+          "slug": "private-transfer-from-gstaad-saanen-to-geneva-airport",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/d8/14/67.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": 126
+        },
+        {
+          "productId": "7227P322",
+          "title": "Private Transfer Service from Interlaken to Zermatt",
+          "slug": "private-transfer-service-from-interlaken-to-zermatt",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/d7/27/19.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": null
+        },
+        {
+          "productId": "7227P316",
+          "title": "Private Transfer Service from Gstaad Saanen to Verbier",
+          "slug": "private-transfer-service-from-gstaad-saanen-to-verbier",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/d7/27/19.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": null
+        },
+        {
+          "productId": "7227P202",
+          "title": "Private Transfer from Wilderswil Interlaken to Zurich Airport",
+          "slug": "private-transfer-from-wilderswil-interlaken-to-zurich-airport",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/d8/14/67.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 120
+        }
+      ]
+    },
+    {
+      "slug": "ballenberg-freilichtmuseum-der-schweiz",
+      "operatorName": "Ballenberg, Freilichtmuseum der Schweiz",
+      "operatorKey": "ballenberg, freilichtmuseum der schweiz",
+      "tourCount": 1,
+      "totalReviews": 22,
+      "averageRating": 4.32,
+      "blurb": "Ballenberg, Freilichtmuseum der Schweiz specializes in popular local experiences across Interlaken. Use this page as a single hub to compare every Ballenberg, Freilichtmuseum der Schweiz listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Interlaken lineup includes Experience Switzerland in the Ballenberg open-air museum.",
+      "faqs": [
+        {
+          "question": "Is Ballenberg, Freilichtmuseum der Schweiz worth it?",
+          "answer": "Based on 22 verified traveler reviews averaging 4.32 stars, Ballenberg, Freilichtmuseum der Schweiz is solid for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Ballenberg, Freilichtmuseum der Schweiz offer in Interlaken?",
+          "answer": "Ballenberg, Freilichtmuseum der Schweiz currently lists 1 bookable tour in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Ballenberg, Freilichtmuseum der Schweiz tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"Experience Switzerland in the Ballenberg open-air museum\" with 22 traveler reviews and a 4.3-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "422946P1",
+          "title": "Experience Switzerland in the Ballenberg open-air museum",
+          "slug": "experience-switzerland-in-the-ballenberg-open-air-museum",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/11/91/3d/68.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.318182,
+          "reviewCount": 22,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "bls-schifffahrt-ag",
+      "operatorName": "BLS Schifffahrt AG",
+      "operatorKey": "bls schifffahrt ag",
+      "tourCount": 1,
+      "totalReviews": 35,
+      "averageRating": 4.03,
+      "blurb": "BLS Schifffahrt AG specializes in popular local experiences across Interlaken. Use this page as a single hub to compare every BLS Schifffahrt AG listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Interlaken lineup includes Interlaken Cruise Day Pass Lake Thun and Lake Brienz, 2nd class.",
+      "faqs": [
+        {
+          "question": "Is BLS Schifffahrt AG worth it?",
+          "answer": "Based on 35 verified traveler reviews averaging 4.03 stars, BLS Schifffahrt AG is solid for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does BLS Schifffahrt AG offer in Interlaken?",
+          "answer": "BLS Schifffahrt AG currently lists 1 bookable tour in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular BLS Schifffahrt AG tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"Interlaken Cruise Day Pass Lake Thun and Lake Brienz, 2nd class\" with 35 traveler reviews and a 4.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "46277P2",
+          "title": "Interlaken Cruise Day Pass Lake Thun and Lake Brienz, 2nd class",
+          "slug": "interlaken-cruise-day-pass-lake-thun-and-lake-brienz-2nd-class",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/71/92/70.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.0285716,
+          "reviewCount": 35,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "flying-wheels-gmbh",
+      "operatorName": "Flying Wheels GmbH",
+      "operatorKey": "flying wheels gmbh",
+      "tourCount": 1,
+      "totalReviews": 224,
+      "averageRating": 4.91,
+      "blurb": "Flying Wheels GmbH specializes in popular local experiences across Interlaken. Use this page as a single hub to compare every Flying Wheels GmbH listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Interlaken lineup includes Lauterbrunnen and Trummelbach Waterfalls E-bike Tour Swiss Picnic.",
+      "faqs": [
+        {
+          "question": "Is Flying Wheels GmbH worth it?",
+          "answer": "Based on 224 verified traveler reviews averaging 4.91 stars, Flying Wheels GmbH is generally excellent for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Flying Wheels GmbH offer in Interlaken?",
+          "answer": "Flying Wheels GmbH currently lists 1 bookable tour in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Flying Wheels GmbH tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"Lauterbrunnen and Trummelbach Waterfalls E-bike Tour Swiss Picnic\" with 224 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "26095P3",
+          "title": "Lauterbrunnen and Trummelbach Waterfalls E-bike Tour Swiss Picnic",
+          "slug": "lauterbrunnen-and-trummelbach-waterfalls-e-bike-tour-swiss-picnic",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/r/32/ac/d3/8a/caption.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.910714,
+          "reviewCount": 224,
+          "durationMinutes": 360
+        }
+      ]
+    },
+    {
+      "slug": "gt-paragliding-tandem",
+      "operatorName": "GT Paragliding Tandem",
+      "operatorKey": "gt paragliding tandem",
+      "tourCount": 1,
+      "totalReviews": 9,
+      "averageRating": 5,
+      "blurb": "GT Paragliding Tandem specializes in popular local experiences across Interlaken. Use this page as a single hub to compare every GT Paragliding Tandem listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Interlaken lineup includes Paragliding Tandem in Switzerland.",
+      "faqs": [
+        {
+          "question": "Is GT Paragliding Tandem worth it?",
+          "answer": "Based on 9 verified traveler reviews averaging 5 stars, GT Paragliding Tandem is generally excellent for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does GT Paragliding Tandem offer in Interlaken?",
+          "answer": "GT Paragliding Tandem currently lists 1 bookable tour in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular GT Paragliding Tandem tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"Paragliding Tandem in Switzerland\" with 9 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "285534P1",
+          "title": "Paragliding Tandem in Switzerland",
+          "slug": "paragliding-tandem-in-switzerland",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/33/1c/42.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 9,
+          "durationMinutes": 120
+        }
+      ]
+    },
+    {
+      "slug": "hightide-kayak-school-gmbh",
+      "operatorName": "Hightide Kayak School GmbH",
+      "operatorKey": "hightide kayak school gmbh",
+      "tourCount": 3,
+      "totalReviews": 1025,
+      "averageRating": 4.96,
+      "blurb": "Hightide Kayak School GmbH specializes in kayaking across Interlaken. Use this page as a single hub to compare every Hightide Kayak School GmbH listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Interlaken lineup includes Kayak Tour of the Turquoise Lake Brienz, Winter Kayak Tour of the Turquoise Lake Brienz, Relaxed Kayak Experience on Lake Brienz.",
+      "faqs": [
+        {
+          "question": "Is Hightide Kayak School GmbH worth it?",
+          "answer": "Based on 1,025 verified traveler reviews averaging 4.96 stars, Hightide Kayak School GmbH is generally excellent for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Hightide Kayak School GmbH offer in Interlaken?",
+          "answer": "Hightide Kayak School GmbH currently lists 3 bookable tours in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Hightide Kayak School GmbH tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"Kayak Tour of the Turquoise Lake Brienz\" with 574 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "64859P2",
+          "title": "Kayak Tour of the Turquoise Lake Brienz",
+          "slug": "kayak-tour-of-the-turquoise-lake-brienz",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/06/73/13/28.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9634147,
+          "reviewCount": 574,
+          "durationMinutes": 180
+        },
+        {
+          "productId": "64859P1",
+          "title": "Winter Kayak Tour of the Turquoise Lake Brienz",
+          "slug": "winter-kayak-tour-of-the-turquoise-lake-brienz",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0f/f0/0e/45.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.962222,
+          "reviewCount": 450,
+          "durationMinutes": 180
+        },
+        {
+          "productId": "64859P6",
+          "title": "Relaxed Kayak Experience on Lake Brienz",
+          "slug": "relaxed-kayak-experience-on-lake-brienz",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/15/00/e3.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": 90
+        }
+      ]
+    },
+    {
+      "slug": "local-guide",
+      "operatorName": "Local Guide",
+      "operatorKey": "local guide",
+      "tourCount": 2,
+      "totalReviews": 10,
+      "averageRating": 5,
+      "blurb": "Local Guide specializes in popular local experiences across Interlaken. Use this page as a single hub to compare every Local Guide listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Interlaken lineup includes Hike Lauterbrunnen-Murren including Trummelbach Waterfalls Visit and Small Group Jungfraujoch Tour from Interlaken.",
+      "faqs": [
+        {
+          "question": "Is Local Guide worth it?",
+          "answer": "Based on 10 verified traveler reviews averaging 5 stars, Local Guide is generally excellent for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Local Guide offer in Interlaken?",
+          "answer": "Local Guide currently lists 2 bookable tours in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Local Guide tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"Hike Lauterbrunnen-Murren including Trummelbach Waterfalls Visit\" with 10 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5569934P9",
+          "title": "Hike Lauterbrunnen-Murren including Trummelbach Waterfalls Visit",
+          "slug": "hike-lauterbrunnen-murren-including-trummelbach-waterfalls-visit",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/d3/be/21.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 10,
+          "durationMinutes": 360
+        },
+        {
+          "productId": "5569934P14",
+          "title": "Small Group Jungfraujoch Tour from Interlaken",
+          "slug": "small-group-jungfraujoch-tour-from-interlaken",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/0e/03/7e.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 420
+        }
+      ]
+    },
+    {
+      "slug": "localbini-the-go-to-platform-for-experiences-by-locals-in-switzerland",
+      "operatorName": "LocalBini - The go-to platform for Experiences by Locals in Switzerland",
+      "operatorKey": "localbini - the go-to platform for experiences by locals in switzerland",
+      "tourCount": 3,
+      "totalReviews": 24,
+      "averageRating": 4.75,
+      "blurb": "LocalBini - The go-to platform for Experiences by Locals in Switzerland specializes in private tours across Interlaken. Use this page as a single hub to compare every LocalBini - The go-to platform for Experiences by Locals in Switzerland listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Interlaken lineup includes Discover Interlaken’s most Photogenic Spots with a Local, Explore Interlaken in 60 minutes with a Local, Architectural Interlaken: Private Tour with a Local Expert.",
+      "faqs": [
+        {
+          "question": "Is LocalBini - The go-to platform for Experiences by Locals in Switzerland worth it?",
+          "answer": "Based on 24 verified traveler reviews averaging 4.75 stars, LocalBini - The go-to platform for Experiences by Locals in Switzerland is generally excellent for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does LocalBini - The go-to platform for Experiences by Locals in Switzerland offer in Interlaken?",
+          "answer": "LocalBini - The go-to platform for Experiences by Locals in Switzerland currently lists 3 bookable tours in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular LocalBini - The go-to platform for Experiences by Locals in Switzerland tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"Discover Interlaken’s most Photogenic Spots with a Local\" with 13 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "76545P28",
+          "title": "Discover Interlaken’s most Photogenic Spots with a Local",
+          "slug": "discover-interlakens-most-photogenic-spots-with-a-local",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/r/32/c6/08/16/caption.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 13,
+          "durationMinutes": 90
+        },
+        {
+          "productId": "76545P11",
+          "title": "Explore Interlaken in 60 minutes with a Local",
+          "slug": "explore-interlaken-in-60-minutes-with-a-local",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/46/40/85.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.4,
+          "reviewCount": 10,
+          "durationMinutes": null
+        },
+        {
+          "productId": "76545P48",
+          "title": "Architectural Interlaken: Private Tour with a Local Expert",
+          "slug": "architectural-interlaken-private-tour-with-a-local-expert",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/46/41/8e.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": 120
+        }
+      ]
+    },
+    {
+      "slug": "mauricio",
+      "operatorName": "Mauricio",
+      "operatorKey": "mauricio",
+      "tourCount": 1,
+      "totalReviews": 9,
+      "averageRating": 4.78,
+      "blurb": "Mauricio specializes in private tours across Interlaken. Use this page as a single hub to compare every Mauricio listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Interlaken lineup includes From Interlaken: Private Grindelwald and Lauterbrunnen Tour.",
+      "faqs": [
+        {
+          "question": "Is Mauricio worth it?",
+          "answer": "Based on 9 verified traveler reviews averaging 4.78 stars, Mauricio is generally excellent for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Mauricio offer in Interlaken?",
+          "answer": "Mauricio currently lists 1 bookable tour in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Mauricio tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"From Interlaken: Private Grindelwald and Lauterbrunnen Tour\" with 9 traveler reviews and a 4.8-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5633841P3",
+          "title": "From Interlaken: Private Grindelwald and Lauterbrunnen Tour",
+          "slug": "from-interlaken-private-grindelwald-and-lauterbrunnen-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/r/32/9b/12/cd/caption.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.7777777,
+          "reviewCount": 9,
+          "durationMinutes": 360
+        }
+      ]
+    },
+    {
+      "slug": "mysterytours-sightseeing-interlaken",
+      "operatorName": "mysterytours Sightseeing Interlaken",
+      "operatorKey": "mysterytours sightseeing interlaken",
+      "tourCount": 3,
+      "totalReviews": 8,
+      "averageRating": 4.75,
+      "blurb": "mysterytours Sightseeing Interlaken specializes in private tours across Interlaken. Use this page as a single hub to compare every mysterytours Sightseeing Interlaken listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Interlaken lineup includes Interlaken Private Tour: Mountains Cows, Thun Lake, and Brienz Lake, Private Lake Thun and Lake Brienz Express Tour from Interlaken, Berne, Chocolate, and Gruyere Cheese Private Day Trip from Interlaken.",
+      "faqs": [
+        {
+          "question": "Is mysterytours Sightseeing Interlaken worth it?",
+          "answer": "Based on 8 verified traveler reviews averaging 4.75 stars, mysterytours Sightseeing Interlaken is generally excellent for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does mysterytours Sightseeing Interlaken offer in Interlaken?",
+          "answer": "mysterytours Sightseeing Interlaken currently lists 3 bookable tours in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular mysterytours Sightseeing Interlaken tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"Interlaken Private Tour: Mountains Cows, Thun Lake, and Brienz Lake\" with 5 traveler reviews and a 4.6-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "33924P3",
+          "title": "Interlaken Private Tour: Mountains Cows, Thun Lake, and Brienz Lake",
+          "slug": "interlaken-private-tour-mountains-cows-thun-lake-and-brienz-lake",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/2b/99/2d.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.6,
+          "reviewCount": 5,
+          "durationMinutes": 180
+        },
+        {
+          "productId": "33924P5",
+          "title": "Private Lake Thun and Lake Brienz Express Tour from Interlaken",
+          "slug": "private-lake-thun-and-lake-brienz-express-tour-from-interlaken",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/06/d8/6f/5b.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 2,
+          "durationMinutes": 60
+        },
+        {
+          "productId": "33924P8",
+          "title": "Berne, Chocolate, and Gruyere Cheese Private Day Trip from Interlaken",
+          "slug": "berne-chocolate-and-gruyere-cheese-private-day-trip-from-interlaken",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/06/e7/07/33.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": 540
+        }
+      ]
+    },
+    {
+      "slug": "one-two-ski",
+      "operatorName": "One, Two, SKI",
+      "operatorKey": "one, two, ski",
+      "tourCount": 2,
+      "totalReviews": 11,
+      "averageRating": 5,
+      "blurb": "One, Two, SKI specializes in private tours across Interlaken. Use this page as a single hub to compare every One, Two, SKI listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Interlaken lineup includes Fully organized Ski Experience for Private Groups and Ultra-Inclusive Half-day Ski Taster for Beginners.",
+      "faqs": [
+        {
+          "question": "Is One, Two, SKI worth it?",
+          "answer": "Based on 11 verified traveler reviews averaging 5 stars, One, Two, SKI is generally excellent for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does One, Two, SKI offer in Interlaken?",
+          "answer": "One, Two, SKI currently lists 2 bookable tours in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular One, Two, SKI tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"Fully organized Ski Experience for Private Groups\" with 7 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5530044P1",
+          "title": "Fully organized Ski Experience for Private Groups",
+          "slug": "fully-organized-ski-experience-for-private-groups",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/46/81/ed.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 7,
+          "durationMinutes": 240
+        },
+        {
+          "productId": "5530044P2",
+          "title": "Ultra-Inclusive Half-day Ski Taster for Beginners",
+          "slug": "ultra-inclusive-half-day-ski-taster-for-beginners",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/48/e0/63.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 4,
+          "durationMinutes": 240
+        }
+      ]
+    },
+    {
+      "slug": "outdoor",
+      "operatorName": "Outdoor",
+      "operatorKey": "outdoor",
+      "tourCount": 10,
+      "totalReviews": 420,
+      "averageRating": 4.8,
+      "blurb": "Outdoor specializes in popular local experiences across Interlaken. Use this page as a single hub to compare every Outdoor listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is Outdoor worth it?",
+          "answer": "Based on 420 verified traveler reviews averaging 4.8 stars, Outdoor is generally excellent for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Outdoor offer in Interlaken?",
+          "answer": "Outdoor currently lists 10 bookable tours in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Outdoor tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"Canyoning Experience Grimsel from Interlaken\" with 127 traveler reviews and a 4.8-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "6891CANYONGRIMSEL",
+          "title": "Canyoning Experience Grimsel from Interlaken",
+          "slug": "canyoning-experience-grimsel-from-interlaken",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/a7/f4/44.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.8188977,
+          "reviewCount": 127,
+          "durationMinutes": 330
+        },
+        {
+          "productId": "6891CANYONINTER",
+          "title": "Canyoning Interlaken with OUTDOOR",
+          "slug": "canyoning-interlaken-with-outdoor",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/23/53/80.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.8842974,
+          "reviewCount": 121,
+          "durationMinutes": 180
+        },
+        {
+          "productId": "6891NIGHTSLED",
+          "title": "Night Sledding from Interlaken",
+          "slug": "night-sledding-from-interlaken",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/15/b0/5a.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.446429,
+          "reviewCount": 56,
+          "durationMinutes": 180
+        },
+        {
+          "productId": "6891SNOWSHOE",
+          "title": "Snowshoe Adventure in the Swiss Alps",
+          "slug": "snowshoe-adventure-in-the-swiss-alps",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/9b/97/d6.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 30,
+          "durationMinutes": 240
+        },
+        {
+          "productId": "6891HIGHROPES",
+          "title": "Ropes Park Interlaken",
+          "slug": "ropes-park-interlaken",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/14/b2/7c/df.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9,
+          "reviewCount": 30,
+          "durationMinutes": 150
+        },
+        {
+          "productId": "6891P28",
+          "title": "Jetboat Interlaken",
+          "slug": "jetboat-interlaken",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/55/51/d6.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.62069,
+          "reviewCount": 29,
+          "durationMinutes": 75
+        },
+        {
+          "productId": "6891P39",
+          "title": "Scenic E Bike Tour Interlaken",
+          "slug": "scenic-e-bike-tour-interlaken",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/d3/a0/15.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 23,
+          "durationMinutes": 150
+        },
+        {
+          "productId": "6891P29",
+          "title": "Winter Jetboat Ride",
+          "slug": "winter-jetboat-ride",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/0d/b2/1b.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 2,
+          "durationMinutes": 75
+        },
+        {
+          "productId": "6891P40",
+          "title": "Winter E-Bike Tour in Interlaken",
+          "slug": "winter-e-bike-tour-in-interlaken",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/0d/b1/d0.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": 150
+        },
+        {
+          "productId": "6891P33",
+          "title": "Chocolate Fondue Float Experience in Interlaken",
+          "slug": "chocolate-fondue-float-experience-in-interlaken",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/14/a5/5e/c3.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 1,
+          "durationMinutes": 120
+        }
+      ]
+    },
+    {
+      "slug": "paragliding-interlaken-gmbh",
+      "operatorName": "Paragliding Interlaken GmbH",
+      "operatorKey": "paragliding interlaken gmbh",
+      "tourCount": 1,
+      "totalReviews": 1734,
+      "averageRating": 4.95,
+      "blurb": "Paragliding Interlaken GmbH specializes in popular local experiences across Interlaken. Use this page as a single hub to compare every Paragliding Interlaken GmbH listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Interlaken lineup includes Tandem Paragliding Experience from Interlaken.",
+      "faqs": [
+        {
+          "question": "Is Paragliding Interlaken GmbH worth it?",
+          "answer": "Based on 1,734 verified traveler reviews averaging 4.95 stars, Paragliding Interlaken GmbH is generally excellent for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Paragliding Interlaken GmbH offer in Interlaken?",
+          "answer": "Paragliding Interlaken GmbH currently lists 1 bookable tour in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Paragliding Interlaken GmbH tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"Tandem Paragliding Experience from Interlaken\" with 1,734 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "12729PARAGLIDE",
+          "title": "Tandem Paragliding Experience from Interlaken",
+          "slug": "tandem-paragliding-experience-from-interlaken",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/17/10/2f.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.9521337,
+          "reviewCount": 1734,
+          "durationMinutes": 90
+        }
+      ]
+    },
+    {
+      "slug": "phototour-interlaken-local-photographer-in-interlaken",
+      "operatorName": "Phototour Interlaken local photographer in Interlaken",
+      "operatorKey": "phototour interlaken local photographer in interlaken",
+      "tourCount": 4,
+      "totalReviews": 14,
+      "averageRating": 5,
+      "blurb": "Phototour Interlaken local photographer in Interlaken specializes in private tours across Interlaken. Use this page as a single hub to compare every Phototour Interlaken local photographer in Interlaken listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is Phototour Interlaken local photographer in Interlaken worth it?",
+          "answer": "Based on 14 verified traveler reviews averaging 5 stars, Phototour Interlaken local photographer in Interlaken is generally excellent for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Phototour Interlaken local photographer in Interlaken offer in Interlaken?",
+          "answer": "Phototour Interlaken local photographer in Interlaken currently lists 4 bookable tours in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Phototour Interlaken local photographer in Interlaken tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"Private Photoshoot in Interlaken and Lake Thun\" with 5 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "440999P2",
+          "title": "Private Photoshoot in Interlaken and Lake Thun",
+          "slug": "private-photoshoot-in-interlaken-and-lake-thun",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/60/5d/2d.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 5,
+          "durationMinutes": 90
+        },
+        {
+          "productId": "440999P3",
+          "title": "Phototour Photoshoot at the Lake Brienz, Iseltwald, Interlaken",
+          "slug": "phototour-photoshoot-at-the-lake-brienz-iseltwald-interlaken",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/60/67/8d.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 4,
+          "durationMinutes": 200
+        },
+        {
+          "productId": "440999P1",
+          "title": "Phototour Private Photoshoot in Interlaken & Lake Brienz and Thun",
+          "slug": "phototour-private-photoshoot-in-interlaken-lake-brienz-and-thun",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/18/13/7e.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 3,
+          "durationMinutes": null
+        },
+        {
+          "productId": "440999P4",
+          "title": "Private Phototour in Grindelwald Lauterbrunnen and Interlaken",
+          "slug": "private-phototour-in-grindelwald-lauterbrunnen-and-interlaken",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/6f/e4/e0.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 2,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "pure-switzerland-tours-and-guiding",
+      "operatorName": "Pure Switzerland - Tours and Guiding",
+      "operatorKey": "pure switzerland - tours and guiding",
+      "tourCount": 3,
+      "totalReviews": 23,
+      "averageRating": 5,
+      "blurb": "Pure Switzerland - Tours and Guiding specializes in private tours across Interlaken. Use this page as a single hub to compare every Pure Switzerland - Tours and Guiding listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Interlaken lineup includes Private Day tour from Interlaken: Lake, Gorge & Waterfall, Private Swiss Cheese and Chocolate Tour from Interlaken, Interlaken & Jungfrau private tour - Customized day tour with your local guide.",
+      "faqs": [
+        {
+          "question": "Is Pure Switzerland - Tours and Guiding worth it?",
+          "answer": "Based on 23 verified traveler reviews averaging 5 stars, Pure Switzerland - Tours and Guiding is generally excellent for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Pure Switzerland - Tours and Guiding offer in Interlaken?",
+          "answer": "Pure Switzerland - Tours and Guiding currently lists 3 bookable tours in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Pure Switzerland - Tours and Guiding tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"Private Day tour from Interlaken: Lake, Gorge & Waterfall\" with 10 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "33979P2",
+          "title": "Private Day tour from Interlaken: Lake, Gorge & Waterfall",
+          "slug": "private-day-tour-from-interlaken-lake-gorge-waterfall",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/09/e3/77/43.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 10,
+          "durationMinutes": 480
+        },
+        {
+          "productId": "33979P3",
+          "title": "Private Swiss Cheese and Chocolate Tour from Interlaken",
+          "slug": "private-swiss-cheese-and-chocolate-tour-from-interlaken",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/01/36/15.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 9,
+          "durationMinutes": null
+        },
+        {
+          "productId": "33979P12",
+          "title": "Interlaken & Jungfrau private tour - Customized day tour with your local guide",
+          "slug": "interlaken-jungfrau-private-tour-customized-day-tour-with-your-local-guide",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/08/a2/ed/dc.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 4,
+          "durationMinutes": 450
+        }
+      ]
+    },
+    {
+      "slug": "schynige-platte-top-of-swiss-tradition",
+      "operatorName": "Schynige Platte - Top of Swiss Tradition",
+      "operatorKey": "schynige platte - top of swiss tradition",
+      "tourCount": 1,
+      "totalReviews": 84,
+      "averageRating": 4.65,
+      "blurb": "Schynige Platte - Top of Swiss Tradition specializes in popular local experiences across Interlaken. Use this page as a single hub to compare every Schynige Platte - Top of Swiss Tradition listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Interlaken lineup includes Schynige Platte Cogwheel Railway Return Ticket.",
+      "faqs": [
+        {
+          "question": "Is Schynige Platte - Top of Swiss Tradition worth it?",
+          "answer": "Based on 84 verified traveler reviews averaging 4.65 stars, Schynige Platte - Top of Swiss Tradition is generally excellent for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Schynige Platte - Top of Swiss Tradition offer in Interlaken?",
+          "answer": "Schynige Platte - Top of Swiss Tradition currently lists 1 bookable tour in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Schynige Platte - Top of Swiss Tradition tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"Schynige Platte Cogwheel Railway Return Ticket\" with 84 traveler reviews and a 4.7-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "59266P1",
+          "title": "Schynige Platte Cogwheel Railway Return Ticket",
+          "slug": "schynige-platte-cogwheel-railway-return-ticket",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/06/67/b1/cb.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.654762,
+          "reviewCount": 84,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "seek-adventure",
+      "operatorName": "Seek Adventure",
+      "operatorKey": "seek adventure",
+      "tourCount": 3,
+      "totalReviews": 28,
+      "averageRating": 5,
+      "blurb": "Seek Adventure specializes in popular local experiences across Interlaken. Use this page as a single hub to compare every Seek Adventure listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Interlaken lineup includes Discover Interlaken E-Bike Tour – Lakes Ruins and Scenic Views, Explore Iseltwald & Giessbach E-Bike Tour from Interlaken, Griesalp UNESCO Alpine E-Bike Adventure from Interlaken.",
+      "faqs": [
+        {
+          "question": "Is Seek Adventure worth it?",
+          "answer": "Based on 28 verified traveler reviews averaging 5 stars, Seek Adventure is generally excellent for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Seek Adventure offer in Interlaken?",
+          "answer": "Seek Adventure currently lists 3 bookable tours in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Seek Adventure tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"Discover Interlaken E-Bike Tour – Lakes Ruins and Scenic Views\" with 15 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5591757P11",
+          "title": "Discover Interlaken E-Bike Tour – Lakes Ruins and Scenic Views",
+          "slug": "discover-interlaken-e-bike-tour-lakes-ruins-and-scenic-views",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/16/9c/a1/0e.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 15,
+          "durationMinutes": 240
+        },
+        {
+          "productId": "5591757P10",
+          "title": "Explore Iseltwald & Giessbach E-Bike Tour from Interlaken",
+          "slug": "explore-iseltwald-giessbach-e-bike-tour-from-interlaken",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/r/32/77/01/eb/caption.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 7,
+          "durationMinutes": 270
+        },
+        {
+          "productId": "5591757P3",
+          "title": "Griesalp UNESCO Alpine E-Bike Adventure from Interlaken",
+          "slug": "griesalp-unesco-alpine-e-bike-adventure-from-interlaken",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/r/32/6c/85/92/caption.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 6,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "ski-school-rougemont",
+      "operatorName": "Ski School Rougemont",
+      "operatorKey": "ski school rougemont",
+      "tourCount": 2,
+      "totalReviews": 2,
+      "averageRating": 5,
+      "blurb": "Ski School Rougemont specializes in popular local experiences across Interlaken. Use this page as a single hub to compare every Ski School Rougemont listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Interlaken lineup includes Winter Activities Gstaad and Summer Activities Gstaad.",
+      "faqs": [
+        {
+          "question": "Is Ski School Rougemont worth it?",
+          "answer": "Based on 2 verified traveler reviews averaging 5 stars, Ski School Rougemont is generally excellent for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Ski School Rougemont offer in Interlaken?",
+          "answer": "Ski School Rougemont currently lists 2 bookable tours in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Ski School Rougemont tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"Winter Activities Gstaad\" with 2 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "261924P3",
+          "title": "Winter Activities Gstaad",
+          "slug": "winter-activities-gstaad",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/0d/91/6b.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 2,
+          "durationMinutes": 300
+        },
+        {
+          "productId": "261924P2",
+          "title": "Summer Activities Gstaad",
+          "slug": "summer-activities-gstaad",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/8e/41/c6.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 240
+        }
+      ]
+    },
+    {
+      "slug": "skywings-paragliding",
+      "operatorName": "skywings Paragliding",
+      "operatorKey": "skywings paragliding",
+      "tourCount": 1,
+      "totalReviews": 838,
+      "averageRating": 4.94,
+      "blurb": "skywings Paragliding specializes in popular local experiences across Interlaken. Use this page as a single hub to compare every skywings Paragliding listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Interlaken lineup includes Tandem Paragliding Experience with Transport from Interlaken.",
+      "faqs": [
+        {
+          "question": "Is skywings Paragliding worth it?",
+          "answer": "Based on 838 verified traveler reviews averaging 4.94 stars, skywings Paragliding is generally excellent for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does skywings Paragliding offer in Interlaken?",
+          "answer": "skywings Paragliding currently lists 1 bookable tour in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular skywings Paragliding tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"Tandem Paragliding Experience with Transport from Interlaken\" with 838 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "21031P2",
+          "title": "Tandem Paragliding Experience with Transport from Interlaken",
+          "slug": "tandem-paragliding-experience-with-transport-from-interlaken",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/10/5e/f4/09.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.943914,
+          "reviewCount": 838,
+          "durationMinutes": 90
+        }
+      ]
+    },
+    {
+      "slug": "swiss-paragliding-adventure-gmbh",
+      "operatorName": "Swiss Paragliding  Adventure GmbH",
+      "operatorKey": "swiss paragliding adventure gmbh",
+      "tourCount": 1,
+      "totalReviews": 131,
+      "averageRating": 4.81,
+      "blurb": "Swiss Paragliding  Adventure GmbH specializes in popular local experiences across Interlaken. Use this page as a single hub to compare every Swiss Paragliding  Adventure GmbH listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Interlaken lineup includes Interlaken Tandem Paragliding High Flight | Switzerland.",
+      "faqs": [
+        {
+          "question": "Is Swiss Paragliding  Adventure GmbH worth it?",
+          "answer": "Based on 131 verified traveler reviews averaging 4.81 stars, Swiss Paragliding  Adventure GmbH is generally excellent for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Swiss Paragliding  Adventure GmbH offer in Interlaken?",
+          "answer": "Swiss Paragliding  Adventure GmbH currently lists 1 bookable tour in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Swiss Paragliding  Adventure GmbH tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"Interlaken Tandem Paragliding High Flight | Switzerland\" with 131 traveler reviews and a 4.8-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "20323P4",
+          "title": "Interlaken Tandem Paragliding High Flight | Switzerland",
+          "slug": "interlaken-tandem-paragliding-high-flight-switzerland",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/88/4c/1b.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.80916,
+          "reviewCount": 131,
+          "durationMinutes": 75
+        }
+      ]
+    },
+    {
+      "slug": "swiss-journey",
+      "operatorName": "Swiss-Journey",
+      "operatorKey": "swiss-journey",
+      "tourCount": 1,
+      "totalReviews": 9,
+      "averageRating": 4.78,
+      "blurb": "Swiss-Journey specializes in private tours across Interlaken. Use this page as a single hub to compare every Swiss-Journey listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Interlaken lineup includes From Interlaken: Private Grindelwald and Lauterbrunnen Tour.",
+      "faqs": [
+        {
+          "question": "Is Swiss-Journey worth it?",
+          "answer": "Based on 9 verified traveler reviews averaging 4.78 stars, Swiss-Journey is generally excellent for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Swiss-Journey offer in Interlaken?",
+          "answer": "Swiss-Journey currently lists 1 bookable tour in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Swiss-Journey tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"From Interlaken: Private Grindelwald and Lauterbrunnen Tour\" with 9 traveler reviews and a 4.8-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "5633841P3",
+          "title": "From Interlaken: Private Grindelwald and Lauterbrunnen Tour",
+          "slug": "from-interlaken-private-grindelwald-and-lauterbrunnen-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/r/32/9b/12/cd/caption.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.7777777,
+          "reviewCount": 9,
+          "durationMinutes": 360
+        }
+      ]
+    },
+    {
+      "slug": "swisstravelguidech",
+      "operatorName": "SwissTravelGuide.ch",
+      "operatorKey": "swisstravelguide.ch",
+      "tourCount": 7,
+      "totalReviews": 78,
+      "averageRating": 4.88,
+      "blurb": "SwissTravelGuide.ch specializes in private tours across Interlaken. Use this page as a single hub to compare every SwissTravelGuide.ch listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is SwissTravelGuide.ch worth it?",
+          "answer": "Based on 78 verified traveler reviews averaging 4.88 stars, SwissTravelGuide.ch is generally excellent for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does SwissTravelGuide.ch offer in Interlaken?",
+          "answer": "SwissTravelGuide.ch currently lists 7 bookable tours in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular SwissTravelGuide.ch tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"Beatus Caves, Panoramic Bridge, Nature Park Blue Lake and Lake Thun Cruise\" with 37 traveler reviews and a 4.8-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "8283P253",
+          "title": "Beatus Caves, Panoramic Bridge, Nature Park Blue Lake and Lake Thun Cruise",
+          "slug": "beatus-caves-panoramic-bridge-nature-park-blue-lake-and-lake-thun-cruise",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/10/03/af/c4.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.756757,
+          "reviewCount": 37,
+          "durationMinutes": 510
+        },
+        {
+          "productId": "8283P243",
+          "title": "Grindelwald -Kleine Scheidegg-Lauterbrunnen Small Group Day Trip",
+          "slug": "grindelwald-kleine-scheidegg-lauterbrunnen-small-group-day-trip",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0f/00/d4/d9.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 19,
+          "durationMinutes": 420
+        },
+        {
+          "productId": "8283P108",
+          "title": "Attraction Ticket:Jungfraujoch Top of Europe self-guided Day Tour",
+          "slug": "attraction-ticketjungfraujoch-top-of-europe-self-guided-day-tour",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/8f/5d/4b.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 8,
+          "durationMinutes": 420
+        },
+        {
+          "productId": "8283P118",
+          "title": "Schilthorn & Lauterbrunnen Valley Private Tour from Interlaken",
+          "slug": "schilthorn-lauterbrunnen-valley-private-tour-from-interlaken",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/r/33/7b/b2/62/caption.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 6,
+          "durationMinutes": null
+        },
+        {
+          "productId": "8283P303",
+          "title": "Attraction Ticket: Grindelwald First from Interlaken",
+          "slug": "attraction-ticket-grindelwald-first-from-interlaken",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/16/b7/af/86.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 5,
+          "durationMinutes": null
+        },
+        {
+          "productId": "8283P310",
+          "title": "Swiss Skyline: Mt. Schilthorn Afternoon Tour from Interlaken",
+          "slug": "swiss-skyline-mt-schilthorn-afternoon-tour-from-interlaken",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/r/33/7b/b2/62/caption.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 3,
+          "durationMinutes": 300
+        },
+        {
+          "productId": "8283P298",
+          "title": "Grindelwald & Lauterbrunnen Private Day Trip from Interlaken",
+          "slug": "grindelwald-lauterbrunnen-private-day-trip-from-interlaken",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/13/de/05/9f.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": 400
+        }
+      ]
+    },
+    {
+      "slug": "take-it-cheesy-tours",
+      "operatorName": "Take it cheesy tours!",
+      "operatorKey": "take it cheesy tours!",
+      "tourCount": 3,
+      "totalReviews": 39,
+      "averageRating": 4.82,
+      "blurb": "Take it cheesy tours! specializes in popular local experiences across Interlaken. Use this page as a single hub to compare every Take it cheesy tours! listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Interlaken lineup includes Fondue Cooking Class and Cheese Workshop in Switzerland, Alpine Dairy Farm Visit and Cheese Making Workshop, Tour.",
+      "faqs": [
+        {
+          "question": "Is Take it cheesy tours! worth it?",
+          "answer": "Based on 39 verified traveler reviews averaging 4.82 stars, Take it cheesy tours! is generally excellent for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Take it cheesy tours! offer in Interlaken?",
+          "answer": "Take it cheesy tours! currently lists 3 bookable tours in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Take it cheesy tours! tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"Fondue Cooking Class and Cheese Workshop in Switzerland\" with 28 traveler reviews and a 4.9-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "422919P1",
+          "title": "Fondue Cooking Class and Cheese Workshop in Switzerland",
+          "slug": "fondue-cooking-class-and-cheese-workshop-in-switzerland",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/11/91/4f/5c.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.857143,
+          "reviewCount": 28,
+          "durationMinutes": 150
+        },
+        {
+          "productId": "422919P2",
+          "title": "Alpine Dairy Farm Visit and Cheese Making Workshop",
+          "slug": "alpine-dairy-farm-visit-and-cheese-making-workshop",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/e7/f3/9c.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.7272725,
+          "reviewCount": 11,
+          "durationMinutes": 270
+        },
+        {
+          "productId": "422919P3",
+          "title": "Tour",
+          "slug": "tour",
+          "imageUrl": null,
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": null
+        }
+      ]
+    },
+    {
+      "slug": "tours-of-switzerland",
+      "operatorName": "Tours of Switzerland",
+      "operatorKey": "tours of switzerland",
+      "tourCount": 4,
+      "totalReviews": 30,
+      "averageRating": 4.7,
+      "blurb": "Tours of Switzerland specializes in popular local experiences across Interlaken. Use this page as a single hub to compare every Tours of Switzerland listing we track — each tour below has its own ratings, duration, and link to full details with live pricing.",
+      "faqs": [
+        {
+          "question": "Is Tours of Switzerland worth it?",
+          "answer": "Based on 30 verified traveler reviews averaging 4.7 stars, Tours of Switzerland is generally excellent for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Tours of Switzerland offer in Interlaken?",
+          "answer": "Tours of Switzerland currently lists 4 bookable tours in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Tours of Switzerland tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"Lauterbrunnen, Jungfrau & Grindelwald Tour | From Interlaken\" with 18 traveler reviews and a 4.5-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "201173P90",
+          "title": "Lauterbrunnen, Jungfrau & Grindelwald Tour | From Interlaken",
+          "slug": "lauterbrunnen-jungfrau-grindelwald-tour-from-interlaken",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/54/16/9b.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 4.5,
+          "reviewCount": 18,
+          "durationMinutes": 360
+        },
+        {
+          "productId": "201173P52",
+          "title": "Grindelwald First and Bachalpsee Hiking Tour | From Interlaken",
+          "slug": "grindelwald-first-and-bachalpsee-hiking-tour-from-interlaken",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/54/17/d9.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 6,
+          "durationMinutes": 360
+        },
+        {
+          "productId": "201173P109",
+          "title": "Jungfraujoch & Lauterbrunnen Alpine Tour | From Interlaken",
+          "slug": "jungfraujoch-lauterbrunnen-alpine-tour-from-interlaken",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/16/ad/8e/29.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 4,
+          "durationMinutes": 360
+        },
+        {
+          "productId": "201173P59",
+          "title": "James Bond’s Schilthorn & Mürren Tour | From Interlaken",
+          "slug": "james-bonds-schilthorn-mrren-tour-from-interlaken",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/54/1b/28.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 2,
+          "durationMinutes": 300
+        }
+      ]
+    },
+    {
+      "slug": "typically-swiss-tours",
+      "operatorName": "Typically Swiss Tours",
+      "operatorKey": "typically swiss tours",
+      "tourCount": 1,
+      "totalReviews": 25,
+      "averageRating": 5,
+      "blurb": "Typically Swiss Tours specializes in popular local experiences across Interlaken. Use this page as a single hub to compare every Typically Swiss Tours listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Interlaken lineup includes Best of Bernese Oberland Tour from Interlaken.",
+      "faqs": [
+        {
+          "question": "Is Typically Swiss Tours worth it?",
+          "answer": "Based on 25 verified traveler reviews averaging 5 stars, Typically Swiss Tours is generally excellent for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Typically Swiss Tours offer in Interlaken?",
+          "answer": "Typically Swiss Tours currently lists 1 bookable tour in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Typically Swiss Tours tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"Best of Bernese Oberland Tour from Interlaken\" with 25 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "70758P13",
+          "title": "Best of Bernese Oberland Tour from Interlaken",
+          "slug": "best-of-bernese-oberland-tour-from-interlaken",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/d2/b7/c9.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 25,
+          "durationMinutes": 540
+        }
+      ]
+    },
+    {
+      "slug": "yellow-velo",
+      "operatorName": "Yellow Velo",
+      "operatorKey": "yellow velo",
+      "tourCount": 2,
+      "totalReviews": 23,
+      "averageRating": 5,
+      "blurb": "Yellow Velo specializes in popular local experiences across Interlaken. Use this page as a single hub to compare every Yellow Velo listing we track — each tour below has its own ratings, duration, and link to full details with live pricing. Their Interlaken lineup includes Interlaken Valley Winter E-Bike Tour: Rivers, Lakes & Castles and Tour.",
+      "faqs": [
+        {
+          "question": "Is Yellow Velo worth it?",
+          "answer": "Based on 23 verified traveler reviews averaging 5 stars, Yellow Velo is generally excellent for tours in Interlaken. Compare individual experiences below and check live availability before booking."
+        },
+        {
+          "question": "How many tours does Yellow Velo offer in Interlaken?",
+          "answer": "Yellow Velo currently lists 2 bookable tours in Interlaken on TopTours.ai, including snorkeling, sightseeing, and day-trip options where available."
+        },
+        {
+          "question": "What is the most popular Yellow Velo tour in Interlaken?",
+          "answer": "The highest-reviewed option is \"Interlaken Valley Winter E-Bike Tour: Rivers, Lakes & Castles\" with 23 traveler reviews and a 5.0-star average."
+        }
+      ],
+      "tours": [
+        {
+          "productId": "440842P1",
+          "title": "Interlaken Valley Winter E-Bike Tour: Rivers, Lakes & Castles",
+          "slug": "interlaken-valley-winter-e-bike-tour-rivers-lakes-castles",
+          "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/r/32/95/28/4c/caption.jpg",
+          "highlight": null,
+          "fromPrice": null,
+          "rating": 5,
+          "reviewCount": 23,
+          "durationMinutes": 135
+        },
+        {
+          "productId": "440842P5",
+          "title": "Tour",
+          "slug": "tour",
+          "imageUrl": null,
+          "highlight": null,
+          "fromPrice": null,
+          "rating": null,
+          "reviewCount": 0,
+          "durationMinutes": null
+        }
+      ]
+    }
+  ],
+  "patchedAt": "2026-06-21T18:19:28.803Z"
+}

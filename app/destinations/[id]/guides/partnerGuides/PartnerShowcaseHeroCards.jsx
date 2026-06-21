@@ -22,8 +22,18 @@ function formatDurationHours(hours) {
 export default function PartnerShowcaseHeroCards({
   tours = [],
   operatorLabel = 'Kiliclimb Africa Safaris',
+  showPartnerBadge = true,
+  heading = 'Hand-picked Tanzania departures',
+  description = null,
+  centered = false,
 }) {
+  const defaultDescription = `Compare these experiences on TopTours with ${operatorLabel}, then finish on our partner checkout with live availability. Affiliate disclosure applies to outbound booking links.`;
   if (!Array.isArray(tours) || tours.length === 0) return null;
+
+  const useCenteredGrid = centered || tours.length <= 3;
+  const gridClassName = useCenteredGrid
+    ? 'mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8'
+    : 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5 gap-6';
 
   return (
     <section className="bg-white border-b border-gray-100">
@@ -34,20 +44,21 @@ export default function PartnerShowcaseHeroCards({
           transition={{ duration: 0.45 }}
           className="text-center max-w-3xl mx-auto mb-10"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-amber-200/80 bg-amber-50/90 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-amber-900 mb-3">
-            <Crown className="w-3.5 h-3.5 text-amber-600" aria-hidden />
-            Premium partner
-          </div>
+          {showPartnerBadge && (
+            <div className="inline-flex items-center gap-2 rounded-full border border-amber-200/80 bg-amber-50/90 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-amber-900 mb-3">
+              <Crown className="w-3.5 h-3.5 text-amber-600" aria-hidden />
+              Premium partner
+            </div>
+          )}
           <h2 className="text-2xl sm:text-3xl font-poppins font-bold text-gray-900 mb-2">
-            Hand-picked Tanzania departures
+            {heading}
           </h2>
           <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-            Compare these experiences on TopTours with {operatorLabel}, then finish on our partner checkout with live
-            availability. Affiliate disclosure applies to outbound booking links.
+            {description || defaultDescription}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5 gap-6">
+        <div className={gridClassName}>
           {tours.map((tour, index) => {
             const title = tour.title || 'Tour';
             const pid = tour.productId;
@@ -69,7 +80,7 @@ export default function PartnerShowcaseHeroCards({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="rounded-3xl border border-gray-200/90 bg-gradient-to-br from-white via-[#f9fafb] to-[#f3f6fb] p-6 sm:p-7 shadow-[0_18px_42px_rgba(15,23,42,0.08)] flex flex-col h-full"
+                className={`rounded-3xl border border-gray-200/90 bg-gradient-to-br from-white via-[#f9fafb] to-[#f3f6fb] p-6 sm:p-7 shadow-[0_18px_42px_rgba(15,23,42,0.08)] flex flex-col h-full ${useCenteredGrid ? 'w-full' : ''}`}
               >
                 <div className="relative rounded-2xl overflow-hidden bg-gray-100 aspect-[4/3] shadow-[0_10px_28px_rgba(15,23,42,0.12)] mb-4">
                   {tour.imageUrl ? (

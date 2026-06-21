@@ -5,6 +5,7 @@ import { ArrowRight, BookOpen, Baby, Shield, Plane, UtensilsCrossed } from 'luci
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import PrefetchOnHoverLink from '@/components/PrefetchOnHoverLink';
+import { destinationHasTravelInsurancePage } from '@/lib/destinationTravelInsurance';
 
 /**
  * Reusable sticky navigation for destination hub and sub-pages.
@@ -28,6 +29,9 @@ export default function DestinationStickyNav({
   }
 
   const displayName = destinationName || destinationId;
+  const travelInsuranceHref = destinationHasTravelInsurancePage(destinationId)
+    ? `/destinations/${destinationId}/travel-insurance`
+    : '/travel-insurance';
 
   const itemClass = (key) => {
     const isActive = activeKey === key || (activeKey === 'hub' && key === 'tours');
@@ -80,7 +84,7 @@ export default function DestinationStickyNav({
             </Link>
           )}
 
-          <Link href="/travel-insurance" className={itemClass('travel-insurance')}>
+          <Link href={travelInsuranceHref} className={itemClass('travel-insurance')}>
             <Shield className="w-4 h-4 shrink-0" aria-hidden />
             <span>Travel Insurance</span>
           </Link>

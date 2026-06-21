@@ -6,6 +6,30 @@ import {
   getArushaKiliclimbListingMeta,
   ARUSHA_KILICLIMB_GUIDE_SLUG,
 } from '../../app/destinations/[id]/guides/partnerGuides/arushaKiliclimbTanzania.js';
+import {
+  getAngkorSunriseListingMeta,
+  ANGKOR_SUNRISE_GUIDE_SLUG,
+} from '../../app/destinations/[id]/guides/partnerGuides/siemReapAngkorSunrise.js';
+import {
+  getSiemReapAirportTransfersListingMeta,
+  SIEM_REAP_AIRPORT_TRANSFERS_SLUG,
+} from '../../app/destinations/[id]/guides/partnerGuides/siemReapAirportTransfers.js';
+import {
+  getSiemReapAngkorWatToursListingMeta,
+  SIEM_REAP_ANGKOR_WAT_TOURS_SLUG,
+} from '../../app/destinations/[id]/guides/partnerGuides/siemReapAngkorWatTours.js';
+import {
+  getSiemReapAdditionalFeesListingMeta,
+  SIEM_REAP_ADDITIONAL_FEES_SLUG,
+} from '../../app/destinations/[id]/guides/partnerGuides/siemReapAdditionalFees.js';
+import {
+  getSiemReapBikeToursListingMeta,
+  SIEM_REAP_BIKE_TOURS_SLUG,
+} from '../../app/destinations/[id]/guides/partnerGuides/siemReapBikeTours.js';
+import {
+  getSiemReapDayTripsListingMeta,
+  SIEM_REAP_DAY_TRIPS_SLUG,
+} from '../../app/destinations/[id]/guides/partnerGuides/siemReapDayTrips.js';
 
 /**
  * Get all category guides for a destination (database only)
@@ -31,6 +55,18 @@ async function loadAllCategoryGuidesForDestinationNormalized(normalizedDestinati
   if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
     if (normalizedDestinationId === 'arusha') {
       const meta = getArushaKiliclimbListingMeta();
+      return [
+        {
+          category_slug: meta.category_slug,
+          category_name: meta.category_name,
+          title: meta.title,
+          subtitle: meta.subtitle,
+          hero_image: meta.hero_image,
+        },
+      ];
+    }
+    if (normalizedDestinationId === 'siem-reap') {
+      const meta = getAngkorSunriseListingMeta();
       return [
         {
           category_slug: meta.category_slug,
@@ -74,6 +110,123 @@ async function loadAllCategoryGuidesForDestinationNormalized(normalizedDestinati
           title: meta.title,
           subtitle: meta.subtitle,
           hero_image: meta.hero_image,
+        });
+      }
+    }
+
+    if (normalizedDestinationId === 'siem-reap') {
+      const angkorMeta = getAngkorSunriseListingMeta();
+      const angkorExists = combined.some(
+        (g) => String(g.category_slug || '').toLowerCase() === ANGKOR_SUNRISE_GUIDE_SLUG
+      );
+      if (!angkorExists) {
+        combined.unshift({
+          category_slug: angkorMeta.category_slug,
+          category_name: angkorMeta.category_name,
+          title: angkorMeta.title,
+          subtitle: angkorMeta.subtitle,
+          hero_image: angkorMeta.hero_image,
+        });
+      }
+
+      const airportMeta = getSiemReapAirportTransfersListingMeta();
+      const airportIdx = combined.findIndex(
+        (g) => String(g.category_slug || '').toLowerCase() === SIEM_REAP_AIRPORT_TRANSFERS_SLUG
+      );
+      if (airportIdx >= 0) {
+        combined[airportIdx] = {
+          ...combined[airportIdx],
+          title: airportMeta.title,
+          subtitle: airportMeta.subtitle,
+          hero_image: airportMeta.hero_image || combined[airportIdx].hero_image,
+        };
+      }
+
+      const angkorWatMeta = getSiemReapAngkorWatToursListingMeta();
+      const angkorWatIdx = combined.findIndex(
+        (g) => String(g.category_slug || '').toLowerCase() === SIEM_REAP_ANGKOR_WAT_TOURS_SLUG
+      );
+      if (angkorWatIdx >= 0) {
+        combined[angkorWatIdx] = {
+          ...combined[angkorWatIdx],
+          title: angkorWatMeta.title,
+          subtitle: angkorWatMeta.subtitle,
+          hero_image: angkorWatMeta.hero_image || combined[angkorWatIdx].hero_image,
+          category_name: angkorWatMeta.category_name,
+        };
+      } else {
+        combined.unshift({
+          category_slug: angkorWatMeta.category_slug,
+          category_name: angkorWatMeta.category_name,
+          title: angkorWatMeta.title,
+          subtitle: angkorWatMeta.subtitle,
+          hero_image: angkorWatMeta.hero_image,
+        });
+      }
+
+      const feesMeta = getSiemReapAdditionalFeesListingMeta();
+      const feesIdx = combined.findIndex(
+        (g) => String(g.category_slug || '').toLowerCase() === SIEM_REAP_ADDITIONAL_FEES_SLUG
+      );
+      if (feesIdx >= 0) {
+        combined[feesIdx] = {
+          ...combined[feesIdx],
+          title: feesMeta.title,
+          subtitle: feesMeta.subtitle,
+          hero_image: feesMeta.hero_image || combined[feesIdx].hero_image,
+          category_name: feesMeta.category_name,
+        };
+      } else {
+        combined.unshift({
+          category_slug: feesMeta.category_slug,
+          category_name: feesMeta.category_name,
+          title: feesMeta.title,
+          subtitle: feesMeta.subtitle,
+          hero_image: feesMeta.hero_image,
+        });
+      }
+
+      const bikeMeta = getSiemReapBikeToursListingMeta();
+      const bikeIdx = combined.findIndex(
+        (g) => String(g.category_slug || '').toLowerCase() === SIEM_REAP_BIKE_TOURS_SLUG
+      );
+      if (bikeIdx >= 0) {
+        combined[bikeIdx] = {
+          ...combined[bikeIdx],
+          title: bikeMeta.title,
+          subtitle: bikeMeta.subtitle,
+          hero_image: bikeMeta.hero_image || combined[bikeIdx].hero_image,
+          category_name: bikeMeta.category_name,
+        };
+      } else {
+        combined.unshift({
+          category_slug: bikeMeta.category_slug,
+          category_name: bikeMeta.category_name,
+          title: bikeMeta.title,
+          subtitle: bikeMeta.subtitle,
+          hero_image: bikeMeta.hero_image,
+        });
+      }
+
+      const dayTripsMeta = getSiemReapDayTripsListingMeta();
+      const dayTripsIdx = combined.findIndex(
+        (g) => String(g.category_slug || '').toLowerCase() === SIEM_REAP_DAY_TRIPS_SLUG
+      );
+      if (dayTripsIdx >= 0) {
+        combined[dayTripsIdx] = {
+          ...combined[dayTripsIdx],
+          title: dayTripsMeta.title,
+          subtitle: dayTripsMeta.subtitle,
+          hero_image: dayTripsMeta.hero_image || combined[dayTripsIdx].hero_image,
+          category_name: dayTripsMeta.category_name,
+        };
+      } else {
+        combined.unshift({
+          category_slug: dayTripsMeta.category_slug,
+          category_name: dayTripsMeta.category_name,
+          title: dayTripsMeta.title,
+          subtitle: dayTripsMeta.subtitle,
+          hero_image: dayTripsMeta.hero_image,
         });
       }
     }
