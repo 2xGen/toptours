@@ -38,6 +38,14 @@ import {
   SIEM_REAP_DAY_TRIPS_SLUG,
   getSiemReapDayTripsGuideData,
 } from '../partnerGuides/siemReapDayTrips';
+import {
+  SIEM_REAP_BUS_TOURS_SLUG,
+  getSiemReapBusToursGuideData,
+} from '../partnerGuides/siemReapBusTours';
+import {
+  SIEM_REAP_HALF_DAY_TOURS_SLUG,
+  getSiemReapHalfDayToursGuideData,
+} from '../partnerGuides/siemReapHalfDayTours';
 import { isLowValueGuideTag } from '@/lib/guideIndexing';
 import { requireFeaturedDestination } from '@/lib/requireFeaturedDestination';
 import { getTourUrl } from '@/utils/tourHelpers';
@@ -80,7 +88,9 @@ function resolveGuideSchemaDates(guideData) {
     guideData?.guideLayout === 'siem-reap-angkor-wat-tours' ||
     guideData?.guideLayout === 'siem-reap-additional-fees' ||
     guideData?.guideLayout === 'siem-reap-bike-tours' ||
-    guideData?.guideLayout === 'siem-reap-day-trips'
+    guideData?.guideLayout === 'siem-reap-day-trips' ||
+    guideData?.guideLayout === 'siem-reap-bus-tours' ||
+    guideData?.guideLayout === 'siem-reap-half-day-tours'
   ) {
     return { datePublished: '2026-06-10', dateModified: '2026-06-10' };
   }
@@ -427,6 +437,14 @@ export async function generateMetadata({ params }) {
 
     if (normDestMeta === 'siem-reap' && normCatMeta === SIEM_REAP_DAY_TRIPS_SLUG) {
       guideData = getSiemReapDayTripsGuideData();
+    }
+
+    if (normDestMeta === 'siem-reap' && normCatMeta === SIEM_REAP_BUS_TOURS_SLUG) {
+      guideData = getSiemReapBusToursGuideData();
+    }
+
+    if (normDestMeta === 'siem-reap' && normCatMeta === SIEM_REAP_HALF_DAY_TOURS_SLUG) {
+      guideData = getSiemReapHalfDayToursGuideData();
     }
     
     // Same as page: tag-based guides — real cache vs placeholder ("Generate with AI" shell).
@@ -842,8 +860,69 @@ export default async function CategoryGuidePage({ params }) {
       }
     }
 
-    // Tag guide: prefer cached tag guide content first (viator_tag_traits lookup may be incomplete),
-    // then fall back to placeholder creation when cache is missing.
+    if (normDestPage === 'siem-reap' && normCatPage === SIEM_REAP_BUS_TOURS_SLUG) {
+      const staticGuide = getSiemReapBusToursGuideData();
+      if (!guideData) {
+        guideData = staticGuide;
+        guideSource = 'static_editorial';
+      } else {
+        guideData = {
+          ...guideData,
+          ...staticGuide,
+          topPick: staticGuide.topPick,
+          transferSections: staticGuide.transferSections,
+          relatedGuideLinks: staticGuide.relatedGuideLinks,
+          guideLayout: staticGuide.guideLayout,
+          hideWhatToExpect: staticGuide.hideWhatToExpect,
+          hideExpertTips: staticGuide.hideExpertTips,
+          faqs: staticGuide.faqs,
+          seo: staticGuide.seo,
+          stats: staticGuide.stats,
+          heroTagline: staticGuide.heroTagline,
+          heroImage: staticGuide.heroImage,
+          introParagraphs: staticGuide.introParagraphs,
+          comparisonSection: staticGuide.comparisonSection,
+          tipsSection: staticGuide.tipsSection,
+          topPickHeading: staticGuide.topPickHeading,
+          schemaDatePublished: staticGuide.schemaDatePublished,
+          schemaDateModified: staticGuide.schemaDateModified,
+          curatedToursForSchema: staticGuide.curatedToursForSchema,
+        };
+      }
+    }
+
+    if (normDestPage === 'siem-reap' && normCatPage === SIEM_REAP_HALF_DAY_TOURS_SLUG) {
+      const staticGuide = getSiemReapHalfDayToursGuideData();
+      if (!guideData) {
+        guideData = staticGuide;
+        guideSource = 'static_editorial';
+      } else {
+        guideData = {
+          ...guideData,
+          ...staticGuide,
+          topPick: staticGuide.topPick,
+          transferSections: staticGuide.transferSections,
+          relatedGuideLinks: staticGuide.relatedGuideLinks,
+          guideLayout: staticGuide.guideLayout,
+          hideWhatToExpect: staticGuide.hideWhatToExpect,
+          hideExpertTips: staticGuide.hideExpertTips,
+          faqs: staticGuide.faqs,
+          seo: staticGuide.seo,
+          stats: staticGuide.stats,
+          heroTagline: staticGuide.heroTagline,
+          heroImage: staticGuide.heroImage,
+          introParagraphs: staticGuide.introParagraphs,
+          comparisonSection: staticGuide.comparisonSection,
+          tipsSection: staticGuide.tipsSection,
+          topPickHeading: staticGuide.topPickHeading,
+          schemaDatePublished: staticGuide.schemaDatePublished,
+          schemaDateModified: staticGuide.schemaDateModified,
+          curatedToursForSchema: staticGuide.curatedToursForSchema,
+        };
+      }
+    }
+
+    // Tag guide: prefer cached tag guide content first
     let resolvedTagId = null;
     let tagGuidePlaceholder = null;
     if (!guideData && destination && categorySlug !== 'airport-transfers') {

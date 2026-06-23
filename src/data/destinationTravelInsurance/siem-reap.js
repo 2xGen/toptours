@@ -10,14 +10,14 @@ export const SIEM_REAP_TRAVEL_INSURANCE = {
     'https://soaacpusdhyxwucjhhpy.supabase.co/storage/v1/object/public/images/travel%20insurance%20in%20aruba.jpg',
   title: 'Siem Reap Travel Insurance: What You Need to Know (2026)',
   subtitle:
-    "Cambodia doesn't require travel insurance for entry, but it is strongly recommended. US health insurance, including Medicare, is not accepted in Cambodia — medical emergencies are paid out of pocket by visitors.",
+    "Cambodia doesn't require travel insurance for entry, but it is strongly recommended. US health insurance may not provide coverage abroad — many visitors pay out of pocket for medical care in Cambodia unless they carry separate travel medical insurance.",
   heroBadges: ['2026 Updated', 'Hospital + Emergency Info', 'From ~$2/day'],
   quickAnswer: {
     headline: 'Quick Answer',
     points: [
       'Siem Reap travel insurance is not required for entry, but most visitors should carry separate travel medical insurance.',
-      'US health plans: Medicare, Medicaid, and most employer plans do not cover care in Cambodia',
-      'Hospitals: Expect upfront payment from foreign visitors at local clinics and the main referral hospital',
+      'US health plans: Medicare, Medicaid, and many employer plans often provide limited or no coverage for care in Cambodia — check your policy before you travel',
+      'Hospitals: Many clinics and hospitals may require upfront payment from foreign visitors before treatment',
       'Typical cost: Travel medical insurance from about $2/day for ages 18–39 on a one-week trip',
       'Popular option: SafetyWing Nomad Insurance Essential — see exactly what\'s included',
     ],
@@ -37,8 +37,8 @@ export const SIEM_REAP_TRAVEL_INSURANCE = {
   whyItMatters: {
     title: 'Why Siem Reap Travel Insurance Matters for Visitors',
     paragraphs: [
-      "Cambodia doesn't require travel insurance for entry. But here is what most visitors don't realize until they are standing at a Siem Reap clinic reception desk at midnight: US health insurance — including Medicare, Medicaid, and most employer plans — does not work here. Hospitals require upfront payment from foreign visitors before treatment.",
-      'A motorbike scrape on the way back from Angkor Wat, a fall on the steep steps of Ta Keo, a sudden case of food poisoning from Pub Street, or a cut from a coral reef during a Tonle Sap snorkel trip can turn a dream vacation into a four-figure out-of-pocket expense overnight. Medical evacuation to Bangkok or Singapore? That can exceed $50,000 to $100,000 without coverage.',
+      "Cambodia doesn't require travel insurance for entry. But here is what many visitors don't realize until they are standing at a Siem Reap clinic reception desk at midnight: US health insurance — including Medicare, Medicaid, and many employer plans — may not provide coverage abroad and is often limited or not accepted by local providers. Many hospitals may require upfront payment from foreign visitors before treatment.",
+      'A motorbike scrape on the way back from Angkor Wat, a fall on the steep steps of Ta Keo, a sudden case of food poisoning from Pub Street, or a cut from a coral reef during a Tonle Sap snorkel trip can turn a dream vacation into a four-figure out-of-pocket expense overnight. In serious cases, medical evacuation to Bangkok or Singapore can in some cases exceed $50,000 to $100,000 without coverage.',
       'Siem Reap is safe. But "safe" doesn\'t mean accident-proof. That is why travel medical insurance is one of the most practical investments you can make for a Cambodia trip — and why many visitors use SafetyWing Nomad Insurance. It costs about $2 per day (less than a single meal at Pub Street) and covers eligible medical emergencies, evacuation, trip delays, and even lost luggage — subject to policy terms.',
       'Here is exactly what you need to know about travel insurance for Siem Reap in 2026.',
     ],
@@ -49,8 +49,8 @@ export const SIEM_REAP_TRAVEL_INSURANCE = {
     headers: ['Reason', 'Why It Matters'],
     rows: [
       [
-        "US health insurance doesn't work here",
-        'Cambodia hospitals require upfront payment from foreign visitors. This is the top reason visitors search for cambodia travel insurance before they fly.',
+        'US health insurance may not cover care here',
+        'Many hospitals may require upfront payment from foreign visitors. This is a top reason visitors search for cambodia travel insurance before they fly.',
       ],
       [
         'Temple exploration is physical',
@@ -63,7 +63,7 @@ export const SIEM_REAP_TRAVEL_INSURANCE = {
       ],
       [
         'Medical evacuation is expensive',
-        'Air evacuation to Bangkok or Singapore can exceed $50,000 to $100,000 without coverage.',
+        'In serious cases, air evacuation to Bangkok or Singapore can in some cases exceed $50,000 to $100,000 without coverage.',
       ],
       ['Affordable protection', 'Travel medical insurance from about $2/day for younger travelers.'],
     ],
@@ -71,7 +71,7 @@ export const SIEM_REAP_TRAVEL_INSURANCE = {
   healthcare: {
     title: 'Healthcare in Siem Reap: What to Expect',
     intro:
-      'If you are researching cambodia health care for tourists or siem reap visitor insurance, the key thing to know is that Siem Reap has solid medical facilities for a Cambodian city — but you pay first and claim later (if you have coverage).',
+      'If you are researching cambodia health care for tourists or siem reap visitor insurance, the key thing to know is that Siem Reap has solid medical facilities for a Cambodian city — but many providers may require payment upfront, with reimbursement later if your insurer covers foreign care.',
     hospitalHeaders: ['Name', 'Type', 'Address / Contact', 'Services'],
     hospitals: [
       [
@@ -96,7 +96,7 @@ export const SIEM_REAP_TRAVEL_INSURANCE = {
     notes: [
       'Private hospitals (like Royal Angkor) offer higher quality care but cost more',
       'Public hospitals are cheaper but may have limited English-speaking staff',
-      'Upfront payment is expected from foreign visitors',
+      'Upfront payment may be required from foreign visitors at many facilities',
       'Serious emergencies may require evacuation to Phnom Penh, Bangkok, or Singapore',
     ],
   },
@@ -160,7 +160,7 @@ export const SIEM_REAP_TRAVEL_INSURANCE = {
       ],
       [
         'Emergency medical evacuation',
-        'Transport to Bangkok or Singapore can exceed $50,000 to $100,000. Both SafetyWing plans include up to $100,000.',
+        'In serious cases, transport to Bangkok or Singapore can in some cases exceed $50,000 to $100,000. Both SafetyWing plans include up to $100,000.',
       ],
       [
         'Adventure sports coverage',
@@ -198,7 +198,7 @@ export const SIEM_REAP_TRAVEL_INSURANCE = {
       ],
       [
         'Medical evacuation',
-        'You have a serious accident requiring air evacuation to Bangkok. Without insurance: $50,000–100,000. With insurance: covered up to $100,000.',
+        'You have a serious accident requiring air evacuation to Bangkok. Without insurance: costs can in some cases reach $50,000–100,000. With insurance: covered up to $100,000, subject to policy terms.',
       ],
     ],
   },
@@ -294,12 +294,12 @@ export const SIEM_REAP_TRAVEL_INSURANCE = {
     {
       question: 'Is travel insurance mandatory for Siem Reap in 2026?',
       answer:
-        'No. Cambodia does not require travel insurance for entry. Still, it is a smart add-on for most visitors because medical treatment is paid upfront by tourists, and trip delays or cancellations can quickly become expensive without coverage.',
+        'No. Cambodia does not require travel insurance for entry. Still, it is a smart add-on for most visitors because many facilities may require upfront payment, and trip delays or cancellations can quickly become expensive without coverage.',
     },
     {
       question: 'Will my US health insurance work in Cambodia?',
       answer:
-        'In most cases, no. US plans, including Medicare and Medicaid, generally do not cover routine or emergency care in Cambodia, so you should plan on separate travel medical insurance before departure.',
+        'Often limited. US plans — including Medicare and Medicaid — usually do not cover routine or emergency care outside the United States, and many employer plans may not reimburse foreign care or may only offer limited out-of-network benefits. Check your policy and consider separate travel medical insurance before departure.',
     },
     {
       question: 'Is Siem Reap travel insurance worth it?',
@@ -360,7 +360,7 @@ export const SIEM_REAP_TRAVEL_INSURANCE = {
   seo: {
     title: 'Siem Reap Travel Insurance: What You Need to Know (2026) | TopTours',
     description:
-      'Siem Reap travel insurance guide for 2026 — US plans don\'t work in Cambodia, hospital upfront costs, SafetyWing from ~$2/day, evacuation coverage, and FAQs for temple trips.',
+      'Siem Reap travel insurance guide for 2026 — US plans may not cover care abroad, upfront hospital costs, SafetyWing from ~$2/day, evacuation coverage, and FAQs for temple trips.',
     keywords:
       'Siem Reap travel insurance, Cambodia travel insurance, SafetyWing Siem Reap, cambodia health insurance tourists',
   },

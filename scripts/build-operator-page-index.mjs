@@ -12,7 +12,7 @@ import {
   buildOperatorFaqs,
   truncateHighlight,
 } from '../src/lib/operatorPageSeo.js';
-import { slugToViatorId } from '../src/data/viatorDestinationMap.js';
+import { slugToViatorId, getOperatorViatorIdForSlug } from '../src/data/viatorDestinationMap.js';
 import { destinations } from '../src/data/destinationsData.js';
 
 config({ path: '.env.local' });
@@ -20,7 +20,7 @@ config({ path: '.env.local' });
 const destinationSlug = (process.argv[2] || 'aruba').toLowerCase();
 const MEANINGFUL_REVIEWS = 5;
 
-const viatorDestinationId = slugToViatorId[destinationSlug];
+const viatorDestinationId = getOperatorViatorIdForSlug(destinationSlug);
 if (!viatorDestinationId) {
   console.error('No Viator destination ID for slug:', destinationSlug);
   process.exit(1);

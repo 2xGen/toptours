@@ -60,8 +60,15 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
   const isAdditionalFeesLayout = guideData?.guideLayout === 'siem-reap-additional-fees';
   const isBikeToursLayout = guideData?.guideLayout === 'siem-reap-bike-tours';
   const isDayTripsLayout = guideData?.guideLayout === 'siem-reap-day-trips';
+  const isBusToursLayout = guideData?.guideLayout === 'siem-reap-bus-tours';
+  const isHalfDayToursLayout = guideData?.guideLayout === 'siem-reap-half-day-tours';
   const isCuratedToursGuideLayout =
-    isAirportTransfersLayout || isAngkorWatToursLayout || isBikeToursLayout || isDayTripsLayout;
+    isAirportTransfersLayout ||
+    isAngkorWatToursLayout ||
+    isBikeToursLayout ||
+    isDayTripsLayout ||
+    isBusToursLayout ||
+    isHalfDayToursLayout;
   const isEditorialGuideLayout =
     isAngkorSunriseLayout || isCuratedToursGuideLayout || isAdditionalFeesLayout;
 

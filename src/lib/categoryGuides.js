@@ -30,6 +30,14 @@ import {
   getSiemReapDayTripsListingMeta,
   SIEM_REAP_DAY_TRIPS_SLUG,
 } from '../../app/destinations/[id]/guides/partnerGuides/siemReapDayTrips.js';
+import {
+  getSiemReapBusToursListingMeta,
+  SIEM_REAP_BUS_TOURS_SLUG,
+} from '../../app/destinations/[id]/guides/partnerGuides/siemReapBusTours.js';
+import {
+  getSiemReapHalfDayToursListingMeta,
+  SIEM_REAP_HALF_DAY_TOURS_SLUG,
+} from '../../app/destinations/[id]/guides/partnerGuides/siemReapHalfDayTours.js';
 
 /**
  * Get all category guides for a destination (database only)
@@ -227,6 +235,50 @@ async function loadAllCategoryGuidesForDestinationNormalized(normalizedDestinati
           title: dayTripsMeta.title,
           subtitle: dayTripsMeta.subtitle,
           hero_image: dayTripsMeta.hero_image,
+        });
+      }
+
+      const busMeta = getSiemReapBusToursListingMeta();
+      const busIdx = combined.findIndex(
+        (g) => String(g.category_slug || '').toLowerCase() === SIEM_REAP_BUS_TOURS_SLUG
+      );
+      if (busIdx >= 0) {
+        combined[busIdx] = {
+          ...combined[busIdx],
+          title: busMeta.title,
+          subtitle: busMeta.subtitle,
+          hero_image: busMeta.hero_image || combined[busIdx].hero_image,
+          category_name: busMeta.category_name,
+        };
+      } else {
+        combined.unshift({
+          category_slug: busMeta.category_slug,
+          category_name: busMeta.category_name,
+          title: busMeta.title,
+          subtitle: busMeta.subtitle,
+          hero_image: busMeta.hero_image,
+        });
+      }
+
+      const halfDayMeta = getSiemReapHalfDayToursListingMeta();
+      const halfDayIdx = combined.findIndex(
+        (g) => String(g.category_slug || '').toLowerCase() === SIEM_REAP_HALF_DAY_TOURS_SLUG
+      );
+      if (halfDayIdx >= 0) {
+        combined[halfDayIdx] = {
+          ...combined[halfDayIdx],
+          title: halfDayMeta.title,
+          subtitle: halfDayMeta.subtitle,
+          hero_image: halfDayMeta.hero_image || combined[halfDayIdx].hero_image,
+          category_name: halfDayMeta.category_name,
+        };
+      } else {
+        combined.unshift({
+          category_slug: halfDayMeta.category_slug,
+          category_name: halfDayMeta.category_name,
+          title: halfDayMeta.title,
+          subtitle: halfDayMeta.subtitle,
+          hero_image: halfDayMeta.hero_image,
         });
       }
     }

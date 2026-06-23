@@ -6,7 +6,7 @@
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import { generateTourSlug } from '@/utils/tourHelpers';
-import { slugToViatorId } from '@/data/viatorDestinationMap';
+import { getOperatorViatorIdForSlug } from '@/data/viatorDestinationMap';
 import { getDestinationById } from '@/data/destinationsData';
 import { getDestinationFullContent } from '@/data/destinationFullContent';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
@@ -30,6 +30,8 @@ export const OPERATOR_PAGE_PILOT_DESTINATIONS = new Set([
   'siem-reap',
   'dubrovnik',
   'san-jose',
+  'kuala-lumpur',
+  'cairo',
 ]);
 
 export function getOperatorPagePilotSlugs() {
@@ -103,7 +105,7 @@ export function operatorNameToSlug(name) {
 }
 
 export function getViatorDestinationIdForSlug(destinationSlug) {
-  return slugToViatorId?.[destinationSlug] ? String(slugToViatorId[destinationSlug]) : null;
+  return getOperatorViatorIdForSlug(destinationSlug);
 }
 
 export function tourBelongsToViatorDestination(tour, viatorDestinationId) {

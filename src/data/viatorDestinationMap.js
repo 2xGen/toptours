@@ -185,6 +185,22 @@ export const slugToViatorId = {
   "mauritius": "4463"
 };
 
+/**
+ * City-level Viator IDs for operator pages when the hub tour catalog uses a wider
+ * region/country ID in slugToViatorId (e.g. Cairo hub → Egypt 722, operators → Cairo 782).
+ */
+export const slugToOperatorViatorId = {
+  cairo: '782',
+};
+
+export function getOperatorViatorIdForSlug(slug) {
+  const key = String(slug || '').toLowerCase();
+  const operatorId = slugToOperatorViatorId[key];
+  if (operatorId) return String(operatorId);
+  const tourId = slugToViatorId[key];
+  return tourId ? String(tourId) : null;
+}
+
 export const viatorRefToSlug = Object.entries(slugToViatorId).reduce((acc, [slug, viatorId]) => {
   if (viatorId) {
     acc[viatorId] = slug;

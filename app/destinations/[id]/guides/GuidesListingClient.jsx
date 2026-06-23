@@ -106,7 +106,6 @@ export default function GuidesListingClient({ destinationId, destination, guides
   const [showMoreCountryDestinations, setShowMoreCountryDestinations] = useState(12);
   const [poolTours, setPoolTours] = useState([]);
   const [toursLoading, setToursLoading] = useState(false);
-  const [tourMatchesEnabled, setTourMatchesEnabled] = useState(false);
 
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
@@ -117,7 +116,7 @@ export default function GuidesListingClient({ destinationId, destination, guides
   const guideSections = useMemo(() => groupGuidesIntoSections(guides), [guides]);
 
   useEffect(() => {
-    if (!tourMatchesEnabled || !viatorDestinationId) return undefined;
+    if (!viatorDestinationId) return undefined;
     let cancelled = false;
     (async () => {
       setToursLoading(true);
@@ -148,7 +147,7 @@ export default function GuidesListingClient({ destinationId, destination, guides
     return () => {
       cancelled = true;
     };
-  }, [tourMatchesEnabled, viatorDestinationId]);
+  }, [viatorDestinationId]);
 
   // Determine icon based on category name
   const getGuideIcon = (categoryName) => {
@@ -363,7 +362,8 @@ export default function GuidesListingClient({ destinationId, destination, guides
                           Category guides
                         </h2>
                         <p className="text-gray-500 text-sm sm:text-base">
-                          {guides.length} guide{guides.length !== 1 ? 's' : ''} · grouped by topic · optional tour matches
+                          {guides.length} guide{guides.length !== 1 ? 's' : ''} · grouped by topic
+                          {viatorDestinationId ? ' · popular tour matches per guide' : ''}
                         </p>
                       </div>
                     </div>
@@ -374,16 +374,6 @@ export default function GuidesListingClient({ destinationId, destination, guides
                           <ArrowRight className="w-4 h-4 ml-1.5" />
                         </Link>
                       </Button>
-                      {viatorDestinationId && !tourMatchesEnabled && (
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          onClick={() => setTourMatchesEnabled(true)}
-                          className="border-slate-300 text-slate-700 hover:bg-slate-50"
-                        >
-                          Show tour matches
-                        </Button>
-                      )}
                       {viatorDestinationId && toursLoading && (
                         <span className="text-xs text-gray-400">Loading tour matches…</span>
                       )}
@@ -456,7 +446,7 @@ export default function GuidesListingClient({ destinationId, destination, guides
                                       <ArrowRight className="w-4 h-4 shrink-0" />
                                     </span>
                                   </Link>
-                                  {tourMatchesEnabled && viatorDestinationId && poolTours.length > 0 && (
+                                  {viatorDestinationId && poolTours.length > 0 && (
                                     <GuideFeaturedToursRow guide={guide} poolTours={poolTours} />
                                   )}
                                 </CardContent>
