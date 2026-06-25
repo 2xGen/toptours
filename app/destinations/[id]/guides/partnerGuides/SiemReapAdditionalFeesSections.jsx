@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Star, Clock, ExternalLink, AlertCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { getTourUrl, withViatorAffiliateParams } from '@/utils/tourHelpers';
+import { getTourUrl, withViatorAffiliateParams, VIATOR_AFFILIATE_LINK_REL } from '@/utils/tourHelpers';
 
 function SectionHeading({ children }) {
   return (
@@ -137,7 +137,7 @@ function TourMiniCard({ tour }) {
           </Button>
           {bookUrl ? (
             <Button asChild size="sm" className="w-full sunset-gradient text-white font-semibold">
-              <a href={bookUrl} target="_blank" rel="nofollow sponsored noopener noreferrer">
+              <a href={bookUrl} target="_blank" rel={VIATOR_AFFILIATE_LINK_REL}>
                 Check availability
                 <ExternalLink className="ml-2 w-3.5 h-3.5" />
               </a>

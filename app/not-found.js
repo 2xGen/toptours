@@ -74,7 +74,7 @@ export default function NotFound() {
               <a
                 href="https://www.viator.com/?pid=P00276441&mcid=42383&medium=link&campaign=404"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="nofollow sponsored noopener noreferrer"
               >
                 Browse Tours on Viator
                 <ExternalLink className="ml-2 h-5 w-5" />

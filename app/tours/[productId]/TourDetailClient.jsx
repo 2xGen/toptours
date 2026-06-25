@@ -36,7 +36,7 @@ import FooterNext from '@/components/FooterNext';
 import DestinationStickyNav from '@/components/DestinationStickyNav';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getTourUrl, getTourProductId, generateTourSlug } from '@/utils/tourHelpers';
+import { getTourUrl, getTourProductId, generateTourSlug, VIATOR_AFFILIATE_LINK_REL } from '@/utils/tourHelpers';
 import { destinations } from '@/data/destinationsData';
 import { viatorRefToSlug } from '@/data/viatorDestinationMap';
 import { getGuidesByCountry } from '@/data/travelGuidesData';
@@ -76,7 +76,7 @@ function ViatorBetweenSectionsCta({ viatorUrl, headline, subline }) {
       <a
         href={viatorUrl}
         target="_blank"
-        rel="sponsored noopener noreferrer"
+        rel={VIATOR_AFFILIATE_LINK_REL}
         className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#00AA6C] px-4 py-3 text-center text-sm font-semibold leading-snug text-white transition-colors hover:bg-[#008855]"
       >
         <span className="min-w-0">
@@ -120,7 +120,7 @@ function ViatorDecisionBlock({ viatorUrl }) {
       <a
         href={viatorUrl}
         target="_blank"
-        rel="sponsored noopener noreferrer"
+        rel={VIATOR_AFFILIATE_LINK_REL}
         className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#00AA6C] px-4 py-3 text-center text-sm font-semibold leading-snug text-white transition-colors hover:bg-[#008855]"
       >
         <span className="min-w-0">{TOURS_PRIMARY_CTA_LABEL}</span>
@@ -349,7 +349,7 @@ function StickyPriceBar({
               <a
                 href={viatorUrl}
                 target="_blank"
-                rel="sponsored noopener noreferrer"
+                rel={VIATOR_AFFILIATE_LINK_REL}
                 className="flex items-center justify-center gap-2 w-full"
               >
                 {TOURS_PRIMARY_CTA_LABEL}
@@ -2517,7 +2517,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   <a
                     href={viatorUrl}
                     target="_blank"
-                    rel="sponsored noopener noreferrer"
+                    rel={VIATOR_AFFILIATE_LINK_REL}
                     className="inline-flex max-w-full items-center justify-center gap-2 rounded-xl bg-[#00AA6C] px-4 py-3 text-center text-sm font-semibold leading-snug text-white transition-colors hover:bg-[#008855] sm:px-5 sm:text-base"
                   >
                     <span className="min-w-0">{TOURS_PRIMARY_CTA_LABEL}</span>
@@ -3039,7 +3039,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                           <a
                             href={viatorUrl}
                             target="_blank"
-                            rel="sponsored noopener noreferrer"
+                            rel={VIATOR_AFFILIATE_LINK_REL}
                           >
                             {TOURS_PRIMARY_CTA_LABEL}
                             <ExternalLink className="w-4 h-4 ml-1 inline-block shrink-0" />
@@ -3451,7 +3451,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                       <a
                         href={viatorUrl}
                         target="_blank"
-                        rel="sponsored noopener noreferrer"
+                        rel={VIATOR_AFFILIATE_LINK_REL}
                       >
                         {TOURS_PRIMARY_CTA_LABEL}
                         <ExternalLink className="w-5 h-5 ml-2 shrink-0" />
@@ -3670,7 +3670,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                 <a
                   href={viatorUrl}
                   target="_blank"
-                  rel="sponsored noopener noreferrer"
+                  rel={VIATOR_AFFILIATE_LINK_REL}
                   className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#00AA6C] px-4 py-3 text-center text-sm font-semibold leading-snug text-white transition-colors hover:bg-[#008855]"
                 >
                   <span>View similar tours &amp; prices</span>
@@ -4006,7 +4006,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                   <a
                     href={viatorUrl}
                     target="_blank"
-                    rel="sponsored noopener noreferrer"
+                    rel={VIATOR_AFFILIATE_LINK_REL}
                     onClick={(e) => e.stopPropagation()}
                   >
                     {TOURS_PRIMARY_CTA_LABEL}
@@ -4273,7 +4273,7 @@ export default function TourDetailClient({ tour, similarTours = [], productId, p
                 <a
                   href={viatorUrl}
                   target="_blank"
-                  rel="sponsored noopener noreferrer"
+                  rel={VIATOR_AFFILIATE_LINK_REL}
                 >
                   Book this tour
                   <ExternalLink className="w-5 h-5 ml-2 inline" />

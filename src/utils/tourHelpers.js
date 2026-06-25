@@ -18,6 +18,9 @@ const VIATOR_LINK_AFFILIATE = {
   medium: 'link',
 };
 
+/** rel for outbound Viator affiliate booking links — discourages crawlers from following. */
+export const VIATOR_AFFILIATE_LINK_REL = 'nofollow sponsored noopener noreferrer';
+
 /**
  * Normalize Viator host so links work reliably (avoid shop.live.rc.viator.com).
  * @param {string} url

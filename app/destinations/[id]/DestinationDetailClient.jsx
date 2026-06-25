@@ -18,7 +18,7 @@ import { getRelatedDestinations, getDestinationsByIds, getDestinationsByCountry 
 import { isFeaturedDestination } from '@/lib/featuredDestinations';
 import { getGuidesByCategory, getGuidesByIds, getGuidesByCountry } from '../../../src/data/travelGuidesData.js';
 // Tours and destination data are passed as props from the server component
-import { getTourUrl, getTourProductId, getViatorDestinationHubUrl } from '@/utils/tourHelpers';
+import { getTourUrl, getTourProductId, getViatorDestinationHubUrl, VIATOR_AFFILIATE_LINK_REL } from '@/utils/tourHelpers';
 import { groupToursByCategory } from '@/lib/tourCategorization';
 import viatorDestinationsClassifiedData from '@/data/viatorDestinationsClassified.json';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
@@ -1210,7 +1210,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                         <a
                           href={viatorDestinationHubUrl}
                           target="_blank"
-                          rel="sponsored noopener noreferrer"
+                          rel={VIATOR_AFFILIATE_LINK_REL}
                           className="inline-flex items-center gap-2"
                         >
                           Explore full catalog on Viator
@@ -1349,7 +1349,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                       <a
                         href={viatorDestinationHubUrl}
                         target="_blank"
-                        rel="sponsored noopener noreferrer"
+                        rel={VIATOR_AFFILIATE_LINK_REL}
                         className="inline-flex items-center gap-2"
                       >
                         Explore full catalog on Viator
@@ -1723,7 +1723,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                       <a
                         href={viatorDestinationHubUrl}
                         target="_blank"
-                        rel="sponsored noopener noreferrer"
+                        rel={VIATOR_AFFILIATE_LINK_REL}
                         className="inline-flex items-center gap-1 font-semibold text-[#00AA6C] hover:text-[#008855] underline decoration-[#00AA6C]/35 underline-offset-2"
                       >
                         Explore full catalog on Viator
@@ -1752,7 +1752,7 @@ export default function DestinationDetailClient({ destination, promotionScores =
                     <a
                       href={viatorDestinationHubUrl}
                       target="_blank"
-                      rel="sponsored noopener noreferrer"
+                      rel={VIATOR_AFFILIATE_LINK_REL}
                       className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#00AA6C] hover:text-[#008855] underline"
                     >
                       Explore full catalog on Viator

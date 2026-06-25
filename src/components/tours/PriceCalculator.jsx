@@ -5,6 +5,8 @@ import { ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
+import { VIATOR_AFFILIATE_LINK_REL } from '@/utils/tourHelpers';
+
 /**
  * Price Calculator Component - Simplified
  * 
@@ -161,7 +163,7 @@ export default function PriceCalculator({
           <a
             href={viatorBookingUrl}
             target="_blank"
-            rel="sponsored noopener noreferrer"
+            rel={VIATOR_AFFILIATE_LINK_REL}
             className="flex items-center justify-center gap-2 px-2 text-center"
           >
             {ctaLabel}

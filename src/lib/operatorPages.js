@@ -32,6 +32,8 @@ export const OPERATOR_PAGE_PILOT_DESTINATIONS = new Set([
   'san-jose',
   'kuala-lumpur',
   'cairo',
+  'hanoi',
+  'marrakech',
 ]);
 
 export function getOperatorPagePilotSlugs() {

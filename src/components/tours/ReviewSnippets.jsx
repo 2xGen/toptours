@@ -2,6 +2,7 @@
 
 import { Star, ExternalLink, MessageSquare } from 'lucide-react';
 import { formatReviewSnippet, formatReviewDate, getViatorBookingUrl } from '@/lib/viatorReviews';
+import { VIATOR_AFFILIATE_LINK_REL } from '@/utils/tourHelpers';
 
 /**
  * Review Snippets Component - TripAdvisor Inspired Design
@@ -177,7 +178,7 @@ export default function ReviewSnippets({ reviews, tour, productId, viatorBooking
                       <a
                         href={reviewUrl}
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel={VIATOR_AFFILIATE_LINK_REL}
                         className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-[#00AA6C] text-[#00AA6C] rounded-lg hover:bg-[#00AA6C] hover:text-white transition-all duration-200 font-semibold text-sm shadow-sm hover:shadow-md group"
                       >
                         <span>Read full review</span>
@@ -202,7 +203,7 @@ export default function ReviewSnippets({ reviews, tour, productId, viatorBooking
             <a
               href={viatorBookingUrl || getViatorBookingUrl(tour)}
               target="_blank"
-              rel="noopener noreferrer"
+              rel={VIATOR_AFFILIATE_LINK_REL}
               className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#00AA6C] text-white font-semibold rounded-lg hover:bg-[#008855] transition-colors shadow-md hover:shadow-lg"
             >
               <MessageSquare className="w-5 h-5" />

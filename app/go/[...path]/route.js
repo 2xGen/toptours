@@ -312,10 +312,10 @@ export async function GET(request, { params }) {
 
       <div class="cta">
         <noscript>
-          <p><a href="${escapedDestinationUrl}" rel="noopener noreferrer">Continue</a></p>
+          <p><a href="${escapedDestinationUrl}" rel="nofollow sponsored noopener noreferrer">Continue</a></p>
         </noscript>
         <span id="fallback" style="display:none;">
-          <a href="${escapedDestinationUrl}" rel="noopener noreferrer">Continue</a>
+          <a href="${escapedDestinationUrl}" rel="nofollow sponsored noopener noreferrer">Continue</a>
         </span>
       </div>
     </main>

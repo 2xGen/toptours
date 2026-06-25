@@ -14,7 +14,7 @@ import {
   Users,
   Sparkles,
 } from 'lucide-react';
-import { getTourUrl, getViatorAffiliateTourUrl } from '@/utils/tourHelpers';
+import { getTourUrl, getViatorAffiliateTourUrl, VIATOR_AFFILIATE_LINK_REL } from '@/utils/tourHelpers';
 
 /** Primary CTA — full product page + dates on partner site; partner named once in disclosure. */
 const BOOKING_CTA_LABEL = 'Check availability & book';
@@ -26,7 +26,7 @@ function ExploreBetweenSectionsCta({ bookUrl, headline, subline }) {
       <a
         href={bookUrl}
         target="_blank"
-        rel="sponsored noopener noreferrer"
+        rel={VIATOR_AFFILIATE_LINK_REL}
         className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#00AA6C] px-4 py-3 text-center text-sm font-semibold leading-snug text-white transition-colors hover:bg-[#008855]"
       >
         <span className="min-w-0">{headline}</span>
@@ -254,7 +254,7 @@ export default function ExploreTourDetailClient({
             <a
               href={bookUrl}
               target="_blank"
-              rel="sponsored noopener noreferrer"
+              rel={VIATOR_AFFILIATE_LINK_REL}
               className="inline-flex w-full max-w-full items-center justify-center gap-2 rounded-lg bg-[#00AA6C] px-3 py-2.5 text-center text-xs font-semibold leading-snug text-white hover:bg-[#008855] sm:text-sm sm:px-4"
             >
               <span className="min-w-0">{BOOKING_CTA_LABEL}</span>
@@ -393,7 +393,7 @@ export default function ExploreTourDetailClient({
                   <a
                     href={bookUrl}
                     target="_blank"
-                    rel="sponsored noopener noreferrer"
+                    rel={VIATOR_AFFILIATE_LINK_REL}
                     className="inline-flex max-w-full items-center justify-center gap-2 rounded-xl bg-[#00AA6C] px-4 py-3 text-center text-sm font-semibold leading-snug text-white transition-colors hover:bg-[#008855] sm:px-5 sm:text-base"
                   >
                     <span className="min-w-0">{BOOKING_CTA_LABEL}</span>
@@ -501,7 +501,7 @@ export default function ExploreTourDetailClient({
                 <a
                   href={bookUrl}
                   target="_blank"
-                  rel="sponsored noopener noreferrer"
+                  rel={VIATOR_AFFILIATE_LINK_REL}
                   className="inline-flex w-full max-w-full items-center justify-center gap-2 rounded-lg bg-[#00AA6C] px-3 py-2.5 text-center text-xs font-semibold leading-snug text-white transition-colors hover:bg-[#008855] sm:w-auto sm:text-sm sm:px-4"
                 >
                   <span className="min-w-0">{BOOKING_CTA_LABEL}</span>
@@ -686,7 +686,7 @@ export default function ExploreTourDetailClient({
             <a
               href={bookUrl}
               target="_blank"
-              rel="sponsored noopener noreferrer"
+              rel={VIATOR_AFFILIATE_LINK_REL}
               className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#00AA6C] px-4 py-3 text-center text-sm font-semibold leading-snug text-white transition-colors hover:bg-[#008855]"
             >
               <span>View similar tours &amp; prices</span>
@@ -786,7 +786,7 @@ export default function ExploreTourDetailClient({
             <a
               href={bookUrl}
               target="_blank"
-              rel="sponsored noopener noreferrer"
+              rel={VIATOR_AFFILIATE_LINK_REL}
               className="mt-4 inline-flex max-w-full items-center justify-center gap-2 rounded-xl bg-[#00AA6C] px-4 py-3 text-center text-xs font-semibold leading-snug text-white transition-colors hover:bg-[#008855] sm:px-6 sm:text-sm"
             >
               <span className="min-w-0">{BOOKING_CTA_LABEL}</span>
@@ -844,7 +844,7 @@ export default function ExploreTourDetailClient({
           <a
             href={bookUrl}
             target="_blank"
-            rel="sponsored noopener noreferrer"
+            rel={VIATOR_AFFILIATE_LINK_REL}
             className="inline-flex max-w-full items-center justify-center gap-2 rounded-xl bg-[#00AA6C] px-4 py-3.5 text-center text-xs font-semibold leading-snug text-white transition-colors hover:bg-[#008855] sm:px-6 sm:text-sm"
           >
             <span className="min-w-0">{BOOKING_CTA_LABEL}</span>

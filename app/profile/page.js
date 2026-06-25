@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Star, Clock, ArrowRight, Heart, ExternalLink, Medal, Shield, Crown, Zap, Flame, Trophy, X, Save, Check, Sparkles, CheckCircle2, Loader2, Mail } from 'lucide-react';
+import { VIATOR_AFFILIATE_LINK_REL } from '@/utils/tourHelpers';
 import ConfirmDialog from '@/components/ui/ConfirmDialog';
 import { SUBSCRIPTION_PRICING } from '@/lib/promotionSystem';
 import { toast } from '@/components/ui/use-toast';
@@ -961,7 +962,7 @@ export default function ProfilePage() {
                                 <a
                                   href={viatorUrl}
                                   target="_blank"
-                                  rel="sponsored noopener noreferrer"
+                                  rel={VIATOR_AFFILIATE_LINK_REL}
                                 >
                                   Book on Viator
                                   <ExternalLink className="w-4 h-4 ml-2" />

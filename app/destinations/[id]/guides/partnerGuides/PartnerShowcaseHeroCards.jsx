@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { MapPin, Star, Crown, ExternalLink } from 'lucide-react';
-import { getTourUrl, withViatorAffiliateParams } from '@/utils/tourHelpers';
+import { getTourUrl, withViatorAffiliateParams, VIATOR_AFFILIATE_LINK_REL } from '@/utils/tourHelpers';
 
 function formatDurationHours(hours) {
   if (hours == null || Number.isNaN(Number(hours))) return null;
@@ -135,7 +135,7 @@ export default function PartnerShowcaseHeroCards({
                     <a
                       href={bookUrl}
                       target="_blank"
-                      rel="nofollow sponsored noopener noreferrer"
+                      rel={VIATOR_AFFILIATE_LINK_REL}
                       className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-opacity hover:opacity-95"
                     >
                       Check availability

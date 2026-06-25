@@ -44,6 +44,12 @@ function DataTable({ headers, rows }) {
   );
 }
 
+function getSectionTourGridClass(count) {
+  if (count === 1) return 'grid grid-cols-1 gap-6 lg:gap-8 max-w-sm mx-auto';
+  if (count === 2) return 'grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto';
+  return 'grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8';
+}
+
 function TransferPickCard({ tour, badgeLabel, featured = false, grid = false }) {
   const url = getTourUrl(tour.productId, tour.title);
   const bookUrl = withViatorAffiliateParams(tour.viatorBookingUrl || '');
@@ -360,7 +366,7 @@ export default function SiemReapAirportTransfersSections({
             {section.description && (
               <p className="text-gray-600 mb-6 -mt-2 max-w-3xl">{section.description}</p>
             )}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            <div className={getSectionTourGridClass(section.tours.length)}>
               {section.tours.map((tour, index) => (
                 <TransferPickCard
                   key={`${section.id}-${tour.productId}-${index}`}

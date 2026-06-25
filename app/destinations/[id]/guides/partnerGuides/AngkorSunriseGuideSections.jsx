@@ -7,7 +7,7 @@ import { ArrowRight, Check, X, Star, Clock, ExternalLink } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { getTourUrl, withViatorAffiliateParams } from '@/utils/tourHelpers';
+import { getTourUrl, withViatorAffiliateParams, VIATOR_AFFILIATE_LINK_REL } from '@/utils/tourHelpers';
 
 const TABLE_VARIANTS = {
   season: {
@@ -191,7 +191,7 @@ function TourPickCard({ rank, tour, bestFor, details, quotes, whoFor }) {
               <a
                 href={bookUrl}
                 target="_blank"
-                rel="nofollow sponsored noopener noreferrer"
+                rel={VIATOR_AFFILIATE_LINK_REL}
               >
                 Check availability
                 <ExternalLink className="ml-2 w-4 h-4" />

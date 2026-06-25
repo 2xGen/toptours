@@ -191,6 +191,7 @@ export const slugToViatorId = {
  */
 export const slugToOperatorViatorId = {
   cairo: '782',
+  marrakech: '5408',
 };
 
 export function getOperatorViatorIdForSlug(slug) {
