@@ -46,7 +46,67 @@ import {
   SIEM_REAP_HALF_DAY_TOURS_SLUG,
   getSiemReapHalfDayToursGuideData,
 } from '../partnerGuides/siemReapHalfDayTours';
-import { isLowValueGuideTag } from '@/lib/guideIndexing';
+import {
+  SIEM_REAP_FULL_DAY_TOURS_SLUG,
+  getSiemReapFullDayToursGuideData,
+} from '../partnerGuides/siemReapFullDayTours';
+import {
+  SIEM_REAP_MULTI_DAY_TOURS_SLUG,
+  getSiemReapMultiDayToursGuideData,
+} from '../partnerGuides/siemReapMultiDayTours';
+import {
+  SIEM_REAP_NATURE_WILDLIFE_TOURS_SLUG,
+  getSiemReapNatureWildlifeToursGuideData,
+} from '../partnerGuides/siemReapNatureWildlifeTours';
+import {
+  SIEM_REAP_NEW_PRODUCT_SLUG,
+  getSiemReapNewProductGuideData,
+} from '../partnerGuides/siemReapNewProduct';
+import {
+  SIEM_REAP_OVERNIGHT_TOURS_SLUG,
+  getSiemReapOvernightToursGuideData,
+} from '../partnerGuides/siemReapOvernightTours';
+import {
+  SIEM_REAP_PHOTOGRAPHY_TOURS_SLUG,
+  getSiemReapPhotographyToursGuideData,
+} from '../partnerGuides/siemReapPhotographyTours';
+import {
+  SIEM_REAP_SPRING_BREAK_SLUG,
+  getSiemReapSpringBreakGuideData,
+} from '../partnerGuides/siemReapSpringBreak';
+import {
+  SIEM_REAP_ATTRACTIONS_MUSEUMS_SLUG,
+  getSiemReapAttractionsMuseumsGuideData,
+} from '../partnerGuides/siemReapAttractionsMuseums';
+import {
+  SIEM_REAP_COUNTRYSIDE_VILLAGE_SLUG,
+  getSiemReapCountrysideVillageGuideData,
+} from '../partnerGuides/siemReapCountrysideVillage';
+import {
+  SIEM_REAP_FOOD_DRINK_SLUG,
+  getSiemReapFoodDrinkGuideData,
+} from '../partnerGuides/siemReapFoodDrink';
+import {
+  SIEM_REAP_KHMER_HISTORY_CULTURE_SLUG,
+  getSiemReapKhmerHistoryCultureGuideData,
+} from '../partnerGuides/siemReapKhmerHistoryCulture';
+import {
+  SIEM_REAP_MONUMENTS_MEMORIALS_SLUG,
+  getSiemReapMonumentsMemorialsGuideData,
+} from '../partnerGuides/siemReapMonumentsMemorials';
+import {
+  SIEM_REAP_NIGHTLIFE_SLUG,
+  getSiemReapNightlifeGuideData,
+} from '../partnerGuides/siemReapNightlife';
+import {
+  SIEM_REAP_STREET_FOOD_MARKET_SLUG,
+  getSiemReapStreetFoodMarketGuideData,
+} from '../partnerGuides/siemReapStreetFoodMarket';
+import {
+  SIEM_REAP_TEMPLE_ARCHITECTURE_SLUG,
+  getSiemReapTempleArchitectureGuideData,
+} from '../partnerGuides/siemReapTempleArchitecture';
+import { isLowValueGuideTag, isHiddenGuide } from '@/lib/guideIndexing';
 import { requireFeaturedDestination } from '@/lib/requireFeaturedDestination';
 import { getTourUrl } from '@/utils/tourHelpers';
 
@@ -90,7 +150,22 @@ function resolveGuideSchemaDates(guideData) {
     guideData?.guideLayout === 'siem-reap-bike-tours' ||
     guideData?.guideLayout === 'siem-reap-day-trips' ||
     guideData?.guideLayout === 'siem-reap-bus-tours' ||
-    guideData?.guideLayout === 'siem-reap-half-day-tours'
+    guideData?.guideLayout === 'siem-reap-half-day-tours' ||
+    guideData?.guideLayout === 'siem-reap-full-day-tours' ||
+    guideData?.guideLayout === 'siem-reap-multi-day-tours' ||
+    guideData?.guideLayout === 'siem-reap-nature-wildlife-tours' ||
+    guideData?.guideLayout === 'siem-reap-new-product' ||
+    guideData?.guideLayout === 'siem-reap-overnight-tours' ||
+    guideData?.guideLayout === 'siem-reap-photography-tours' ||
+    guideData?.guideLayout === 'siem-reap-spring-break' ||
+    guideData?.guideLayout === 'siem-reap-attractions-museums' ||
+    guideData?.guideLayout === 'siem-reap-countryside-village' ||
+    guideData?.guideLayout === 'siem-reap-food-drink' ||
+    guideData?.guideLayout === 'siem-reap-khmer-history-culture' ||
+    guideData?.guideLayout === 'siem-reap-monuments-memorials' ||
+    guideData?.guideLayout === 'siem-reap-nightlife' ||
+    guideData?.guideLayout === 'siem-reap-street-food-market' ||
+    guideData?.guideLayout === 'siem-reap-temple-architecture'
   ) {
     return { datePublished: '2026-06-10', dateModified: '2026-06-10' };
   }
@@ -378,6 +453,10 @@ export async function generateMetadata({ params }) {
     const { id: destinationId, category: categorySlug } = await params;
     requireFeaturedDestination(destinationId);
 
+    if (isHiddenGuide({ destinationId, categorySlug })) {
+      notFound();
+    }
+
     let guideData = await getGuideFromDatabase(destinationId, categorySlug);
     let destination = await resolveDestinationForMetadata(destinationId);
     
@@ -445,6 +524,66 @@ export async function generateMetadata({ params }) {
 
     if (normDestMeta === 'siem-reap' && normCatMeta === SIEM_REAP_HALF_DAY_TOURS_SLUG) {
       guideData = getSiemReapHalfDayToursGuideData();
+    }
+
+    if (normDestMeta === 'siem-reap' && normCatMeta === SIEM_REAP_FULL_DAY_TOURS_SLUG) {
+      guideData = getSiemReapFullDayToursGuideData();
+    }
+
+    if (normDestMeta === 'siem-reap' && normCatMeta === SIEM_REAP_MULTI_DAY_TOURS_SLUG) {
+      guideData = getSiemReapMultiDayToursGuideData();
+    }
+
+    if (normDestMeta === 'siem-reap' && normCatMeta === SIEM_REAP_NATURE_WILDLIFE_TOURS_SLUG) {
+      guideData = getSiemReapNatureWildlifeToursGuideData();
+    }
+
+    if (normDestMeta === 'siem-reap' && normCatMeta === SIEM_REAP_NEW_PRODUCT_SLUG) {
+      guideData = getSiemReapNewProductGuideData();
+    }
+
+    if (normDestMeta === 'siem-reap' && normCatMeta === SIEM_REAP_OVERNIGHT_TOURS_SLUG) {
+      guideData = getSiemReapOvernightToursGuideData();
+    }
+
+    if (normDestMeta === 'siem-reap' && normCatMeta === SIEM_REAP_PHOTOGRAPHY_TOURS_SLUG) {
+      guideData = getSiemReapPhotographyToursGuideData();
+    }
+
+    if (normDestMeta === 'siem-reap' && normCatMeta === SIEM_REAP_SPRING_BREAK_SLUG) {
+      guideData = getSiemReapSpringBreakGuideData();
+    }
+
+    if (normDestMeta === 'siem-reap' && normCatMeta === SIEM_REAP_ATTRACTIONS_MUSEUMS_SLUG) {
+      guideData = getSiemReapAttractionsMuseumsGuideData();
+    }
+
+    if (normDestMeta === 'siem-reap' && normCatMeta === SIEM_REAP_COUNTRYSIDE_VILLAGE_SLUG) {
+      guideData = getSiemReapCountrysideVillageGuideData();
+    }
+
+    if (normDestMeta === 'siem-reap' && normCatMeta === SIEM_REAP_FOOD_DRINK_SLUG) {
+      guideData = getSiemReapFoodDrinkGuideData();
+    }
+
+    if (normDestMeta === 'siem-reap' && normCatMeta === SIEM_REAP_KHMER_HISTORY_CULTURE_SLUG) {
+      guideData = getSiemReapKhmerHistoryCultureGuideData();
+    }
+
+    if (normDestMeta === 'siem-reap' && normCatMeta === SIEM_REAP_MONUMENTS_MEMORIALS_SLUG) {
+      guideData = getSiemReapMonumentsMemorialsGuideData();
+    }
+
+    if (normDestMeta === 'siem-reap' && normCatMeta === SIEM_REAP_NIGHTLIFE_SLUG) {
+      guideData = getSiemReapNightlifeGuideData();
+    }
+
+    if (normDestMeta === 'siem-reap' && normCatMeta === SIEM_REAP_STREET_FOOD_MARKET_SLUG) {
+      guideData = getSiemReapStreetFoodMarketGuideData();
+    }
+
+    if (normDestMeta === 'siem-reap' && normCatMeta === SIEM_REAP_TEMPLE_ARCHITECTURE_SLUG) {
+      guideData = getSiemReapTempleArchitectureGuideData();
     }
     
     // Same as page: tag-based guides — real cache vs placeholder ("Generate with AI" shell).
@@ -579,6 +718,10 @@ export default async function CategoryGuidePage({ params }) {
   try {
     const { id: destinationId, category: categorySlug } = await params;
     requireFeaturedDestination(destinationId);
+
+    if (isHiddenGuide({ destinationId, categorySlug })) {
+      notFound();
+    }
 
     // Check if category slug needs normalization (has special characters)
     // Normalize the slug and compare - if different, redirect to normalized version
@@ -893,6 +1036,471 @@ export default async function CategoryGuidePage({ params }) {
 
     if (normDestPage === 'siem-reap' && normCatPage === SIEM_REAP_HALF_DAY_TOURS_SLUG) {
       const staticGuide = getSiemReapHalfDayToursGuideData();
+      if (!guideData) {
+        guideData = staticGuide;
+        guideSource = 'static_editorial';
+      } else {
+        guideData = {
+          ...guideData,
+          ...staticGuide,
+          topPick: staticGuide.topPick,
+          transferSections: staticGuide.transferSections,
+          relatedGuideLinks: staticGuide.relatedGuideLinks,
+          guideLayout: staticGuide.guideLayout,
+          hideWhatToExpect: staticGuide.hideWhatToExpect,
+          hideExpertTips: staticGuide.hideExpertTips,
+          faqs: staticGuide.faqs,
+          seo: staticGuide.seo,
+          stats: staticGuide.stats,
+          heroTagline: staticGuide.heroTagline,
+          heroImage: staticGuide.heroImage,
+          introParagraphs: staticGuide.introParagraphs,
+          comparisonSection: staticGuide.comparisonSection,
+          tipsSection: staticGuide.tipsSection,
+          topPickHeading: staticGuide.topPickHeading,
+          schemaDatePublished: staticGuide.schemaDatePublished,
+          schemaDateModified: staticGuide.schemaDateModified,
+          curatedToursForSchema: staticGuide.curatedToursForSchema,
+        };
+      }
+    }
+
+    if (normDestPage === 'siem-reap' && normCatPage === SIEM_REAP_FULL_DAY_TOURS_SLUG) {
+      const staticGuide = getSiemReapFullDayToursGuideData();
+      if (!guideData) {
+        guideData = staticGuide;
+        guideSource = 'static_editorial';
+      } else {
+        guideData = {
+          ...guideData,
+          ...staticGuide,
+          topPick: staticGuide.topPick,
+          transferSections: staticGuide.transferSections,
+          relatedGuideLinks: staticGuide.relatedGuideLinks,
+          guideLayout: staticGuide.guideLayout,
+          hideWhatToExpect: staticGuide.hideWhatToExpect,
+          hideExpertTips: staticGuide.hideExpertTips,
+          faqs: staticGuide.faqs,
+          seo: staticGuide.seo,
+          stats: staticGuide.stats,
+          heroTagline: staticGuide.heroTagline,
+          heroImage: staticGuide.heroImage,
+          introParagraphs: staticGuide.introParagraphs,
+          comparisonSection: staticGuide.comparisonSection,
+          tipsSection: staticGuide.tipsSection,
+          topPickHeading: staticGuide.topPickHeading,
+          schemaDatePublished: staticGuide.schemaDatePublished,
+          schemaDateModified: staticGuide.schemaDateModified,
+          curatedToursForSchema: staticGuide.curatedToursForSchema,
+        };
+      }
+    }
+
+    if (normDestPage === 'siem-reap' && normCatPage === SIEM_REAP_MULTI_DAY_TOURS_SLUG) {
+      const staticGuide = getSiemReapMultiDayToursGuideData();
+      if (!guideData) {
+        guideData = staticGuide;
+        guideSource = 'static_editorial';
+      } else {
+        guideData = {
+          ...guideData,
+          ...staticGuide,
+          topPick: staticGuide.topPick,
+          transferSections: staticGuide.transferSections,
+          relatedGuideLinks: staticGuide.relatedGuideLinks,
+          guideLayout: staticGuide.guideLayout,
+          hideWhatToExpect: staticGuide.hideWhatToExpect,
+          hideExpertTips: staticGuide.hideExpertTips,
+          faqs: staticGuide.faqs,
+          seo: staticGuide.seo,
+          stats: staticGuide.stats,
+          heroTagline: staticGuide.heroTagline,
+          heroImage: staticGuide.heroImage,
+          introParagraphs: staticGuide.introParagraphs,
+          comparisonSection: staticGuide.comparisonSection,
+          tipsSection: staticGuide.tipsSection,
+          topPickHeading: staticGuide.topPickHeading,
+          schemaDatePublished: staticGuide.schemaDatePublished,
+          schemaDateModified: staticGuide.schemaDateModified,
+          curatedToursForSchema: staticGuide.curatedToursForSchema,
+        };
+      }
+    }
+
+    if (normDestPage === 'siem-reap' && normCatPage === SIEM_REAP_NATURE_WILDLIFE_TOURS_SLUG) {
+      const staticGuide = getSiemReapNatureWildlifeToursGuideData();
+      if (!guideData) {
+        guideData = staticGuide;
+        guideSource = 'static_editorial';
+      } else {
+        guideData = {
+          ...guideData,
+          ...staticGuide,
+          topPick: staticGuide.topPick,
+          transferSections: staticGuide.transferSections,
+          relatedGuideLinks: staticGuide.relatedGuideLinks,
+          guideLayout: staticGuide.guideLayout,
+          hideWhatToExpect: staticGuide.hideWhatToExpect,
+          hideExpertTips: staticGuide.hideExpertTips,
+          faqs: staticGuide.faqs,
+          seo: staticGuide.seo,
+          stats: staticGuide.stats,
+          heroTagline: staticGuide.heroTagline,
+          heroImage: staticGuide.heroImage,
+          introParagraphs: staticGuide.introParagraphs,
+          comparisonSection: staticGuide.comparisonSection,
+          tipsSection: staticGuide.tipsSection,
+          topPickHeading: staticGuide.topPickHeading,
+          schemaDatePublished: staticGuide.schemaDatePublished,
+          schemaDateModified: staticGuide.schemaDateModified,
+          curatedToursForSchema: staticGuide.curatedToursForSchema,
+        };
+      }
+    }
+
+    if (normDestPage === 'siem-reap' && normCatPage === SIEM_REAP_NEW_PRODUCT_SLUG) {
+      const staticGuide = getSiemReapNewProductGuideData();
+      if (!guideData) {
+        guideData = staticGuide;
+        guideSource = 'static_editorial';
+      } else {
+        guideData = {
+          ...guideData,
+          ...staticGuide,
+          topPick: staticGuide.topPick,
+          transferSections: staticGuide.transferSections,
+          relatedGuideLinks: staticGuide.relatedGuideLinks,
+          guideLayout: staticGuide.guideLayout,
+          hideWhatToExpect: staticGuide.hideWhatToExpect,
+          hideExpertTips: staticGuide.hideExpertTips,
+          faqs: staticGuide.faqs,
+          seo: staticGuide.seo,
+          stats: staticGuide.stats,
+          heroTagline: staticGuide.heroTagline,
+          heroImage: staticGuide.heroImage,
+          introParagraphs: staticGuide.introParagraphs,
+          comparisonSection: staticGuide.comparisonSection,
+          tipsSection: staticGuide.tipsSection,
+          topPickHeading: staticGuide.topPickHeading,
+          schemaDatePublished: staticGuide.schemaDatePublished,
+          schemaDateModified: staticGuide.schemaDateModified,
+          curatedToursForSchema: staticGuide.curatedToursForSchema,
+        };
+      }
+    }
+
+    if (normDestPage === 'siem-reap' && normCatPage === SIEM_REAP_OVERNIGHT_TOURS_SLUG) {
+      const staticGuide = getSiemReapOvernightToursGuideData();
+      if (!guideData) {
+        guideData = staticGuide;
+        guideSource = 'static_editorial';
+      } else {
+        guideData = {
+          ...guideData,
+          ...staticGuide,
+          topPick: staticGuide.topPick,
+          transferSections: staticGuide.transferSections,
+          relatedGuideLinks: staticGuide.relatedGuideLinks,
+          guideLayout: staticGuide.guideLayout,
+          hideWhatToExpect: staticGuide.hideWhatToExpect,
+          hideExpertTips: staticGuide.hideExpertTips,
+          faqs: staticGuide.faqs,
+          seo: staticGuide.seo,
+          stats: staticGuide.stats,
+          heroTagline: staticGuide.heroTagline,
+          heroImage: staticGuide.heroImage,
+          introParagraphs: staticGuide.introParagraphs,
+          comparisonSection: staticGuide.comparisonSection,
+          tipsSection: staticGuide.tipsSection,
+          topPickHeading: staticGuide.topPickHeading,
+          schemaDatePublished: staticGuide.schemaDatePublished,
+          schemaDateModified: staticGuide.schemaDateModified,
+          curatedToursForSchema: staticGuide.curatedToursForSchema,
+        };
+      }
+    }
+
+    if (normDestPage === 'siem-reap' && normCatPage === SIEM_REAP_PHOTOGRAPHY_TOURS_SLUG) {
+      const staticGuide = getSiemReapPhotographyToursGuideData();
+      if (!guideData) {
+        guideData = staticGuide;
+        guideSource = 'static_editorial';
+      } else {
+        guideData = {
+          ...guideData,
+          ...staticGuide,
+          topPick: staticGuide.topPick,
+          transferSections: staticGuide.transferSections,
+          relatedGuideLinks: staticGuide.relatedGuideLinks,
+          guideLayout: staticGuide.guideLayout,
+          hideWhatToExpect: staticGuide.hideWhatToExpect,
+          hideExpertTips: staticGuide.hideExpertTips,
+          faqs: staticGuide.faqs,
+          seo: staticGuide.seo,
+          stats: staticGuide.stats,
+          heroTagline: staticGuide.heroTagline,
+          heroImage: staticGuide.heroImage,
+          introParagraphs: staticGuide.introParagraphs,
+          comparisonSection: staticGuide.comparisonSection,
+          tipsSection: staticGuide.tipsSection,
+          topPickHeading: staticGuide.topPickHeading,
+          schemaDatePublished: staticGuide.schemaDatePublished,
+          schemaDateModified: staticGuide.schemaDateModified,
+          curatedToursForSchema: staticGuide.curatedToursForSchema,
+        };
+      }
+    }
+
+    if (normDestPage === 'siem-reap' && normCatPage === SIEM_REAP_SPRING_BREAK_SLUG) {
+      const staticGuide = getSiemReapSpringBreakGuideData();
+      if (!guideData) {
+        guideData = staticGuide;
+        guideSource = 'static_editorial';
+      } else {
+        guideData = {
+          ...guideData,
+          ...staticGuide,
+          topPick: staticGuide.topPick,
+          transferSections: staticGuide.transferSections,
+          relatedGuideLinks: staticGuide.relatedGuideLinks,
+          guideLayout: staticGuide.guideLayout,
+          hideWhatToExpect: staticGuide.hideWhatToExpect,
+          hideExpertTips: staticGuide.hideExpertTips,
+          faqs: staticGuide.faqs,
+          seo: staticGuide.seo,
+          stats: staticGuide.stats,
+          heroTagline: staticGuide.heroTagline,
+          heroImage: staticGuide.heroImage,
+          introParagraphs: staticGuide.introParagraphs,
+          comparisonSection: staticGuide.comparisonSection,
+          tipsSection: staticGuide.tipsSection,
+          topPickHeading: staticGuide.topPickHeading,
+          schemaDatePublished: staticGuide.schemaDatePublished,
+          schemaDateModified: staticGuide.schemaDateModified,
+          curatedToursForSchema: staticGuide.curatedToursForSchema,
+        };
+      }
+    }
+
+    if (normDestPage === 'siem-reap' && normCatPage === SIEM_REAP_ATTRACTIONS_MUSEUMS_SLUG) {
+      const staticGuide = getSiemReapAttractionsMuseumsGuideData();
+      if (!guideData) {
+        guideData = staticGuide;
+        guideSource = 'static_editorial';
+      } else {
+        guideData = {
+          ...guideData,
+          ...staticGuide,
+          topPick: staticGuide.topPick,
+          transferSections: staticGuide.transferSections,
+          relatedGuideLinks: staticGuide.relatedGuideLinks,
+          guideLayout: staticGuide.guideLayout,
+          hideWhatToExpect: staticGuide.hideWhatToExpect,
+          hideExpertTips: staticGuide.hideExpertTips,
+          faqs: staticGuide.faqs,
+          seo: staticGuide.seo,
+          stats: staticGuide.stats,
+          heroTagline: staticGuide.heroTagline,
+          heroImage: staticGuide.heroImage,
+          introParagraphs: staticGuide.introParagraphs,
+          comparisonSection: staticGuide.comparisonSection,
+          tipsSection: staticGuide.tipsSection,
+          topPickHeading: staticGuide.topPickHeading,
+          schemaDatePublished: staticGuide.schemaDatePublished,
+          schemaDateModified: staticGuide.schemaDateModified,
+          curatedToursForSchema: staticGuide.curatedToursForSchema,
+        };
+      }
+    }
+
+    if (normDestPage === 'siem-reap' && normCatPage === SIEM_REAP_COUNTRYSIDE_VILLAGE_SLUG) {
+      const staticGuide = getSiemReapCountrysideVillageGuideData();
+      if (!guideData) {
+        guideData = staticGuide;
+        guideSource = 'static_editorial';
+      } else {
+        guideData = {
+          ...guideData,
+          ...staticGuide,
+          topPick: staticGuide.topPick,
+          transferSections: staticGuide.transferSections,
+          relatedGuideLinks: staticGuide.relatedGuideLinks,
+          guideLayout: staticGuide.guideLayout,
+          hideWhatToExpect: staticGuide.hideWhatToExpect,
+          hideExpertTips: staticGuide.hideExpertTips,
+          faqs: staticGuide.faqs,
+          seo: staticGuide.seo,
+          stats: staticGuide.stats,
+          heroTagline: staticGuide.heroTagline,
+          heroImage: staticGuide.heroImage,
+          introParagraphs: staticGuide.introParagraphs,
+          comparisonSection: staticGuide.comparisonSection,
+          tipsSection: staticGuide.tipsSection,
+          topPickHeading: staticGuide.topPickHeading,
+          schemaDatePublished: staticGuide.schemaDatePublished,
+          schemaDateModified: staticGuide.schemaDateModified,
+          curatedToursForSchema: staticGuide.curatedToursForSchema,
+        };
+      }
+    }
+
+    if (normDestPage === 'siem-reap' && normCatPage === SIEM_REAP_FOOD_DRINK_SLUG) {
+      const staticGuide = getSiemReapFoodDrinkGuideData();
+      if (!guideData) {
+        guideData = staticGuide;
+        guideSource = 'static_editorial';
+      } else {
+        guideData = {
+          ...guideData,
+          ...staticGuide,
+          topPick: staticGuide.topPick,
+          transferSections: staticGuide.transferSections,
+          relatedGuideLinks: staticGuide.relatedGuideLinks,
+          guideLayout: staticGuide.guideLayout,
+          hideWhatToExpect: staticGuide.hideWhatToExpect,
+          hideExpertTips: staticGuide.hideExpertTips,
+          faqs: staticGuide.faqs,
+          seo: staticGuide.seo,
+          stats: staticGuide.stats,
+          heroTagline: staticGuide.heroTagline,
+          heroImage: staticGuide.heroImage,
+          introParagraphs: staticGuide.introParagraphs,
+          comparisonSection: staticGuide.comparisonSection,
+          tipsSection: staticGuide.tipsSection,
+          topPickHeading: staticGuide.topPickHeading,
+          schemaDatePublished: staticGuide.schemaDatePublished,
+          schemaDateModified: staticGuide.schemaDateModified,
+          curatedToursForSchema: staticGuide.curatedToursForSchema,
+        };
+      }
+    }
+
+    if (normDestPage === 'siem-reap' && normCatPage === SIEM_REAP_KHMER_HISTORY_CULTURE_SLUG) {
+      const staticGuide = getSiemReapKhmerHistoryCultureGuideData();
+      if (!guideData) {
+        guideData = staticGuide;
+        guideSource = 'static_editorial';
+      } else {
+        guideData = {
+          ...guideData,
+          ...staticGuide,
+          topPick: staticGuide.topPick,
+          transferSections: staticGuide.transferSections,
+          relatedGuideLinks: staticGuide.relatedGuideLinks,
+          guideLayout: staticGuide.guideLayout,
+          hideWhatToExpect: staticGuide.hideWhatToExpect,
+          hideExpertTips: staticGuide.hideExpertTips,
+          faqs: staticGuide.faqs,
+          seo: staticGuide.seo,
+          stats: staticGuide.stats,
+          heroTagline: staticGuide.heroTagline,
+          heroImage: staticGuide.heroImage,
+          introParagraphs: staticGuide.introParagraphs,
+          comparisonSection: staticGuide.comparisonSection,
+          tipsSection: staticGuide.tipsSection,
+          topPickHeading: staticGuide.topPickHeading,
+          schemaDatePublished: staticGuide.schemaDatePublished,
+          schemaDateModified: staticGuide.schemaDateModified,
+          curatedToursForSchema: staticGuide.curatedToursForSchema,
+        };
+      }
+    }
+
+    if (normDestPage === 'siem-reap' && normCatPage === SIEM_REAP_MONUMENTS_MEMORIALS_SLUG) {
+      const staticGuide = getSiemReapMonumentsMemorialsGuideData();
+      if (!guideData) {
+        guideData = staticGuide;
+        guideSource = 'static_editorial';
+      } else {
+        guideData = {
+          ...guideData,
+          ...staticGuide,
+          topPick: staticGuide.topPick,
+          transferSections: staticGuide.transferSections,
+          relatedGuideLinks: staticGuide.relatedGuideLinks,
+          guideLayout: staticGuide.guideLayout,
+          hideWhatToExpect: staticGuide.hideWhatToExpect,
+          hideExpertTips: staticGuide.hideExpertTips,
+          faqs: staticGuide.faqs,
+          seo: staticGuide.seo,
+          stats: staticGuide.stats,
+          heroTagline: staticGuide.heroTagline,
+          heroImage: staticGuide.heroImage,
+          introParagraphs: staticGuide.introParagraphs,
+          comparisonSection: staticGuide.comparisonSection,
+          tipsSection: staticGuide.tipsSection,
+          topPickHeading: staticGuide.topPickHeading,
+          schemaDatePublished: staticGuide.schemaDatePublished,
+          schemaDateModified: staticGuide.schemaDateModified,
+          curatedToursForSchema: staticGuide.curatedToursForSchema,
+        };
+      }
+    }
+
+    if (normDestPage === 'siem-reap' && normCatPage === SIEM_REAP_NIGHTLIFE_SLUG) {
+      const staticGuide = getSiemReapNightlifeGuideData();
+      if (!guideData) {
+        guideData = staticGuide;
+        guideSource = 'static_editorial';
+      } else {
+        guideData = {
+          ...guideData,
+          ...staticGuide,
+          topPick: staticGuide.topPick,
+          transferSections: staticGuide.transferSections,
+          relatedGuideLinks: staticGuide.relatedGuideLinks,
+          guideLayout: staticGuide.guideLayout,
+          hideWhatToExpect: staticGuide.hideWhatToExpect,
+          hideExpertTips: staticGuide.hideExpertTips,
+          faqs: staticGuide.faqs,
+          seo: staticGuide.seo,
+          stats: staticGuide.stats,
+          heroTagline: staticGuide.heroTagline,
+          heroImage: staticGuide.heroImage,
+          introParagraphs: staticGuide.introParagraphs,
+          comparisonSection: staticGuide.comparisonSection,
+          tipsSection: staticGuide.tipsSection,
+          topPickHeading: staticGuide.topPickHeading,
+          schemaDatePublished: staticGuide.schemaDatePublished,
+          schemaDateModified: staticGuide.schemaDateModified,
+          curatedToursForSchema: staticGuide.curatedToursForSchema,
+        };
+      }
+    }
+
+    if (normDestPage === 'siem-reap' && normCatPage === SIEM_REAP_STREET_FOOD_MARKET_SLUG) {
+      const staticGuide = getSiemReapStreetFoodMarketGuideData();
+      if (!guideData) {
+        guideData = staticGuide;
+        guideSource = 'static_editorial';
+      } else {
+        guideData = {
+          ...guideData,
+          ...staticGuide,
+          topPick: staticGuide.topPick,
+          transferSections: staticGuide.transferSections,
+          relatedGuideLinks: staticGuide.relatedGuideLinks,
+          guideLayout: staticGuide.guideLayout,
+          hideWhatToExpect: staticGuide.hideWhatToExpect,
+          hideExpertTips: staticGuide.hideExpertTips,
+          faqs: staticGuide.faqs,
+          seo: staticGuide.seo,
+          stats: staticGuide.stats,
+          heroTagline: staticGuide.heroTagline,
+          heroImage: staticGuide.heroImage,
+          introParagraphs: staticGuide.introParagraphs,
+          comparisonSection: staticGuide.comparisonSection,
+          tipsSection: staticGuide.tipsSection,
+          topPickHeading: staticGuide.topPickHeading,
+          schemaDatePublished: staticGuide.schemaDatePublished,
+          schemaDateModified: staticGuide.schemaDateModified,
+          curatedToursForSchema: staticGuide.curatedToursForSchema,
+        };
+      }
+    }
+
+    if (normDestPage === 'siem-reap' && normCatPage === SIEM_REAP_TEMPLE_ARCHITECTURE_SLUG) {
+      const staticGuide = getSiemReapTempleArchitectureGuideData();
       if (!guideData) {
         guideData = staticGuide;
         guideSource = 'static_editorial';

@@ -62,13 +62,43 @@ export default function CategoryGuideClient({ destinationId, categorySlug, guide
   const isDayTripsLayout = guideData?.guideLayout === 'siem-reap-day-trips';
   const isBusToursLayout = guideData?.guideLayout === 'siem-reap-bus-tours';
   const isHalfDayToursLayout = guideData?.guideLayout === 'siem-reap-half-day-tours';
+  const isFullDayToursLayout = guideData?.guideLayout === 'siem-reap-full-day-tours';
+  const isMultiDayToursLayout = guideData?.guideLayout === 'siem-reap-multi-day-tours';
+  const isNatureWildlifeToursLayout = guideData?.guideLayout === 'siem-reap-nature-wildlife-tours';
+  const isNewProductLayout = guideData?.guideLayout === 'siem-reap-new-product';
+  const isOvernightToursLayout = guideData?.guideLayout === 'siem-reap-overnight-tours';
+  const isPhotographyToursLayout = guideData?.guideLayout === 'siem-reap-photography-tours';
+  const isSpringBreakLayout = guideData?.guideLayout === 'siem-reap-spring-break';
+  const isAttractionsMuseumsLayout = guideData?.guideLayout === 'siem-reap-attractions-museums';
+  const isCountrysideVillageLayout = guideData?.guideLayout === 'siem-reap-countryside-village';
+  const isFoodDrinkLayout = guideData?.guideLayout === 'siem-reap-food-drink';
+  const isKhmerHistoryCultureLayout = guideData?.guideLayout === 'siem-reap-khmer-history-culture';
+  const isMonumentsMemorialsLayout = guideData?.guideLayout === 'siem-reap-monuments-memorials';
+  const isNightlifeLayout = guideData?.guideLayout === 'siem-reap-nightlife';
+  const isStreetFoodMarketLayout = guideData?.guideLayout === 'siem-reap-street-food-market';
+  const isTempleArchitectureLayout = guideData?.guideLayout === 'siem-reap-temple-architecture';
   const isCuratedToursGuideLayout =
     isAirportTransfersLayout ||
     isAngkorWatToursLayout ||
     isBikeToursLayout ||
     isDayTripsLayout ||
     isBusToursLayout ||
-    isHalfDayToursLayout;
+    isHalfDayToursLayout ||
+    isFullDayToursLayout ||
+    isMultiDayToursLayout ||
+    isNatureWildlifeToursLayout ||
+    isNewProductLayout ||
+    isOvernightToursLayout ||
+    isPhotographyToursLayout ||
+    isSpringBreakLayout ||
+    isAttractionsMuseumsLayout ||
+    isCountrysideVillageLayout ||
+    isFoodDrinkLayout ||
+    isKhmerHistoryCultureLayout ||
+    isMonumentsMemorialsLayout ||
+    isNightlifeLayout ||
+    isStreetFoodMarketLayout ||
+    isTempleArchitectureLayout;
   const isEditorialGuideLayout =
     isAngkorSunriseLayout || isCuratedToursGuideLayout || isAdditionalFeesLayout;
 

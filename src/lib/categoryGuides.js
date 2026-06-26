@@ -2,6 +2,7 @@ import { unstable_cache } from 'next/cache';
 import { createSupabaseServiceRoleClient } from '@/lib/supabaseClient';
 import { getTagGuidesForDestination } from '@/lib/tagGuideContent';
 import { GUIDE_SECTION_REVALIDATE_SECONDS } from '@/lib/guideSectionCacheConfig';
+import { isHiddenGuide } from '@/lib/guideIndexing';
 import {
   getArushaKiliclimbListingMeta,
   ARUSHA_KILICLIMB_GUIDE_SLUG,
@@ -38,6 +39,66 @@ import {
   getSiemReapHalfDayToursListingMeta,
   SIEM_REAP_HALF_DAY_TOURS_SLUG,
 } from '../../app/destinations/[id]/guides/partnerGuides/siemReapHalfDayTours.js';
+import {
+  getSiemReapFullDayToursListingMeta,
+  SIEM_REAP_FULL_DAY_TOURS_SLUG,
+} from '../../app/destinations/[id]/guides/partnerGuides/siemReapFullDayTours.js';
+import {
+  getSiemReapMultiDayToursListingMeta,
+  SIEM_REAP_MULTI_DAY_TOURS_SLUG,
+} from '../../app/destinations/[id]/guides/partnerGuides/siemReapMultiDayTours.js';
+import {
+  getSiemReapNatureWildlifeToursListingMeta,
+  SIEM_REAP_NATURE_WILDLIFE_TOURS_SLUG,
+} from '../../app/destinations/[id]/guides/partnerGuides/siemReapNatureWildlifeTours.js';
+import {
+  getSiemReapNewProductListingMeta,
+  SIEM_REAP_NEW_PRODUCT_SLUG,
+} from '../../app/destinations/[id]/guides/partnerGuides/siemReapNewProduct.js';
+import {
+  getSiemReapOvernightToursListingMeta,
+  SIEM_REAP_OVERNIGHT_TOURS_SLUG,
+} from '../../app/destinations/[id]/guides/partnerGuides/siemReapOvernightTours.js';
+import {
+  getSiemReapPhotographyToursListingMeta,
+  SIEM_REAP_PHOTOGRAPHY_TOURS_SLUG,
+} from '../../app/destinations/[id]/guides/partnerGuides/siemReapPhotographyTours.js';
+import {
+  getSiemReapSpringBreakListingMeta,
+  SIEM_REAP_SPRING_BREAK_SLUG,
+} from '../../app/destinations/[id]/guides/partnerGuides/siemReapSpringBreak.js';
+import {
+  getSiemReapAttractionsMuseumsListingMeta,
+  SIEM_REAP_ATTRACTIONS_MUSEUMS_SLUG,
+} from '../../app/destinations/[id]/guides/partnerGuides/siemReapAttractionsMuseums.js';
+import {
+  getSiemReapCountrysideVillageListingMeta,
+  SIEM_REAP_COUNTRYSIDE_VILLAGE_SLUG,
+} from '../../app/destinations/[id]/guides/partnerGuides/siemReapCountrysideVillage.js';
+import {
+  getSiemReapFoodDrinkListingMeta,
+  SIEM_REAP_FOOD_DRINK_SLUG,
+} from '../../app/destinations/[id]/guides/partnerGuides/siemReapFoodDrink.js';
+import {
+  getSiemReapKhmerHistoryCultureListingMeta,
+  SIEM_REAP_KHMER_HISTORY_CULTURE_SLUG,
+} from '../../app/destinations/[id]/guides/partnerGuides/siemReapKhmerHistoryCulture.js';
+import {
+  getSiemReapMonumentsMemorialsListingMeta,
+  SIEM_REAP_MONUMENTS_MEMORIALS_SLUG,
+} from '../../app/destinations/[id]/guides/partnerGuides/siemReapMonumentsMemorials.js';
+import {
+  getSiemReapNightlifeListingMeta,
+  SIEM_REAP_NIGHTLIFE_SLUG,
+} from '../../app/destinations/[id]/guides/partnerGuides/siemReapNightlife.js';
+import {
+  getSiemReapStreetFoodMarketListingMeta,
+  SIEM_REAP_STREET_FOOD_MARKET_SLUG,
+} from '../../app/destinations/[id]/guides/partnerGuides/siemReapStreetFoodMarket.js';
+import {
+  getSiemReapTempleArchitectureListingMeta,
+  SIEM_REAP_TEMPLE_ARCHITECTURE_SLUG,
+} from '../../app/destinations/[id]/guides/partnerGuides/siemReapTempleArchitecture.js';
 
 /**
  * Get all category guides for a destination (database only)
@@ -281,9 +342,347 @@ async function loadAllCategoryGuidesForDestinationNormalized(normalizedDestinati
           hero_image: halfDayMeta.hero_image,
         });
       }
+
+      const fullDayMeta = getSiemReapFullDayToursListingMeta();
+      const fullDayIdx = combined.findIndex(
+        (g) => String(g.category_slug || '').toLowerCase() === SIEM_REAP_FULL_DAY_TOURS_SLUG
+      );
+      if (fullDayIdx >= 0) {
+        combined[fullDayIdx] = {
+          ...combined[fullDayIdx],
+          title: fullDayMeta.title,
+          subtitle: fullDayMeta.subtitle,
+          hero_image: fullDayMeta.hero_image || combined[fullDayIdx].hero_image,
+          category_name: fullDayMeta.category_name,
+        };
+      } else {
+        combined.unshift({
+          category_slug: fullDayMeta.category_slug,
+          category_name: fullDayMeta.category_name,
+          title: fullDayMeta.title,
+          subtitle: fullDayMeta.subtitle,
+          hero_image: fullDayMeta.hero_image,
+        });
+      }
+
+      const multiDayMeta = getSiemReapMultiDayToursListingMeta();
+      const multiDayIdx = combined.findIndex(
+        (g) => String(g.category_slug || '').toLowerCase() === SIEM_REAP_MULTI_DAY_TOURS_SLUG
+      );
+      if (multiDayIdx >= 0) {
+        combined[multiDayIdx] = {
+          ...combined[multiDayIdx],
+          title: multiDayMeta.title,
+          subtitle: multiDayMeta.subtitle,
+          hero_image: multiDayMeta.hero_image || combined[multiDayIdx].hero_image,
+          category_name: multiDayMeta.category_name,
+        };
+      } else {
+        combined.unshift({
+          category_slug: multiDayMeta.category_slug,
+          category_name: multiDayMeta.category_name,
+          title: multiDayMeta.title,
+          subtitle: multiDayMeta.subtitle,
+          hero_image: multiDayMeta.hero_image,
+        });
+      }
+
+      const natureWildlifeMeta = getSiemReapNatureWildlifeToursListingMeta();
+      const natureWildlifeIdx = combined.findIndex(
+        (g) => String(g.category_slug || '').toLowerCase() === SIEM_REAP_NATURE_WILDLIFE_TOURS_SLUG
+      );
+      if (natureWildlifeIdx >= 0) {
+        combined[natureWildlifeIdx] = {
+          ...combined[natureWildlifeIdx],
+          title: natureWildlifeMeta.title,
+          subtitle: natureWildlifeMeta.subtitle,
+          hero_image: natureWildlifeMeta.hero_image || combined[natureWildlifeIdx].hero_image,
+          category_name: natureWildlifeMeta.category_name,
+        };
+      } else {
+        combined.unshift({
+          category_slug: natureWildlifeMeta.category_slug,
+          category_name: natureWildlifeMeta.category_name,
+          title: natureWildlifeMeta.title,
+          subtitle: natureWildlifeMeta.subtitle,
+          hero_image: natureWildlifeMeta.hero_image,
+        });
+      }
+
+      const newProductMeta = getSiemReapNewProductListingMeta();
+      const newProductIdx = combined.findIndex(
+        (g) => String(g.category_slug || '').toLowerCase() === SIEM_REAP_NEW_PRODUCT_SLUG
+      );
+      if (newProductIdx >= 0) {
+        combined[newProductIdx] = {
+          ...combined[newProductIdx],
+          title: newProductMeta.title,
+          subtitle: newProductMeta.subtitle,
+          hero_image: newProductMeta.hero_image || combined[newProductIdx].hero_image,
+          category_name: newProductMeta.category_name,
+        };
+      } else {
+        combined.unshift({
+          category_slug: newProductMeta.category_slug,
+          category_name: newProductMeta.category_name,
+          title: newProductMeta.title,
+          subtitle: newProductMeta.subtitle,
+          hero_image: newProductMeta.hero_image,
+        });
+      }
+
+      const overnightMeta = getSiemReapOvernightToursListingMeta();
+      const overnightIdx = combined.findIndex(
+        (g) => String(g.category_slug || '').toLowerCase() === SIEM_REAP_OVERNIGHT_TOURS_SLUG
+      );
+      if (overnightIdx >= 0) {
+        combined[overnightIdx] = {
+          ...combined[overnightIdx],
+          title: overnightMeta.title,
+          subtitle: overnightMeta.subtitle,
+          hero_image: overnightMeta.hero_image || combined[overnightIdx].hero_image,
+          category_name: overnightMeta.category_name,
+        };
+      } else {
+        combined.unshift({
+          category_slug: overnightMeta.category_slug,
+          category_name: overnightMeta.category_name,
+          title: overnightMeta.title,
+          subtitle: overnightMeta.subtitle,
+          hero_image: overnightMeta.hero_image,
+        });
+      }
+
+      const photographyMeta = getSiemReapPhotographyToursListingMeta();
+      const photographyIdx = combined.findIndex(
+        (g) => String(g.category_slug || '').toLowerCase() === SIEM_REAP_PHOTOGRAPHY_TOURS_SLUG
+      );
+      if (photographyIdx >= 0) {
+        combined[photographyIdx] = {
+          ...combined[photographyIdx],
+          title: photographyMeta.title,
+          subtitle: photographyMeta.subtitle,
+          hero_image: photographyMeta.hero_image || combined[photographyIdx].hero_image,
+          category_name: photographyMeta.category_name,
+        };
+      } else {
+        combined.unshift({
+          category_slug: photographyMeta.category_slug,
+          category_name: photographyMeta.category_name,
+          title: photographyMeta.title,
+          subtitle: photographyMeta.subtitle,
+          hero_image: photographyMeta.hero_image,
+        });
+      }
+
+      const springBreakMeta = getSiemReapSpringBreakListingMeta();
+      const springBreakIdx = combined.findIndex(
+        (g) => String(g.category_slug || '').toLowerCase() === SIEM_REAP_SPRING_BREAK_SLUG
+      );
+      if (springBreakIdx >= 0) {
+        combined[springBreakIdx] = {
+          ...combined[springBreakIdx],
+          title: springBreakMeta.title,
+          subtitle: springBreakMeta.subtitle,
+          hero_image: springBreakMeta.hero_image || combined[springBreakIdx].hero_image,
+          category_name: springBreakMeta.category_name,
+        };
+      } else {
+        combined.unshift({
+          category_slug: springBreakMeta.category_slug,
+          category_name: springBreakMeta.category_name,
+          title: springBreakMeta.title,
+          subtitle: springBreakMeta.subtitle,
+          hero_image: springBreakMeta.hero_image,
+        });
+      }
+
+      const attractionsMuseumsMeta = getSiemReapAttractionsMuseumsListingMeta();
+      const attractionsMuseumsIdx = combined.findIndex(
+        (g) => String(g.category_slug || '').toLowerCase() === SIEM_REAP_ATTRACTIONS_MUSEUMS_SLUG
+      );
+      if (attractionsMuseumsIdx >= 0) {
+        combined[attractionsMuseumsIdx] = {
+          ...combined[attractionsMuseumsIdx],
+          title: attractionsMuseumsMeta.title,
+          subtitle: attractionsMuseumsMeta.subtitle,
+          hero_image: attractionsMuseumsMeta.hero_image || combined[attractionsMuseumsIdx].hero_image,
+          category_name: attractionsMuseumsMeta.category_name,
+        };
+      } else {
+        combined.unshift({
+          category_slug: attractionsMuseumsMeta.category_slug,
+          category_name: attractionsMuseumsMeta.category_name,
+          title: attractionsMuseumsMeta.title,
+          subtitle: attractionsMuseumsMeta.subtitle,
+          hero_image: attractionsMuseumsMeta.hero_image,
+        });
+      }
+
+      const countrysideVillageMeta = getSiemReapCountrysideVillageListingMeta();
+      const countrysideVillageIdx = combined.findIndex(
+        (g) => String(g.category_slug || '').toLowerCase() === SIEM_REAP_COUNTRYSIDE_VILLAGE_SLUG
+      );
+      if (countrysideVillageIdx >= 0) {
+        combined[countrysideVillageIdx] = {
+          ...combined[countrysideVillageIdx],
+          title: countrysideVillageMeta.title,
+          subtitle: countrysideVillageMeta.subtitle,
+          hero_image: countrysideVillageMeta.hero_image || combined[countrysideVillageIdx].hero_image,
+          category_name: countrysideVillageMeta.category_name,
+        };
+      } else {
+        combined.unshift({
+          category_slug: countrysideVillageMeta.category_slug,
+          category_name: countrysideVillageMeta.category_name,
+          title: countrysideVillageMeta.title,
+          subtitle: countrysideVillageMeta.subtitle,
+          hero_image: countrysideVillageMeta.hero_image,
+        });
+      }
+
+      const foodDrinkMeta = getSiemReapFoodDrinkListingMeta();
+      const foodDrinkIdx = combined.findIndex(
+        (g) => String(g.category_slug || '').toLowerCase() === SIEM_REAP_FOOD_DRINK_SLUG
+      );
+      if (foodDrinkIdx >= 0) {
+        combined[foodDrinkIdx] = {
+          ...combined[foodDrinkIdx],
+          title: foodDrinkMeta.title,
+          subtitle: foodDrinkMeta.subtitle,
+          hero_image: foodDrinkMeta.hero_image || combined[foodDrinkIdx].hero_image,
+          category_name: foodDrinkMeta.category_name,
+        };
+      } else {
+        combined.unshift({
+          category_slug: foodDrinkMeta.category_slug,
+          category_name: foodDrinkMeta.category_name,
+          title: foodDrinkMeta.title,
+          subtitle: foodDrinkMeta.subtitle,
+          hero_image: foodDrinkMeta.hero_image,
+        });
+      }
+
+      const khmerHistoryCultureMeta = getSiemReapKhmerHistoryCultureListingMeta();
+      const khmerHistoryCultureIdx = combined.findIndex(
+        (g) => String(g.category_slug || '').toLowerCase() === SIEM_REAP_KHMER_HISTORY_CULTURE_SLUG
+      );
+      if (khmerHistoryCultureIdx >= 0) {
+        combined[khmerHistoryCultureIdx] = {
+          ...combined[khmerHistoryCultureIdx],
+          title: khmerHistoryCultureMeta.title,
+          subtitle: khmerHistoryCultureMeta.subtitle,
+          hero_image: khmerHistoryCultureMeta.hero_image || combined[khmerHistoryCultureIdx].hero_image,
+          category_name: khmerHistoryCultureMeta.category_name,
+        };
+      } else {
+        combined.unshift({
+          category_slug: khmerHistoryCultureMeta.category_slug,
+          category_name: khmerHistoryCultureMeta.category_name,
+          title: khmerHistoryCultureMeta.title,
+          subtitle: khmerHistoryCultureMeta.subtitle,
+          hero_image: khmerHistoryCultureMeta.hero_image,
+        });
+      }
+
+      const monumentsMemorialsMeta = getSiemReapMonumentsMemorialsListingMeta();
+      const monumentsMemorialsIdx = combined.findIndex(
+        (g) => String(g.category_slug || '').toLowerCase() === SIEM_REAP_MONUMENTS_MEMORIALS_SLUG
+      );
+      if (monumentsMemorialsIdx >= 0) {
+        combined[monumentsMemorialsIdx] = {
+          ...combined[monumentsMemorialsIdx],
+          title: monumentsMemorialsMeta.title,
+          subtitle: monumentsMemorialsMeta.subtitle,
+          hero_image: monumentsMemorialsMeta.hero_image || combined[monumentsMemorialsIdx].hero_image,
+          category_name: monumentsMemorialsMeta.category_name,
+        };
+      } else {
+        combined.unshift({
+          category_slug: monumentsMemorialsMeta.category_slug,
+          category_name: monumentsMemorialsMeta.category_name,
+          title: monumentsMemorialsMeta.title,
+          subtitle: monumentsMemorialsMeta.subtitle,
+          hero_image: monumentsMemorialsMeta.hero_image,
+        });
+      }
+
+      const nightlifeMeta = getSiemReapNightlifeListingMeta();
+      const nightlifeIdx = combined.findIndex(
+        (g) => String(g.category_slug || '').toLowerCase() === SIEM_REAP_NIGHTLIFE_SLUG
+      );
+      if (nightlifeIdx >= 0) {
+        combined[nightlifeIdx] = {
+          ...combined[nightlifeIdx],
+          title: nightlifeMeta.title,
+          subtitle: nightlifeMeta.subtitle,
+          hero_image: nightlifeMeta.hero_image || combined[nightlifeIdx].hero_image,
+          category_name: nightlifeMeta.category_name,
+        };
+      } else {
+        combined.unshift({
+          category_slug: nightlifeMeta.category_slug,
+          category_name: nightlifeMeta.category_name,
+          title: nightlifeMeta.title,
+          subtitle: nightlifeMeta.subtitle,
+          hero_image: nightlifeMeta.hero_image,
+        });
+      }
+
+      const streetFoodMarketMeta = getSiemReapStreetFoodMarketListingMeta();
+      const streetFoodMarketIdx = combined.findIndex(
+        (g) => String(g.category_slug || '').toLowerCase() === SIEM_REAP_STREET_FOOD_MARKET_SLUG
+      );
+      if (streetFoodMarketIdx >= 0) {
+        combined[streetFoodMarketIdx] = {
+          ...combined[streetFoodMarketIdx],
+          title: streetFoodMarketMeta.title,
+          subtitle: streetFoodMarketMeta.subtitle,
+          hero_image: streetFoodMarketMeta.hero_image || combined[streetFoodMarketIdx].hero_image,
+          category_name: streetFoodMarketMeta.category_name,
+        };
+      } else {
+        combined.unshift({
+          category_slug: streetFoodMarketMeta.category_slug,
+          category_name: streetFoodMarketMeta.category_name,
+          title: streetFoodMarketMeta.title,
+          subtitle: streetFoodMarketMeta.subtitle,
+          hero_image: streetFoodMarketMeta.hero_image,
+        });
+      }
+
+      const templeArchitectureMeta = getSiemReapTempleArchitectureListingMeta();
+      const templeArchitectureIdx = combined.findIndex(
+        (g) => String(g.category_slug || '').toLowerCase() === SIEM_REAP_TEMPLE_ARCHITECTURE_SLUG
+      );
+      if (templeArchitectureIdx >= 0) {
+        combined[templeArchitectureIdx] = {
+          ...combined[templeArchitectureIdx],
+          title: templeArchitectureMeta.title,
+          subtitle: templeArchitectureMeta.subtitle,
+          hero_image: templeArchitectureMeta.hero_image || combined[templeArchitectureIdx].hero_image,
+          category_name: templeArchitectureMeta.category_name,
+        };
+      } else {
+        combined.unshift({
+          category_slug: templeArchitectureMeta.category_slug,
+          category_name: templeArchitectureMeta.category_name,
+          title: templeArchitectureMeta.title,
+          subtitle: templeArchitectureMeta.subtitle,
+          hero_image: templeArchitectureMeta.hero_image,
+        });
+      }
     }
 
-    return combined.sort((a, b) => (a.category_name || a.title || '').localeCompare(b.category_name || b.title || ''));
+    return combined
+      .filter(
+        (g) =>
+          !isHiddenGuide({
+            destinationId: normalizedDestinationId,
+            categorySlug: g.category_slug,
+          })
+      )
+      .sort((a, b) => (a.category_name || a.title || '').localeCompare(b.category_name || b.title || ''));
   } catch (dbError) {
     console.error(
       `[getAllCategoryGuidesForDestination] Database lookup failed for ${normalizedDestinationId}: ${dbError?.message || dbError}`

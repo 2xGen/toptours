@@ -3,7 +3,7 @@ import { getAllCategoryGuidesForDestination } from '@/lib/categoryGuides';
 import { getHardcodedToursByDestination } from '@/lib/promotionSystem';
 import { getBabyEquipmentRentalsByDestination } from '@/lib/babyEquipmentRentals';
 import { getTopRestaurantsForDestination } from '@/lib/restaurants';
-import { isLowValueGuideTag } from '@/lib/guideIndexing';
+import { isLowValueGuideTag, isHiddenGuide } from '@/lib/guideIndexing';
 
 /**
  * Fetches all destination data in parallel for better performance
@@ -43,6 +43,14 @@ export async function fetchDestinationData(destination, destinationIdForScores) 
   // Extract values from Promise.allSettled results (promotion scores no longer fetched - pass empty; restaurants removed)
   const rawCategoryGuides = categoryGuides.status === 'fulfilled' ? categoryGuides.value : [];
   const filteredCategoryGuides = (rawCategoryGuides || []).filter((guide) => {
+    if (
+      isHiddenGuide({
+        destinationId: destination.id,
+        categorySlug: guide?.category_slug,
+      })
+    ) {
+      return false;
+    }
     return !isLowValueGuideTag({
       slug: guide?.category_slug,
       name: guide?.category_name,

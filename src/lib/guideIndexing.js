@@ -72,6 +72,31 @@ const THIN_TAG_HINTS = [
   'likely to sell out',
 ];
 
+/** Per-destination guide slugs removed from the site (404, excluded from listings & sitemap). */
+const HIDDEN_DESTINATION_GUIDE_SLUGS = {
+  'siem-reap': ['zombie-slice'],
+};
+
+function normalizeGuideSlug(value) {
+  return String(value || '')
+    .toLowerCase()
+    .trim()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+export function isHiddenGuide({ destinationId, categorySlug } = {}) {
+  const dest = normalizeGuideSlug(destinationId);
+  const slug = normalizeGuideSlug(categorySlug);
+  if (!dest || !slug) return false;
+  const hidden = HIDDEN_DESTINATION_GUIDE_SLUGS[dest];
+  return Array.isArray(hidden) && hidden.includes(slug);
+}
+
 export function isLowValueGuideTag(input = {}) {
   const slug = normalize(input.slug);
   const name = normalize(input.name);
