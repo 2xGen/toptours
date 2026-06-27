@@ -637,11 +637,16 @@ export async function generateMetadata({ params }) {
     const categoryName = guideData.categoryName || guideData.title || 'Tours';
     const bookingTitle = destName && categoryName ? `Best ${destName} ${categoryName}` : null;
 
-    const noindexThinGuide = isLowValueGuideTag({
-      slug: categorySlug,
-      name: guideData?.categoryName,
-      title: guideData?.title,
-    });
+    // Curated editorial guides (those with a guideLayout) carry unique top-pick + section
+    // content, so they should stay indexable even when their slug (e.g. full-day-tours,
+    // multi-day-tours) matches a thin-tag hint meant for AI-template tag guides.
+    const noindexThinGuide =
+      !guideData?.guideLayout &&
+      isLowValueGuideTag({
+        slug: categorySlug,
+        name: guideData?.categoryName,
+        title: guideData?.title,
+      });
 
     return {
       title: seo.title || guideData.title || bookingTitle || 'Guide',

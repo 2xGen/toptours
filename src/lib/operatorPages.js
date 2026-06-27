@@ -11,30 +11,13 @@ import { getDestinationById } from '@/data/destinationsData';
 import { getDestinationFullContent } from '@/data/destinationFullContent';
 import { getDestinationSeoContent } from '@/data/destinationSeoContent';
 import { enrichOperatorSeo } from '@/lib/operatorPageSeo';
+import { OPERATOR_PAGE_PILOT_SLUGS } from '@/data/operatorPilotDestinations';
 
 const DEFAULT_DEST_IMAGE =
   'https://ouqeoizufbofdqbuiwvx.supabase.co/storage/v1/object/public/blogs/Explore%20any%20destination%20with%20TopToursai.png';
 
 /** Destinations with indexable /operators/[slug] pages enabled (phased rollout). */
-export const OPERATOR_PAGE_PILOT_DESTINATIONS = new Set([
-  'aruba',
-  'arusha',
-  'prague',
-  'curacao',
-  'reykjavik',
-  'zanzibar',
-  'banff',
-  'queenstown',
-  'galapagos-islands',
-  'interlaken',
-  'siem-reap',
-  'dubrovnik',
-  'san-jose',
-  'kuala-lumpur',
-  'cairo',
-  'hanoi',
-  'marrakech',
-]);
+export const OPERATOR_PAGE_PILOT_DESTINATIONS = new Set(OPERATOR_PAGE_PILOT_SLUGS);
 
 export function getOperatorPagePilotSlugs() {
   return [...OPERATOR_PAGE_PILOT_DESTINATIONS];

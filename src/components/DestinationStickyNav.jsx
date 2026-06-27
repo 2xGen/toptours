@@ -1,11 +1,12 @@
 "use client";
 
 import Link from 'next/link';
-import { ArrowRight, BookOpen, Baby, Shield, Plane, UtensilsCrossed } from 'lucide-react';
+import { ArrowRight, BookOpen, Baby, Shield, Plane, UtensilsCrossed, Building2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import PrefetchOnHoverLink from '@/components/PrefetchOnHoverLink';
 import { destinationHasTravelInsurancePage } from '@/lib/destinationTravelInsurance';
+import { isOperatorPilotDestination } from '@/data/operatorPilotDestinations';
 
 /**
  * Reusable sticky navigation for destination hub and sub-pages.
@@ -32,6 +33,7 @@ export default function DestinationStickyNav({
   const travelInsuranceHref = destinationHasTravelInsurancePage(destinationId)
     ? `/destinations/${destinationId}/travel-insurance`
     : '/travel-insurance';
+  const showOperators = isOperatorPilotDestination(destinationId);
 
   const itemClass = (key) => {
     const isActive = activeKey === key || (activeKey === 'hub' && key === 'tours');
@@ -71,6 +73,13 @@ export default function DestinationStickyNav({
               </Badge>
             )}
           </Link>
+
+          {showOperators && (
+            <Link href={`/destinations/${destinationId}/operators`} className={itemClass('operators')}>
+              <Building2 className="w-4 h-4 shrink-0" aria-hidden />
+              <span>Operators</span>
+            </Link>
+          )}
 
           {hasRestaurants && (
             <Link href={`/destinations/${destinationId}/restaurants`} className={itemClass('restaurants')}>
