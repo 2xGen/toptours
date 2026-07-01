@@ -22,6 +22,12 @@ const VIATOR_LINK_AFFILIATE = {
 export const VIATOR_AFFILIATE_LINK_REL = 'nofollow sponsored noopener noreferrer';
 
 /**
+ * Travelpayouts Drive skips auto-previews / link transforms on elements with this attribute.
+ * @see https://support.travelpayouts.com/hc/en-us/articles/32083238510482
+ */
+export const TRAVELPAYOUTS_DRIVE_IGNORE_PROPS = { 'data-tooltip-ignore': 'true' };
+
+/**
  * Normalize Viator host so links work reliably (avoid shop.live.rc.viator.com).
  * @param {string} url
  * @returns {string}

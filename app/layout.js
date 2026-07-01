@@ -4,6 +4,7 @@ import { Suspense, lazy } from 'react'
 import { Toaster } from '@/components/ui/toaster'
 import PageViewTracker from '@/components/PageViewTracker'
 import { absoluteUrl, getSiteOrigin } from '@/lib/siteUrl'
+import { getTravelpayoutsDriveLoaderScript } from '@/lib/travelpayoutsDrive'
 
 // OPTIMIZED: Lazy load non-critical components for better initial page load
 const CookieConsentManager = lazy(() => import('@/components/CookieConsentManager'));
@@ -103,6 +104,10 @@ export default function RootLayout({ children }) {
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="theme-color" content="#667eea" />
         <meta name="msapplication-TileColor" content="#667eea" />
+
+        <script
+          dangerouslySetInnerHTML={{ __html: getTravelpayoutsDriveLoaderScript() }}
+        />
         
         {/* OPTIMIZED: Enhanced Organization Schema for better SEO */}
         <script

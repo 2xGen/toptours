@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { MapPin, Star, Crown, ExternalLink } from 'lucide-react';
-import { getTourUrl, withViatorAffiliateParams, VIATOR_AFFILIATE_LINK_REL } from '@/utils/tourHelpers';
+import { getTourUrl, withViatorAffiliateParams, VIATOR_AFFILIATE_LINK_REL, TRAVELPAYOUTS_DRIVE_IGNORE_PROPS } from '@/utils/tourHelpers';
 
 function formatDurationHours(hours) {
   if (hours == null || Number.isNaN(Number(hours))) return null;
@@ -128,6 +128,7 @@ export default function PartnerShowcaseHeroCards({
                   <Link
                     href={topToursUrl}
                     className="inline-flex items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-900 shadow-sm transition-colors hover:bg-gray-50"
+                    {...TRAVELPAYOUTS_DRIVE_IGNORE_PROPS}
                   >
                     View on TopTours
                   </Link>
@@ -137,6 +138,7 @@ export default function PartnerShowcaseHeroCards({
                       target="_blank"
                       rel={VIATOR_AFFILIATE_LINK_REL}
                       className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-opacity hover:opacity-95"
+                      {...TRAVELPAYOUTS_DRIVE_IGNORE_PROPS}
                     >
                       Check availability
                       <ExternalLink className="w-4 h-4 shrink-0" aria-hidden />

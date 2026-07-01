@@ -13,7 +13,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { useBookmarks } from '@/hooks/useBookmarks';
 import { useToast } from '@/components/ui/use-toast';
-import { getTourUrl } from '@/utils/tourHelpers';
+import { getTourUrl, TRAVELPAYOUTS_DRIVE_IGNORE_PROPS } from '@/utils/tourHelpers';
 import TourMatchModal from '@/components/tour/TourMatchModal';
 
 // Helper functions for tour duration
@@ -111,7 +111,7 @@ function TourCard({
       <Card className={`bg-white border-0 shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 relative ${
         isPromoted ? 'border-2 border-purple-500 shadow-purple-200/50' : ''
       }`}>
-        <PrefetchOnHoverLink href={tourUrl}>
+        <PrefetchOnHoverLink href={tourUrl} {...TRAVELPAYOUTS_DRIVE_IGNORE_PROPS}>
           <div className="relative h-48 overflow-hidden">
             {image && (
               <Image
@@ -238,7 +238,7 @@ function TourCard({
             </div>
           )}
           <div className="flex items-start justify-between gap-2 mb-2">
-            <PrefetchOnHoverLink href={tourUrl} className="flex-1">
+            <PrefetchOnHoverLink href={tourUrl} className="flex-1" {...TRAVELPAYOUTS_DRIVE_IGNORE_PROPS}>
               <h3 className="font-semibold text-lg text-gray-900 line-clamp-2 hover:text-purple-600 transition-colors flex items-center gap-2">
                 {isPremiumOperator && (
                   <Crown className="w-4 h-4 text-amber-500 flex-shrink-0" title="Premium Operator" />
@@ -310,7 +310,7 @@ function TourCard({
             asChild
             className="w-full sunset-gradient text-white hover:scale-105 transition-transform duration-200 mt-auto"
           >
-            <PrefetchOnHoverLink href={tourUrl}>
+            <PrefetchOnHoverLink href={tourUrl} {...TRAVELPAYOUTS_DRIVE_IGNORE_PROPS}>
               {ctaLabel}
               <ArrowRight className="w-4 h-4 ml-2" />
             </PrefetchOnHoverLink>

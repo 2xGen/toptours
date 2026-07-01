@@ -106,6 +106,15 @@ export default function DisclosurePage() {
                       If you buy a qualifying plan, we may receive a commission. You pay the same published price as if you went directly; we do not control premiums, coverage, or claims.
                     </p>
 
+                    <h3 className="text-xl font-semibold text-gray-800 mb-4">Travelpayouts Drive</h3>
+                    <p className="mb-6">
+                      We use Travelpayouts Drive, an AI monetization layer that may add contextual travel links or
+                      offer previews on some pages (for example hotels, flights, or activities from partners in the
+                      Travelpayouts network). Tour bookings on TopTours still go through Viator when you use our tour
+                      and guide recommendations. If you buy through a Drive-surfaced partner link, we may earn a
+                      commission at no extra cost to you.
+                    </p>
+
                     <h3 className="text-xl font-semibold text-gray-800 mb-4">No Extra Cost to You</h3>
                     <p className="mb-6">
                       You never pay more when booking through our links. Prices remain identical to booking directly with the tour operator. 
